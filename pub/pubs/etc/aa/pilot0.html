@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+
+<title>Paraphrasal and Truth-Conditional Disambiguation</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="styles.css" title="styles" />
+
+</head>
+
+<body>
+
+<h2>Paraphrasal and Truth-Conditional Disambiguation of Quantification: Which Works Better?</h2>
+
+<h3 style="margin-bottom: 0">Jonathan Pool</h3>
+<p class="c" style="margin-top: 0">Revised 14 March 2007</p>
+
+<h3>Introduction</h3>
+
+<p>Centuries of work on methods of avoiding the ambiguities of natural language has led to several strategies, including:</p>
+
+<ol>
+<li>The cultivation of skill in unambiguous or less ambiguous expression within natural languages (O'Conner 1996; Berry 2003).</li>
+<li>The design of formal languages, aimed at the exclusion of lexical ambiguity (Maat 1999), structural ambiguity (Fuchs 2006, Pietroski 2007, Zalta 2005), or both (Noy 2001).</li>
+<li>The automated detection of ambiguity and support of its prevention during the process of authorship (Blanchon 1997, Chantree 2003, Ceccato 2004).</li>
+<li>The automated corpus-based learning of ambiguity resolution (Trujillo 1999 ch 9).</li>
+</ol>
+
+<p>These strategies may be combined. An example is document production in semi-formal, industrial controlled languages. Authors are trained to write in compliance with them and assisted, during authorship, by automated validators that suggest corrections (Mitamura 1999). And we can also consider as a strategy the practice of benign neglect, based on the premise that people combine intuitions and knowledge well enough to render ambiguity an only rare problem (Wasow 2005).</p>
+
+<p>I adopt the working hypothesis that none of these strategies is superfluous in the presence of the others, and that they are destined to coexist, being a repertoire of combinable alternatives with condition-contingent costs and benefits. It is then valuable to know how well they work in comparison with one another under relevant conditions.</p>
+
+<p>A condition relevant to contemporary life is that of a person writing for an unknown global public that will typically use automated agents to discover and, in some cases, analyze the written information. Consider the example of the author of an article on some disease, wanting to avoid ambiguities that might permit harmful misinterpretations. Assume the author is writing in a natural language, such as English. A sentence such as</p>
+
+<p class="ex">(1) Avoid prolonged exposure to excessive heat and humidity</p>
+
+<p>from a health encyclopedia (NLM 2007) exhibits, in addition to lexical vagueness ("prolonged", "excessive"), a multi-way structural ambiguity, with "humidity" being coordinated with any of four possible left coordinands. As a practical consequence, if the intent is to advise against prolonged exposure to excessive heat and also against prolonged exposure to excessive humidity, a reader might instead interpret the sentence as advising, for example, against only situations that involve heat-humidity combinations, and not against exposure to dry heat or wet cold. And, if a human reader with the article's language as a native language might misinterpret such a sentence, those who have studied it as a second language and machines programmed to retrieve, extract, or reason with textual information might also do so. The author presumably wants to avoid misinterpretations, is willing to incur some limited cost to do so, and thus would value knowledge about which strategies, and which tactics within them, work best.</p>
+
+<p>In approaching this question, I am mindful of doubts about the ability and willingness of people to avoid ambiguity. In normal discourse, people often fail to notice ambiguity when they utter ambiguous expressions, and, even if they do notice ambiguity, they may not feel a motivation to do anything about it (Arnold 2004). And, even if they want to do something about it, they may be unable to analyze the meanings they have in mind and the implications of various alternative representations of those meanings (Marshall 2003, Shirky 2003). Moreover, people are skilled in metaphorical expression and interpretation, and literal disambiguation may fail to leverage that skill (Lakoff 1992).</p>
+
+<p>So, in this study I have selected a pair of apparently easy-to-use disambiguation strategies for evaluation. If people can't or won't use them, then it seems reasonable that people would also not be able or willing to use more burdensome strategies. The strategies evaluated here would apply if a person were writing with the aid of an intelligent (automated or human) agent that grammatically analyzes each sentence, detects structural ambiguities, and, when it cannot confidently select the intended analysis, presents a disambiguating stimulus in the natural language to the author. I further simplify the human task by assuming that the agent can disaggregate complex disambiguations into sequences of binary choices, so that each stimulus is binary. Thus, the strategies mimic, in two different ways, the interlocutor who says something like "Wait, I didn't quite understand. Did you mean I should avoid any excessive heat and also any excessive humidity, or only conditions that are hot and simultaneously humid?"</p>
+
+<p>If any methods for unambiguous expression were found efficient and reliable for use by general populations without expertise in knowledge engineering, such methods could be helpful for the realization of widely shared goals, particularly the goal of enabling human-human understanding across language boundaries and human-machine understanding, as envisioned by the Semantic Web Initiative (Berners-Lee 2001). Natural languages exhibit major differences in meaning-representation mechanisms (Partee 1995, Partee 2004 p 220, Petronio 1995, Vieira 1995, Faltz 1995), yet their speakers seem not to exhibit major differences in the meanings that they seek and manage to express (Bittner 1995, Baker 1995). Thus, the translation of expressions among natural languages is more error-prone than would be translation among systems that represent cross-linguistically shared meanings compatibly.</p>
+
+<p>Methods of disambiguation that work well may work for some types of ambiguity (Bach 1998) and not others. In this study I deal with one type of ambiguity that has long been focal for semanticists and also of practical importance: quantification ambiguity (Partee 1997). Among the issues involving quantification ambiguity (whereby I include ambiguity as to presuppositions as well as denotations) are the following (the quantifiers in the examples are underlined):</p>
+
+<ul>
+
+<li>Existential presupposition (Westerståhl 2005)? E.g., does "<u>Every</u> minotaur is white" imply that at least one minotaur exists?</li>
+
+<li>Free choice versus affectivity (Partee 1984). E.g., is the condition in "If he agrees to marry <u>any</u> woman, he has no principles" satisfied if he agrees to marry a woman, or only if there is no woman he wouldn't agree to marry?</li>
+
+<li>Collectivity versus distributivity (Ben-Yami 2004 ch 7). E.g., if "<u>Seven</u> mathematicians proved this previously intractable theorem", did each do so independently as individuals, or did the group of them do so?</li>
+
+<li>Multiple-quantifier outscoping (Copestake 2005, Egg 2001). E.g., does "<u>Every</u> email program is infected with <u>several</u> horrible viruses" refer to a particular collection of viruses or to the result of counting each program's viruses?</li>
+
+<li>Quantifier scope in multi-quantifier noun phrases (Bittner 1995). E.g., how should we apply the prediction, "<u>Every</u> woman who owns <u>a</u> fur coat will wear it to the gala", to a woman who owns multiple fur coats?</li>
+
+<li>Adverbial quantifier scope (Evans 1995). E.g., when a politician reportedly said (NPR 2006) "Iran would <u>only</u> need to enrich uranium if it wanted a bomb", did he mean that enriching uranium is all that separates Iran from having a bomb, or that making a bomb is the only motive Iran could have for enriching Uranium?</li>
+
+</ul>
+
+<p>This last kind of ambiguity, involving the scopes of adverbial quantifiers modifying sentential verbs, is the focus of this study. I use ambiguities of this kind to evaluate disambiguating strategies. I have chosen to focus on a particular quantifier, because of its frequent use in practically ambiguous formulations and the multiplicity of the possible interpretations that it commonly permits. This quantifier is "almost always". It has alternative interpretations as a restriction on continuous time, on a set of events, and on the sets denoted by the verb's arguments. For example, in</p> 
+
+<p class="ex">(2) Dogs almost always chase cars.</p>
+
+<p>"almost always" may be interpreted to describe "23 out of 24 hours a day", "9 out of every 10 times this could happen", "9 out of 10 dogs (or kinds of dog)", or "9 out of 10 cars (or kinds of car)", as well as combinations of these. Thus, it may mean that every dog chases almost all (eligible) cars, almost all dogs chase all (eligible) cars, or almost all dogs chase almost all (eligible) cars, among other things. As people consider formally similar sentences, such as</p>
+
+<p class="ex">(3) Students almost always order pizzas.</p>
+
+<p class="ex">(4) Hammers almost always break windows.</p>
+
+<p class="ex">(5) Rivers almost always carry pollutants.</p>
+
+<p>people distribute differently the probabilities that they assign to the alternatives. Suppose people needed to specify the intended interpretation explicitly. Would they know what it is? If so, could they select it from the alternatives? If they could, how could they best do so?</p>
+
+<p>I have selected two strategies for comparison: paraphrasal selection and truth-conditional selection. Paraphrasal selection requires a person to select among (in this case, between) alternative paraphrases of the ambiguous sentence, each paraphrase designed to restate the sentence with one of its ambiguities resolved in a particular way. Truth-conditional selection requires a person to select among descriptions of situations, each situation designed to be compatible with a particular alternative interpretation of one of the sentence's ambiguities. For example, if the sentence were</p>
+
+<p class="ex">(6) Killer bees are migrating from Brazil to Canada.</p>
+
+<p>a paraphrasal selection task might be to choose between</p>
+
+<p class="ex">(7) Individual killer bees are migrating from Brazil to Canada.</p>
+
+<p class="ex">(8) The killer-bee population is migrating from Brazil to Canada.</p>
+
+<p>and a truth-conditional selection task might be to choose between</p>
+
+<p class="ex">(9) This bee was born near Rio de Janeiro, and now it lives near Vancouver.</p>
+
+<p class="ex">(10) Ten years ago there were no killer bees north of the U.S.-Mexican border, and this year some have been found in Oklahoma.</p>
+
+<p>If we assumed that the paired items represent identical meanings, it would not follow that they are even approximately equal in the burdens that they impose on persons performing them. There is evidence that the way a problem is represented can make the difference between majority success and majority failure in reasoning tasks (Cosmides 1996). One might hypothesize that paraphrasal tasks will be easier because paraphrasing is a common activity and requires no reasoning or mapping between facts and generalizations; or that truth-conditional selection tasks will be easier because they tell stories, and people are skilled at using stories to illustrate or contradict truth claims.</p>
+
+<h3>Method</h3>
+
+<h4>Introduction</h4>
+
+<p>The study reported here was conducted as an exploratory pilot study, with a deliberately limited number of subjects. My intent was to evaluate and improve the study instrument and discover relationships meriting further investigation on the basis of a test with a small set of users.</p>
+
+<h4>Apparatus</h4>
+
+<p>To evaluate paraphrasal and truth-conditional selection strategies, I created a Web-based experiment that assigned selection tasks to human subjects. Subjects could use any Web browser to access and undergo the experiment, at any time from when I made it available until when I disabled it. The subject's browser needed to support forms and tables, but did not need to support frames, embedded scripting, animation, or applets, nor did subjects need to download any software. Subjects whose progress through the experiment was interrupted by a browser crash, a disconnection, or an inadvertent closing of the browser window could resume the experiment by reconnecting to the experiment's main page. I designed the experiment so that subjects could not change any action previously performed. I used the Apache HTTP Server 2.0 and Perl 5.8 to create the experiment as a CGI application.</p>
+
+<p>The user interface during the main part of the study is illustrated in Figure 1.</p>
+
+<p class="c"><img src="ui.png" width="564" height="448" alt="User Interface"></p>
+
+<p class="fcap">Figure 1. User Interface</p>
+
+<p>Testing and inspection of the application are possible at <a href="http://utilika.org/re/aa/test.html">http://utilika.org/re/aa/test.html</a>. Copies of the software and data are available on request.</p>
+
+<h4>Participants</h4>
+
+<p>A total of 47 subjects completed the study, and another 23 subjects quit the study without completing it. I had publicized the experiment and stated a sole requirement that subjects be able to read and write English. I was unable to enforce even this requirement, nor verify the truth of the answers given by subjects to questions about their characteristics. The experiment treated the subjects anonymously, not collecting names or other identifying information. Thus, in principle, some of the subjects may have been robots, the same person participating multiple times, or people randomly guessing without reading the instructions. Inspection of the data provides no evidence for suspicion about much such corruption, however. For example, no completing subject's completion time was unrealistically fast; only 2 pairs of completing subjects connected from the same IP address; in only 4 cases was there a pair of completing and aborting subjects connecting from the same IP address; no subject submitted more than a small fraction of the pages without selecting an answer; and no subject's answers were identical over any large sequences of pages. Nonetheless, there is no basis in the design of this study to consider the subjects a random sample of any known population.</p>
+
+<p>With the subject-provided data taken at face value, the subjects had the characteristics described in Tables 1-3.</p>
+
+<p class="cap">Table 1. Subjects by Native Language</p>
+
+<table class="cr" border="1" summary="Native Language">
+<tr><th>English a<br />Native Language?</th><th>Frequency</th></tr>
+<tr><th>Yes</th><td>74%</td></tr>
+<tr><th>No</th><td>26%</td></tr>
+<tr><th>Count</th><td>47</td></tr>
+</table>
+
+<p class="cap">Table 2. Subjects by Best-Known English Variety</p>
+
+<table class="cr" border="1" summary="Best-Known Language Variety">
+<tr><th>Best-Known<br />English Variety</th><th>Frequency</th></tr>
+<tr><th>United States</th><td>81%</td></tr>
+<tr><th>Canada</th><td>2%</td></tr>
+<tr><th>United Kingdom</th><td>17%</td></tr>
+<tr><th>Count</th><td>47</td></tr>
+</table>
+
+<p class="cap">Table 3. Subjects by Age</p>
+
+<table class="cr" border="1" summary="Age Range">
+<tr><th>Age Range<br />(Years)</th><th>Frequency</th></tr>
+<tr><th>0-19</th><td>4%</td></tr>
+<tr><th>20-39</th><td>64%</td></tr>
+<tr><th>40-59</th><td>26%</td></tr>
+<tr><th>60-</th><td>6%</td></tr>
+<tr><th>Count</th><td>47</td></tr>
+</table>
+
+<p>It is a reasonable question whether the task in this experiment relied on native-speaker intuitions and, if so, to what degree. The analysis reported here does not treat the subject's language characteristic as an independent variable.</p>
+
+<p>As part of the publicity and motivation for participation in the experiment, the invitation to participate stated that the first 20 subjects completing the experiment and registering their completion with the Web-based service-contracting service Amazon Mechanical Turk (Amazon 2007) would receive a nominal fee and be eligible for a bonus of $10.00 to be paid to whichever subject provided what I judged to be the most useful comments. The nominal fee was $0.40. Of the completing subjects, 19 registered their completion with Amazon Mechanical Turk and were compensated, 1 registered unverifiably and was not compensated, and the other 27 participated without compensation.</p>
+
+<p>I conducted the study during a 61-hour period, 10-13 March 2007.</p>
+
+<h4>Procedure</h4>
+
+<p>Subjects read an introductory page describing the topic and my motivation, then a page describing the terms of participation, and then an introduction asking subjects to assign one of two interpretations to a particular sentence. They were then informed that I considered the sample sentence ambiguous and that different people would naturally interpret it in various ways. They were told that in the following task they would answer questions about the apparently intended meanings of sentences, and in answering the questions they could use the sentences, their knowledge, their beliefs, and their experiences.</p>
+
+<p>After this introduction, subjects received a succession of 25 sentences, each accompanied by 1 or 2 questions and, on some trials, a questionnaire about their feelings toward the study. After the last trial, subjects received a questionnaire asking for a few facts about themselves, namely those summarized above, and then received an acknowledgement page thanking them.</p>
+
+<h4>Stimuli</h4>
+
+<p>Of the 25 sentences, 16 contained "almost always" used as a sententially adverbial modifier, and 5 contained "nearly always" used in the same way. The other 4 sentences contained other adverbial quantifiers, namely "usually", "mostly", "almost never", and "only". I intended this distribution to provide a focus on "almost always" and an apparently synonymous "nearly always", to preview responses to a few other adverbial quantifiers, and to give enough variety to the subjects to adequately limit tedium.</p>
+
+<p>My choice of positive polarity was based in part on the greater practical impact of positive-polarity ambiguity with universal and near-universal quantification. The interpretations of an almost-always sentence can differ in ways that make a major practical difference, but the interpretations of an almost-never sentence cannot (except with extreme disparities in set sizes). For example, the sentence (Liu 1994)</p>
+
+<p class="ex">(11) Use of marijuana almost always precedes other drug use.</p>
+
+<p>interpreted with the quantifier having scope over the subject ("Almost all use of marijuana precedes other drug use") says that marijuana smokers are almost destined to use other drugs, while if the quantifier has scope over the complement ("Use of marijuana precedes almost all other drug use") it does not say that. By contrast,</p>
+
+<p class="ex">(12) Coin collecting almost never precedes counterfeiting.</p>
+
+<p>says that a coin collector is almost immunized against becoming a counterfeiter, regardless of whether "almost never" has subject or complement scope.</p>
+
+<p>For each sentence, I created 2 paraphrases and 2 truth conditions (situation descriptions). I yoked them, so that in my judgment each paraphrase had a corresponding truth condition, and each paraphrase/truth-condition pair was distinct in meaning from the other paraphrase/truth-condition pair. In all cases, the truth conditions were verbal descriptions that included numbers, such as "I did 20 things yesterday, and he complained about 18 of them." I performed no external validation on my pairings of truth conditions with paraphrases. For example, the sentence</p>
+
+<p class="ex">(13) Drinking almost always followed a dinner-party.</p>
+
+<p>had the paraphrasal alternatives</p>
+
+<p class="ex">(14) Almost all drinking followed dinner-parties.</p>
+
+<p class="ex">(15) Drinking followed almost all dinner-parties.</p>
+
+<p>and the truth-conditional alternatives</p>
+
+<p class="ex">(16) In the activity diaries, 1000 episodes of drinking were reported, and 975 of them followed dinner-parties.</p>
+
+<p class="ex">(17) In the activity diaries, 1000 dinner-parties were reported, and drinking followed 975 of them.</p>
+
+<h4>Treatment Conditions</h4>
+
+<p>Each subject, on beginning the experiment, was randomly assigned to one of 4 treatment groups:</p>
+
+<ol start="0">
+
+<li>The task alternated every 5 trials, with paraphrasal selection in trials 1-5, 11-15, and 21-25, and truth-conditional selection in trials 6-10 and 16-20.</li>
+
+<li>The task alternated every 5 trials, with truth-conditional selection in trials 1-5, 11-15, and 21-25, and paraphrasal selection in trials 6-10 and 16-20.</li>
+
+<li>The task in every trial was paraphrasal selection and truth-conditional selection, in that order on the page.</li>
+
+<li>The task in every trial was truth-conditional selection and paraphrasal selection, in that order on the page.</li>
+
+</ol>
+
+<p>Thus, subjects in groups 0 and 1 performed 25 selections each, and those in groups 2 and 3 performed 50 selections each.</p>
+
+<p>The order of the stimulus sentences was randomized for each subject.</p>
+
+<p>Given each stimulus sentence and the selection task(s) for it based on the trial to which that sentence was randomly assigned, the 2 alternative responses for each task were displayed in a random order. This implies that subjects in groups 2 and 3 might see the corresponding paraphrasal and truth-conditional responses in the same position or in opposite positions within their pairs.</p>
+
+<p>The questionnaire about the subjects' feelings toward the study was administered on every 5th trial. For subjects in groups 0 and 1, this implies that it was administered each time at the end of a block of 5 same-task trials. There was 1 question in this questionnaire, asking the subjects to describe their current feelings about the study on 3 dimensions, with 5 ordinal alternatives per dimension:</p>
+
+<ul>
+<li>Boring o o o o o Interesting</li>
+<li>Hard o o o o o Easy</li>
+<li>Useless o o o o o Useful</li>
+</ul>
+
+<h3>Results</h3>
+
+<h4>Introduction</h4>
+
+<p>As indicated above, I consider this study a pilot study and consider its subjects a nonrepresentative convenience sample. I describe results below, comparing them with my pre-study expectations, without determining whether they would be statistically significant if replicated in a larger, representative sample. In light of the small counts involved, I also have not analyzed the differences between the "almost always", "nearly always", and other sentences.</p>
+
+<h4>Subjective Response</h4>
+
+<p>Although I have described reasons for expecting either the paraphrasal task or the truth-conditional task to be more user-friendly, I expected the subjects on average to prefer the paraphrasal task, given the numeric reasoning required by the truth-conditional task. From this hypothesis I drew the prediction that the mean of the easy-difficult judgments expressed by subjects in groups 0 and 1 at the end of each 5-trial batch requiring paraphrasal selection would be substantially (at least 1 position) closer to the "easy" end than would be at the mean of those expressed at the end of each truth-conditional selection batch. I made no prediction as to whether subjects in groups 2 and 3, those with both tasks to perform, would rate the study easier or more difficult than subjects in groups 1 and 2, those performing only 1 task. Having both tasks on the same page might help subjects gain confidence through bimodal reasoning; or it might worry them about internal consistency and make them feel more heavily worked.</p>
+
+<p>With respect to the prediction that I had made, the results point in the predicted direction, but the difference is only about one-third of the minimum predicted magnitude: a mean score of 2.6 versus 2.3 on a scale ranging from 0 (difficult) to 4 (easy). This and the related results for the other feeling dimensions and the other groups are shown in Table 4. The range of scores on no item exceeds 0.6 out of a possible 4.</p>
+
+<p class="cap">Table 4. Feelings about the Study by Task</p>
+
+<table class="cr" border="1" summary="Feelings about the Study">
+<tr><th rowspan="2" colspan="2"></th><th colspan="4">Treatment Condition</th></tr>
+<tr><th>Para</th><th>Truth</th><th>Para<br />Truth</th><th>Truth<br />Para</th></tr>
+<tr><th rowspan="3">Feelings about the Study<br />(0 = least, 4 = most)<th>Interesting</th><td>2.9</td><td>2.7</td><td>2.3</td><td>2.5</td></tr>
+<tr><th>Easy</th><td>2.6</td><td>2.3</td><td>2.4</td><td>2.1</td></tr>
+<tr><th>Useful</th><td>3.0</td><td>2.9</td><td>2.4</td><td>2.4</td></tr>
+</table>
+
+<p>We have, in addition, a behavioral measure of subjects' satisfaction with the study: whether they completed it or quit prematurely. If my hypothesis was well-founded, those performing truth-conditional selection would be more likely to quit than those performing paraphrasal selection. Suppose quitting is based on task(s) performed on the last trial before the subject quits. Then quitters who on that trial performed only truth-conditional selection would be expected to be more numerous than quitters who performed only paraphrasal selection on the last trial. This is true, but, as above, the difference is not interestingly great, as seen in Table 5. The overrepresentation of those who performed both tasks on the last trial, compared with those who performed only one task, appears worth further attention. This could, of course, reflect a greater tendency for those who must perform 50 selections than for those who must perform 25 selections to decide that the study is too much work to justify completion.</p> 
+
+<p class="cap">Table 5. Quittings by Last Task(s) Performed</p>
+
+<table class="cr" border="1" summary="Feelings about the Study">
+<tr><th rowspan="2"></th><th colspan="4">Last Task(s) Performed</th></tr>
+<tr><th>Para</th><th>Truth</th><th>Para<br />Truth</th><th>Truth<br />Para</th></tr>
+<tr><th>Quitters (Count)</th><td>0</td><td>2</td><td>4</td><td>6</td></tr>
+</table>
+
+<h4>Objective Performance</h4>
+
+<p>Subjects who performed both tasks on each trial performed each task either consistently or inconsistently. Given that the alternatives' orders were randomized, subjects could not learn to apply any ordering rule in order to be consistent. They needed to examine the texts and decide which truth condition matched which paraphrase. The only treatment condition that might affect their performance was the order of the tasks. Half the subjects performing both tasks saw the paraphrasal task above the truth-conditional task, and the other half saw them in the opposite order. Since they would both be visible together on most computer monitors, one might expect the order to have a minimal impact on performance. However, I predicted that subjects would tend to perform the first-position task first, and that performing a paraphrasal task before a truth-conditional task would contribute to better performance, on the assumption that typical subjects could more easily retain in memory a paraphrase and apply that to analyzing a truth condition than vice-versa. Since subjects were free to perform the tasks in either order, I predicted that this effect would be small (about 10% of the range).</p>
+
+<p>As shown in Table 6, the difference was about as small as I had predicted, but in the opposite direction. I had not made any prediction about absolute performance, though, and the results show that 75% of all subjects performing both tasks on each trial performed them consistently.</p>
+
+<p class="cap">Table 6. Consistency by Task Presentation Order</p>
+
+<table class="cr" border="1" summary="Consistency">
+<tr><th rowspan="2"></th><th colspan="4">Task Presentation Order,<br />Subjects Performing Both<br />Tasks Simultaneously<br />(Trials)</th></tr>
+<tr><th>Para<br />Truth</th><th>Truth<br />Para</th><th>Total</th></tr>
+<tr><th>Consistent</th><td>72%</td><td>79%</td><td>75%</td></tr>
+<tr><th>Inconsistent</th><td>28%</td><td>21%</td><td>25%</td></tr>
+<tr><th>Count</th><td>275</td><td>225</td><td>500</td></tr>
+</table>
+
+<p>Whatever the consistency of subjects might be, I predicted that it would tend to increase during the course of the study. Subjects would learn to perform more consistently with experience. As Figure 2 shows, they did not.</p>
+
+<p class="c"><img src="consistency.png" width="683" height="467" alt="Consistency by Trial"></p>
+
+<p class="fcap">Figure 2. Consistency by Trial</p>
+
+<p>Here I have treated consistency as if it were a type of objective performance, with more consistency being better performance. One could argue, against this assumption, that subjects were not necessarily adopting a belief about each sentence's intended meaning and then applying that belief to each of the two tasks. They could have asked themselves which of the alternatives they believed the author would more likely accept. Thus, it is not obvious that 25% of the trials exhibited deficient performance and that subjects had learning to do. If they did, the results suggest that about 25 iterations of a selection task, without any tutorial content or discussion, may be insufficient to produce noticeable learning.</p>
+
+<h4>Speed</h4>
+
+<p>Not surprisingly, I predicted that subjects performing 2 tasks per trial would tend to progress more slowly than subjects performing 1 task per trial. Consistent with my prediction above about the comparative difficulty of the tasks, I also predicted that subjects performing only paraphrasal selection in a trial would tend to complete the trial faster than subjects performing only truth-conditional selection. My estimate of the magnitudes were a 50% greater time for 2 tasks than 1, and a 20% greater time for truth-conditional selection than for paraphrasal selection.</p>
+
+<p>The results, shown in Table 7, partly confirm these predictions. The 2-task trials were completed in a mean of 51 seconds, 46% more slowly than the 35 seconds of the 1-task trials, approximately as predicted. And the mean trial with only truth-conditional selection took 41 seconds, 41% more than the 29 seconds of the mean trial with only paraphrasal selection, a stronger-than-predicted difference.</p>
+
+<p class="cap">Table 7. Trial Duration by Treatment Condition</p>
+
+<table class="cr" border="1" summary="Trial Duration">
+<tr><th rowspan="2"></th><th colspan="6">Task(s) Performed in Trial</th></tr>
+<tr><th>Para</th><th>Truth</th><th>All<br />1-Task</th><th>Para<br />Truth</th><th>Truth<br />Para</th><th>All<br />2-Task</th></tr>
+<tr><th>Mean Duration</th><td>29</td><td>41</td><td>35</td><td>38</td><td>67</td><td>51</td></tr>
+<tr><th>Trial Count</th><td>340</td><td>335</td><td>675</td><td>275</td><td>225</td><td>500</td></tr>
+</table>
+
+<p>But the 2-task trials differed substantially in duration depending on the presentation order, with trials having truth-conditional selection above paraphrasal selection taking a mean of 67 seconds, while trials with the opposite order took only 38 seconds, even less than trials with only truth-conditional selection. A replicatable difference of this kind would be paradoxical. It would indicate that truth-conditional selection is so greatly facilitated by prior paraphrasal selection that the time spent on paraphrasal selection is more than compensated by time saved in truth-conditional selection. It would also indicate that people generally solve problems in the order they appear on a page, even if they are free to solve them in any order they wish and if reversing the solution order would greatly facilitate the work.</p>
+
+<p>As with consistency, I predicted that subjects would learn to solve the problems faster with experience. Figure 2 shows a trend in the predicted direction.</p>
+
+<p class="c"><img src="duration.png" width="683" height="467" alt="Duration by Trial"></p>
+
+<p class="fcap">Figure 3. Duration by Trial</p>
+
+<p>Combining subjective response, objective performance, and speed, I see a suggestion that subjects typically take the time they need in order to achieve an approximately uniform result under whatever conditions they work under. As the task becomes easier or more difficult, subjects compensate by working faster or more slowly, rather than by getting better or worse results. If this pattern were to be robust, it would pose a challenge. What could one do if one wanted to elevate the quality of the results, such as making those doing the work more satisfied and getting them to achieve greater consistency? Solutions affecting individual results could involve motivations, such as compensation, incentives, and goal redefinition. Solutions not affecting individual results could include applying multiple performers to each task. Solutions combining these approaches could include redefining the task as a game, with a goal of reaching agreement on meanings with other individuals (cf. von Ahn 2007).</p>
+
+<h4>Bias</h4>
+
+<p>In judging ambiguous sentences, people might be swayed by the form that the task takes. Those who do paraphrasal selection might tend to perceive one meaning, while those doing truth-conditional selection perceive another. I expected this to be true. I had no hypothesis that would predict a particular kind of bias, nor a semantic model covering all the stimulus sentences that would allow me to apply such a hypothesis to each sentence to predict a sentence-specific bias. But I did make a rougher prediction. I expected pairs of subjects to agree more often with each other on the meaning of a sentence when they performed the identical task on that sentence than when they performed the opposite tasks on it. I limited this prediction to subjects performing 1 task per trial. I expected task difference to impair agreement by about 10%. As Table 8 shows, of all pairs of 1-task subjects responding to the same sentence with the identical task, 68% expressed agreement, versus 58% when the subjects performing opposite tasks. This confirms my prediction, more strongly than I expected.</p>
+
+<p class="cap">Table 8. Agreement by Task Identity</p>
+
+<table class="cr" border="1" summary="Consistency">
+<tr><th rowspan="2"></th><th colspan="4">Tasks Identical or Opposite<br />between Pairs of 1-Task Subjects<br />Judging Same Sentence</th></tr>
+<tr><th>Identical</th><th>Opposite</th><th>Total</th></tr>
+<tr><th>Agreeing</th><td>68%</td><td>58%</td><td>62%</td></tr>
+<tr><th>Disagreeing</th><td>32%</td><td>42%</td><td>38%</td></tr>
+<tr><th>Pairs (Count)</th><td>2720</td><td>2950</td><td>5670</td></tr>
+</table>
+
+<p>To get some insight into the bias that the form of the task might introduce, we can consider the sentence that exhibited the greatest difference in judgments between tasks. This was sentence 22, "Success usually comes to those who are too busy to be looking for it." Its paraphrasal alternatives were:</p>
+
+<ol>
+<li>Most success comes to those who are too busy to be looking for it.</li>
+<li>Success comes to most of those who are too busy to be looking for it.</li>
+</ol>
+
+<p>Of the 17 subjects performing only this task on the sentence, 88% chose alternative 1. The truth-conditional alternatives were:</p>
+
+<ol>
+<li>Of 1000 executives, 600 scored "high" or more on success, and 450 of these scored "high" or more on activity level.</li>
+<li>Of 1000 executives, 600 scored "high" or more on activity level, and 450 of these scored "high" or more on success.</li>
+</ol>
+
+<p>By contrast, only 40% of the 10 subjects performing only this task chose alternative 1.</p>
+
+<p>I speculate that the more likely meaning intended by an utterer of this sentence is the meaning in which the subject is the quantifier's scope, expressed by alternatives 1. It would follow that the paraphrasal task here captured appropriate intuitions, but the truth-conditional task defeated those intuitions. Perhaps it did so by referring to the causal variable after the affected variable, opposite to an expectation that cause precedes effect. If this is correct, then the paraphrasal or truth-conditional form taken by a task may be only one influence on the quality of semantic judgment, and the way in which the alternatives are formulated within their type may be another.</p>
+
+<p>Some subjects commented on this sentence. The comments received on it were:</p>
+
+<ul>
+<li>This is another one of those statements that is too vague and unfounded for a concrete interpretation.</li>
+<li>The 450 of 'these' means out of the 1000 executives or out of the 600 executives who scored 'high'????  Not clear here for me.</li>
+<li>My choice of the "correct" interpretation is probably due to the fact that this sentence is a common saying, and this seems to be the *accepted* interpretation. Also, the second interpretation seems to imply that the majority of busy people become successful, which is a bit odd...</li>
+<li>'mu'...okay, maybe in part II if the word successes was used I could answer it...</li>
+<li>We're talking about success here, so that's what we're counting first.</li>
+</ul>
+
+<p>At least the second comment reveals an ambiguity in the truth conditions that I had not anticipated. I understand "these" there as synonymous with "the latter", but this subject did not.</p>
+
+<h4>Subject Comments</h4>
+
+<p>In 107 cases out of 1175 trials, and in 12 more cases at the end of the study, subjects provided comments. Here is a selection of comments to show their range and quality:</p>
+
+<ol>
+<li>Hmm..I'm a science major at [name of university].  But this stuff is fascinating! I'm taking a linguistics class next quarter to fulfill a general education requirement.</li>
+<li>I am bilingual in English and ASL.</li>
+<li>I have Asperger Syndrome, so I have to do this kind of analysis with nearly every vague sentence I encounter.  It was kind of interesting to do it without any context whatsoever.</li>
+<li>On most of the questions I had an immediate idea of the meaning of the sentence, but had to read the chooses for the answers a number of times to decide which answer corresponded to the meaning.</li>
+<li>Oh, I've had plenty of performance problems not cased by large databases.</li>
+<li>the first implies that nearly every person ever examined has a heart murmur, rather that an exam detects a murmur that might be present.</li>
+<li>The facts in the 2nd reading are only relevant if someone looks in the freezer.</li>
+<li>Isn't the English language is beautiful thing?</li>
+<li>I think this sentence leans heavily toward the interpretation that the author didn't intend.</li>
+<li>Checked the first because of setence itself although I know the second is true to reality.</li>
+<li>It is a bit confusing about which radio button you click. I understand you select one sentence or the other but am not sure whether you can also leave it so it's selecting both interpretations.</li>
+<li>The choices is hard to understand.  Maybe something like "Almost every negotiation has a prediction before it" vs "Almost every prediction has negotiations after it"</li>
+<li>precision!</li>
+<li>I am beginning to realize how my own speech is often vague, similar to your examples. However, I do not often get the impression that others misunderstand my meaning.</li>
+<li>This seems to describe the cause of poor service, not a description of management.</li>
+<li>Try to use a wider range of words in place of "almost always" and "nearly always". This makes the survey a little dull and monotonous.</li>
+<li>The repeated use of "almost always" type sentences makes it very clear that it is these types of ambiguities that you are studying.  This means I start thinking about such ambiguities and notice them more often than I would if I were just reading such sentences normally. This could possibly bias my answer - I end up thinking about the ambiguity so much that I confuse myself! If you want a 'natural' answer where the subject gives their first impression as opposed to pondering the logical structure of the sentence I would mix in some other sentences not related to your study, drawing focus away from the sentence features you are actually studying.</li>
+<li>well the orange sentence say "parent' which is singular so i chose the sentence that used that same context</li>
+<li>Parent of who? anybody?</li>
+<li>The number scenarios are not really a way I think - I'm much more verbal - and they feel repetitive to me</li>
+</ol>
+
+<p>The willingness of some subjects to comment profusely provides valuable hints about their understandings of both the items and the user interface. For example, one subject indicated that the initial state of the task response, a checked radio button to the left of the box containing the alternatives and their radio buttons (see Figure 1), was ambiguous, possibly representing an indifference response rather than the absence of a response at all. I had labeled it "No answer" in a previous draft, but pretesting led me to believe that would encourage its use.</p>
+
+<h3>Discussion</h3>
+
+<p>The results presented above suggest that people not selected for their knowledge-engineering expertise can use both paraphrasal and truth-conditional selection to disambiguate sentences and, without further training, can achieve approximately 75% consistency. It appears that paraphrasal selection is typically less time-consuming than truth-conditional selection. Persons using the same kind of disambiguation on a sentence are more likely to agree with each other on its meaning than are persons using the opposite kinds of disambiguation (one using paraphrasal, the other using truth-conditional). As people repeatedly disambiguate sentences under low-incentive and no-training conditions, they become more efficient, but the quality of their disambiguations does not tend to increase. Task difficulty is reflected mostly in higher rates of task abandonment and, among those who persist, longer task-performance durations, which people adjust as if to achieve uniform degrees of satisfaction and output quality.</p>
+
+<p>These tendencies are only suggestive, because of the small, nonrandom, and unverified characteristics of the subjects participating in this pilot study. Moreover, there are two other possible contaminants worth mentioning. One is differential attrition. Subjects were randomly assigned to treatment groups, but then each subject decided whether to complete the study or quit early. Subjects in 2-task treatment groups quit more often than subjects in 1-task treatment groups. Perhaps a difficult task induces the least skilled subjects to quit (in frustration), and an easy task induces the most skilled subjects to quit (in boredom). If so, the randomization of treatment assignments may not guarantee the statistical independence of subject characteristics from treatments, no matter how large and representative the sample becomes. The other contaminant is the numbers that I chose to use in formulating the truth conditions. Subjects presumably paid some attention to the realism of those numbers as they chose between the alternatives, and there is presumably no way to choose neutral numbers for such situation descriptions. The arbitrariness of numeric truth conditions may be an inescapable problem, whether they are formulated by persons or generated by algorithms.</p>
+
+<h3>References</h3>
+
+<p class="ref">Arnold 2004. Jennifer E. Arnold, Thomas Wasow, Ash Asudeh, and Peter Alrenga, "Avoiding Attachment Ambiguities: The Role of Constituent Ordering", <i>Journal of Memory and Language</i>, 51, 2004, 55-70; <a href="http://www-csli.stanford.edu/~wasow/AWAA_final.pdf">http://www-csli.stanford.edu/~wasow/AWAA_final.pdf</a>.</p>
+
+<p class="ref">Bach 1998. Kent Bach, "Ambiguity", <i>Routledge Encyclopedia of Philosophy</i> (London: Routledge, 1998); <a href="http://online.sfsu.edu/~kbach/ambguity.html">Bach, 1998</a>.</p>
+
+<p class="ref">Baker 1995. Mark C. Baker, "On the Absence of Certain Quantifiers in Mohawk", ch. 2 in <i>Quantification in Natural Languages</i>, ed. E. Bach et al. (Amsterdam: Kluwer Academic Publishers, 1995), pp. 21-56.</p>
+
+<p class="ref">Ben-Yami 2004. Hanoch Ben-Yami, <i>Logic &amp; Natural Language: On Plural Reference and its Semantic and Logical Significance</i> (London: Ashgate, 2004).</p>
+
+<p class="ref">Berners-Lee 2001. Tim Berners-Lee, James Hendler, and Ora Lassila, "The Semantic Web", <i>Scientific American</i>, 284(5), 2001, 34-43. <a href="http://www.scientificamerican.com/article.cfm?articleID=00048144-10D2-1C70-84A9809EC588EF21&amp;catID=2">http://www.scientificamerican.com/article.cfm?articleID=00048144-10D2-1C70-84A9809EC588EF21&amp;catID=2</a></p>
+
+<p class="ref">Bittner 1995. Maria Bittner, "Quantification in Eskimo: A Challenge for Compositional Semantics", ch. 3 in <i>Quantification in Natural Languages</i>, ed. E. Bach et al. (Amsterdam: Kluwer Academic Publishers, 1995), pp. 59-80.</p>
+
+<p class="ref">Daniel M. Berry, Erik Kamsties, and Michael M. Krieger, "From Contract Drafting to Software Specification: Linguistic Sources of Ambiguity--A Handbook", manuscript, 2003; <a href="http://se.uwaterloo.ca/~dberry/handbook/ambiguityHandbook.pdf">http://se.uwaterloo.ca/~dberry/handbook/ambiguityHandbook.pdf</a>.</p>
+
+<p class="ref">Blanchon 1997. Herv&eacute; Blanchon, "Interactive Disambiguation of Natural Language Input: A Methodology and Two Implementations for French and English", IJCAI 97, 1997; <a href="http://www-clips.imag.fr/geta/User/herve.blanchon/Docs/IJCAI-97.pdf">http://www-clips.imag.fr/geta/User/herve.blanchon/Docs/IJCAI-97.pdf</a>.</p>
+
+<p class="ref">Ceccato 2004. Mariano Ceccato, Nadzeya Kiyavitskaya, Nicola Zeni, Luisa Mich, and Daniel M. Berry, "Ambiguity Identification and Measurement in Natural  Language Texts", University of Trento, Department of Information and Communication Technology, Technical Report DIT-04-111, 2004; <a href="http://eprints.biblio.unitn.it/archive/00000727/01/Report_v26_DIT_04_111.pdf">http://eprints.biblio.unitn.it/archive/00000727/01/Report_v26_DIT_04_111.pdf</a>.</p>
+
+<p class="ref">Chantree 2003. Francis Chantree, "Ambiguity Management in Natural Language Generation", manuscript, 2003; <a href="http://www.cs.bham.ac.uk/~mgl/cluk/papers/chantree.pdf">http://www.cs.bham.ac.uk/~mgl/cluk/papers/chantree.pdf</a>.</p>
+
+<p class="ref">Copestake 2005. Ann Copestake et al., "Minimal Recursion Semantics: An Introduction", <i>Research on Language and Computation</i>, 3, 281-332, 2005; <a href="http://www.cl.cam.ac.uk/~aac10/papers/mrs.pdf">http://www.cl.cam.ac.uk/~aac10/papers/mrs.pdf</a>.</p>
+
+<p class="ref">Cosmides 1996. Leda Cosmides and John Tooby, "Are Humans Good Intuitive Statisticians after All? Rethinking Some Conclusions from the Literature on Judgment under Uncertainty", <i>Cognition</i>, 58, 1-73, 1996; <a href="http://www.linguistics.pomona.edu/LGCS121Spring2005/Reading/CosmidesTooby1996.pdf">http://www.linguistics.pomona.edu/LGCS121Spring2005/Reading/CosmidesTooby1996.pdf</a>.</p>
+
+<p class="ref">Egg 2001. Markus Egg et al., "The Constraint Language for Lambda Structures", <i>Journal of Logic, Language and Information</i>, 10, 457-485, 2001; <a href="http://scidok.sulb.uni-saarland.de/volltexte/2004/293/pdf/clls2000.pdf">http://scidok.sulb.uni-saarland.de/volltexte/2004/293/pdf/clls2000.pdf</a>.</p>
+
+<p class="ref">Evans 1995. Nick Evans, "A-Quantifiers and Scope in Mayali", ch. 8 in <i>Quantification in Natural Languages</i>, ed. E. Bach et al. (Amsterdam: Kluwer Academic Publishers, 1995), pp. 207-270.</p>
+
+<p class="ref">Faltz 1995. Leonard M. Faltz, "Towards a Typology of Natural Logic", ch. 9 in <i>Quantification in Natural Languages</i>, ed. E. Bach et al. (Amsterdam: Kluwer Academic Publishers, 1995), pp. 271-319.</p>
+
+<p class="ref">Fuchs 2006. Norbert E. Fuchs, Kaarel Kaljurand, and Gerold Schneider, "Attempto Controlled English Meets the Challenges of Knowledge Representation, Reasoning, Interoperability and User Interfaces", FLAIRS 2006, 2006; <a href="http://www.ifi.unizh.ch/attempto/publications/papers/FLAIRS0601FuchsN.pdf">http://www.ifi.unizh.ch/attempto/publications/papers/FLAIRS0601FuchsN.pdf</a>.</p>
+
+<p class="ref">Lakoff 1992. George Lakoff, "The Contemporary Theory of Metaphor", in <i>Metaphor and Thought</i>, 2nd edn., ed. Andrew Ortony (Cambridge: Cambridge University Press, 1992); <a href="http://www.ocf.berkeley.edu/~katclark/coganthrodecal/lakoff.pdf">http://www.ocf.berkeley.edu/~katclark/coganthrodecal/lakoff.pdf</a>.</p>
+
+<p class="ref">Liu 1994. Liang Y. Liu, "Executive Summary: 1994 Texas School Survey of Substance Use Among Students: Grades 4-6", <a href="http://www.tcada.state.tx.us/research/survey/grades4-6/1994/execsumm.html">http://www.tcada.state.tx.us/research/survey/grades4-6/1994/execsumm.html</a>, 1994.</p>
+
+<p class="ref">Maat 1999. Jaap Maat, <i>Philosophical Languages in the Seventeenth Century: Dalgarno, Wilkins, Leibniz</i> (Amsterdam: Institute for Logic, Language and Computation, Universiteit van Amsterdam, 1999).</p>
+
+<p class="ref">Marshall 2003. Catherine C. Marshall and Frank M. Shipman, "Which Semantic Web?", <i>Hypertext '03 Proceedings</i>, 2003; <a href="http://www.csdl.tamu.edu/~marshall/ht03-sw-4.pdf">http://www.csdl.tamu.edu/~marshall/ht03-sw-4.pdf</a>.</p>
+
+<p class="ref">Mitamura 1999. Teruko Mitamura, "Controlled Language for Multilingual Machine Translation", <i>MT Summit '99</i>, 1999; <a href="http://www.lti.cs.cmu.edu/Research/Kant/PDF/MTSummit99.pdf">http://www.lti.cs.cmu.edu/Research/Kant/PDF/MTSummit99.pdf</a>.</p>
+
+<p class="ref">NPR 2006. National Public Radio, news broadcast, 31 August 2006.</p>
+
+<p class="ref">NLM 2007. United States National Library of Medicine and National Institutes of Health, "Itching", in <i>Medical Encyclopedia</i>, <a href="http://www.nlm.nih.gov/medlineplus/ency/article/003217.htm">http://www.nlm.nih.gov/medlineplus/ency/article/003217.htm</a>, 2007.</p>
+
+<p class="ref">Noy 2001. Natalya F. Noy and Deborah L. McGuinness, "Ontology Development 101: A Guide to Creating Your First Ontology", Stanford Knowledge Systems Laboratory Technical Report KSL-01-05 and Stanford Medical Informatics Technical Report SMI-2001-0880, March 2001; <a href="http://smi-web.stanford.edu/auslese/smi-web/reports/SMI-2001-0880.pdf">http://smi-web.stanford.edu/auslese/smi-web/reports/SMI-2001-0880.pdf</a>.</p>
+
+<p class="ref">O'Conner 1996. Patricia T. O'Conner, <i>Woe is I: The Grammarphobe's Guide to Better English in Plain English</i> (New York: Riverhead, 1996).</p>
+
+<p class="ref">Partee 1984. Barbara H. Partee, "Compositionality", in <i>Varieties of Formal Semantics</i>, ed. F. Landman and F. Veltman (Dordrecht: Foris, 1984), pp. 281-311.</p>
+
+<p class="ref">Partee 1995. Barbara H. Partee, "Quantificational Structures and Compositionality", ch. 16 in <i>Quantification in Natural Languages</i>, ed. E. Bach et al. (Amsterdam: Kluwer Academic Publishers, 1995), pp. 541-601.</p>
+
+<p class="ref">Partee 1997. Barbara H. Partee with Herman L.W. Hendriks, "Montague Grammar", ch. 1 in <i>Handbook of Logic and Language</i>, ed. Johan van Benthem and Alice ter Meulen (Amsterdam: Elsevier Science, 1997), pp. 5-91.</p>
+
+<p class="ref">Partee 2004. Barbara H. Partee, "Noun Phrase Interpretation and Type-Shifting Principles", ch. 10 in <i>Studies in Discourse Representation Theory and the Theory of Generalized Quantifiers</i>, ed. J. Groenendijk, D. de Jong, and M. Stokhof (Dordrecht: Foris, 1986), pp. 203-229.</p>
+
+<p class="ref">Petronio 1995. Karen Petronio, "Bare Noun Phrases, Verbs and Quantification in ASL", ch. 17 in <i>Quantification in Natural Languages</i>, ed. E. Bach et al. (Amsterdam: Kluwer Academic Publishers, 1995), pp. 603-618.</p>
+
+<p class="ref">Pietroski 2007. Paul Pietroski, "Logical Form", <i>The Stanford Encyclopedia of Philosophy</i> (Spring 2007 Edition), ed. Edward N. Zalta, <a href="http://plato.stanford.edu/archives/spr2007/entries/logical-form/">http://plato.stanford.edu/archives/spr2007/entries/logical-form/</a>.</p>
+
+<p class="ref">Shirky 2003. Clay Shirky, "The Semantic Web, Syllogism, and Worldview", ms, 2003; <a href="http://www.shirky.com/writings/semantic_syllogism.html">http://www.shirky.com/writings/semantic_syllogism.html</a>.</p>
+
+<p class="ref">Trujillo 1999. Arturo Trujillo, <i>Translation Engines: Techniques for Machine Translation</i> (London: Springer, 1999).</p>
+
+<p class="ref">Vieira 1995. Marcia Damaso Vieira, "The Expression of Quantificational Notions in Asurini do Trocar&aacute;: Evidence Against the Universality of Determiner Quantification", ch. 20 in <i>Quantification in Natural Languages</i>, ed. E. Bach et al. (Amsterdam: Kluwer Academic Publishers, 1995), pp. 701-720.</p>
+
+<p class="ref">von Ahn 2007. Luis von Ahn and Laura Dabbish, "Labeling Images with a Computer Game", CHI 2004, <a href="http://www.cs.cmu.edu/~biglou/ESP.pdf">http://www.cs.cmu.edu/~biglou/ESP.pdf</a>.</p>
+
+<p class="ref">Wasow 2005. Thomas Wasow, Amy Perfors, and David Beaver, "The Puzzle of Ambiguity", in <i>Morphology and the Web of Grammar: Essays in Memory of Steven G. Lapointe</i>, ed. O. Orgun and P. Sells (Stanford: CSLI Publications, 2005); <a href="http://montague.stanford.edu/~dib/Publications/lapointe_paper_9-4.pdf">http://montague.stanford.edu/~dib/Publications/lapointe_paper_9-4.pdf</a>.</p>
+
+<p class="ref">Westerståhl 2005. Dag Westerståhl, "Generalized Quantifiers", <i>The Stanford Encyclopedia of Philosophy</i> (Winter 2005 Edition), ed. Edward N. Zalta, <a href="http://plato.stanford.edu/archives/win2005/entries/generalized-quantifiers/">http://plato.stanford.edu/archives/win2005/entries/generalized-quantifiers/</a>.</p>
+
+<p class="ref">Zalta 2005. Edward N. Zalta, "Gottlob Frege", <i>The Stanford Encyclopedia of Philosophy</i> (Spring 2007 Edition), ed. Edward N. Zalta, <a href="http://plato.stanford.edu/archives/spr2007/entries/frege/">http://plato.stanford.edu/archives/spr2007/entries/frege/</a>.</p>
+
+<p class="c" style="margin-top: 12pt">
+<a href="http://validator.w3.org/check?uri=referer">
+<img
+	style="border: 0"
+	src="http://www.w3.org/Icons/valid-xhtml11"
+	alt="Valid XHTML 1.1!"
+	height="31"
+	width="88"
+/>
+</a>
+</p>
+
+</body>
+</html>

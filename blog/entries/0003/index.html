@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jonathan Pool">
+<meta name="creator" content="Jonathan Pool">
+<meta name="publisher" name="Jonathan Pool">
+<meta name="description" content="blog entry">
+<meta name="keywords" content="World Wide Web, digital accessibility, programming">
+<meta name="dcterms.subject" data-topic="a11y" content="accessibility">
+<meta name="dcterms.subject" data-topic="comp" content="computing">
+<title>Button and link confusion</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<main>
+<header>
+<p class="home"><a href="../../index.html">R&amp;D notes</a></p>
+<h1>Button and link confusion</h1>
+<p class="author">Jonathan Pool</p>
+<p class="summary">If you are not sure how buttons and links differ on the web, you&rsquo;re not to blame. Web pages often confuse them with each other. When they do, you can be misled.</p>
+</header>
+<h2>Introduction</h2>
+<p>This page illustrates the confusion and error that can arise from links pretending to be buttons and buttons pretending to be links.</p>
+<p>Links and buttons look different:</p>
+<ul>
+  <li>Standard links are blue underlined text (purple if recently visited).</li>
+  <li>Standard buttons are text inside an oval or (usually rounded) rectangle.</li>
+</ul>
+<p>Links and buttons behave differently:</p>
+<ul>
+<li>A link takes you to another place, but a button performs an action here.</li>
+<li>If you focus a link by pressing the <kbd>TAB</kbd> key and then press <kbd>SPACE</kbd>, you will scroll the page. If you do the same with a button, you will press the button.</li>
+</ul>
+<p>So, transvestite links and buttons mislead users not only by their appearance, but also by their behavior. Users who listen to the page with a screen reader, too, can be misled by code that assigns a role of <code>button</code> to a link or <code>link</code> to a button. Then the screen reader will tell them it&rsquo;s one thing when it&rsquo;s really the other.</p>
+<p>Worst case: A button that takes an irreversible action (<q>Yes, I confirm that I am waiving my rights.</q>) pretends to be a link, so the user tries to use <kbd>SPACE</kbd> or <kbd>SHIFT</kbd>-<kbd>SPACE</kbd> to scroll the page but unexpectedly presses the button. This, arguably, would violate <a href="https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data">Web Content Accessibility Guidelines 2.1 Success Criterion 3.3.4</a>.</p>
+<p>For authoritative advice on treating buttons and links distinctly, see <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">WAI-ARIA Authoring Practices 1.1</a>. Others, such as <a href="https://a11y-101.com/design/button-vs-link">Nils Lauk</a>, <a href="https://lists.w3.org/Archives/Public/w3c-wai-ig/2019JanMar/0086.html">Patrick H. Lauke</a>, and <a href="https://stackoverflow.com/questions/59904544/accessibility-and-links-that-are-buttons-and-vice-versa/59908341#59908341">qutax</a>, have explained this, too.</p>
+<h2>Real button</h2>
+<p>
+<button
+  type="button"
+  onclick="window.alert('You are now a subscriber.')"
+>
+Subscribe
+</button>
+</p>
+<h2>Link claiming to be a button</h2>
+<p>
+<a href="decoy.html" role="button">Surprise me</a>
+</p>
+<h2>Real link</h2>
+<p>
+<a href="../../index.html" target="_blank">Real link to this blog (in a new tab)</a>
+</p>
+<h2>Button claiming to be a link</h2>
+<p>
+<button
+  type="button"
+  onclick="window.alert('Ha! Fooled you!')"
+  role="link"
+>
+Follow me, dear!
+</button>
+</p>
+<footer>
+<p class="date">Published <time itemprop="datePublished" datetime="2020-05-10">2020/05/10</time></p>
+<p class="moddate">Revised <time itemprop="dateModified" datetime="2020-05-11">2021/02/27</time></p>
+</footer>
+</main>
+</body>
+</html>

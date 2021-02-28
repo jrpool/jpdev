@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Jonathan Pool">
+<meta name="creator" content="Jonathan Pool">
+<meta name="publisher" name="Jonathan Pool">
+<meta name="description" content="blog entry">
+<meta name="keywords" content="blog">
+<meta name="dcterms.subject" data-topic="a11y" content="accessibility">
+<meta name="dcterms.subject" data-topic="lg" content="Learners Guild">
+<meta name="dcterms.subject" data-topic="comp" content="computing">
+<title>Making accessibility beautiful</title>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<main>
+<header>
+<p class="home"><a href="../../index.html">R&amp;D notes</a></p>
+<h1>Making accessibility beautiful</h1>
+<p class="author">Jonathan Pool</p>
+<p class="summary">I may have discovered the thing that most makes me enjoy being a Learner at Learners Guild: It allows me to be a shameless perfectionist. I can <q>refactor</q> ad nauseam, and nobody complains.</p>
+</header>
+<h2>Refactoring</h2>
+<p>A week ago <a href="../../archives/2241">I blogged</a> about creating a tool to let people make accessible r&eacute;sum&eacute;s. During the following week, just ended, I got an appointment for a telephone interview with one of the organizations I was thinking about working for. My interviewer was going to be a blind person. That&rsquo;s an example of a situation in which it&rsquo;s useful to have a r&eacute;sum&eacute; that is accessible&mdash;i.e. designed to be consumed by people with various abilities and disabilities and who use assistive devices.</p>
+<p>Although my application was already able to output a reasonably accessible r&eacute;sum&eacute;,  its code was ugly.</p>
+<p>One flaw was the commingling and dispersion of code serving different purposes. To use my application, you write your r&eacute;sum&eacute; in a standard format called <q>JSON</q>, complying with the rules of the <a href="https://jsonresume.org/"> <code>jsonresume</code> project</a>. We can call the file you save your r&eacute;sum&eacute; in its <q>source code</q>. Then you run my application (called a <code>jsonresume</code> <q>theme</q>), and it does 2 things to your source:</p>
+<ol>
+<li>Parse</li>
+<li>Render</li>
+</ol>
+<p><em>Parsing</em> is making sense of your source code and deciding on the logical structure and layout of the document that will be produced from it.</p>
+<p><em>Rendering</em> is producing that document according to a particular technology. The output technology I started with is HTML, i.e. the usual technology of web pages. But in the future one might want to add the ability to create r&eacute;sum&eacute; documents for other technologies, such as PDF, <q>markdown</q>, RTF, and plain text.</p>
+<p>In order to facilitate the future multiplicity of rendering options, I needed to carefully segregate the parts of my software that do rendering from the rest. That&rsquo;s a good idea anyway. But I had not done that. One of the professional advisors at <a href="https://www.learnersguild.org">Learners Guild</a>, where I&rsquo;m retooling, had pointed that defect out. As I worked to remediate it, I either discovered or introduced additional problems. I have lost count of the number of times I have re-architected this application. See a problem; correct it; see another one caused by the correction; correct <em>that</em> one; and so on.</p>
+<p>By the end of  a whole week of <q>refactoring</q>,  I had finally arrived at an architecture that I no longer felt ashamed of. Parsing and rendering were neatly separated. I had consolidated repetitious code into reusable functions. I had named things so another software developer could make sense of my code. I had given end-users much more power to make decisions about their r&eacute;sum&eacute;s than other <code>jsonresume</code> themes do, but I had not forced them to make such decisions. There was  still debugging, documenting, and publishing to do, but the hard part seemed to be done.</p>
+<p>This was my 38th week at the Guild, out of 40, and it has been getting obvious that this programming environment is a luxury. Nobody is giving me deadlines. I&rsquo;m not at risk of crashing anybody&rsquo;s system. I don&rsquo;t have to agonize over the unconscionable amount of money a customer is paying me for repeatedly changing my mind. I get to be a perfectionist without guilt.</p>
+<p>In 2 more weeks the Guild will become my <em>ex</em>-environment. If and when I thereafter start a regular job, I can&rsquo;t expect this permissiveness to last, so I&rsquo;m reveling in it for now.</p>
+<footer>
+<p class="date">Published <time itemprop="datePublished" datetime="2018-02-06">2018/02/06</time></p>
+<p class="moddate">Revised <time itemprop="dateModified" datetime="2018-05-11">2018/05/11</time></p>
+</footer>
+</main>
+</body>
+</html>

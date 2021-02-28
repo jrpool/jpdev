@@ -1,0 +1,468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Ambiguity Control in Human-Machine Multiagent Systems</TITLE>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY STYLE="margin: 1.5cm">
+
+<H2 ALIGN="center">Ambiguity Control in Human-Machine Multiagent Systems: State of the Art</H2>
+
+<P ALIGN="center">Jonathan Pool<BR>
+Utilika Foundation<BR>
+Manuscript, 2004</P>
+
+<P><B>Keywords:</B> ambiguity, ambiguity control, structural ambiguity, disambiguation, natural-language understanding, controlled language, sublanguage, language fragment, translation interlingua, multiagent system, hybrid agent environment, semihuman system, intelligent agent, agent communication language, ontology, meaning representation, knowledge representation, natural-language-based knowledge representation, Semantic Web, human-computer communication, collaboration, language diversity.</P>
+
+<P><B>Contents:</B></P>
+
+<P><A HREF="#intro">0. Introduction</A></P>
+
+<P><A HREF="#ambig">1. Ambiguity in Multiagent Systems</A></P>
+
+<P><A HREF="#rescon">2. Control versus Resolution</A></P>
+
+<P><A HREF="#semstruc">3. Semantic versus Structural Ambiguity Control</A></P>
+
+<P><A HREF="#amcon">4. Concepts of Structural Ambiguity Control</A></P>
+
+<P><A HREF="#unlangs">5. Ambiguity-Controlling Natural Languages</A></P>
+
+<P><A HREF="#checkers">6. Structural Ambiguity Checking Tools</A></P>
+
+<P><A HREF="#conc">7. Conclusions</A></P>
+
+<P><A HREF="#refs">References</A></P>
+
+<A NAME="intro"><H3 ALIGN="center">0. Introduction</H3></A>
+
+<P>Two major streams of informatic standardization are globalization and agentization. Globalization, exemplified by Unicode and international domain names, seeks to make information resources universally accessible regardless of language and other locale attributes. Agentization, exemplified by FIPA activities and the Semantic Web initiative, seeks to permit artificial agents to collaborate intelligently and autonomously with human beings.</P>
+
+<P>The combination of these efforts points toward an environment in which multiagent systems span both locale and species barriers. World-wide human-machine organizations, such as teams, associations, markets, games, libraries, and schools, all served by a panlinguistic human-machine Semantic Web, might become the new normalcy.</P>
+
+<P>Or might not. This convergent utopia requires free communication among human and artificial agents across human-human barriers and human-machine barriers. Machine processing of human utterances is, however, made difficult because of ambiguity, and this interferes not only with human-machine communication but also with machine mediation of translingual human-human communication. Thus, ambiguity is a significant issue facing the development of a universal information environment.</P>
+
+<P>My discussion of this issue is organized as follows. In section 1, I describe ambiguity problems and requirements in multiagent systems, compared with other environments. In section 2, I describe families of solutions, comparing control-based solutions, which prevent ambiguity, with resolution-based solutions, which overcome it. At that point, I choose to limit my further discussion to control-based solutions. In section 3, I discuss the kinds of ambiguity that can be controlled, comparing semantic with structural ambiguity. There, I decide to limit further discussion to structural ambiguity.</P>
+
+<P>Having defined the control of structural ambiguity as my focus, I discuss in section 4 strategies that have been pursued. From these, I select for closer examination two related strategies: the design of structurally unambiguous fragments of natural languages (section 5) and the implementation of algorithms for the support of unambiguous utterance production (section 6). In section 7, I draw preliminary conclusions about trends and potentials.</P>
+
+<A NAME="ambig"><H3 ALIGN="center">1. Ambiguity in Multiagent Systems</H3></A>
+
+<P>Since the 1990s, strategic planning for the future of information processing has given a prominent place to the paradigmatic concept of the "multiagent system". Ideas about the artificial agents in such a system have emerged in part from trends in computer science and engineering. The increasing complexity of software projects and products has led to higher-level programming languages, structured programming, object-oriented design, and then agent-oriented design. While objects possess responsibilities and methods, agents possess more than that: They have beliefs, desires, intentions, and loyalties; they can learn, plan, cooperate, negotiate, coordinate, and compete. While people tell objects what to do, people tell agents what purposes to pursue and then delegate tactical discretion to the agents, which act autonomously (Wooldridge, 2002, ch. 1).</P>
+
+<P>In a world of agents, things previously regarded as inert become purposive, and roles previously fillable only by people can be filled by things. Things previously performing routine work begin to perform expert work. A prominent example of a large-scale proposed deployment of agents is the Semantic Web. Creating it requires converting the World Wide Web from a document collection to a knowledge base, whereupon "software agents roaming from page to page can readily carry out sophisticated tasks for users" (Berners-Lee et al., 2001).</P>
+
+<P>The humanization of software agents and robotic agents, their interaction with human beings, and the resemblances between artificial and human systems (Carnegie Mellon University, 2004; Lind, 2002) make it reasonable to think of "multiagent systems" as systems in which both human beings and artificial agents can operate. That is the sense in which I use the term here (cf. Knott et al., 2004). In this sense, multiagent systems include such phenomena as:</P>
+
+<UL>
+<LI>teams with collaborating human and artificial members dividing the work according to skills</LI>
+<LI>a Semantic Web with human and artificial authors, human and artificial researchers, and human and artificial end-users</LI>
+<LI>interactive games with human and artificial players</LI>
+</UL>
+
+<P>In the prevailing usage, however, a "multiagent system" contains artificial agents only, and human beings are system-external users. To distinguish between human-artificial and purely artificial multiagent systems, some authors refer to the former as "hybrid multiagent environments" (Tomic-Koludrovic et al., 2001) or "hybrid multiagent systems" (e.g., Bach, 2000). Below I deal with such systems, without repeating the attribute "hybrid".</P>
+
+<P>Multiagent systems, containing as they do autonomous intelligent agents combining work to produce value for other agents, generally are designed (or evolve) to permit or require elaborate communication among agents. In the pre-agent age, the usual idea about human-machine communication was that humans needed to tell machines exactly what to do. The agent idea implies that humans must instead, or also, give multiattribute preferences and probabilistic beliefs to artificial agents and grant them specific kinds and amounts of discretion in pursuit of the satisfaction of the specified preferences. Managerial human agents must also be able to communicate their preferences with respect to the satisfaction of the preferences of multiple other human agents. Agents must also ask questions, make requests, give hints, report evidence for facts, suggest analogies, offer explanatory hypotheses, select communication partners, and otherwise engage in complex communications.</P>
+
+<P>Human beings often find such complex communication difficult (e.g., Clark, 1996; Sowa, 1984, ch. 5-7). Designing artificial agents with the ability to engage in it competently is also difficult. If we assume that at least some of the communication involving human agents is linguistic, the obstacles facing communication in multiagent systems could include:</P>
+
+<OL>
+<LI>lack of conscious awareness of one's own preferences</LI>
+<LI>inability to articulate one's knowledge as well as one can use it oneself</LI>
+<LI>inability to propositionalize one's intuitions</LI>
+<LI>incentives to block competitors' communications</LI>
+<LI>incentives to induce false beliefs in other agents</LI>
+<LI>lack of trust in agents to maintain confidentiality</LI>
+<LI>non-interoperable meaning-representation features of independently designed artificial agents</LI>
+<LI>language diversity among human agents</LI>
+<LI>limitations in natural-language understanding capabilities of artificial agents</LI>
+<LI>failure of natural-language grammars to permit reversible serialization of structure</LI>
+<LI>absence of monosemic symbols from natural-language lexicons</LI>
+<LI>lack of artificial agents' access to knowledge assumed by human agents as common</LI>
+</OL>
+
+<P>In the general case, it is not even clear that one can plausibly define satisfactory linguistic communication, since any particular communication event may be satisfactory to one party but not to another, or perceived as more satisfactory at one time than at another, etc.</P>
+
+<P>In some contexts, however, it is reasonable to idealize a multiagent system as free of the first seven obstacles in this list. Such a system is one in which people know what they want, are in agreement with one another about how to reconcile their preferences, have nothing to hide from one another, and participate in an integrated system whose artificial agents are fully interoperable. Then the human agents face only the last five obstacles, numbered 8-12.</P>
+
+<P>In this special case, ambiguity seems to emerge as a key to all the still-listed communication obstacles (cf. Jurafsky and Martin, 2000, <I>passim</I>), because:</P>
+
+<UL>
+<LI>natural-language grammars induce (i.e. permit, encourage, or compel) their users to generate structurally ambiguous utterances</LI>
+<LI>natural-language lexicons induce their users to populate their utterances with ambiguous symbols</LI>
+<LI>artificial agents don't have enough knowledge of natural-language grammars, lexicons, and semantics and knowledge of the world to resolve natural-language ambiguity satisfactorily</LI>
+<LI>human agents, too, sometimes cannot satisfactorily resolve natural-language ambiguity</LI>
+<LI>unresolvable ambiguity prevents artificial agents from translating between natural languages for human agents</LI>
+</UL>
+
+<P>In such a case one might reasonably imagine that some degrees or kinds of ambiguity would be consensually perceived as unsatisfactory, and the system's success would require that such ambiguity be remedied.</P>
+
+<P>It seems plausible that the difficulty of ambiguity problems for multiagent systems would tend to be greatest in systems that are topically and functionally general. I surmise that topical specialization decreases the cost of achieving any required degree of unambiguity by limiting the variety of sentence, phrase, and word constructions, limiting the lexicon, limiting the senses of the items in the lexicon, and limiting or eliminating the set of utterances for which disambiguation rules or unambiguous alternatives are unknown. Likewise, a topically general but functionally specific system can be expected to be immune to some ambiguities that would damage performance in other systems. For example, if a system's sole purpose is to translate human-generated text messages automatically from English to German for consumption by human agents, the system can tolerate any ambiguity in an English message that, if resolved, would not affect the translation (Witkam, 1983, pp. III.29, IV.1). In translating the English sentence 1.1 into the German sentence 1.2, the system does not need to resolve the attachment ambiguity of "in the office".
+
+<BLOCKQUOTE>(1.1) The book is on the desk in the office</BLOCKQUOTE>
+
+<BLOCKQUOTE>(1.2) Das Buch ist auf dem Schreibtisch im B&uuml;ro</BLOCKQUOTE>
+
+<P>This is because the translation is not affected by whether the prepositional phrase describes further the location of the book or identifies the desk.</P>
+
+<A NAME="rescon"><H3 ALIGN="center">2. Control versus Resolution</H3></A>
+
+<P>Given the problem of ambiguity interfering with satisfactory linguistic communication in a multiagent system, what might be done to solve the problem?</P>
+
+<P>Solution strategies seem to fall neatly into two families: <I>preventing</I> ambiguity (control) and <I>overcoming</I> ambiguity (resolution). A control strategy seeks to ensure that utterances are (sufficiently) unambiguous. That permits the utterances to be understood, translated, summarized, or otherwise processed. A resolution strategy does not attempt to prevent ambiguity from appearing in utterances, but seeks to process utterances satisfactorily despite their ambiguities by determining which structures or senses should be deemed applicable to particular utterances.</P>
+
+<P>Control strategies grow out of a tradition of expressive disciplines centuries old. Among these disciplines are some that regulate natural languages and their use, at least sometimes for the purpose of preventing ambiguity in utterances (though sometimes for the purpose of making utterances ambiguous and thereby achieving other purposes). Language-regulating disciplines, with some classic examples, include:</P>
+
+<UL>
+<LI>oral language arts (diction, rhetoric, oratory, forensics)</LI>
+<LI>writing</LI>
+<LI>written language arts (creative, persuasive, legal, technical, editorial, journalistic writing)</LI>
+<LI>formalization of writing (calligraphy, orthography, spelling, punctuation, spacing, capitalization, hyphenation)</LI>
+<LI>mechanization of writing (typing, typesetting, printing, telegraphic encoding, barcodes)</LI>
+<LI>standardization of writing (lexicography, terminology, prescriptive grammar)</LI>
+<LI>constraints on writing (questionnaire surveying, objective testing)</LI>
+</UL>
+
+<P>Other disciplines in the control tradition replace natural language rather than regulating it. Among these are:</P>
+
+<UL>
+<LI>artificial philosophical languages, chiefly since the 17th century</LI>
+<LI>formulaic notations (mathematical, logical, chemical, musical, etc.)</LI>
+<LI>graphical representation standards (geometric, trigonometric, architectural, electrical, organizational, processual, etc.)</LI>
+<LI>programming languages</LI>
+<LI>communication protocols</LI>
+<LI>annotation systems (proofreading)</LI>
+<LI>physical controls (buttons, knobs, sliders, pressure sensors)</LI>
+</UL>
+
+<P>Control strategies implemented in multiagent systems include the definition and use of:</P>
+
+<UL>
+<LI>communication protocols</LI>
+<LI>markup languages</LI>
+<LI>programming and scripting languages</LI>
+<LI>controlled natural-language fragments</LI>
+<LI>knowledge representation languages</LI>
+</UL>
+
+<P>Resolution strategies also have classical varieties. These include:</P>
+
+<UL>
+<LI>critical reading and interpretation</LI>
+<LI>statutory and contractual construction</LI>
+<LI>therapeutic listening and interpretation</LI>
+</UL>
+
+<P>Resolution strategies implemented in multiagent systems include:</P>
+
+<UL>
+<LI>speech recognition</LI>
+<LI>handwriting recognition</LI>
+<LI>character recognition</LI>
+<LI>tokenization</LI>
+<LI>morphological parsing</LI>
+<LI>syntactic parsing</LI>
+<LI>word sense disambiguation</LI>
+</UL>
+
+<P>The different costs and benefits of control and resolution strategies can be expected to make them attractive in different environments. Consider a multiagent system in which an agent "utters" an utterance and one or more other receiving agents "process" it. Control strategies can be expected to be relatively attractive under these conditions:</P>
+
+<UL>
+<LI>when ambiguity exposes the utterer to substantial risk of loss or liability</LI>
+<LI>when unambiguity is mandatory, i.e. when it is considered necessary for the utterance to be interpretable in accord with the utterer's intent</LI>
+<LI>when the utterer's intent is not satisfactorily clear to the utterer, i.e. when the utterer is motivated to formulate and introspectively test successive versions of the utterance before considering it ready to be uttered</LI>
+<LI>when the stimulus is impoverished, i.e. when there is little or no discursive or environmental context available to a receiving agent for resolving ambiguities in the utterance</LI>
+<LI>when utterances in the system are topically diverse and vary in register (such as formality), so that meaning-utterance correspondences are relatively unpredictable.</LI>
+<LI>when the receiving agent does not have an opportunity to request and receive from the utterer clarifications of ambiguities that the receiving agent cannot resolve</LI>
+<LI>when the utterer's expertise with respect to the utterance's topic is greater than that of the receiver</LI>
+<LI>when storage, circulation, and/or review of each interpretation of an utterance are mandatory and costly</LI>
+<LI>when the utterer's time is worth less than the receiver's</LI>
+<LI>when the utterance has a single utterer and multiple receivers, thereby multiplying any receiver-disambiguation cost</LI>
+<LI>when the utterance can be satisfactorily disambiguated only by some, rather than by all, receiving agents, e.g. only by human and not by artificial agents</LI>
+<LI>when the utterance is to be translated into other languages and translation of an unambiguous utterance is less expensive and/or faster than of translation of an ambiguous one</LI>
+<LI>when the utterer benefits from other agents processing the utterance and they are more likely to decide to process an unambiguous utterance than an ambiguous one</LI>
+<LI>when the cost of ambiguity control is mainly a fixed cost of skill or technology acquisition rather than a recurrent cost of execution, and the utterance is one of many uttered by the same utterer</LI>
+</UL>
+
+<P>The first of the above conditions is likely to obtain in multiagent systems in which commerce is conducted and utterances take the form of offers, promises, instructions, demands, waivers, releases, claims, and (especially unalterable) contract drafts. This seems particularly so if the system's incentives mirror the common law of contracts, under which contracts drafted by one party alone (at least if they contain abnormally one-sided clauses) are construed adversely to the drafting party when found ambiguous (Restatement, 1981, sec. 206).</P>
+
+<P>Resolution strategies, conversely, can be expected to be relatively attractive under conditions opposite to those described above. Certain common situations seem to make resolution strategies particularly attractive. One of these is artistic expression, when its value lies partly in the multiplicity of interpretations that members of the audience may make. Another is the transmission of secrets, which are encrypted (equivalent to making them extremely ambiguous) to protect them against correct interpretation except by those possessing keys. Another is a small restricted system involving repetitive stylized communication, such as the interaction between a single human being and a single device that has a small set of options among which the human selects.</P>
+
+<P>The most common strategic orientation appears to be a hybrid of control and resolution. In this hybrid, human agents formulate utterances in ordinary natural language, causing frequent ambiguity, and receiving agents, whether human or artificial, resolve the ambiguities. Artificial agents, however, are designed to formulate unambiguous utterances, thus exhibiting a control strategy. Such hybrid strategies appear to be most satisfactory when receiving agents can interact with human utterers to obtain help in resolving otherwise problematic ambiguities.</P>
+
+<P>Another kind of hybrid strategy that can be imagined is one in which both utterers and receivers deal with ambiguities in each utterance, with utterers exercising some--but incomplete--control over ambiguity and receivers resolving the ambiguities that remain. This approach, which we can call "distributed disambiguation", could involve the utterer avoiding easy-to-avoid ambiguities and leaving easy-to-resolve ambiguities to be resolved by receiving agents.</P>
+
+<P>The model of the Semantic Web does not exhibit this hybridity. It posits that ambiguity is controlled rather than resolved. Web content is described unambiguously and thereby rendered intelligible to artificial agents. It rejects the feasibility of a World Wide Web whose linguistic content is composed entirely in hundreds of ordinary written languages, which artificial agents succeed in interpreting precisely enough to perform satisfactory Web research for human users.</P>
+
+<P>Each pure family of strategies, if feasible, could assure unambiguous communication in multiagent systems. Ambiguity control could prevent ambiguity from arising at all, or ambiguity resolution could remove as much ambiguity as any utterance-pocessing agent need removed. But it remains to be shown that a strategy of either type is feasible.</P>
+
+<P>The prospect of highly reliable ambiguity resolution seems plausible primarily in small-scale, monolingual, topically and illocutionarily restricted systems, such as natural-language interfaces that allow human users knowing a particular natural language to ask factual questions about particular subjects to databases (e.g., Popescu et al., p. 149). In large-scale, topically diffuse, linguistically diverse systems, such as the Semantic Web, resolution strategies face additional problems. Any human utterance might need to be translated for another human agent. Ambiguities that human agents from the same speech community would resolve unconsciously (such as oppositely attaching the prepositional phrases in sentences 2.1 and 2.2) must be resolved explicitly for translation or action by artificial agents. Ambiguities that human agents even from the same speech community would find troublesome (e.g., sentence 2.3) must be resolved by both human and artificial agents, or recognized by the latter as ambiguous in the way that human agents do. Agents resolving ambiguities cannot assume that they may interrogate utterers for clarification. To the extent that such problems defy solution, the strategy of controlling ambiguity rather than resolving it may be the only feasible one.</P>
+
+<BLOCKQUOTE>(2.1) Free the slaves from captivity</BLOCKQUOTE>
+
+<BLOCKQUOTE>(2.2) Choose the candidate from Tacoma</BLOCKQUOTE>
+
+<BLOCKQUOTE>(2.3) Free the slaves from Tacoma</BLOCKQUOTE>
+
+<P>In order to concentrate on strategies of greatest relevance to large, general-purpose multiagent systems, I shall now simplify the discussion by focusing exclusively on control strategies. The feasibility of control strategies is in question mainly with respect to human agents' utterances. The question is: Is it practical for human agents to express their thoughts and feelings about the entire range of topics that are relevant to them in unambiguous language, intelligible to both human and artificial agents?</P>
+
+<A NAME="semstruc"><H3 ALIGN="center">3. Semantic versus Structural Ambiguity Control</H3></A>
+
+<P>When an utterance is "ambiguous", there is uncertainty about how to interpret it. Such uncertainty is variously bounded, classified, and denoted. Most commonly (e.g., Baker et al., 1994, p. 4; Witkam, 1983, pp. III.15-III.16), a primary distinction is made between what are considered two types of ambiguity:</P>
+
+<UL>
+<LI>semantic, lexical, conceptual</LI>
+<LI>structural, morphosyntactic, grammatical</LI>
+</UL>
+
+<P>A clear example of semantic ambiguity (cf. Witkam, 1983, p. IV.12) is sentence 3.1.</P>
+
+<BLOCKQUOTE>(3.1) Marsha fell ill between the banquet and the soccer game</BLOCKQUOTE>
+
+<P>Here the noun phrases can be interpreted as either locations or times, and "between" can correspondingly have a spatial or temporal sense.</P>
+
+<P>Sentence 2.3 above exemplifies structural ambiguity.</P>
+
+<P>These types do not have obvious boundaries, however. Sentence 3.2 can be understood as semantically ambiguous because its structures are identical, but its structures cannot be identically modified. For example, only one sense permits the addition of a nominal complement, such as in sentence 3.3.</P>
+
+<BLOCKQUOTE>(3.2) The committee chose between 1990 and 1991</BLOCKQUOTE>
+
+<BLOCKQUOTE>(3.3) The committee chose an action plan between 1990 and 1991</BLOCKQUOTE>
+
+<P>In a large-scale, multipurpose multiagent system, it seems reasonable to expect two main kinds of ambiguity control to exist: central and distributed. Central control is attractive for ambiguities that uniformly affect communication irrespective of topic. Distributed control is attractive for ambiguities that pertain to particular domains.</P>
+
+<P>In general, it is plausible that semantic ambiguity mostly varies by domain, and structural ambiguity is mostly invariant across domains. Domains tend to have domain-specific concepts and terms, organized into thesauri, ontologies, and encyclopedias, but not domain-specific morphologies and syntaxes. Within specialized domains, individual authors typically create new concepts and explicitly attach terms to them, sometimes in the form of new senses of existing terms and sometimes in the form of new words, as a normal part of authorship. But authors rarely define new morphological or syntactic structures. For example, sentence 3.4, which appears in a single-domain multiagent system (Mozart MUD), contains two domain-specific nouns but no domain-specific structure.</P>
+
+<BLOCKQUOTE>(3.4) Various spells have been moved to and from the Sage</BLOCKQUOTE>
+
+<P>My concern henceforth is with central ambiguity control, and consequently I shall focus on the control of structural ambiguity.</P>
+
+<A NAME="amcon"><H3 ALIGN="center">4. Concepts of Structural Ambiguity Control</H3></A>
+
+<P>How can agents control structural ambiguity in their own utterances?</P>
+
+<P>One concept is that they can learn autonomously to do so. As modeled by Gmytrasiewicz (2002), artificial agents that begin their existence with incompatible knowledge bases and knowledge representation languages, and with the capacity to negotiate, can and will rationally evolve interoperable and unambiguous agent communication languages. As they also note, human beings develop pidgins and creoles in translingual contact. Williams (2004) models agents beginning their existence with incompatible ontologies, i.e. specifications of objects, functions, relations, and terms, but with the ability to communicate with each other. Williams's agents use queries and responses to learn each other's ontologies.</P>
+
+<P>Another concept is that agents can, in coordination, adopt, learn, and use a shared formulaic knowledge representation language (KRL). This is a formal notation that the utterer combines with semantic terms to make utterances. If the terms have unambiguous meanings, then a KRL utterance is also unambiguous, by virtue of the KRL's specification.</P>
+
+<P>A third concept is that agents can formulate utterances with a formalized variety (or "fragment") of a natural language that is specified so as to be equivalent to a KRL. It is, then, a KRL in natural-language guise.</P>
+
+<P>A fourth concept is that human agents can use a natural language, with specified restrictions that prevent some ambiguities. Utterances in a language of this kind can exhibit any structural ambiguities except those that are excluded by specific restrictions. Whatever ambiguities are deemed unacceptable can be prevented with appropriate restrictions.</P>
+
+<P>Two of these concepts make use of KRLs. Various KRLs have been developed and proposed. Three main questions arise when one considers which KRL might be optimal in a general-purpose multiagent system:</P>
+
+<UL>
+<LI>What can the KRL express, and what can it not express?</LI>
+<LI>In the case of the second concept, in which agents formulate utterances in a formulaic KRL, how costly is it for human agents to express themselves in that way?</LI>
+<LI>What reasoning can be automatically performed on utterances in the KRL?</LI>
+</UL>
+
+<P>First-order predicate calculus (FOPC, or first-order logic) is the basis of some proposed KRLs. Russell and Norvig (2003, ch. 8-10) describe it as a logic which can express a large fraction of what human beings want to express, and with which reasonably efficient automated reasoning is possible. They propose to offer users a set of purportedly universal human concepts built with FOPC, including categories, composite objects, count and continuous measurements, substances, situations, events, causes and effects, times, processes, beliefs, and knowledge. This enriched FOPC could then be used in the creation of domain-specific ontologies, with which domain-specific utterances could be formalized (cf. Jurafsky and Martin, 2000, ch. 14).</P>
+
+<P>The Semantic Web initiative supports the use of RDF for document annotation and OWL for the definition of ontologies. These notations are undergoing elaboration for the purpose of giving them the automatic-reasoning features of FOPC (Patel-Schneider, 2004). One of the goals of the Semantic Web sponsor for OWL is "ease of use" (W3C, 2004):</P>
+
+<BLOCKQUOTE>The language should provide a low learning barrier and have clear concepts and meaning. ... Although ideally most users will be isolated from the language by front end tools, the basic philosophy of the language must be natural and easy to learn. Furthermore, early adopters, tool developers, and power users may work directly with the syntax, meaning human readable (and writable) syntax is desirable.</BLOCKQUOTE>
+
+<P>However, the syntax of RDF and OWL does not resemble a natural language; it is markup-tag syntax like that of HTML and XML from the perspective of a nonspecialist author. An example (W3C, 2003):</P>
+
+<BLOCKQUOTE><PRE>  &lt;owl:Class rdf:ID="NonBlandFishCourse"&gt;
+    &lt;owl:intersectionOf rdf:parseType="Collection"&gt;
+      &lt;owl:Class rdf:about="#MealCourse" /&gt;
+      &lt;owl:Restriction&gt;
+        &lt;owl:onProperty rdf:resource="#hasFood" /&gt;
+        &lt;owl:allValuesFrom rdf:resource="#NonBlandFish" /&gt;
+      &lt;/owl:Restriction&gt;
+    &lt;/owl:intersectionOf&gt;
+    &lt;rdfs:subClassOf&gt;
+      &lt;owl:Restriction&gt;
+        &lt;owl:onProperty rdf:resource="#hasDrink" /&gt;
+        &lt;owl:allValuesFrom&gt;
+          &lt;owl:Restriction&gt;
+            &lt;owl:onProperty rdf:resource="&amp;vin;hasFlavor" /&gt;
+            &lt;owl:hasValue rdf:resource="#Moderate" /&gt;
+          &lt;/owl:Restriction&gt;
+        &lt;/owl:allValuesFrom&gt;
+      &lt;/owl:Restriction&gt;
+    &lt;/rdfs:subClassOf&gt;
+  &lt;/owl:Class&gt;</PRE></BLOCKQUOTE>
+
+<P>It seems clear that user-friendly interactive tools can be designed to ask utterers to specify unambiguously what they intend to say. The tools can encode the utterers' responses into a KRL for further processing. This kind of elicitation can be practical when utterances are few and important; for example, the mission statement of a major foundation, company, or agency, or the list of products manufactured by a company, may motivate their authors to cooperate with an elicitation process. But for frequent and less important utterances, such as those made during friendly correspondence, an elicitation process has costs that are not likely to be judged acceptable by most utterers.</P>
+
+<P>Where interactive elicitation is impractical, one can imagine a formal KRL becoming regarded as a necessary universal second language and being studied as diligently as foreign natural languages are. If so, it is possible that KRLs that leverage existing native-language competence can be mastered with less expense than unrelated KRLs, even if the two are formally equivalent. Thus, I focus below on the third and fourth concepts of structural ambiguity control described above, so as to learn more about the efficacy of structural ambiguity control by means of natural-language formalization. This interest is not purely pragmatic, since the taming--or untamability--of natural-language ambiguity has aroused intrinsic (as well as applied) interest. As Russell and Norvig (2003, p. 241) say,</P>
+
+<BLOCKQUOTE>There is a long tradition in linguistics and the philosophy of language that views natural language as essentially a declarative knowledge representation language and attempts to pin down its formal semantics. Such a research program, if successful, would be of great value to artificial intelligence because it would allow a natural language (or some derivative) to be used within representation and reasoning systems.</BLOCKQUOTE>
+
+<P>Some who have attempted to define unambiguous or ambiguity-limiting natural-language varieties have reported that the amount of grammar such a language requires in order to be satisfactorily expressive to users is surprisingly small, notwithstanding the much larger grammar that is required for the description of unconstrained natural languages. Mitamura and Nyberg (1995, pp. 6-7) say, "When analyzing a corpus of technical documents, especially those associated with assembly, use and maintenance of machinery, one finds that the range of English constructions required for effective authoring is not large." Similarly, Gmytrasiewicz et al. (2002, p. 2), relying on the first edition of Morneau (1994), assert that "context-free syntax, likely with no more than two dozen productions, is powerful enough to perform a vast majority of communicative tasks needed in a human language".</P>
+
+<A NAME="unlangs"><H3 ALIGN="center">5. Ambiguity-Controlling Natural Languages</H3></A>
+
+<P>As indicated in the previous section, concepts of ambiguity control that formalize natural languages to make them less ambiguous fall into two groups. One group, which we may call "incremental", begins with full natural languages and moderates their ambiguities with restrictions. The other group, which we may call "radical", begins with nothing and defines a naturalistic language with guaranteed equivalence to a KRL. Languages implementing both concept groups are often called "controlled natural languages".</P>
+
+<P>A prominent example of the incremental group is KANT Controlled English (Mitamura and Nyberg, 1995; Mitamura, 1999). This language relies on extensive lexical analysis of the domain of application and on lexical usage restrictions. Structural ambiguity control takes the form of "constraints" (usually described only as "recommendations") on the use of otherwise ordinary standard English. Phrase-level constraints include avoiding phrasal verbs in favor of single-word verbs (e.g., "start" instead of "turn on"), avoiding verbal coordination, and repeating prepositions when conjoining prepositional phrases. Sentence-level constraints include not conjoining nonparallel sentences (e.g., indicative with imperative), avoiding relative clauses whose relative pronoun is not the clause subject, avoiding ellipsis, and converting subordinate-clause gerund heads into indicative verbs with explicit subjects (e.g., "after going" to "after they went").</P>
+
+<P>Reports by members of the KANT project generally describe KANT Controlled English as having developed into a practical tool for ambiguity control in preparation for automated translation and for improved intelligibily of documents in their original language. Mitamura (1999, pp. 3-4) also reports that human authors violating the constraints sometimes do so in ways that cannot be detected except with knowledge of the authors' intended meanings. For example, if an author used the illicit construction "ADJ and ADJ N", but the first adjective was also a noun, the translating agent would parse the phrase as "N and ADJ N" rather than rejecting it.</P>
+
+<P>Other incremental solutions include (O'Brien, 2003):</P>
+
+<UL>
+<LI>ASD Simplified English (European Aerospace Association--formerly AECMA Simplified English)</LI>
+<LI>COGRAM (Alcatel)</LI>
+<LI>Controlled Automotive Service Language (General Motors)</LI>
+<LI>Controlled English (Avaya)</LI>
+<LI>Controlled English (OC&Eacute;)</LI>
+<LI>Controlled English (Sun Microsystems)</LI>
+<LI>EasyEnglish (IBM)</LI>
+<LI>Fran&ccedil;ais Rationalis&eacute; (French Aerospace Association)</LI>
+<LI>Multinational Customized English (Xerox)</LI>
+<LI>Perkins Approved Clear English</LI>
+<LI>Siemens-Dokumentationsdeutsch (Siemens)</LI>
+</UL>
+
+<P>A well-documented example of the radical solution type is Attempto Controlled English (ACE), developed at the University of Zurich as a language adequate for the representation and querying of specifications. ACE has a formal grammar and lexicon and also has documentation for nonspecialist human users. It is designed so that any sentence that is grammatical in ACE is grammatical in English, and is automatically processable as a statement of first-order logic.</P>
+
+<P>ACE shares a feature of KANT Controlled English: It accepts some sentences that are ambiguous in standard English and interprets them as unambiguous (Fuchs et al., 1999). This creates the possibility of errors arising when authors formulate an utterance with an intended meaning compatible with the utterance in standard English but not the sole inferrable meaning in ACE. For example, ACE permits the following sentences:</P>
+
+<TABLE BORDER CELLPADDING="3">
+<TR>
+<TH>Sentence(s)</TH><TH>Could mean in English</TH><TH>Means in ACE</TH>
+</TR>
+<TR>
+<TD>A customer does not insert a card and a code</TD>
+<TD>A customer inserts a card but not a code, a code but not a card, or neither a card nor a code</TD>
+<TD>A customer inserts neither a card nor a code</TD>
+</TR>
+<TR>
+<TD>A customer inserts a VisaCard or a MasterCard and a code</TD>
+<TD>A customer inserts a code and also either a VisaCard or a MasterCard</TD>
+<TD>A customer inserts either a MasterCard and a code or a VisaCard.</TD>
+</TR>
+<TR>
+<TD>The customer who inserts a card manually enters a code</TD>
+<TD>The customer who inserts a card enters a code manually</TD>
+<TD>The customer who manually inserts a card enters a code</TD>
+</TR>
+<TR>
+<TD>A customer enters a card and a code. If it is broken then SimpleMat rejects the card.</TD>
+<TD>A customer enters a card and a code. If the card is broken then SimpleMat rejects the card.</TD>
+<TD>A customer enters a card and a code. If the code is broken then SimpleMat rejects the card.</TD>
+</TR>
+</TABLE>
+
+<P>Other radical-type languages include (Schwitter, 2004a; Schwitter and Tilbrook, 2004):</P>
+
+<UL>
+<LI>ClearTalk</LI>
+<LI>Common Logic Controlled English</LI>
+<LI>CELT</LI>
+<LI>First Order English</LI>
+<LI>Formalised English</LI>
+<LI>PENG</LI>
+<LI>Pseudo Natural Language</LI>
+</UL>
+
+<P>Some of these natural-language fragments are designed to be equivalent to, or automatically translated into, first-order predicate calculus or Knowledge Interchange Format.</P>
+
+<A NAME="checkers"><H3 ALIGN="center">6. Structural Ambiguity Checking Tools</H3></A>
+
+<P>Automated checking tools for user input in controlled natural languages are not self-evidently appropriate. Arguing for such tools is the fact that these languages have been designed to facilitate utterance processing by artificial agents; thus, checkers can be built at less cost and with more efficacy for them than for full natural languages. Arguing against such tools is the idea that a natural-language variety has been engineered as a meaning-representation language precisely in order to permit human agents to express their thoughts and feelings spontaneously, with little effort, and without interruption, in contrast to their situation when using a formulaic language.</P>
+
+<P>However, checking tools for some of the languages listed above exist (Akis et al., 2003, pp. 39-40). Among these are two tools, the MAXit Checker and the Boeing Simplified English Checker, for ASD Simplified English; the IBM Easy English Analyzer; the Controlled Automotive Service Language checker; and the checker for KANT Technical English.</P>
+
+<P>While some checkers appear to be treated as optional accessories, the checker for Attempto Controlled English is described as if it is a necessary and integral part of the use of ACE. The ACE checker replies to each potentially ambiguous sentence with a paraphrase showing how the sentence will be parsed, whereupon if the author notices an error there is an opportunity to reformulate the sentence to compel the desired parse (such as with changes in word order or the insertion of punctuation). For example (Fuchs et al., 1999, pp. 5-6), if a user writes</P>
+
+<BLOCKQUOTE>(6.1) The customer inserts a card with a stripe</BLOCKQUOTE>
+
+<P>the ACE checker replies with</P>
+
+<BLOCKQUOTE>(6.2) The customer {inserts a card with a stripe}</BLOCKQUOTE>
+
+<P>rather than</P>
+
+<BLOCKQUOTE>(6.3) The customer inserts {a card with a stripe}</BLOCKQUOTE>
+
+<P>whereupon the user can reformulate the utterance, e.g. to</P>
+
+<BLOCKQUOTE>(6.4) The customer inserts a card that carries a stripe</BLOCKQUOTE>
+
+<P>yielding</P>
+
+<BLOCKQUOTE>(6.5) The customer inserts {a card that carries a stripe}</BLOCKQUOTE>
+
+<P>In addition to checking tools associated with controlled natural languages, tools for ambiguity checking exist for ordinary natural languages as well (Akis et al., 2003).</P>
+
+<A NAME="conc"><H3 ALIGN="center">7. Conclusions</H3></A>
+
+<P>Structural ambiguity control appears to be a necessary ingredient of human-machine multiagent systems, and particularly those that are world-wide in reach and involve all domains, such as the Semantic Web. Thus, the work on this approach to multiagent communication deserves further evaluation.</P>
+
+<P>One puzzling trait is the multiplication of controlled-English projects, without clear rationales being disclosed for their development alongside already existing projects. Sowa (2004) has mentioned the idea of a family of unambiguous fragments of various natural languages, but apparently no effort has been invested in the conceptualization, planning, or launching of such languages, even for research. The rationale of natural-language-based knowledge representation is ease of use and the leveraging of existing native-speaker intuitions. These benefits are not achievable unless there are hundreds of controlled natural languages. But, if there were such a diversity, what software components could be language-independent and thus globally shared? How would multi-domain, multilingual ontologies be negotiated?</P>
+
+<P>Another aspect worth further investigation is the human factors affecting the use of unambiguous natural-language varieties. It might seem reasonable to expect human users to rebel at the restrictions imposed on them by merely FOPC-equivalent grammars. But reports suggest that this is not what dissatisfies users. Users purportedly find highly simplified grammars expressive enough, but are annoyed at the interference they experience when stupid checkers ask them to clarify their meanings. KANT researchers have reported that this reaction is particularly strong when checkers require what seem to be obvious disambiguations. Are checkers unavoidable and, if so, can controlled languages and fluency in them be developed sufficiently to make disruptive checking satisfyingly rare?</P>
+
+<P>More generally, it could be instructive to study the motives, incentives, habits, and tolerances that affect the willingness and ability of human agents to participate in ambiguity control, and how these factors may be affected by changing attributes of the information environment, including progress in automated natural-language understanding.</P>
+
+<A NAME="refs"><H3 ALIGN="center">References</H3></A>
+
+<P>Akis, Jennifer Wells; Brucker, Stephanie; Chapman, Virginia; Ethington, Layne; Kuhns, Bob; Schemenaur, PJ. 2003. Authoring Translation-Ready Documents: Is Software the Answer? <I>Proceedings of SIGDOC '03</I>, San Francisco, California, 12-15 October, pp. 39-44.</P>
+
+<P>Bach, Joscha. 2000. MUDs Seen as Multi Agent Systems. ECAI 2000 WS on Modelling Artificial Societies and Hybrid Organisations, Workshop Notes, pp. 1-9.</P>
+
+<P>Baker, Kathryn L.; Franz, Alexander M.; Jordan, Pamela W.; Mitamura, Teruko; Nyberg (3rd), Eric H. 1994. Coping with Ambiguity in a Large-Scale Machine Translation System. <I>Proceedings of COLING-94</I>.</P>
+
+<P>Berners-Lee, Tim; Hendler, James; Lassila, Ora. 2001. The Semantic Web. <I>Scientific American</I>, 284:5, 34-43.</P>
+
+<P>Carnegie Mellon University. 2004. <A HREF="http://www.casos.ece.cmu.edu/mission_frame.html" TARGET="_blank">"Mission", Computational Analysis of Social and Organizational Systems (CASOS)</A>. http://www.casos.ece.cmu.edu/mission_frame.html.</P>
+
+<P>Clark, Herbert H. 1996. <I>Using Language</I>. Cambridge.</P>
+
+<P>Fuchs, Norbert E.; Schwertel, Uta; Schwitter, Rolf. 1999. <I>Attempto Controlled English (ACE) Language Manual</I>, Version 3.0. Nr. 99.03. Institut f&uuml;r Informatik der Universit&auml;t Z&uuml;rich.</P>
+
+<P>Genesereth, Michael R. 1998. Knowledge Interchange Format. http://logic.stanford.edu/kif/dpans.html.</P>
+
+<P>Gmytrasiewicz, Piotr J.; Summers, Matthew; Gopal, Dhruva. 2002. Toward Automated Evolution of Agent Communication Languages. <I>Proceedings of the 35th Hawaii International Conference on System Sciences</I>, HICSS-35, January.</P>
+
+<P>Jurafsky, Daniel; Martin, James H. 2000. <I>Speech and Language Processing</I>. Prentice-Hall.</P>
+
+<P>Knott, Alistair; Bayard, Ian; Vlugter, Peter. 2004. Multi-agent Human-Machine Dialogue: Issues in Dialogue Management and Referring Expression Semantics. In <I>PRICAI 2004: Trends in Artificial Intelligence: 8th Pacific Rim International Conference on Artificial Intelligence, Auckland, New Zealand, August 9-13, 2004. Proceedings</I> (Lecture Notes in Computer Science, 3157), pp. 872-881, Springer.</P>
+
+<P>Mitamura, Teruko; Nyberg (3rd), Eric H. 1995. Controlled English for Knowledge-Based MT: Experience with the KANT System. <I>Proceedings of the 6th International Conference on Theoretical and Methodological Issues in Machine Translation</I>, Leuven, Belgium, 5-7 July.</P>
+
+<P>Mitamura, Turuko. 1999. Controlled Language for Multilingual Machine Translation. <I>Proceedings of Machine Translation Summit VII</I>, Singapore, 13-17 September.</P>
+
+<P>Morneau, Rick. 1994. Designing an Artificial Language: Syntax. http://www.eskimo.com/~ram/syntax.html</P>
+
+<P>Mozart MUD. http://www.mozartmud.com.</P>
+
+<P>O'Brien, Sharon. 2003. An Analysis of Several Controlled English Rule Sets. EAMT/CLAW presentation notes. http://www.ctts.dcu.ie/presentations.html.</P>
+
+<P>Patel-Schneider, Peter F. 2004. A Proposal for a SWRL Extension to First-Order Logic. http://www.daml.org/2004/11/fol/proposal.</P>
+
+<P>Popuscu, Ana-Maria; Etzioni, Oren; Kautz, Henry. 2003. Towards a Theory of Natural Language Interfaces to Databases. <I>Proceedings of the 2003 International Conference on Intelligent User Interfaces</I>, 12-15 January, Miami, Florida, pp. 149-157.</P>
+
+<P>Restatement (Second) of Contracts. 1981. American Law Institute.</P>
+
+<P>Schwitter, Rolf. 2004. Controlled Natural Languages. http://www.ics.mq.edu.au/~rolfs/controlled-natural-languages/.</P>
+
+<P>Schwitter, Rolf; Tilbrook, Marc. 2004. Controlled Natural Language Meets the Semantic Web. <I>Proceedings of the Australasian Language Technology Workshop 2004</I> (Macquarie University, 8 December), pp. 55-62.</P>
+
+<P>Sowa, John F. 1984. <I>Conceptual Structures: Information Processing in Mind and Machine</I>. Addison-Wesley.</P>
+
+<P>Sowa, John F. 2004. Common Logic Controlled English. Draft, 24 February. http://www.jfsowa.com/clce/specs.htm.</P>
+
+<P>Tomic-Koludrovic, Inga; Mitrovic, Ivica; Petric, Mirko. 2001. "Interaction" in a "Hybrid Society": A Terminological  Footnote. Workshop on Modelling Artificial Societies and Hybrid Organizations, Vienna, 18 September.</P>
+
+<P>W3C. 2003. food.rdf. http://www.w3.org/TR/2003/PR-owl-guide-20031209/food.</P>
+
+<P>W3C. 2004. OWL Web Ontology Language Use Cases and Requirements: W3C Recommendation 10 February 2004. http://www.w3.org/TR/webont-req/.</P>
+
+<P>Williams, Andrew B. 2004. Learning to Share Meaning in a Multi-Agent System. <I>Autonomous Agents and Multi-Agent Systems</I>, 8, 165-193.</P>
+
+<P>Witkam, A.P.M. 1983. <I>Distributed Language Translation: Feasibility Study of a Multilingual Facility for Videotex Information Networks</I>. BSO (Utrecht, Netherlands).</P>
+
+<P>Wooldridge, Michael. 2002. <I>An Introduction to MultiAgent Systems</I>. Wiley.</P>
+
+<HR>
+
+<P>This manuscript was written at the University of Washington in December 2004. I am grateful to Emily Bender, students in Linguistics 472 ("Introduction to Computational Linguistics"), and Christie Evans for comments, not all of which I have yet addressed.</P>
+
+</BODY>
+</HTML>

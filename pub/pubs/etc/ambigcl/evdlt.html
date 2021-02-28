@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+
+<title>Expressivity and Ambiguity: DLTIL</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" type="text/css" href="styles-evdlt.css" title="styles" />
+
+</head>
+
+<body>
+
+<h2>Web-Scale Expressivity and Ambiguity in a Translation Interlingua: The DLT Intermediate Language</h2>
+<p class="c">Originally written in 2006</p>
+<p class="c">Last revised 10 October 2012</p>
+<p class="c">Previous title: "Can Controlled Languages Scale to the Web? Evaluation of the DLT Intermediate Language"</p>
+
+<h3>Jonathan Pool</h3>
+<p class="c">The Long Now Foundation<br />
+Building A, Fort Mason Center<br />
+San Francisco, California 94123, U.S.A.<br />
+<a href="http://longnow.org">http://longnow.org</a><br />
+pool@panlex.org<br />
+(510) 225-1700</p>
+
+<h3>Abstract</h3>
+
+<p>An exploration of 32 controlled natural languages, based on English and eight other languages, revealed one, the DLT Intermediate Language, a controlled variety of Esperanto, that was designed for multidomain use and was thoroughly enough documented so a domain author could draft a realistic range of Web content in it. A test of this language on a sample of sentences from Web documents in the health and human rights domains found it expressive enough to represent all sentences in the sample, with low structural ambiguity, but some structural and much semantic ambiguity remained that could interfere substantially with human and machine comprehension.</p>
+
+<h3>Keywords</h3>
+
+<p>controlled language, controlled natural language, natural-language-based knowledge representation, ambiguity, expressiveness, DLT Intermediate Language</p>
+
+
+<h3>Introduction</h3>
+
+<p>In the effort to make efficient human-human and human-machine communication possible, controlled natural languages may be valuable tools. These are varieties (dialects) of human languages designed for the precise representation of meaning in human-machine communication systems. The benefits of controlled natural languages hypothetically arise from their hybrid nature as mixtures of natural and artificial. Such languages, if expressive and precise enough, could be authoring languages in the envisioned Semantic Web.</p>
+
+<p>Having identified 32 projects to define controlled natural languages, I examined them and found less than half intended for multidomain use, and only four of these suffiently documented to permit a realistic evaluation (Pool 2006). Of the four, three turned out to be insufficiently expressive or insufficiently documented in their current versions for a complete test. I subjected the one remaining language, the DLT Intermediate Language, to an exploratory test by translating into it a sample of ambiguous sentences from Web pages in the health and human-rights domains. This report describes the test and its results.</p>
+
+<h3>Test Sentences</h3>
+
+<p>The test sentences are drawn from Web documents in two domains where authors often address worldwide mass audiences: (1) health and (2) human rights. I selected the test sentences not randomly, but deliberately to over-represent the incidence of significant ambiguity. The table below describes the test sentences and some of their ambiguities.</p>
+
+<table summary="Test Sentences" border="1">
+	<tr>
+		<th>Sentence</th>
+		<th>Source</th>
+		<th>Ambiguities</th>
+	</tr>
+	<tr>
+		<td>Avoid prolonged exposure to excessive heat and humidity.</td>
+		<td>NLM 2005, <a href="http://www.nlm.nih.gov/medlineplus/ency/article/003217.htm">art. 3217</a></td>
+		<td>1. Is "humidity" coordinated with "heat", "excessive heat", "exposure to excessive heat", or "prolonged exposure to excessive heat"? 2. Are the coordinated conditions joint, or several? 3. Is avoidance commanded, or advised? 4. Avoid exposing something, or avoid being exposed?</td>
+	</tr>
+	<tr>
+		<td>Mosquitoes have become resistant to the pyrethroid insecticide used to treat mosquito netting.</td>
+		<td><a href="http://www.niaid.nih.gov/publications/malaria/pdf/malaria.pdf">NIAID 2002</a>, p. 12</td>
+		<td>1. Have individual mosquitos become resistant, or has a resistance statistic of the mosquito population increased? 2. Does "pyrethroid" restrict the insecticide, or describe it? 3. Is the mosquitos' continuous resistance from when it arose until now implied? 4. Netting made out of mosquitos, shaped like mosquitos, for the protection of mosquitos, for protection against mosquitos, or in some other way related to mosquitos?</td>
+	</tr>
+	<tr>
+		<td>Scientists do not think this is a serious limitation yet.</td>
+		<td><a href="http://www.niaid.nih.gov/publications/malaria/pdf/malaria.pdf">NIAID 2002</a>, p. 12</td>
+		<td>1. All, most, or some scientists? 2. Does "yet" restrict "think", or "is"? 3. Do scientists fail to think it is serious, or think it fails to be serious?</td>
+	</tr>
+	<tr>
+		<td>The investigators found that the incidence of cancers of the nervous system and the blood was roughly 2.5 times higher in children whose mothers received pre-1963 vaccine than in children whose mothers did not.</td>
+		<td><a href="http://www.cancer.gov/newscenter/pressreleases/SV40">NCI 2005</a></td>
+		<td>1. Are the incidence of cancers of the nervous system and the incidence of cancers of the blood described jointly, or severally? 2. Was the former incidence 2.5 times as great as the latter, or 3.5 times as great as the latter? 3. Was a mother "who did not" a mother who received post-1962 vaccine, or a mother who received either post-1962 vaccine or no vaccine?</td>
+	</tr>
+	<tr>
+		<td> Unless specific measures are taken to extend coverage and promote uptake in all population groups simultaneously, improvement of aggregate population coverage will go through a phase of increasing inequality.</td>
+		<td>WHO 2005, <a href="http://www.who.int/whr/2005/chapter2/en/index3.html">ch. 2, p. 30</a></td>
+		<td>1. Does "simultaneously" restrict "measures are taken", "extend coverage and promote uptake", or "in all population groups"? 2. Does "in all population groups" restrict "are taken", "extend" and "promote", "promote", "coverage" and "uptake", or "uptake"? 3. Is the improvement a change of state of population coverage, or something done to population coverage? 4. Will increasing inequality characterize aggregate population coverage, or its improvement?</td>
+	</tr>
+	<tr>
+		<td>What type of illness do you suffer from most?</td>
+		<td><a href="http://salmon.psy.plym.ac.uk/Yr2Skills/clara.htm">ERP 2005</a>, q. 8</td>
+		<td>1. What type do you have most, or what type makes you suffer most when you have it? 2. Most often, or most intensely?</td>
+	</tr>
+	<tr>
+		<td>Recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family is the foundation of freedom, justice and peace in the world.</td>
+		<td><a href="http://www.ohchr.org/EN/UDHR/Pages/Language.aspx?LangID=eng">UDHR 1948</a>, Preamble</td>
+		<td>1. Does "recognition" imply existence? 2. Is the recognition described, the foundation described, or their identity asserted? 3. Does "in the world" restrict peace, or restrict freedom, justice, and peace?</td>
+	</tr>
+	<tr>
+		<td>Men and women of full age, without any limitation due to race, nationality or religion, have the right to marry and to found a family.</td>
+		<td><a href="http://www.ohchr.org/EN/UDHR/Pages/Language.aspx?LangID=eng">UDHR 1948</a>, Art. 16</td>
+		<td>1. Does the "without" phrase restrict men and women, or their possession of the right? 2. Do men and women have the right severally, pairwise, or groupwise? 3. Is the right's existence asserted, or declared?</td>
+	</tr>
+	<tr>
+		<td>No State Party shall expel, return ("refouler") or extradite a person to another State where there are substantial grounds for believing that he would be in danger of being subjected to torture.</td>
+		<td><a href="http://www2.ohchr.org/english/law/cat.htm">CAT 1984</a>, Art. 3</td>
+		<td>1. Does intercepting a person on the high seas and transporting the person to a state constitute return ("refoulement")? 2. Does "where" mean "when", or restrict the destination state? 3. If the "where" clause restricts the destination state, is "where" attached to "there are substantial grounds", "believing", "would be in danger", "being subjected", or "torture"?</td>
+	</tr>
+	<tr>
+		<td>The members of the Committee shall be elected by secret ballot from a list of persons nominated by States Parties.</td>
+		<td><a href="http://www2.ohchr.org/english/law/cat.htm">CAT 1984</a>, Art. 17</td>
+		<td>1. Is the nomination assumed, or prescribed? 2. Do States Parties nominate a list, or do they nominate persons, whom somebody subsequently lists?</td>
+	</tr>
+	<tr>
+		<td>Each State Party may nominate one person from among its own nationals.</td>
+		<td><a href="http://www2.ohchr.org/english/law/cat.htm">CAT 1984</a>, Art. 17</td>
+		<td>1. Is 1 the limit on the number of each State Party's nominees, or the limit on the number of each State Party's nominees who are its own nationals?</td>
+	</tr>
+	<tr>
+		<td>An employer is required to take reasonable steps to accommodate your disability unless it would cause the employer undue hardship.</td>
+		<td><a href="http://www.hhs.gov/ocr/504.html">OCR n.d.</a></td>
+		<td>1. A single employer, or every employer? 2. Unless taking steps would cause hardship, or unless your disability would cause hardship?</td>
+	</tr>
+</table>
+
+<p>I use these test sentences to give some empirical meaning to the notion of multidomain expressiveness and precision. We find in the alternative meanings of the test sentences statements of several kinds, including descriptions, identifications, forecasts, prescriptions, recommendations, declarations, and factual queries. Some of the meanings are assertions, and they include first-order assertions (X is the case), second-order assertions (X believes that Y is the case; X asserts that Y is the case), conditional assertions (X is the case if Y is the case), and conditional prescriptions (do X if Y is the case). Things referenced in the test sentences include persons, animals, microorganisms, organizations, physical objects, substances, attributes, actions, and concepts, and also individual things and classes of things. One test sentence refers expressly to its reader ("you"), while another ("Avoid ...") does so implictly. Referents are described simply ("scientists") in some test sentences and with restrictions ("women of full age") in others. Facts asserted by test sentences include facts occurring in the definite past ("found"), the recent past ("have become"), the continuing past ("have become"), the past relative to the past (mothers' vaccinations before children's cancers), the recent present ("do you suffer"), the absolute past ("1963"), the eternal present ("slavery is"), the present with anticipated termination ("do not think yet"), and the future ("will go"). Some test sentences contain words or phrases coordinated with "and" or "or". Both states (being ill) and actions (expelling) are represented, and their agents are sometimes expressed ("you suffer") and sometimes unspecified ("for believing"). This small and nonsystematic sample omits some common semantic elements (such as requests and first-person references), but we expect it to function adequately as an aid in an exploratory evaluation.</p>
+
+<h3>Summary Test Results</h3>
+
+<p>The screening of 32 controlled natural languages revealed four languages that appeared to be multidomain by design and testable. Three of them, Formalized English, E2V, and Attempto Controlled English, turned out to be restricted or underdocumented enough to make it impractical to attempt to translate most of the test sentences into them (Pool 2006). The remaining language, the DLT Intermediate Language, was able to encode all the meanings of the test expressions. It did not guarantee, however, that each distinction required for practical ambiguity prevention would be made. As I interpret the language's specifications, they permit an author to resolve each ambiguity described above, and require the author to resolve some of them, but also permit the author to leave some of these ambiguities intact.</p>
+
+<p>Ambiguities that the language generally prevents include those relating to the command/advice distinction, verb-negation semantics, the active/passive semantics of nominalized verbs, closed-class word senses, negation scope, coordination syntax, and the attachments of adjuncts, adverbs, prepositions, clauses, and participles.</p>
+
+<p>Ambiguities that the language generally permits include those relating to the description/declaration distinction, individual versus aggregate change, the prohibitions implied by permissions, the implied scope of commands, the implied subjects of nominalized verbs, the aspectual interpretation of the recent past, quantitative comparison, implied thematic roles, existential implications, descriptive versus restrictive modification, implicit quantification, coordination semantics, open-class word senses, long-distance dependencies, and pronominal reference.</p>
+
+<p>The language prevents sense ambiguities in compound nouns if the compounds are registered in the lexicon but not otherwise. The compounding of unambiguous lexemes can produce an ambiguous derivation.</p>
+
+<p>As a rough summary, the DLT Intermediate Language prevents most morphological and syntactic ambiguity, but does not prevent most semantic ambiguity.</p>
+
+<p>The fact that some potentially problematic ambiguities may exist in this language's encodings arises from the translation-interlingua role which it was designed to play. One design principle was not to force disambiguations that were unlikely to be mirrored in either the source language or the target language, in the belief that such required disambiguations would hinder rather than help automatic translation.</p>
+
+<h3>Detailed Test Results</h3>
+
+<p>The version of the DLT Intermediate Language tested here is that described by Witkam 1983, as modified by Schubert 1986, with features described in these works as tentative being treated as if they had been adopted. It is a controlled variety of Esperanto. Esperanto was originally an artificial language, but it has been partly creolized and has developed in an unregulated way for a century. Its morphology is almost entirely agglutinative, and it has practically no allomorphy. The designers of DLT conjectured that Esperanto would exhibit a translation-conducive mixture of grammatical parsability and semantic expressiveness. They defined the DLT Intermediate Language as identical to Esperanto, except for what Schubert (2004) describes as a few inconspicuous restrictions. Its expressiveness is thus presumably about the same as that of Esperanto. Since Esperanto has multidomain and multigenre use, it was reasonable to expect that the test sentences could be translated into the DLT Intermediate Language, but it was not foreseeable whether the sentences' ambiguities would be resolvable or obligatorily resolved in this translation process.</p>
+
+<h4>Expression: Avoid prolonged exposure to excessive heat and humidity.</h4>
+
+<p><i>Issue 1. Syntactic coordination ambiguity.</i></p>
+
+<p>This ambiguity involves four alternative interpretations of the sentence's syntactic structure. Each has a different left coordinand. The DLT Intermediate Language prevents this ambiguity with number and case inflection, adjective-noun number and case agreement, and attachment-skipping marks, as follows:</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>Evit`u la da&#x016d;r`a`n en`ad`o`n en tro`a`j varm`o kaj humid`o.</p>
+<p>Avoid-VIMP the prolonged-ADJ-SG-ACC in-ing-N-SG-ACC in too-ADJ-PL-NOM hot-N-SG-NOM and humid-N-SG-NOM.</p>
+<p>Avoid prolonged exposure to excessive (1) heat and (2) humidity.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>Evit`u la da&#x016d;r`a`n en`ad`o`n en tro`a varm`o &middot;kaj humid`o.</p>
+<p>Avoid-VIMP the prolonged-ADJ-SG-ACC in-ing-N-SG-ACC in too-ADJ-SG-NOM hot-N-SG-NOM and humid-N-SG-NOM.</p>
+<p>Avoid prolonged exposure to (1) excessive heat and (2) humidity.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>Evit`u la da&#x016d;r`a`j`n en`ad`on en tro`a varm`o &middot;&middot;kaj humid`o`n.</p>
+<p>Avoid-VIMP the prolonged-ADJ-PL-ACC in-ing-N-SG-ACC in too-ADJ-SG-NOM hot-N-SG-NOM and humid-N-SG-ACC.</p>
+<p>Avoid prolonged (1) exposure to excessive heat and (2) humidity.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>Evit`u la da&#x016d;r`a`n en`ad`o`n en tro`a varm`o &middot;&middot;&middot;kaj humid`o`n.</p>
+<p>Avoid-VIMP the prolonged-ADJ-SG-ACC in-ing-N-SG-ACC in too-ADJ-SG-NOM hot-N-SG-NOM and humid-N-SG-ACC.</p>
+<p>Avoid (1) prolonged exposure to excessive heat and (2) humidity.</p>
+
+</td></tr>
+
+</table>
+
+<p><i>Issue 2. Semantic coordination ambiguity.</i></p>
+
+<p>The question here is whether the expression tells the reader to (1) avoid each of the two conditions or (2) avoid the combination of the two conditions. Another example of this ambiguity is whether "hydrogen and oxygen are explosive" warns to handle each with care or only to keep them apart.</p>
+
+<p>The DLT Intermediate Language does not appear to prevent this ambiguity. In some cases, the base language's adjective number inflection arguably can prevent this ambiguity. If the first and third examples under Issue 1 contained singular adjectives ("tro`a" in the first example, "da&#x016d;r`a`n" in the third) immediately before the coordinations that they modify, the singular adjectives could be interpreted as coercing the coordinations into jointness. Their singular number would not be interpretable as making the adjectives modify only the proximate nouns, because attachment-skipping marks prefixed to the conjunction determine the scope of the conjunction. However, we find no specification in the documentation requiring this interpretation, and its adoption would leave cases like the second and fourth examples (and cases without adjectives) still ambiguous. The language has a special conjunction, "ka&#x016d;" [and], used for the coordination of coreferential noun phrases (e.g., "friends, Romans, and countrymen", versus "ladies and gentlemen"), but no device for the distinction of the combinatorial "and" from the distributive "and".</p>
+
+<p><i>Issue 3. Illocutionary ambiguity.</i></p>
+
+<p>It is reasonable to interpret the expression as advice rather than as a command, given its presence in a published document addressed to an anonymous audience. The formulations under Issue 1 use the imperative mood, which the DLT Intermediate Language interprets unambiguously as a command (Witkam 1983, p. IV.44). For the more realistic advice interpretation, we can modify them as in the following example.</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>Est`as ind`a evit`i la da&#x016d;r`a`n en`ad`o`n en tro`a`j varm`o kaj humid`o.</p>
+
+<p>Be-VPRES worth-ADJ-SG-NOM avoid-INF the prolonged-ADJ-SG-ACC in-ing-N-SG-ACC in too-ADJ-PL-NOM hot-N-SG-NOM and humid-N-SG-NOM.</p>
+
+<p>It is advisable to avoid prolonged exposure to excessive (1) heat and (2) humidity.</p>
+
+</td></tr>
+
+</table>
+
+<p><i>Issue 4. Role ambiguity.</i></p>
+
+<p>The verbal noun "en`ad`o" [exposure] is potentially ambiguous with respect to its implied subject. The expression may be interpreted as advice to avoid being exposed, or to avoid exposing something else. The specifications do not either prohibit a verbal noun or provide for the unambiguous inference of its implied subject. Thus, the DLT Intermediate Language does not prevent ambiguities of this kind.</p>
+
+<h4>Expression: Mosquitoes have become resistant to the pyrethroid insecticide used to treat mosquito netting.</h4>
+
+<p><i>Issue 1. Situation ambiguity.</i></p>
+
+<p>This ambiguity leaves it uncertain whether individual mosquitos' resistance levels have increased during their lives or the intergenerational replacement of less resistant mosquitos with more resistant ones has caused aggregate resistance among the mosquito population to increase. A literal translation into the DLT Intermediate Language would be:</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>La moskit`o`j iĝ`int`as rezist`a`j ....</p>
+
+<p>The mosquito-N-PL-NOM become-PASTACT-VPRES resistant-ADJ-PL-NOM ....</p>
+
+<p>Mosquitoes have become resistant ....</p>
+
+</td></tr>
+
+</table>
+
+<p>This expression is ambiguous in the same way as the English version. The ambiguity can be prevented with various formulations that clearly describe the change as individual or aggregate, but the specifications do not contain an interpretive rule prohibiting the above formulation or making it unambiguous.</p>
+
+<p><i>Issue 2. Description/restriction ambiguity.</i></p>
+
+<p>In English, it is possible to guarantee a descriptive interpretation of the modifier "pyrethroid" by parenthesizing it, by using it as a predication in a separate clause ("The insecticide that is used to treat mosquito netting is a pyrethroid one, and mosquitos have become resistant to that insecticide"), or otherwise. Likewise, we can guarantee a restrictive interpretation with a reformulation such as "Of the insecticides used to treat mosquito netting, mosquitos have become resistant to the pyrethroid one". Similar paraphrasings can disambiguate the modifying effect of "piretr`oid`a insekt`icid`o" [pyrethroid insecticide] in the DLT Intermediate Language. However, the documentation states (Witkam 1983, pp. IV.24, IV.71) that adjective-noun modifications may, without any difference in form (except when there are multiple adjectives), have either descriptive or restrictive effect. Thus, the language does not necessarily prevent this ambiguity.</p>
+
+<p><i>Issue 3. Aspectual ambiguity.</i></p>
+
+<p>Whether the test expression implies that mosquitos still remain resistant is not certain. "Mosquitos have become resistant" may be interpreted either as "Mosquitos have become resistant at least once in the past", or as "Mosquitos are now resistant but have not always been". With respect to this distinction, nothing in the DLT Intermediate Language documentation requires a unique interpretation of the expression given above under Issue 1. The language thus permits ambiguities of this kind.</p>
+
+<p><i>Issue 4. Compound-noun ambiguity.</i></p>
+
+<p>With enough knowledge, readers of "mosquito netting" know it is netting for protection against mosquitos, not netting for the protection of mosquitos, made out of mosquitos, shaped like mosquitos, or related in some other way to mosquitos. The DLT Intermediate Language permits one-word compound nouns and generally includes in its (translation) lexicon those that are commonly used. Thus, in principle, inclusion of "moskit`ret`a&#x0135;`o" [mosquito netting] in the lexicon can guarantee that it has a unique sense interpretation.</p>
+
+<h4>Expression: Scientists do not think this is a serious limitation yet.</h4>
+
+<p><i>Issue 1. Implied-quantifier ambiguity.</i></p>
+
+<p>A plural noun with no determiner is grammatical in the DLT Intermediate Language, and the specifications do not state whether it is to be interpreted as a reference to all, most, or some of the members of the identified class. Typically, the language, like its base language, distinguishes the "all" and "most" meanings from the "some" meaning with explicit quantifiers, with a definite article, or with a singular collective noun, but the examples found in the documentation (Witkam 1983, pp. IV.10, IV.77, IV-85b) leave uncertainty about the interpretations where explicit quantifiers are not used.</p>
+
+<p><i>Issue 2. Adjunct-attachment ambiguity.</i></p>
+
+<p>The test expression describes a belief about a fact. The final "yet" indicates a possible future change. Because of the ambiguous attachment of "yet", it is uncertain whether the thing being described is a possibly changing belief about a fact, or a belief about a possibly changing fact.</p>
+
+<p>It appears to be impossible to retain this ambiguity in the DLT Intermediate Language. These two meanings require distinct representations, most straightforwardly:</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>La scienc`ist`ar`o ankora&#x016d; ne kred`as ke tio est`as serioz`a lim`ig`o.</p>
+
+<p>The science-ist-set-N-SG-NOM yet not believe-VPRES that that be-VPRES serious-ADJ-SG-NOM limit-cause-N-SG-NOM.</p>
+
+<p>The scientific community does not yet believe that this is a serious limitation.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>La scienc`ist`ar`o ne kred`as ke tio jam est`as serioz`a lim`ig`o.</p>
+
+<p>The science-ist-set-N-SG-NOM not believe-VPRES that that already be-VPRES serious-ADJ-SG-NOM limit-cause-N-SG-NOM.</p>
+
+<p>The scientific community does not believe that this is already a serious limitation.</p>
+
+</td></tr>
+
+</table>
+
+<p><i>Issue 3. Negation ambiguity.</i></p>
+
+<p>In both English and the base language of the DLT Intermediate Language, negation is ambiguous for a closed set of verbs, being interpretable as negating either the verb or one of its complements. The verb "think" and its Esperanto equivalents "pensi", "opinii", and "kredi" exhibit this ambiguity. The DLT Intermediate Language documentation has not fully specified the rules for the interpretation of "floater" modifiers, including "ne" [not], but states (Witkam 1983, p. IV.84) that they must be governed by strictly disambiguating rules. The documentation also illustrates the incompletely formalized rules in various examples. On this basis, we consider the language to comply with the unambiguous patterns employed by some speakers of the base language, resulting in unambiguous versions of this expression with respect to negation, presumably these (we omit the "yet" adjunct here):</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>La scienc`ist`ar`o ne kred`as ke tio est`as serioz`a lim`ig`o.</p>
+
+<p>The science-ist-set-N-SG-NOM not believe-VPRES that that be-VPRES serious-ADJ-SG-NOM limit-cause-N-SG-NOM.</p>
+
+<p>The scientific community does not hold the belief that this is a serious limitation.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>La scienc`ist`ar`o kred`as ke tio ne est`as serioz`a lim`ig`o.</p>
+
+<p>The science-ist-set-N-SG-NOM believe-VPRES that that not be-VPRES serious-ADJ-SG-NOM limit-cause-N-SG-NOM.</p>
+
+<p>The scientific community believes that this is not a serious limitation.</p>
+
+</td></tr>
+
+</table>
+
+<h4>Expression: The investigators found that the incidence of cancers of the nervous system and the blood was roughly 2.5 times higher in children whose mothers received pre-1963 vaccine than in children whose mothers did not.</h4>
+
+<p><i>Issue 1. Semantic coordination ambiguity.</i></p>
+
+<p>This ambiguity, leaving it uncertain whether the topic is a pair of incidences (nervous system cancer, blood cancer) or a single aggregated incidence, is not necessarily prevented in the DLT Intermediate Language, as we showed above with "avoid heat and humidity".</p>
+
+<p><i>Issue 2. Quantitative comparison ambiguity.</i></p>
+
+<p>The phrase "2.5 times higher in X than in Y" is ambiguous, potentially meaning 2.5 times as high in X as in Y, and potentially meaning 250% higher in X than in Y (where 250% higher is 350%, i.e. 3.5 times, as high as, consistently with the fact that 100% higher is 200% as high as). We presume that a similar ambiguity exists in the DLT Intermediate Language's base language. We have found no prescriptions or examples in the controlled language's documentation relative to the prevention of ambiguities of this kind.</p>
+
+<p><i>Issue 3. Negation ambiguity.</i></p>
+
+<p>This ambiguity arises from the uncertain semantic scope of the final "not". In English, "... whose mothers did not [receive pre-1963 vaccine]" is ambiguous, because it may be intended to describe mothers who received post-1962 vaccine and exclude mothers who received no vaccine, contrary to its literal interpretation. In accord with our discussion of negation ambiguity above, we understand the DLT Intermediate Language to require sufficient explicitness as to the negated constituent to prevent any ambiguity about it. The base language, in any case, does not permit ellipsis of a verb after a negator. We expect the specifications to provide for these interpretations:</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>... patr`in`o`j ne ricev`is anta&#x016d;-1963-a`n vakcin`o`n</p>
+
+<p>... parent-fem-N-PL-NOM not receive-VPAST before-1963-ADJ-SG-ACC vaccine-N-SG-ACC</p>
+
+<p>... mothers did not receive pre-1963 vaccine (or, perhaps, anything)</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>... patr`in`o`j ricev`is ne anta&#x016d;-1963-a`n vakcin`o`n</p>
+
+<p>... parent-fem-N-PL-NOM receive-VPAST not before-1963-ADJ-SG-ACC vaccine-N-SG-ACC</p>
+
+<p>... mothers received non-pre-1963 vaccine</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>... patr`in`o`j ricev`is ne &middot;anta&#x016d;-1963-a`n vakcin`o`n</p>
+
+<p>... parent-fem-N-PL-NOM receive-VPAST not before-1963-ADJ-SG-ACC vaccine-N-SG-ACC</p>
+
+<p>... mothers received something other than pre-1963 vaccine (perhaps something that was not even vaccine)</p>
+
+</td></tr>
+
+</table>
+
+<p>The attachment-skipping mark in the last example here gives the negator scope over the noun phrase rather than over only the adjective (Witkam 1983, p. IV.60).</p>
+
+<h4>Expression: Unless specific measures are taken to extend coverage and promote uptake in all population groups simultaneously, improvement of aggregate population coverage will go through a phase of increasing inequality.</h4>
+
+<p><i>Issue 1. Adverbial attachment ambiguity.</i></p>
+
+<p>The final "simultaneously" in the conditional clause has ambiguous attachment. (A) It may be intended to require that the measures taken be taken all at once. (B) Or it may be intended to require that coverage be extended at the same time as uptake is promoted. (C) Or it may be intended to require that whatever holds for all population groups (which is ambiguous) hold for all of them at once. The specifications of the DLT Intermediate Language are intended to assign a unique interpretation to each adjunct's attachment depending on the adjunct's location and its adjacent punctuation. We shall examine this effort in connection with Issue 2.</p>
+
+<p><i>Issue 2. Prepositional phrase attachment ambiguity.</i></p>
+
+<p>The phrase "in all population groups" has five possible attachments: (V) "are taken", (W) "extend ... and ... promote", (X) "promote", (Y) "coverage ... and ... uptake", and (Z) "uptake". Together with Issue 1, this ambiguity yields fifteen alternative meanings for the conditional clause. We have examined the DLT Intermediate Language's attachment-ambiguity prevention mechanisms (e.g., Witkam 1983, p. IV.85b) to discover whether they mandatorily distinguish all fifteen of these meanings. The mechanisms appear almost to do this. We give below, to save space, only the expressions, without glosses and translations.</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>AV: Se sam`temp`e kaj en &#x0109;iu`j hom`ar`er`o`j specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n, ...</p>
+
+<p>AW: Se sam`temp`e specif`a`j ag`o`j ne far`ajt`os por en &#x0109;iu`j hom`ar`er`o`j pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n, ...</p>
+
+<p>AX: Se sam`temp`e specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n kaj en &#x0109;iu`j hom`ar`er`o`j progres`ig`i la adopt`o`n, ...</p>
+
+<p>AY: Se sam`temp`e specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n en &#x0109;iu`j hom`ar`er`o`j, ...</p>
+
+<p>AZ: Se sam`temp`e specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n &middot;kaj progres`ig`i la adopt`o`n en &#x0109;iu`j hom`ar`er`o`j, ...</p>
+
+<p>BV: Se en &#x0109;iu`j hom`ar`er`o`j specif`a`j ag`o`j ne far`ajt`os por sam`temp`e pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n, ...</p>
+
+<p>BW: Se specif`a`j ag`o`j ne far`ajt`os por sam`temp`e kaj en &#x0109;iu`j hom`ar`er`o`j pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n, ...</p>
+
+<p>BX: Se specif`a`j ag`o`j ne far`ajt`os por sam`temp`e pli`ig`i la satur`o`n kaj en &#x0109;iu`j hom`ar`er`o`j progres`ig`i la adopt`o`n, ...</p>
+
+<p>BY: Se specif`a`j ag`o`j ne far`ajt`os por sam`temp`e pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n en &#x0109;iu`j hom`ar`er`o`j, ...</p>
+
+<p>CV: Se en sam`temp`e &#x0109;iu`j hom`ar`er`o`j specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n, ...</p>
+
+<p>CW: Se specif`a`j ag`o`j ne far`ajt`os por en sam`temp`e &#x0109;iu`j hom`ar`er`o`j pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n, ...</p>
+
+<p>CX: Se specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n kaj en sam`temp`e &#x0109;iu`j hom`ar`er`o`j progres`ig`i la adopt`o`n, ...</p>
+
+<p>CY: Se specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n kaj progres`ig`i la adopt`o`n en sam`temp`e &#x0109;iu`j hom`ar`er`o`j, ...</p>
+
+<p>CZ: Se specif`a`j ag`o`j ne far`ajt`os por pli`ig`i la satur`o`n &middot;kaj progres`ig`i la adopt`o`n en sam`temp`e &#x0109;iu`j hom`ar`er`o`j, ...</p>
+
+</td></tr>
+
+</table>
+
+<p>As shown, we have found fourteen unambiguous formulations, leaving only meaning BZ without one. This meaning seems to require some additional attachment-marking notation, to allow one adjunct to apply to both verb phrases while the other adjunct applies only to one of their complements.</p>
+
+<p><i>Issue 3. Preposition sense ambiguity.</i></p>
+
+<p>The expression refers to the "improvement of aggregate population coverage", and this noun phrase is ambiguous (in part) because of two plausible senses of "of". In one sense, the phrase is a nominalization of "Aggregate population coverage will improve" (perhaps spontaneously). In the other sense, it is a nominalization of "Some agent (e.g., public-health agencies) will improve aggregate population coverage". The distinction is subtle in this example, because the latter interpretation implies the former, but many ambiguities of this kind are severe (e.g., "the investigation of the police") and may involve additional (e.g., appositive) senses of "of". (A semantically similar ambiguity in our expression involves "population coverage", which could be a state in which the population is either covered or covering--as in covering territory. This is syntactically similar to "mosquito netting", discussed above.)</p>
+
+<p>The DLT Intermediate Language contains mechanisms that prevents this ambiguity. The following expressions are each unambiguous:</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>la pli`bon`i&#x011d;`o de la &#x0109;iom`a hom`ar`a satur`o</p>
+
+<p>the more-good-become-N-SG-NOM of the all-ADJ-SG-NOM human-set-ADJ-SG-NOM saturate-N-SG-NOM</p>
+
+<p>the getting-better of the aggregate population coverage</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>la pli`bon`ig`o de la &#x0109;iom`a`n hom`ar`a`n satur`o`n</p>
+
+<p>the more-good-become-N-SG-NOM of the all-ADJ-SG-ACC human-set-ADJ-SG-ACC saturate-N-SG-ACC</p>
+
+<p>the making-better of (i.e. applied to) the aggregate population coverage</p>
+
+</td></tr>
+
+</table>
+
+<p>One mechanism preventing ambiguity in these examples is the derivational distinction between causative and resultative verbs, with their associated nominalizations. These produce a large and open class of verb nominalization pairs whose corresponding lexemes in some other languages are generally ambiguous ("apprentissage", "Erziehung", "&#x043f;&#x0440;&#x0435;&#x043f;&#x043e;&#x0434;&#x043e;&#x0432;&#x0430;&#x043d;&#x0438;&#x0435;", etc.).</p>
+
+<p>The second mechanism is case assignment to the complement of "de" [of]. If a prepositional phrase governed by "de" is a complement, rather than the subject, of a verb nominalization, the complement of "de" is assigned the accusative case (versus the normal nominative case assignment to noun-phrase complements of prepositions).</p>
+
+<p><i>Issue 4. Experiencer role ambiguity.</i></p>
+
+<p>This ambiguity arises from the vague formulation of the expression, where "inequality" must be an inequality of something, but what it is of is not stated. Since "improvement" of "coverage" will go through a phase of inequality, it could be inequality either in the coverage or in the rate at which the coverage improves.</p>
+
+<p>The DLT Intermediate Language's approach to the prevention of such ambiguity is to define the mandatory arguments of each lexeme in the lexicon and require them to be present in each expression. However, examples in the documentation reveal numerous nouns that are devoid of arguments that might be necessary for ambiguity prevention. For example, "Mal`sat`eg`o minac`as milion`o`j`n da hom`o`j en Afrik`o" [Starvation threatens millions of people in Africa] (Witkam 1983, p. IV.59; Schubert 1986, pp. 72-74) does not specify whose starvation constitutes the threat. What seems obvious to a knowledgeable human reader becomes less obvious if we change "mal`sat`eg`o" to "mal`&#x015d;par`eg`ad`o" [extravagant waste]. Thus, a systematic solution for ambiguity of this kind seems not to be present in the DLT Intermediate Language, perhaps because such ambiguity often facilitates translation.</p>
+
+<h4>Expression: What type of illness do you suffer from most?</h4>
+
+<p><i>Issue 1. Verb sense ambiguity.</i></p>
+
+<p>The polysemy of "suffer" in English is roughly matched by the polysemy of "suferi" in Esperanto. In general, some evidence exists that Esperanto's lexicon exhibits less polysemy than those of most natural languages, but its polysemy is nonetheless pervasive. The DLT Intermediate Language by design does not seek to prevent polysemy (Witkam 1983, p. IV.108). Word sense disambiguation is thus a necessary activity in the interpretation of expressions in the language.</p>
+
+<p><i>Issue 2. Adverb sense ambiguity.</i></p>
+
+<p>The English intensifier "most" in this context has both temporal and intensity senses. Its Esperanto counterpart, "plej", has an intensity sense but not a temporal sense. For the temporal sense, "plej" must modify the adverb "ofte" [often] expressly. This monosemy applies to the DLT Intermediate Language and thus prevents this ambiguity.</p>
+
+<h4>Expression: Recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family is the foundation of freedom, justice and peace in the world.</h4>
+
+<p><i>Base-language translation</i></p>
+
+<p>The official Esperanto translation of this sentence, in the collection of 330 translations of the Universal Declaration of Human Rights published by the Office of the United Nations High Commissioner for Human Rights, is (UNHCHR 1998):</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>Agnosko de la esenca digno kaj de la egalaj kaj nefordoneblaj rajtoj de &#x0109;iuj membroj de la homara familio estas la fundamento de libero, justo kaj paco en la mondo.</p>
+
+<p>Recognize-N-SG-NOM of the essence-ADJ-SG-NOM dignified-N-SG-NOM and of the equal-ADJ-PL-NOM and not-away-give-...able-ADJ-PL-NOM right-N-PL-NOM of all-PL-NOM member-N-PL-NOM of the human-set-ADJ-SG-NOM family-N-SG-NOM be-VPRES the foundation-N-SG-NOM of free-N-SG-NOM, just-N-SG-NOM and peace-N-SG-NOM en the world-N-SG-NOM.</p>
+
+<p>Recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family is the foundation of freedom, justice and peace in the world.</p>
+
+</td></tr>
+
+</table>
+
+<p><i>Issue 1. Semantic implication ambiguity.</i></p>
+
+<p>This ambiguity consists of uncertainty as to whether the expression, by naming one of its arguments "recognition", implies an assertion of the existence of that which is named as the complement of "recognition". While some verbs (e.g., "discover") imply existence or truth, other verbs (e.g., "pretend") imply nonexistence or falsity, and still other verbs (e.g., "assert") do not imply either, the implicational character of some verbs may be uncertain, and the nominalizations of verbs may in some cases have implications differing from their verb forms. The English verb "recognize" appears to have senses that differ in their existential implications.</p>
+
+<p>A controlled natural language could provide for the specification of existential implications in its lexicon, but we find no account of such an arrangement in the DLT Intermediate Language. Thus, we presume that this ambiguity is not prevented.</p>
+
+<p><i>Issue 2. Semantic copular ambiguity.</i></p>
+
+<p>This expression takes the form "NP1 is NP2", where "NP1" and "NP2" are noun phrases. We distinguish three interpretations of this construction. First, NP1 may be the topic, and the expression may describe a property of NP1. Second, NP2 may be the topic, and the expression may describe a property of NP2. Third, the expression may assert that NP1 and NP2 are identical. These interpretations correspond to distinct questions that the expression may answer: (1) What is NP1? (2) What is NP2? (3) What is the relationship between NP1 and NP2?</p>
+
+<p>The DLT Intermediate Language enforces a canonical word order that, while not explicitly endowed with semantic implications, could be understood to entail an interpretation rule preventing ambiguity between the first and second meanings described above. The language permits copular sentences analogous to the English one, with subject-verb-complement order (e.g., "La senlaboreco estas grava problemo" [Unemployment is a serious problem] (Witkam 1983, p. IV.42). We may presume that "NP1 estas [is] NP2" is interpreted to exclude the possibility that the sentence answers the question "What is NP2?". However, the language does not appear to prevent the same construction from being used to express an identity between NP1 and NP2, so the ambiguity is not entirely prevented.</p>
+
+<p><i>Issue 3. Coordinational complement-attachment ambiguity.</i></p>
+
+<p>The phrase "freedom, justice and peace in the world" exhibits an ambiguous attachment of the prepositional phrase "in the world". While the ambiguity may seem trivial here, as a matter of international law it may be significant, since damages extending beyond nation-state boundaries have been the main legitimation for international intervention to protect human rights. Resolution of the ambiguity in the case of a multilingual instrument like this is in principle possible by comparison of translations, given that languages differ in the ambiguities that they permit. Curiously, however, such a comparison reveals that in this case there is no consistently applicable meaning, even among the original five languages in which the declaration was made official. For example:</p>
+
+<table border="1">
+
+<tr><th rowspan="2">Language</th><th colspan="3">"in the world" may modify</th></tr>
+
+<tr><th>freedom</th><th>peace</th><th>all 3</th></tr>
+
+<tr><td>English</td><td class="c">&nbsp;</td><td class="c">X</td><td class="c">X</td></tr>
+
+<tr><td>French</td><td class="c">&nbsp;</td><td class="c">X</td><td class="c">X</td></tr>
+
+<tr><td>Spanish</td><td class="c">&nbsp;</td><td class="c">X</td><td class="c">X</td></tr>
+
+<tr><td>Russian</td><td class="c">&nbsp;</td><td class="c">X</td><td class="c">&nbsp;</td></tr>
+
+<tr><td>Chinese</td><td class="c">&nbsp;</td><td class="c">&nbsp;</td><td class="c">X</td></tr>
+
+<tr><td>Turkish</td><td class="c">&nbsp;</td><td class="c">X</td><td class="c">&nbsp;</td></tr>
+
+<tr><td>German</td><td class="c">&nbsp;</td><td class="c">X</td><td class="c">X</td></tr>
+
+<tr><td>Esperanto</td><td class="c">&nbsp;</td><td class="c">X</td><td class="c">X</td></tr>
+
+<tr><td>Latin</td><td class="c">X</td><td class="c">&nbsp;</td><td class="c">X</td></tr>
+
+<tr><td>Basque</td><td class="c">X</td><td class="c">&nbsp;</td><td class="c">X</td></tr>
+
+</table>
+
+<p>I am grateful for consultations by David K. Jordan with respect to the Chinese and Maite Louzao Arsuaga with respect to the Basque interpretations.</p>
+
+<p>This case is a simple instance of the class of ambiguities discussed above in Issue 1 for the expression "Unless specific measures are taken to extend coverage and promote uptake in all population groups simultaneously, improvement of aggregate population coverage will go through a phase of increasing inequality". The DLT Intermediate Language prevents ambiguity in this case with an attachment-skipping marker:</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>de liber`o, just`o kaj pac`o en la mond`o</p>
+
+<p>of free-N-SG-NOM, just-N-SG-NOM and peace-N-SG-NOM en the world-N-SG-NOM</p>
+
+<p>of the following in the world: freedom, justice, and peace</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>de liber`o, just`o &middot;kaj pac`o en la mond`o</p>
+
+<p>of free-N-SG-NOM, just-N-SG-NOM and peace-N-SG-NOM en the world-N-SG-NOM</p>
+
+<p>of freedom, of justice, and of peace in the world</p>
+
+</td></tr>
+
+</table>
+
+<h4>Expression: Men and women of full age, without any limitation due to race, nationality or religion, have the right to marry and to found a family.</h4>
+
+<p><i>Base-language translation</i></p>
+
+<p>The official Esperanto translation of this sentence is (UNHCHR 1998):</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>Plena&#x011d;aj viroj kaj virinoj, sen ia ajn limigo pro raso, nacieco a&#x016d; religio, rajtas edzi&#x011d;i kaj fondi familion.</p>
+
+<p>Full-age-ADJ-PL-NOM man-N-PL-NOM and man-fem-N-PL-NOM, without some/any-kind-of at-all limit-caus-N-SG-NOM because-of race-N-SG-NOM, nation-ness-N-SG-NOM or religion-N-SG-NOM, right-VPRES spouse-become-VINF and found-VINF family-N-SG-ACC.</p>
+
+<p>Adult men and women, without any limitation because of race, nationhood or religion, have the right to get married and found a family.</p>
+
+</td></tr>
+
+</table>
+
+<p><i>Issue 1. Prepositional-attachment ambiguity.</i></p>
+
+<p>This expression contains a prepositional phrase between the subject and the verb, and it may be interpreted as being attached to either. If attached to the subject, "without" means "who are without". If attached to the verb, it means "in a manner that is not subject to".</p>
+
+<p>The strict word order of the DLT Intermediate Language prevents this ambiguity. If the prepositional phrase is sentential (attached to the verb), then it must appear at the beginning of the sentence. If it is a noun-phrase modifier attached to the subject, it must appear following the subject's noun and its complements.</p>
+
+<p><i>Issue 2. Semantic coordination ambiguity.</i></p>
+
+<p>The statement that "men and women have the right to marry" has multiple interpretations, more so than, for example, "men and women have the right to work". Many of the interpretive issues arise from presumed but unstated (and sometimes contested) agreements on the limitations of marital rights, such as limits on the right of married persons to marry. But one common ambiguity contained in this construction is due to the joint-several ambiguity of "and", discussed above, in combination with the intransitive-reciprocal ambiguity of "marry", like many other verbs ("make love", "agree", etc.). In English, even modifying such a verb with a "with" phrase does not always disambiguate it (e.g., "They fought with the Serbs").</p>
+
+<p>The DLT Intermediate Language has no specifications that would prevent this ambiguity. Usage in the base language customarily makes reciprocality explicit when it is meant. For example, where in English one might say "They shook hands", in Esperanto one traditionally says "Ili reciproke manpremis" [they reciprocally hand-pressed]. However, the explicit designation of reciprocality is often omitted and is not considered a grammatical rule. Thus, its prevention in the controlled language would require additional constraints.</p>
+
+<p><i>Issue 3. Illocutionary ambiguity.</i></p>
+
+<p>Divorced from its context, the statement "Men and women have the right to marry" can be interpreted as a factual description or as a declaration. If it is a declaration, it might be one with emotive or argumentative force, or it might be one with legal force--one that, by being declared in its context, makes the declared right real.</p>
+
+<p>The DLT Intermediate Language, like its base language and English, leaves this ambiguity to be resolved by reference to context. However, the specifications do prevent some ambiguities related to rights by requiring some distinctions among kinds of possibility (Witkam 1983, p. IV.43). There are distinct constructions to indicate capability, permission, and expectation (probability).</p>
+
+<h4>Expression: No State Party shall expel, return ("refouler") or extradite a person to another State where there are substantial grounds for believing that he would be in danger of being subjected to torture.</h4>
+
+<p><i>Issue 1. Terminological ambiguity.</i></p>
+
+<p>This expression exhibits an ambiguity typical of prescriptions, in this case a duality of interpretations of "return". Substantial litigation has taken place over this particular dispute, primarily because of the claim by the United States government that it could intercept refugees from Cuba on the high seas and return them to Cuba without "returning" them in the sense of this prohibition (e.g., Sale 1993). The designers of the DLT Intermediate Language make no claim that it prevents ambiguous technical terms such as this.</p>
+
+<p><i>Issue 2. Clausal-attachment ambiguity.</i></p>
+
+<p>The "where" clause in this expression has an ambiguous attachment. It may be sentential, in which case "where" is synonymous with "when" or "in any case in which". Or it may be a restriction on "another State".</p>
+
+<p>The DLT Intermediate Language prevents this ambiguity with its word-order rules. If the qualifying clause is sentential, it must appear at the beginning of the sentence. Cf. the "without" phrase in the discussion of the preceding expression.</p>
+
+<p><i>Issue 3. Trace ambiguity.</i></p>
+
+<p>If the "where" clause restricts "another State", then the clause is equivalent to an "if" condition where "in that State" (or "there") is inserted somewhere into the clause. There are five conceivable attachment sites for "in that State" (or five possible traces from which the "where" can be analyzed as being preposed). It seems reasonable to surmise that "in danger in that State", "being subjected in that State", or "torture in that State" is the intention. Each of these could have different impacts on particular fact patterns, such as where persons are transported across state boundaries and then tortured.</p>
+
+<p>The DLT Intermediate Language documentation is silent about relative clauses introduced by relative adverbs, such as this example (Schubert 1986, p. 76). It is also silent about long-distance dependencies such as this clause illustrates for four out of its five possible attachment sites (if it is a relative clause rather than a sentential adverbial clause). The base language treats such long-distance dependencies as marginally grammatical (Kalocsay, pp. 305-306). If the controlled language permits them, we do not know how it prevents them from being ambiguous.</p>
+
+<p>If the language interprets all relative-clause dependencies as shortest-distance ones, then it requires the other four attachments to be expressed in a reformulated conditional clause. In that case, the word-order rules and, optionally, derivational options guarantee ambiguity prevention, as shown below.</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>... al ali`a &#x015c;tat`o, se tie ekzist`as solid`a baz`o por la kred`o, ke li en`us dan&#x011d;er`o`n spert`i la tortur`o`n.</p>
+
+<p>... to other-ADJ-SG-NOM State-N-SG-NOM, if there exist-VPRES solid-ADJ-SG-NOM basis-N-SG-NOM for the believe-N-SG-NOM, that he en-VCOND danger-N-SG-ACC experience-VINF the torture-N-SG-ACC.</p>
+
+<p>... to another State, if there exists there a substantial basis for the belief that he would be in danger of being subjected to torture.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>... al ali`a &#x015c;tat`o, se ekzist`as solid`a baz`o por la kred`o tie, ke li en`us dan&#x011d;er`o`n spert`i la tortur`o`n.</p>
+
+<p>... to other-ADJ-SG-NOM State-N-SG-NOM, if exist-VPRES solid-ADJ-SG-NOM basis-N-SG-NOM for the believe-N-SG-NOM there, that he en-VCOND danger-N-SG-ACC experience-VINF the torture-N-SG-ACC.</p>
+
+<p>... to another State, if there exists a substantial basis for the belief there that he would be in danger of being subjected to torture.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>... al ali`a &#x015c;tat`o, se ekzist`as solid`a baz`o por la kred`o, ke tie li en`us dan&#x011d;er`o`n spert`i la tortur`o`n.</p>
+
+<p>... to other-ADJ-SG-NOM State-N-SG-NOM, if exist-VPRES solid-ADJ-SG-NOM basis-N-SG-NOM for the believe-N-SG-NOM, that there he en-VCOND danger-N-SG-ACC experience-VINF the torture-N-SG-ACC.</p>
+
+<p>... to another State, if there exists a substantial basis for the belief that he would be in danger there of being subjected to torture.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>... al ali`a &#x015c;tat`o, se ekzist`as solid`a baz`o por la kred`o, ke li en`us dan&#x011d;er`o`n spert`i tie la tortur`o`n.</p>
+
+<p>... to other-ADJ-SG-NOM State-N-SG-NOM, if exist-VPRES solid-ADJ-SG-NOM basis-N-SG-NOM for the believe-N-SG-NOM, that he en-VCOND danger-N-SG-ACC experience-VINF there the torture-N-SG-ACC.</p>
+
+<p>... to another State, if there exists a substantial basis for the belief that he would be in danger there of being subjected there to torture.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>... al ali`a &#x015c;tat`o, se ekzist`as solid`a baz`o por la kred`o, ke li en`us dan&#x011d;er`o`n spert`i la tortur`o`n tie.</p>
+
+<p>... to other-ADJ-SG-NOM State-N-SG-NOM, if exist-VPRES solid-ADJ-SG-NOM basis-N-SG-NOM for the believe-N-SG-NOM, that he en-VCOND danger-N-SG-ACC experience-VINF the torture-N-SG-ACC there.</p>
+
+<p>... to another State, if there exists a substantial basis for the belief that he would be in danger there of being subjected to torture located there.</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>... al ali`a &#x015c;tat`o, se ekzist`as solid`a baz`o por la kred`o, ke li en`us dan&#x011d;er`o`n spert`i la tie`a`n tortur`o`n.</p>
+
+<p>... to other-ADJ-SG-NOM State-N-SG-NOM, if exist-VPRES solid-ADJ-SG-NOM basis-N-SG-NOM for the believe-N-SG-NOM, that he en-VCOND danger-N-SG-ACC experience-VINF the there-ADJ-SG-ACC torture-N-SG-ACC.</p>
+
+<p>... to another State, if there exists a substantial basis for the belief that he would be in danger there of being subjected to torture located there.</p>
+
+</td></tr>
+
+</table>
+
+<h4>Expression: The members of the Committee shall be elected by secret ballot from a list of persons nominated by States Parties. Each State Party may nominate one person from among its own nationals.</h4>
+
+<p><i>Issue 1. Auxiliary-verb scope ambiguity.</i></p>
+
+<p>The auxiliary verb "shall" in the context of a legal instrument makes its sentence a prescription, but the scope of this prescription is ambiguous. Either the election alone is prescribed, or both the election and the nomination are prescribed. We find no evidence that this ambiguity is prevented by the DLT Intermediate Language.</p>
+
+<p><i>Issue 2. Participle-attachment ambiguity.</i></p>
+
+<p>The noun phrase "a list of persons nominated by States Parties" is ambiguous by virtue of the two possible attachments of the participle "nominated": either to "list" or to "persons". In the former case, the States Parties have collectively nominated a single list. Alternatively, the States Parties have (whether collectively or separately is not specified in this sentence) nominated persons and the persons have then been listed.</p>
+
+<p>The DLT Intermediate Language prevents this ambiguity. If the author chooses to make the participial phrase a postmodifier, ambiguity is prevented with attachment-skipping marks and (redundantly) number agreement. If the author chooses to make the participial phrase a (German-style) premodifier (Witkam 1983, p. IV.61), word order and (redundantly) number agreement make the expression unambiguous. We present both solutions:</p>
+
+<table border="1">
+
+<tr><td>
+
+<p>list`o de person`o`j propon`it`a`j far Konvenci`an`a`j &#x015c;tat`o`j</p>
+
+<p>list-N-SG-NOM of person-N-PL-NOM propose-PASTPASS-ADJ-PL-NOM by Convention-member-ADJ-PL-NOM State-N-PL-NOM</p>
+
+<p>a list of persons (that have been) proposed by States Parties</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>list`o de person`o`j &middot;propon`it`a far Konvenci`an`a`j &#x015c;tat`o`j</p>
+
+<p>list-N-SG-NOM of person-N-PL-NOM propose-PASTPASS-ADJ-SG-NOM by Convention-member-ADJ-PL-NOM State-N-PL-NOM</p>
+
+<p>a list of persons (that has been) proposed by States Parties</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>list`o de far Konvenci`an`a`j &#x015c;tat`o`j propon`it`a`j person`o`j</p>
+
+<p>list-N-SG-NOM of by Convention-member-ADJ-PL-NOM State-N-PL-NOM propose-PASTPASS-ADJ-PL-NOM person-N-PL-NOM</p>
+
+<p>a list of States-Parties-proposed persons</p>
+
+</td></tr>
+
+<tr><td>
+
+<p>far Konvenci`an`a`j &#x015c;tat`o`j propon`it`a list`o de person`o`j</p>
+
+<p>by Convention-member-ADJ-PL-NOM State-N-PL-NOM propose-PASTPASS-ADJ-SG-NOM list-N-SG-NOM of person-N-PL-NOM</p>
+
+<p>a States-Parties-proposed list of persons</p>
+
+</td></tr>
+
+</table>
+
+<p><i>Issue 3. Auxiliary-verb semantic ambiguity.</i></p>
+
+<p>The second sentence grants a right and, by implication, withholds some rights not granted, but both the granted right and the implicitly withheld rights are ambiguous. By saying "Each state may nominate one person from among its own nationals", the sentence may imply that no state may nominate anybody other than one of its own nationals and that no state may nominate more than one person, or rather that each state may nominate an unlimited number of persons provided that at most one of them may be one of its own nationals.</p>
+
+<p>Nothing in the DLT Intermediate Language specifications appears to prevent this ambiguity.</p>
+
+<h4>Expression: An employer is required to take reasonable steps to accommodate your disability unless it would cause the employer undue hardship.</h4>
+
+<p><i>Issue 1. Quantifier ambiguity.</i></p>
+
+<p>The context of this sentence suggests that the intended meaning of "an" is "every" or "every applicable", but without that context the sentence exhibits a common existential/universal ambiguity of the English indefinite article. The ambiguity becomes more plausible with a past-tense verb ("An employer was required ..."). A similar ambiguity applies to indefinite plural noun phrases ("Employers are required ...").</p>
+
+<p>We find no restriction in the DLT Intermediate Language that would prevent this ambiguity. Indefinite noun phrases are used in the base language with universally quantified meanings, for example in proverbs, such as "Ri&#x0109;ulo havas grandan parencaron" [A rich person has a large set of relatives] (Zamenhof 1910). The controlled language apparently permits this quantifier polysemy.</p>
+
+<p><i>Issue 2. Referential ambiguity.</i></p>
+
+<p>In this expression, only one noun phrase is a possible antecedent of the pronoun "it": "your disability". However, an alternative antecedent is the implicitly introduced noun phrase "the taking of reasonable steps to accommodate your disability". A third interpretation is that "it" is a pleonastic pronoun referring to an implicitly extraposed clause, "to do so", at the end of the sentence. The second and third interpretations are semantically alike and differ substantially from the first. In the first case, the employer is excused whenever your disability would cause undue hardship (e.g., your disability makes the employer's customers so uncomfortable that they will stop patronizing the employer). In the second and third cases, the employer is excused if reasonable steps of accommodation would cause undue hardship (e.g., the employer is nearly out of funds).</p>
+
+<p>This ambiguity could exist in the DLT Intermediate Language. The usual pronoun referring to your disability would be "&#x011d;i" [it], and the usual pronoun referring to the taking of steps would be "tio" [that]. But "tio" can refer to ordinary nouns, so formulating the sentence with "tio" would make its referent ambiguous.</p>
+
+<h3>References</h3>
+
+<p>Kalocsay 1985. K&aacute;lm&aacute;n Kalocsay and Gaston Waringhien, <i>Plena Analiza Gramatiko de Esperanto</i>, 5th edn. (Rotterdam: Universala Esperanto-Asocio, 1985).</p>
+
+<p>NCI 2005. National Cancer Institute, "Studies Find No Evidence That SV40 is Related to Human Cancer", 2005, <a href="http://www.cancer.gov/newscenter/pressreleases/SV40">http://www.cancer.gov/newscenter/pressreleases/SV40</a>.</p>
+
+<p>NIAID 2002. National Institute of Allergy and Infectious Diseases, <i>Malaria</i>, 2002, <a href="http://www.niaid.nih.gov/publications/malaria/pdf/malaria.pdf">http://www.niaid.nih.gov/publications/malaria/pdf/malaria.pdf</a>.</p>
+
+<p>NLM 2005. National Library of Medicine, <i>Medical Encyclopedia</i>, 2005, <a href="http://www.nlm.nih.gov/medlineplus/encyclopedia.html">http://www.nlm.nih.gov/medlineplus/encyclopedia.html</a>.</p>
+
+<p>OCR n.d. United States Department of Health and Human Services, Office for Civil Rights, "Your Rights under Section 504 of the Rehabilitation Act", n.d., <a href="http://www.hhs.gov/ocr/504.html">http://www.hhs.gov/ocr/504.html</a>.</p>
+
+<p>Pool 2006. Jonathan Pool, "Can Controlled Languages Scale to the Web?", 2006, <a href="/pubs/etc/ambigcl/clweb.html">http://panlex.org/pubs/etc/ambigcl/clweb.html</a>.</p>
+
+<p>Sale 1993. Sale v. Haitian Ctrs. Council, 113 S. Ct. 2549, 125 L. (92-344), 509 U.S. 155 (1993), <a href="http://straylight.law.cornell.edu/supct/html/92-344.ZS.html">http://straylight.law.cornell.edu/supct/html/92-344.ZS.html</a>.</p>
+
+<p>Schubert 1986. Klaus Schubert, <i>Syntactic Tree Structures in DLT</i>, Utrecht, Netherlands: BSO/Research, 1986.</p>
+
+<p>Schubert 2004. Klaus Schubert, "Projekt Distributed Language Translation", 2004, <a href="http://www.wi.fh-flensburg.de/ifk/schubert/forschung/FuEDLTInh.htm">http://www.wi.fh-flensburg.de/ifk/schubert/forschung/FuEDLTInh.htm</a>.</p>
+
+<p>UDHR 1948. Universal Declaration of Human Rights, 1948, <a href="http://www.ohchr.org/EN/UDHR/Pages/Language.aspx?LangID=eng">http://www.ohchr.org/EN/UDHR/Pages/Language.aspx?LangID=eng</a>.</p>
+
+<p>WHO 2005. World Health Organization, <i>The World Health Report 2005: Make Every Mother and Child Count</i>, 2005, <a href="http://www.who.int/entity/whr/2005/whr2005_en.pdf">http://www.who.int/entity/whr/2005/whr2005_en.pdf</a>.</p>
+
+<p>Witkam 1983. A.P.M. Witkam, <i>Distributed Language Translation: Feasibility Study of a Multilingual Facility for Videotex Information Networks</i>, Utrecht, Netherlands: BSO, 1983.</p>
+
+<p>Zamenhof 1910. L. L. Zamenhof, <i>Proverbaro Esperanta</i>, 1910, <a href="http://www.helsinki.fi/~jslindst/proverbaro.html">http://www.helsinki.fi/~jslindst/proverbaro.html</a>.</p>
+
+<p class="c"><a href="http://validator.w3.org/check?uri=referer">
+<img
+	style="border: 0; margin: 3px"
+	src="http://www.w3.org/Icons/valid-xhtml11"
+	alt="Valid XHTML 1.1!"
+	height="31"
+	width="88"
+/>
+</a></p>
+
+</body>
+</html>

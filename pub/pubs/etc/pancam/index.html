@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+
+<title>The Panlingual Camera Phone</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../../../styles-201202.css" title="styles" />
+
+</head>
+
+<body>
+
+<h1>The Panlingual Camera Phone</h1>
+
+<h2>Martin Hecko, Kinsley Ogunmola, Jonathan Pool, Tim Wong, Peter Woodman</h2>
+
+<p class="c">Project sites:<br />
+http://www.cs.washington.edu/education/courses/cse490f/07wi/project_files/camera/<br />
+http://panlingual.org/ (hosted by <a href="http://utilika.org">Utilika Foundation</a>)<br />
+<br />
+Report URLs:<br />
+http://www.cs.washington.edu/education/courses/cse490f/07wi/project_files/camera/devpilot/rev.html<br />
+http://panlex.org/pubs/etc/pancam.html</p>
+
+<h3>Problem</h3>
+
+<p>You're a Vinkalkan, on a trip to Hattania. You use your intuitions, school-studied foreign languages, and gestures to communicate with people around you. But at times the language barrier is a frustrating problem. You want to read a street sign, but can't. At a bus stop you wish you could make sense of the posted schedule. You've stumbled across a quaint village restaurant, but its menu looks like gibberish. You wonder what a screaming newspaper headline is reporting. You come across a gathering with placards but wish you knew what the crowd is protesting.</p>
+
+<p>Your growing physical mobility, arising from progress in technical, commercial, and political globalization, brings you face to face with pieces of text in various languages that you cannot understand.</p>
+
+<h3>Solution Overview</h3>
+
+<p>The same progress in mobility that makes the problem increasingly frequent can also contribute to its solution.</p>
+
+<p>Wherever you go, you carry a mobile telephone with a built-in camera. With this device, you could photograph texts you want to understand, or use existing photographs, existing texts, or direct input (via typing, handwriting, or speech), and then get the texts translated. On the basis of your location, the input contents, and your history and preferences, the system could determine the source and target languages.</p>
+
+<p>Our project aims to design the user interface for an application that would add this functionality to mobile camera phones. The application, PanCam (Panlingual Camera Phone), would leverage four sources of intelligence: the device, a server network, the user, and a human-computation network. This human-machine solution strategy is appropriate for image-based text recognition, language identification, and translation from any language into any language, all of which are too error-prone to justify exclusive reliance on fully automatic solutions. In this collaborative solution strategy, and in its definition of the problem as <b>panlingual</b> rather than only bilingual or plurilingual translation, the PanCam project distinguishes itself from related efforts of which we are aware (Pool, 2006).</p>
+
+<h3>Tasks</h3>
+
+<p>We have decided to keep in mind a group of <b>realistic</b>, <b>diverse</b>, and <b>unequally difficult</b> representative tasks. We evaluate our design and each of our prototypes against these tasks. They are also the tasks we have asked test users to perform with our prototypes. From time to time, we have amended the task definitions slightly to accommodate changing prototype functionalities. As of March 2007, the tasks are defined as follows:</p>
+
+<p>Easy task: "Understanding something around you": While in an unfamiliar place, you see some written and printed texts around you in a language you cannot read. Get a translation of one of these texts into English.</p>
+
+<p>Task of moderate difficulty: "Making yourself understood": You have met somebody with whom you have shared interests but no shared language. The person knows Hattanese, but you do not. You have something to say to the person. Write it in English, get it translated into Hattanese, and show the translation to the person.</p>
+
+<p>Difficult task: "Understanding a scene you saw earlier": You have made several photographs of scenes around you while visiting unfamiliar places. Later on your trip, you want to understand better the scenes that you saw. Choose one of the photographs in your collection and get a translation of the text in that photograph into English. If you can, check whether the text in the photograph was correctly read. If you see obvious errors, correct them before the translation proceeds.</p>
+
+<h3>Scenarios</h3>
+
+<p>While the above tasks are largely design- and device-independent, we have also specified, at each stage of the project, "scenarios" (Lewis and Rieman, 1994, ch. 2) detailing how we expect a user can perform the tasks with the existing prototype. As of March 2007, the scenarios, based on the prototype implemented on the Cingular 8125 mobile telephone, are described below. The action "tap" refers to touching an item on the touch-sensitive display, while "press" refers to pressing a hardware button.</p>
+
+<p>Easy task: "Understanding something around you" (Figure 1).</p>
+
+<ol>
+<li>Start with PanCam launched. The application is in the Launch State.</li>
+<li>Tap the "Take Picture" button. (An alternate action is to tap the Menu Button or press the Right Soft Key to activate the menu, then either use the Navigation Control to navigate to the "Take Picture" menu item or tap the "Take Picture" menu item.) The display is replaced with the contents of the camera's view. The application is in the Image Capture State.</li>
+<li>Aim the camera at a specified sign, which is posited to be printed in Hattanese.</li>
+<li>Press the Center Button. (An alternate action is to press the Camera Button.) The captured camera image remains on the display. The application is in the Captured Image Review State.</li>
+<li>Tap the Confirm Icon. The captured image appears with a source-language label "Hattanese" on the top half of the display, and its recognized text appears with a "Recognized Text" label in a text area (the Recognized Text Area) on the bottom half of the display. The application is in the Text Recognition State.</li>
+<li>Because the source-language label is correct, do not change it.</li>
+<li>Because the recognized text is correct, do not edit it.</li>
+<li>Tap the Translate Button. (An alternate action is to press the Right Soft Key.) The recognized text appears with a source-language label "Hattanese" on the top half of the display, and its translation into English appears with a target-language label "English" on the bottom half of the display. The application is in the Translation State.</li>
+<li>Because the source-language and target-language labels are correct, do not change them.</li>
+<li>Take note of the translation.</li>
+</ol>
+
+<p class="c"><img src="scen1states1-5.png" width="450" height="390" alt="Easy scenario storyboard" /><br />Figure 1. Easy Scenario Storyboard</p>
+
+<p style="page-break-before: always">Task of moderate difficulty: "Making yourself understood" (Figure 2).</p>
+
+<ol>
+<li>Start with PanCam launched. The application is in the Launch State.</li>
+<li>Tap the "Enter Text" button. (An alternate action is to tap the Menu Button or press the Right Soft Key to activate the menu, then either use the Navigation Control to navigate to the "Enter Text" menu item or tap the "Enter Text" menu item.) An empty text area (the Source Text Area) appears with a source-language label "English" on the top half of the display, and an empty text area (the Target Text Area) appears with a target-language label "English" on the bottom half of the display. The application is in the Text Entry Preparation State.</li>
+<li>Because the source-language label is correct, do not change it.</li>
+<li>Tap the target-language label. The target-language menu appears. The application is in the Target Language Modification State.</li>
+<li>Tap the "Hattanese" menu item on the target-language menu. The target-language menu closes, and the target-language label has changed to "Hattanese". The application is in the Text Entry Preparation State.</li>
+<li>Tap the Keyboard Icon. The On-Screen Keyboard appears, and the Target Text Area shrinks. The application is in the On-Screen Text Entry Start State.</li>
+<li>Tap key icons on the On-Screen Keyboard to compose a text. The composed text appears in the Source Text Area. (An alternate sequence is to perform actions 6 and 7 before performing actions 4 and 5.) The application is in the On-Screen Text Entry Progress State.</li>
+<li>Tap the Translate Button. (An alternate action is to press the Right Soft Key.) The translation into Hattanese of the entered text appears in the Target Text Area. The application is in the Translation State.</li>
+<li>Because the source-language and target-language labels are correct, do not change them.</li>
+<li>Show the translation to the person for whom you entered the text.</li>
+</ol>
+
+<!--<p class="c"><img src="scen2states1-7.png" width="450" height="595" alt="Moderately difficult scenario storyboard" /><br />Figure 2. Moderately Difficult Scenario Storyboard</p>-->
+
+<p class="c"><img src="scen2states1-7.png" width="360" height="476" alt="Moderately difficult scenario storyboard" /><br />Figure 2. Moderately Difficult Scenario Storyboard</p>
+
+<p style="page-break-before: always">Difficult task: "Understanding a scene you saw earlier" (Figure 3).</p>
+
+<ol>
+<li>Start with PanCam launched. The application is in the Launch State.</li>
+<li>Tap the "Load Picture" button. (An alternate action is to tap the Menu Button or press the Right Soft Key to activate the menu, then either use the Navigation Control to navigate to the "Load Picture" menu item or tap the "Load Picture" menu item.) A gallery of compressed replicas of the images stored in the device appears. The application is in the Image Selection State.</li>
+<li>Tap the replica of any of the displayed images. The selected image appears with a source-language label on the top half of the display, and its recognized text appears with a "Recognized Text" label in a text area (the Recognized Text Area) on the bottom half of the display. The application is in the Text Recognition State.</li>
+<li>Because the source-language label is correct, do not change it.</li>
+<li>Tap the Keyboard Icon. The On-Screen Keyboard appears, and the Recognized Text Area shrinks. The application is in the Recognized Text Correction Start State.</li>
+<li>Tap insertion points or drag across strings to be replaced in the recognized text, and tap key icons on the On-Screen Keyboard to correct the errors found. The corrected text remains in the Recognized Text Area. The application is in the Recognized Text Correction Progress State.</li>
+<li>Tap the Translate Button. (An alternate action is to press the Right Soft Key.) The corrected recognized text appears with a source-language label on the top half of the display, and its translation into English appears with a target-language label "English" on the bottom half of the display. The application is in the Translation State.</li>
+<li>Because the source-language and target-language labels are correct, do not change them.</li>
+<li>Take note of the translation.</li>
+</ol>
+
+<p class="c"><img src="scen3states1-6.png" width="450" height="390" alt="Difficult scenario storyboard" /><br />Figure 3. Difficult Scenario Storyboard</p>
+
+<h3>Design Evolution<h3>
+
+<h4>Evaluations</h4>
+
+<p>The brief history of the Panlingual Camera Phone project teaches two main lessons:</p>
+
+<ul>
+<li>Careful analysis before design begins can deliver robust guidance that retains value over several iterations of design, prototyping, and evaluation.</li>
+<li>Evaluation in the early stages of interface design can reveal problems even without high-fidelity prototypes or large numbers of users.</li>
+</ul>
+
+<p>From our experience with several methods of evaluation, our general conclusion is that the differences among methods are not very significant, because any method, implemented with care, tends to uncover the major issues with a design. But <b>when</b> evaluation is conducted seems to make a great difference. Evaluation seems to do the most good when it takes place early (starting before any design or prototyping) and often. And, since evaluation methods seem relatively interchangeable, it is rational to use rapid and inexpensive methods. Prototypes need not be elaborate, and evaluators need not be more than about five persons.</p>
+
+<p>The pre-design task analysis, contextual analysis with four interviews, and experience sampling with two subjects, provided evidence that users would want:</p>
+
+<ul>
+<li>not only translations of but also summaries of, and answers to questions about, texts</li>
+<li>translations not only into, but also from, their own languages</li>
+<li>translations into not only foreseeable, but also arbitrary user-specified, languages</li>
+<li>translations of text not only into text but also into speech</li>
+<li>not only translations, but also text-to-speech conversions</li>
+<li>recognition and explanation not only of text, but also of objects in general</li>
+<li>translation of text not only in the last-made photograph, but also in archived images</li>
+<li>translations with tolerable completion times ranging from seconds to days</li>
+</ul>
+
+<p>Subsequent user testing revealed some other demands, including for text input, but the initial findings have motivated all subsequent design and some of them remain to be addressed in future work.</p>
+
+<p>The first user study, with a low-fidelity paper prototype and four subjects, revealed significant usability issues, including:</p>
+
+<ul>
+<li>Possible confusion about the combination of taking a photograph and getting a translation into a single action, given that the device's photograph-taking control has no translation function outside the application.</li>
+<li>The risk that users will not perceive that the source and target language labels are mutable.</li>
+<li>The inconsistency of touch-based metadata queries and prior user experience.</li>
+</ul>
+
+<p>The heuristic evaluation of the medium-fidelity interactive prototype, by four user-interface design students, revealed additional important issues, including:</p>
+
+<ul>
+<li>The need for an efficient method by which a user can review and correct the recognized text extracted by the system from a photograph.</li>
+<li>The need for an opportunity for the user to correct any error by the system in source-language identification.</li>
+<li>The low visibility of system status messages compressed to fit onto small segments of a mobile-telephone display.</li>
+<li>Inadequate user control during a multi-step textual zoom-in action.</li>
+<li>The need for context-sensitive help on the less intuitive affordances, including on whether exiting actions automatically save open images and texts.</li>
+</ul>
+
+<p>These initial small-sample evaluations revealed almost all the issues so far. The next user evaluation, based on a further-revised medium-fidelity interactive prototype, had a 24-person sample of subjects, four to six times as large as any prior sample, but revealed no new issues. The last evaluation, of the device-based prototype, had a five-person sample and revealed some device-specific issues, plus one fundamental issue that had escaped prior discovery. This was the problem of mode-switching. Prior prototypes had not offered any input modes except camera image capture. The device-based prototype offered the option to enter text input directly. This change made it possible for a user to try switching from one mode to another while input was in progress. This attempt made us aware that such switches could be useful and we had not provided for them.</p>
+
+<h4>Design Changes</h4>
+
+<p>The interface design has changed at each stage in its development, mainly for two reasons:</p>
+
+<ul>
+<li>Evaluation results.</li>
+<li>Design and deployment environment constraints.</li>
+</ul>
+
+<p>Moving from the paper prototype to the medium-fidelity interactive prototype, we added metadata access and text zooming to the features, because task analysis and evaluation had revealed a need for these and they were more practically implementable in an interactive prototype.</p>
+
+<p>As we iterated through successive versions of the medium-fidelity prototype, we added help buttons, made the review of the entire recognized text possible, permitted the user to correct the source-language identification, made hints more visible, and provided a zoom-cancel option. These had been identified as wanted features in evaluations.</p>
+
+<p>The device-based environment substantially changed the design constraints. Its implementation difficulties caused us to abandon two features that we had already built in: lexical zoom and metadata access. Conversely, its implementation possibilities permitted us to add features whose value we had already understood, but which could not realistically be realized before: the ability of the user not only to review, but also to edit, recognized text from an image; the ability to select an existing stored image for input rather than taking a new photograph; and the ability to provide input by direct text entry on a device keyboard.</p>
+
+<p>The prototypes' evolving responses to the problem of source text quality is illustrative. Even before prototyping began, our task and user studies made it clear that this problem would be critical. A large fraction of the photographs made by subjects in the experience-sampling study contained difficult-to-recognize text, as Figure 4 exemplifies. Although we knew this would be a problem, we postponed working on it when we implemented a paper prototype. There we pretended that the system could identify the source language infallibly and deliver a translation without exposing the text recognition to the user for correction, as shown in Figure 5. Our interactive medium-fidelity prototypes made slight moves toward addressing the problem, by permitting the user to correct the source-language identification and inspect the text recognition of individual words, while still not permitting any corrections of the recognized text, as Figure 6 shows. The device-based prototype made text editing more practical, and here we incorporated a more realistic approach to the problem of source text quality, permitting the user to inspect the entire recognition output for an image and to edit it freely before translation takes place, as in Figure 7.</p>
+
+<table class="c">
+<tr>
+<td style="padding-right: 10pt"><img src="wrinkle.jpg" width="356" height="290" alt="Difficult-to-recognize text in ESM photo" /><br />Figure 4. ESM Photo</td>
+<td style="padding-left: 10pt"><img src="figure5.jpg" width="226" height="290" alt="Paper-prototype translation" /><br />Figure 5. Paper-prototype translation</td>
+</tr>
+<tr>
+<td style="padding-right: 10pt"><img src="figure6.jpg" width="237" height="302" alt="Medium-fidelity translation" /><br />Figure 6. Medium-fidelity translation</td>
+<td style="padding-left: 10pt"><img src="dp-checkocr.jpg" width="222" height="285" alt="Device-prototype text recognition" /><br />Figure 7. Device-prototype text recognition</td>
+</tr>
+</table>
+
+<h3>Final Interface</h3>
+
+<h4>Introduction</h4>
+
+<p>Once we moved our design environment to an actual mobile telephone, we amended our design to incorporate wanted features that could now realistically be implemented. Some of these features have been implemented, and some remain to be addressed in future work. In this section we describe our final design, with "final" defined to mean "as of the end of the development period from October 2007 to March 2007".
+
+<h4>Interface Design</h4>
+
+<p>The interface is intended to permit its user to capture or formulate an expression in any language and obtain a translation of it into any other language. The user may capture the expression by providing a text document, a speech recording, or a recorded image that contains text, or by taking a photograph of text. The user may formulate the expression by typing text, handwriting text, or speaking.</p>
+
+<p>We have designed the interface to realize this functionality as follows:</p>
+
+<p>The user supplies the text source by selecting a source type from buttons on the launch page (Figure 8) and then providing a source of that type by means of the features of the mobile camera phone on which the application is installed.</p>
+
+<p class="c"><img src="scen1state1.png" width="240" height="320" alt="Launch page" /><br />Figure 8. Launch Page</p>
+
+<p>If the source is an image, the user may limit the text range that is to be translated by tapping a zoom button and marking the text to be included.</p> 
+
+<p>If the source is an image or speech, the system provides a conversion of the source to editable text for inspection and correction by the user in a text area with an on-screen or hardware keyboard (Figure 9).</p>
+
+<p class="c"><img src="scen3state4.png" width="240" height="320" alt="Recognized text correction" /><br />Figure 9. Recognized Text Correction</p>
+
+<p>The user has access to, and may correct, the system's identification of the source language with an editable dropdown list.</p>
+
+<p>The user has access to, and may change, the system's identification of the desired target language with an editable dropdown list (Figure 10).</p>
+
+<p class="c"><img src="scen2state3.png" width="240" height="320" alt="Target language modification" /><br />Figure 10. Target Language Modification</p>
+
+<p>The user may obtain metadata on any word in the source or target expression by touching the word. This will cause the word to be visibly connected to its counterpart word or phrase.</p>
+
+<p>The user may obtain a translation of the text (with any corrections made) into the specified target language by tapping a translate button (Figure 11).</p>
+
+<p class="c"><img src="scen1state4.png" width="240" height="320" alt="Before text translation" /> <img src="scen1state5.png" width="240" height="320" alt="After text translation" /><br />Figure 11. Before and After Text Translation</p>
+
+<p>The user may save any existing unsaved image and text and supply a new source by tapping a new-photo button if the new source is a camera photograph, or by tapping an exit button and reselecting a source type from the launch-page menu.</p>
+
+<p>The user may exit the application by tapping an exit button on the launch page.</p>
+
+<p>The user may see page-specific help by tapping a help button on any page.</p>
+
+<p>The user may see control-specific help by pressing and holding any control.</p>
+
+<h4>Implementation Gaps</h4>
+
+<p>Some of the above functionalities have not yet been implemented. The reasons are:</p>
+
+<ul>
+<li>We have limited our development environment to the C# programming language in the Windows Mobile 5.0 SDK for Smartphone in Microsoft Visual Studio 2005 and have avoided implementing features that are difficult or impossible to implement in that environment.</li>
+<li>Our productivity has been constrained by a one-month development period, an unfamiliar development environment, and the availability of two devices for five collaborators.</li>
+<li>We have chosen to prioritize quality improvements on a few features over the expansion of the feature set.</li> 
+</ul>
+
+<p>The as yet unimplemented features are:</p>
+
+<ul>
+<li>Existing text as an input source.</li>
+<li>Existing recorded speech as an input source.</li>
+<li>Speech as an input source.</li>
+<li>Handwriting as an input source.</li>
+<li>Editability of the source-language dropdown list.</li>
+<li>Editability of the target-language dropdown list.</li>
+<li>Textual zooming (limiting the text range to be translated).</li>
+<li>Word-based metadata.</li>
+<li>Text saving.</li>
+<li>Page-specific help.</li>
+<li>Control-specific help.</li>
+</ul>
+
+<p>Our design effort has been concentrated on the user interface, not on the entire system. In the case of PanCam, the provision of the services (language identification, text recognition, and translation) requested by a user is a complex problem. In order to permit realistic testing of the interface prototype, we have simulated or simplified some functionalities of the system:</p>
+
+<ul>
+<li>The system's recognition of text contained in a camera photograph is simulated, as follows. When the user takes a photograph, a copy of the photograph is automatically transmitted to a server operated by a person. The person enters a source-language code and a text, and the server transmits these to the device. The device responds to the code by displaying the corresponding source-language label on the image. The device responds to the text by displaying that text in the Recognized Text Area.</li>
+<li>The system's recognition of text contained in a stored image is simulated, as follows. When the user selects a stored image, a stored parameter value for that image is displayed as the source-language label on the image, and a stored parameter value for that image is displayed in the Recognized Text Area. Because our user testing of the stored-image input feature is based on the above-described difficult task, which includes recognized-text correction by the user, the recognized-text value associated with each stored image contains deliberate errors.</li>
+<li>The system's selection of a default source language for text input is simplified, as follows. The default source language is English. This simplification simulates a case in which the user has specified English as the user's preferred language.</li>
+<li>The system's selection of a default target language is simplified, as follows. The default target language in all contexts is English. This simplification simulates a case in which the user has specified English as the user's preferred target language, except in the case of text input. In that case, the interface by design selects the prevailing local language, but the prototype system selects English as the default target language, even though the default source language is also English. In this case, the prototype simulates a case in which the user's preferred language is English and the device is located in an English-dominant locale. Even though the preferred source and target languages would not reasonably be identical, the interface might reasonably make both defaults identical, because it would not be possible to predict whether the user would intend to change the source language (as when the user hands the device to somebody else to enter a text) or the target language (as when the user wants a translation for a speaker of a minority language).</li>
+<li>The system's translation is simulated, as follows. When the user taps the "Translate" button, the source text (the recognized text, with any user corrections, in case of image input), the name of the source language that currently labels it, and the name of the target language that currently labels the Target Text Area are transmitted to a server operated a person. The person enters a text, and the server transmits it to the device. The device displays the text in the Target Text Area.</li>
+<li>The system's response to changes in the source and target language labels by the user is simplified, as follows. The system disregards all changes in these labels except those that affect the labels that are transmitted to the server (see the previous point).</li>
+</ul>
+
+<h4>Implementation Tools</h4>
+
+<p>The tools used in the development of this version of the prototype were:</p>
+
+<ul>
+<li>Device: Cingular 8125 mobile telephone, with 1.3-megapixel camera, a 39-key alphanumeric hardware keyboard, and a 320 x 240 color touch-sensitive display.</li>
+<li>C# programming language.</li>
+<li>Windows Mobile 5.0 Smartphone QVGA Emulator.</li>
+<li>Windows Mobile 5.0 SDK for Smartphone.</li>
+<li>Microsoft Visual Studio 2005.</li>
+</ul>
+
+<p>The device permitted us to implement some features of our design more realistically than previously used prototyping tools had. The development environment allowed us to place high-fidelity controls into the prototype with minimal coding effort.</p>
+
+<p>However, the programming environment made development difficult in some ways. The poverty of the training and reference documentation forced us to spend substantial time researching, guessing, and trying solutions. The emulator responded slowly. It also did not, or did not easily, emulate all features of the device, including the functionalities of on-screen action buttons, taking a photograph, and communicating with a server. Thus, it was difficult for multiple collaborators to contribute to the development effort when only two copies of the actual device were available. The development environment was also unfamiliar to most members of the team and required the use of an operating system that was not readily available to all of them.</p>
+
+<h3>References</h3>
+
+<p>Clayton Lewis and John Rieman, <i><a href="http://hcibib.org/tcuid">Task-Centered User Interface Design: A Practical Introduction</a></i> (http://hcibib.org/tcuid, 1994).</p>
+
+<p>Jonathan Pool, <a href="idea">"The Panlingual Mobile Camera"</a> (http://panlex.org/pubs/etc/pancam/idea and https://www.cs.washington.edu/education/courses/490f/07wi/project_files/camera/idea, 2006).</p>
+
+<p class="c" style="margin-top: 12pt">
+<a href="http://validator.w3.org/check?uri=referer">
+<img
+	style="border: 0"
+	src="http://www.w3.org/Icons/valid-xhtml11"
+	alt="Valid XHTML 1.1!"
+	height="31"
+	width="88"
+/>
+</a>
+</p>
+
+</body>
+</html>
