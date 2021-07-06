@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Maximal bad page</title>
+    <meta name="description" content="tester">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .noUl-a a {
+        text-decoration: none;
+      }
+      .noOl > a:focus, .noOl > button:focus, .noOl input, .noOl select {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Maximal bad page</h1>
+      <p>This page contains all the cases tested by the custom tests in <code>combo6</code>. At least one case should fail each <code>combo6</code> test.</p>
+      <h2><code>linkUlS</code></h2>
+      <p>This is a list of non-inline and non-underlined links.</p>
+      <ul class="noUl-a">
+        <li><a href="https://developer.mozilla.org/">Source 1</a></li>
+        <li><a href="https://www.w3.org/TR/wai-aria-1.1/">Source 2</a></li>
+      </ul>
+      <p>This paragraph contains an inline and underlined link to <a href="https://www.w3.org/TR/WCAG21/">Source 3</a>.</p>
+      <p class="noUl-a">This paragraph contains an inline but not-underlined link to <a href="https://longnow.org/">Source 4</a>.</p>
+      <h2><code>focusOutlineS</code></h2>
+      <p class="noOl">The focusable elements elsewhere in this document are outlined when focused. But The one in this paragraph is not outlined when focused. Here is a link to <a href="https://www.wikipedia.org/">Source 5</a>.</p>
+      <p>The following form&rsquo;s controls, too, are not outlined when focused.</p>
+      <form class="noOl">
+        <p><fieldset>
+          <legend>Choose a radio button</legend>
+          <p><label><input type="radio" name="tree" value="pine" selected>pine</label></p>
+          <p><label><input type="radio" name="tree" value="maple" selected>maple</label></p>
+        </fieldset></p>
+        <p><fieldset>
+          <legend>Choose checkboxes</legend>
+          <p><label><input type="checkbox" name="rose">rose</label></p>
+          <p><label><input type="checkbox" name="tulip">tulip</label></p>
+        </fieldset></p>
+        <p><label for="country">Choose a country</label></p>
+        <p><select id="country" name="country" size="2">
+          <option value="Canada">Canada</option>
+          <option value="Mexico">Mexico</option>
+        </select></p>
+        <p><button type="button">Not outlined</button></p>
+      </form>
+      <h2><code>focOpS</code></h2>
+      <p>The previous links in this document are focusable and operable. So are the following form elements:</p>
+      <form>
+        <p><fieldset>
+          <legend>Choose a radio button</legend>
+          <p><label><input type="radio" name="drink" value="water" selected>water</label></p>
+          <p><label><input type="radio" name="drink" value="juice" selected>juice</label></p>
+        </fieldset></p>
+        <p><fieldset>
+          <legend>Choose checkboxes</legend>
+          <p><label><input type="checkbox" name="water">water</label></p>
+          <p><label><input type="checkbox" name="juice">juice</label></p>
+        </fieldset></p>
+        <p><label for="meal">Choose a meal</label></p>
+        <p><select id="meal" name="meal" size="3">
+          <option value="breakfast">breakfast</option>
+          <option value="lunch">lunch</option>
+          <option value="supper">supper</option>
+        </select></p>
+        <p><button type="button">Do nothing</button></p>
+      </form>
+      <p>But the following link is not focusable. This is a link to <a tabindex="-1" href="https://iwpr.net/">Source 6</a>.</p>
+      <p tabindex="0">And this paragraph is focusable, though not operable.</p>
+      <h2><code>labClashS</code></h2>
+      <p>Previous labelable elements in this document are correctly labeled implicitly or explicitly. In the following form, one control is labeled by reference, and one is labeled by attribute.</p>
+      <form>
+        <p id="cityLabel">Enter any city.</p>
+        <p><input name="city" aria-labelledby="cityLabel" maxLength="50"></p>
+        <p>Enter the integer result of the formula shown by the image above.</p>
+        <p><input
+          type="number"
+          step="1"
+          name="humannessTest"
+          maxLength="5"
+          aria-label="Enter the result of 3&times;4 + 7."
+        ></p>
+      </form>
+      <p>The following form contains unlabeled controls.</p>
+      <form>
+        <p>Enter any vehicle type.</p>
+        <p><input name="vehicle" maxLength="50"></p>
+        <p>Enter the integer result of the formula shown by the image above.</p>
+        <p><fieldset>
+          <legend>Choose a radio button</legend>
+          <p><input type="radio" name="food" value="fruit" selected>fruit</p>
+          <p><input type="radio" name="food" value="vegetable" selected>vegetable</p>
+        </fieldset></p>
+        <p><fieldset>
+          <legend>Choose checkboxes</legend>
+          <p><input type="checkbox" name="arm">arm</p>
+          <p><input type="checkbox" name="leg">leg</p>
+        </fieldset></p>
+        <p>Choose a house part</p>
+        <p><select name="housePart" size="2">
+          <option value="window">window</option>
+          <option value="door">door</option>
+        </select></p>
+        <p>What does this button do? <button type="button"></button></p>
+      </form>
+      <p>The following form&rsquo;s controls are mislabeled.</p>
+      <form>
+        <p><fieldset>
+          <legend>Choose a radio button</legend>
+          <p><label><input type="radio" name="doc" value="book" selected aria-label="book">book</label></p>
+          <p><label><input aria-labelledby="art" type="radio" name="doc" value="article" selected><span id="art">article</span></label></p>
+        </fieldset></p>
+        <p><label for="continent">Choose a continent</label></p>
+        <p><label id="enrollLabel" for="enroll">Enroll me</label></p>
+        <p><button id="enroll" type="button" aria-label="I want to enroll" aria-labelledby="enrollLabel">OK</button></p>
+      </form>
+    </main>
+  </body>
+</html>
