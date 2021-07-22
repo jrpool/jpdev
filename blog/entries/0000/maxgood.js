@@ -4,14 +4,13 @@ const openMenu = button => {
   const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'open';
   button.ariaExpanded === 'true';
-  console.log(document.activeElement.tagName);
   menu.focus();
-  console.log(document.activeElement.tagName);
 };
 // Closes a menu controlled by a button.
 const closeMenu = button => {
   button.ariaExpanded === 'false';
   const menu = document.getElementById(button.getAttribute('aria-controls'));
+  button.focus();
   menu.className = 'shut';
 };
 // Makes the specified (or the last if -1) menu item active.
@@ -105,6 +104,10 @@ defMenu.addEventListener('click', event => {
     closeMenu(defButton);
     target.dispatchEvent(new Event('click'));
   }
+});
+defMenu.addEventListener('blur', () => {
+  defButton.ariaExpanded = 'false';
+  menu.className = 'shut';
 });
 window.addEventListener('keyup', event => {
   const key = event.key;
