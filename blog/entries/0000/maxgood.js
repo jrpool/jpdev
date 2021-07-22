@@ -1,17 +1,17 @@
-// EVENT HANDLERS
-// Opens a menu.
+// UTILITIES FOR EVENT HANDLERS
+// Opens a menu controlled by a button.
 const openMenu = button => {
   button.ariaExpanded === 'true';
   const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'open';
 };
-// Closes a menu.
+// Closes a menu controlled by a button.
 const closeMenu = button => {
   button.ariaExpanded === 'false';
   const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'shut';
 };
-// Makes the specified menu item (the last if itemIndex is -1) active.
+// Makes the specified (or the last if -1) menu item active.
 const setActive = (menu, itemIndex, permLabel) => {
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
   menuItems.forEach((item, index) => {
@@ -53,8 +53,8 @@ const newMenuIndex = (menu, key) => {
   }
   return newIndex;
 };
-// Activates the active menu item.
-const activate = menu => {
+// Clicks the active menu item.
+const click = menu => {
   const activeItem = document.getElementById(menu.getAttribute('aria-activedescendant'));
   activeItem.dispatchEvent(new Event('click'));
 };
@@ -66,7 +66,7 @@ const menuButtonClickHandler = button => {
   else {
     openMenu(button);
     const menu = document.getElementById(button.getAttribute('aria-controls'));
-    if (! menu.activeDescendant) {
+    if (! menu.getAttribute('aria-activedescendant')) {
       setActive(menu, 0);
     }
   }
@@ -89,26 +89,29 @@ const menuKeyHandler = (menu, key, permLabel) => {
     setActive(menu, newIndex, permLabel);
   }
 };
-// OPERATIONS
-// Constants.
+// CONSTANTS
 const defButton = document.getElementById('defButton');
 const defMenu = document.getElementById('defMenu');
 const permLabel = defMenu.getAttribute('aria-labelledby');
-// Event listeners.
-defButton.addEventListener('click', menuButtonClickHandler);
-document.body.addEventListener('keyup', event => {
-  const key = event.key;
-  if (
-    document.activeElement === defButton
-    && ['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(key)
-  ) {
-    menuButtonKeyHandler(defButton, key);
+// EVENT LISTENERS
+defButton.addEventListener('click', event => menuButtonClickHandler(event.target));
+defMenu.addEventListener('click', event => {
+  event.preventDefault();
+  const target = event.target;
+  if (target.role === 'menuitem') {
+    closeMenu(defButton);
+    target.dispatchEvent(new Event('click'));
   }
 });
-document.body.addEventListener('keyup', event => {
+window.addEventListener('keyup', event => {
   const key = event.key;
-  if (document.activeElement === defMenu) {
-    const key = event.key;
+  const focus = document.activeElement;
+  if (focus === defButton) {
+    if (['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(key)) {
+      menuButtonKeyHandler(defButton, key);
+    }
+  }
+  else if (focus === defMenu) {
     if (key === 'Enter') {
       const activeItem = document.getElementById(defMenu.getAttribute('aria-activedescendant'));
       closeMenu(defButton);
@@ -118,13 +121,5 @@ document.body.addEventListener('keyup', event => {
       const newIndex = newMenuIndex(defMenu, key);
       setActive(defMenu, newIndex, permLabel);
     }
-  }
-});
-defMenu.addEventListener('click', event => {
-  event.preventDefault();
-  const target = event.target;
-  if (target.role === 'menuitem') {
-    closeMenu(defButton);
-    target.dispatchEvent(new Event('click'));
   }
 });
