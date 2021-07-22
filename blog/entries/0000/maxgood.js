@@ -1,3 +1,4 @@
+// EVENT HANDLERS
 // Opens a menu.
 const openMenu = button => {
   button.ariaExpanded === 'true';
@@ -11,12 +12,13 @@ const closeMenu = button => {
   menu.className = 'shut';
 };
 // Makes the specified menu item (the last if itemIndex is -1) active.
-const setActive = (menu, itemIndex) => {
+const setActive = (menu, itemIndex, permLabel) => {
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
   menuItems.forEach((item, index) => {
     if (itemIndex === -1 && index === menuItems.length - 1 || index === itemIndex) {
       item.className = 'focal';
       menu.ariaActivedescendant = item.id;
+      menu.ariaLabelledby = `${permLabel} ${item.id}`;
     }
     else {
       item.className = 'blurred';
@@ -24,12 +26,12 @@ const setActive = (menu, itemIndex) => {
   });
 };
 // Returns the index of a keyboard-chosen menu item.
-const chooseMenuItem = (menu, key) => {
+const newMenuIndex = (menu, key) => {
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
   const menuItemIDs = menuItems.map(item => item.id);
   const activeIndex = menuItemIDs.indexOf(menu.ariaActivedescendant);
   const menuItemCount = menuItems.length;
-  let newIndex;
+  let newIndex = -1;
   if (key === 'ArrowDown') {
     newIndex = (activeIndex + 1) % menuItemCount;
   }
@@ -49,6 +51,7 @@ const chooseMenuItem = (menu, key) => {
     )
     .filter(index => index > -1 && index > activeIndex)[0];
   }
+  return newIndex;
 };
 // Activates the active menu item.
 const activate = menu => {
@@ -80,12 +83,17 @@ const menuButtonKeyHandler = (button, key) => {
   }
 };
 // Handles keyboard operations in a menu.
-const menuKeyHandler = menu => {
-  const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
-
+const menuKeyHandler = (menu, key, permLabel) => {
+  const newIndex = newMenuIndex(menu, key);
+  if (newIndex > -1) {
+    setActive(menu, newIndex, permLabel);
+  }
 };
 // OPERATIONS
+// Constants.
 const defButton = document.getElementById('defButton');
+const permLabel = document.getElementById(defButton.ariaControls).ariaLabelledby;
+// Event listeners.
 defButton.addEventListener('click', menuButtonClickHandler);
 document.body.addEventListener('keyup', event => {
   const key = event.key;
@@ -99,11 +107,17 @@ document.body.addEventListener('keyup', event => {
 const defMenu = document.getElementById('defMenu');
 document.body.addEventListener('keyup', event => {
   const key = event.key;
-  if (
-    document.activeElement === defMenu
-    && (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]+$/.test(key))
-  ) {
-    const newIndex = chooseMenuItem(defMenu, key);
+  if (document.activeElement === defMenu) {
+    const key = event.key;
+    if (key === 'Enter') {
+      const activeItem = document.getElementById(defMenu.activeDescendant);
+      closeMenu(defButton);
+      activeItem.dispatchEvent(new Event('click'));
+    }
+    else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]+$/.test(key)) {
+      const newIndex = newMenuIndex(defMenu, key);
+      setActive(defMenu, newIndex, permLabel);
+    }
   }
 });
 defMenu.addEventListener('click', event => {
@@ -112,12 +126,5 @@ defMenu.addEventListener('click', event => {
   if (target.role === 'menuitem') {
     closeMenu(defButton);
     target.dispatchEvent(new Event('click'));
-  }
-});
-document.body.addEventListener('keyup', event => {
-  if (document.activeElement === defMenu && event.key === 'Enter') {
-    const activeItem = document.getElementById(defMenu.activeDescendant);
-    closeMenu(defButton);
-    activeItem.dispatchEvent(new Event('click'));
   }
 });
