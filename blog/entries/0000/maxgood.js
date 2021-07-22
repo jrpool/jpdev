@@ -92,7 +92,8 @@ const menuKeyHandler = (menu, key, permLabel) => {
 // OPERATIONS
 // Constants.
 const defButton = document.getElementById('defButton');
-const permLabel = document.getElementById(defButton.ariaControls).ariaLabelledby;
+const defMenu = document.getElementById('defMenu');
+const permLabel = defMenu.getAttribute('aria-labelledby');
 // Event listeners.
 defButton.addEventListener('click', menuButtonClickHandler);
 document.body.addEventListener('keyup', event => {
@@ -104,7 +105,6 @@ document.body.addEventListener('keyup', event => {
     menuButtonKeyHandler(defButton, key);
   }
 });
-const defMenu = document.getElementById('defMenu');
 document.body.addEventListener('keyup', event => {
   const key = event.key;
   if (document.activeElement === defMenu) {
