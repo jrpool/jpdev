@@ -2,13 +2,13 @@
 // Opens a menu.
 const openMenu = button => {
   button.ariaExpanded === 'true';
-  const menu = document.getElementById(button.ariaControls);
+  const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'open';
 };
 // Closes a menu.
 const closeMenu = button => {
   button.ariaExpanded === 'false';
-  const menu = document.getElementById(button.ariaControls);
+  const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'shut';
 };
 // Makes the specified menu item (the last if itemIndex is -1) active.
@@ -17,8 +17,8 @@ const setActive = (menu, itemIndex, permLabel) => {
   menuItems.forEach((item, index) => {
     if (itemIndex === -1 && index === menuItems.length - 1 || index === itemIndex) {
       item.className = 'focal';
-      menu.ariaActivedescendant = item.id;
-      menu.ariaLabelledby = `${permLabel} ${item.id}`;
+      menu.setAttribute('aria-activedescendant', item.id);
+      menu.setAttribute('aria-labelledby', `${permLabel} ${item.id}`);
     }
     else {
       item.className = 'blurred';
@@ -29,7 +29,7 @@ const setActive = (menu, itemIndex, permLabel) => {
 const newMenuIndex = (menu, key) => {
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
   const menuItemIDs = menuItems.map(item => item.id);
-  const activeIndex = menuItemIDs.indexOf(menu.ariaActivedescendant);
+  const activeIndex = menuItemIDs.indexOf(menu.getAttribute('aria-activedescendant'));
   const menuItemCount = menuItems.length;
   let newIndex = -1;
   if (key === 'ArrowDown') {
@@ -55,7 +55,7 @@ const newMenuIndex = (menu, key) => {
 };
 // Activates the active menu item.
 const activate = menu => {
-  const activeItem = document.getElementById(menu.activeDescendant);
+  const activeItem = document.getElementById(menu.getAttribute('aria-activedescendant'));
   activeItem.dispatchEvent(new Event('click'));
 };
 // Handles click activation of a menu button.
@@ -65,7 +65,7 @@ const menuButtonClickHandler = button => {
   }
   else {
     openMenu(button);
-    const menu = document.getElementById(button.ariaControls);
+    const menu = document.getElementById(button.getAttribute('aria-controls'));
     if (! menu.activeDescendant) {
       setActive(menu, 0);
     }
@@ -74,7 +74,7 @@ const menuButtonClickHandler = button => {
 // Handles keyboard activation of a menu button.
 const menuButtonKeyHandler = (button, key) => {
   openMenu(button);
-  const menu = document.getElementById(button.ariaControls);
+  const menu = document.getElementById(button.getAttribute('aria-controls'));
   if (key === 'ArrowUp') {
     setActive(menu, -1);
   }
@@ -110,7 +110,7 @@ document.body.addEventListener('keyup', event => {
   if (document.activeElement === defMenu) {
     const key = event.key;
     if (key === 'Enter') {
-      const activeItem = document.getElementById(defMenu.activeDescendant);
+      const activeItem = document.getElementById(defMenu.getAttribute('aria-activedescendant'));
       closeMenu(defButton);
       activeItem.dispatchEvent(new Event('click'));
     }
