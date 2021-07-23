@@ -1,16 +1,16 @@
 // UTILITIES FOR EVENT HANDLERS
-// Opens a menu controlled by a button.
+// Opens a menu controlled by a button and returns the menu.
 const openMenu = button => {
   const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'open';
   button.ariaExpanded === 'true';
   menu.focus();
+  return menu;
 };
 // Closes a menu controlled by a button.
 const closeMenu = button => {
   button.ariaExpanded === 'false';
   const menu = document.getElementById(button.getAttribute('aria-controls'));
-  button.focus();
   menu.className = 'shut';
 };
 // Makes the specified (or the last if -1) menu item active.
@@ -46,12 +46,17 @@ const newMenuIndex = (menu, key) => {
   else if (key === 'End') {
     newIndex = menuItemCount - 1;
   }
-  else if (/^[a-zA-Z]+$/.test(key)) {
-    newIndex = menuItems
-    .map(
-      (item, index) => item.textContent.toLowerCase().startsWith(key.toLowerCase()) ? index : -1
-    )
-    .filter(index => index > -1 && index > activeIndex)[0];
+  else if (/^[a-zA-Z]$/.test(key)) {
+    const matches = menuItems.map(
+      (item, index) =>
+      item.textContent.toLowerCase().trim().startsWith(key.toLowerCase())
+      ? index
+      : -1
+    );
+    const laterMatches = matches.filter(index => index > -1 && index > activeIndex);
+    if (laterMatches.length) {
+      newIndex = laterMatches[0];
+    }
   }
   return newIndex;
 };
@@ -62,10 +67,7 @@ const click = menu => {
 };
 // Handles click activation of a menu button.
 const menuButtonClickHandler = (button, permLabel) => {
-  if (button.ariaExpanded === 'true') {
-    closeMenu(button);
-  }
-  else {
+  if (button.ariaExpanded === 'false') {
     openMenu(button);
     const menu = document.getElementById(button.getAttribute('aria-controls'));
     if (! menu.getAttribute('aria-activedescendant')) {
@@ -75,12 +77,11 @@ const menuButtonClickHandler = (button, permLabel) => {
 };
 // Handles keyboard activation of a menu button.
 const menuButtonKeyHandler = (button, key, permLabel) => {
-  openMenu(button);
-  const menu = document.getElementById(button.getAttribute('aria-controls'));
+  const menu = openMenu(button);
   if (key === 'ArrowUp') {
     setActive(menu, -1, permLabel);
   }
-  else {
+  else if (key === 'ArrowDown' || ! menu.getAttribute('aria-activedescendant')) {
     setActive(menu, 0, permLabel);
   }
 };
@@ -98,18 +99,19 @@ const permLabel = defMenu.getAttribute('aria-labelledby');
 // EVENT LISTENERS
 defButton.addEventListener('click', event => menuButtonClickHandler(event.target, permLabel));
 defMenu.addEventListener('click', event => {
-  event.preventDefault();
-  const target = event.target;
-  if (target.role === 'menuitem') {
-    closeMenu(defButton);
-    target.dispatchEvent(new Event('click'));
+  const menuItems = Array.from(defMenu.querySelectorAll('[role=menuitem]'));
+  const targetIndex = menuItems.indexOf(event.target);
+  if (targetIndex > -1) {
+    setActive(defMenu, targetIndex, permLabel);
+    window.setTimeout(() => {
+      defButton.focus();
+    });
   }
 });
-defMenu.addEventListener('blur', () => {
-  defButton.ariaExpanded = 'false';
-  menu.className = 'shut';
+defMenu.addEventListener('blur', event => {
+  closeMenu(defButton);
 });
-window.addEventListener('keyup', event => {
+window.addEventListener('keydown', event => {
   const key = event.key;
   const focus = document.activeElement;
   if (focus === defButton) {
@@ -121,13 +123,16 @@ window.addEventListener('keyup', event => {
   else if (focus === defMenu) {
     if (key === 'Enter') {
       const activeItem = document.getElementById(defMenu.getAttribute('aria-activedescendant'));
-      closeMenu(defButton);
-      activeItem.dispatchEvent(new Event('click'));
+      activeItem.click();
     }
-    else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]+$/.test(key)) {
+    else if (
+      ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)
+      || /^[a-zA-Z]$/.test(key) && ! (event.altKey || event.ctrlKey || event.metaKey)) {
       event.preventDefault();
       const newIndex = newMenuIndex(defMenu, key);
-      setActive(defMenu, newIndex, permLabel);
+      if (newIndex > -1) {
+        setActive(defMenu, newIndex, permLabel);
+      }
     }
   }
 });
