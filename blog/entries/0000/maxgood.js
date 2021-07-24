@@ -115,6 +115,15 @@ defMenu.addEventListener('click', event => {
     });
   }
 });
+document.body.addEventListener('click', event => {
+  if (defMenu.className === 'open') {
+    window.setTimeout(() => {
+      if (document.activeElement !== defMenu) {
+        closeMenu(defButton);
+      }
+    });
+  }
+});
 window.addEventListener('keydown', event => {
   const key = event.key;
   const focus = document.activeElement;
