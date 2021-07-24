@@ -98,18 +98,22 @@ const defMenu = document.getElementById('defMenu');
 const permLabel = defMenu.getAttribute('aria-labelledby');
 // EVENT LISTENERS
 defButton.addEventListener('click', event => menuButtonClickHandler(event.target, permLabel));
+// Listen for clicks within the definition menu.
 defMenu.addEventListener('click', event => {
   const menuItems = Array.from(defMenu.querySelectorAll('[role=menuitem]'));
   const targetIndex = menuItems.indexOf(event.target);
+  // If the click is on a menu item:
   if (targetIndex > -1) {
-    setActive(defMenu, targetIndex, permLabel);
+    // When the main click event (i.e. navigation to a link target) ends:
     window.setTimeout(() => {
+      // Make the clicked menu item the active one.
+      setActive(defMenu, targetIndex, permLabel);
+      // Focus the menu button.
       defButton.focus();
+      // Close the menu.
+      closeMenu(defButton);
     });
   }
-});
-defMenu.addEventListener('blur', event => {
-  closeMenu(defButton);
 });
 window.addEventListener('keydown', event => {
   const key = event.key;
@@ -124,6 +128,9 @@ window.addEventListener('keydown', event => {
     if (key === 'Enter') {
       const activeItem = document.getElementById(defMenu.getAttribute('aria-activedescendant'));
       activeItem.click();
+    }
+    else if (key === 'Tab') {
+      closeMenu(defButton);
     }
     else if (
       ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)
