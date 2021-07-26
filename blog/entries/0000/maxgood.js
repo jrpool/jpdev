@@ -3,6 +3,7 @@
 const openMenu = button => {
   // Chrome fails to support settable ariaExpanded property.
   button.setAttribute('aria-expanded', 'true');
+  button.textContent = 'Close menu';
   const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'open';
   return menu;
@@ -13,6 +14,7 @@ const closeMenu = button => {
   if (button.ariaExpanded === 'true') {
     // Close it.
     button.setAttribute('aria-expanded', 'false');
+    button.textContent = 'Open menu';
     const menu = document.getElementById(button.getAttribute('aria-controls'));
     menu.className = 'shut';
   }
@@ -116,10 +118,13 @@ const menuButtonClickHandler = (focusType, button, permLabel) => {
     }
     else if (focusType === 'true') {
       const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
-      const activeIndex = menuItems.map(item => item.tabIndex).indexOf('0');
+      const activeIndex = menuItems.map(item => item.tabIndex).indexOf(0);
       const newIndex = activeIndex > -1 ? activeIndex : 0;
       setActive('true', menu, newIndex);
     }
+  }
+  else if (button.ariaExpanded === 'true') {
+    closeMenu(button);
   }
 };
 // Handles keyboard activation of a menu button.
