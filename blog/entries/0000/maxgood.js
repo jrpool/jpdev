@@ -73,7 +73,7 @@ const newMenuIndex = (menu, key) => {
     activeIndex = menuItems.map(item => item.tabIndex).indexOf(0);
   }
   const menuItemCount = menuItems.length;
-  let newIndex = -1;
+  let newIndex = activeIndex;
   if (key === 'ArrowDown') {
     newIndex = (activeIndex + 1) % menuItemCount;
   }
