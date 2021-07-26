@@ -36,7 +36,14 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
 const newMenuIndex = (menu, key) => {
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
   const menuItemIDs = menuItems.map(item => item.id);
-  const activeIndex = menuItemIDs.indexOf(menu.getAttribute('aria-activedescendant'));
+  const activeItemID = menu.getAttribute('aria-activedescendant');
+  let activeIndex;
+  if (activeItemID) {
+    activeIndex = menuItemIDs.indexOf(activeItemID);
+  }
+  else {
+    activeIndex = menuItems.map(item => item.tabIndex).indexOf('0');
+  }
   const menuItemCount = menuItems.length;
   let newIndex = -1;
   if (key === 'ArrowDown') {
@@ -148,6 +155,8 @@ Array.from(techMenu.querySelectorAll('[role=menuitem]')).forEach(item => {
     window.setTimeout(() => {
       // Make the clicked menu item the active one.
       item.tabIndex = '0';
+      // Focus the menu button.
+      techButton.focus();
       // Close the menu.
       closeMenu(techButton);
     });
@@ -212,8 +221,13 @@ window.addEventListener('keydown', event => {
   }
   // Otherwise, if a menu item (thus, of the technology menu) is in focus:
   else if (focus.getAttribute('role') === 'menuitem') {
-    // If the key is Tab:
-    if (key === 'Tab') {
+    // If the key is Enter:
+    if (key === 'Enter') {
+      // Simulate a click on the menu item.
+      focus.click();
+    }
+    // Otherwise, if the key is Tab:
+    else if (key === 'Tab') {
       // Close the technology menu.
       closeMenu(techButton);
     }
@@ -225,6 +239,7 @@ window.addEventListener('keydown', event => {
       // Navigate within the technology menu and prevent any default scrolling.
       event.preventDefault();
       const newIndex = newMenuIndex(techMenu, key);
+      console.log(`New menu-item index will be ${newIndex}`);
       if (newIndex > -1) {
         setActive('true', techMenu, newIndex);
       }
