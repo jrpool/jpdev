@@ -1,34 +1,60 @@
 // UTILITIES FOR EVENT HANDLERS
 // Opens a menu controlled by a button and returns the menu.
 const openMenu = button => {
+  // Chrome fails to support settable ariaExpanded property.
+  button.setAttribute('aria-expanded', 'true');
   const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'open';
-  button.ariaExpanded === 'true';
   return menu;
 };
 // Closes a menu controlled by a button.
 const closeMenu = button => {
-  button.ariaExpanded === 'false';
-  const menu = document.getElementById(button.getAttribute('aria-controls'));
-  menu.className = 'shut';
+  // If the menu is open:
+  if (button.ariaExpanded === 'true') {
+    // Close it.
+    button.setAttribute('aria-expanded', 'false');
+    const menu = document.getElementById(button.getAttribute('aria-controls'));
+    menu.className = 'shut';
+  }
 };
 // Makes the specified (or the last if -1) menu item active.
 const setActive = (focusType, menu, itemIndex, permLabel) => {
+  // Identify the menu items.
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
+  // Identify the index of the currently active item.
+  let oldIndex;
+  if (focusType === 'pseudo') {
+    oldIndex = menuItems.map(item => item.id).indexOf(menu.getAttribute('aria-activedescendant'));
+  }
+  else if (focusType === 'true') {
+    oldIndex = menuItems.map(item => item.tabIndex).indexOf(0);
+  }
+  // Identify the specified index.
+  const newIndex = itemIndex === -1 ? menuItems.length - 1 : itemIndex;
+  // For each menu item:
   menuItems.forEach((item, index) => {
-    if (itemIndex === -1 && index === menuItems.length - 1 || index === itemIndex) {
+    // If it has the specified index:
+    if (index === newIndex) {
+      // Make it active.
       if (focusType === 'pseudo') {
         item.className = 'focal';
         menu.setAttribute('aria-activedescendant', item.id);
         menu.setAttribute('aria-labelledby', `${permLabel} ${item.id}`);
       }
       else if (focusType === 'true') {
-        item.tabIndex = '0';
+        item.tabIndex = 0;
         item.focus();
       }
     }
-    else if (focusType === 'pseudo') {
-      item.className = 'blurred';
+    // Otherwise, if it does not have the specified index and is currently active:
+    else if (index === oldIndex) {
+      // Make it inactive.
+      if (focusType === 'pseudo') {
+        item.className = 'blurred';
+      }
+      else if (focusType === 'true') {
+        item.tabIndex = -1;
+      }
     }
   });
 };
@@ -42,7 +68,7 @@ const newMenuIndex = (menu, key) => {
     activeIndex = menuItemIDs.indexOf(activeItemID);
   }
   else {
-    activeIndex = menuItems.map(item => item.tabIndex).indexOf('0');
+    activeIndex = menuItems.map(item => item.tabIndex).indexOf(0);
   }
   const menuItemCount = menuItems.length;
   let newIndex = -1;
@@ -125,11 +151,11 @@ const techMenu = document.getElementById('techMenu');
 // EVENT LISTENERS
 // Listen for clicks on the definition menu button.
 defButton.addEventListener(
-  'click', event => menuButtonClickHandler('pseudo', event.target, defPermLabel)
+  'click', () => menuButtonClickHandler('pseudo', defButton, defPermLabel)
 );
 // Listen for clicks on the technology menu button.
 techButton.addEventListener(
-  'click', event => menuButtonClickHandler('true', event.target)
+  'click', () => menuButtonClickHandler('true', techButton)
 );
 // Listen for clicks within the definition menu.
 defMenu.addEventListener('click', event => {
@@ -169,8 +195,8 @@ document.body.addEventListener('click', event => {
   [defButton, techButton].forEach(button => {
     // Identify its menu.
     const menu = document.getElementById(button.getAttribute('aria-controls'));
-    // If its menu is not the click target:
-    if (target !== menu) {
+    // If neither it nor its menu is the click target:
+    if (! [button, menu].includes(target)) {
       // When the main click event ends:
       window.setTimeout(() => {
         // Close the menu.
@@ -239,7 +265,6 @@ window.addEventListener('keydown', event => {
       // Navigate within the technology menu and prevent any default scrolling.
       event.preventDefault();
       const newIndex = newMenuIndex(techMenu, key);
-      console.log(`New menu-item index will be ${newIndex}`);
       if (newIndex > -1) {
         setActive('true', techMenu, newIndex);
       }
