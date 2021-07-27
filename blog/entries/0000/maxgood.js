@@ -19,25 +19,42 @@ const closeMenu = button => {
     menu.className = 'shut';
   }
 };
+// Returns the index of the active menu item of the menu of a menu button, or -1 if none.
+const activeIndex = (isButton, buttonOrMenu) => {
+  const menu = isButton
+    ? document.getElementById(buttonOrMenu.getAttribute('aria-controls'))
+    : buttonOrMenu;
+  const items = Array.from(menu.querySelectorAll('[role=menuitem'));
+  // If the menu is a pseudofocus manager, return the index.
+  if (menu.hasAttribute('aria-activedescendant')) {
+    const activeID = menu.getAttribute('aria-activedescendant');
+    if (activeID) {
+      const itemIDs = items.map(item => item.id);
+      return itemIDs.indexOf(activeID);
+    }
+    else {
+      return -1;
+    }
+  }
+  // Otherwise, i.e. if the menu is a true focus manager, return the index.
+  else {
+    const tabIndexes = items.map(item => item.tabIndex);
+    return tabIndexes.indexOf(0);
+  }
+}
 // Makes the specified (or the last if -1) menu item active.
 const setActive = (focusType, menu, itemIndex, permLabel) => {
+  // Identify the index of the active menu item.
+  const oldIndex = activeIndex(false, menu);
   // Identify the menu items.
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
-  // Identify the index of the currently active item.
-  let oldIndex;
-  if (focusType === 'pseudo') {
-    oldIndex = menuItems.map(item => item.id).indexOf(menu.getAttribute('aria-activedescendant'));
-  }
-  else if (focusType === 'true') {
-    oldIndex = menuItems.map(item => item.tabIndex).indexOf(0);
-  }
   // Identify the specified index.
   const newIndex = itemIndex === -1 ? menuItems.length - 1 : itemIndex;
   // For each menu item:
   menuItems.forEach((item, index) => {
     // If it has the specified index:
     if (index === newIndex) {
-      // Make it active.
+      // Ensure it is active.
       if (focusType === 'pseudo') {
         item.className = 'focal';
         menu.setAttribute('aria-activedescendant', item.id);
@@ -48,9 +65,9 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
         item.focus();
       }
     }
-    // Otherwise, if it does not have the specified index and is currently active:
+    // Otherwise, if does not have the specified index:
     else if (index === oldIndex) {
-      // Make it inactive.
+      // Ensure it is inactive.
       if (focusType === 'pseudo') {
         item.className = 'blurred';
       }
@@ -62,23 +79,15 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
 };
 // Returns the index of a keyboard-chosen menu item.
 const newMenuIndex = (menu, key) => {
+  const oldIndex = activeIndex(false, menu);
   const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
-  const menuItemIDs = menuItems.map(item => item.id);
-  const activeItemID = menu.getAttribute('aria-activedescendant');
-  let activeIndex;
-  if (activeItemID) {
-    activeIndex = menuItemIDs.indexOf(activeItemID);
-  }
-  else {
-    activeIndex = menuItems.map(item => item.tabIndex).indexOf(0);
-  }
   const menuItemCount = menuItems.length;
-  let newIndex = activeIndex;
+  let newIndex = oldIndex;
   if (key === 'ArrowDown') {
-    newIndex = (activeIndex + 1) % menuItemCount;
+    newIndex = (oldIndex + 1) % menuItemCount;
   }
   else if (key === 'ArrowUp') {
-    newIndex = (menuItemCount + activeIndex - 1) % menuItemCount;
+    newIndex = (menuItemCount + oldIndex - 1) % menuItemCount;
   }
   else if (key === 'Home') {
     newIndex = 0;
@@ -93,14 +102,14 @@ const newMenuIndex = (menu, key) => {
       ? index
       : -1
     );
-    const laterMatches = matches.filter(index => index > -1 && index > activeIndex);
+    const laterMatches = matches.filter(index => index > -1 && index > oldIndex);
     if (laterMatches.length) {
       newIndex = laterMatches[0];
     }
   }
   return newIndex;
 };
-// Clicks the active menu item.
+// Clicks the pseudofocused item of a menu.
 const click = menu => {
   const activeItem = document.getElementById(menu.getAttribute('aria-activedescendant'));
   activeItem.dispatchEvent(new Event('click'));
@@ -117,9 +126,8 @@ const menuButtonClickHandler = (focusType, button, permLabel) => {
       }
     }
     else if (focusType === 'true') {
-      const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
-      const activeIndex = menuItems.map(item => item.tabIndex).indexOf(0);
-      const newIndex = activeIndex > -1 ? activeIndex : 0;
+      const oldIndex = activeIndex(true, button);
+      const newIndex = oldIndex > -1 ? oldIndex : 0;
       setActive('true', menu, newIndex);
     }
   }
@@ -129,6 +137,7 @@ const menuButtonClickHandler = (focusType, button, permLabel) => {
 };
 // Handles keyboard activation of a menu button.
 const menuButtonKeyHandler = (focusType, button, key, defPermLabel) => {
+  const oldIndex = activeIndex(true, button);
   const menu = openMenu(button);
   if (focusType === 'pseudo') {
     menu.focus();
@@ -136,8 +145,12 @@ const menuButtonKeyHandler = (focusType, button, key, defPermLabel) => {
   if (key === 'ArrowUp') {
     setActive(focusType, menu, -1, defPermLabel);
   }
-  else if (key === 'ArrowDown' || ! menu.getAttribute('aria-activedescendant')) {
+  else if (key === 'ArrowDown') {
     setActive(focusType, menu, 0, defPermLabel);
+  }
+  else if ([' ', 'Enter'].includes(key)) {
+    const newIndex = oldIndex > -1 ? oldIndex : 0;
+    setActive(focusType, menu, newIndex, defPermLabel);
   }
 };
 // Handles keyboard operations in a menu.
@@ -237,6 +250,13 @@ window.addEventListener('keydown', event => {
       // Close the menu.
       closeMenu(defButton);
     }
+    // Otherwise, if it is Escape:
+    else if (key === 'Escape') {
+      // Focus the menu button.
+      defButton.focus();
+      // Close the menu.
+      closeMenu(defButton);
+    }
     // Otherwise, if the key is an intra-menu navigation key:
     else if (
       ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)
@@ -260,6 +280,13 @@ window.addEventListener('keydown', event => {
     // Otherwise, if the key is Tab:
     else if (key === 'Tab') {
       // Close the technology menu.
+      closeMenu(techButton);
+    }
+    // Otherwise, if it is Escape:
+    else if (key === 'Escape') {
+      // Focus the menu button.
+      techButton.focus();
+      // Close the menu.
       closeMenu(techButton);
     }
     // Otherwise, if the key is an intra-menu navigation key:
