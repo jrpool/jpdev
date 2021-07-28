@@ -19,12 +19,19 @@ const closeMenu = button => {
     menu.className = 'shut';
   }
 };
+// Returns the menu items of a menu.
+const menuItemsOf = menu => {
+  return Array
+  .from(menu.children)
+  .map(listItem => listItem.firstElementChild)
+  .filter(item => item.getAttribute('role') === 'menuitem');
+};
 // Returns the index of the active menu item of a menu, or -1 if none.
 const activeIndex = (isButton, buttonOrMenu) => {
   const menu = isButton
     ? document.getElementById(buttonOrMenu.getAttribute('aria-controls'))
     : buttonOrMenu;
-  const items = Array.from(menu.querySelectorAll('[role=menuitem'));
+  const items = menuItemsOf(menu);
   // If the menu is a pseudofocus manager, return the index.
   if (menu.hasAttribute('aria-activedescendant')) {
     const activeID = menu.getAttribute('aria-activedescendant');
@@ -47,9 +54,7 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
   // Identify the index of the active menu item.
   const oldIndex = activeIndex(false, menu);
   // Identify the menu items.
-  const menuItems = Array.from(menu.children)
-  .map(listItem => listItem.firstElementChild)
-  .filter(item => item.getAttribute('role') === 'menuitem');
+  const menuItems = menuItemsOf(menu);
   // Identify the specified index.
   const newIndex = itemIndex === -1 ? menuItems.length - 1 : itemIndex;
   // For each menu item:
@@ -82,7 +87,7 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
 // Returns the index of a keyboard-chosen menu item.
 const newMenuIndex = (menu, key) => {
   const oldIndex = activeIndex(false, menu);
-  const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
+  const menuItems = menuItemsOf(menu);
   const menuItemCount = menuItems.length;
   let newIndex = oldIndex;
   if (key === 'ArrowDown') {
@@ -114,7 +119,7 @@ const newMenuIndex = (menu, key) => {
 // Returns the index of a keyboard-chosen menu-bar item.
 const newMenuBarIndex = (menuBar, key) => {
   const oldIndex = activeIndex(false, menuBar);
-  const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
+  const menuItems = menuItemsOf(menu);
   const menuItemCount = menuItems.length;
   let newIndex = oldIndex;
   if (key === 'ArrowRight') {
@@ -210,9 +215,9 @@ persButton.addEventListener(
 techButton.addEventListener(
   'click', () => menuButtonClickHandler('true', techButton)
 );
-// Listen for clicks within the definition menu.
+// Listen for clicks within the personality menu.
 persMenu.addEventListener('click', event => {
-  const menuItems = Array.from(persMenu.querySelectorAll('[role=menuitem]'));
+  const menuItems = menuItemsOf(persMenu);
   const targetIndex = menuItems.indexOf(event.target);
   // If the click is on a menu item:
   if (targetIndex > -1) {
@@ -228,7 +233,7 @@ persMenu.addEventListener('click', event => {
   }
 });
 // Listen for clicks on the technology menu items.
-Array.from(techMenu.querySelectorAll('[role=menuitem]')).forEach(item => {
+menuItemsOf(techMenu).forEach(item => {
   item.addEventListener('click', event => {
     // When the main click event (i.e. navigation to the link target) ends:
     window.setTimeout(() => {
@@ -260,8 +265,8 @@ document.body.addEventListener('click', event => {
 });
 // Listen for key presses.
 window.addEventListener('keydown', event => {
-  // If no ineligible modifier key was in effect when the key was depressed:
   const key = event.key;
+  // If no ineligible modifier key was in effect when the key was depressed:
   if (! (event.altKey || event.ctrlKey || event.metaKey || key !== 'Tab' && event.shiftKey)) {
     const focus = document.activeElement;
     const buttonIndex = [persButton, techButton].indexOf(focus);
@@ -312,8 +317,8 @@ window.addEventListener('keydown', event => {
         }
       }
     }
-    // Otherwise, if a menu item (thus, of the technology menu) is in focus:
-    else if (focus.getAttribute('role') === 'menuitem') {
+    // Otherwise, if a link menu item (thus, of the technology menu) is in focus:
+    else if (focus.tagName === 'A' && focus.getAttribute('role') === 'menuitem') {
       // If the key is Enter:
       if (key === 'Enter') {
         // Simulate a click on the menu item.
