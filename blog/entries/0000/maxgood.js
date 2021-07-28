@@ -260,88 +260,85 @@ document.body.addEventListener('click', event => {
 });
 // Listen for key presses.
 window.addEventListener('keydown', event => {
+  // If no ineligible modifier key was in effect when the key was depressed:
   const key = event.key;
-  const focus = document.activeElement;
-  const buttonIndex= [persButton, techButton].indexOf(focus);
-  // If either menu button is in focus:
-  if (buttonIndex > -1) {
-    // If the key is a menu-button-activating key:
-    if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(key)) {
-      // Handle the event and prevent any default scrolling.
-      event.preventDefault();
-      menuButtonKeyHandler(['pseudo', 'true'][buttonIndex], focus, key, defPermLabel);
-    }
-    // Otherwise, if the key is an intra-menubar navigation key:
-    else if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
-      // Handle the event.
-      const newIndex = newMenuBarIndex(menuBar, key);
-      if (newIndex > -1) {
-        setActive('true', menuBar, newIndex);
+  if (! (event.altKey || event.ctrlKey || event.metaKey || key !== 'Tab' && event.shiftKey)) {
+    const focus = document.activeElement;
+    const buttonIndex = [persButton, techButton].indexOf(focus);
+    // If either menu button is in focus:
+    if (buttonIndex > -1) {
+      // If the key is a menu-button-activating key:
+      if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(key)) {
+        // Handle the event and prevent any default scrolling.
+        event.preventDefault();
+        menuButtonKeyHandler(['pseudo', 'true'][buttonIndex], focus, key, defPermLabel);
+      }
+      // Otherwise, if the key is an intra-menubar navigation key:
+      else if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
+        // Handle the event.
+        const newIndex = newMenuBarIndex(menuBar, key);
+        if (newIndex > -1) {
+          setActive('true', menuBar, newIndex);
+        }
       }
     }
-  }
-  // Otherwise, if the definition menu is in focus:
-  else if (focus === persMenu) {
-    // If the key is Enter:
-    if (key === 'Enter') {
-      // Simulate a click on whichever menu item is currently active.
-      const activeItem = document.getElementById(persMenu.getAttribute('aria-activedescendant'));
-      activeItem.click();
-    }
-    // Otherwise, if it is Tab:
-    else if (key === 'Tab') {
-      // Close the menu.
-      closeMenu(persButton);
-    }
-    // Otherwise, if it is Escape:
-    else if (key === 'Escape') {
-      // Focus the menu button.
-      persButton.focus();
-      // Close the menu.
-      closeMenu(persButton);
-    }
-    // Otherwise, if the key is an intra-menu navigation key:
-    else if (
-      ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)
-      || /^[a-zA-Z]$/.test(key) && ! (event.altKey || event.ctrlKey || event.metaKey)
-    ) {
-      // Navigate within the menu and prevent any default scrolling.
-      event.preventDefault();
-      const newIndex = newMenuIndex(persMenu, key);
-      if (newIndex > -1) {
-        setActive('pseudo', persMenu, newIndex, defPermLabel);
+    // Otherwise, if the personality menu is in focus:
+    else if (focus === persMenu) {
+      // If the key is Enter:
+      if (key === 'Enter') {
+        // Simulate a click on whichever menu item is currently active.
+        const activeItem = document.getElementById(persMenu.getAttribute('aria-activedescendant'));
+        activeItem.click();
+      }
+      // Otherwise, if it is Tab:
+      else if (key === 'Tab') {
+        // Close the menu.
+        closeMenu(persButton);
+      }
+      // Otherwise, if it is Escape:
+      else if (key === 'Escape') {
+        // Focus the menu button.
+        persButton.focus();
+        // Close the menu.
+        closeMenu(persButton);
+      }
+      // Otherwise, if the key is an intra-menu navigation key:
+      else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
+        // Navigate within the menu and prevent any default scrolling.
+        event.preventDefault();
+        const newIndex = newMenuIndex(persMenu, key);
+        if (newIndex > -1) {
+          setActive('pseudo', persMenu, newIndex, defPermLabel);
+        }
       }
     }
-  }
-  // Otherwise, if a menu item (thus, of the technology menu) is in focus:
-  else if (focus.getAttribute('role') === 'menuitem') {
-    // If the key is Enter:
-    if (key === 'Enter') {
-      // Simulate a click on the menu item.
-      focus.click();
-    }
-    // Otherwise, if the key is Tab:
-    else if (key === 'Tab') {
-      // Close the technology menu.
-      closeMenu(techButton);
-    }
-    // Otherwise, if it is Escape:
-    else if (key === 'Escape') {
-      // Focus the menu button.
-      techButton.focus();
-      // Close the menu.
-      closeMenu(techButton);
-    }
-    // Otherwise, if the key is an intra-menu navigation key:
-    else if (
-      ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)
-      || /^[a-zA-Z]$/.test(key) && ! (event.altKey || event.ctrlKey || event.metaKey)
-    ) {
-      // Navigate within the technology menu and prevent any default scrolling.
-      event.preventDefault();
-      const newIndex = newMenuIndex(techMenu, key);
-      if (newIndex > -1) {
-        setActive('true', techMenu, newIndex);
+    // Otherwise, if a menu item (thus, of the technology menu) is in focus:
+    else if (focus.getAttribute('role') === 'menuitem') {
+      // If the key is Enter:
+      if (key === 'Enter') {
+        // Simulate a click on the menu item.
+        focus.click();
+      }
+      // Otherwise, if the key is Tab:
+      else if (key === 'Tab') {
+        // Close the technology menu.
+        closeMenu(techButton);
+      }
+      // Otherwise, if it is Escape:
+      else if (key === 'Escape') {
+        // Focus the menu button.
+        techButton.focus();
+        // Close the menu.
+        closeMenu(techButton);
+      }
+      // Otherwise, if the key is an intra-menu navigation key:
+      else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
+        // Navigate within the technology menu and prevent any default scrolling.
+        event.preventDefault();
+        const newIndex = newMenuIndex(techMenu, key);
+        if (newIndex > -1) {
+          setActive('true', techMenu, newIndex);
+        }
       }
     }
   }
