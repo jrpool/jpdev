@@ -3,7 +3,6 @@
 const openMenu = button => {
   // Chrome fails to support settable ariaExpanded property.
   button.setAttribute('aria-expanded', 'true');
-  button.textContent = 'Close menu';
   const menu = document.getElementById(button.getAttribute('aria-controls'));
   menu.className = 'open';
   return menu;
@@ -14,7 +13,6 @@ const closeMenu = button => {
   if (button.ariaExpanded === 'true') {
     // Close it.
     button.setAttribute('aria-expanded', 'false');
-    button.textContent = 'Open menu';
     const menu = document.getElementById(button.getAttribute('aria-controls'));
     menu.className = 'shut';
   }
@@ -211,11 +209,11 @@ const techMenu = document.getElementById('techMenu');
 persButton.addEventListener(
   'click', () => menuButtonClickHandler('pseudo', persButton, defPermLabel)
 );
-// Listen for clicks on the technology menu button.
+// Listen for clicks on the technologies menu button.
 techButton.addEventListener(
   'click', () => menuButtonClickHandler('true', techButton)
 );
-// Listen for clicks within the personality menu.
+// Listen for clicks within the personalities menu.
 persMenu.addEventListener('click', event => {
   const menuItems = menuItemsOf(persMenu);
   const targetIndex = menuItems.indexOf(event.target);
@@ -232,7 +230,7 @@ persMenu.addEventListener('click', event => {
     });
   }
 });
-// Listen for clicks on the technology menu items.
+// Listen for clicks on the technologies menu items.
 menuItemsOf(techMenu).forEach(item => {
   item.addEventListener('click', event => {
     // When the main click event (i.e. navigation to the link target) ends:
@@ -280,14 +278,15 @@ window.addEventListener('keydown', event => {
       }
       // Otherwise, if the key is an intra-menubar navigation key:
       else if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
-        // Handle the event.
+        // Handle the event and prevent any default scrolling.
+        event.preventDefault();
         const newIndex = newMenuBarIndex(menuBar, key);
         if (newIndex > -1) {
           setActive('true', menuBar, newIndex);
         }
       }
     }
-    // Otherwise, if the personality menu is in focus:
+    // Otherwise, if the personalities menu is in focus:
     else if (focus === persMenu) {
       // If the key is Enter:
       if (key === 'Enter') {
@@ -317,7 +316,7 @@ window.addEventListener('keydown', event => {
         }
       }
     }
-    // Otherwise, if a link menu item (thus, of the technology menu) is in focus:
+    // Otherwise, if a link menu item (thus, of the technologies menu) is in focus:
     else if (focus.tagName === 'A' && focus.getAttribute('role') === 'menuitem') {
       // If the key is Enter:
       if (key === 'Enter') {
@@ -326,7 +325,7 @@ window.addEventListener('keydown', event => {
       }
       // Otherwise, if the key is Tab:
       else if (key === 'Tab') {
-        // Close the technology menu.
+        // Close the technologies menu.
         closeMenu(techButton);
       }
       // Otherwise, if it is Escape:
@@ -338,7 +337,7 @@ window.addEventListener('keydown', event => {
       }
       // Otherwise, if the key is an intra-menu navigation key:
       else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
-        // Navigate within the technology menu and prevent any default scrolling.
+        // Navigate within the technologies menu and prevent any default scrolling.
         event.preventDefault();
         const newIndex = newMenuIndex(techMenu, key);
         if (newIndex > -1) {
