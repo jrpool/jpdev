@@ -19,7 +19,7 @@ const closeMenu = button => {
     menu.className = 'shut';
   }
 };
-// Returns the index of the active menu item of the menu of a menu button, or -1 if none.
+// Returns the index of the active menu item of a menu, or -1 if none.
 const activeIndex = (isButton, buttonOrMenu) => {
   const menu = isButton
     ? document.getElementById(buttonOrMenu.getAttribute('aria-controls'))
@@ -47,7 +47,9 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
   // Identify the index of the active menu item.
   const oldIndex = activeIndex(false, menu);
   // Identify the menu items.
-  const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
+  const menuItems = Array.from(menu.children)
+  .map(listItem => listItem.firstElementChild)
+  .filter(item => item.getAttribute('role') === 'menuitem');
   // Identify the specified index.
   const newIndex = itemIndex === -1 ? menuItems.length - 1 : itemIndex;
   // For each menu item:
@@ -65,8 +67,8 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
         item.focus();
       }
     }
-    // Otherwise, if does not have the specified index:
-    else if (index === oldIndex) {
+    // Otherwise, i.e. if does not have the specified index:
+    else {
       // Ensure it is inactive.
       if (focusType === 'pseudo') {
         item.className = 'blurred';
@@ -87,6 +89,38 @@ const newMenuIndex = (menu, key) => {
     newIndex = (oldIndex + 1) % menuItemCount;
   }
   else if (key === 'ArrowUp') {
+    newIndex = (menuItemCount + oldIndex - 1) % menuItemCount;
+  }
+  else if (key === 'Home') {
+    newIndex = 0;
+  }
+  else if (key === 'End') {
+    newIndex = menuItemCount - 1;
+  }
+  else if (/^[a-zA-Z]$/.test(key)) {
+    const matches = menuItems.map(
+      (item, index) =>
+      item.textContent.toLowerCase().trim().startsWith(key.toLowerCase())
+      ? index
+      : -1
+    );
+    const laterMatches = matches.filter(index => index > -1 && index > oldIndex);
+    if (laterMatches.length) {
+      newIndex = laterMatches[0];
+    }
+  }
+  return newIndex;
+};
+// Returns the index of a keyboard-chosen menu-bar item.
+const newMenuBarIndex = (menuBar, key) => {
+  const oldIndex = activeIndex(false, menuBar);
+  const menuItems = Array.from(menu.querySelectorAll('[role=menuitem]'));
+  const menuItemCount = menuItems.length;
+  let newIndex = oldIndex;
+  if (key === 'ArrowRight') {
+    newIndex = (oldIndex + 1) % menuItemCount;
+  }
+  else if (key === 'ArrowLeft') {
     newIndex = (menuItemCount + oldIndex - 1) % menuItemCount;
   }
   else if (key === 'Home') {
@@ -161,34 +195,35 @@ const menuKeyHandler = (focusType, menu, key, defPermLabel) => {
   }
 };
 // CONSTANTS
-const defButton = document.getElementById('defButton');
-const defMenu = document.getElementById('defMenu');
-const defPermLabel = defMenu.getAttribute('aria-labelledby');
+const menuBar = document.getElementById('menubar');
+const persButton = document.getElementById('persButton');
+const persMenu = document.getElementById('persMenu');
+const defPermLabel = persMenu.getAttribute('aria-labelledby');
 const techButton = document.getElementById('techButton');
 const techMenu = document.getElementById('techMenu');
 // EVENT LISTENERS
 // Listen for clicks on the definition menu button.
-defButton.addEventListener(
-  'click', () => menuButtonClickHandler('pseudo', defButton, defPermLabel)
+persButton.addEventListener(
+  'click', () => menuButtonClickHandler('pseudo', persButton, defPermLabel)
 );
 // Listen for clicks on the technology menu button.
 techButton.addEventListener(
   'click', () => menuButtonClickHandler('true', techButton)
 );
 // Listen for clicks within the definition menu.
-defMenu.addEventListener('click', event => {
-  const menuItems = Array.from(defMenu.querySelectorAll('[role=menuitem]'));
+persMenu.addEventListener('click', event => {
+  const menuItems = Array.from(persMenu.querySelectorAll('[role=menuitem]'));
   const targetIndex = menuItems.indexOf(event.target);
   // If the click is on a menu item:
   if (targetIndex > -1) {
     // When the main click event (i.e. navigation to a link target) ends:
     window.setTimeout(() => {
       // Make the clicked menu item the active one.
-      setActive('pseudo', defMenu, targetIndex, defPermLabel);
+      setActive('pseudo', persMenu, targetIndex, defPermLabel);
       // Focus the menu button.
-      defButton.focus();
+      persButton.focus();
       // Close the menu.
-      closeMenu(defButton);
+      closeMenu(persButton);
     });
   }
 });
@@ -210,7 +245,7 @@ Array.from(techMenu.querySelectorAll('[role=menuitem]')).forEach(item => {
 document.body.addEventListener('click', event => {
   const target = event.target;
   // For each menu button:
-  [defButton, techButton].forEach(button => {
+  [persButton, techButton].forEach(button => {
     // Identify its menu.
     const menu = document.getElementById(button.getAttribute('aria-controls'));
     // If neither it nor its menu is the click target:
@@ -227,7 +262,7 @@ document.body.addEventListener('click', event => {
 window.addEventListener('keydown', event => {
   const key = event.key;
   const focus = document.activeElement;
-  const buttonIndex= [defButton, techButton].indexOf(focus);
+  const buttonIndex= [persButton, techButton].indexOf(focus);
   // If either menu button is in focus:
   if (buttonIndex > -1) {
     // If the key is a menu-button-activating key:
@@ -236,26 +271,34 @@ window.addEventListener('keydown', event => {
       event.preventDefault();
       menuButtonKeyHandler(['pseudo', 'true'][buttonIndex], focus, key, defPermLabel);
     }
+    // Otherwise, if the key is an intra-menubar navigation key:
+    else if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
+      // Handle the event.
+      const newIndex = newMenuBarIndex(menuBar, key);
+      if (newIndex > -1) {
+        setActive('true', menuBar, newIndex);
+      }
+    }
   }
   // Otherwise, if the definition menu is in focus:
-  else if (focus === defMenu) {
+  else if (focus === persMenu) {
     // If the key is Enter:
     if (key === 'Enter') {
       // Simulate a click on whichever menu item is currently active.
-      const activeItem = document.getElementById(defMenu.getAttribute('aria-activedescendant'));
+      const activeItem = document.getElementById(persMenu.getAttribute('aria-activedescendant'));
       activeItem.click();
     }
     // Otherwise, if it is Tab:
     else if (key === 'Tab') {
       // Close the menu.
-      closeMenu(defButton);
+      closeMenu(persButton);
     }
     // Otherwise, if it is Escape:
     else if (key === 'Escape') {
       // Focus the menu button.
-      defButton.focus();
+      persButton.focus();
       // Close the menu.
-      closeMenu(defButton);
+      closeMenu(persButton);
     }
     // Otherwise, if the key is an intra-menu navigation key:
     else if (
@@ -264,9 +307,9 @@ window.addEventListener('keydown', event => {
     ) {
       // Navigate within the menu and prevent any default scrolling.
       event.preventDefault();
-      const newIndex = newMenuIndex(defMenu, key);
+      const newIndex = newMenuIndex(persMenu, key);
       if (newIndex > -1) {
-        setActive('pseudo', defMenu, newIndex, defPermLabel);
+        setActive('pseudo', persMenu, newIndex, defPermLabel);
       }
     }
   }
