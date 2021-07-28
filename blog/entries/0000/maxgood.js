@@ -230,7 +230,7 @@ persMenu.addEventListener('click', event => {
     });
   }
 });
-// Listen for clicks on the technologies menu items.
+// Listen for (both real and Enter-triggered) clicks on the technologies menu items.
 menuItemsOf(techMenu).forEach(item => {
   item.addEventListener('click', event => {
     // When the main click event (i.e. navigation to the link target) ends:
@@ -318,13 +318,8 @@ window.addEventListener('keydown', event => {
     }
     // Otherwise, if a link menu item (thus, of the technologies menu) is in focus:
     else if (focus.tagName === 'A' && focus.getAttribute('role') === 'menuitem') {
-      // If the key is Enter:
-      if (key === 'Enter') {
-        // Simulate a click on the menu item.
-        focus.click();
-      }
-      // Otherwise, if the key is Tab:
-      else if (key === 'Tab') {
+      // If the key is Tab:
+      if (key === 'Tab') {
         // Close the technologies menu.
         closeMenu(techButton);
       }
@@ -335,7 +330,7 @@ window.addEventListener('keydown', event => {
         // Close the menu.
         closeMenu(techButton);
       }
-      // Otherwise, if the key is an intra-menu navigation key:
+      // Otherwise, if it is an intra-menu navigation key:
       else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
         // Navigate within the technologies menu and prevent any default scrolling.
         event.preventDefault();
@@ -344,6 +339,7 @@ window.addEventListener('keydown', event => {
           setActive('true', techMenu, newIndex);
         }
       }
+      // The Enter key by default triggers a click event on the link.
     }
   }
 });
