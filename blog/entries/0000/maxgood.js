@@ -119,7 +119,7 @@ const newMenuIndex = (menu, key) => {
 // Returns the index of a keyboard-chosen menu-bar item.
 const newMenuBarIndex = (menuBar, key) => {
   const oldIndex = activeIndex(false, menuBar);
-  const menuItems = menuItemsOf(menu);
+  const menuItems = menuItemsOf(menuBar);
   const menuItemCount = menuItems.length;
   let newIndex = oldIndex;
   if (key === 'ArrowRight') {
