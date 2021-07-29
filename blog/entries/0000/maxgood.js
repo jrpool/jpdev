@@ -161,6 +161,7 @@ const persButton = document.getElementById('persButton');
 const persMenu = document.getElementById('persMenu');
 const techButton = document.getElementById('techButton');
 const techMenu = document.getElementById('techMenu');
+const techChildren = menuItemsOf(techMenu).map(item => item.firstElementChild);
 // EVENT LISTENERS
 // Listen for clicks on the personalities menu button.
 persButton.addEventListener(
@@ -173,8 +174,8 @@ techButton.addEventListener(
 // Listen for clicks within the personalities menu.
 persMenu.addEventListener('click', event => {
   const menuItems = menuItemsOf(persMenu);
-  const targetIndex = menuItems.indexOf(event.target);
-  // If the click is on a menu item:
+  const targetIndex = menuItems.map(item => item.firstElementChild).indexOf(event.target);
+  // If the click is on the child of a menu item:
   if (targetIndex > -1) {
     // When the main click event (i.e. navigation to a link target) ends:
     window.setTimeout(() => {
@@ -188,12 +189,12 @@ persMenu.addEventListener('click', event => {
   }
 });
 // Listen for (both real and Enter-triggered) clicks on the technologies menu items.
-menuItemsOf(techMenu).forEach(item => {
-  item.addEventListener('click', event => {
+techChildren.forEach((child, index) => {
+  child.addEventListener('click', event => {
     // When the main click event (i.e. navigation to the link target) ends:
     window.setTimeout(() => {
-      // Make the clicked menu item the active one.
-      item.tabIndex = '0';
+      // Make the menu item whose child was clicked the active one.
+      setActive('true', techMenu, index);
       // Focus the menu button.
       techButton.focus();
       // Close the menu.
