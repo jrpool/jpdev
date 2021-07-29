@@ -18,12 +18,7 @@ const closeMenu = button => {
   }
 };
 // Returns the menu items of a menu.
-const menuItemsOf = menu => {
-  return Array
-  .from(menu.children)
-  .map(listItem => listItem.firstElementChild)
-  .filter(item => item.getAttribute('role') === 'menuitem');
-};
+const menuItemsOf = menu => Array.from(menu.children);
 // Returns the index of the active menu item of a menu, or -1 if none.
 const activeIndex = (isButton, buttonOrMenu) => {
   const menu = isButton
@@ -43,12 +38,12 @@ const activeIndex = (isButton, buttonOrMenu) => {
   }
   // Otherwise, i.e. if the menu is a true focus manager, return the index.
   else {
-    const tabIndexes = items.map(item => item.tabIndex);
+    const tabIndexes = items.map(item => item.firstElementChild.tabIndex);
     return tabIndexes.indexOf(0);
   }
 }
 // Makes the specified (or the last if -1) menu item active.
-const setActive = (focusType, menu, itemIndex, permLabel) => {
+const setActive = (focusType, menu, itemIndex) => {
   // Identify the index of the active menu item.
   const oldIndex = activeIndex(false, menu);
   // Identify the menu items.
@@ -57,41 +52,41 @@ const setActive = (focusType, menu, itemIndex, permLabel) => {
   const newIndex = itemIndex === -1 ? menuItems.length - 1 : itemIndex;
   // For each menu item:
   menuItems.forEach((item, index) => {
+    const itemChild = item.firstElementChild;
     // If it has the specified index:
     if (index === newIndex) {
       // Ensure it is active.
       if (focusType === 'pseudo') {
-        item.className = 'focal';
+        itemChild.className = 'focal';
         menu.setAttribute('aria-activedescendant', item.id);
-        menu.setAttribute('aria-labelledby', `${permLabel} ${item.id}`);
       }
       else if (focusType === 'true') {
-        item.tabIndex = 0;
-        item.focus();
+        itemChild.tabIndex = 0;
+        itemChild.focus();
       }
     }
     // Otherwise, i.e. if does not have the specified index:
     else {
       // Ensure it is inactive.
       if (focusType === 'pseudo') {
-        item.className = 'blurred';
+        itemChild.className = 'blurred';
       }
       else if (focusType === 'true') {
-        item.tabIndex = -1;
+        itemChild.tabIndex = -1;
       }
     }
   });
 };
 // Returns the index of a keyboard-chosen menu item.
-const newMenuIndex = (menu, key) => {
+const newMenuIndex = (isBar, menu, key) => {
   const oldIndex = activeIndex(false, menu);
   const menuItems = menuItemsOf(menu);
   const menuItemCount = menuItems.length;
   let newIndex = oldIndex;
-  if (key === 'ArrowDown') {
+  if (key === (isBar ? 'ArrowRight' : 'ArrowDown')) {
     newIndex = (oldIndex + 1) % menuItemCount;
   }
-  else if (key === 'ArrowUp') {
+  else if (key === (isBar ? 'ArrowLeft' : 'ArrowUp')) {
     newIndex = (menuItemCount + oldIndex - 1) % menuItemCount;
   }
   else if (key === 'Home') {
@@ -114,52 +109,22 @@ const newMenuIndex = (menu, key) => {
   }
   return newIndex;
 };
-// Returns the index of a keyboard-chosen menu-bar item.
-const newMenuBarIndex = (menuBar, key) => {
-  const oldIndex = activeIndex(false, menuBar);
-  const menuItems = menuItemsOf(menuBar);
-  const menuItemCount = menuItems.length;
-  let newIndex = oldIndex;
-  if (key === 'ArrowRight') {
-    newIndex = (oldIndex + 1) % menuItemCount;
-  }
-  else if (key === 'ArrowLeft') {
-    newIndex = (menuItemCount + oldIndex - 1) % menuItemCount;
-  }
-  else if (key === 'Home') {
-    newIndex = 0;
-  }
-  else if (key === 'End') {
-    newIndex = menuItemCount - 1;
-  }
-  else if (/^[a-zA-Z]$/.test(key)) {
-    const matches = menuItems.map(
-      (item, index) =>
-      item.textContent.toLowerCase().trim().startsWith(key.toLowerCase())
-      ? index
-      : -1
-    );
-    const laterMatches = matches.filter(index => index > -1 && index > oldIndex);
-    if (laterMatches.length) {
-      newIndex = laterMatches[0];
-    }
-  }
-  return newIndex;
-};
-// Clicks the pseudofocused item of a menu.
+// Clicks the child of the pseudofocused item of a menu.
 const click = menu => {
-  const activeItem = document.getElementById(menu.getAttribute('aria-activedescendant'));
-  activeItem.dispatchEvent(new Event('click'));
+  const activeChild = document
+  .getElementById(menu.getAttribute('aria-activedescendant'))
+  .firstElementChild;
+  activeChild.dispatchEvent(new Event('click'));
 };
 // Handles click activation of a menu button.
-const menuButtonClickHandler = (focusType, button, permLabel) => {
+const menuButtonClickHandler = (focusType, button) => {
   if (button.ariaExpanded === 'false') {
     openMenu(button);
     const menu = document.getElementById(button.getAttribute('aria-controls'));
     if (focusType === 'pseudo') {
       menu.focus();
       if (! menu.getAttribute('aria-activedescendant')) {
-        setActive('pseudo', menu, 0, permLabel);
+        setActive('pseudo', menu, 0);
       }
     }
     else if (focusType === 'true') {
@@ -173,41 +138,33 @@ const menuButtonClickHandler = (focusType, button, permLabel) => {
   }
 };
 // Handles keyboard activation of a menu button.
-const menuButtonKeyHandler = (focusType, button, key, defPermLabel) => {
+const menuButtonKeyHandler = (focusType, button, key) => {
   const oldIndex = activeIndex(true, button);
   const menu = openMenu(button);
   if (focusType === 'pseudo') {
     menu.focus();
   }
   if (key === 'ArrowUp') {
-    setActive(focusType, menu, -1, defPermLabel);
+    setActive(focusType, menu, -1);
   }
   else if (key === 'ArrowDown') {
-    setActive(focusType, menu, 0, defPermLabel);
+    setActive(focusType, menu, 0);
   }
   else if ([' ', 'Enter'].includes(key)) {
     const newIndex = oldIndex > -1 ? oldIndex : 0;
-    setActive(focusType, menu, newIndex, defPermLabel);
-  }
-};
-// Handles keyboard operations in a menu.
-const menuKeyHandler = (focusType, menu, key, defPermLabel) => {
-  const newIndex = newMenuIndex(menu, key);
-  if (newIndex > -1) {
-    setActive(focusType, menu, newIndex, defPermLabel);
+    setActive(focusType, menu, newIndex);
   }
 };
 // CONSTANTS
 const menuBar = document.getElementById('menubar');
 const persButton = document.getElementById('persButton');
 const persMenu = document.getElementById('persMenu');
-const defPermLabel = persMenu.getAttribute('aria-labelledby');
 const techButton = document.getElementById('techButton');
 const techMenu = document.getElementById('techMenu');
 // EVENT LISTENERS
-// Listen for clicks on the definition menu button.
+// Listen for clicks on the personalities menu button.
 persButton.addEventListener(
-  'click', () => menuButtonClickHandler('pseudo', persButton, defPermLabel)
+  'click', () => menuButtonClickHandler('pseudo', persButton)
 );
 // Listen for clicks on the technologies menu button.
 techButton.addEventListener(
@@ -222,7 +179,7 @@ persMenu.addEventListener('click', event => {
     // When the main click event (i.e. navigation to a link target) ends:
     window.setTimeout(() => {
       // Make the clicked menu item the active one.
-      setActive('pseudo', persMenu, targetIndex, defPermLabel);
+      setActive('pseudo', persMenu, targetIndex);
       // Focus the menu button.
       persButton.focus();
       // Close the menu.
@@ -274,13 +231,13 @@ window.addEventListener('keydown', event => {
       if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(key)) {
         // Handle the event and prevent any default scrolling.
         event.preventDefault();
-        menuButtonKeyHandler(['pseudo', 'true'][buttonIndex], focus, key, defPermLabel);
+        menuButtonKeyHandler(['pseudo', 'true'][buttonIndex], focus, key);
       }
       // Otherwise, if the key is an intra-menubar navigation key:
       else if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
         // Handle the event and prevent any default scrolling.
         event.preventDefault();
-        const newIndex = newMenuBarIndex(menuBar, key);
+        const newIndex = newMenuIndex(true, menuBar, key);
         if (newIndex > -1) {
           setActive('true', menuBar, newIndex);
         }
@@ -291,8 +248,10 @@ window.addEventListener('keydown', event => {
       // If the key is Enter:
       if (key === 'Enter') {
         // Simulate a click on whichever menu item is currently active.
-        const activeItem = document.getElementById(persMenu.getAttribute('aria-activedescendant'));
-        activeItem.click();
+        const activeChild = document
+        .getElementById(persMenu.getAttribute('aria-activedescendant'))
+        .firstElementChild;
+        activeChild.click();
       }
       // Otherwise, if it is Tab:
       else if (key === 'Tab') {
@@ -310,14 +269,14 @@ window.addEventListener('keydown', event => {
       else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
         // Navigate within the menu and prevent any default scrolling.
         event.preventDefault();
-        const newIndex = newMenuIndex(persMenu, key);
+        const newIndex = newMenuIndex(false, persMenu, key);
         if (newIndex > -1) {
-          setActive('pseudo', persMenu, newIndex, defPermLabel);
+          setActive('pseudo', persMenu, newIndex);
         }
       }
     }
-    // Otherwise, if a link menu item (thus, of the technologies menu) is in focus:
-    else if (focus.tagName === 'A' && focus.getAttribute('role') === 'menuitem') {
+    // Otherwise, if a link in a (i.e. the technologies) menu is in focus:
+    else if (focus.tagName === 'A' && focus.parentElement.getAttribute('role') === 'menuitem') {
       // If the key is Tab:
       if (key === 'Tab') {
         // Close the technologies menu.
@@ -334,7 +293,7 @@ window.addEventListener('keydown', event => {
       else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
         // Navigate within the technologies menu and prevent any default scrolling.
         event.preventDefault();
-        const newIndex = newMenuIndex(techMenu, key);
+        const newIndex = newMenuIndex(false, techMenu, key);
         if (newIndex > -1) {
           setActive('true', techMenu, newIndex);
         }
