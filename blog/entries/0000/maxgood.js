@@ -106,7 +106,7 @@ const openMenu = (button, newIndex) => {
   const menu = controlledMenu(button);
   menu.className = 'open';
   const focusType = focusTypeOf(menu);
-  if (newIndex) {
+  if (newIndex > -1) {
     setActive(focusType, menu, newIndex);
   }
   else {
@@ -325,7 +325,7 @@ window.addEventListener('keydown', event => {
           // Prevent default scrolling.
           event.preventDefault();
           // Open the menu button’s menu.
-          const childMenu = openMenu(activeChild, key === 'ArrowUp' ? -1 : 0);
+          openMenu(activeChild, key === 'ArrowUp' ? -1 : 0);
         }
         // Otherwise, if the active item does not contain a menu button and is in a menu:
         else if (menuRole === 'menu' && activeType !=='menuButton') {
