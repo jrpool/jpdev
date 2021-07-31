@@ -3,28 +3,23 @@
 const controlledMenu = button => document.getElementById(button.getAttribute('aria-controls'));
 // Returns the button controlling a menu.
 const controllingButton = menu => document.body.querySelector(`button[aria-controls=${menu.id}`);
-// Returns the role of the menu the menu-item parent of an element is in.
-const inMenu = element => {
-  const menuItem = element.parentElement;
-  if (menuItem.getAttribute('role') === 'menuitem') {
-    const menu = menuItem.parentElement;
-    const menuType = menu.getAttribute('role');
-    if (['menu', 'menubar'].includes(menuType)) {
-      return menu;
-    }
-    else {
-      return '';
-    }
+// Returns whether an element is a menu.
+const isMenu = element => ['menu', 'menubar'].includes(element.getAttribute('role'));
+// Returns whether an element is a menu item.
+const isMenuItem = element =>
+  element.getAttribute('role') === 'menuitem'
+  && isMenu(element.parentElement);
+// Returns the menu an element is or is a child or grandchild of.
+const menuOf = element => {
+  if (isMenu(element)) {
+    return element;
   }
-  return '';
-};
-// Opens a menu controlled by a button and returns the menu.
-const openMenu = button => {
-  // Chrome fails to support settable ariaExpanded property.
-  button.setAttribute('aria-expanded', 'true');
-  const menu = controlledMenu(button);
-  menu.className = 'open';
-  return menu;
+  else if (isMenuItem(element)) {
+    return element.parentElement;
+  }
+  else if (isMenuItem(element.parentElement)) {
+    return element.parentElement.parentElement;
+  }
 };
 // Closes a menu controlled by a button.
 const closeMenu = button => {
@@ -63,8 +58,6 @@ const activeIndexOf = (isButton, buttonOrMenu) => {
 }
 // Makes the specified (or the last if -1) menu item active.
 const setActive = (focusType, menu, itemIndex) => {
-  // Identify the index of the active menu item.
-  const oldIndex = activeIndexOf(false, menu);
   // Identify the menu items.
   const menuItems = menuItemsOf(menu);
   // Identify the specified index.
@@ -73,27 +66,51 @@ const setActive = (focusType, menu, itemIndex) => {
   menuItems.forEach((item, index) => {
     // If it has the specified index:
     if (index === newIndex) {
-      // Ensure it is active.
+      // If the menu is a pseudofocus manager:
       if (focusType === 'fake') {
+        // Mark the item as focal.
         item.className = 'focal';
         menu.setAttribute('aria-activedescendant', item.id);
+        // Ensure that the menu is in focus.
+        menu.focus();
       }
+      // Otherwise, if the menu is a true focus manager:
       else if (focusType === 'true') {
+        // Make the item keyboard-focusable.
         item.tabIndex = 0;
+        // Focus it.
         item.focus();
       }
     }
     // Otherwise, i.e. if does not have the specified index:
     else {
-      // Ensure it is inactive.
+      // If the menu is a pseudofocus manager:
       if (focusType === 'fake') {
+        // Mark the item as nonfocal.
         item.className = 'blurred';
       }
+      // Otherwise, if the item is a true focus manager:
       else if (focusType === 'true') {
+        // Make the item keyboard-nonfocusable.
         item.tabIndex = -1;
       }
     }
   });
+};
+// Opens a menu controlled by a button and makes an item active.
+const openMenu = (button, newIndex) => {
+  // Chrome fails to support settable ariaExpanded property.
+  button.setAttribute('aria-expanded', 'true');
+  const menu = controlledMenu(button);
+  menu.className = 'open';
+  if (newIndex) {
+    const focusType = menu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
+    setActive(focusType, menu, newIndex);)
+  }
+  else {
+    const oldIndex = activeIndexOf(true, button);
+    setActive(focusType, menu, oldIndex > -1 ? oldIndex : 0);
+  }
 };
 // Returns the index of a keyboard-chosen menu item.
 const newMenuIndex = (isBar, menu, key) => {
@@ -134,18 +151,8 @@ const newMenuIndex = (isBar, menu, key) => {
   }
   return newIndex;
 };
-// Clicks the child link or button, if any, of the fakefocused item of a menu.
-const click = menu => {
-  const activeItem = menuItemsOf(menu)[activeIndexOf(false, menu)];
-  const activeChild = activeItem.firstElementChild;
-  if (['A', 'BUTTON'].includes(activeChild.tagName)) {
-    activeChild.dispatchEvent(new Event('click'));
-  }
-};
 // Handles click activation of a menu button.
-const menuButtonClickHandler = (event, focusType, menuBar, button) => {
-  // Prevent the body click handler from handling this click.
-  event.stopPropagation();
+const menuButtonClickHandler = (focusType, menuBar, button) => {
   // If the button’s menu is closed:
   if (button.ariaExpanded === 'false') {
     // Open it with its existing active item, or the first if none.
@@ -168,70 +175,45 @@ const menuButtonClickHandler = (event, focusType, menuBar, button) => {
     // Close it.
     closeMenu(button);
   }
-  // Close any other menu of any other button of the menu bar, if open.
-  const openMenuButtons = menuItemsOf(menuBar)
-  .filter(item => item !== button && item.ariaExpanded === 'true');
-  openMenuButtons.forEach(btn => {
-    closeMenu(btn);
-  });
 };
-// Handles keyboard activation of a menu button.
-const menuButtonKeyHandler = (button, key) => {
-  const oldIndex = activeIndexOf(true, button);
-  const menu = openMenu(button);
-  const focusType = menu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
-  if (focusType === 'fake') {
-    menu.focus();
-  }
-  if (key === 'ArrowUp') {
-    setActive(focusType, menu, -1);
-  }
-  else if (key === 'ArrowDown') {
-    setActive(focusType, menu, 0);
-  }
-  else if ([' ', 'Enter'].includes(key)) {
-    const newIndex = oldIndex > -1 ? oldIndex : 0;
-    setActive(focusType, menu, newIndex);
-  }
-};
-// CONSTANTS
-const menuButtons = Array
-.from(document.querySelectorAll('button[aria-haspopup=menu], button[aria-haspopup=true'));
+
 // EVENT LISTENERS
-// Handle clicks on a menu’s item.
-const handleItemClicks = (button, menu, items, focusType) => {
-  items.forEach((item, index) => {
-    item.addEventListener('click', event => {
-      // Prevent the body click handler from handling this click.
-      event.stopPropagation();
-      // When the main click event (i.e. navigation to a link target) ends:
-      window.setTimeout(() => {
-        // Make the clicked menu item the active one.
-        setActive(focusType, menu, index);
-        // Focus the menu button.
-        button.focus();
-        // Close the menu.
-        closeMenu(button);
-      });
-    });
-  });
-};
-// Handle clicks on menu buttons and menu items.
-menuButtons.forEach(button => {
-  const menu = controlledMenu(button);
-  const menuItems = menuItemsOf(menu);
-  const focusType = menu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
-  button.addEventListener(
-    'click', event => menuButtonClickHandler(event, focusType, menu, button)
-  );
-  handleItemClicks(button, menu, menuItems, focusType);
-});
-// Close each menu on any click propagated to the body.
+
+// Handle clicks.
 document.body.addEventListener('click', event => {
-  // For each menu button whose menu is open:
-  menuItemsOf(menuBar).filter(button => button.ariaExpanded === 'true').forEach(btn => {
-    // Identify its menu.
-    const menu = controlledMenu(btn);
+  const target = event.target;
+  const targetMenu = menuOf(target);
+  // Identify all open menu buttons.
+  let openButtons = Array.from(document.querySelectorAll(
+    'button[aria-haspopup=menu][aria-expanded=true], button[aria-haspopup=true][aria-expanded=true]'
+  ));
+  // If the click target is or is inside a menu:
+  if (targetMenu) {
+    // Identify the menu item that is or contains the click target.
+    let targetItem;
+    if (isMenuItem(target)) {
+      targetItem = target;
+    }
+    else if (isMenuItem(target.parentElement)) {
+      targetItem = target.parentElement;
+    }
+    // If there is one:
+    if (targetItem) {
+      const focusType = targetMenu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
+      const itemIndex = menuItemsOf(targetMenu).indexOf(targetItem);
+      // If the click target is a menu button:
+      if (target.tagName === 'BUTTON' && ['menu', 'true'].includes(target.ariaHasPopup)) {
+        // Handle it.
+        menuButtonClickHandler(focusType, targetMenu, target);
+      }
+      // Make the menu item the active one.
+      setActive(focusType, targetMenu, itemIndex);
+    }
+    // Remove the menu’s button from the set of open menu buttons.
+    openButtons = openButtons.filter(button => button !== controllingButton(targetMenu));
+  }
+  // For each open menu button other than any targeted one’s:
+  openButtons.forEach(btn => {
     // When the main click event ends:
     window.setTimeout(() => {
       // Close the menu.
@@ -239,90 +221,118 @@ document.body.addEventListener('click', event => {
     });
   });
 });
-// Handle key presses when a menu or menu button is in focus.
+// Handle key presses.
 window.addEventListener('keydown', event => {
   const key = event.key;
   // If no ineligible modifier key was in effect when the key was depressed:
-  if (! (event.altKey || event.ctrlKey || event.metaKey || key !== 'Tab' && event.shiftKey)) {
+  if (! (event.altKey || event.ctrlKey || event.metaKey)) {
+    // Identify whether the shift key was in effect.
+    const shift = event.shiftKey;
+    // Identify the element in focus.
     const focus = document.activeElement;
-    // If a menu button is in focus:
-    if (menuButtons.includes(focus)) {
-      const ownerMenu = inMenu(focus);
-      const menuType = ownerMenu ? ownerMenu.getAttribute('role') : '';
-      // If the menu button is in a menu bar or not in any menu:
-      if (['menubar', ''].includes(menuType)) {
-        // If the key is a menu-button-activating key:
-        if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(key)) {
-          // Handle the event and prevent any default scrolling.
-          event.preventDefault();
-          menuButtonKeyHandler(focus, key);
-        }
-        // Otherwise, if the button is in a menu bar and the key is a menubar navigation key:
-        else if (menuType && ['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
-          // Handle the event and prevent any default scrolling.
-          event.preventDefault();
-          const newIndex = newMenuIndex(true, ownerMenu, key);
-          if (newIndex > -1) {
-            setActive('true', ownerMenu, newIndex);
-          }
-        }
+    // Identify its role.
+    const role = focus.getAttribute('role');
+    // If a menu, menu bar, or menu item is in focus:
+    if (['menu', 'menubar', 'menuitem'].includes(role)) {
+      // Identify the menu.
+      const menu = role === 'menuitem' ? focus.parentElement : focus;
+      // Identify its role.
+      const menuRole = menu.getAttribute('role');
+      // Identify whether it manages pseudofocus or true focus.
+      const focusType = menu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
+      // Identify the menu button controlling the menu, if any.
+      const ownerButton = controllingButton(menu);
+      // Identify the menu item containing the menu and any menu button controlling it.
+      let ownerItem = menu.parentElement;
+      if (ownerItem.getAttribute('role') !== 'menuitem') {
+        ownerItem = null;
       }
-    }
-    // Otherwise, if a menu is in focus (and thus has fake focus management):
-    else if (focus.getAttribute('role') === 'menu') {
-      const menuButton = controllingButton(focus);
+      // Identify the index of the active item of the menu.
+      const activeIndex = activeIndexOf(false, menu);
+      // Identify that item.
+      const activeItem = menuItemsOf(menu)[activeIndex];
+      // Identify the child element of the item.
+      const activeChild = activeItem.firstElementChild;
+      // Identify the child’s type.
+      let activeType = 'plain';
+      const activeTagName = activeChild.tagName;
+      if (activeTagName === 'A') {
+        activeType = 'link';
+      }
+      else if (activeTagName === 'BUTTON') {
+        activeType = activeChild.ariaExpanded ? 'menuButton' : 'button';
+      }
       // If the key is Enter:
-      if (key === 'Enter') {
-        // Simulate a click on whichever menu item is currently active.
-        const activeIndex = activeIndexOf(false, focus);
-        menuItemsOf(focus)[activeIndex].click();
-      }
-      // Otherwise, if it is Tab:
-      else if (key === 'Tab') {
-        // Close the menu.
-        closeMenu(menuButton);
-      }
-      // Otherwise, if it is Escape:
-      else if (key === 'Escape') {
-        // Focus the menu button.
-        menuButton.focus();
-        // Close the menu.
-        closeMenu(menuButton);
-      }
-      // Otherwise, if the key is an intra-menu navigation key:
-      else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
-        // Navigate within the menu and prevent any default scrolling.
-        event.preventDefault();
-        const newIndex = newMenuIndex(false, focus, key);
-        if (newIndex > -1) {
-          setActive('fake', focus, newIndex);
+      if (key === 'Enter' && ! shift) {
+        // If the active menu item contains a link or ordinary button:
+        if (['link', 'button'].includes(activeType)) {
+          // Simulate a click on the menu item.
+          activeItem.click();
+        }
+        // Otherwise, if the menu item contains a menu button:
+        else if (activeType === 'menuButton') {
+          // Its menu must be closed, so open it.
+          openMenu(activeChild);
         }
       }
-    }
-    // Otherwise, if an item in a menu is in focus (and thus is truly focused):
-    else if (focus.getAttribute('role') === 'menuitem') {
-      const menu = focus.parentElement;
-      const menuButton = controllingButton(menu);
-      if (menu.getAttribute('role') === 'menu') {
-        // If the key is Tab:
-        if (key === 'Tab') {
-          // Close the menu.
-          closeMenu(menuButton);
-        }
-        // Otherwise, if it is Escape:
-        else if (key === 'Escape') {
-          // Focus the menu button.
-          menuButton.focus();
-          // Close the menu.
-          closeMenu(menuButton);
-        }
-        // Otherwise, if it is an intra-menu navigation key:
-        else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key) || /^[a-zA-Z]$/.test(key)) {
-          // Navigate within the technologies menu and prevent any default scrolling.
+      // Otherwise, if the key is Space:
+      else if (key === ' ' && ! shift) {
+        // If the menu item contains an ordinary button:
+        if (activeType === 'button') {
+          // Prevent default scrolling.
           event.preventDefault();
+          // Simulate a click on the menu item.
+          activeItem.click();
+        }
+        // Otherwise, if the menu item contains a menu button:
+        else if (activeType === 'menuButton') {
+          // Prevent default scrolling.
+          event.preventDefault();
+          // Its menu must be closed, so open it.
+          openMenu(activeChild);
+        }
+      }
+      // Otherwise, if the key is Tab and the menu is closable:
+      else if (key === 'Tab' && ownerButton) {
+        // Close the menu.
+        closeMenu(ownerButton);
+      }
+      // Otherwise, if the key is Escape and the menu is closable:
+      else if (key === 'Escape' && ! shift && ownerButton && ownerItem) {
+        // Close the menu.
+        closeMenu(ownerButton);
+        // Focus its parent menu item.
+        ownerItem.focus();
+      }
+      // Otherwise, if the key solely navigates within the menu:
+      else if (
+        ['ArrowLeft', 'ArrowRight'].includes(key) && ! shift && menuRole === 'menubar'
+        || ['Home', 'End'].includes(key) && ! shift
+        || /^[a-zA-Z]$/.test(key)
+      ) {
+        // Obey the key.
+        const newIndex = newMenuIndex(true, menu, key);
+        if (newIndex > -1) {
+          setActive(focusType, menu, newIndex);
+        }
+      }
+      // Otherwise, if the key conditionally navigates or opens a menu:
+      else if (['ArrowUp', 'ArrowDown'].includes(key) && ! shift) {
+        // If the active menu item contains a menu button and is in a menu bar:
+        if (menuRole === 'menubar' && activeType === 'menuButton') {
+          // Prevent default scrolling.
+          event.preventDefault();
+          // Open the menu button’s menu.
+          const childMenu = openMenu(activeChild, key === 'ArrowUp' ? -1 : 0);
+        }
+        // Otherwise, if the active item does not contain a menu button and is in a menu:
+        else if (menuRole === 'menu' && activeType !=='menuButton') {
+          // Prevent default scrolling.
+          event.preventDefault();
+          // Navigate according to the key.
           const newIndex = newMenuIndex(false, menu, key);
           if (newIndex > -1) {
-            setActive('true', menu, newIndex);
+            setActive(focusType, menu, newIndex);
           }
         }
       }
