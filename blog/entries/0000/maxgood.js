@@ -21,6 +21,8 @@ const menuOf = element => {
     return element.parentElement.parentElement;
   }
 };
+// Returns the focus type of a menu.
+const focusTypeOf = menu => menu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
 // Closes a menu controlled by a button.
 const closeMenu = button => {
   // If the menu is open:
@@ -103,9 +105,9 @@ const openMenu = (button, newIndex) => {
   button.setAttribute('aria-expanded', 'true');
   const menu = controlledMenu(button);
   menu.className = 'open';
+  const focusType = focusTypeOf(menu);
   if (newIndex) {
-    const focusType = menu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
-    setActive(focusType, menu, newIndex);)
+    setActive(focusType, menu, newIndex);
   }
   else {
     const oldIndex = activeIndexOf(true, button);
@@ -199,7 +201,7 @@ document.body.addEventListener('click', event => {
     }
     // If there is one:
     if (targetItem) {
-      const focusType = targetMenu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
+      const focusType = focusTypeOf(targetMenu);
       const itemIndex = menuItemsOf(targetMenu).indexOf(targetItem);
       // If the click target is a menu button:
       if (target.tagName === 'BUTTON' && ['menu', 'true'].includes(target.ariaHasPopup)) {
@@ -239,7 +241,7 @@ window.addEventListener('keydown', event => {
       // Identify its role.
       const menuRole = menu.getAttribute('role');
       // Identify whether it manages pseudofocus or true focus.
-      const focusType = menu.hasAttribute('aria-activedescendant') ? 'fake' : 'true';
+      const focusType = focusTypeOf(menu);
       // Identify the menu button controlling the menu, if any.
       const ownerButton = controllingButton(menu);
       // Identify the menu item containing the menu and any menu button controlling it.
