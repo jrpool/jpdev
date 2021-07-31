@@ -111,6 +111,7 @@ const openMenu = (button, newIndex) => {
   }
   else {
     const oldIndex = activeIndexOf(true, button);
+    console.log(`Existing active index is ${oldIndex}`);
     setActive(focusType, menu, oldIndex > -1 ? oldIndex : 0);
   }
 };
@@ -153,31 +154,6 @@ const newMenuIndex = (isBar, menu, key) => {
   }
   return newIndex;
 };
-// Handles click activation of a menu button.
-const menuButtonClickHandler = (focusType, menuBar, button) => {
-  // If the button’s menu is closed:
-  if (button.ariaExpanded === 'false') {
-    // Open it with its existing active item, or the first if none.
-    openMenu(button);
-    const menu = controlledMenu(button);
-    if (focusType === 'fake') {
-      menu.focus();
-      if (! menu.getAttribute('aria-activedescendant')) {
-        setActive('fake', menu, 0);
-      }
-    }
-    else if (focusType === 'true') {
-      const oldIndex = activeIndexOf(true, button);
-      const newIndex = oldIndex > -1 ? oldIndex : 0;
-      setActive('true', menu, newIndex);
-    }
-  }
-  // Otherwise, if the button’s menu is open:
-  else if (button.ariaExpanded === 'true') {
-    // Close it.
-    closeMenu(button);
-  }
-};
 
 // EVENT LISTENERS
 
@@ -205,8 +181,17 @@ document.body.addEventListener('click', event => {
       const itemIndex = menuItemsOf(targetMenu).indexOf(targetItem);
       // If the click target is a menu button:
       if (target.tagName === 'BUTTON' && ['menu', 'true'].includes(target.ariaHasPopup)) {
-        // Handle it.
-        menuButtonClickHandler(focusType, targetMenu, target);
+        // If the button’s menu is closed:
+        if (target.ariaExpanded === 'false') {
+          // Open it with its existing active item, or the first if none.
+          console.log('About to open menu');
+          openMenu(target);
+        }
+        // Otherwise, if the button’s menu is open:
+        else if (target.ariaExpanded === 'true') {
+          // Close it.
+          closeMenu(target);
+        }
       }
       // Make the menu item the active one.
       setActive(focusType, targetMenu, itemIndex);
