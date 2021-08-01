@@ -5,7 +5,7 @@ const controlledMenu = button => document.getElementById(button.getAttribute('ar
 // Returns the button controlling a menu.
 const controller = menu => document.body.querySelector(`button[aria-controls=${menu.id}`);
 // Returns whether an element is a menu.
-const isMenu = element => ['menu', 'menubar'].includes(element.getAttribute('role'));
+const isMenu = element => element && ['menu', 'menubar'].includes(element.getAttribute('role'));
 // Returns whether an element is a menu item.
 const isMenuItem = element =>
   element.getAttribute('role') === 'menuitem'
@@ -172,13 +172,15 @@ document.body.addEventListener('click', event => {
   else if (isMenuItem(target.parentElement)) {
     menuItem = target.parentElement;
   }
-  const itemParent = menuItem.parentElement;
+  const itemParent = menuItem ? menuItem.parentElement : null;
   const menu = isMenu(itemParent) ? itemParent : null;
   // If they exist:
   if (menuItem && menu) {
     // Make the menu item active.
     const itemIndex = menuItemsOf(menu).indexOf(menuItem);
     setActive(focusTypeOf(menu), menu, itemIndex);
+    // Identify the button controlling the menu, if any.
+    const ownerButton = controller(menu);
     // If the target is a menu button:
     if (target.tagName === 'BUTTON' && ['menu', 'true'].includes(target.ariaHasPopup)) {
       // If the menu it controls is closed:
@@ -189,9 +191,7 @@ document.body.addEventListener('click', event => {
     }
     // Otherwise, if the target is a link:
     else if (target.tagName === 'A') {
-      // Identify the button controlling the menu, if any.
-      const ownerButton = controller(menu);
-      // If it exists:
+      // If the menu has a controlling button:
       if (ownerButton) {
         // Identify its parent.
         const ownerItem = ownerButton.parentElement;
@@ -208,6 +208,11 @@ document.body.addEventListener('click', event => {
           }
         }
       }
+    }
+    // Otherwise, if the target is the menu item:
+    else if (target === menuItem) {
+      // Prevent the menu from being closed.
+      openButtons = openButtons.filter(button => button !== ownerButton);
     }
   }
   // For each open menu button:
