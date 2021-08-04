@@ -109,6 +109,7 @@ const openMenu = (button, newIndex) => {
     setActive(focusType, menu, oldIndex > -1 ? oldIndex : 0);
   }
 };
+/*
 // Navigates within a menu according to a key press.
 const keyNav = (isBar, menu, key, focusType) => {
   const oldIndex = activeIndexOf(false, menu);
@@ -150,9 +151,7 @@ const keyNav = (isBar, menu, key, focusType) => {
     setActive(focusType, menu, newIndex);
   }
 };
-// Returns the index of a keyboard-chosen menu item.
-const newMenuIndex = (isBar, menu, key) => {
-};
+*/
 
 // EVENT LISTENERS
 
@@ -225,6 +224,7 @@ document.body.addEventListener('click', event => {
   });
 });
 // Handle key presses.
+/*
 window.addEventListener('keydown', event => {
   const key = event.key;
   // If no ineligible modifier key was in effect when the key was depressed:
@@ -342,3 +342,4 @@ window.addEventListener('keydown', event => {
     }
   }
 });
+*/

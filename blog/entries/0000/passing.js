@@ -150,9 +150,6 @@ const keyNav = (isBar, menu, key, focusType) => {
     setActive(focusType, menu, newIndex);
   }
 };
-// Returns the index of a keyboard-chosen menu item.
-const newMenuIndex = (isBar, menu, key) => {
-};
 
 // EVENT LISTENERS
 

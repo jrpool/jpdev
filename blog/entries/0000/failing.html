@@ -13,21 +13,15 @@
       <h1>Failing page</h1>
       <p>This page is designed to contain at least one failure of each custom test in the <code>combo10</code> proc of Autotest.</p>
       <h2>Link underlining</h2>
-      <p>This is a list of non-inline and underlined links. They should fail <code>styleDiff</code>, because the Webkit user-agent stylesheet gives them <code>text-align</code> properties with <code>left</code> values by inheritance.</p>
-      <ul class="noUl-a">
-        <li><a href="https://developer.mozilla.org/">Source 1</a></li>
-        <li><a href="https://www.w3.org/TR/wai-aria-1.1/">Source 2</a></li>
-      </ul>
-      <p>This is a list of non-inline and non-underlined links. They should pass <code>linkUl</code>, because they are not inline. But they should fail <code>styleDiff</code>, as above.</p>
-      <ul class="noUl-a">
-        <li><a href="https://developer.mozilla.org/">Source 1</a></li>
-        <li><a href="https://www.w3.org/TR/wai-aria-1.1/">Source 2</a></li>
-      </ul>
-      <p>This paragraph contains an inline and underlined link to <a href="https://www.w3.org/TR/WCAG21/">Source 3</a>.</p>
-      <p class="noUl-a">This paragraph contains an inline but not-underlined link to <a href="https://longnow.org/">Source 4</a>.</p>
-      <h2><code>focusOutlineS</code></h2>
-      <p class="noOl">The focusable elements elsewhere in this document are outlined when focused. But the one in this paragraph is not outlined when focused. Here is a link to <a href="https://www.wikipedia.org/">Source 5</a>.</p>
-      <p>The following form&rsquo;s controls, too, are not outlined when focused.</p>
+      <p>Here are two non-inline links. One is underlined and the other is not, so they should fail <code>styleDiff</code>. They should pass <code>linkUl</code>, because it makes underlining of non-inline links optional.</p>
+      <div>
+        <p class="blockLink"><a href="https://developer.mozilla.org/">Source 1</a></p>
+        <p><a href="https://www.w3.org/TR/wai-aria-1.1/">Source 2</a></p>
+      </div>
+      <p class="blockLink">This paragraph contains an inline but not underlined link to <a href="https://www.w3.org/TR/WCAG21/">Source 3</a>, so it should fail <code>linkUl</code>.</p>
+      <h2>Focus indicator</h2>
+      <p>The link in this paragraph is not outlined when focused. Here is a link to <a class="noOl" href="https://www.wikipedia.org/">Source 4</a>. So it should fail <code>focOl</code></p>
+      <p>The following form&rsquo;s controls, too, are not outlined when focused, so they, too, should fail <code>focOl</code>.</p>
       <form class="noOl">
         <p><fieldset>
           <legend>Choose a tree</legend>
@@ -46,66 +40,98 @@
         </select></p>
         <p><button type="button">Not outlined</button></p>
       </form>
-      <h2><code>focOpS</code></h2>
-      <p>The previous links in this document are focusable and operable. So are the following form elements:</p>
-      <form>
-        <p><fieldset>
-          <legend>Choose a drink</legend>
-          <p><label><input type="radio" name="drink" value="water" selected>water</label></p>
-          <p><label><input type="radio" name="drink" value="juice">juice</label></p>
-        </fieldset></p>
-        <p><fieldset>
-          <legend>Choose checkboxes</legend>
-          <p><label><input type="checkbox" name="water">water</label></p>
-          <p><label><input type="checkbox" name="juice">juice</label></p>
-        </fieldset></p>
-        <p><label for="meal">Choose a meal</label></p>
-        <p><select id="meal" name="meal" size="3">
-          <option value="breakfast">breakfast</option>
-          <option value="lunch">lunch</option>
-          <option value="supper">supper</option>
-        </select></p>
-        <p><button type="button">Do nothing</button></p>
-      </form>
-      <p>But the following link is not focusable. This is a link to <a tabindex="-1" href="https://iwpr.net/">Source 6</a>.</p>
+      <h2>Keyboard navigability</h2>
+      <p>The following link is not keyboard-focusable. This is a link to <a tabindex="-1" href="https://iwpr.net/">Source 5</a>.</p>
       <p tabindex="0">And this paragraph is focusable, though not operable.</p>
-      <h2><code>labClashS</code></h2>
-      <p>Previous labelable elements in this document are correctly labeled implicitly or explicitly. In the following form, one control is labeled by reference, and one is labeled by attribute.</p>
-      <form>
-        <p id="cityLabel">Enter any city.</p>
-        <p><input name="city" aria-labelledby="cityLabel" maxLength="50"></p>
-        <p>Enter the integer result of the formula shown by the image above.</p>
-        <p><input
-          type="number"
-          step="1"
-          name="humannessTest"
-          maxLength="5"
-          aria-label="Enter the result of 3&times;4 + 7."
-        ></p>
-      </form>
-      <p>The following form contains unlabeled controls.</p>
+      <p>Therefore, both of these should fail <code>focOp</code>.</p>
+      <h2>Menus</h2>
+      <p>The following menu bar contains menu buttons controlling submenus. The buttons and submenus can be navigated and operated with a pointer but not with a keyboard, so they should fail <code>focOp</code>.</p>
+      <p id="menuBarAbout">Choose a domain to toggle that domain&rsquo;s submenu open or closed. The submenu contains links to definitions (in a new tab).</p>
+      <ul id="menubar" role="menubar" class="menubar blockLink" aria-labelledby="menuBarAbout">
+        <li role="menuitem" tabindex="0">
+          <button
+            id="persButton"
+            type="button"
+            tabindex="-1"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="persMenu"
+          >
+            Personalities
+          </button>
+          <ul
+            id="persMenu"
+            role="menu"
+            aria-labelledby="persButton"
+            aria-activedescendant=""
+            class="shut"
+          >
+            <li id="introvert" role="menuitem" class="blurred">
+              <a
+                tabindex="-1"
+                href="https://en.wiktionary.org/wiki/introvert"
+                target="_blank"
+              >
+                introvert
+              </a>
+            </li>
+            <li id="extravert" role="menuitem" class="blurred">
+              <a
+                tabindex="-1"
+                href="https://en.wiktionary.org/wiki/extravert"
+                target="_blank"
+              >
+                extravert
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li role="menuitem">
+          <button
+            id="techButton"
+            type="button"
+            tabindex="-1"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="techMenu"
+          >
+            Technologies
+          </button>
+          <ul
+          id="techMenu"
+          role="menu"
+          aria-labelledby="techButton"
+          class="shut"
+          >
+            <li role="menuitem">
+              <a
+                tabindex="-1"
+                href="https://en.wikipedia.org/wiki/Prestressed_concrete"
+                target="_blank"
+              >
+                prestressed concrete
+              </a>
+            </li>
+            <li role="menuitem">
+              <a
+                tabindex="-1"
+                href="https://en.wikipedia.org/wiki/Heat_pump"
+                target="_blank"
+              >
+                heat pump
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Labeling</h2>
+      <p>The following form contains unlabeled controls, so they should fail <code>labClash</code>.</p>
       <form>
         <p>Enter any vehicle type.</p>
-        <p><input name="vehicle" maxLength="50"></p>
-        <p>Enter the integer result of the formula shown by the image above.</p>
-        <p><fieldset>
-          <legend>Choose a food</legend>
-          <p><input type="radio" name="food" value="fruit" selected>fruit</p>
-          <p><input type="radio" name="food" value="vegetable">vegetable</p>
-        </fieldset></p>
-        <p><fieldset>
-          <legend>Choose checkboxes</legend>
-          <p><input type="checkbox" name="arm">arm</p>
-          <p><input type="checkbox" name="leg">leg</p>
-        </fieldset></p>
-        <p>Choose a house part</p>
-        <p><select name="housePart" size="2">
-          <option value="window">window</option>
-          <option value="door">door</option>
-        </select></p>
-        <p>What does this button do? <button type="button"></button></p>
+        <p><input name="vehicle" maxLength="50" aria-labelledby="nothing"></p>
+        <p>What does this button do? <button type="button" aria-labelledby="nothing">Nothing</button></p>
       </form>
-      <p>The following form&rsquo;s controls are mislabeled.</p>
+      <p>The following form&rsquo;s controls have multiple conflicting labels, so they, too, should fail <code>labClash</code>.</p>
       <form>
         <p><fieldset>
           <legend>Choose a document</legend>
@@ -124,8 +150,8 @@
         <p><label id="enrollLabel" for="enroll">Enroll me</label></p>
         <p><button id="enroll" type="button" aria-label="I want to enroll" aria-labelledby="enrollLabel">OK</button></p>
       </form>
-      <h2><code>radioSet</code></h2>
-      <p>The radio buttons elsewhere in this document are contained in <code>fieldset</code> elements with only one radio-button name and with valid <code>legend</code> elements. The <code>fieldset</code> element containing the following radio buttons, however, has no <code>legend</code> element.</p>
+      <h2>Radio buttons</h2>
+      <p>The <code>fieldset</code> element containing the following radio buttons has no <code>legend</code> element, so it should fail <code>radioSet</code>.</p>
       <form>
         <fieldset>
           <p>Choose an official</p>
@@ -133,7 +159,7 @@
           <p><label><input type="radio" name="official" value="manager" selected>manager</label></p>
         </fieldset>
       </form>
-      <p>And the following radio buttons in a <code>fieldset</code> element do not all have the same name.</p>
+      <p>The following radio buttons in a <code>fieldset</code> element do not all have the same name, so they, too, should fail <code>radioSet</code>.</p>
       <form>
         <fieldset>
           <legend>Choose forms of recreation</legend>
@@ -145,23 +171,22 @@
           <p><label><input type="radio" name="sport" value="tennis" selected>tennis</label></p>
         </fieldset>
       </form>
-      <p>Finally, the following radio buttons are not in a <code>fieldset</code> element.</p>
+      <p>The following radio buttons are not in a <code>fieldset</code> element at all, so they, too, should fail <code>radioSet</code>.</p>
       <form>
-        <p>Choose an furniture item</p>
+        <p>Choose a furniture item</p>
         <p><label><input type="radio" name="furniture" value="table" selected>table</label></p>
         <p><label><input type="radio" name="furnitune" value="chair" selected>chair</label></p>
       </form>
-      <h2><code>role</code></h2>
-      <p>This paragraph contains a formula: <span role="math">3 + 5 = 8</span>.</p>
+      <h2>Roles</h2>
+      <p>The following roles should fail <code>role</code>.</p>
+      <p>This formula has a non-existent ARIA role: <span role="equation">3 + 5 = 8</span>.</p>
       <p>The following definitions use ARIA roles instead of an HTML <code>dl</code> structure.</p>
       <p>A <span id="king" role="term">king</span> is a <span role="definition" aria-labelledby="king">hereditary male ruler</span>.</p>
       <p>A <span id="queen" role="term">queen</span> is a <span role="definition" aria-labelledby="queen">hereditary female ruler</span>.</p>
-      <p>The following paragraph has a non-existent role.</p>
-      <p role="imposter">This is nonsense.</p>
       <p>The following paragraph has an abstract role.</p>
       <p role="landmark">This is the end of a section of the document.</p>
-      <h2 class="red"><code>styleDiff</code></h2>
-      <p>The heading of this section and the button below differ in color, font, minimum height, and/or border from their peers elsewhere in this document.</p>
+      <h2 class="red">Style consistency</h2>
+      <p>The above heading and the button below differ in color, font, minimum height, and/or border from their peers elsewhere in this document, so they should fail <code>styleDiff</code>.</p>
       <p><button type="button" class="tall">Pay attention</button></p>
     </main>
     <p role="contentinfo">This document is an Autotest sample target.</p>
