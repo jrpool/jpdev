@@ -36,6 +36,7 @@ const menuItemsOf = menu => {
       }
     }
   });
+  return items;
 };
 // Returns the menu that a menu item is an item of.
 const owningMenuOf = menuItem => {
@@ -110,10 +111,10 @@ const setActive = (focusType, menu, itemIndex) => {
         // Mark the item as nonfocal.
         item.className = 'blurred';
       }
-      // Otherwise, if the item is a true focus manager:
+      // Otherwise, if the menu is a true focus manager:
       else if (focusType === 'true') {
         // Make the item nonfocusable.
-        item.removeAttribute('tabindex');
+        item.tabIndex = -1;
       }
       // Close the menu controlled by the item if the item is a menu button.
       closeMenu(item);
@@ -139,7 +140,7 @@ const openMenu = (button, newIndex) => {
     setActive(focusType, menu, oldIndex > -1 ? oldIndex : 0);
   }
 };
-// Navigates within a menu according to a key press.
+// Navigates within a menu according to a key press and returns the newly active index.
 const keyNav = (isBar, menu, key, focusType) => {
   const oldIndex = activeIndexOf(false, menu);
   const menuItems = menuItemsOf(menu);
@@ -180,6 +181,8 @@ const keyNav = (isBar, menu, key, focusType) => {
   if (newIndex > -1) {
     setActive(focusType, menu, newIndex);
   }
+  // Return the new index.
+  return newIndex;
 };
 
 // EVENT LISTENERS
@@ -201,8 +204,8 @@ document.body.addEventListener('click', event => {
       if (target.tagName === 'BUTTON' && ['menu', 'true'].includes(target.ariaHasPopup)) {
         // If the menu it controls is closed:
         if (target.ariaExpanded === 'false') {
-          // Open it with its existing active item, or the first if none.
-          openMenu(target);
+          // Open it with the first item active.
+          openMenu(target, 0);
         }
         // Otherwise, if the menu it controls is open:
         else if (target.ariaExpanded === 'true') {
@@ -259,7 +262,7 @@ window.addEventListener('keydown', event => {
         const menu = owningMenuOf(focus);
         // If it exists:
         if (menu) {
-          // Identify the role of the mune.
+          // Identify the role of the menu.
           const menuRole = menu.getAttribute('role');
           // Identify whether the menu manages pseudofocus or true focus.
           const focusType = focusTypeOf(menu);
@@ -267,6 +270,7 @@ window.addEventListener('keydown', event => {
           const ownerButton = controller(menu);
           // Initialize the type of the focused element as inoperable.
           let itemType = 'plain';
+          // Revise the type if it is operable.
           const tagName = focus.tagName;
           if (tagName === 'A') {
             itemType = 'link';
@@ -283,8 +287,8 @@ window.addEventListener('keydown', event => {
             }
             // Otherwise, if the menu item is a menu button:
             else if (itemType === 'menuButton') {
-              // Its menu must be closed, so open it.
-              openMenu(focus);
+              // Its menu must be closed, so open it, with the first item active.
+              openMenu(focus, 0);
             }
           }
           // Otherwise, if the key is Space:
@@ -300,8 +304,8 @@ window.addEventListener('keydown', event => {
             else if (itemType === 'menuButton') {
               // Prevent default scrolling.
               event.preventDefault();
-              // Its menu must be closed, so open it.
-              openMenu(focus);
+              // Its menu must be closed, so open it, with the first item active.
+              openMenu(focus, 0);
             }
           }
           // Otherwise, if the key is Tab and the menu is closable:
@@ -316,13 +320,23 @@ window.addEventListener('keydown', event => {
             // Focus its menu button.
             ownerButton.focus();
           }
-          // Otherwise, if the key solely navigates within the menu:
+          // Otherwise, if the key is a letter:
+          else if (/^[a-zA-Z]$/.test(key)) {
+            // Navigate within the menu according to the key.
+            keyNav(true, menu, key, focusType);
+          }
+          // Otherwise, if the key navigates among parent menu items in a menu bar:
           else if (
             ['ArrowLeft', 'ArrowRight'].includes(key) && ! shift && menuRole === 'menubar'
-            || /^[a-zA-Z]$/.test(key)
           ) {
+            // Close the menu.
+            closeMenu(ownerButton);
+            // Identify the menu bar.
+            const bar = owningMenuOf(ownerButton);
             // Obey the key.
-            keyNav(true, menu, key, focusType);
+            const newBarIndex = keyNav(true, bar, key, focusTypeOf(bar));
+            // Open the menu controlled by the newly focused menu button.
+            openMenu(menuItemsOf(bar)[newBarIndex], 0);
           }
           // Otherwise, if the key specially navigates within the menu:
           else if (['Home', 'End'].includes(key) && ! shift) {
@@ -338,7 +352,7 @@ window.addEventListener('keydown', event => {
               // Prevent default scrolling.
               event.preventDefault();
               // Open the menu button’s menu.
-              openMenu(activeChild, key === 'ArrowUp' ? -1 : 0);
+              openMenu(focus, key === 'ArrowUp' ? -1 : 0);
             }
             // Otherwise, if the active item is not a menu button and is in a menu:
             else if (menuRole === 'menu' && itemType !== 'menuButton') {
