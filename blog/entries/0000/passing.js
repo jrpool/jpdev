@@ -326,17 +326,22 @@ window.addEventListener('keydown', event => {
             keyNav(true, menu, key, focusType);
           }
           // Otherwise, if the key navigates among parent menu items in a menu bar:
-          else if (
-            ['ArrowLeft', 'ArrowRight'].includes(key) && ! shift && menuRole === 'menubar'
-          ) {
-            // Close the menu.
-            closeMenu(ownerButton);
-            // Identify the menu bar.
-            const bar = owningMenuOf(ownerButton);
-            // Obey the key.
-            const newBarIndex = keyNav(true, bar, key, focusTypeOf(bar));
-            // Open the menu controlled by the newly focused menu button.
-            openMenu(menuItemsOf(bar)[newBarIndex], 0);
+          else if (['ArrowLeft', 'ArrowRight'].includes(key)) {
+            // If the focused element is a menu button in a menu bar:
+            if (itemType === 'menuButton' && menuRole === 'menubar') {
+              // Navigate within the menu bar according to the key.
+              keyNav(true, menu, key, focusType);
+            }
+            // Otherwise, if the focused element is a button-controlled menu item:
+            else if (menuRole === 'menu' && ownerButton) {
+              // Close the menu.
+              closeMenu(ownerButton);
+              // Identify the menu bar.
+              const bar = owningMenuOf(ownerButton);
+              // Obey the key.
+              const newBarIndex = keyNav(true, bar, key, focusTypeOf(bar));
+              // Open the menu controlled by the newly focused menu button and focus its first item.
+              openMenu(menuItemsOf(bar)[newBarIndex], 0);
           }
           // Otherwise, if the key specially navigates within the menu:
           else if (['Home', 'End'].includes(key) && ! shift) {
