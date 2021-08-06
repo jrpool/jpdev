@@ -342,6 +342,7 @@ window.addEventListener('keydown', event => {
               const newBarIndex = keyNav(true, bar, key, focusTypeOf(bar));
               // Open the menu controlled by the newly focused menu button and focus its first item.
               openMenu(menuItemsOf(bar)[newBarIndex], 0);
+            }
           }
           // Otherwise, if the key specially navigates within the menu:
           else if (['Home', 'End'].includes(key) && ! shift) {
