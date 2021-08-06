@@ -198,7 +198,7 @@ document.body.addEventListener('click', event => {
     // If the owning menu exists:
     if (menu) {
       // Make the menu item active.
-      const itemIndex = menuItemsOf(menu).indexOf(menuItem);
+      const itemIndex = menuItemsOf(menu).indexOf(target);
       setActive(focusTypeOf(menu), menu, itemIndex);
       // If the menu item is also a menu button:
       if (target.tagName === 'BUTTON' && ['menu', 'true'].includes(target.ariaHasPopup)) {
