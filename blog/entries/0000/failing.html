@@ -45,7 +45,7 @@
       <p tabindex="0">And this paragraph is focusable, though not operable.</p>
       <p>Therefore, both of these should fail <code>focOp</code>.</p>
       <h2>Menus</h2>
-      <p>The following menu bar contains menu buttons controlling submenus. The buttons and submenus can be navigated and operated with a pointer but not with a keyboard, so they should fail <code>focOp</code>.</p>
+      <p>The following menu bar contains menu buttons controlling submenus. The buttons and submenus can be navigated and operated with a mouse but not with a keyboard, so they should fail <code>focOp</code>.</p>
       <p id="menuBarAbout">Choose a domain to toggle that domain&rsquo;s submenu open or closed. The submenu contains links to definitions (in a new tab).</p>
       <ul id="menubar" role="menubar" class="menubar blockLink" aria-labelledby="menuBarAbout">
         <li role="menuitem" tabindex="0">
@@ -125,13 +125,13 @@
         </li>
       </ul>
       <h2>Labeling</h2>
-      <p>The following form contains unlabeled controls, so they should fail <code>labClash</code>.</p>
+      <p>The following form contains controls with non-existent referenced labels, so <code>labClash</code> should classify them as unlabeled.</p>
       <form>
         <p>Enter any vehicle type.</p>
         <p><input name="vehicle" maxLength="50" aria-labelledby="nothing"></p>
         <p>What does this button do? <button type="button" aria-labelledby="nothing">Nothing</button></p>
       </form>
-      <p>The following form&rsquo;s controls have multiple conflicting labels, so they, too, should fail <code>labClash</code>.</p>
+      <p>The following form&rsquo;s controls have multiple conflicting labels, so <code>labClash</code> should classify them as mislabeled.</p>
       <form>
         <p><fieldset>
           <legend>Choose a document</legend>
@@ -181,14 +181,16 @@
       <p>The following roles should fail <code>role</code>.</p>
       <p>This formula has a non-existent ARIA role: <span role="equation">3 + 5 = 8</span>.</p>
       <p>The following definitions use ARIA roles instead of an HTML <code>dl</code> structure.</p>
-      <p>A <span id="king" role="term">king</span> is a <span role="definition" aria-labelledby="king">hereditary male ruler</span>.</p>
-      <p>A <span id="queen" role="term">queen</span> is a <span role="definition" aria-labelledby="queen">hereditary female ruler</span>.</p>
+      <ul>
+        <li><span id="king" role="term">king</span>: <span role="definition" aria-labelledby="king">hereditary male ruler</span></li>
+        <li><span id="queen" role="term">queen</span>: <span role="definition" aria-labelledby="queen">hereditary female ruler</span></li>
+      </ul>
       <p>The following paragraph has an abstract role.</p>
       <p role="landmark">This is the end of a section of the document.</p>
       <h2 class="red">Style consistency</h2>
       <p>The above heading and the button below differ in color, font, minimum height, and/or border from their peers elsewhere in this document, so they should fail <code>styleDiff</code>.</p>
       <p><button type="button" class="tall">Pay attention</button></p>
     </main>
-    <p role="contentinfo">This document is an Autotest sample target.</p>
+    <p role="contentinfo">This document is an Autotest sample target. The assignment of the <code>contentinfo</code> role to a <code>p</code> element, instead of the use of a <code>footer</code> element, violates <code>role</code>.</p>
   </body>
 </html>
