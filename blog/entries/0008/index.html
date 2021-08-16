@@ -20,23 +20,23 @@
         <p class="summary">If experts fail a test, is the test broken?</p>
       </header>
       <h2>Introduction</h2>
-      <p><dfn>Digital accessibility</dfn> is a body of <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">standards and expertise</a>. Accessibility specialists know how to design and implement digital products inclusively. As a result, websites, document files, applications, and devices serve users across a wide range of education, age, ability, equipment, and environments.</p>
-      <p>To ensure that digital products are accessible, one tests them. But that works only if the tests are valid. So, one must test the tests. How?</p>
+      <p><dfn>Digital accessibility</dfn> is a body of <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">standards and expertise</a>. Accessibility specialists know how to design and implement digital products inclusively. The products range from websites, document files, and applications to digital devices. The primary focus of accessibility engineering is users with sensory, motor, and cognitive disabilities, but accessible products also benefit users across a wide range of education, age, equipment, and environment.</p>
+      <p>To ensure that digital products are accessible, one tests them. A valid test finds all faults that it is intended to find, but does not find any fault unless it really exists. In other words, it reports neither <dfn>false negatives</dfn> nor <dfn>false positives</dfn>.</p>
       <h2>Seeking a gold standard</h2>
-      <p>A valid test finds all faults that it encounters and does not find any fault unless it really exists. In other words, it reports neither false positives nor false negatives.</p>
-      <p>To check for false positives, it would be ideal to have a body of digital products that are known to be completely accessible. Then one could perform a test on those products and expect the test to report no faults. Such a set of perfect products could be considered a gold standard of accessibility.</p>
-      <p>Constructing products to serve as a gold standard is a reasonable first step, but it is risky. The very same person who constructs a test also constructs the validator of that test. This is a conflict of interest. For more robust validation, one finds a gold standard that others have created.</p>
-      <p>A natural candidate for such a gold standard is the set of digital products created by accessibility experts to advertise and propagate their knowledge. They know how to make things accessible, so presumably their own artifacts are, indeed, accessible. After all, if you are in the business of accessibility consulting, would you create an inaccessible website to market your services?</p>
+      <p>Consider false positives. To check for them, it would be ideal to have a body of digital products that are known to be completely accessible. Then one could perform tests on those products and expect the tests to report no faults. Such a set of perfect products could be considered a <dfn>gold standard</dfn> of accessibility.</p>
+      <p>It is possible to construct a gold standard. If one creates a test, one can also create products that should pass the test and then perform the test on those products. But this is a conflict of interest, and, no matter how honest one is, there is a risk of overlooking product attributes that would expose defects in one&rsquo;s test. For more robust validation, one <strong>finds</strong> a gold standard that <strong>others</strong> have created.</p>
+      <p>A natural candidate for an independent gold standard is the set of digital products created by accessibility experts to advertise and propagate their knowledge. They know how to make things accessible. Presumably, their own artifacts are accessible. After all, if you are in the business of accessibility consulting, would you create an inaccessible website to market your services?</p>
       <h2>Testing a theory of testing a test</h2>
       <p>Let us put this idea into practice and discover how well it works.</p>
-      <p>I have created an accessibility test named <q>Autotest-combo10</q>. I have also identified a set of 41 web pages produced by accessibility experts, to serve as a gold standard. Finally, I have run Autotest-combo10 on these 41 web pages and obtained results, in the form of <q>deficit</q> scores. A score of 0 would indicate that a page has satisfied all of the requirements tested by Autotest-combo10. Any score greater than 0 would indicate that the test has found one or more faults in the page.</p>
-      <p>Here is the result:</p>
-      <table>
+      <p>I have created a battery of accessibility tests named <q>Autotest-combo10</q>. I have created a gold-standard web page of my own, and identified a set of 41 web pages produced by accessibility experts, to serve as an independent gold standard. I have run Autotest-combo10 on my page and on the 41 independent web pages and obtained results, in the form of <q>deficit</q> scores. A score of 0 would indicate that a page has satisfied all of the requirements tested by Autotest-combo10. Any score greater than 0 would indicate that the test has found one or more faults in the page.</p>
+      <p>Here are the results:</p>
+      <table class="allBorder">
         <thead>
-          <tr><th rowspan="2">Page</th><th colspan="2">Deficit as a</th></tr>
+          <tr><th rowspan="2">Page</th><th colspan="2">Deficit, represented as:</th></tr>
           <tr><th>Number</th><th>Bar</th>
         </thead>
-        <tbody class="firstCellRight">
+        <tbody class="secondCellRight">
+          <tr><th><a href="https://jpdev.pro/jpdev/blog/entries/0000/passing.html">My page</a></th><td>0</td><td><svg width="100%" height="1rem"><rect height="100%" width="0%" fill="red"></rect></svg></td></tr>
           <tr><th><a href="https://webaim.org/">Utah State University WebAIM</a></th><td>43</td><td><svg width="100%" height="1rem"><rect height="100%" width="1.2759643916913948%" fill="red"></rect></svg></td></tr>
           <tr><th><a href="https://www.w3.org/WAI/standards-guidelines/aria/">W3C WAI-ARIA</a></th><td>100</td><td><svg width="100%" height="1rem"><rect height="100%" width="2.9673590504451037%" fill="red"></rect></svg></td></tr>
           <tr><th><a href="https://www.accessibilityassociation.org/s/">IAAP</a></th><td>102</td><td><svg width="100%" height="1rem"><rect height="100%" width="3.026706231454006%" fill="red"></rect></svg></td></tr>
@@ -80,6 +80,12 @@
           <tr><th><a href="https://accessibe.com/">AccessiBe</a></th><td>3370</td><td><svg width="100%" height="1rem"><rect height="100%" width="100%" fill="red"></rect></svg></td></tr>
         </tbody>
       </table>
+      <p>The table above shows that all 41 independent expert pages failed at least one test. There are three possible explanations for the reported failures:</p>
+      <ul>
+        <li>The tests are faulty. Autotest-combo10 is reporting false positives.</li>
+        <li>The pages are faulty. Autotest-combo10 is reporting real faults.</li>
+        <li>Accessibility is variously interpreted. The page creators consider the pages accessible, but Autotest-combo10 disagrees.</li>
+      </ul>
       <footer>
         <p>This work is entirely my own and does not represent my employer, CVS Health.</p>
         <p class="date">Published <time itemprop="datePublished" datetime="2021-07-17">2021/07/17</time></p>
