@@ -20,7 +20,7 @@
         <p class="summary">If experts fail a test, is the test broken?</p>
       </header>
       <h2>Introduction</h2>
-      <p><dfn>Digital accessibility</dfn> is a body of <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">standards and expertise</a>. Accessibility specialists know how to design and implement digital products inclusively. The products range from websites, document files, and applications to digital devices. The primary focus of accessibility engineering is users with sensory, motor, and cognitive disabilities, but accessible products also benefit users across a wide range of education, age, equipment, and environment.</p>
+      <p><dfn>Digital accessibility</dfn> is a body of <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">standards and expertise</a> for making inclusive digital products. The products range from websites, document files, and applications to digital devices. The primary focus of inclusion is users with sensory, motor, and cognitive disabilities, but accessible products also benefit users across a wide range of education, age, equipment, and environment.</p>
       <p>To ensure that digital products are accessible, one tests them. A valid test finds all faults that it is intended to find, but does not find any fault unless it really exists. In other words, it reports neither <dfn>false negatives</dfn> nor <dfn>false positives</dfn>.</p>
       <h2>Seeking a gold standard</h2>
       <p>Consider false positives. To check for them, it would be ideal to have a body of digital products that are known to be completely accessible. Then one could perform tests on those products and expect the tests to report no faults. Such a set of perfect products could be considered a <dfn>gold standard</dfn> of accessibility.</p>
@@ -28,7 +28,7 @@
       <p>A natural candidate for an independent gold standard is the set of digital products created by accessibility experts to advertise and propagate their knowledge. They know how to make things accessible. Presumably, their own artifacts are accessible. After all, if you are in the business of accessibility consulting, would you create an inaccessible website to market your services?</p>
       <h2>Testing a theory of testing a test</h2>
       <p>Let us put this idea into practice and discover how well it works.</p>
-      <p>I have created a battery of accessibility tests named <q>Autotest-combo10</q>. I have created a gold-standard web page of my own, and identified a set of 41 web pages produced by accessibility experts, to serve as an independent gold standard. I have run Autotest-combo10 on my page and on the 41 independent web pages and obtained results, in the form of <q>deficit</q> scores. A score of 0 would indicate that a page has satisfied all of the requirements tested by Autotest-combo10. Any score greater than 0 would indicate that the test has found one or more faults in the page.</p>
+      <p>I have created a battery of accessibility tests named <q>Autotest-combo10</q>. I have created a gold-standard web page of my own, and identified a set of 41 web pages produced by accessibility experts, to serve as an independent gold standard. I have run Autotest-combo10 on my page and on the 41 independent web pages and obtained results, in the form of <q>deficit</q> scores. A score of 0 indicates that a page has satisfied all of the requirements tested by Autotest-combo10. Any deficit score greater than 0 indicates that tests have found one or more faults in the page.</p>
       <p>Here are the results:</p>
       <table class="allBorder">
         <caption>Results of testing gold-standard web pages with Autotest-combo10</caption>
@@ -81,16 +81,70 @@
           <tr><th><a href="https://accessibe.com/">AccessiBe</a></th><td>3370</td><td><svg width="100%" height="1rem"><rect height="100%" width="100%" fill="red"></rect></svg></td></tr>
         </tbody>
       </table>
-      <p>The table above shows that all 41 independent expert pages failed at least one test. There are three possible explanations for the reported failures:</p>
+      <p>The table above shows that my page passed all the tests in Autotest-combo10, but all 41 independent expert pages failed at least one test. Why did the other pages fail? There are three possible explanations:</p>
       <ul>
-        <li>The pages are accessible, and some of the tests are faulty. Autotest-combo10 is reporting false positives.</li>
         <li>The tests are correct, and the pages are faulty. Autotest-combo10 is reporting real faults.</li>
+        <li>The pages are accessible, and some of the tests are faulty. Autotest-combo10 is reporting false positives.</li>
         <li>Accessibility is variously interpreted. The page creators consider their pages accessible, but Autotest-combo10 disagrees.</li>
       </ul>
+      <p>Neither a test nor a web page is likely to be perfect, and there are legitimate differences of interpretation of perfection. Therefore, all three explanations are likely appropriate for some of the reported faults.</p>
+      <p>Autotest-combo10 is a combination of 10 tests. Here is a list of them. For each test, the number of pages failing the test is shown.</p>
+      <table class="allBorder">
+        <caption>Autotest-combo10 tests and counts of pages failing them</caption>
+        <thead><tr><th>Test</th><th>Failing pages</th></tr></thead>
+        <tbody class="secondCellRight">
+          <tr><th>styleDiff</th><td>41</td></tr>
+          <tr><th>wave1</th><td>40</td></tr>
+          <tr><th>bulk</th><td>39</td></tr>
+          <tr><th>linkUl</th><td>36</td></tr>
+          <tr><th>axe</th><td>34</td></tr>
+          <tr><th>focOl</th><td>34</td></tr>
+          <tr><th>roleS</th><td>31</td></tr>
+          <tr><th>focOp</th><td>29</td></tr>
+          <tr><th>labClash</th><td>10</td></tr>
+          <tr><th>radioSet</th><td>0</td></tr>
+        </tbody>
+      </table>
+      <p>Two of these tests are actually batteries of tests created by other projects: <code>axe</code> (<a href="https://github.com/dequelabs/axe-core">Axe by Deque</a>) and <code>wave1</code> (<a href="https://wave.webaim.org/">WAVE by WebAIM</a>). The other eight tests are custom-created.</p>
+      <h2>Inspecting</h2>
+      <p>To begin validating this battery of tests, one can inspect individual reported faults.</p>
+      <h3>Roles</h3>
+      <p>Here is a piece of one of the 41 pages:</p>
+      <p><img src="buttonLinks.png" alt="3 blue rectangles with white text, Accept, Reject, and Read More"></p>
+      <p>They look like 3 buttons, but in fact they are links, created with the HTML <code>a</code> element. The first two have been given a role of <code>button</code>.</p>
+      <p>Giving an element a <code>button</code> role is a <a href="https://www.w3.org/TR/wai-aria-practices/#no_aria_better_bad_aria">promise that the element will behave exactly like a button</a>. The <code>roleS</code> test reports these role assignments as faults, because HTML includes a <code>button</code> element that automatically has the <code>button</code> role. The test considers it a poor accessibility practice to change the role of an HTML element when, instead, one could have used the element that already has the role. One reason is that the promise is difficult to keep. And, in fact, the page breaks its promise. A user can click a button not only with a mouse, but also with either the <kbd>Enter</kbd> key or the <kbd>Space</kbd> key (after using the <kbd>Tab</kbd> key to move to the button). But, for these two links with the <code>button</code> role, the <code>Space</code> key scrolls the page instead, as it normally does. Promise broken.</p>
+      <h3>Styles</h3>
+      <p>The same page that contains the <q>Read More</q> link shown above also contains this <q>Learn more</q> link.</p>
+      <p><img src="link.png" alt="link with text Learn more and a right-pointing caret"></p>
+      <p>Both are links, without any special role assignment. But they look very different. The <code>styleDiff</code> test faults the page for giving dissimilar <code>style</code> properties (and thus dissimilar appearances) to its links. The test considers this a poor practice for accessibility. It complicates the user&rsquo;s task of identifying items on the page. It makes mistakes more likely. And these harms will tend particularly to befall users with visual, memory, attention, or learning disabilities.</p>
+      <h3>Focus indicators</h3>
+      <p>Using the <kbd>Tab</kbd> key to move around a page changes the <dfn>focus</dfn>. The element that has the focus is the one the user will act on if the user presses an appropriate key. On an accessible page, the current focus is always made visible, with a <dfn>focus indicator</dfn>. The standard focus indicator is an outline. (Navigate on this page with your <kbd>Tab</kbd> key to see the outline move.) The <code>focOl</code> test considers it a poor practice for accessibility to hide the outline or replace it with some other focus indicator. The idea is that users have learned to recognize focus by the outline, and using some other indicator will tend to confuse them.</p>
+      <p>Here is a list of links that have failed the <code>focOl</code> test.</p>
+      <p><img src="focus.png" alt="3 links, of which the first is blue on white and the second and third are white on a blue"></p>
+      <p>The third link has the focus. The page is designed to show focus on a link by inverting its color style. The link changes from blue on white to white on blue. Not only must the user learn to recognize this nonstandard focus indicator, but the page uses exactly the same indicator to show that the user is hovering over a link with the mouse. The second link here is being hovered over. Which one is in focus, and which one is being hovered over? It isn&rsquo;t obvious. But pressing the <kbd>Enter</kbd> key will follow the <strong>focused</strong> link, not the <strong>hovered</strong> link. So using the same indicator for two different purposes can confuse the user and lead to mistakes.</p>
+      <h3>Labels</h3>
+      <p>When an accessible form asks the user to input text, the form tells the user what information is requested. Preceding the input field with explanatory text works well for some users, but not all. Accessibility standards require input labels to be formally specified, so other software can help users fill forms out.</p>
+      <p>Here is an input field on one of the pages, asking for the user&rsquo;s first name.</p>
+      <p><img src="input.png" alt="input field, preceded by First Name"></p>
+      <p>The HTML code for this input makes the phrase <q>First Name</q> a label for the input. However, this labeling fails the <code>labClash</code> test, because the code, shown below, uses two different and incompatible labeling methods.</p>
+      <pre>&lt;div data-field-wrapper="fld_8768091" class="form-group" id="fld_8768091_1-wrap">
+        &lt;label id="fld_8768091Label" for="fld_8768091_1" class="control-label">First Name &lt;span aria-hidden="true" role="presentation" class="field_required" style="color:#ee0000;">*&lt;/span>&lt;/label>
+        &lt;div class="">
+          &lt;input required="" type="text" data-field="fld_8768091" class=" form-control" id="fld_8768091_1" name="fld_8768091" value="" data-type="text" aria-required="true" aria-labelledby="fld_8768091Label" field_signature="3876002848" form_signature="10360417896781115281">			&lt;/div>
+      &lt;/div></pre>
+      <p>When this mistake is made, the user&rsquo;s equipment is expected to pay attention to one of the labeling methods and disregard the other. But this conflict could do harm if the user&rsquo;s equipment is faulty. And such a coding error increases the cost and fragility of future code maintenance and testing. So the <code>labClash</code> test considers it an accessibility fault.</p>
+      <h3>Omissions</h3>
+      <p>The examples above are real faults if you agree with the tests, false positives if you consider the tests too strict, or matters of interpretation if you are on the fence.</p>
+      <p>But Autotest-combo10 only begins to test for what makes a web page accessible. These pages, despite their expert authorship, may contain additional accessibility faults that Autotest-combo10 is not designed to detect&mdash;or erroneously fails to detect.</p>
+      <p>One example is the lack of form-completion help to users. The input field shown above asks for information about the user. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">One of the current accessibility standards</a> prescribes using a standard nomenclature to identify the type of information. This can allow users to get automated help in filling out forms&mdash;something particularly valuable for users with mobility or memory disabilities. In this case, the standard HTML attribute would be <code>autocomplete="given-name"</code>. But that attribute is missing. Autotest-combo10 does not (yet) test for that fault.</p>
+      <p>The <q>Learn more</q> link shown above exhibits another fault that Autotest-combo10 does not test for: undifferentiated links. It is one of 13 links on the page with exactly the same text, but pointing to 13 different destinations. When that happens, users who can see the page can see the text immediately above and figure out what topic each link will elucidate. But what about blind users? They might have decided to navigate from link to link, listening to each link. They will hear <q>Learn more</q> repeatedly. They will not know what any of these links will help them learn more about, because these 13 links lack differentiating labels. An accessible web page adds labels to such links, allowing the user&rsquo;s equipment to announce a detailed description of each link.</p>
+      <h2>Conclusion</h2>
+      <p>A few examples show that digital products created by accessibility experts cannot be trusted to be accessible. Testing them for accessibility is still necessary. Using them&mdash;suspicously&mdash;in the validation of one&rsquo;s accessibility tests is valuable. But the relationship is not simple. This set of products is not a gold standard. When one of them fails a test, the test might be at fault, the page might be at fault, or reasonable experts might disagree about where the fault lies. Through this dialectic between tester and tested, it should be possible to improve tests, improve digital products, and clarify interpretations of accessibility.</p>
       <footer>
         <p>This work is entirely my own and does not represent my employer, CVS Health.</p>
-        <p class="date">Published <time itemprop="datePublished" datetime="2021-07-17">2021/07/17</time></p>
-        <p class="moddate">Revised <time itemprop="dateModified" datetime="2021-07-21">2021/07/21</time></p>
+        <p>To inspect the data reported here, begin with the <a href="data/summary.json">summary</a>. To inspect any file referenced in the summary, visit <code>data/details/fff.json</code>, replacing <code>fff.json</code> with the file name.</p>
+        <p class="date">Published <time itemprop="datePublished" datetime="2021-08-16">2021/08/16</time></p>
+        <p class="moddate">Revised <time itemprop="dateModified" datetime="2021-08-16">2021/08/16</time></p>
       </footer>
     </main>
   </body>
