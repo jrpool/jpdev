@@ -18,7 +18,7 @@ const closeMenu = button => {
     button.setAttribute('aria-expanded', 'false');
     const menu = controlledMenu(button);
     menu.className = 'shut';
-    menu.removeAttribute('tabindex');
+    menu.tabIndex = -1;
   }
 };
 // Returns the menu items of a menu.
