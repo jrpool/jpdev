@@ -1,0 +1,3052 @@
+{
+  "script": "p03c10",
+  "batch": "cvsPeersRest",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "ppxv",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.walgreens.com/",
+      "what": "Walgreens",
+      "result": "https://www.walgreens.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "bytes": [
+          236492,
+          236492,
+          236492,
+          236492,
+          236492
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 7,
+          "moderate": 4,
+          "serious": 5,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#_im_iframe_overlay__2104 > section",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: intercept_section",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "iframe[visual-id=\"\\32 104\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: intercept_iframe",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "#_im_iframe_overlay__2104 > section > button",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: intercept_close",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".content__item > .ribbon > .ribbon__text > div[aria-level=\"\\33 \"][role=\"heading\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-redundant-alt",
+            "description": "Ensure image alternative is not repeated as text",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#findcare_hp_1 > .card__contain > .card__dark-blue.card > .card__width--new.card__content > .card__item-new.card__item > img",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "duplicate-img-label",
+                    "description": "Element contains <img> element with alt text that duplicates existing text",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "img[alt=\"In-person\\ and\\ online\\ visits\"]",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "duplicate-img-label",
+                    "description": "Element contains <img> element with alt text that duplicates existing text",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "img[alt=\"Affordable\\ care\\ options\"]",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "duplicate-img-label",
+                    "description": "Element contains <img> element with alt text that duplicates existing text",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport-large",
+            "description": "Ensures <meta name=\"viewport\"> can scale a significant amount",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport-large",
+                    "description": "<meta> tag limits zooming on mobile devices",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".menu-trigger",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".a-interior",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".tool-tip__trigger",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".store-trigger",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".header-store > div:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".inner-focus > .sr-only",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".store-trigger > .inner-focus > strong",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "tabindex",
+            "description": "Ensures tabindex attribute values are not greater than 0",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".skip-link",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "tabindex",
+                    "description": "Element has a tabindex greater than 0",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.walgreens.com/",
+      "what": "Walgreens",
+      "result": "https://www.walgreens.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "visibleElements": 1024
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "total": 174,
+          "types": {
+            "outlineMissing": {
+              "total": 6,
+              "tagNames": {
+                "a": 2,
+                "input[type=text]": 4
+              }
+            },
+            "outlinePresent": {
+              "total": 168,
+              "tagNames": {
+                "a": 162,
+                "button": 5,
+                "span": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "a",
+              "text": "Menu"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Search by keyword or item number #; #ntt-placeholder"
+            },
+            {
+              "tagName": "a",
+              "text": "See health services; See health services"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Email Address; #emailAddress"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "ZIP code; #searchCriteria"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Enter email for weekly deals; Enter email for weekly deals; #input-1"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "a",
+              "text": "New! myWalgreens™ Credit Card"
+            },
+            {
+              "tagName": "a",
+              "text": "FREE Same Day Delivery $50+"
+            },
+            {
+              "tagName": "a",
+              "text": "BOGO FREE vitamins"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Home; Walgreens: Trusted since 1901"
+            },
+            {
+              "tagName": "button",
+              "text": "{<button type=\"submit\" class=\"icon icon__search\" title=\"Search\" style=\"pointer-events: auto;\" data-autotest-focused=\"Y\"><svg aria-label=\"Search\" id=\"pf-icon__search\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.616 21.072l-3.872-3.888c1.392-1.664 1.296-4.16-0.288-5.712-0.816-0.816-1.904-1.216-2.976-1.216-1.088 0-2.192 0.416-3.008 1.264-1.632 1.664-1.616 4.336 0.048 5.984 0.816 0.816 1.904 1.216 2.976 1.216 0.96 0 1.92-0.32 2.704-0.976l3.872 3.872c0.080 0.080 0.176 0.112 0.272 0.112s0.192-0.032 0.272-0.112c0.144-0.144 0.16-0.384 0-0.544zM12.080 16.96c-1.36-1.344-1.376-3.536-0.032-4.88 0.656-0.656 1.536-1.024 2.464-1.024v0c0.912 0 1.776 0.352 2.432 0.992 1.36 1.344 1.376 3.536 0.032 4.88-0.656 0.656-1.536 1.024-2.464 1.024s-1.792-0.352-2.432-0.992z\"></path></svg></button>}"
+            },
+            {
+              "tagName": "a",
+              "text": "Account"
+            },
+            {
+              "tagName": "a",
+              "text": "Press enter to view shopping cart with 0 items"
+            },
+            {
+              "tagName": "span",
+              "text": "Selected store3508 KENNEDY BLVD., UNION CITY, NJWe see you have a shopping history at . Tap update t"
+            },
+            {
+              "tagName": "a",
+              "text": "Selected store3508 KENNEDY BLVD., UNION CITY, NJ"
+            },
+            {
+              "tagName": "a",
+              "text": "your; vaccination destination™ Schedule vaccine ›"
+            },
+            {
+              "tagName": "a",
+              "text": "FREE flu shots †"
+            },
+            {
+              "tagName": "a",
+              "text": "FREE COVID-19 vaccine †"
+            },
+            {
+              "tagName": "a",
+              "text": "COVID-19 testing options"
+            },
+            {
+              "tagName": "a",
+              "text": "Introducing the credit card that pays well to stay well! Apply now ›"
+            },
+            {
+              "tagName": "a",
+              "text": "Shop now; Shop now"
+            },
+            {
+              "tagName": "a",
+              "text": "Buy 2 get 3rd FREE cosmetics"
+            },
+            {
+              "tagName": "a",
+              "text": "$5 rewards on $25+ L'Oreal skin care"
+            },
+            {
+              "tagName": "a",
+              "text": "20% off all contacts"
+            },
+            {
+              "tagName": "a",
+              "text": "Pickup in as little as 30 minutes"
+            },
+            {
+              "tagName": "a",
+              "text": "FREE shipping at $35+"
+            },
+            {
+              "tagName": "a",
+              "text": "FREE Ship to Store"
+            },
+            {
+              "tagName": "a",
+              "text": "FREE Same Day Delivery on $50+"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Lenses"
+            },
+            {
+              "tagName": "a",
+              "text": "Beauty"
+            },
+            {
+              "tagName": "a",
+              "text": "Personal Care"
+            },
+            {
+              "tagName": "a",
+              "text": "Medicines & Treatments"
+            },
+            {
+              "tagName": "a",
+              "text": "Vitamins & Supplements"
+            },
+            {
+              "tagName": "button",
+              "text": "Arrow key right to view next slides"
+            },
+            {
+              "tagName": "a",
+              "text": "Order Prints; Get creative"
+            },
+            {
+              "tagName": "a",
+              "text": "50% off Enlargements & Posters"
+            },
+            {
+              "tagName": "a",
+              "text": "15¢ 4x6 Prints on orders $100+"
+            },
+            {
+              "tagName": "a",
+              "text": "30% off Photo Gifts"
+            },
+            {
+              "tagName": "a",
+              "text": "Order Prints"
+            },
+            {
+              "tagName": "a",
+              "text": "Saved Projects"
+            },
+            {
+              "tagName": "a",
+              "text": "Upload Photos"
+            },
+            {
+              "tagName": "a",
+              "text": "Your Photos"
+            },
+            {
+              "tagName": "a",
+              "text": "Photo Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Schedule now; Schedule now"
+            },
+            {
+              "tagName": "a",
+              "text": "Turning 65? Medicare made easy."
+            },
+            {
+              "tagName": "a",
+              "text": "Same Day Rx Delivery"
+            },
+            {
+              "tagName": "a",
+              "text": "90-day Rx refills"
+            },
+            {
+              "tagName": "a",
+              "text": "Refill Prescription"
+            },
+            {
+              "tagName": "a",
+              "text": "Prescription Status"
+            },
+            {
+              "tagName": "a",
+              "text": "COVID-19 Testing"
+            },
+            {
+              "tagName": "a",
+              "text": "Schedule Flu & COVID-19 vaccines"
+            },
+            {
+              "tagName": "a",
+              "text": "Pharmacy Chat"
+            },
+            {
+              "tagName": "a",
+              "text": "Lab and at-home tests"
+            },
+            {
+              "tagName": "a",
+              "text": "Prescription glasses"
+            },
+            {
+              "tagName": "a",
+              "text": "Find Rx Coverage"
+            },
+            {
+              "tagName": "a",
+              "text": "Diabetes devices"
+            },
+            {
+              "tagName": "a",
+              "text": "24/7 virtual care"
+            },
+            {
+              "tagName": "a",
+              "text": "Save more with Scarlet™ A new digital bank account & debit card ›"
+            },
+            {
+              "tagName": "a",
+              "text": "COVID-19 testing options Schedule drive-thru test or get at-home kit ›"
+            },
+            {
+              "tagName": "a",
+              "text": "Get vitamins.Change lives. Donate now ›"
+            },
+            {
+              "tagName": "a",
+              "text": "Combine your Pickup & Rx orders Shop now ›"
+            },
+            {
+              "tagName": "button",
+              "text": "Sign up"
+            },
+            {
+              "tagName": "a",
+              "text": "Join FREE now"
+            },
+            {
+              "tagName": "a",
+              "text": "Download Walgreens App on the App Store"
+            },
+            {
+              "tagName": "a",
+              "text": "Get Walgreens App on Google Play"
+            },
+            {
+              "tagName": "button",
+              "text": "Search for a Walgreens near you; Search"
+            },
+            {
+              "tagName": "a",
+              "text": "Sheamoisture Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Soap & Glory Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Nature Made Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Neutrogena Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Depend Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "L-Oreal Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Move Free Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "No7 Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Advil Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Manage family prescriptions"
+            },
+            {
+              "tagName": "a",
+              "text": "Schedule your immunizations"
+            },
+            {
+              "tagName": "a",
+              "text": "Create a Photo Gift"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet your local pharmacist"
+            },
+            {
+              "tagName": "a",
+              "text": "See what's on sale"
+            },
+            {
+              "tagName": "a",
+              "text": "Order contact lenses"
+            },
+            {
+              "tagName": "a",
+              "text": "Contacts"
+            },
+            {
+              "tagName": "a",
+              "text": "Mucinex"
+            },
+            {
+              "tagName": "a",
+              "text": "Acuvue Oasys"
+            },
+            {
+              "tagName": "a",
+              "text": "Makeup"
+            },
+            {
+              "tagName": "a",
+              "text": "No7"
+            },
+            {
+              "tagName": "a",
+              "text": "Flonase"
+            },
+            {
+              "tagName": "button",
+              "text": "Sign up"
+            },
+            {
+              "tagName": "a",
+              "text": "Customer Service"
+            },
+            {
+              "tagName": "a",
+              "text": "Offer Details"
+            },
+            {
+              "tagName": "a",
+              "text": "Shipping"
+            },
+            {
+              "tagName": "a",
+              "text": "Returns"
+            },
+            {
+              "tagName": "a",
+              "text": "Product Recalls"
+            },
+            {
+              "tagName": "a",
+              "text": "Fraud Information"
+            },
+            {
+              "tagName": "a",
+              "text": "Payments"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Website Accessibility"
+            },
+            {
+              "tagName": "a",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "text": "Help"
+            },
+            {
+              "tagName": "a",
+              "text": "myWalgreens™"
+            },
+            {
+              "tagName": "a",
+              "text": "Offers"
+            },
+            {
+              "tagName": "a",
+              "text": "Program Details"
+            },
+            {
+              "tagName": "a",
+              "text": "myWalgreens™ Health Goals"
+            },
+            {
+              "tagName": "a",
+              "text": "myWalgreens™ Credit Card"
+            },
+            {
+              "tagName": "a",
+              "text": "FAQs"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms and Conditions"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Stores"
+            },
+            {
+              "tagName": "a",
+              "text": "Find a Store"
+            },
+            {
+              "tagName": "a",
+              "text": "Weekly Ad"
+            },
+            {
+              "tagName": "a",
+              "text": "Savings & Deals"
+            },
+            {
+              "tagName": "a",
+              "text": "Sweepstakes & Promotions"
+            },
+            {
+              "tagName": "a",
+              "text": "Special Email Offers"
+            },
+            {
+              "tagName": "a",
+              "text": "Healthcare Clinic"
+            },
+            {
+              "tagName": "a",
+              "text": "Flu Shots"
+            },
+            {
+              "tagName": "a",
+              "text": "Find Care"
+            },
+            {
+              "tagName": "a",
+              "text": "Photo Blog"
+            },
+            {
+              "tagName": "a",
+              "text": "Paperless Coupons"
+            },
+            {
+              "tagName": "a",
+              "text": "Same Day Pickup & Delivery"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Mobile"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens API"
+            },
+            {
+              "tagName": "a",
+              "text": "Accessibility Notice"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information"
+            },
+            {
+              "tagName": "a",
+              "text": "AARP®"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Disability Inclusion"
+            },
+            {
+              "tagName": "a",
+              "text": "Diversity & Inclusion"
+            },
+            {
+              "tagName": "a",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Logos"
+            },
+            {
+              "tagName": "a",
+              "text": "Sell Your Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "text": "Charitable Donations"
+            },
+            {
+              "tagName": "a",
+              "text": "Social Responsibility"
+            },
+            {
+              "tagName": "a",
+              "text": "California Transparency Act"
+            },
+            {
+              "tagName": "a",
+              "text": "Modern Slavery and Human Trafficking"
+            },
+            {
+              "tagName": "a",
+              "text": "Affiliate Program"
+            },
+            {
+              "tagName": "a",
+              "text": "Do not sell my personal information. It redirects to another page with data preferences dialog.; Do Not Sell My Personal Information"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Advertising Group"
+            },
+            {
+              "tagName": "a",
+              "text": "AllianceRx Walgreens Prime"
+            },
+            {
+              "tagName": "a",
+              "text": "Home Delivery Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "text": "Specialty Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Solutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Boots Alliance"
+            },
+            {
+              "tagName": "a",
+              "text": "Notice of Privacy Practices; #noticePrivacy-link"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms and Conditions of Use; Terms of Use; #termsOfuse-link"
+            },
+            {
+              "tagName": "a",
+              "text": "Online Privacy & Security; #onlinePrivacy"
+            },
+            {
+              "tagName": "a",
+              "text": "Baby & Kids"
+            },
+            {
+              "tagName": "a",
+              "text": "Beauty"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Lenses"
+            },
+            {
+              "tagName": "a",
+              "text": "Diet & Fitness"
+            },
+            {
+              "tagName": "a",
+              "text": "Grocery"
+            },
+            {
+              "tagName": "a",
+              "text": "Home Medical Supplies & Equipment"
+            },
+            {
+              "tagName": "a",
+              "text": "Household"
+            },
+            {
+              "tagName": "a",
+              "text": "Medicines & Treatments"
+            },
+            {
+              "tagName": "a",
+              "text": "Natural & Organic"
+            },
+            {
+              "tagName": "a",
+              "text": "Personal Care"
+            },
+            {
+              "tagName": "a",
+              "text": "Seasonal"
+            },
+            {
+              "tagName": "a",
+              "text": "Sexual Wellness"
+            },
+            {
+              "tagName": "a",
+              "text": "Toys & Games"
+            },
+            {
+              "tagName": "a",
+              "text": "Vitamins & Supplements"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens Brand"
+            },
+            {
+              "tagName": "a",
+              "text": "Top Walgreens Searches"
+            },
+            {
+              "tagName": "a",
+              "text": "Shop by Brand"
+            },
+            {
+              "tagName": "a",
+              "text": "Photo Prints, Posters and Enlargements"
+            },
+            {
+              "tagName": "a",
+              "text": "Photo Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Canvas & Dècor"
+            },
+            {
+              "tagName": "a",
+              "text": "Photo Books"
+            },
+            {
+              "tagName": "a",
+              "text": "Photo Calendars"
+            },
+            {
+              "tagName": "a",
+              "text": "Photo Gifts"
+            },
+            {
+              "tagName": "a",
+              "text": "Same Day Pickup"
+            },
+            {
+              "tagName": "a",
+              "text": "Shop All Products"
+            },
+            {
+              "tagName": "a",
+              "text": "Walgreens.com Offer Details; Walgreens.com/Offerdetails"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 24,
+            "tagName": {
+              "span": 11,
+              "button": 1,
+              "a": 12
+            },
+            "operableWhy": {
+              "tag": 13,
+              "cursor": 11,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 174,
+            "tagName": {
+              "a": 164,
+              "input[type=text]": 4,
+              "button": 5,
+              "span": 1
+            },
+            "focusableHow": {
+              "Tab": 174,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 173,
+              "cursor": 1,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Walgreens: Trusted since 1901"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Menu"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "{<span class=\"icon icon__arrow-down\" data-autotest-operable=\"cursor\" style=\"cursor: none;\"><svg aria-hidden=\"true\" focusable=\"false\"><use xlink:href=\"/images/adaptive/livestyleguide/walgreens.com/v3.0/themes/images/icons/symbol-defs.svg#icon__arrow-down\"></use></svg></span>}"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Account"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "{<span class=\"icon icon__arrow-down\" data-autotest-operable=\"cursor\" style=\"cursor: none;\"><svg aria-hidden=\"true\" focusable=\"false\"><use xlink:href=\"/images/adaptive/livestyleguide/walgreens.com/v3.0/themes/images/icons/symbol-defs.svg#icon__arrow-down\"></use></svg></span>}"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "{<span class=\"icon icon__cart\" aria-hidden=\"true\" data-autotest-operable=\"cursor\" style=\"cursor: none;\"><svg aria-label=\"Cart empty\" aria-hidden=\"true\" focusable=\"false\" id=\"pf-icon__cart\"><use xlink:href=\"/images/adaptive/livestyleguide/walgreens.com/v3.0/themes/images/icons/symbol-defs.svg#icon__cart\"></use></svg></span>}"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Shop now"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Arrow key left to view previous slides"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Home Health Care Solutions"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Pet"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Home Goods"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Electronics & Office"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Household Essentials"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Fall & Winter"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Grocery"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Toys & Games"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Baby & Kids"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Fitness & Nutrition"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Seasonal"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Natural & Organic"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Get creative"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Schedule now"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "See health services"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Sign up"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "New! myWalgreens™ Credit Card"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FREE Same Day Delivery $50+"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "BOGO FREE vitamins"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Home; Walgreens: Trusted since 1901"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Menu"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search by keyword or item number #; #ntt-placeholder"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<button type=\"submit\" class=\"icon icon__search\" title=\"Search\" style=\"pointer-events: auto; cursor: none;\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\"><svg aria-label=\"Search\" id=\"pf-icon__search\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.616 21.072l-3.872-3.888c1.392-1.664 1.296-4.16-0.288-5.712-0.816-0.816-1.904-1.216-2.976-1.216-1.088 0-2.192 0.416-3.008 1.264-1.632 1.664-1.616 4.336 0.048 5.984 0.816 0.816 1.904 1.216 2.976 1.216 0.96 0 1.92-0.32 2.704-0.976l3.872 3.872c0.080 0.080 0.176 0.112 0.272 0.112s0.192-0.032 0.272-0.112c0.144-0.144 0.16-0.384 0-0.544zM12.080 16.96c-1.36-1.344-1.376-3.536-0.032-4.88 0.656-0.656 1.536-1.024 2.464-1.024v0c0.912 0 1.776 0.352 2.432 0.992 1.36 1.344 1.376 3.536 0.032 4.88-0.656 0.656-1.536 1.024-2.464 1.024s-1.792-0.352-2.432-0.992z\"></path></svg></button>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Account"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Press enter to view shopping cart with 0 items"
+            },
+            {
+              "tagName": "span",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Selected store3508 KENNEDY BLVD., Union City, NJWe see you have a shopping history at . Tap update t"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Selected store3508 KENNEDY BLVD., Union City, NJ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "your; vaccination destination™ Schedule vaccine ›"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FREE flu shots †"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FREE COVID-19 vaccine †"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COVID-19 testing options"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Introducing the credit card that pays well to stay well! Apply now ›"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop now; Shop now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Buy 2 get 3rd FREE cosmetics"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "$5 rewards on $25+ L'Oreal skin care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "20% off all contacts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Pickup in as little as 30 minutes"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FREE shipping at $35+"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FREE Ship to Store"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FREE Same Day Delivery on $50+"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Lenses"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Beauty"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Personal Care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicines & Treatments"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Vitamins & Supplements"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Arrow key right to view next slides"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Order Prints; Get creative"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "50% off Enlargements & Posters"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "15¢ 4x6 Prints on orders $100+"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "30% off Photo Gifts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Order Prints"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Saved Projects"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Upload Photos"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Your Photos"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Photo Cards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Schedule now; Schedule now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Turning 65? Medicare made easy."
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Same Day Rx Delivery"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "90-day Rx refills"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Refill Prescription"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Prescription Status"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COVID-19 Testing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Schedule Flu & COVID-19 vaccines"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Pharmacy Chat"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "See health services; See health services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Lab and at-home tests"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Prescription glasses"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find Rx Coverage"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Diabetes devices"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "24/7 virtual care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Save more with Scarlet™ A new digital bank account & debit card ›"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COVID-19 testing options Schedule drive-thru test or get at-home kit ›"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get vitamins.Change lives. Donate now ›"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Combine your Pickup & Rx orders Shop now ›"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Email Address; #emailAddress"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sign up"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Join FREE now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Download Walgreens App on the App Store"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get Walgreens App on Google Play"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ZIP code; #searchCriteria"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search for a Walgreens near you; Search"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sheamoisture Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Soap & Glory Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Nature Made Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Neutrogena Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Depend Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "L-Oreal Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Move Free Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "No7 Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Advil Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Manage family prescriptions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Schedule your immunizations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Create a Photo Gift"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Meet your local pharmacist"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "See what's on sale"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Order contact lenses"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contacts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Mucinex"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Acuvue Oasys"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Makeup"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "No7"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Flonase"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Enter email for weekly deals; Enter email for weekly deals; #input-1"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sign up"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Customer Service"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Offer Details"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shipping"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Returns"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Product Recalls"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Fraud Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Payments"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Website Accessibility"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Help"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "myWalgreens™"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Offers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Program Details"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "myWalgreens™ Health Goals"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "myWalgreens™ Credit Card"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FAQs"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms and Conditions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Stores"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find a Store"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Weekly Ad"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Savings & Deals"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sweepstakes & Promotions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Special Email Offers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Healthcare Clinic"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Flu Shots"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find Care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Photo Blog"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Paperless Coupons"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Same Day Pickup & Delivery"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Mobile"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens API"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accessibility Notice"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "AARP®"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Disability Inclusion"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Diversity & Inclusion"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Logos"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sell Your Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Charitable Donations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Social Responsibility"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "California Transparency Act"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Modern Slavery and Human Trafficking"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Affiliate Program"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Do not sell my personal information. It redirects to another page with data preferences dialog.; Do Not Sell My Personal Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Advertising Group"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "AllianceRx Walgreens Prime"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Home Delivery Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Specialty Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Business Solutions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Boots Alliance"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Notice of Privacy Practices; #noticePrivacy-link"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms and Conditions of Use; Terms of Use; #termsOfuse-link"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Online Privacy & Security; #onlinePrivacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Baby & Kids"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Beauty"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Lenses"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Diet & Fitness"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Grocery"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Home Medical Supplies & Equipment"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Household"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicines & Treatments"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Natural & Organic"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Personal Care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Seasonal"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sexual Wellness"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Toys & Games"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Vitamins & Supplements"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens Brand"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Top Walgreens Searches"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop by Brand"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Photo Prints, Posters and Enlargements"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Photo Cards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Canvas & Dècor"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Photo Books"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Photo Calendars"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Photo Gifts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Same Day Pickup"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop All Products"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Walgreens.com Offer Details; Walgreens.com/Offerdetails"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 1,
+          "unlabeled": 3,
+          "wellLabeled": 11
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 12,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "Enter email for weekly deals",
+                "label": [
+                  "Enter email for weekly deals"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "reset",
+              "content": "{<button class=\"icon icon__dismiss-v2 search-reset\" type=\"reset\"><svg aria-label=\"Clear Search\" id=\"pf-icon__dismiss-v2\" viewBox=\"0 0 32 32\"><use xlink:href=\"#icon__dismiss-v2\"></use></svg></button>}"
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button type=\"submit\" class=\"icon icon__search\" title=\"Search\" style=\"pointer-events: auto;\"><svg aria-label=\"Search\" id=\"pf-icon__search\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.616 21.072l-3.872-3.888c1.392-1.664 1.296-4.16-0.288-5.712-0.816-0.816-1.904-1.216-2.976-1.216-1.088 0-2.192 0.416-3.008 1.264-1.632 1.664-1.616 4.336 0.048 5.984 0.816 0.816 1.904 1.216 2.976 1.216 0.96 0 1.92-0.32 2.704-0.976l3.872 3.872c0.080 0.080 0.176 0.112 0.272 0.112s0.192-0.032 0.272-0.112c0.144-0.144 0.16-0.384 0-0.544zM12.080 16.96c-1.36-1.344-1.376-3.536-0.032-4.88 0.656-0.656 1.536-1.024 2.464-1.024v0c0.912 0 1.776 0.352 2.432 0.992 1.36 1.344 1.376 3.536 0.032 4.88-0.656 0.656-1.536 1.024-2.464 1.024s-1.792-0.352-2.432-0.992z\"></path></svg></button>}"
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"btn action__dismiss-nudge buttom icon icon__dismiss-v2 btn-close-icon\"><svg role=\"img\" class=\"svg-close-icon\" aria-label=\"Close notification\"><use xlink:href=\"/images/adaptive/livestyleguide/walgreens.com/v3.0/themes/images/icons/symbol-defs.svg#icon__dismiss-v2\"></use></svg></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search by keyword or item number #"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Enter city, state or ZIP code"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "store search"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Arrow key left to view previous slides"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Arrow key right to view next slides"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email Address"
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Sign up"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "ZIP code"
+                ]
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search for a Walgreens near you",
+                "content": "Search"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Sign up"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "links": 1673,
+          "inline": {
+            "total": 4,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "New! myWalgreens™ Credit Card",
+            "FREE Same Day Delivery $50+",
+            "BOGO FREE vitamins",
+            "Walgreens.com/Offerdetails"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "roleElements": 571,
+        "badRoleElements": 569,
+        "tagNames": {
+          "A": {
+            "button": 243
+          },
+          "LI": {
+            "button": 319
+          },
+          "INPUT": {
+            "combobox": 1
+          },
+          "SPAN": {
+            "button": 1
+          },
+          "DIV": {
+            "heading": 4
+          },
+          "SECTION": {
+            "dialog": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 13,
+            "subtotals": [
+              12,
+              1
+            ]
+          },
+          "h4": {
+            "total": 1
+          },
+          "aInline": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 1669,
+            "subtotals": [
+              1585,
+              19,
+              16,
+              10,
+              9,
+              9,
+              6,
+              4,
+              4,
+              3,
+              2,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 16,
+            "subtotals": [
+              6,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "19.04px": 12,
+              "28.6px": 1
+            },
+            "fontSize": {
+              "16px": 90,
+              "22px": 14
+            }
+          },
+          "h4": {},
+          "aInline": {
+            "lineHeight": {
+              "24px": 3,
+              "21px": 1
+            },
+            "fontSize": {
+              "16px": 45,
+              "14px": 15
+            }
+          },
+          "aBlock": {
+            "fontWeight": {
+              "400": 1659,
+              "700": 10
+            },
+            "lineHeight": {
+              "24px": 1600,
+              "27.2px": 26,
+              "21.6px": 19,
+              "20.8px": 11,
+              "37.4px": 7,
+              "28.6px": 4,
+              "16px": 1,
+              "30px": 1
+            },
+            "maxWidth": {
+              "none": 1648,
+              "180px": 19,
+              "125px": 2
+            },
+            "minHeight": {
+              "0px": 1633,
+              "auto": 36
+            },
+            "minWidth": {
+              "0px": 1633,
+              "auto": 36
+            },
+            "fontSize": {
+              "16px": 24570,
+              "18px": 285,
+              "22px": 165,
+              "20px": 15
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 9,
+              "solid": 6,
+              "none none none solid": 1
+            },
+            "borderWidth": {
+              "0px": 9,
+              "1.5px": 6,
+              "0px 0px 0px 1px": 1
+            },
+            "fontWeight": {
+              "400": 12,
+              "700": 4
+            },
+            "lineHeight": {
+              "16px": 10,
+              "normal": 6
+            },
+            "minHeight": {
+              "0px": 12,
+              "20px": 3,
+              "30px": 1
+            },
+            "minWidth": {
+              "0px": 9,
+              "104px": 4,
+              "20px": 3
+            },
+            "opacity": {
+              "0": 1,
+              "1": 15
+            },
+            "fontSize": {
+              "16px": 150,
+              "14px": 90
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "totals": {
+          "violation": 10,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/div[1]/div[9]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/a[1]",
+              "aria": "/document[1]/main[1]/link[25]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 58,
+              "top": 2341,
+              "height": 44,
+              "width": 125
+            },
+            "snippet": "<a aria-label=\"Order Prints\" href=\"https://photo.walgreens.com/store/home?ban=Photo_WAG_HO?ban=Photo_WAG_HO\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/footer[1]/div[1]/div[1]/div[4]/div[1]/div[2]/section[1]/div[1]/p[1]/a[1]",
+              "aria": "/document[1]/contentinfo[1]/region[1]/link[1]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 581,
+              "top": 7823,
+              "height": 21,
+              "width": 168
+            },
+            "snippet": "<a href=\"/topic/promotion/offer-details.jsp\" aria-label=\"Walgreens.com Offer Details\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/footer[1]/div[1]/div[1]/div[3]/div[1]/ul[1]/li[2]/a[1]",
+              "aria": "/document[1]/contentinfo[1]/list[7]/listitem[2]/link[1]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 359,
+              "top": 7654,
+              "height": 24,
+              "width": 90
+            },
+            "snippet": "<a aria-label=\"Terms and Conditions of Use\" href=\"/topic/help/generalhelp/termsofuse.jsp?foot=terms\" id=\"termsOfuse-link\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_LabelBefore",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/span[1]/input[1]",
+              "aria": "/document[1]/main[1]/form[2]/textbox[1]"
+            },
+            "message": "Label text is located after its associated text input or <select> element",
+            "bounds": {
+              "left": 445,
+              "top": 6149,
+              "height": 58,
+              "width": 271
+            },
+            "snippet": "<input required=\"\" id=\"searchCriteria\" name=\"searchCriteria\" type=\"text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_LabelBefore",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/span[1]/input[1]",
+              "aria": "/document[1]/main[1]/form[1]/textbox[1]"
+            },
+            "message": "Label text is located after its associated text input or <select> element",
+            "bounds": {
+              "left": 85,
+              "top": 5921,
+              "height": 58,
+              "width": 271
+            },
+            "snippet": "<input required=\"\" aria-describedby=\"commentErrorEmail\" maxlength=\"100\" id=\"emailAddress\" name=\"email\" type=\"text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_LabelBefore",
+            "path": {
+              "dom": "/html[1]/body[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]",
+              "aria": "/document[1]/contentinfo[1]/form[1]/textbox[1]"
+            },
+            "message": "Label text is located after its associated text input or <select> element",
+            "bounds": {
+              "left": 201,
+              "top": 6905,
+              "height": 58,
+              "width": 131
+            },
+            "snippet": "<input value=\"\" name=\"email\" aria-label=\"Enter email for weekly deals\" required=\"\" id=\"input-1\" type=\"text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/div[1]/div[8]/div[2]/div[1]/div[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "The <div> element has the id \"\" that is empty",
+            "bounds": {
+              "left": 0,
+              "top": 1735,
+              "height": 308,
+              "width": 800
+            },
+            "snippet": "<div data-reactid=\"16\" class=\"contain\" id=\"\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ValidIdRef",
+            "path": {
+              "dom": "/html[1]/body[1]/header[1]/div[1]/nav[1]/div[1]/div[1]/div[3]/form[1]/input[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]/form[1]/combobox[1]"
+            },
+            "message": "The 'id' \"wag-typeaheadlists\" specified for the ARIA property 'aria-owns' value is not valid",
+            "bounds": {
+              "left": 246,
+              "top": 55,
+              "height": 44,
+              "width": 273
+            },
+            "snippet": "<input autocorrect=\"off\" autocomplete=\"off\" aria-expanded=\"false\" aria-owns=\"wag-typeaheadlists\" aria-haspopup=\"true\" aria-autocomplete=\"both\" role=\"combobox\" title=\"Search by keyword or item #\" aria-label=\"Search by keyword or item number #\" placeholder=\"Search by keyword or item #\" name=\"Ntt\" class=\"blue-shadow\" id=\"ntt-placeholder\" value=\"\" type=\"text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/span[1]",
+              "aria": "/document[1]/button[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 102,
+              "top": 119,
+              "height": 24,
+              "width": 284
+            },
+            "snippet": "<span aria-describedby=\"tool-tip__text-1\" tabindex=\"0\" class=\"tool-tip__trigger\" role=\"button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<a tabindex=\"1\" onclick=\"$('#page-content').focus();window.scrollTo(0,$('#page-content').offset().top)\" href=\"#page-content\" class=\"skip-link\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.walgreens.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Walgreens: Pharmacy, Health & Wellness, Photo & More for You",
+          "pageurl": "https://www.walgreens.com/",
+          "time": 10.13,
+          "creditsremaining": 737,
+          "allitemcount": 2142,
+          "totalelements": 8582,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.walgreens.com/",
+          "domid": "693ab28af8ceab69fda24cf1fcf27475"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 4,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Rx_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-RX-Hero > DIV:first-child > DIV:first-child > DIV:first-child + DIV > IMG:first-child"
+                ]
+              },
+              "alt_link_missing": {
+                "id": "alt_link_missing",
+                "description": "Linked image missing alternative text",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SECTION#_im_feedbackTab__1526 > SIDEBAR:first-child + SECTION > SPAN#im_closeX_1526 > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#_im_feedbackTab__2192 > SIDEBAR:first-child + SECTION > SPAN#im_closeX_2192 > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#_im_feedbackTab__2310 > SIDEBAR:first-child + SECTION > SPAN#im_closeX_2310 > A:first-child > IMG:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 6,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Photo_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-Photo-Hero > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Photo_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-Photo-Hero > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > STRONG:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Rx_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-RX-Hero > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > STRONG:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Rx_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-RX-Hero > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > STRONG:first-child > BR:first-child + SUP",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Rx_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-RX-Hero > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Rx_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-RX-Hero > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 30,
+            "items": {
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + FORM > INPUT#ntt-placeholder"
+                ]
+              },
+              "link_internal_broken": {
+                "id": "link_internal_broken",
+                "description": "Broken same-page link",
+                "count": 19,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-prescrip-refills > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-prescrip-refills > UL#menu-ul-menu-prescrip-refills > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-prescrip-refills > UL#menu-ul-menu-prescrip-refills > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-find-care > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-cl > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-shop-products > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-photo > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#pf-menu-account > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#pf-menu-account > A:first-child + UL > LI:first-child + LI + LI > SPAN:first-child > A#pf-m-sigin",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#pf-menu-account > A:first-child + UL > LI:first-child + LI + LI > SPAN:first-child > A#pf-m-register",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#pf-menu-account > A:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > A:first-child + UL > LI:first-child > A#pf-dropdown-signin",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > A:first-child + UL > LI:first-child > A#pf-dropdown-register",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > A:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER + SCRIPT + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV#bottom-nudge > SPAN:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER + SCRIPT + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV#bottom-nudge > SPAN:first-child > DIV:first-child > DIV#tool-tip__text-1 > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER + SCRIPT + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > CENTER:first-child > A:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER > DIV:first-child > SECTION:first-child + NAV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > NAV:first-child > UL:first-child > LI#menu-photo > UL#menu-ul-menu-photo > LI:first-child + LI + LI + LI + LI > A#upload_photos",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Retail_Products_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-RP-Hero > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Photo_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-Photo-Hero > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Rx_CT_CEP > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-RX-Hero > DIV:first-child > DIV:first-child > DIV:first-child + DIV > IMG:first-child + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#page-content > DIV:first-child > DIV#Homepage_Findcare_Banner_Icons > STYLE:first-child + DIV > DIV:first-child > DIV#Monetate_HP-Findcare-Hero > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + MAIN + SCRIPT + SCRIPT + SCRIPT + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H2:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#_im_feedbackTab__2192 > SIDEBAR:first-child + SECTION > SPAN#im_closeX_2192 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#_im_feedbackTab__2310 > SIDEBAR:first-child + SECTION > SPAN#im_closeX_2310 > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A + SCRIPT + DIV + HEADER + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + MAIN + SCRIPT + SCRIPT + SCRIPT + FOOTER + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "tabindex": {
+                "id": "tabindex",
+                "description": "Tabindex",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > svg:first-child + DIV + A"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 1528,
+        "axe": 40,
+        "ibm": 34,
+        "wave": 88,
+        "bulk": 29,
+        "focOl": 24,
+        "focOp": 96,
+        "hover": 0,
+        "labClash": 8,
+        "linkUl": 12,
+        "motion": 0,
+        "radioSet": 0,
+        "role": 1138,
+        "styleDiff": 59
+      }
+    }
+  ]
+}
