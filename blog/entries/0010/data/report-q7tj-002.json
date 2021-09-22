@@ -1,0 +1,2282 @@
+{
+  "script": "p03c10",
+  "batch": "ccvax",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "q7tj",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "bytes": [
+          63377,
+          63377,
+          63377,
+          63377,
+          63377
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 13,
+          "serious": 4,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".sfContentBlock > .region-menu > .map-link-wrap > .map-link",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: map-links",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".mobileMenuLink[href$=\"transmissions\"][runat=\"server\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: MobileNavLink",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".top-news-story > img",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-no-duplicate-banner",
+            "description": "Ensures the document has at most one banner landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".mast-head",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "page-no-duplicate-banner",
+                    "description": "Document has more than one banner landmark",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".mast-head",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".non-mobile-mast-head",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#icon-facebook",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#icon-twitter",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#icon-linkedin",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#icon-youtube",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".sub-slider > .row[data-sf-element=\"Row\"]:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#animate",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".top-news",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#MainContent_T173FF507002_Col02 > .sfContentBlock",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".tabs-nav",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#tab1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".my-allison",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".investor-relations",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#aspnetForm > .sfContentBlock",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "visibleElements": 166
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "total": 48,
+          "types": {
+            "outlineMissing": {
+              "total": 48,
+              "tagNames": {
+                "input[type=submit]": 1,
+                "a": 47
+              }
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "input[type=submit]",
+              "text": "{<input name=\"ctl00$ctl14\" type=\"submit\" class=\"search-btn search-closed\" value=\"Search\" data-autotest-focused=\"N\">}"
+            },
+            {
+              "tagName": "a",
+              "text": "Sales + Service Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Suppliers"
+            },
+            {
+              "tagName": "a",
+              "text": "Merchandise"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "text": "My Allison"
+            },
+            {
+              "tagName": "a",
+              "text": "Allison Transmission; #HomepageLink"
+            },
+            {
+              "tagName": "a",
+              "text": "Transmissions"
+            },
+            {
+              "tagName": "a",
+              "text": "EV Solutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Why Allison"
+            },
+            {
+              "tagName": "a",
+              "text": "Parts + Service"
+            },
+            {
+              "tagName": "a",
+              "text": "Company"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers at Allison"
+            },
+            {
+              "tagName": "a",
+              "text": "Transit + City Bus"
+            },
+            {
+              "tagName": "a",
+              "text": "Tractor"
+            },
+            {
+              "tagName": "a",
+              "text": "Construction"
+            },
+            {
+              "tagName": "a",
+              "text": "Distribution"
+            },
+            {
+              "tagName": "a",
+              "text": "Fire + Emergency"
+            },
+            {
+              "tagName": "a",
+              "text": "Refuse"
+            },
+            {
+              "tagName": "a",
+              "text": "Coach"
+            },
+            {
+              "tagName": "a",
+              "text": "Municipal + Service"
+            },
+            {
+              "tagName": "a",
+              "text": "School Bus"
+            },
+            {
+              "tagName": "a",
+              "text": "Agriculture"
+            },
+            {
+              "tagName": "a",
+              "text": "RV + Motorhome"
+            },
+            {
+              "tagName": "a",
+              "text": "Specialty"
+            },
+            {
+              "tagName": "a",
+              "text": "Mining"
+            },
+            {
+              "tagName": "a",
+              "text": "Energy"
+            },
+            {
+              "tagName": "a",
+              "text": "Port Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Defense"
+            },
+            {
+              "tagName": "a",
+              "text": "Full Story; #ctl00_MainContent_C010_newsFrontendList_ctl00_ctl00_NewsList_ctrl0_FullStory"
+            },
+            {
+              "tagName": "a",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "a",
+              "text": "Media Resources"
+            },
+            {
+              "tagName": "a",
+              "text": "1"
+            },
+            {
+              "tagName": "a",
+              "text": "2"
+            },
+            {
+              "tagName": "a",
+              "text": "3"
+            },
+            {
+              "tagName": "a",
+              "text": "Find a facility"
+            },
+            {
+              "tagName": "a",
+              "text": "Search My Transmission"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Allison Transmission"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms of use"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Social Media Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "text": "This website uses cookies."
+            },
+            {
+              "tagName": "a",
+              "text": "#icon-facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "#icon-twitter"
+            },
+            {
+              "tagName": "a",
+              "text": "#icon-linkedin"
+            },
+            {
+              "tagName": "a",
+              "text": "#icon-youtube"
+            }
+          ],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 1,
+            "tagName": {
+              "a": 1
+            },
+            "operableWhy": {
+              "tag": 1,
+              "cursor": 0,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 48,
+            "tagName": {
+              "input[type=submit]": 1,
+              "a": 47
+            },
+            "focusableHow": {
+              "Tab": 48,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 48,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "#map-links"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "input[type=submit]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<input name=\"ctl00$ctl14\" type=\"submit\" class=\"search-btn search-closed\" value=\"Search\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\">}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sales + Service Locator"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Suppliers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Merchandise"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "My Allison"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Allison Transmission; #HomepageLink"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Transmissions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "EV Solutions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Why Allison"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Parts + Service"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers at Allison"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Transit + City Bus"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tractor"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Construction"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Distribution"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Fire + Emergency"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Refuse"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Coach"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Municipal + Service"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "School Bus"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Agriculture"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "RV + Motorhome"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Specialty"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Mining"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Energy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Port Services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Defense"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Full Story; #ctl00_MainContent_C010_newsFrontendList_ctl00_ctl00_NewsList_ctrl0_FullStory"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Media Resources"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "1"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "2"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "3"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find a facility"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search My Transmission"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Allison Transmission"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms of use"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Social Media Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "This website uses cookies."
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#icon-facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#icon-twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#icon-linkedin"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#icon-youtube"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "triggers": 7,
+          "targets": 88
+        },
+        "items": [
+          {
+            "tagName": "A",
+            "id": "map-links",
+            "text": "<a class=\"map-link\" id=\"map-links\"></a>",
+            "newVisibles": [
+              {
+                "tagName": "SPAN",
+                "text": "Choose your region + Language"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "North America"
+              },
+              {
+                "tagName": "A",
+                "text": "English"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Central + South America"
+              },
+              {
+                "tagName": "A",
+                "text": "Spanish / EspaÑol"
+              },
+              {
+                "tagName": "A",
+                "text": "Portuguese / PortuguÊs"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Europe + Middle East + Africa"
+              },
+              {
+                "tagName": "A",
+                "text": "English"
+              },
+              {
+                "tagName": "A",
+                "text": "Spanish / EspaÑol"
+              },
+              {
+                "tagName": "A",
+                "text": "Italian / Italiano"
+              },
+              {
+                "tagName": "A",
+                "text": "French / FRANÇAIS"
+              },
+              {
+                "tagName": "A",
+                "text": "Russian / русский"
+              },
+              {
+                "tagName": "A",
+                "text": "German / Deutsch"
+              },
+              {
+                "tagName": "A",
+                "text": "Turkish / TÜrkÇe"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Asia Pacific"
+              },
+              {
+                "tagName": "A",
+                "text": "KOREAN / 한국어"
+              },
+              {
+                "tagName": "A",
+                "text": "Chinese / 中文"
+              },
+              {
+                "tagName": "A",
+                "text": "JAPANESE / 英和辞書"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Transmissions",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Vocational Applications"
+              },
+              {
+                "tagName": "A",
+                "text": "Agriculture"
+              },
+              {
+                "tagName": "A",
+                "text": "Coach"
+              },
+              {
+                "tagName": "A",
+                "text": "Construction"
+              },
+              {
+                "tagName": "A",
+                "text": "Defense"
+              },
+              {
+                "tagName": "A",
+                "text": "Distribution"
+              },
+              {
+                "tagName": "A",
+                "text": "Energy"
+              },
+              {
+                "tagName": "A",
+                "text": "Fire + Emergency"
+              },
+              {
+                "tagName": "A",
+                "text": "Mining"
+              },
+              {
+                "tagName": "A",
+                "text": "Municipal + Service"
+              },
+              {
+                "tagName": "A",
+                "text": "Port Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Refuse"
+              },
+              {
+                "tagName": "A",
+                "text": "RV + Motorhome"
+              },
+              {
+                "tagName": "A",
+                "text": "School Bus"
+              },
+              {
+                "tagName": "A",
+                "text": "Specialty"
+              },
+              {
+                "tagName": "A",
+                "text": "Tractor"
+              },
+              {
+                "tagName": "A",
+                "text": "Transit + City Bus"
+              },
+              {
+                "tagName": "A",
+                "text": "Models"
+              },
+              {
+                "tagName": "A",
+                "text": "Bus Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Emergency Vehicle Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Highway Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Hybrid Bus™"
+              },
+              {
+                "tagName": "A",
+                "text": "Military Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Motorhome Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Off Road Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Oil Field Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Pupil Transport / Shuttle Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Regional Haul Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Rugged Duty Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Specialty Series™"
+              },
+              {
+                "tagName": "A",
+                "text": "Truck RV Series™"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "EV Solutions",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "eGen Flex™"
+              },
+              {
+                "tagName": "A",
+                "text": "eGen Power™"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Why Allison",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "FuelSense®"
+              },
+              {
+                "tagName": "A",
+                "text": "Natural Gas"
+              },
+              {
+                "tagName": "A",
+                "text": "xFE"
+              },
+              {
+                "tagName": "A",
+                "text": "Components"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Parts + Service",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Become an Authorized Dealer"
+              },
+              {
+                "tagName": "A",
+                "text": "Genuine Parts"
+              },
+              {
+                "tagName": "A",
+                "text": "Remanufactured Transmissions"
+              },
+              {
+                "tagName": "A",
+                "text": "Approved Fluids"
+              },
+              {
+                "tagName": "A",
+                "text": "On-Highway Fluids"
+              },
+              {
+                "tagName": "A",
+                "text": "Off-Highway Fluids"
+              },
+              {
+                "tagName": "A",
+                "text": "Extended Transmission Coverage"
+              },
+              {
+                "tagName": "A",
+                "text": "My Transmission"
+              },
+              {
+                "tagName": "A",
+                "text": "Fluid + Filter Calculator"
+              },
+              {
+                "tagName": "A",
+                "text": "Using Authorized Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Service Information + Tools"
+              },
+              {
+                "tagName": "A",
+                "text": "Allison HUB™"
+              },
+              {
+                "tagName": "A",
+                "text": "Electronic Diagnostics + Tools"
+              },
+              {
+                "tagName": "A",
+                "text": "Publications"
+              },
+              {
+                "tagName": "A",
+                "text": "Training"
+              },
+              {
+                "tagName": "A",
+                "text": "FAQ/Service Tips"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Company",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Certifications + Policies"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Leadership"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Responsibility"
+              },
+              {
+                "tagName": "A",
+                "text": "History + Heritage"
+              },
+              {
+                "tagName": "A",
+                "text": "Investors"
+              },
+              {
+                "tagName": "A",
+                "text": "Media Gallery"
+              },
+              {
+                "tagName": "A",
+                "text": "Newsroom"
+              },
+              {
+                "tagName": "A",
+                "text": "Vantage Power"
+              },
+              {
+                "tagName": "A",
+                "text": "Vehicle Electrification + Environmental Test Cente"
+              },
+              {
+                "tagName": "A",
+                "text": "Visitors and Deliveries"
+              },
+              {
+                "tagName": "A",
+                "text": "Walker Die Casting"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Careers at Allison",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Job Search"
+              },
+              {
+                "tagName": "A",
+                "text": "Meet Our Team"
+              },
+              {
+                "tagName": "A",
+                "text": "Life at Allison"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Values"
+              },
+              {
+                "tagName": "A",
+                "text": "Inclusion and Diversity"
+              },
+              {
+                "tagName": "A",
+                "text": "Internships at Allison Transmission"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 2,
+          "wellLabeled": 2
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "links": 163,
+          "inline": {
+            "total": 4,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Terms of use",
+            "Privacy Policy",
+            "Social Media Policy",
+            "Site Map"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "roleElements": 3,
+        "badRoleElements": 1,
+        "tagNames": {
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 18,
+            "subtotals": [
+              11,
+              5,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 35
+          },
+          "aInline": {
+            "total": 4
+          },
+          "aBlock": {
+            "total": 159,
+            "subtotals": [
+              35,
+              35,
+              27,
+              16,
+              11,
+              11,
+              5,
+              3,
+              3,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "28.8px": 11,
+              "21px": 6,
+              "38.4px": 1
+            },
+            "minHeight": {
+              "0px": 17,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 17,
+              "auto": 1
+            },
+            "fontSize": {
+              "21px": 93,
+              "24px": 77,
+              "32px": 19
+            }
+          },
+          "h3": {},
+          "aInline": {},
+          "aBlock": {
+            "borderStyle": {
+              "none": 152,
+              "solid": 7
+            },
+            "borderWidth": {
+              "0px": 152,
+              "2px": 7
+            },
+            "fontWeight": {
+              "100": 3,
+              "400": 107,
+              "700": 49
+            },
+            "lineHeight": {
+              "13px": 38,
+              "14px": 35,
+              "normal": 35,
+              "21px": 16,
+              "24px": 13,
+              "26.4px": 11,
+              "28px": 3,
+              "20px": 3,
+              "23.1px": 3,
+              "63px": 1,
+              "38.4px": 1
+            },
+            "maxWidth": {
+              "none": 157,
+              "194px": 2
+            },
+            "minHeight": {
+              "0px": 142,
+              "44px": 16,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 156,
+              "100px": 2,
+              "auto": 1
+            },
+            "fontSize": {
+              "13px": 4806,
+              "14px": 2268,
+              "22px": 594,
+              "20px": 324,
+              "16px": 324,
+              "13.5px": 108,
+              "68px": 54,
+              "32px": 54,
+              "12px": 54
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "violation": 11,
+          "recommendation": 1,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Img_HasAlt",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/div[2]/section[2]/div[1]/div[1]/div[1]/div[1]/img[1]",
+              "aria": "/document[1]/form[1]/region[3]/img[1]"
+            },
+            "message": "Image does not have an 'alt' attribute short text alternative",
+            "bounds": {
+              "left": 528,
+              "top": 796,
+              "height": 160,
+              "width": 335
+            },
+            "snippet": "<img src=\"https://www.allisontransmission.com/images/default-source/pictures-of-press-releases/stransport.tmb-.png?Culture=en&sfvrsn=86bfc51d_9\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[4]/a[1]",
+              "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[4]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 149,
+              "top": 1794,
+              "height": 27,
+              "width": 27
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://www.youtube.com/c/AllisonTransmissioninc\" id=\"icon-youtube\" class=\"icon-youtube\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[3]/a[1]",
+              "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[3]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 113,
+              "top": 1794,
+              "height": 27,
+              "width": 27
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://www.linkedin.com/company/allison-transmission\" id=\"icon-linkedin\" class=\"icon-linkedin\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[2]/a[1]",
+              "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[2]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 77,
+              "top": 1794,
+              "height": 27,
+              "width": 27
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://twitter.com/AllisonTrans\" id=\"icon-twitter\" class=\"icon-twitter\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[1]/a[1]",
+              "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[1]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 40,
+              "top": 1794,
+              "height": 27,
+              "width": 27
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://www.facebook.com/ALLISONTRANSMISSION/\" id=\"icon-facebook\" class=\"icon-facebook\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/header[2]",
+              "aria": "/document[1]/form[1]/banner[2]"
+            },
+            "message": "There is more than one element with \"banner\" role on the page",
+            "bounds": {
+              "left": 0,
+              "top": 40,
+              "height": 100,
+              "width": 800
+            },
+            "snippet": "<header class=\"clearfix non-mobile\" role=\"banner\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/header[1]",
+              "aria": "/document[1]/form[1]/banner[1]"
+            },
+            "message": "There is more than one element with \"banner\" role on the page",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 40,
+              "width": 800
+            },
+            "snippet": "<header class=\"clearfix mast-head\" role=\"banner\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[1]",
+              "aria": "/document[1]/form[1]/banner[2]/navigation[1]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 184,
+              "top": 40,
+              "height": 100,
+              "width": 576
+            },
+            "snippet": "<nav class=\"non-mobile-nav\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/header[1]/div[1]/nav[1]",
+              "aria": "/document[1]/form[1]/banner[1]/navigation[1]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 101,
+              "top": 0,
+              "height": 40,
+              "width": 528
+            },
+            "snippet": "<nav class=\"non-mobile-mast-head\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/header[2]",
+              "aria": "/document[1]/form[1]/banner[2]"
+            },
+            "message": "Multiple elements with \"banner\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 40,
+              "height": 100,
+              "width": 800
+            },
+            "snippet": "<header class=\"clearfix non-mobile\" role=\"banner\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/header[1]",
+              "aria": "/document[1]/form[1]/banner[1]"
+            },
+            "message": "Multiple elements with \"banner\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 40,
+              "width": 800
+            },
+            "snippet": "<header class=\"clearfix mast-head\" role=\"banner\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/form[1]/footer[1]",
+              "aria": "/document[1]/form[1]/contentinfo[1]"
+            },
+            "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+            "bounds": {
+              "left": 0,
+              "top": 1667,
+              "height": 180,
+              "width": 800
+            },
+            "snippet": "<footer role=\"contentinfo\">",
+            "level": "recommendation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Allison Transmission Home",
+          "pageurl": "https://allisontransmission.com/",
+          "time": 3.23,
+          "creditsremaining": 668,
+          "allitemcount": 195,
+          "totalelements": 592,
+          "waveurl": "http://wave.webaim.org/report?url=https://allisontransmission.com/",
+          "domid": "c732d6cf0ecd35bbd1ed60e25f72b0ac"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 17,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION + SECTION > DIV:first-child > DIV#MainContent_T173FF507002_Col02 > DIV:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "alt_spacer_missing": {
+                "id": "alt_spacer_missing",
+                "description": "Spacer image missing alternative text",
+                "count": 9,
+                "selectors": [
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG + IMG + IMG + IMG"
+                ]
+              },
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER > DIV:first-child > DIV:first-child > DIV#SFSearchHolder_T173FF507010 > FIELDSET#SFSearchHolder_T173FF507010_ctl00_ctl00_main > INPUT#SFSearchHolder_T173FF507010_ctl00_ctl00_searchTextBox",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV + NAV > DIV:first-child > SCRIPT:first-child + UL + DIV > INPUT#mobileSearch"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialFacebook > A#icon-facebook",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialTwitter > A#icon-twitter",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialLinkedIn > A#icon-linkedin",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialYouTube > A#icon-youtube"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 16,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 16,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child + DIV > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV#animate > UL#sub-slideshow > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child > SPAN:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 73,
+            "items": {
+              "legend_missing": {
+                "id": "legend_missing",
+                "description": "Fieldset missing legend",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER > DIV:first-child > DIV:first-child > DIV#SFSearchHolder_T173FF507010 > FIELDSET#SFSearchHolder_T173FF507010_ctl00_ctl00_main"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 70,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 > A:first-child"
+                ]
+              },
+              "youtube_video": {
+                "id": "youtube_video",
+                "description": "YouTube video",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > INPUT:first-child + INPUT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + INPUT + INPUT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION + SECTION + SECTION > DIV:first-child > DIV#MainContent_T173FF507002_Col03 > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI#tab3 > H2:first-child + P + BR + P > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 810,
+        "axe": 47,
+        "ibm": 38,
+        "wave": 235,
+        "bulk": 4,
+        "focOl": 192,
+        "focOp": 4,
+        "hover": 204,
+        "labClash": 4,
+        "linkUl": 12,
+        "motion": 0,
+        "radioSet": 0,
+        "role": 2,
+        "styleDiff": 68
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      95
+    ],
+    [
+      "motion",
+      13
+    ],
+    [
+      "focOl",
+      7
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "ibm",
+      2
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focOp",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

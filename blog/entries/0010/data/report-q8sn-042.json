@@ -1,0 +1,3100 @@
+{
+  "script": "p03c10",
+  "batch": "ccvaxRest",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "q8sn",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.wyndhamhotels.com/wingate",
+      "what": "Wingate by Wyndham",
+      "result": "https://www.wyndhamhotels.com/wingate"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "bytes": [
+          794918,
+          794515,
+          794515,
+          794515,
+          794515
+        ],
+        "localRatios": [
+          1.001,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1.001,
+        "globalRatio": 1.001,
+        "pixelChanges": [
+          1773,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 443,
+        "maxPixelChange": 1773,
+        "changeFrequency": 0.25
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 3,
+          "serious": 5,
+          "critical": 3
+        },
+        "items": [
+          {
+            "rule": "aria-valid-attr-value",
+            "description": "Ensures all ARIA attributes have valid values",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "a[href$=\"\\#genericbrandbar_ef3b\"]",
+                "impact": "critical"
+              },
+              {
+                "selector": "a[href$=\"\\#genericbrandbar_ca24\"]",
+                "impact": "critical"
+              }
+            ]
+          },
+          {
+            "rule": "html-lang-valid",
+            "description": "Ensures the lang attribute of the <html> element has a valid value",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "valid-lang",
+                    "description": "Value of lang attribute not included in the list of valid languages",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "div[align=\"center\"] > div > img",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".text-right > .site-wide-alert-close[href=\"\\#\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".respect-alignment.col-md-4.col-xs-12:nth-child(1) > .btn-img.btn[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".respect-alignment.col-md-4.col-xs-12:nth-child(2) > .btn-img.btn[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "list",
+            "description": "Ensures that lists are structured correctly",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".nav",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "only-listitems",
+                    "description": "List element has direct children with a role that is not allowed: presentation",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport-large",
+            "description": "Ensures <meta name=\"viewport\"> can scale a significant amount",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport-large",
+                    "description": "<meta> tag limits zooming on mobile devices",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".site-wide-alert",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#kampyleButtonContainer",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.wyndhamhotels.com/wingate",
+      "what": "Wingate by Wyndham",
+      "result": "https://www.wyndhamhotels.com/wingate"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "visibleElements": 797
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "totals": {
+          "total": 127,
+          "types": {
+            "outlineMissing": {
+              "total": 125,
+              "tagNames": {
+                "a": 100,
+                "button": 16,
+                "div": 8,
+                "input[type=text]": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 2,
+              "tagNames": {
+                "a": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "a",
+              "text": "READY FOR TRAVEL"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a href=\"#\" class=\"site-wide-alert-close\" data-autotest-focused=\"N\"> <i class=\"whg-core-icon-plus\" aria-hidden=\"true\"></i> </a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "Wingate"
+            },
+            {
+              "tagName": "a",
+              "text": "Book"
+            },
+            {
+              "tagName": "a",
+              "text": "Locations"
+            },
+            {
+              "tagName": "a",
+              "text": "Deals"
+            },
+            {
+              "tagName": "a",
+              "text": "Groups"
+            },
+            {
+              "tagName": "a",
+              "text": "FIND RESERVATION"
+            },
+            {
+              "tagName": "button",
+              "text": "Languages; #languageDropdown"
+            },
+            {
+              "tagName": "a",
+              "text": "Wyndham Rewards"
+            },
+            {
+              "tagName": "a",
+              "text": "SIGN IN"
+            },
+            {
+              "tagName": "a",
+              "text": "JOIN"
+            },
+            {
+              "tagName": "div",
+              "text": "Offer Extended Through September 28! STAY TWO NIGHTS, EARN A FREE NIGHT Register Now Get 6,500 bonus"
+            },
+            {
+              "tagName": "a",
+              "text": "Register Now"
+            },
+            {
+              "tagName": "a",
+              "text": "Get 6,500 bonus points on top of the points you’d already earn at participating hotels. Free night r"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Enter destination"
+            },
+            {
+              "tagName": "button",
+              "text": "Check In Sun, Sep 19 2021"
+            },
+            {
+              "tagName": "button",
+              "text": "Check Out Mon, Sep 20 2021"
+            },
+            {
+              "tagName": "button",
+              "text": "1 RoomRooms, 1 GuestGuests"
+            },
+            {
+              "tagName": "button",
+              "text": "Special Rates"
+            },
+            {
+              "tagName": "button",
+              "text": "Search"
+            },
+            {
+              "tagName": "div",
+              "text": "Offer Extended! Stay Two Nights, Earn a Free Night at Thousands of Hotels by Wyndham Register, then ; #slick-slide10"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "text": "Register Now"
+            },
+            {
+              "tagName": "div",
+              "text": "Count on Us® We’re elevating our health and safety protocols and putting new measures in place to gi; #slick-slide11"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "div",
+              "text": "Must-Have Savings Check out all of our offers and organizational discounts. Learn More; #slick-slide12"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "See Our Locations"
+            },
+            {
+              "tagName": "a",
+              "text": "More Info on Booking Direct"
+            },
+            {
+              "tagName": "a",
+              "text": "Book Now"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "div",
+              "text": "Catch Up On Shows, Movies & More Now stream your favorite TV shows, movies, and music from your pers; #slick-slide00"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "button",
+              "text": "1 of 2; 1; #slick-slide-control00"
+            },
+            {
+              "tagName": "button",
+              "text": "Previous; Previous"
+            },
+            {
+              "tagName": "button",
+              "text": "Next; Next"
+            },
+            {
+              "tagName": "div",
+              "text": "Lightning Book® Reserve a nearby hotel in a flash—the fastest way to book direct℠.; #slick-slide20"
+            },
+            {
+              "tagName": "div",
+              "text": "Wyndham Rewards Account Easily track your points, stays, and activity with seamless account access.; #slick-slide21"
+            },
+            {
+              "tagName": "div",
+              "text": "Mobile Check-In & Checkout Check in and check out right from your phone at select hotels.; #slick-slide22"
+            },
+            {
+              "tagName": "button",
+              "text": "Wingate by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "About"
+            },
+            {
+              "tagName": "a",
+              "text": "Locations"
+            },
+            {
+              "tagName": "a",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "button",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "text": "Reservations: (800) 337-0077"
+            },
+            {
+              "tagName": "a",
+              "text": "Customer Care/Help"
+            },
+            {
+              "tagName": "button",
+              "text": "Wyndham Business"
+            },
+            {
+              "tagName": "a",
+              "text": "About Wyndham Business"
+            },
+            {
+              "tagName": "a",
+              "text": "Corporate Travel"
+            },
+            {
+              "tagName": "a",
+              "text": "Group Travel"
+            },
+            {
+              "tagName": "a",
+              "text": "Meetings"
+            },
+            {
+              "tagName": "a",
+              "text": "Travel Advisors"
+            },
+            {
+              "tagName": "button",
+              "text": "Terms & Policies"
+            },
+            {
+              "tagName": "a",
+              "text": "Best Rate Guarantee"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Notice"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "a",
+              "text": "About Safemark"
+            },
+            {
+              "tagName": "a",
+              "text": "Cookie Consent"
+            },
+            {
+              "tagName": "button",
+              "text": "Corporate Resources"
+            },
+            {
+              "tagName": "a",
+              "text": "Corporate Website"
+            },
+            {
+              "tagName": "a",
+              "text": "Media Center"
+            },
+            {
+              "tagName": "a",
+              "text": "Franchise Information"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Social Responsibility"
+            },
+            {
+              "tagName": "button",
+              "text": "California Residents"
+            },
+            {
+              "tagName": "a",
+              "text": "Do Not Sell My Personal Information"
+            },
+            {
+              "tagName": "a",
+              "text": "Facebook; Facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "Twitter; Twitter"
+            },
+            {
+              "tagName": "a",
+              "text": "Instagram; Instagram"
+            },
+            {
+              "tagName": "a",
+              "text": "Website Feedback"
+            },
+            {
+              "tagName": "a",
+              "text": "Wyndham Rewards"
+            },
+            {
+              "tagName": "a",
+              "text": "Registry Collection Registry Collection"
+            },
+            {
+              "tagName": "a",
+              "text": "Wyndham Grand Wyndham Grand"
+            },
+            {
+              "tagName": "a",
+              "text": "Dolce Hotels and Resorts Dolce Hotels and Resorts"
+            },
+            {
+              "tagName": "a",
+              "text": "Wyndham Hotels and Resorts Wyndham Hotels and Resorts"
+            },
+            {
+              "tagName": "a",
+              "text": "TRYP by Wyndham TRYP by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "Esplendor by Wyndham Esplendor by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "Dazzler Hotels Dazzler Hotels"
+            },
+            {
+              "tagName": "a",
+              "text": "Trademark Hotel Collection Trademark Hotel Collection"
+            },
+            {
+              "tagName": "a",
+              "text": "La Quinta La Quinta"
+            },
+            {
+              "tagName": "a",
+              "text": "Wingate by Wyndham Wingate by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "Wyndham Garden Wyndham Garden"
+            },
+            {
+              "tagName": "a",
+              "text": "AmericInn AmericInn"
+            },
+            {
+              "tagName": "a",
+              "text": "Ramada Worldwide Ramada Worldwide"
+            },
+            {
+              "tagName": "a",
+              "text": "Ramada Encore Ramada Encore"
+            },
+            {
+              "tagName": "a",
+              "text": "Baymont Baymont"
+            },
+            {
+              "tagName": "a",
+              "text": "Microtel by Wyndham Microtel by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "Days Inn Days Inn"
+            },
+            {
+              "tagName": "a",
+              "text": "Super 8 Super 8"
+            },
+            {
+              "tagName": "a",
+              "text": "Howard Johnson Howard Johnson"
+            },
+            {
+              "tagName": "a",
+              "text": "Travelodge Travelodge"
+            },
+            {
+              "tagName": "a",
+              "text": "Hawthorn Suites by Wyndham Hawthorn Suites by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "Vacation Rentals, Club Resorts & Condos"
+            },
+            {
+              "tagName": "a",
+              "text": "Club Wyndham Club Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "WorldMark by Wyndham WorldMark by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "Shell Vacations Club Shell Vacations Club"
+            },
+            {
+              "tagName": "a",
+              "text": "Margaritaville Vacation Club by Wyndham Margaritaville Vacation Club by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "text": "Cottages Cottages"
+            },
+            {
+              "tagName": "a",
+              "text": "Landal Landal"
+            },
+            {
+              "tagName": "a",
+              "text": "Vacasa Vacasa"
+            },
+            {
+              "tagName": "a",
+              "text": "Caesars Rewards®"
+            },
+            {
+              "tagName": "a",
+              "text": "Caesars Palace Las Vegas Caesars Palace Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "text": "El Dorado Resort Casino El Dorado Resort Casino"
+            },
+            {
+              "tagName": "a",
+              "text": "Harrah's Harrah's"
+            },
+            {
+              "tagName": "a",
+              "text": "Horeshoe Casino Horeshoe Casino"
+            },
+            {
+              "tagName": "a",
+              "text": "Tropicana Laughlin Tropicana Laughlin"
+            },
+            {
+              "tagName": "a",
+              "text": "Flamingo Las Vegas Flamingo Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "text": "The Cromwell Las Vegas The Cromwell Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "text": "Bally's Las Vegas Bally's Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "text": "The LINQ Las Vegas The LINQ Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "text": "Paris Las Vegas Paris Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "text": "Planet Hollywood Resort & Casino Planet Hollywood Resort & Casino"
+            },
+            {
+              "tagName": "a",
+              "text": "Rio All-Suite Hotel & Casino Rio All-Suite Hotel & Casino"
+            },
+            {
+              "tagName": "a",
+              "text": "Harveys Lake Tahoe Harveys Lake Tahoe"
+            },
+            {
+              "tagName": "a",
+              "text": "Circus Circus Reno Circus Circus Reno"
+            },
+            {
+              "tagName": "a",
+              "text": "Silver Legacy Resort Casino Silver Legacy Resort Casino"
+            },
+            {
+              "tagName": "a",
+              "text": "Lumiere Place Casino & Hotel Lumiere Place Casino & Hotel"
+            },
+            {
+              "tagName": "a",
+              "text": "Isle of Capri Casino Hotel Boonville Isle of Capri Casino Hotel Boonville"
+            },
+            {
+              "tagName": "a",
+              "text": "Isle Casino Hotel Black Hawk Isle Casino Hotel Black Hawk"
+            },
+            {
+              "tagName": "a",
+              "text": "Nobu Hotel at Caesars Palace Nobu Hotel at Caesars Palace"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Notice"
+            },
+            {
+              "tagName": "a",
+              "text": "accessibility@wyndham.com"
+            },
+            {
+              "tagName": "button",
+              "text": "Feedback; #nebula_div_btn"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "{<a href=\"https://itunes.apple.com/app/apple-store/id783649785?pt=1019643&amp;mt=8&amp;ct=WR:20190403:HIWCM:DLLINK\" class=\"btn btn-img\" target=\"_blank\" data-autotest-focused=\"Y\"> <div class=\"pll-image-container \" style=\"padding-top: 29.6667%;\"> <canvas class=\"pll-image pll-image-ready\" data-info=\"{&quot;sd&quot;:{&quot;s&quot;:&quot;/content/dam/images/global/logos/apple_store_logo.svg&quot;,&quot;r&quot;:&quot;NaN&quot;},&quot;wm&quot;:&quot;250&quot;,&quot;wd&quot;:&quot;200&quot;,&quot;wt&quot;:&quot;250&quot;}\"></canvas> <img src=\"/content/dam/images/global/logos/apple_store_logo.svg?downsize=200:*\" class=\"pll-image-full-size lazy-load-pageload\" alt=\"\"> </div> </a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a href=\"https://play.google.com/store/apps/details?id=com.wyndhamhotelgroup.wyndhamrewards&amp;referrer=utm_source%3Dwyndhammarketing%26utm_medium%3DMW%26utm_campaign%3DWR:20190403:HIWCM:DLLINK\" class=\"btn btn-img\" target=\"_blank\" data-autotest-focused=\"Y\"> <div class=\"pll-image-container \" style=\"padding-top: 30%;\"> <canvas class=\"pll-image pll-image-ready\" data-info=\"{&quot;sd&quot;:{&quot;s&quot;:&quot;/content/dam/images/global/logos/google_play_logo.svg&quot;,&quot;r&quot;:&quot;NaN&quot;},&quot;wm&quot;:&quot;250&quot;,&quot;wd&quot;:&quot;200&quot;,&quot;wt&quot;:&quot;250&quot;}\"></canvas> <img src=\"/content/dam/images/global/logos/google_play_logo.svg?downsize=200:*\" class=\"pll-image-full-size lazy-load-pageload\" alt=\"\"> </div> </a>}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 8,
+            "tagName": {
+              "div": 8
+            },
+            "focusableHow": {
+              "Tab": 8,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 7,
+            "tagName": {
+              "a": 4,
+              "li": 2,
+              "button": 1
+            },
+            "operableWhy": {
+              "tag": 5,
+              "cursor": 2,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 119,
+            "tagName": {
+              "a": 102,
+              "button": 16,
+              "input[type=text]": 1
+            },
+            "focusableHow": {
+              "Tab": 119,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 119,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Offer Extended Through September 28! STAY TWO NIGHTS, EARN A FREE NIGHT Register Now Get 6,500 bonus"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Offer Extended! Stay Two Nights, Earn a Free Night at Thousands of Hotels by Wyndham Register, then ; #slick-slide10"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Count on Us® We’re elevating our health and safety protocols and putting new measures in place to gi; #slick-slide11"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Must-Have Savings Check out all of our offers and organizational discounts. Learn More; #slick-slide12"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Catch Up On Shows, Movies & More Now stream your favorite TV shows, movies, and music from your pers; #slick-slide00"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Lightning Book® Reserve a nearby hotel in a flash—the fastest way to book direct℠.; #slick-slide20"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Wyndham Rewards Account Easily track your points, stays, and activity with seamless account access.; #slick-slide21"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Mobile Check-In & Checkout Check in and check out right from your phone at select hotels.; #slick-slide22"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "1"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "2"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "2 of 2; 2; #slick-slide-control01"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "READY FOR TRAVEL"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"#\" class=\"site-wide-alert-close\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <i class=\"whg-core-icon-plus\" aria-hidden=\"true\"></i> </a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wingate"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Book"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Locations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Deals"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Groups"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FIND RESERVATION"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Languages; #languageDropdown"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wyndham Rewards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "SIGN IN"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "JOIN"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Register Now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get 6,500 bonus points on top of the points you’d already earn at participating hotels. Free night r"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Enter destination"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Check In Sun, Sep 19 2021"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Check Out Mon, Sep 20 2021"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "1 RoomRooms, 1 GuestGuests"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Special Rates"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Register Now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "See Our Locations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "More Info on Booking Direct"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Book Now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "1 of 2; 1; #slick-slide-control00"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Previous; Previous"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Next; Next"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://itunes.apple.com/app/apple-store/id783649785?pt=1019643&amp;mt=8&amp;ct=WR:20190403:HIWCM:DLLINK\" class=\"btn btn-img\" target=\"_blank\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <div class=\"pll-image-container \" style=\"padding-top: 29.6667%;\"> <canvas class=\"pll-image pll-image-ready\" data-info=\"{&quot;sd&quot;:{&quot;s&quot;:&quot;/content/dam/images/global/logos/apple_store_logo.svg&quot;,&quot;r&quot;:&quot;NaN&quot;},&quot;wm&quot;:&quot;250&quot;,&quot;wd&quot;:&quot;200&quot;,&quot;wt&quot;:&quot;250&quot;}\"></canvas> <img src=\"/content/dam/images/global/logos/apple_store_logo.svg?downsize=200:*\" class=\"pll-image-full-size lazy-load-pageload\" alt=\"\"> </div> </a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://play.google.com/store/apps/details?id=com.wyndhamhotelgroup.wyndhamrewards&amp;referrer=utm_source%3Dwyndhammarketing%26utm_medium%3DMW%26utm_campaign%3DWR:20190403:HIWCM:DLLINK\" class=\"btn btn-img\" target=\"_blank\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <div class=\"pll-image-container \" style=\"padding-top: 30%;\"> <canvas class=\"pll-image pll-image-ready\" data-info=\"{&quot;sd&quot;:{&quot;s&quot;:&quot;/content/dam/images/global/logos/google_play_logo.svg&quot;,&quot;r&quot;:&quot;NaN&quot;},&quot;wm&quot;:&quot;250&quot;,&quot;wd&quot;:&quot;200&quot;,&quot;wt&quot;:&quot;250&quot;}\"></canvas> <img src=\"/content/dam/images/global/logos/google_play_logo.svg?downsize=200:*\" class=\"pll-image-full-size lazy-load-pageload\" alt=\"\"> </div> </a>}"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wingate by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Locations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Reservations: (800) 337-0077"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Customer Care/Help"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wyndham Business"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About Wyndham Business"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Corporate Travel"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Group Travel"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Meetings"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Travel Advisors"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms & Policies"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Best Rate Guarantee"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Notice"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About Safemark"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie Consent"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Corporate Resources"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Corporate Website"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Media Center"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Franchise Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Social Responsibility"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "California Residents"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Do Not Sell My Personal Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Facebook; Facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Twitter; Twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Instagram; Instagram"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Website Feedback"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wyndham Rewards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Registry Collection Registry Collection"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wyndham Grand Wyndham Grand"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Dolce Hotels and Resorts Dolce Hotels and Resorts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wyndham Hotels and Resorts Wyndham Hotels and Resorts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "TRYP by Wyndham TRYP by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Esplendor by Wyndham Esplendor by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Dazzler Hotels Dazzler Hotels"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Trademark Hotel Collection Trademark Hotel Collection"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "La Quinta La Quinta"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wingate by Wyndham Wingate by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wyndham Garden Wyndham Garden"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "AmericInn AmericInn"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Ramada Worldwide Ramada Worldwide"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Ramada Encore Ramada Encore"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Baymont Baymont"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Microtel by Wyndham Microtel by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Days Inn Days Inn"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Super 8 Super 8"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Howard Johnson Howard Johnson"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Travelodge Travelodge"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Hawthorn Suites by Wyndham Hawthorn Suites by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Vacation Rentals, Club Resorts & Condos"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Club Wyndham Club Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "WorldMark by Wyndham WorldMark by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shell Vacations Club Shell Vacations Club"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Margaritaville Vacation Club by Wyndham Margaritaville Vacation Club by Wyndham"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cottages Cottages"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Landal Landal"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Vacasa Vacasa"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Caesars Rewards®"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Caesars Palace Las Vegas Caesars Palace Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "El Dorado Resort Casino El Dorado Resort Casino"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Harrah's Harrah's"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Horeshoe Casino Horeshoe Casino"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tropicana Laughlin Tropicana Laughlin"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Flamingo Las Vegas Flamingo Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "The Cromwell Las Vegas The Cromwell Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Bally's Las Vegas Bally's Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "The LINQ Las Vegas The LINQ Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Paris Las Vegas Paris Las Vegas"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Planet Hollywood Resort & Casino Planet Hollywood Resort & Casino"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Rio All-Suite Hotel & Casino Rio All-Suite Hotel & Casino"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Harveys Lake Tahoe Harveys Lake Tahoe"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Circus Circus Reno Circus Circus Reno"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Silver Legacy Resort Casino Silver Legacy Resort Casino"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Lumiere Place Casino & Hotel Lumiere Place Casino & Hotel"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Isle of Capri Casino Hotel Boonville Isle of Capri Casino Hotel Boonville"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Isle Casino Hotel Black Hawk Isle Casino Hotel Black Hawk"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Nobu Hotel at Caesars Palace Nobu Hotel at Caesars Palace"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Notice"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "accessibility@wyndham.com"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Feedback; #nebula_div_btn"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 4,
+          "wellLabeled": 80
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "checkbox"
+            },
+            {
+              "index": 20,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 52,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 54,
+              "tagName": "INPUT",
+              "type": "text"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Toggle navigation"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Toggle search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Languages"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Username"
+                ]
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "password",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Password"
+                ]
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Remember me"
+                ]
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Sign in"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Answer"
+                ]
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "SECURITY QUESTION 1*"
+                ]
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "SECURITY ANSWER 1*"
+                ]
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "SECURITY QUESTION 2*"
+                ]
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "SECURITY ANSWER 2*"
+                ]
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "SECURITY QUESTION 3*"
+                ]
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "SECURITY ANSWER 3*"
+                ]
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Submit Answers"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Confirm Answers"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Enter destination"
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Check In Sun, Sep 19 2021"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Check Out Mon, Sep 20 2021"
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "1 RoomRooms, 1 GuestGuests"
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Special Rates"
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Done"
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "- Rooms"
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "+"
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "- Adults"
+              }
+            },
+            {
+              "index": 31,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "+ Adults"
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "- Children"
+              }
+            },
+            {
+              "index": 33,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "+ Children"
+              }
+            },
+            {
+              "index": 34,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 1"
+                ]
+              }
+            },
+            {
+              "index": 35,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 2"
+                ]
+              }
+            },
+            {
+              "index": 36,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 3"
+                ]
+              }
+            },
+            {
+              "index": 37,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 4"
+                ]
+              }
+            },
+            {
+              "index": 38,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 5"
+                ]
+              }
+            },
+            {
+              "index": 39,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 6"
+                ]
+              }
+            },
+            {
+              "index": 40,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 7"
+                ]
+              }
+            },
+            {
+              "index": 41,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Child 8"
+                ]
+              }
+            },
+            {
+              "index": 42,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 43,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Done"
+              }
+            },
+            {
+              "index": 44,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Use Wyndham Rewards points."
+                ]
+              }
+            },
+            {
+              "index": 45,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "None"
+                ]
+              }
+            },
+            {
+              "index": 46,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "AAA/CAA"
+                ]
+              }
+            },
+            {
+              "index": 47,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Government/Per Diem"
+                ]
+              }
+            },
+            {
+              "index": 48,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Military/Veteran"
+                ]
+              }
+            },
+            {
+              "index": 49,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Senior"
+                ]
+              }
+            },
+            {
+              "index": 50,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "AARP"
+                ]
+              }
+            },
+            {
+              "index": 51,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Corporate Code"
+                ]
+              }
+            },
+            {
+              "index": 53,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Group Code"
+                ]
+              }
+            },
+            {
+              "index": 55,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 56,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Done"
+              }
+            },
+            {
+              "index": 57,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "1 of 1",
+                "content": "1"
+              }
+            },
+            {
+              "index": 58,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "1 of 2",
+                "content": "1"
+              }
+            },
+            {
+              "index": 59,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "2 of 2",
+                "content": "2"
+              }
+            },
+            {
+              "index": 60,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Previous",
+                "content": "Previous"
+              }
+            },
+            {
+              "index": 61,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Next",
+                "content": "Next"
+              }
+            },
+            {
+              "index": 62,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "1 of 1",
+                "content": "1"
+              }
+            },
+            {
+              "index": 63,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 64,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 65,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 66,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 67,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 68,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 69,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 70,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 71,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 72,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 73,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 74,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Wingate by Wyndham"
+              }
+            },
+            {
+              "index": 75,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Contact"
+              }
+            },
+            {
+              "index": 76,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Wyndham Business"
+              }
+            },
+            {
+              "index": 77,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Terms & Policies"
+              }
+            },
+            {
+              "index": 78,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Corporate Resources"
+              }
+            },
+            {
+              "index": 79,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "California Residents"
+              }
+            },
+            {
+              "index": 80,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Necessary and Functional"
+                ]
+              }
+            },
+            {
+              "index": 81,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Advertising"
+                ]
+              }
+            },
+            {
+              "index": 82,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close Consent Modal",
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 83,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Save Consent Preferences",
+                "content": "Save"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "totals": {
+          "links": 136,
+          "inline": {
+            "total": 11,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "READY FOR TRAVEL",
+            "SIGN IN",
+            "JOIN",
+            "--",
+            "points",
+            "Edit",
+            "Edit",
+            "Edit",
+            "Privacy Notice",
+            "accessibility@wyndham.com",
+            "Privacy Notice"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "totals": {
+          "total": 8,
+          "inSet": 0,
+          "percent": 0
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": [
+            "None",
+            "AAA/CAA",
+            "Government/Per Diem",
+            "Military/Veteran",
+            "Senior",
+            "AARP",
+            "Corporate Code",
+            "Group Code"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "roleElements": 129,
+        "badRoleElements": 39,
+        "tagNames": {
+          "NAV": {
+            "navigation": 1
+          },
+          "DIV": {
+            "dialog": 13,
+            "document": 12,
+            "complementary": 1,
+            "listbox": 1,
+            "group": 1,
+            "main": 1,
+            "status": 2
+          },
+          "BUTTON": {
+            "button": 1
+          },
+          "SPAN": {
+            "button": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          },
+          "A": {
+            "button": 3
+          },
+          "SECTION": {
+            "dialog": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 1
+          },
+          "aInline": {
+            "total": 11,
+            "subtotals": [
+              4,
+              3,
+              2,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 125,
+            "subtotals": [
+              58,
+              25,
+              10,
+              10,
+              7,
+              6,
+              3,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 52,
+            "subtotals": [
+              12,
+              7,
+              6,
+              6,
+              4,
+              3,
+              3,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {},
+          "aInline": {
+            "lineHeight": {
+              "12px": 4,
+              "21px": 3,
+              "0px": 2,
+              "14.4px": 1,
+              "20px": 1
+            },
+            "fontSize": {
+              "10px": 4,
+              "15px": 3,
+              "9px": 2,
+              "12px": 1,
+              "14px": 1
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 101,
+              "solid": 13,
+              "none none solid": 11
+            },
+            "borderWidth": {
+              "0px": 101,
+              "2px": 13,
+              "0px 0px 1px": 11
+            },
+            "fontWeight": {
+              "400": 110,
+              "700": 15
+            },
+            "lineHeight": {
+              "21px": 84,
+              "13.2px": 22,
+              "14.4px": 14,
+              "12px": 3,
+              "20px": 2
+            },
+            "maxWidth": {
+              "none": 123,
+              "100%": 2
+            },
+            "minHeight": {
+              "0px": 84,
+              "auto": 28,
+              "46px": 13
+            },
+            "minWidth": {
+              "0px": 91,
+              "auto": 34
+            },
+            "fontSize": {
+              "15px": 84,
+              "12px": 36,
+              "10px": 3,
+              "14px": 2
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "solid": 27,
+              "none": 25
+            },
+            "borderWidth": {
+              "0px": 25,
+              "1px": 24,
+              "2px": 3
+            },
+            "fontWeight": {
+              "400": 21,
+              "700": 31
+            },
+            "lineHeight": {
+              "21px": 19,
+              "20px": 7,
+              "12px": 6,
+              "0px": 6,
+              "18px": 5,
+              "14.4px": 4,
+              "13.2px": 3,
+              "22px": 1,
+              "25.7143px": 1
+            },
+            "maxHeight": {
+              "none": 51,
+              "100%": 1
+            },
+            "maxWidth": {
+              "none": 51,
+              "100%": 1
+            },
+            "minWidth": {
+              "0px": 51,
+              "160px": 1
+            },
+            "fontSize": {
+              "12px": 22,
+              "21px": 12,
+              "15px": 7,
+              "0px": 6,
+              "14px": 2,
+              "12.6px": 2,
+              "18px": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": "ERROR: IBM TEST FAILED"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.wyndhamhotels.com/wingate",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Wingate Hotels | Best Rate Guarantee | Official Site",
+          "pageurl": "https://www.wyndhamhotels.com/wingate",
+          "time": 6.03,
+          "creditsremaining": 425,
+          "allitemcount": 400,
+          "totalelements": 1863,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.wyndhamhotels.com/wingate",
+          "domid": "8f2b63b466e6c30eabc55de5717962f1"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 18,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV#homepageHeroCarousel > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > FOOTER#pageFooter > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > HEADER:first-child + DIV + DIV + FORM > INPUT#redeemWRPoint",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > LABEL:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > LABEL:first-child > INPUT:first-child + SPAN + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > LABEL:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > LABEL:first-child > INPUT:first-child + SPAN + DIV > INPUT:first-child"
+                ]
+              },
+              "language_missing": {
+                "id": "language_missing",
+                "description": "Language missing or invalid",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > HEADER#pageHeader > NAV#mainNav > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#headerLinkContainer > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > HEADER#pageHeader > NAV#mainNav > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#headerLinkContainer > UL:first-child + DIV > DIV:first-child > A:first-child + DIV + DIV > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > FOOTER#pageFooter > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A#apple-app-download"
+                ]
+              },
+              "aria_reference_broken": {
+                "id": "aria_reference_broken",
+                "description": "Broken ARIA reference",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV#genericLightbox",
+                  "HTML > HEAD:first-child + BODY > SECTION#ensModalWrapper > DIV:first-child > BUTTON:first-child + HEADER + DIV + HR + DIV > DIV:first-child > LABEL:first-child > DIV:first-child > INPUT#Necessary and FunctionalSlide"
+                ]
+              },
+              "aria_menu_broken": {
+                "id": "aria_menu_broken",
+                "description": "Broken ARIA menu",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > HEADER#pageHeader > NAV#mainNav > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON#magnifyingGlassButton",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > HEADER#pageHeader > NAV#mainNav > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#headerLinkContainer > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI > DIV:first-child > BUTTON:first-child + UL"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 1,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 23,
+            "items": {
+              "fieldset_missing": {
+                "id": "fieldset_missing",
+                "description": "Missing fieldset",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > LABEL:first-child"
+                ]
+              },
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#slick-slide11 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#slick-slide12 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#slick-slide20 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#slick-slide21 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#slick-slide22 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child"
+                ]
+              },
+              "link_internal_broken": {
+                "id": "link_internal_broken",
+                "description": "Broken same-page link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV + DIV + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + A"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > HEADER#pageHeader > NAV#mainNav > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#headerLinkContainer > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV#heroPromoRibbon > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > FOOTER#pageFooter > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > SPAN:first-child + DIV > DIV:first-child > DIV:first-child > DIV#hotelsbrandbar_3fd3 > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > FOOTER#pageFooter > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#genericbrandbar_ef3b > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > FOOTER#pageFooter > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#genericbrandbar_ef3b > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#wr-login > DIV:first-child > DIV:first-child > DIV:first-child + BUTTON + DIV > DIV:first-child + DIV > FORM#login-wr-security-questions > DIV:first-child + DIV > P:first-child + DIV > SPAN:first-child > I:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#wr-login > DIV:first-child > DIV:first-child > DIV:first-child + BUTTON + DIV > DIV:first-child + DIV + DIV > FORM#set-security-answers > DIV:first-child + DIV > P:first-child + DIV > SPAN:first-child > I:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#wr-login > DIV:first-child > DIV:first-child > DIV:first-child + BUTTON + DIV > DIV:first-child + DIV + DIV > FORM#set-security-answers > DIV:first-child + DIV > P:first-child + DIV + UL > LI:first-child > SPAN:first-child > I:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#wr-login > DIV:first-child > DIV:first-child > DIV:first-child + BUTTON + DIV > DIV:first-child + DIV + DIV > FORM#set-security-answers > DIV:first-child + DIV > P:first-child + DIV + UL > LI:first-child + LI > SPAN:first-child > I:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#wr-login > DIV:first-child > DIV:first-child > DIV:first-child + BUTTON + DIV > DIV:first-child + DIV + DIV > FORM#set-security-answers > DIV:first-child + DIV > P:first-child + DIV + UL > LI:first-child + LI + LI > SPAN:first-child > I:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > INPUT:first-child + BUTTON > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child + SCRIPT + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + FORM > NAV#bookingBar__main > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > INPUT:first-child + BUTTON + BUTTON > SPAN:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 1164,
+        "axe": 38,
+        "ibm": 243,
+        "wave": 105,
+        "bulk": 25,
+        "focOl": 500,
+        "focOp": 36,
+        "hover": 0,
+        "labClash": 8,
+        "linkUl": 33,
+        "motion": 2,
+        "radioSet": 16,
+        "role": 78,
+        "styleDiff": 80
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      164
+    ],
+    [
+      "focOl",
+      20
+    ],
+    [
+      "ibm",
+      17
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "focOp",
+      7
+    ],
+    [
+      "wave",
+      6
+    ],
+    [
+      "axe",
+      4
+    ],
+    [
+      "bulk",
+      2
+    ],
+    [
+      "radioSet",
+      1
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

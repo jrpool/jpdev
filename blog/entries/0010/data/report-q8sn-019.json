@@ -1,0 +1,2505 @@
+{
+  "script": "p03c10",
+  "batch": "ccvaxRest",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "q8sn",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://nationalvision.com/",
+      "what": "National Vision Holdings",
+      "result": "https://nationalvision.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "bytes": [
+          730131,
+          730131,
+          730131,
+          730131,
+          730131
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://nationalvision.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 27,
+          "moderate": 1,
+          "serious": 2,
+          "critical": 17
+        },
+        "items": [
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#onetrust-banner-sdk",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-roles",
+            "description": "Ensures all elements with a role attribute use a valid value",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#globalHeader",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "invalidrole",
+                    "description": "Role must be one of the valid ARIA roles: header",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#onetrust-pc-btn-handler",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.26 (foreground color: #6cc04a, background color: #ffffff, font size: 9.8pt (13.008000373840332px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-aria",
+            "description": "Ensures every id attribute value used in ARIA and in labels is unique",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > .pc-header > .pc-title-container > h2",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: pc-title",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .description-container[aria-labelledby=\"pc-privacy-header\"][role=\"tabpanel\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: pc-tab-description",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .description-container[aria-labelledby=\"pc-privacy-header\"][role=\"tabpanel\"] > h3",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: pc-privacy-header",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .ot-always-active-group.category-item[data-optanongroupid=\"C0001\"] > .ot-sdk-column > .ot-sdk-four.group[aria-controls=\"ot-desc-id-C0001\"] > h3",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-header-id-C0001",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .ot-always-active-group.category-item[data-optanongroupid=\"C0001\"] > .ot-always-active-group.description-container[role=\"tabpanel\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-desc-id-C0001",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .ot-always-active-group.category-item[data-optanongroupid=\"C0001\"] > .ot-always-active-group.description-container[role=\"tabpanel\"] > .group-toggle > .ot-toggle-group > .ot-hide-tgl.ot-toggle > .checkbox > input[aria-labelledby=\"ot-header-id-C0001\"][name=\"ot-group-id-C0001\"][aria-controls=\"ot-desc-id-C0001\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-group-id-C0001",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .category-item[data-optanongroupid=\"C0002\"] > .ot-sdk-column > .ot-sdk-four.group[aria-controls=\"ot-desc-id-C0002\"] > h3",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-header-id-C0002",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .category-item[data-optanongroupid=\"C0002\"] > .description-container.ot-sdk-eight[role=\"tabpanel\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-desc-id-C0002",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .category-item[data-optanongroupid=\"C0002\"] > .description-container.ot-sdk-eight[role=\"tabpanel\"] > .group-toggle > .ot-toggle-group > .ot-toggle > .checkbox > input[aria-labelledby=\"ot-header-id-C0002\"][name=\"ot-group-id-C0002\"][aria-controls=\"ot-desc-id-C0002\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-group-id-C0002",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .category-item[data-optanongroupid=\"C0004\"] > .ot-sdk-column > .ot-sdk-four.group[aria-controls=\"ot-desc-id-C0004\"] > h3",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-header-id-C0004",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .category-item[data-optanongroupid=\"C0004\"] > .description-container.ot-sdk-eight[role=\"tabpanel\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-desc-id-C0004",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .category-group > .category-item[data-optanongroupid=\"C0004\"] > .description-container.ot-sdk-eight[role=\"tabpanel\"] > .group-toggle > .ot-toggle-group > .ot-toggle > .checkbox > input[aria-labelledby=\"ot-header-id-C0004\"][name=\"ot-group-id-C0004\"][aria-controls=\"ot-desc-id-C0004\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: ot-group-id-C0004",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div > .ot-checkbox > div:nth-child(2) > .ot-group-option-box[type=\"checkbox\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: select-all-vendor-leg-handler",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div > .ot-checkbox > div:nth-child(3) > .ot-group-option-box[type=\"checkbox\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: select-all-vendor-groups-handler",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div > .ot-checkbox > div:nth-child(4) > .ot-group-option-box[type=\"checkbox\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: select-all-hosts-groups-handler",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > section > div > .ot-group-options > .ot-group-option > .ot-checkbox > .category-filter-handler.ot-group-option-box[type=\"checkbox\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: storage-access-group",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".home-primary-hero > .module-banner__item > .module-banner__image > .banner__component--responsive.banner > .fluid",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: bannerImage",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: onetrust-pc-sdk",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > .pc-header > .pc-title-container > .pc-close-btn-container > .pc-close-button.ot-close-icon[aria-label=\"Close\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: close-pc-btn-handler",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: ot-content",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .ot-sdk-column > .active-group.ot-sdk-four[aria-controls=\"pc-tab-description\"] > h3",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: privacy-text",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > .ot-main-content.pc-content > .groups-container.ot-sdk-container > .ot-sdk-row[role=\"tablist\"][aria-label=\"Cookie\\ Categories\"] > .description-container[aria-labelledby=\"pc-privacy-header\"][role=\"tabpanel\"] > .group-description",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: pc-policy-text",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: vendors-list",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > nav",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: vendors-list-header",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > nav > .navigation-container > .back-btn-handler.ot-link-btn > div",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: ot-back-arrow",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > nav > .navigation-container > .back-btn-handler.ot-link-btn > .pc-back-button-text",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: vendors-list-title",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > nav > .action-container > div:nth-child(1)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: search-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > nav > .action-container > div:nth-child(1) > input[aria-label=\"Vendor\\ Search\"][placeholder=\"Search\\.\\.\\.\"][name=\"vendor-search-handler\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: vendor-search-handler",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > nav > .action-container > div:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: filter-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > nav > .action-container > div:nth-child(2) > .ot-link-btn[aria-label=\"Filter\"][aria-haspopup=\"true\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: filter-btn-handler",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: vendor-list-content",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: select-all-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div > .ot-checkbox > div:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: select-all-vendors-leg-input-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div > .ot-checkbox > div:nth-child(3)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: select-all-vendors-input-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div > .ot-checkbox > div:nth-child(4)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: select-all-hosts-input-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > .vendor-content > section > .ot-sdk-row > .ot-sdk-column > div > .ot-checkbox > div:nth-child(5)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: select-all-text-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > div:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: ot-triangle",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > section",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: ot-filter-modal",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > section > div",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: ot-options",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > section > div > div:nth-child(1)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: clear-filters-container",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > section > div > div:nth-child(1) > .ot-link-btn",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: clear-filters-handler",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > div:nth-child(2) > section > section > div > .ot-pill",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: filter-apply-handler",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".otPcTab[aria-modal=\"true\"][aria-labelledby=\"pc-title\"]:nth-child(2) > .ot-button-group-parent > .ot-button-group > button:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: accept-recommended-btn-handler",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://nationalvision.com/",
+      "what": "National Vision Holdings",
+      "result": "https://nationalvision.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://nationalvision.com/",
+      "result": {
+        "visibleElements": 268
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "total": 4,
+          "types": {
+            "outlineMissing": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 4,
+              "tagNames": {
+                "a": 1,
+                "button": 3
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Cookie Policy"
+            },
+            {
+              "tagName": "button",
+              "text": "Cookie Settings; #onetrust-pc-btn-handler"
+            },
+            {
+              "tagName": "button",
+              "text": "Accept Cookies; #onetrust-accept-btn-handler"
+            },
+            {
+              "tagName": "button",
+              "text": "Close"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 50,
+            "tagName": {
+              "li": 3,
+              "a": 45,
+              "input[type=text]": 1,
+              "button": 1
+            },
+            "operableWhy": {
+              "tag": 44,
+              "cursor": 3,
+              "onclick": 0,
+              "menuitem": 3
+            }
+          },
+          "focusableAndOperable": {
+            "total": 4,
+            "tagName": {
+              "a": 1,
+              "button": 3
+            },
+            "focusableHow": {
+              "Tab": 4,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 4,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "li",
+              "operableWhy": "menuitem",
+              "text": "Associate Links"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "cursor",
+              "text": "Associate Links"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "menuitem",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "cursor",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "menuitem",
+              "text": "FAQ"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "cursor",
+              "text": "FAQ"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "National Vision logo"
+            },
+            {
+              "tagName": "input[type=text]",
+              "operableWhy": "tag",
+              "text": "Search:; #inputSearchProductsInformationSearchBox"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Search; #signIn"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Who We Are"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Our Brands"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Corporate Responsibility"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Media"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Investors"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Blog"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "NVI Hero-1350x378.jpg"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "philanthropy.png"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Optometry Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Optician & Retail Store Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Corporate & Lab Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Blog"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Optometry Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Retail Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Corporate Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Veteran Recruitment"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "College Recruitment"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Mission, Vision & Values"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Leadership Team"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Our Brands"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Safety Glasses Network"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Blog"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Our Foundation"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Organizations We Support"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Mission Trip Support"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Associate Links"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Employment Verification"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Supplier Code of Conduct"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Conflict Minerals Policy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "HIPAA Notice"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Accessibility Statement"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Sitemap"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie Policy"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie Settings; #onetrust-pc-btn-handler"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accept Cookies; #onetrust-accept-btn-handler"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Close"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "triggers": 10,
+          "targets": 84
+        },
+        "items": [
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Who We Are\t\t\t\t  ",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Who We Are"
+              },
+              {
+                "tagName": "A",
+                "text": "Leadership Team"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Brands"
+              },
+              {
+                "tagName": "A",
+                "text": "Mission Vision Values"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Who We Are",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Who We Are"
+              },
+              {
+                "tagName": "A",
+                "text": "Leadership Team"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Brands"
+              },
+              {
+                "tagName": "A",
+                "text": "Mission Vision Values"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Our Brands\t\t\t\t  ",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Our Brands"
+              },
+              {
+                "tagName": "A",
+                "text": "America's Best"
+              },
+              {
+                "tagName": "A",
+                "text": "Eyeglass World"
+              },
+              {
+                "tagName": "A",
+                "text": "Walmart Vision Center"
+              },
+              {
+                "tagName": "A",
+                "text": "Vista Optical Fred Meyer"
+              },
+              {
+                "tagName": "A",
+                "text": "Vista Optical Military"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Our Brands",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Our Brands"
+              },
+              {
+                "tagName": "A",
+                "text": "America's Best"
+              },
+              {
+                "tagName": "A",
+                "text": "Eyeglass World"
+              },
+              {
+                "tagName": "A",
+                "text": "Walmart Vision Center"
+              },
+              {
+                "tagName": "A",
+                "text": "Vista Optical Fred Meyer"
+              },
+              {
+                "tagName": "A",
+                "text": "Vista Optical Military"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Corporate Responsibility\t\t\t\t  ",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Corporate Responsibility"
+              },
+              {
+                "tagName": "A",
+                "text": "Our 2019 Philanthropic Impact Report"
+              },
+              {
+                "tagName": "A",
+                "text": "SEE + G"
+              },
+              {
+                "tagName": "A",
+                "text": "Greenhouse Gas Emissions Inventory"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Foundation"
+              },
+              {
+                "tagName": "A",
+                "text": "Mission Trip Support"
+              },
+              {
+                "tagName": "A",
+                "text": "Mission Request Form"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Corporate Responsibility",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Corporate Responsibility"
+              },
+              {
+                "tagName": "A",
+                "text": "Our 2019 Philanthropic Impact Report"
+              },
+              {
+                "tagName": "A",
+                "text": "SEE + G"
+              },
+              {
+                "tagName": "A",
+                "text": "Greenhouse Gas Emissions Inventory"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Foundation"
+              },
+              {
+                "tagName": "A",
+                "text": "Mission Trip Support"
+              },
+              {
+                "tagName": "A",
+                "text": "Mission Request Form"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Careers\t\t\t\t  ",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Optometry Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Retail Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Recruitment Programs"
+              },
+              {
+                "tagName": "A",
+                "text": "Lab & DC Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Benefits"
+              },
+              {
+                "tagName": "A",
+                "text": "PPC"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Careers",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Optometry Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Retail Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Recruitment Programs"
+              },
+              {
+                "tagName": "A",
+                "text": "Lab & DC Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Benefits"
+              },
+              {
+                "tagName": "A",
+                "text": "PPC"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Media\t\t\t\t  ",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Media"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision Holdings, Inc. Reports Second Quar"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision Wins Two Awards Celebrating Gender"
+              },
+              {
+                "tagName": "A",
+                "text": "New England College of Optometry Announces Diversi"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision Expands Annual Continuing Educatio"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision’s “Made Locally, Given Globally” C"
+              },
+              {
+                "tagName": "A",
+                "text": "See All Releases"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Media",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Media"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision Holdings, Inc. Reports Second Quar"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision Wins Two Awards Celebrating Gender"
+              },
+              {
+                "tagName": "A",
+                "text": "New England College of Optometry Announces Diversi"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision Expands Annual Continuing Educatio"
+              },
+              {
+                "tagName": "A",
+                "text": "National Vision’s “Made Locally, Given Globally” C"
+              },
+              {
+                "tagName": "A",
+                "text": "See All Releases"
+              },
+              {
+                "tagName": "A",
+                "text": "×"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "×"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 3,
+          "unlabeled": 0,
+          "wellLabeled": 15
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Strictly Necessary Cookies"
+                ],
+                "label": [
+                  "Strictly Necessary Cookies"
+                ]
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Performance Cookies"
+                ],
+                "label": [
+                  "Performance Cookies"
+                ]
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Targeting Cookies"
+                ],
+                "label": [
+                  "Targeting Cookies"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search:"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "×"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Back ButtonAdvertising Cookies"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Vendor Search"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Filter",
+                "content": "Filter Button"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select All Vendors"
+                ]
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select All Vendors"
+                ]
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select All Hosts"
+                ]
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Clear Filters"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Information storage and access"
+                ]
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Apply"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Confirm My Choices"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Allow All"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "links": 74,
+          "inline": {
+            "total": 4,
+            "underlined": 1,
+            "underlinedPercent": 25
+          }
+        },
+        "items": {
+          "underlined": [
+            "Click Here"
+          ],
+          "notUnderlined": [
+            "Associate Links",
+            "Contact Us",
+            "FAQ"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://nationalvision.com/",
+      "result": {
+        "roleElements": 57,
+        "badRoleElements": 10,
+        "tagNames": {
+          "HEADER": {
+            "header": 1
+          },
+          "DIV": {
+            "navigation": 1,
+            "status": 1,
+            "dialog": 2
+          },
+          "A": {
+            "button": 5
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 2
+          },
+          "h3": {
+            "total": 27,
+            "subtotals": [
+              6,
+              6,
+              5,
+              4,
+              2,
+              2,
+              2
+            ]
+          },
+          "aInline": {
+            "total": 5,
+            "subtotals": [
+              3,
+              2
+            ]
+          },
+          "aBlock": {
+            "total": 71,
+            "subtotals": [
+              27,
+              23,
+              11,
+              5,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 16,
+            "subtotals": [
+              4,
+              2,
+              2,
+              2,
+              2,
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {},
+          "h3": {
+            "fontWeight": {
+              "400": 4,
+              "500": 5,
+              "600": 6,
+              "700": 12
+            },
+            "lineHeight": {
+              "22.4px": 8,
+              "20.8px": 8,
+              "17.6px": 5,
+              "26.4px": 4,
+              "12.96px": 2
+            },
+            "maxWidth": {
+              "none": 19,
+              "85%": 6,
+              "70%": 2
+            },
+            "fontSize": {
+              "16px": 345,
+              "12.96px": 49,
+              "24px": 38
+            }
+          },
+          "aInline": {
+            "lineHeight": {
+              "40px": 3,
+              "normal": 2
+            },
+            "textDecorationLine": {
+              "none": 3,
+              "underline": 2
+            },
+            "fontSize": {
+              "12px": 87,
+              "13.12px": 58
+            }
+          },
+          "aBlock": {
+            "fontWeight": {
+              "400": 16,
+              "500": 5,
+              "600": 23,
+              "700": 27
+            },
+            "lineHeight": {
+              "18px": 27,
+              "19.5px": 24,
+              "21px": 11,
+              "17.6px": 5,
+              "normal": 2,
+              "14px": 1,
+              "160px": 1
+            },
+            "fontSize": {
+              "12px": 783,
+              "13px": 696,
+              "14px": 348,
+              "16px": 203,
+              "18px": 29
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 10,
+              "solid": 6
+            },
+            "borderWidth": {
+              "0px": 10,
+              "1px": 6
+            },
+            "fontWeight": {
+              "400": 12,
+              "600": 2,
+              "700": 2
+            },
+            "lineHeight": {
+              "normal": 6,
+              "38px": 4,
+              "21px": 2,
+              "14.4px": 2,
+              "15.84px": 2
+            },
+            "maxWidth": {
+              "none": 12,
+              "200px": 2,
+              "180px": 2
+            },
+            "minWidth": {
+              "0px": 14,
+              "155px": 2
+            },
+            "opacity": {
+              "1": 15,
+              "0.2": 1
+            },
+            "fontSize": {
+              "14.4px": 348,
+              "12px": 58,
+              "14px": 29,
+              "21px": 29
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://nationalvision.com/",
+      "result": {
+        "totals": {
+          "violation": 4,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Fieldset_HasLegend",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/header[1]/div[2]/div[1]/div[2]/form[1]/fieldset[1]",
+              "aria": "/document[1]/main[1]/banner[1]/form[1]"
+            },
+            "message": "<fieldset> element does not have a <legend>",
+            "bounds": {
+              "left": 490,
+              "top": -44,
+              "height": 136,
+              "width": 295
+            },
+            "snippet": "<fieldset>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "The <div> element has the id \"bannerImage\" that is already in use",
+            "bounds": {
+              "left": 40,
+              "top": 356,
+              "height": 202,
+              "width": 720
+            },
+            "snippet": "<div class=\"fluid\" id=\"bannerImage\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ValidRole",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/header[1]",
+              "aria": "/document[1]/main[1]/banner[1]"
+            },
+            "message": "The 'role' defined on the element is not valid per ARIA specification",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 92,
+              "width": 800
+            },
+            "snippet": "<header role=\"header\" class=\"global-header\" id=\"globalHeader\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_semantics_role",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/header[1]",
+              "aria": "/document[1]/main[1]/banner[1]"
+            },
+            "message": "The ARIA role 'header' is not valid for the element <header>",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 92,
+              "width": 800
+            },
+            "snippet": "<header role=\"header\" class=\"global-header\" id=\"globalHeader\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://nationalvision.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "National Vision, Inc. | Eye Care and Eyewear | Corporate",
+          "pageurl": "https://nationalvision.com/",
+          "time": 3.03,
+          "creditsremaining": 494,
+          "allitemcount": 293,
+          "totalelements": 713,
+          "waveurl": "http://wave.webaim.org/report?url=https://nationalvision.com/",
+          "domid": "6edd4d4570e7e777af360c6325602ff5"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 16,
+            "items": {
+              "label_multiple": {
+                "id": "label_multiple",
+                "description": "Multiple form labels",
+                "count": 14,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child > DIV#ot-desc-id-C0001 > DIV:first-child > H3:first-child + DIV > DIV:first-child + DIV > DIV:first-child > INPUT#ot-group-id-C0001",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI > DIV#ot-desc-id-C0002 > DIV:first-child > H3:first-child + DIV > DIV:first-child > DIV:first-child > INPUT#ot-group-id-C0002",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI + LI > DIV#ot-desc-id-C0004 > DIV:first-child > H3:first-child + DIV > DIV:first-child > DIV:first-child > INPUT#ot-group-id-C0004",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > DIV#select-all-container > DIV:first-child > DIV#select-all-vendors-leg-input-container > INPUT#select-all-vendor-leg-handler",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > DIV#select-all-container > DIV:first-child > DIV#select-all-vendors-input-container > INPUT#select-all-vendor-groups-handler",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > DIV#select-all-container > DIV:first-child > DIV#select-all-hosts-input-container > INPUT#select-all-hosts-groups-handler",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > SECTION#ot-filter-modal > DIV#ot-options > DIV:first-child + DIV > DIV:first-child > DIV:first-child > INPUT#storage-access-group",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child > DIV#ot-desc-id-C0001 > DIV:first-child > H3:first-child + DIV > DIV:first-child + DIV > DIV:first-child > INPUT#ot-group-id-C0001",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI > DIV#ot-desc-id-C0002 > DIV:first-child > H3:first-child + DIV > DIV:first-child > DIV:first-child > INPUT#ot-group-id-C0002",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI + LI > DIV#ot-desc-id-C0004 > DIV:first-child > H3:first-child + DIV > DIV:first-child > DIV:first-child > INPUT#ot-group-id-C0004",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > DIV#select-all-container > DIV:first-child > DIV#select-all-vendors-leg-input-container > INPUT#select-all-vendor-leg-handler",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > DIV#select-all-container > DIV:first-child > DIV#select-all-vendors-input-container > INPUT#select-all-vendor-groups-handler",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > DIV#select-all-container > DIV:first-child > DIV#select-all-hosts-input-container > INPUT#select-all-hosts-groups-handler",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > SECTION#ot-filter-modal > DIV#ot-options > DIV:first-child + DIV > DIV:first-child > DIV:first-child > INPUT#storage-access-group"
+                ]
+              },
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV:first-child > DIV:first-child + DIV > H2#pc-title",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV:first-child > DIV:first-child + DIV > H2#pc-title"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 38,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 38,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + A > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child + A > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + A > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child + A > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child + A > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-banner-sdk > DIV:first-child > DIV:first-child > DIV#onetrust-button-group-parent > DIV#onetrust-button-group > BUTTON#onetrust-pc-btn-handler"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    true
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    true
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    true
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    true
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    2.68,
+                    "#000000",
+                    "#00529b",
+                    false
+                  ],
+                  [
+                    1,
+                    "#00529b",
+                    "#00529b",
+                    true
+                  ],
+                  [
+                    2.26,
+                    "#6cc04a",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 43,
+            "items": {
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 11,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#bannerImage > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#bannerImage > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > DIV#mainContent > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "fieldset_missing": {
+                "id": "fieldset_missing",
+                "description": "Missing fieldset",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child > DIV#ot-desc-id-C0001 > DIV:first-child > H3:first-child + DIV > DIV:first-child + DIV > DIV:first-child > INPUT:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI > DIV#ot-desc-id-C0002 > DIV:first-child > H3:first-child + DIV > DIV:first-child > DIV:first-child > INPUT:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI + LI > DIV#ot-desc-id-C0004 > DIV:first-child > H3:first-child + DIV > DIV:first-child > DIV:first-child > INPUT:first-child + LABEL"
+                ]
+              },
+              "legend_missing": {
+                "id": "legend_missing",
+                "description": "Fieldset missing legend",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > FORM#searchForm > FIELDSET:first-child"
+                ]
+              },
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV#pc-tab-description > P#pc-policy-text > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV#pc-tab-description > P#pc-policy-text > A:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV + A + NAV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV#pc-tab-description > P#pc-policy-text > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 18,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER:first-child + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + SCRIPT + NOSCRIPT + DIV + MAIN > HEADER#globalHeader > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 887,
+        "axe": 146,
+        "ibm": 9,
+        "wave": 222,
+        "bulk": 10,
+        "focOl": 0,
+        "focOp": 200,
+        "hover": 208,
+        "labClash": 6,
+        "linkUl": 9,
+        "motion": 0,
+        "radioSet": 0,
+        "role": 20,
+        "styleDiff": 57
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      88
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "ibm",
+      2
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focOl",
+      1
+    ],
+    [
+      "focOp",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

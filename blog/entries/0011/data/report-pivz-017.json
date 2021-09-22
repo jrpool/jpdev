@@ -1,0 +1,1727 @@
+{
+  "script": "p03c10",
+  "batch": "cvsMajor",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "pivz",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://cvsbuysellpharmacy.com/",
+      "what": "CVS Pharmacy Acquisitions",
+      "result": "https://cvsbuysellpharmacy.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "bytes": [
+          555537,
+          555537,
+          555537,
+          555537,
+          555537
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 25,
+          "serious": 2,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#top-menu > .menu-item-76.menu-item.menu-item-type-custom",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: menu-item-76",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "#top-menu > .menu-item-77.menu-item.menu-item-type-custom",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: menu-item-77",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "h3:nth-child(3)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_blurb_0 > .et_pb_blurb_content > .et_pb_blurb_container > h4",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_toggle_0 > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label-title-only",
+            "description": "Ensures that every form element is not solely labeled using the title or aria-describedby attributes",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".et-search-field",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "title-only",
+                    "description": "Only title used to generate label for form element",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "a[href$=\"mailto\\:\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "maximum-scale on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#et-info-phone",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_row_0",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_column_3_5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_text_3",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_7",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_8",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_9",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_10",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_11",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_12",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_13",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_14",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#field_1_15",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#gform_submit_button_1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#why-sell",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_text_7",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_toggle_0 > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_toggle_1 > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et_pb_toggle_2 > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#dea > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://cvsbuysellpharmacy.com/",
+      "what": "CVS Pharmacy Acquisitions",
+      "result": "https://cvsbuysellpharmacy.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "visibleElements": 215
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "total": 21,
+          "types": {
+            "outlineMissing": {
+              "total": 21,
+              "tagNames": {
+                "a": 9,
+                "input[type=search]": 1,
+                "h1": 1,
+                "select": 1,
+                "input[type=text]": 6,
+                "input[type=radio]": 3
+              }
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "a",
+              "text": "{<a href=\"mailto:\" data-autotest-focused=\"N\"><span id=\"et-info-email\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "Sell your Pharmacy to CVS"
+            },
+            {
+              "tagName": "a",
+              "text": "Why sell to CVS?"
+            },
+            {
+              "tagName": "a",
+              "text": "FAQs"
+            },
+            {
+              "tagName": "input[type=search]",
+              "text": "{<input type=\"search\" class=\"et-search-field\" placeholder=\"Search …\" value=\"\" name=\"s\" title=\"Search for:\" data-autotest-focused=\"N\">}"
+            },
+            {
+              "tagName": "h1",
+              "text": "Leave your pharmacy in good hands"
+            },
+            {
+              "tagName": "a",
+              "text": "State Board of Pharmacy and the DEA.; #toggle_link"
+            },
+            {
+              "tagName": "select",
+              "text": "Select a State*; --Select a State--AlabamaAlaskaArizonaArkansasCaliforniaColoradoConnecticutDelawareDistrict of Colum; #input_1_1"
+            },
+            {
+              "tagName": "a",
+              "text": "Zillul.Mia@CVSHealth.com"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "First name; First; #input_1_10_3"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Last name; Last; #input_1_10_6"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Phone*; #input_1_11"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Zip/Postal Code*; #input_1_12"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Pharmacy Name; #input_1_13"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Email Address*; #input_1_14"
+            },
+            {
+              "tagName": "input[type=radio]",
+              "text": "I'd like to learn more about selling my pharmacy.; #choice_1_15_0"
+            },
+            {
+              "tagName": "input[type=radio]",
+              "text": "I’m a pharmacy broker interested in working with you.; #choice_1_15_1"
+            },
+            {
+              "tagName": "input[type=radio]",
+              "text": "I have a question on how this works.; #choice_1_15_2"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "CVS Health"
+            },
+            {
+              "tagName": "a",
+              "text": "Accessibility"
+            }
+          ],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 1,
+            "tagName": {
+              "h1": 1
+            },
+            "focusableHow": {
+              "Tab": 1,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 9,
+            "tagName": {
+              "span": 1,
+              "label": 3,
+              "input[type=submit]": 1,
+              "h5": 4
+            },
+            "operableWhy": {
+              "tag": 1,
+              "cursor": 8,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 20,
+            "tagName": {
+              "a": 9,
+              "input[type=search]": 1,
+              "select": 1,
+              "input[type=text]": 6,
+              "input[type=radio]": 3
+            },
+            "focusableHow": {
+              "Tab": 18,
+              "ArrowRight": 0,
+              "ArrowDown": 2
+            },
+            "operableWhy": {
+              "tag": 20,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "h1",
+              "focusableHow": "Tab",
+              "text": "Leave your pharmacy in good hands"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "{<span class=\"et_close_search_field\" data-autotest-operable=\"cursor\"></span>}"
+            },
+            {
+              "tagName": "label",
+              "operableWhy": "cursor",
+              "text": "I'd like to learn more about selling my pharmacy.; #label_1_15_0"
+            },
+            {
+              "tagName": "label",
+              "operableWhy": "cursor",
+              "text": "I’m a pharmacy broker interested in working with you.; #label_1_15_1"
+            },
+            {
+              "tagName": "label",
+              "operableWhy": "cursor",
+              "text": "I have a question on how this works.; #label_1_15_2"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "operableWhy": "tag",
+              "text": "#gform_submit_button_1"
+            },
+            {
+              "tagName": "h5",
+              "operableWhy": "cursor",
+              "text": "What will happen to my team?"
+            },
+            {
+              "tagName": "h5",
+              "operableWhy": "cursor",
+              "text": "How will my patients be handled?"
+            },
+            {
+              "tagName": "h5",
+              "operableWhy": "cursor",
+              "text": "What can I include when selling my pharmacy to CVS Pharmacy® Acquisitions?"
+            },
+            {
+              "tagName": "h5",
+              "operableWhy": "cursor",
+              "text": "Where can I find the guidelines and regulations for selling my pharmacy?"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"mailto:\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\"><span id=\"et-info-email\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sell your Pharmacy to CVS"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Why sell to CVS?"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FAQs"
+            },
+            {
+              "tagName": "input[type=search]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<input type=\"search\" class=\"et-search-field\" placeholder=\"Search …\" value=\"\" name=\"s\" title=\"Search for:\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\">}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "State Board of Pharmacy and the DEA.; #toggle_link"
+            },
+            {
+              "tagName": "select",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Select a State*; --Select a State--AlabamaAlaskaArizonaArkansasCaliforniaColoradoConnecticutDelawareDistrict of Colum; #input_1_1"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Zillul.Mia@CVSHealth.com"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "First name; First; #input_1_10_3"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Last name; Last; #input_1_10_6"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Phone*; #input_1_11"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Zip/Postal Code*; #input_1_12"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Pharmacy Name; #input_1_13"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Email Address*; #input_1_14"
+            },
+            {
+              "tagName": "input[type=radio]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "I'd like to learn more about selling my pharmacy.; #choice_1_15_0"
+            },
+            {
+              "tagName": "input[type=radio]",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "tag",
+              "text": "I’m a pharmacy broker interested in working with you.; #choice_1_15_1"
+            },
+            {
+              "tagName": "input[type=radio]",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "tag",
+              "text": "I have a question on how this works.; #choice_1_15_2"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CVS Health"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accessibility"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 2,
+          "unlabeled": 1,
+          "wellLabeled": 9
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "First name",
+                "label": [
+                  "First"
+                ]
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "Last name",
+                "label": [
+                  "Last"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "search"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 1,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select a State*"
+                ]
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Phone*"
+                ]
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Zip/Postal Code*"
+                ]
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Pharmacy Name"
+                ]
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email Address*"
+                ]
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "I'd like to learn more about selling my pharmacy."
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "I’m a pharmacy broker interested in working with you."
+                ]
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "INPUT",
+              "type": "radio",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "I have a question on how this works."
+                ]
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "links": 73,
+          "inline": {
+            "total": 11,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "State Board of Pharmacy and the DEA.",
+            "1-205-234-5705",
+            "1-209-649-2599",
+            "1-602-920-8751",
+            "1-401-529-9886",
+            "1-412-477-2933",
+            "1-305-962-6555",
+            "1-516-724-0889",
+            "1-614-578-8498",
+            "CVS Health",
+            "Accessibility"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "total": 3,
+          "inSet": 0,
+          "percent": 0
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": [
+            "I'd like to learn more about selling my pharmacy.",
+            "I’m a pharmacy broker interested in working with you.",
+            "I have a question on how this works."
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "roleElements": 1,
+        "badRoleElements": 0,
+        "tagNames": {}
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 2
+          },
+          "h2": {
+            "total": 13,
+            "subtotals": [
+              8,
+              3,
+              2
+            ]
+          },
+          "h3": {
+            "total": 60,
+            "subtotals": [
+              55,
+              4,
+              1
+            ]
+          },
+          "h4": {
+            "total": 5
+          },
+          "h5": {
+            "total": 4
+          },
+          "aInline": {
+            "total": 11,
+            "subtotals": [
+              8,
+              2,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 62,
+            "subtotals": [
+              54,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "500": 5,
+              "700": 8
+            },
+            "lineHeight": {
+              "18px": 8,
+              "26px": 3,
+              "54px": 2
+            },
+            "fontSize": {
+              "18px": 52,
+              "26px": 42,
+              "36px": 23
+            }
+          },
+          "h3": {
+            "lineHeight": {
+              "24px": 55,
+              "34px": 4,
+              "30px": 1
+            },
+            "fontSize": {
+              "24px": 2710,
+              "30px": 20
+            }
+          },
+          "h4": {},
+          "h5": {},
+          "aInline": {
+            "fontWeight": {
+              "400": 9,
+              "700": 2
+            },
+            "lineHeight": {
+              "14px": 8,
+              "30.6px": 2,
+              "23.4px": 1
+            },
+            "fontSize": {
+              "14px": 672,
+              "18px": 252
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 60,
+              "none none solid": 2
+            },
+            "borderWidth": {
+              "0px": 60,
+              "0px 0px 1px": 2
+            },
+            "fontWeight": {
+              "400": 56,
+              "500": 1,
+              "600": 5
+            },
+            "lineHeight": {
+              "20px": 54,
+              "23px": 3,
+              "14px": 2,
+              "12px": 1,
+              "26px": 1,
+              "30.6px": 1
+            },
+            "fontSize": {
+              "18px": 4956,
+              "14px": 168,
+              "12px": 84
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": false,
+      "what": "conduct and report an IBM test",
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "totals": {
+          "violation": 23,
+          "recommendation": 1,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Input_RadioChkInFieldSet",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[18]/div[1]/ul[1]/li[3]/input[1]",
+              "aria": "/document[1]/article[1]/form[1]/list[1]/listitem[18]/list[1]/listitem[3]/radio[1]"
+            },
+            "message": "Radio input and others with the name \"input_15\" are not grouped together",
+            "bounds": {
+              "left": 49,
+              "top": 1376,
+              "height": 13,
+              "width": 13
+            },
+            "snippet": "<input id=\"choice_1_15_2\" value=\"I have a question on how this works.\" type=\"radio\" name=\"input_15\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_RadioChkInFieldSet",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[18]/div[1]/ul[1]/li[2]/input[1]",
+              "aria": "/document[1]/article[1]/form[1]/list[1]/listitem[18]/list[1]/listitem[2]/radio[1]"
+            },
+            "message": "Radio input and others with the name \"input_15\" are not grouped together",
+            "bounds": {
+              "left": 49,
+              "top": 1343,
+              "height": 13,
+              "width": 13
+            },
+            "snippet": "<input id=\"choice_1_15_1\" value=\"I’m a pharmacy broker interested in working with you.\" type=\"radio\" name=\"input_15\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_RadioChkInFieldSet",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[18]/div[1]/ul[1]/li[1]/input[1]",
+              "aria": "/document[1]/article[1]/form[1]/list[1]/listitem[18]/list[1]/listitem[1]/radio[1]"
+            },
+            "message": "Radio input and others with the name \"input_15\" are not grouped together",
+            "bounds": {
+              "left": 49,
+              "top": 1310,
+              "height": 13,
+              "width": 13
+            },
+            "snippet": "<input id=\"choice_1_15_0\" value=\"I'd like to learn more about selling my pharmacy.\" type=\"radio\" name=\"input_15\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_LabelBefore",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[13]/div[1]/span[2]/input[1]",
+              "aria": "/document[1]/article[1]/form[1]/list[1]/listitem[13]/textbox[2]"
+            },
+            "message": "Label text is located after its associated text input or <select> element",
+            "bounds": {
+              "left": 401,
+              "top": 958,
+              "height": 34,
+              "width": 336
+            },
+            "snippet": "<input aria-required=\"true\" aria-label=\"Last name\" value=\"\" id=\"input_1_10_6\" name=\"input_10.6\" type=\"text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_LabelBefore",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[13]/div[1]/span[1]/input[1]",
+              "aria": "/document[1]/article[1]/form[1]/list[1]/listitem[13]/textbox[1]"
+            },
+            "message": "Label text is located after its associated text input or <select> element",
+            "bounds": {
+              "left": 48,
+              "top": 958,
+              "height": 34,
+              "width": 336
+            },
+            "snippet": "<input aria-required=\"true\" aria-label=\"First name\" value=\"\" id=\"input_1_10_3\" name=\"input_10.3\" type=\"text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 720,
+              "top": 10,
+              "height": 15,
+              "width": 0
+            },
+            "snippet": "<a href=\"mailto:\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[5]/h5[1]",
+              "aria": "/document[1]/article[1]/heading[18]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 3769,
+              "height": 68,
+              "width": 760
+            },
+            "snippet": "<h5 class=\"et_pb_toggle_title\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[4]/h5[1]",
+              "aria": "/document[1]/article[1]/heading[17]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 3660,
+              "height": 68,
+              "width": 760
+            },
+            "snippet": "<h5 class=\"et_pb_toggle_title\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[3]/h5[1]",
+              "aria": "/document[1]/article[1]/heading[16]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 3585,
+              "height": 34,
+              "width": 760
+            },
+            "snippet": "<h5 class=\"et_pb_toggle_title\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/h5[1]",
+              "aria": "/document[1]/article[1]/heading[15]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 3510,
+              "height": 34,
+              "width": 760
+            },
+            "snippet": "<h5 class=\"et_pb_toggle_title\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/h2[1]",
+              "aria": "/document[1]/article[1]/heading[14]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 3335,
+              "height": 64,
+              "width": 760
+            },
+            "snippet": "<h2>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/p[2]/a[1]",
+              "aria": "/document[1]/article[1]/link[2]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 80,
+              "top": 3219,
+              "height": 21,
+              "width": 92
+            },
+            "snippet": "<a rel=\"noopener noreferrer\" target=\"_blank\" href=\"http://cvspharmacyrealty.com/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/p[1]",
+              "aria": "/document[1]/article[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 80,
+              "top": 3166,
+              "height": 49,
+              "width": 640
+            },
+            "snippet": "<p>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[6]/div[1]/div[2]/h4[1]",
+              "aria": "/document[1]/article[1]/heading[13]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 145,
+              "top": 3008,
+              "height": 44,
+              "width": 485
+            },
+            "snippet": "<h4 class=\"et_pb_module_header\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[5]/div[1]/div[2]/h4[1]",
+              "aria": "/document[1]/article[1]/heading[12]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 145,
+              "top": 2822,
+              "height": 44,
+              "width": 485
+            },
+            "snippet": "<h4 class=\"et_pb_module_header\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[2]/h4[1]",
+              "aria": "/document[1]/article[1]/heading[11]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 145,
+              "top": 2664,
+              "height": 44,
+              "width": 485
+            },
+            "snippet": "<h4 class=\"et_pb_module_header\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[3]/div[1]/div[2]/h4[1]",
+              "aria": "/document[1]/article[1]/heading[10]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 145,
+              "top": 2534,
+              "height": 44,
+              "width": 485
+            },
+            "snippet": "<h4 class=\"et_pb_module_header\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/h4[1]",
+              "aria": "/document[1]/article[1]/heading[9]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 145,
+              "top": 2404,
+              "height": 44,
+              "width": 485
+            },
+            "snippet": "<h4 class=\"et_pb_module_header\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/h2[1]",
+              "aria": "/document[1]/article[1]/heading[8]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 80,
+              "top": 2250,
+              "height": 64,
+              "width": 640
+            },
+            "snippet": "<h2>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/h3[1]",
+              "aria": "/document[1]/article[1]/heading[7]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 48,
+              "top": 628,
+              "height": 40,
+              "width": 704
+            },
+            "snippet": "<h3>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/p[7]/a[1]",
+              "aria": "/document[1]/article[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 2069,
+              "height": 44,
+              "width": 741
+            },
+            "snippet": "<a href=\"/#dea\" id=\"toggle_link\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/p[1]",
+              "aria": "/document[1]/article[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 1531,
+              "height": 64,
+              "width": 760
+            },
+            "snippet": "<p>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/h1[1]",
+              "aria": "/document[1]/article[1]/heading[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 50,
+              "top": 140,
+              "height": 160,
+              "width": 340
+            },
+            "snippet": "<h1 contenteditable=\"true\" data-quickaccess-id=\"header\" data-shortcode-id=\"0.0.0.0.0-1576096690060\" class=\"et_pb_slide_title et-fb-editable-element et-fb-editable-element__editing\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+            "bounds": {
+              "left": 0,
+              "top": 3968,
+              "height": 66,
+              "width": 800
+            },
+            "snippet": "<footer id=\"main-footer\">",
+            "level": "recommendation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://cvsbuysellpharmacy.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Sell your Pharmacy to CVS | Leave your pharmacy in good hands",
+          "pageurl": "https://cvsbuysellpharmacy.com/",
+          "time": 2.73,
+          "creditsremaining": 761,
+          "allitemcount": 145,
+          "totalelements": 657,
+          "waveurl": "http://wave.webaim.org/report?url=https://cvsbuysellpharmacy.com/",
+          "domid": "002cc9ca08b49ddc7cdec6976e0f040b"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 3,
+            "items": {
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV#faqs > DIV:first-child > DIV:first-child > DIV#dea > H5:first-child + DIV > P:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV#faqs > DIV:first-child > DIV:first-child > DIV#dea > H5:first-child + DIV > P:first-child + H2 + H2 + H3"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#top-header > DIV:first-child > DIV#et-info > SPAN:first-child + A"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 13,
+            "items": {
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_20 > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_4 > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_16 > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_17 > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_18 > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_19 > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_21 > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_22 > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "fieldset_missing": {
+                "id": "fieldset_missing",
+                "description": "Missing fieldset",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV#gform_wrapper_1 > FORM#gform_1 > DIV:first-child > UL#gform_fields_1 > LI#field_1_15 > LABEL:first-child + DIV > UL#input_1_15 > LI:first-child > LABEL#label_1_15_0"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > HEADER#main-header > DIV:first-child + DIV > DIV:first-child > FORM:first-child > INPUT:first-child"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child + P + H3",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV#why-sell > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > H4:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-main-area > DIV#main-content > ARTICLE#post-2 > DIV:first-child > DIV#et-boc > DIV:first-child > DIV:first-child > DIV#faqs > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H5:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 347,
+        "axe": 69,
+        "ibm": 49,
+        "wave": 27,
+        "bulk": 8,
+        "focOl": 84,
+        "focOp": 37,
+        "hover": 0,
+        "labClash": 6,
+        "linkUl": 33,
+        "motion": 0,
+        "radioSet": 6,
+        "role": 0,
+        "styleDiff": 28
+      }
+    }
+  ]
+}

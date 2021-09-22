@@ -1,0 +1,2390 @@
+{
+  "script": "p03c10",
+  "batch": "ccvaxRest",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "q8sn",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.kerrdental.com/",
+      "what": "KaVo Kerr",
+      "result": "https://www.kerrdental.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "bytes": [
+          236864,
+          236864,
+          235737,
+          235737,
+          235737
+        ],
+        "localRatios": [
+          1,
+          1.005,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1.001,
+        "maxLocalRatio": 1.005,
+        "globalRatio": 1.005,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 15,
+          "serious": 8,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#onetrust-banner-sdk",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".even.field-item > a[href$=\"contact\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.52 (foreground color: #ffffff, background color: #00aeef, font size: 13.7pt (18.200000762939453px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".home-mid-buy > .even.field-item > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.52 (foreground color: #ffffff, background color: #00aeef, font size: 13.7pt (18.200000762939453px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href=\"\\/\\%23\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.52 (foreground color: #ffffff, background color: #00aeef, font size: 13.7pt (18.200000762939453px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#onetrust-pc-btn-handler",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.52 (foreground color: #ffffff, background color: #00aeef, font size: 9.8pt (13.008000373840332px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#onetrust-accept-btn-handler",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.52 (foreground color: #ffffff, background color: #00aeef, font size: 9.8pt (13.008000373840332px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".row:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: home-mid",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".text > h4",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label-title-only",
+            "description": "Ensures that every form element is not solely labeled using the title or aria-describedby attributes",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#edit-keys",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "title-only",
+                    "description": "Only title used to generate label for form element",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#headingOne1",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#country-menu-cookie > .map-bg.row",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#headingOne1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#home-carousel > ol",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#home-carousel > .flex-direction-nav",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".row.header",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#home-mid-2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#product-groups-slider > .slides",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col.col-md-4.col-xs-12:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col.col-md-4.col-xs-12:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".home-mid-demo > h4",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".field-name-field-homepage-schedule-subtitle",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href=\"\\/\\%23\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".row:nth-child(3)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.kerrdental.com/",
+      "what": "KaVo Kerr",
+      "result": "https://www.kerrdental.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "visibleElements": 386
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "total": 2,
+          "types": {
+            "outlineMissing": {
+              "total": 1,
+              "tagNames": {
+                "button": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 1,
+              "tagNames": {
+                "button": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "button",
+              "text": "Cookie Settings; #onetrust-pc-btn-handler"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "button",
+              "text": "Accept All Cookies; #onetrust-accept-btn-handler"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 99,
+            "tagName": {
+              "a": 86,
+              "li": 3,
+              "div": 7,
+              "i": 1,
+              "input[type=text]": 1,
+              "button": 1
+            },
+            "operableWhy": {
+              "tag": 88,
+              "cursor": 11,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 3,
+            "tagName": {
+              "a": 1,
+              "button": 2
+            },
+            "focusableHow": {
+              "Tab": 3,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 3,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "United States"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Canada"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Brasil"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Chile"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Africa, Middle East"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Baltic"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Belgique"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Belgium & Luxembourg"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Denmark"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Deutschland"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Europe"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "España"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Finland"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "France"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Italia"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Netherlands"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Norway"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Polska"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Russia"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Sweden"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Schweiz"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Suisse"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Svizzera"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Türkiye"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "UK, Ireland"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Australia"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "日本"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Singapore"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Thailand"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Indonesia"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Korea"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Malaysia"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Myanmar"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Philippines"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Vietnam"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "India"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Kerr Dental"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Home"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Bonding Agents; Bonding Agents; Bonding Agents; Bonding Agents; Shape; Shape; Shape; Shape; Surface Disinfectants; Surface Disinfectants; Surface Disinfectants; Waxes; Waxes; Waxes; Waxes; ProductsCategories Kerr Restoratives Kerr Endodontics Kerr Rotary Kerr TotalCare Kerr Laboratory Bon"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Products"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Courses & Events"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Download Center"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Loyalty"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Our CompanyAbout Us Contact Us News Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Our Company"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Try KerrSchedule a Demo How To Buy Find your Sales Rep."
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Try Kerr"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "My Cart"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "My Cart"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "United States"
+            },
+            {
+              "tagName": "i",
+              "operableWhy": "cursor",
+              "text": "{<i class=\"icon-kerr_icons-website_world\" data-autotest-operable=\"cursor\"></i>}"
+            },
+            {
+              "tagName": "input[type=text]",
+              "operableWhy": "tag",
+              "text": "#edit-keys"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "800.537.7123 Call 800.537.7123 Need Help; #header-help"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "COVID-19 Updates from Envista"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a target=\"\" class=\"homepage-slide-15601\" href=\"https://go.kerrdental.com/maxcem?utm_campaign=na-resto-maxcem&amp;utm_medium=referral&amp;utm_source=kerr\" title=\"Maxcem Elite Universal Resin\" data-autotest-operable=\"tag\"></a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a target=\"\" class=\"homepage-slide-15399\" href=\"https://go.kerrdental.com/simplicity?utm_campaign=na-resto-simplicity&amp;utm_medium=referral&amp;utm_source=kerr\" title=\"Simplicity by Kerr\" data-autotest-operable=\"tag\"></a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a target=\"\" class=\"homepage-slide-15333\" href=\"https://www.kerrdental.com/kerr-endodontics/zenflex-shape\" title=\"ZenFlex™ NiTi Rotary Shaping File\" data-autotest-operable=\"tag\"></a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a target=\"\" class=\"homepage-slide-15204\" href=\"https://www.kerrdental.com/kerr-restoratives/simplishade-composites\" title=\"Simplishade\" data-autotest-operable=\"tag\"></a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a target=\"_blank\" class=\"homepage-slide-14957\" href=\"https://www.kavokerr.com/news/coronavirus-disease-2019-covid-19-and-metrex-surface-disinfectants?utm_campaign=na-mx-covid-19&amp;utm_medium=referral&amp;utm_source=kerr\" title=\"The latest on COVID 19 Stay up to date and find out how Kerr Totalcare can help\" data-autotest-operable=\"tag\"></a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "1"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "2"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "3"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "4"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "5"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Previous"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Next"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Kerr RESTORATIVES; RESTORATIVES We offer comprehensive solutions for virtually all direct and indirect procedures. From"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "RESTORATIVES"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Kerr Endodontics; ENDODONTICS At Kerr Endo, we pride ourselves on being your partner in delivering the best possible o"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "ENDODONTICS"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Kerr Rotary; ROTARY At Kerr Rotary, we’re with you every step of the way. Prep to finish, our versatile portfolio"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "ROTARY"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Infection control; INFECTION CONTROL Our highly effective suite of Infection Prevention products helps protect everyone"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "INFECTION CONTROL"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Promotions: Get the best deals on our products."
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Official Kerr Blog: Your Destination for Dental Tips & Articles"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Kerr Professional Education"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find instructions for use, safety data sheets or product brochures in our download center."
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Dental procedures: Step-by-step guide to everyday dental treatments."
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Register Now"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Schedule a Demo"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Cookie Policy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Sitemap"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Safety Data Sheet"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Instructions For Use"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Compliancy & Transparency | Kerr"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Compliancy & Transparency | Envista"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Get Connected With Emails"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "facebook"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "twitter"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "youtube"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "linkedin"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "instagram"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie Settings; #onetrust-pc-btn-handler"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accept All Cookies; #onetrust-accept-btn-handler"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 4,
+          "unlabeled": 5,
+          "wellLabeled": 21
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Analytics & Tracking"
+                ],
+                "label": [
+                  "Analytics & Tracking"
+                ]
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Functional & Personalisation"
+                ],
+                "label": [
+                  "Functional & Personalisation"
+                ]
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Targeting"
+                ],
+                "label": [
+                  "Targeting"
+                ]
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "Vendor Search",
+                "label": [
+                  "Vendor Search"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" id=\"cboxPrevious\"></button>}"
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" id=\"cboxNext\"></button>}"
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button id=\"cboxSlideshow\"></button>}"
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"ot-host-box\" aria-expanded=\"false\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Back",
+                "content": "Back Button"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Filter",
+                "content": "Filter Button"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "View Third Party Cookies"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Clear"
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Apply"
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Allow Selected Cookies"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Allow All Cookies"
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cookie Settings"
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Accept All Cookies"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "links": 277,
+          "inline": {
+            "total": 1,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Privacy Policy"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "roleElements": 32,
+        "badRoleElements": 5,
+        "tagNames": {
+          "NAV": {
+            "navigation": 1
+          },
+          "SPAN": {
+            "status": 1
+          },
+          "DIV": {
+            "dialog": 3
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 3,
+            "subtotals": [
+              1,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 12,
+            "subtotals": [
+              4,
+              3,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "h4": {
+            "total": 5,
+            "subtotals": [
+              3,
+              1,
+              1
+            ]
+          },
+          "h5": {
+            "total": 1
+          },
+          "aInline": {
+            "total": 1
+          },
+          "aBlock": {
+            "total": 276,
+            "subtotals": [
+              159,
+              85,
+              5,
+              4,
+              4,
+              3,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 21,
+            "subtotals": [
+              4,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "400": 1,
+              "500": 1,
+              "600": 1
+            },
+            "lineHeight": {
+              "30px": 1,
+              "27px": 1,
+              "26.304px": 1
+            },
+            "maxHeight": {
+              "none": 2,
+              "52.608px": 1
+            },
+            "maxWidth": {
+              "none": 2,
+              "85%": 1
+            },
+            "fontSize": {
+              "21.92px": 4,
+              "25.2px": 3,
+              "30px": 2
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "600": 5,
+              "700": 7
+            },
+            "lineHeight": {
+              "19.6px": 5,
+              "18.2px": 5,
+              "20.8px": 1,
+              "15.6096px": 1
+            },
+            "maxWidth": {
+              "none": 7,
+              "60%": 3,
+              "70%": 2
+            },
+            "fontSize": {
+              "14px": 95,
+              "13.008px": 16,
+              "16px": 15
+            }
+          },
+          "h4": {
+            "fontWeight": {
+              "400": 1,
+              "500": 3,
+              "600": 1
+            },
+            "lineHeight": {
+              "33.88px": 3,
+              "22px": 1,
+              "15.456px": 1
+            },
+            "fontSize": {
+              "30.8px": 57,
+              "11.04px": 21,
+              "20px": 17
+            }
+          },
+          "h5": {},
+          "aInline": {},
+          "aBlock": {
+            "borderStyle": {
+              "none": 259,
+              "solid": 9,
+              "none none solid": 5,
+              "solid none solid solid": 3
+            },
+            "borderWidth": {
+              "0px": 259,
+              "1px": 9,
+              "0px 0px 1px": 4,
+              "1px 0px 1px 1px": 3,
+              "0px 0px 3px": 1
+            },
+            "fontWeight": {
+              "300": 5,
+              "400": 271
+            },
+            "lineHeight": {
+              "20px": 161,
+              "18px": 86,
+              "24px": 9,
+              "32px": 5,
+              "21px": 4,
+              "26px": 3,
+              "54px": 2,
+              "50px": 2,
+              "55px": 1,
+              "21.4286px": 1,
+              "22.8571px": 1,
+              "normal": 1
+            },
+            "minWidth": {
+              "0px": 272,
+              "225px": 4
+            },
+            "opacity": {
+              "0": 4,
+              "1": 272
+            },
+            "fontSize": {
+              "14px": 3652,
+              "12.6px": 1892,
+              "16px": 154,
+              "22.4px": 110,
+              "20px": 88,
+              "18.2px": 66,
+              "50px": 44,
+              "18px": 22,
+              "11.2px": 22,
+              "15px": 22
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 14,
+              "solid": 7
+            },
+            "borderWidth": {
+              "0px": 14,
+              "1px": 7
+            },
+            "fontWeight": {
+              "400": 14,
+              "600": 4,
+              "700": 3
+            },
+            "lineHeight": {
+              "14.3088px": 4,
+              "20px": 3,
+              "38px": 3,
+              "normal": 3,
+              "14.4px": 3,
+              "35px": 2,
+              "15.6096px": 2,
+              "10.8px": 1
+            },
+            "maxWidth": {
+              "none": 18,
+              "200px": 3
+            },
+            "minHeight": {
+              "0px": 19,
+              "40px": 2
+            },
+            "minWidth": {
+              "0px": 18,
+              "125px": 2,
+              "155px": 1
+            },
+            "opacity": {
+              "0": 1,
+              "1": 20
+            },
+            "fontSize": {
+              "13.008px": 176,
+              "14.4px": 132,
+              "14px": 66,
+              "0px": 44,
+              "22px": 22,
+              "12px": 22
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "totals": {
+          "violation": 26,
+          "recommendation": 1,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/div[1]/section[1]/div[1]/section[1]/div[1]/div[2]/section[1]/div[1]",
+              "aria": "/document[1]/region[1]/region[1]/region[1]"
+            },
+            "message": "The <div> element has the id \"home-mid\" that is already in use",
+            "bounds": {
+              "left": 40,
+              "top": 2381,
+              "height": 1002,
+              "width": 716
+            },
+            "snippet": "<div class=\"relative\" id=\"home-mid\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[3]",
+              "aria": "/document[1]/dialog[3]"
+            },
+            "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+            "bounds": {
+              "left": 0,
+              "top": -99,
+              "height": 151,
+              "width": 800
+            },
+            "snippet": "<div style=\"top: -99px; bottom: auto; animation-name: slide-up-custom; animation-duration: 1000ms; animation-fill-mode: forwards; animation-timing-function: ease-out;\" aria-describedby=\"onetrust-policy-text\" role=\"dialog\" class=\"otFlat top vertical-align-content\" id=\"onetrust-banner-sdk\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ul[2]/li[2]/a[1]",
+              "aria": "/document[1]/list[7]/listitem[2]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 695,
+              "top": 238,
+              "height": 55,
+              "width": 55
+            },
+            "snippet": "<a href=\"#\" class=\"flex-next\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ul[2]/li[1]/a[1]",
+              "aria": "/document[1]/list[7]/listitem[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 238,
+              "height": 55,
+              "width": 55
+            },
+            "snippet": "<a href=\"#\" class=\"flex-prev\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ul[1]",
+              "aria": "/document[1]/list[5]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 156,
+              "height": 255,
+              "width": 800
+            },
+            "snippet": "<ul class=\"slides\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[5]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[5]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 441,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[4]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[4]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 418,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[3]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[3]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 395,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[2]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[2]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 372,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[1]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 349,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a class=\"flex-active\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[2]/div[1]",
+              "aria": "/document[1]/tablist[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 25,
+              "top": 91,
+              "height": 65,
+              "width": 750
+            },
+            "snippet": "<div aria-multiselectable=\"true\" role=\"tablist\" id=\"accordionEx\" class=\"container accordion md-accordion\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<a class=\"element-invisible element-focusable\" href=\"#main-content\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[3]/div[1]/div[1]/div[2]/div[1]/button[2]",
+              "aria": "/document[1]/dialog[3]/button[2]"
+            },
+            "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size 13.008px and weight of 600",
+            "bounds": {
+              "left": 279,
+              "top": 1,
+              "height": 41,
+              "width": 133
+            },
+            "snippet": "<button id=\"onetrust-accept-btn-handler\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[3]/div[1]/div[1]/div[2]/div[1]/button[1]",
+              "aria": "/document[1]/dialog[3]/button[1]"
+            },
+            "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size 13.008px and weight of 600",
+            "bounds": {
+              "left": 137,
+              "top": 1,
+              "height": 41,
+              "width": 125
+            },
+            "snippet": "<button id=\"onetrust-pc-btn-handler\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/div[1]/section[1]/div[1]/section[1]/div[1]/div[2]/section[1]/div[1]/div[1]/div[3]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/region[1]/region[1]/region[1]/link[3]"
+            },
+            "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size 18.2px and weight of 400",
+            "bounds": {
+              "left": 286,
+              "top": 3008,
+              "height": 46,
+              "width": 225
+            },
+            "snippet": "<a data-portalid=\"491658\" data-formid=\"2682b856-683d-41dd-95c6-3d601d776ff7\" class=\"btn btn-primary hubspot-pop\" href=\"/%23\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/div[1]/section[1]/div[1]/section[1]/div[1]/div[2]/section[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/region[1]/region[1]/region[1]/link[2]"
+            },
+            "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size 18.2px and weight of 400",
+            "bounds": {
+              "left": 286,
+              "top": 2777,
+              "height": 46,
+              "width": 225
+            },
+            "snippet": "<a href=\"https://www.kerrdental.com/how-buy\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/div[1]/section[1]/div[1]/section[1]/div[1]/div[2]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/region[1]/region[1]/region[1]/link[1]"
+            },
+            "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size 18.2px and weight of 400",
+            "bounds": {
+              "left": 286,
+              "top": 2546,
+              "height": 46,
+              "width": 225
+            },
+            "snippet": "<a href=\"/contact\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/div[1]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/ul[1]/li[1]/div[1]/h4[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/region[1]/region[1]/list[1]/listitem[1]/heading[2]"
+            },
+            "message": "Text contrast of 1.55 with its background is less than the WCAG AA minimum requirements for text of size 18.2px and weight of 400",
+            "bounds": {
+              "left": 59,
+              "top": 1789,
+              "height": 60,
+              "width": 625
+            },
+            "snippet": "<div class=\"field-item even\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/div[1]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/ul[1]/li[1]/div[1]/h2[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/region[1]/region[1]/list[1]/listitem[1]/heading[1]"
+            },
+            "message": "Text contrast of 1.55 with its background is less than the WCAG AA minimum requirements for text of size 28px and weight of 400",
+            "bounds": {
+              "left": 59,
+              "top": 1737,
+              "height": 27,
+              "width": 625
+            },
+            "snippet": "<div class=\"field-item even\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/div[1]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/ul[1]/li[1]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/region[1]/region[1]/list[1]/listitem[1]/link[1]"
+            },
+            "message": "Text contrast of 1.35 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 59,
+              "top": 1889,
+              "height": 38,
+              "width": 225
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://www.kavokerrpreferred.com/account/registration?utm_medium=referral&utm_content=homepage&utm_source=kerr\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[5]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[5]"
+            },
+            "message": "Text contrast of 1.15 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "bounds": {
+              "left": 441,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[4]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[4]"
+            },
+            "message": "Text contrast of 1.15 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "bounds": {
+              "left": 418,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[3]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[3]"
+            },
+            "message": "Text contrast of 1.15 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "bounds": {
+              "left": 395,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[2]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[2]"
+            },
+            "message": "Text contrast of 1.15 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "bounds": {
+              "left": 372,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[3]/div[2]/ol[1]/li[1]/a[1]",
+              "aria": "/document[1]/list[6]/listitem[1]"
+            },
+            "message": "Text contrast of 3.84 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "bounds": {
+              "left": 349,
+              "top": 386,
+              "height": 11,
+              "width": 11
+            },
+            "snippet": "<a class=\"flex-active\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_semantics_attribute",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/noscript[1]",
+              "aria": "/document[1]"
+            },
+            "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 0,
+              "width": 0
+            },
+            "snippet": "<noscript aria-hidden=\"true\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[4]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+            "bounds": {
+              "left": 40,
+              "top": 3413,
+              "height": 321,
+              "width": 720
+            },
+            "snippet": "<footer class=\"footer\">",
+            "level": "recommendation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.kerrdental.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Dental Supplies - Dental Products | KerrDental.com",
+          "pageurl": "https://www.kerrdental.com/",
+          "time": 3.02,
+          "creditsremaining": 536,
+          "allitemcount": 207,
+          "totalelements": 1512,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.kerrdental.com/",
+          "domid": "b22c5c1fe5b7f9057201c2f026e08a7f"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 5,
+            "items": {
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxPrevious",
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxNext",
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxSlideshow",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > DIV:first-child > SECTION#ot-lst-cnt > DIV:first-child > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-top > DIV:first-child > DIV:first-child > DIV#header-cart-container-mobile > DIV:first-child > A:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 6,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-top > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > SECTION#home-about-2 > DIV#home-mid > DIV:first-child > DIV:first-child > DIV:first-child > H4:first-child + P + DIV + P + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > SECTION#home-about-2 > DIV#home-mid > DIV:first-child > DIV:first-child + DIV > DIV:first-child > H4:first-child + P + DIV + P + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > SECTION#home-about-2 > DIV#home-mid > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > H4:first-child + P + DIV + P + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-banner-sdk > DIV:first-child > DIV:first-child > DIV#onetrust-button-group-parent > DIV#onetrust-button-group > BUTTON#onetrust-pc-btn-handler",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-banner-sdk > DIV:first-child > DIV:first-child > DIV#onetrust-button-group-parent > DIV#onetrust-button-group > BUTTON#onetrust-accept-btn-handler"
+                ],
+                "contrastdata": [
+                  [
+                    2.12,
+                    "#337ab7",
+                    "#13457c",
+                    false
+                  ],
+                  [
+                    2.52,
+                    "#ffffff",
+                    "#00aeef",
+                    false
+                  ],
+                  [
+                    2.52,
+                    "#ffffff",
+                    "#00aeef",
+                    false
+                  ],
+                  [
+                    2.52,
+                    "#ffffff",
+                    "#00aeef",
+                    false
+                  ],
+                  [
+                    2.52,
+                    "#ffffff",
+                    "#00aeef",
+                    false
+                  ],
+                  [
+                    2.52,
+                    "#ffffff",
+                    "#00aeef",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 34,
+            "items": {
+              "text_justified": {
+                "id": "text_justified",
+                "description": "Justified text",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > SECTION#home-about-2 > DIV#home-mid > DIV:first-child + P + DIV > DIV:first-child > H5:first-child + P",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > SECTION#home-about-2 > DIV#home-mid > DIV:first-child + P + DIV > DIV:first-child > H5:first-child + P + P",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > SECTION#home-about-2 > DIV#home-mid > DIV:first-child + P + DIV > DIV:first-child > H5:first-child + P + P + P"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-bottom > DIV:first-child > DIV#header-search > FORM#search-form > DIV#edit-basic > DIV:first-child > INPUT#edit-keys"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > DIV#product-groups-slider > DIV:first-child + UL > LI:first-child > DIV:first-child > H2:first-child + DIV + H4"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 20,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child + DIV > DIV:first-child > DIV#country-menu-cookie > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-top > DIV:first-child > DIV:first-child > DIV#header-cart-container-mobile > DIV:first-child + DIV > DIV:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-top > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + NAV > UL#kerrdental-nav > LI:first-child + LI + LI + LI + LI + LI > UL#ul-740 > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-top > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + NAV > UL#kerrdental-nav > LI:first-child + LI + LI + LI + LI + LI + LI > UL#ul-7095 > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-top > DIV:first-child > DIV:first-child > DIV#header-cart-container > DIV:first-child + DIV > DIV:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#country-menu > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > NOSCRIPT:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER#navbar > DIV#header-bottom > DIV:first-child > DIV#header-search > FORM#search-form > DIV#edit-basic > DIV:first-child > INPUT:first-child + SPAN + SPAN > BUTTON:first-child > I:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > SECTION#block-kerrdental-common-kerrdental-footer > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child + DIV + DIV + UL + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > DIV:first-child > SECTION#ot-lst-cnt > DIV:first-child > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > DIV:first-child > SECTION#ot-lst-cnt > DIV:first-child > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child + DIV"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > DIV#home-mid-2 > DIV:first-child > DIV#news-callouts > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > DIV#home-mid-2 > DIV:first-child > DIV#news-callouts > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > DIV#home-mid-2 > DIV:first-child > DIV#news-callouts > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#super-container > HEADER:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > SECTION#block-system-main > DIV#node-14491 > DIV#home-mid > DIV#home-mid-2 > DIV:first-child > DIV#news-callouts > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 767,
+        "axe": 56,
+        "ibm": 60,
+        "wave": 98,
+        "bulk": 15,
+        "focOl": 4,
+        "focOp": 396,
+        "hover": 0,
+        "labClash": 18,
+        "linkUl": 3,
+        "motion": 0,
+        "radioSet": 0,
+        "role": 10,
+        "styleDiff": 107
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      113
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      3
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "focOl",
+      1
+    ],
+    [
+      "focOp",
+      1
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

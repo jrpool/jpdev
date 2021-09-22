@@ -1,0 +1,3764 @@
+{
+  "script": "p03c10",
+  "batch": "ccvaxRest",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "q8sn",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.stevemadden.com/",
+      "what": "Steve Madden",
+      "result": "https://www.stevemadden.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "bytes": [
+          1312040,
+          1252351,
+          1252351,
+          1252351,
+          1252351
+        ],
+        "localRatios": [
+          1.048,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1.012,
+        "maxLocalRatio": 1.048,
+        "globalRatio": 1.048,
+        "pixelChanges": [
+          815576,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 203894,
+        "maxPixelChange": 815576,
+        "changeFrequency": 0.25
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 6,
+          "serious": 1,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#mainNavDesk > .site-nav",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: AccessibleNav",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "frame-title",
+            "description": "Ensures <iframe> and <frame> elements have an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#web-messenger-container",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".trending-block > .subtitle",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".container > .subtitle",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(3)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "maximum-scale on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".cartDrawer > h3",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".closecart",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".emptyCart",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.stevemadden.com/",
+      "what": "Steve Madden",
+      "result": "https://www.stevemadden.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "visibleElements": 380
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "totals": {
+          "total": 5,
+          "types": {
+            "outlineMissing": {
+              "total": 5,
+              "tagNames": {
+                "a": 4,
+                "iframe": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "a",
+              "text": "Skip to header"
+            },
+            {
+              "tagName": "a",
+              "text": "Skip to menu"
+            },
+            {
+              "tagName": "a",
+              "text": "Skip to content"
+            },
+            {
+              "tagName": "a",
+              "text": "Skip to footer"
+            },
+            {
+              "tagName": "iframe",
+              "text": "#attentive_creative"
+            }
+          ],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 7,
+            "tagName": {
+              "p": 1,
+              "div": 4,
+              "iframe": 2
+            },
+            "focusableHow": {
+              "Tab": 7,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 87,
+            "tagName": {
+              "button": 1,
+              "li": 10,
+              "a": 12,
+              "div": 64
+            },
+            "operableWhy": {
+              "tag": 13,
+              "cursor": 74,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 104,
+            "tagName": {
+              "a": 87,
+              "input[type=text]": 1,
+              "div": 14,
+              "input[type=email]": 1,
+              "input[type=submit]": 1
+            },
+            "focusableHow": {
+              "Tab": 104,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 90,
+              "cursor": 14,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "p",
+              "focusableHow": "Tab",
+              "text": "Join SM Pass to get 20% off and free 2-day shipping over $50. JOIN NOW SIGN IN"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Click to see full size image; BVYPER WHITE PATENT"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Click to see full size image; COBRA BLACK LEATHER"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Click to see full size image; LYNDEN BLUE PATENT"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Click to see full size image; MAXIMA BLUSH MULTI"
+            },
+            {
+              "tagName": "iframe",
+              "focusableHow": "Tab",
+              "text": "#web-messenger-container"
+            },
+            {
+              "tagName": "iframe",
+              "focusableHow": "Tab",
+              "text": "#attentive_creative"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "WOMEN"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "MEN"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "CLOTHING"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "HANDBAGS"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "668 reviews; 668 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "6 reviews; 6 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "121 reviews; 121 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "2 reviews; 2 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "7095 reviews; 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "1376 reviews; 1376 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "7095 reviews; 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "7095 reviews; 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "26 reviews; 26 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "26 reviews; 26 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "7095 reviews; 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "29 reviews; 29 Reviews"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611ab3216bcca85e980ccf60\" data-external-image-id=\"18143014699168014\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/14/18143014699168014/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611a8cb56bcca82c280ccf68\" data-external-image-id=\"17890302281254298\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/98/17890302281254298/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6119a0726bcca877650ccf5e\" data-external-image-id=\"17944938778548308\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/8/17944938778548308/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6119338f6bcca83b6a0ccf5a\" data-external-image-id=\"17933182714594379\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/79/17933182714594379/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61181ac49ab5e4225a85bf89\" data-external-image-id=\"17893817459332808\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/8/17893817459332808/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"610938838e790c1909903c06\" data-external-image-id=\"18233241502070339\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/39/18233241502070339/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6141de7c22644545c2c7d810\" data-external-image-id=\"18168536737094788\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/88/18168536737094788/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"614017fd238de428df4e6e4d\" data-external-image-id=\"17852649611633317\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/17/17852649611633317/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613fe6c3238de413884e6e4d\" data-external-image-id=\"17895814361196986\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/86/17895814361196986/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613fa837238de410944e6e4c\" data-external-image-id=\"17885250359345967\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/67/17885250359345967/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613e576e238de4609d668b62\" data-external-image-id=\"17914614586957509\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/9/17914614586957509/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613cba63812d996dc3477e59\" data-external-image-id=\"17906934119017953\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/53/17906934119017953/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613be227812d992054477e59\" data-external-image-id=\"17938316389611484\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/84/17938316389611484/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613bd61c812d997652477e59\" data-external-image-id=\"17869732205516528\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/28/17869732205516528/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613f52f32264450011c46b3c\" data-external-image-id=\"17880674207445329\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/29/17880674207445329/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613b4a6b812d997ff3477e59\" data-external-image-id=\"17870552645564961\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/61/17870552645564961/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613ac970812d99261c477e5b\" data-external-image-id=\"17892492335363769\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/69/17892492335363769/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6136d207812d995a96477e5b\" data-external-image-id=\"17884665260355490\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/90/17884665260355490/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61362559812d994e61477e5b\" data-external-image-id=\"17879805680462058\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/58/17879805680462058/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6134035f812d993e55477e5b\" data-external-image-id=\"17987289625384730\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/30/17987289625384730/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6132d917812d995ef0477e59\" data-external-image-id=\"17897704274252030\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/30/17897704274252030/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6131785f812d991ff8477e59\" data-external-image-id=\"17890136789487248\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/48/17890136789487248/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61315f9e812d9903b5477e61\" data-external-image-id=\"17904526451135076\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/76/17904526451135076/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61313d1e812d990a64477e59\" data-external-image-id=\"18179034124134697\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/97/18179034124134697/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6132312430d87738894fc1f5\" data-external-image-id=\"17909724167046615\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/15/17909724167046615/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"613103b7812d9918f6477e5b\" data-external-image-id=\"18246735523050260\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/60/18246735523050260/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6130194cfd9650091313e18b\" data-external-image-id=\"18248383282060677\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/77/18248383282060677/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61300da6fd96507cde13e18b\" data-external-image-id=\"17898673166201347\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/47/17898673166201347/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61300ba1fd965063bf13e18b\" data-external-image-id=\"17928208342738096\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/96/17928208342738096/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61300b87fd9650625f13e18d\" data-external-image-id=\"18140956918207485\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/85/18140956918207485/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"612d34bf411f16398534bcb5\" data-external-image-id=\"17891341070476259\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/59/17891341070476259/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"612b9499eb1be8599215e003\" data-external-image-id=\"17910581803926756\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/56/17910581803926756/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6127cc8f43980d20044585e8\" data-external-image-id=\"18191127529115580\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/80/18191127529115580/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6127cc8f43980d20044585e6\" data-external-image-id=\"17938184296594546\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/46/17938184296594546/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6127c02b43980d14314585e6\" data-external-image-id=\"18228581308075587\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/87/18228581308075587/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6127183743980d447c4585e6\" data-external-image-id=\"17906367764087965\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/65/17906367764087965/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6126adf943980d19be4585ec\" data-external-image-id=\"17888576753470212\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/12/17888576753470212/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6126747e43980d333e4585e6\" data-external-image-id=\"17902837139143682\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/82/17902837139143682/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61264bdf2cd55a3c89b56b5d\" data-external-image-id=\"18004155529344925\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/25/18004155529344925/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6123d3132cd55a2ef89e6610\" data-external-image-id=\"17887527149465552\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/52/17887527149465552/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6123b2f92cd55a25009e660e\" data-external-image-id=\"17980216009402408\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/8/17980216009402408/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6122f5eb2cd55a5c259e660e\" data-external-image-id=\"18086584447284215\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/15/18086584447284215/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6122aa002cd55a77369e6614\" data-external-image-id=\"18238706809064190\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/90/18238706809064190/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61211c546bcca846430ccf60\" data-external-image-id=\"17885436650439395\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/95/17885436650439395/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"612114196bcca83e870ccf5a\" data-external-image-id=\"17908040981065469\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/69/17908040981065469/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6120525f6bcca821150ccf5c\" data-external-image-id=\"18179413255132397\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/97/18179413255132397/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"612040c06bcca868b80ccf5c\" data-external-image-id=\"17882967239362070\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/70/17882967239362070/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611ee51b6bcca83d510ccf5a\" data-external-image-id=\"18266201122010609\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/9/18266201122010609/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611edcf36bcca854040ccf5a\" data-external-image-id=\"18100072849257329\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/29/18100072849257329/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611eb9156bcca815e10ccf5a\" data-external-image-id=\"17940084781565314\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/14/17940084781565314/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611e9f9d6bcca827ff0ccf5a\" data-external-image-id=\"17898607778194607\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/7/17898607778194607/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611e71d86bcca84c620ccf5a\" data-external-image-id=\"17909447800919695\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/95/17909447800919695/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611d74206bcca8263d0ccf60\" data-external-image-id=\"17914610521932870\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/70/17914610521932870/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611d718c6bcca87fff0ccf5a\" data-external-image-id=\"17878161806452441\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/41/17878161806452441/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611aeaea6bcca81c6d0ccf60\" data-external-image-id=\"18165943501084856\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/56/18165943501084856/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611ab78a6bcca840760ccf5c\" data-external-image-id=\"17966837866439756\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/56/17966837866439756/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611ab3216bcca85e980ccf60\" data-external-image-id=\"18143014699168014\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/14/18143014699168014/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"611a8cb56bcca82c280ccf68\" data-external-image-id=\"17890302281254298\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/98/17890302281254298/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6119a0726bcca877650ccf5e\" data-external-image-id=\"17944938778548308\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/8/17944938778548308/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6119338f6bcca83b6a0ccf5a\" data-external-image-id=\"17933182714594379\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/79/17933182714594379/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"61181ac49ab5e4225a85bf89\" data-external-image-id=\"17893817459332808\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/8/17893817459332808/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"610938838e790c1909903c06\" data-external-image-id=\"18233241502070339\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/39/18233241502070339/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"6141de7c22644545c2c7d810\" data-external-image-id=\"18168536737094788\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/88/18168536737094788/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"y-image-overlay \" data-image-id=\"614017fd238de428df4e6e4d\" data-external-image-id=\"17852649611633317\" data-original-src=\"//cdn-yotpo-images-production.yotpo.com/instagram/17/17852649611633317/standard_resolution.jpg\" data-source=\"instagram\" data-media-type=\"image\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Pinterest"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Instagram"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Snapchat"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to header"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to menu"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to content"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to footer"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "JOIN NOW"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "SIGN IN"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Go to SM PASS"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sign In"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Join Now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Steve Madden Homepage"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search; #ispbxii_0"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "0"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "New & Now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Women’s Shoes"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Women's Clothing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Handbags"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accessories"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Men's Shoes"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Kids' Shoes"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sale"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Banner Desktop/Mobile"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Banner Desktop/Mobile"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Banner Desktop/Mobile"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "WOMEN'S SHOES WOMEN'S SHOES"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "WOMEN'S SHOES"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Banner Desktop/Mobile"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MEN'S"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CLOTHING CLOTHING"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HANDBAGS"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HANDBAGS HANDBAGS"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CLOTHING"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "WOMEN"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MEN"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CLOTHING"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HANDBAGS"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "AMULET BLACK IMAGE; AMULET BLACK $129.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.6 star rating 668 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "LOREEN BLACK IMAGE; LOREEN BLACK $139.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.7 star rating 6 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "SHANIYA BROWN SUEDE IMAGE; SHANIYA BROWN SUEDE $169.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.6 star rating 121 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "AQUARIUS TAN SUEDE IMAGE; AQUARIUS TAN SUEDE $139.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.0 star rating 2 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MAXIMA BLUSH MULTI IMAGE; MAXIMA BLUSH MULTI $99.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.3 star rating 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MAXIMA-R BLACK IMAGE; MAXIMA-R BLACK $99.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.2 star rating 1376 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MAXIMA HOT PINK IMAGE; MAXIMA HOT PINK $99.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.3 star rating 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MAXIMA BABY BLUE MULTI IMAGE; MAXIMA BABY BLUE MULTI $99.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.3 star rating 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HUTCH SAND SUEDE IMAGE; HUTCH SAND SUEDE $119.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.0 star rating 26 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HUTCH TAUPE SUEDE IMAGE; HUTCH TAUPE SUEDE $119.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.0 star rating 26 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MAXIMA BURGUNDY MULTI IMAGE; MAXIMA BURGUNDY MULTI $99.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.3 star rating 7095 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COBRA BLACK LEATHER IMAGE; COBRA BLACK LEATHER $159.95"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "4.6 star rating 29 Reviews"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "these"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop Instagram"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Previous"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Next"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Log In"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sign Up"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FAQ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "My Account"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Order Tracking"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Return Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get Return Label"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shipping Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shoe Size Chart"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cleaning & Care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About Steve Madden"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CA Transparency Act"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About SM PASS"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "SM PASS FAQ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms Of Use"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Gift Card Terms Of Use"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms Of Sale"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shoe Glossary"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Promotion Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Notice of Accessibility"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Consent & Release Agreement"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "STORE LOCATOR"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "info@stevemaddendirect.com"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "More Info"
+            },
+            {
+              "tagName": "input[type=email]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#footer-email"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<input onfocus=\"$(this).css({'background':'#16b3aa'})\" onmouseover=\"$(this).css({'background':'#16b3aa'})\" onblur=\"$(this).css({'background':'#000'})\" onmouseout=\"$(this).css({'background':'#000'})\" type=\"submit\" value=\"GO\" class=\"button\" style=\"background: rgb(0, 0, 0);\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\">}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Pinterest"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Instagram"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Snapchat"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Close"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "totals": {
+          "triggers": 16,
+          "targets": 198
+        },
+        "items": [
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "New & Now",
+            "newVisibles": [
+              {
+                "tagName": "SPAN",
+                "text": "NEW ARRIVALS"
+              },
+              {
+                "tagName": "A",
+                "text": "NEW ARRIVALS"
+              },
+              {
+                "tagName": "A",
+                "text": "All New"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Men's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbags"
+              },
+              {
+                "tagName": "A",
+                "text": "Accessories"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Clothing"
+              },
+              {
+                "tagName": "A",
+                "text": "Pre-order"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "BEST SELLERS"
+              },
+              {
+                "tagName": "A",
+                "text": "BEST SELLERS"
+              },
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Men's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbags"
+              },
+              {
+                "tagName": "A",
+                "text": "Accessories"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Clothing"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "The Boot Shop"
+              },
+              {
+                "tagName": "A",
+                "text": "Fall Must Haves"
+              },
+              {
+                "tagName": "A",
+                "text": "Embellished"
+              },
+              {
+                "tagName": "A",
+                "text": "Maximize"
+              },
+              {
+                "tagName": "A",
+                "text": "As Seen On Tiktok"
+              },
+              {
+                "tagName": "A",
+                "text": "For The Family"
+              },
+              {
+                "tagName": "A",
+                "text": "Steve's Book"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "New & Now",
+            "newVisibles": [
+              {
+                "tagName": "SPAN",
+                "text": "NEW ARRIVALS"
+              },
+              {
+                "tagName": "A",
+                "text": "NEW ARRIVALS"
+              },
+              {
+                "tagName": "A",
+                "text": "All New"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Men's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbags"
+              },
+              {
+                "tagName": "A",
+                "text": "Accessories"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Clothing"
+              },
+              {
+                "tagName": "A",
+                "text": "Pre-order"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "BEST SELLERS"
+              },
+              {
+                "tagName": "A",
+                "text": "BEST SELLERS"
+              },
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Men's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbags"
+              },
+              {
+                "tagName": "A",
+                "text": "Accessories"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Clothing"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "The Boot Shop"
+              },
+              {
+                "tagName": "A",
+                "text": "Fall Must Haves"
+              },
+              {
+                "tagName": "A",
+                "text": "Embellished"
+              },
+              {
+                "tagName": "A",
+                "text": "Maximize"
+              },
+              {
+                "tagName": "A",
+                "text": "As Seen On Tiktok"
+              },
+              {
+                "tagName": "A",
+                "text": "For The Family"
+              },
+              {
+                "tagName": "A",
+                "text": "Steve's Book"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Women’s Shoes",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Heels"
+              },
+              {
+                "tagName": "A",
+                "text": "Booties"
+              },
+              {
+                "tagName": "A",
+                "text": "Boots"
+              },
+              {
+                "tagName": "A",
+                "text": "Sneakers"
+              },
+              {
+                "tagName": "A",
+                "text": "Flats"
+              },
+              {
+                "tagName": "A",
+                "text": "Loafers"
+              },
+              {
+                "tagName": "A",
+                "text": "Mules"
+              },
+              {
+                "tagName": "A",
+                "text": "Sandals"
+              },
+              {
+                "tagName": "A",
+                "text": "Wedges"
+              },
+              {
+                "tagName": "A",
+                "text": "Slippers"
+              },
+              {
+                "tagName": "A",
+                "text": "Shoe Care"
+              },
+              {
+                "tagName": "A",
+                "text": "Make It A Match"
+              },
+              {
+                "tagName": "A",
+                "text": "Sm Exclusives"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "The Boot Shop"
+              },
+              {
+                "tagName": "A",
+                "text": "Fall Must Haves"
+              },
+              {
+                "tagName": "A",
+                "text": "Embellished"
+              },
+              {
+                "tagName": "A",
+                "text": "Maximize"
+              },
+              {
+                "tagName": "A",
+                "text": "As Seen On Tiktok"
+              },
+              {
+                "tagName": "A",
+                "text": "Wedding Szn"
+              },
+              {
+                "tagName": "A",
+                "text": "For The Family"
+              },
+              {
+                "tagName": "A",
+                "text": "<a href=\"/collections/5-17-outerwear\">\n          \n"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Women’s Shoes",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Heels"
+              },
+              {
+                "tagName": "A",
+                "text": "Booties"
+              },
+              {
+                "tagName": "A",
+                "text": "Boots"
+              },
+              {
+                "tagName": "A",
+                "text": "Sneakers"
+              },
+              {
+                "tagName": "A",
+                "text": "Flats"
+              },
+              {
+                "tagName": "A",
+                "text": "Loafers"
+              },
+              {
+                "tagName": "A",
+                "text": "Mules"
+              },
+              {
+                "tagName": "A",
+                "text": "Sandals"
+              },
+              {
+                "tagName": "A",
+                "text": "Wedges"
+              },
+              {
+                "tagName": "A",
+                "text": "Slippers"
+              },
+              {
+                "tagName": "A",
+                "text": "Shoe Care"
+              },
+              {
+                "tagName": "A",
+                "text": "Make It A Match"
+              },
+              {
+                "tagName": "A",
+                "text": "Sm Exclusives"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "The Boot Shop"
+              },
+              {
+                "tagName": "A",
+                "text": "Fall Must Haves"
+              },
+              {
+                "tagName": "A",
+                "text": "Embellished"
+              },
+              {
+                "tagName": "A",
+                "text": "Maximize"
+              },
+              {
+                "tagName": "A",
+                "text": "As Seen On Tiktok"
+              },
+              {
+                "tagName": "A",
+                "text": "Wedding Szn"
+              },
+              {
+                "tagName": "A",
+                "text": "For The Family"
+              },
+              {
+                "tagName": "A",
+                "text": "<a href=\"/collections/5-17-outerwear\">\n          \n"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Women's Clothing",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Tops"
+              },
+              {
+                "tagName": "A",
+                "text": "Bottoms"
+              },
+              {
+                "tagName": "A",
+                "text": "Dresses"
+              },
+              {
+                "tagName": "A",
+                "text": "Loungewear"
+              },
+              {
+                "tagName": "A",
+                "text": "Jackets & Coats"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "Maximize"
+              },
+              {
+                "tagName": "A",
+                "text": "Vegan Leather"
+              },
+              {
+                "tagName": "A",
+                "text": "New Neutrals"
+              },
+              {
+                "tagName": "A",
+                "text": "Night Out"
+              },
+              {
+                "tagName": "A",
+                "text": "Festival Szn"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Women's Clothing",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Tops"
+              },
+              {
+                "tagName": "A",
+                "text": "Bottoms"
+              },
+              {
+                "tagName": "A",
+                "text": "Dresses"
+              },
+              {
+                "tagName": "A",
+                "text": "Loungewear"
+              },
+              {
+                "tagName": "A",
+                "text": "Jackets & Coats"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "MUST HAVES"
+              },
+              {
+                "tagName": "A",
+                "text": "Maximize"
+              },
+              {
+                "tagName": "A",
+                "text": "Vegan Leather"
+              },
+              {
+                "tagName": "A",
+                "text": "New Neutrals"
+              },
+              {
+                "tagName": "A",
+                "text": "Night Out"
+              },
+              {
+                "tagName": "A",
+                "text": "Festival Szn"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Handbags",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Crossbody Bags"
+              },
+              {
+                "tagName": "A",
+                "text": "Clutches"
+              },
+              {
+                "tagName": "A",
+                "text": "Belt Bags & Backpacks"
+              },
+              {
+                "tagName": "A",
+                "text": "Shoulder Bags"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbag Straps"
+              },
+              {
+                "tagName": "A",
+                "text": "Make It A Match"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Handbags",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Crossbody Bags"
+              },
+              {
+                "tagName": "A",
+                "text": "Clutches"
+              },
+              {
+                "tagName": "A",
+                "text": "Belt Bags & Backpacks"
+              },
+              {
+                "tagName": "A",
+                "text": "Shoulder Bags"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbag Straps"
+              },
+              {
+                "tagName": "A",
+                "text": "Make It A Match"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Accessories",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Socks & Tights"
+              },
+              {
+                "tagName": "A",
+                "text": "Sunglasses"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbag Straps"
+              },
+              {
+                "tagName": "A",
+                "text": "Hats, Gloves And Scarves"
+              },
+              {
+                "tagName": "A",
+                "text": "Jewelry"
+              },
+              {
+                "tagName": "A",
+                "text": "Belt Bags & Belts"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Accessories",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Socks & Tights"
+              },
+              {
+                "tagName": "A",
+                "text": "Sunglasses"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbag Straps"
+              },
+              {
+                "tagName": "A",
+                "text": "Hats, Gloves And Scarves"
+              },
+              {
+                "tagName": "A",
+                "text": "Jewelry"
+              },
+              {
+                "tagName": "A",
+                "text": "Belt Bags & Belts"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Men's Shoes",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Boots"
+              },
+              {
+                "tagName": "A",
+                "text": "Sneakers"
+              },
+              {
+                "tagName": "A",
+                "text": "Casual"
+              },
+              {
+                "tagName": "A",
+                "text": "Dress"
+              },
+              {
+                "tagName": "A",
+                "text": "Sandals"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Men's Shoes",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Boots"
+              },
+              {
+                "tagName": "A",
+                "text": "Sneakers"
+              },
+              {
+                "tagName": "A",
+                "text": "Casual"
+              },
+              {
+                "tagName": "A",
+                "text": "Dress"
+              },
+              {
+                "tagName": "A",
+                "text": "Sandals"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Kids' Shoes",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Adaptive"
+              },
+              {
+                "tagName": "A",
+                "text": "For The Family"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Kids' Shoes",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Adaptive"
+              },
+              {
+                "tagName": "A",
+                "text": "For The Family"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Sale",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Clothing"
+              },
+              {
+                "tagName": "A",
+                "text": "Men's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbags"
+              },
+              {
+                "tagName": "A",
+                "text": "Accessories"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Sale",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Shop All"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Women's Clothing"
+              },
+              {
+                "tagName": "A",
+                "text": "Men's Shoes"
+              },
+              {
+                "tagName": "A",
+                "text": "Handbags"
+              },
+              {
+                "tagName": "A",
+                "text": "Accessories"
+              },
+              {
+                "tagName": "A",
+                "text": "<a>\n          \n          \n          \n          \n  "
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 15,
+          "wellLabeled": 65
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button tabindex=\"-1\" type=\"submit\"> <img src=\"//cdn.shopify.com/s/files/1/2170/8465/t/143/assets/search-icon.png?v=3862969328245421432\" alt=\"Search\" width=\"25\"> </button>}"
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button value=\"search\" type=\"submit\"> <img src=\"//cdn.shopify.com/s/files/1/2170/8465/files/search_black_small.png?v=930476775769425915\" alt=\"Search\" width=\"25\"> </button>}"
+            },
+            {
+              "index": 62,
+              "tagName": "INPUT",
+              "type": "email"
+            },
+            {
+              "index": 64,
+              "tagName": "INPUT",
+              "type": "email"
+            },
+            {
+              "index": 65,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 66,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 67,
+              "tagName": "SELECT",
+              "type": "select-one"
+            },
+            {
+              "index": 68,
+              "tagName": "SELECT",
+              "type": "select-one"
+            },
+            {
+              "index": 69,
+              "tagName": "SELECT",
+              "type": "select-one"
+            },
+            {
+              "index": 70,
+              "tagName": "SELECT",
+              "type": "select-one"
+            },
+            {
+              "index": 71,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 72,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 75,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 76,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 77,
+              "tagName": "INPUT",
+              "type": "password"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 31,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 33,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 34,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 35,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 36,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 37,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 38,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 39,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 40,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 41,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 42,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 43,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 44,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 45,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 46,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 47,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 48,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 49,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 50,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 51,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 52,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 53,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 54,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 55,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 56,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 57,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 58,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 59,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 60,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 61,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Shop Now",
+                "content": "Shop Now"
+              }
+            },
+            {
+              "index": 63,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "GO"
+              }
+            },
+            {
+              "index": 73,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Yes, Sign me up for SM PASS"
+                ]
+              }
+            },
+            {
+              "index": 74,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Submit"
+              }
+            },
+            {
+              "index": 78,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Complete Registration"
+              }
+            },
+            {
+              "index": 79,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "X"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "totals": {
+          "links": 490,
+          "inline": {
+            "total": 16,
+            "underlined": 3,
+            "underlinedPercent": 18
+          }
+        },
+        "items": {
+          "underlined": [
+            "SIGN IN",
+            "Learn more",
+            "Terms & Conditions"
+          ],
+          "notUnderlined": [
+            "Sign In",
+            "Join Now",
+            "Shipping Policy",
+            "Returns Center",
+            "Happy Returns Return Bar",
+            "Return Policy",
+            "these",
+            "More Info",
+            "Terms and Conditions",
+            "Learn More",
+            "SM Pass",
+            "Log In",
+            "Sign Up"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "roleElements": 547,
+        "badRoleElements": 547,
+        "tagNames": {
+          "SPAN": {
+            "status": 2,
+            "button": 3
+          },
+          "MAIN": {
+            "main": 1
+          },
+          "A": {
+            "button": 11
+          },
+          "BUTTON": {
+            "button": 58
+          },
+          "DIV": {
+            "button": 290,
+            "group": 56,
+            "dialog": 1,
+            "list": 2,
+            "listitem": 122,
+            "status": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 4,
+            "subtotals": [
+              2,
+              1,
+              1
+            ]
+          },
+          "h2": {
+            "total": 59,
+            "subtotals": [
+              58,
+              1
+            ]
+          },
+          "h3": {
+            "total": 64,
+            "subtotals": [
+              47,
+              7,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "h4": {
+            "total": 7,
+            "subtotals": [
+              2,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 16,
+            "subtotals": [
+              6,
+              3,
+              3,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 474,
+            "subtotals": [
+              241,
+              116,
+              44,
+              37,
+              16,
+              10,
+              6,
+              2,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 62,
+            "subtotals": [
+              61,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {
+            "fontWeight": {
+              "400": 1,
+              "700": 2,
+              "800": 1
+            },
+            "lineHeight": {
+              "normal": 2,
+              "80.3892px": 1,
+              "68.8px": 1
+            },
+            "fontSize": {
+              "68.8px": 4,
+              "32px": 3,
+              "61.8378px": 3
+            }
+          },
+          "h2": {
+            "fontWeight": {
+              "400": 1,
+              "700": 58
+            },
+            "lineHeight": {
+              "17px": 58,
+              "98.3784px": 1
+            },
+            "fontSize": {
+              "21px": 2001,
+              "75.6757px": 5
+            }
+          },
+          "h3": {
+            "borderStyle": {
+              "none": 61,
+              "solid none none": 2,
+              "none none solid": 1
+            },
+            "borderWidth": {
+              "0px": 61,
+              "2px 0px 0px": 2,
+              "0px 0px 1px": 1
+            },
+            "fontStyle": {
+              "normal": 63,
+              "italic": 1
+            },
+            "lineHeight": {
+              "normal": 61,
+              "17px": 2,
+              "18.72px": 1
+            },
+            "maxHeight": {
+              "50px": 47,
+              "none": 17
+            },
+            "fontSize": {
+              "20.8px": 4183,
+              "14.4px": 1200,
+              "18.72px": 255,
+              "16.38px": 227,
+              "18px": 127,
+              "12.96px": 120
+            }
+          },
+          "h4": {
+            "borderStyle": {
+              "none": 6,
+              "dotted none none": 1
+            },
+            "borderWidth": {
+              "0px": 6,
+              "2px 0px 0px": 1
+            },
+            "fontWeight": {
+              "400": 2,
+              "700": 5
+            },
+            "lineHeight": {
+              "27.9957px": 2,
+              "38.4px": 2,
+              "normal": 2,
+              "17px": 1
+            },
+            "fontSize": {
+              "16px": 267,
+              "32px": 263,
+              "21.5351px": 257,
+              "14px": 130
+            }
+          },
+          "aInline": {
+            "lineHeight": {
+              "normal": 13,
+              "21px": 1,
+              "27.9957px": 1,
+              "23.04px": 1
+            },
+            "textDecorationLine": {
+              "none": 13,
+              "underline": 3
+            },
+            "fontSize": {
+              "16px": 804,
+              "19.2px": 536,
+              "14.4px": 402,
+              "14px": 134,
+              "21.5351px": 134,
+              "12px": 134
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 464,
+              "none none solid": 10
+            },
+            "borderWidth": {
+              "0px": 464,
+              "0px 0px 1px": 10
+            },
+            "fontWeight": {
+              "400": 446,
+              "500": 16,
+              "700": 12
+            },
+            "lineHeight": {
+              "normal": 307,
+              "17px": 160,
+              "34px": 6,
+              "21px": 1
+            },
+            "textDecorationLine": {
+              "none": 473,
+              "underline": 1
+            },
+            "fontSize": {
+              "16px": 35778,
+              "14px": 15678,
+              "13px": 6030,
+              "14.4px": 4958,
+              "20px": 804,
+              "32px": 268
+            }
+          },
+          "button": {
+            "lineHeight": {
+              "normal": 61,
+              "20px": 1
+            },
+            "fontSize": {
+              "13.3333px": 8174,
+              "20px": 134
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.stevemadden.com/",
+      "result": "ERROR: IBM TEST FAILED"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.stevemadden.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Steve Madden® Official Site | Free Shipping on orders $50+",
+          "pageurl": "https://www.stevemadden.com/",
+          "time": 15.46,
+          "creditsremaining": 455,
+          "allitemcount": 2459,
+          "totalelements": 6109,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.stevemadden.com/",
+          "domid": "3a5cd262607c1bf2662fdd0c26973617"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 11,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV + DIV + DIV + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + STYLE + SCRIPT + DIV > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV + DIV + DIV + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + STYLE + SCRIPT + DIV > DIV:first-child > IMG:first-child + IMG"
+                ]
+              },
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 9,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#footerNewsletter > INPUT#footer-email",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV > DIV:first-child > INPUT#ispbxii_3",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV > DIV:first-child + DIV > INPUT#ispbxii_4",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV + DIV + DIV + DIV > INPUT#ispbxii_5",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > INPUT#ispbxii_6",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER:first-child + STYLE + DIV > DIV:first-child > DIV:first-child + DIV > FORM#create_customer > INPUT:first-child + INPUT + INPUT + DIV > INPUT#first_name",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER:first-child + STYLE + DIV > DIV:first-child > DIV:first-child + DIV > FORM#create_customer > INPUT:first-child + INPUT + INPUT + DIV + DIV > INPUT#last_name",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER:first-child + STYLE + DIV > DIV:first-child > DIV:first-child + DIV > FORM#create_customer > INPUT:first-child + INPUT + INPUT + DIV + DIV + DIV > INPUT#password"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 102,
+            "items": {
+              "text_justified": {
+                "id": "text_justified",
+                "description": "Justified text",
+                "count": 9,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P + P",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P + P + P",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P + P + P + P",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P + P + P + P + BR + H3 + P",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P + P + P + P + BR + H3 + P + P",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P + P + P + P + BR + H3 + P + P + P",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child + P + P + P + P + BR + H3 + P + P + P + P"
+                ]
+              },
+              "select_missing_label": {
+                "id": "select_missing_label",
+                "description": "Select missing label",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV > SELECT:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV + DIV > LABEL:first-child + DIV > DIV:first-child > SELECT:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV + DIV > LABEL:first-child + DIV > DIV:first-child + DIV > SELECT:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV + DIV > LABEL:first-child + DIV > DIV:first-child + DIV + DIV > SELECT:first-child"
+                ]
+              },
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 47,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-1 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-2 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-3 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV#tab-4 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child"
+                ]
+              },
+              "alt_duplicate": {
+                "id": "alt_duplicate",
+                "description": "A nearby image has the same alternative text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-1627565647025f50e4 > DIV:first-child > STYLE:first-child + SCRIPT + DIV > DIV#d999cf28-47de-4c93-bbaa-7efb42e931e7 > A:first-child > PICTURE:first-child > SOURCE:first-child + IMG",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-1627565647025f50e4 > DIV:first-child > STYLE:first-child + SCRIPT + DIV > DIV#1089b06e-0ffb-4351-b623-86900613c947 > A:first-child > PICTURE:first-child > SOURCE:first-child + IMG",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16127917681c46ab1c > DIV:first-child > STYLE:first-child + STYLE + STYLE + SCRIPT + DIV > DIV#dd30f691-2375-496e-b5c8-a7845cddae24 > A:first-child > PICTURE:first-child > SOURCE:first-child + IMG",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#footerNewsletter > INPUT:first-child + INPUT + DIV > DIV:first-child > DIV:first-child + DIV > IMG:first-child"
+                ]
+              },
+              "label_orphaned": {
+                "id": "label_orphaned",
+                "description": "Orphaned form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#footerNewsletter > INPUT:first-child + INPUT + DIV > DIV:first-child + DIV > DIV:first-child > LABEL:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#footerNewsletter > INPUT:first-child + INPUT + DIV > DIV:first-child + DIV > DIV:first-child + DIV > LABEL:first-child"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > FORM:first-child > INPUT#ispbxii_0"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER:first-child + DIV > DIV:first-child > HIDDENONAPP:first-child + DIV > H3:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612797477d918c720 > DIV:first-child > H1:first-child + H4",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612797477d918c720 > DIV:first-child > H1:first-child + H4 + A + DIV > DIV:first-child > DIV:first-child > DIV:first-child + LINK + LINK + SCRIPT + STYLE + DIV > H4:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16267171997812c2e8 > SECTION:first-child > SECTION:first-child > DIV:first-child > HEADER:first-child > H4:first-child + H1 + H4"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 24,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child > SPAN:first-child + UL > LI:first-child + LI > SPAN:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-header > HEADER#main-header > DIV:first-child + DIV + DIV > DIV#mainNavDesk > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16127917681c46ab1c > DIV:first-child > STYLE:first-child + STYLE + STYLE + SCRIPT + DIV > DIV#e6decd15-9bb9-441d-9fc9-88f3e48b1483 > A:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16127917681c46ab1c > DIV:first-child > STYLE:first-child + STYLE + STYLE + SCRIPT + DIV > DIV#dd30f691-2375-496e-b5c8-a7845cddae24 > A:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16127917681c46ab1c > DIV:first-child > STYLE:first-child + STYLE + STYLE + SCRIPT + DIV > DIV#bbe775bd-bbe0-4205-bd69-23ee463f2c5c > A:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16127917681c46ab1c > DIV:first-child > STYLE:first-child + STYLE + STYLE + SCRIPT + DIV > DIV#d253b8cc-08ca-4b77-9ec9-301ea7c7771d > A:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612795467c2b5740a > DIV:first-child > DIV:first-child > H2:first-child + H4 + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612797477d918c720 > DIV:first-child > H1:first-child + H4 + A",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child > SPAN:first-child + UL > LI:first-child + LI > SPAN:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV + DIV > DIV#mainNavMob > UL#AccessibleNav > LI:first-child + LI + LI + LI + LI + LI + LI + LI > SPAN:first-child + UL > LI:first-child + LI > DIV:first-child + UL > LI:first-child > A:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > SECTION#shopify-section-1612797477d918c720 > DIV:first-child > H1:first-child + H4 + A + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16267171997812c2e8 > SECTION:first-child > SECTION:first-child > DIV:first-child > HEADER:first-child > H4:first-child + H1 + H4 + DIV > DIV:first-child > P:first-child > SPAN:first-child + A",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16267171997812c2e8 > SECTION:first-child > SECTION:first-child > DIV:first-child > HEADER:first-child > H4:first-child + H1 + H4 + DIV > DIV:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > MAIN#main-content > DIV#shopify-section-16267171997812c2e8 > SECTION:first-child > SECTION:first-child > DIV:first-child > HEADER:first-child > H4:first-child + H1 + H4 + DIV > DIV:first-child + DIV > P:first-child > A:first-child + SPAN + A",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV + DIV + DIV > H3:first-child + P > A:first-child",
+                  "HTML > HEAD:first-child + VICE-ENCLOSURE + BODY > STYLE:first-child + STYLE + DIV > DIV#shopify-section-footer > FOOTER#main-footer > DIV:first-child + DIV > DIV:first-child > P:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#moreAboutYou > DIV:first-child + DIV + DIV + DIV + DIV > H3:first-child + P > A:first-child + A"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 2808,
+        "axe": 26,
+        "ibm": 368,
+        "wave": 242,
+        "bulk": 15,
+        "focOl": 20,
+        "focOp": 355,
+        "hover": 460,
+        "labClash": 30,
+        "linkUl": 39,
+        "motion": 44,
+        "radioSet": 0,
+        "role": 1094,
+        "styleDiff": 115
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      171
+    ],
+    [
+      "ibm",
+      25
+    ],
+    [
+      "focOp",
+      19
+    ],
+    [
+      "motion",
+      16
+    ],
+    [
+      "wave",
+      16
+    ],
+    [
+      "focOl",
+      12
+    ],
+    [
+      "axe",
+      11
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "labClash",
+      1
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

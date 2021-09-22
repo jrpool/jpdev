@@ -1,0 +1,1343 @@
+{
+  "script": "p03c10",
+  "batch": "ccvaxRest",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "q8sn",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://churros.com/",
+      "what": "J&J Snack Foods",
+      "result": "https://churros.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://churros.com/",
+      "result": {
+        "bytes": [
+          934446,
+          934446,
+          934446,
+          934446,
+          689935
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1.354
+        ],
+        "meanLocalRatio": 1.089,
+        "maxLocalRatio": 1.354,
+        "globalRatio": 1.354,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          720767
+        ],
+        "meanPixelChange": 180191,
+        "maxPixelChange": 720767,
+        "changeFrequency": 0.25
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://churros.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 5,
+          "serious": 5,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#slider-1-layer-3",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.71 (foreground color: #ffffff, background color: #008ec3, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#slider-1-layer-5",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.83 (foreground color: #ffffff, background color: #33a5cf, font size: 12.8pt (17px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#custom_html-3 > .textwidget.custom-html-widget > a[data-uw-rm-brl=\"false\"]:nth-child(1)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.32 (foreground color: #818181, background color: #ededed, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[data-uw-rm-brl=\"false\"]:nth-child(2)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.32 (foreground color: #818181, background color: #ededed, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".textwidget.custom-html-widget > p",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.62 (foreground color: #bcbcbc, background color: #ededed, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "user-scalable=no on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "div[role=\"heading\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".active-revslide",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".tp-static-layers",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".slantedbg",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://churros.com/",
+      "what": "J&J Snack Foods",
+      "result": "https://churros.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://churros.com/",
+      "result": {
+        "visibleElements": 136
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "total": 20,
+          "types": {
+            "outlineMissing": {
+              "total": 10,
+              "tagNames": {
+                "a": 10
+              }
+            },
+            "outlinePresent": {
+              "total": 10,
+              "tagNames": {
+                "div": 5,
+                "a": 5
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "a",
+              "text": "Logo; Logo; Logo; Logo; Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "About"
+            },
+            {
+              "tagName": "a",
+              "text": "Our Brands"
+            },
+            {
+              "tagName": "a",
+              "text": "What’s New?"
+            },
+            {
+              "tagName": "a",
+              "text": "packaged goods"
+            },
+            {
+              "tagName": "a",
+              "text": "animal"
+            },
+            {
+              "tagName": "a",
+              "text": "packaged goods"
+            },
+            {
+              "tagName": "a",
+              "text": "hat"
+            },
+            {
+              "tagName": "a",
+              "text": "J&J Snack Foods Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "linkedin - opens in new tab; linkedin"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "div",
+              "text": "Skip to main content; Skip to main content; #uw-skip-to-main"
+            },
+            {
+              "tagName": "div",
+              "text": "Enable accessibility for visually impaired; Enable accessibility forvisually impaired; #uw-enable-visibility"
+            },
+            {
+              "tagName": "div",
+              "text": "Open the accessibility menu; Open the accessibilitymenu; #uw-open-accessibility"
+            },
+            {
+              "tagName": "div",
+              "text": "Open the accessible navigation menu; Open the AccessibleNavigation Menu; #uw-open-nav-menu"
+            },
+            {
+              "tagName": "div",
+              "text": "Open accessibility menu; Accessibility Widget; Spinner: White decorative; Accessibility menu is on; Hide Unhide; #userwayAccessibilityIcon"
+            },
+            {
+              "tagName": "a",
+              "text": "youtube - opens in new tab; youtube"
+            },
+            {
+              "tagName": "a",
+              "text": "instagram - opens in new tab; instagram"
+            },
+            {
+              "tagName": "a",
+              "text": "pinterest - opens in new tab; pinterest"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy."
+            },
+            {
+              "tagName": "a",
+              "text": "Accessibility Statement."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 2,
+            "tagName": {
+              "div": 2
+            },
+            "operableWhy": {
+              "tag": 0,
+              "cursor": 2,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 15,
+            "tagName": {
+              "a": 15
+            },
+            "focusableHow": {
+              "Tab": 15,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 15,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"tp-leftarrow tparrows gyges\" data-autotest-operable=\"cursor\" style=\"top: 50%; transform: matrix(1, 0, 0, 1, 0, -20); left: 0px;\"></div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"tp-rightarrow tparrows gyges\" data-autotest-operable=\"cursor\" style=\"top: 50%; transform: matrix(1, 0, 0, 1, -40, -20); left: 100%;\"></div>}"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Logo; Logo; Logo; Logo; Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Our Brands"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "What’s New?"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"/oreo-churros/\" target=\"_self\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"><div class=\"vc_single_image-wrapper vc_box_border_grey\"><img width=\"260\" height=\"134\" src=\"https://churros.com/wp-content/uploads/2019/05/OreosLogo-Sm.png\" class=\"vc_single_image-img attachment-full\" alt=\"\"></div></a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "animal"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "packaged goods"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "hat"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "J&J Snack Foods Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "linkedin"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "youtube"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "instagram - opens in new tab; instagram"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "pinterest - opens in new tab; pinterest"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy."
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accessibility Statement."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "triggers": 3,
+          "targets": 24
+        },
+        "items": [
+          {
+            "tagName": "LI",
+            "id": "nav-menu-item-25",
+            "text": "About",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Why Churros?"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Why Churros?"
+              },
+              {
+                "tagName": "A",
+                "text": "Latest Trends in Churros"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Latest Trends in Churros"
+              },
+              {
+                "tagName": "A",
+                "text": "History of the Churro"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "History of the Churro"
+              },
+              {
+                "tagName": "A",
+                "text": "How Churros Are Made"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "How Churros Are Made"
+              },
+              {
+                "tagName": "A",
+                "text": "J&J Snack Foods Foodservice"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "J&J Snack Foods Foodservice"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "nav-menu-item-28",
+            "text": "Our Brands",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Oreo Churros"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Oreo Churros"
+              },
+              {
+                "tagName": "A",
+                "text": "Tio Pepe’s Churros"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Tio Pepe’s Churros"
+              },
+              {
+                "tagName": "A",
+                "text": "California Churros"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "California Churros"
+              },
+              {
+                "tagName": "A",
+                "text": "Authentic Loop Churros"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Authentic Loop Churros"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "nav-menu-item-29",
+            "text": "What’s New?",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Recipe Concepts"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Recipe Concepts"
+              },
+              {
+                "tagName": "A",
+                "text": "New Products"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "New Products"
+              },
+              {
+                "tagName": "A",
+                "text": "Contact Us"
+              },
+              {
+                "tagName": "SPAN",
+                "text": "Contact Us"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 0
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "links": 45,
+          "inline": {
+            "total": 2,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Privacy Policy.",
+            "Accessibility Statement."
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://churros.com/",
+      "result": {
+        "roleElements": 0,
+        "badRoleElements": 0,
+        "tagNames": {}
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "aInline": {
+            "total": 2
+          },
+          "aBlock": {
+            "total": 43,
+            "subtotals": [
+              16,
+              12,
+              9,
+              4,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "aInline": {},
+          "aBlock": {
+            "fontWeight": {
+              "400": 11,
+              "700": 32
+            },
+            "lineHeight": {
+              "16px": 16,
+              "18px": 12,
+              "26px": 11,
+              "70px": 4
+            },
+            "maxHeight": {
+              "none": 22,
+              "70px": 21
+            },
+            "opacity": {
+              "0": 1,
+              "1": 42
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://churros.com/",
+      "result": {
+        "totals": {
+          "violation": 19,
+          "recommendation": 1,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]",
+              "aria": "/document[1]/application[2]/button[1]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 741,
+              "top": 541,
+              "height": 46,
+              "width": 46
+            },
+            "snippet": "<div style=\"background: rgb(0, 61, 104) !important;\" tabindex=\"0\" role=\"button\" aria-label=\"Open accessibility menu\" id=\"userwayAccessibilityIcon\" class=\"uai userway_dark\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/p[1]",
+              "aria": "/document[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 670,
+              "top": 561,
+              "height": 100,
+              "width": 105
+            },
+            "snippet": "<p style=\"text-align: center;\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[5]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 670,
+              "top": 489,
+              "height": 19,
+              "width": 105
+            },
+            "snippet": "<a title=\"/authentic-loop-churros/\" data-uw-rm-brl=\"false\" target=\"_self\" href=\"/authentic-loop-churros/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/p[1]",
+              "aria": "/document[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 544,
+              "top": 561,
+              "height": 84,
+              "width": 106
+            },
+            "snippet": "<p style=\"text-align: center;\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[4]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 544,
+              "top": 489,
+              "height": 19,
+              "width": 106
+            },
+            "snippet": "<a title=\"/california-churros/\" data-uw-rm-brl=\"false\" target=\"_self\" href=\"/california-churros/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/p[1]",
+              "aria": "/document[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 418,
+              "top": 561,
+              "height": 84,
+              "width": 106
+            },
+            "snippet": "<p style=\"text-align: center;\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[3]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 418,
+              "top": 489,
+              "height": 19,
+              "width": 106
+            },
+            "snippet": "<a title=\"/tio-pepes-churros/\" data-uw-rm-brl=\"false\" target=\"_self\" href=\"/tio-pepes-churros/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/p[1]",
+              "aria": "/document[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 292,
+              "top": 561,
+              "height": 100,
+              "width": 106
+            },
+            "snippet": "<p style=\"text-align: center;\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[2]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 292,
+              "top": 489,
+              "height": 19,
+              "width": 106
+            },
+            "snippet": "<a title=\"/oreo-churros/\" data-uw-rm-brl=\"false\" target=\"_self\" href=\"/oreo-churros/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]",
+              "aria": "/document[1]/heading[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<div data-uw-rm-ignore=\"\" style=\"clip: rect(1px, 1px, 1px, 1px)!important;height:1px!important;width:1px!important;overflow:hidden!important;position:absolute!important;top:0!important;left:0!important;z-index:-1!important;opacity:0!important\" data-uw-rm-heading=\"h1\" aria-level=\"1\" role=\"heading\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]",
+              "aria": "/document[1]/application[2]/button[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 741,
+              "top": 541,
+              "height": 46,
+              "width": 46
+            },
+            "snippet": "<div style=\"background: rgb(0, 61, 104) !important;\" tabindex=\"0\" role=\"button\" aria-label=\"Open accessibility menu\" id=\"userwayAccessibilityIcon\" class=\"uai userway_dark\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]",
+              "aria": "/document[1]/application[1]/button[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 38,
+              "top": -70,
+              "height": 63,
+              "width": 315
+            },
+            "snippet": "<div id=\"uw-skip-to-main\" aria-label=\"Skip to main content\" tabindex=\"0\" role=\"button\" class=\"uw-sl__item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleApplicationLandmarks",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]",
+              "aria": "/document[1]/application[2]"
+            },
+            "message": "Multiple elements with \"application\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 0,
+              "width": 0
+            },
+            "snippet": "<div title=\"Accessibility Menu\" style=\"background-color: transparent !important; overflow: initial !important;\" role=\"application\" class=\"uwy userway_p3\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ApplicationLandmarkLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]",
+              "aria": "/document[1]/application[2]"
+            },
+            "message": "Element with \"application\" role does not have a label",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 0,
+              "width": 0
+            },
+            "snippet": "<div title=\"Accessibility Menu\" style=\"background-color: transparent !important; overflow: initial !important;\" role=\"application\" class=\"uwy userway_p3\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/footer[1]/div[1]/div[2]/div[1]/div[1]/p[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "Text contrast of 1.62 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 0,
+              "top": 812,
+              "height": 54,
+              "width": 800
+            },
+            "snippet": "<p>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[4]/a[1]/span[1]",
+              "aria": "/document[1]/contentinfo[1]/list[1]/listitem[4]/link[1]"
+            },
+            "message": "Text contrast of 3.33 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 732,
+              "top": 744,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<span class=\"screen-reader-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[3]/a[1]/span[1]",
+              "aria": "/document[1]/contentinfo[1]/list[1]/listitem[3]/link[1]"
+            },
+            "message": "Text contrast of 3.33 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 686,
+              "top": 744,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<span class=\"screen-reader-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[2]/a[1]/span[1]",
+              "aria": "/document[1]/contentinfo[1]/list[1]/listitem[2]/link[1]"
+            },
+            "message": "Text contrast of 3.33 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 640,
+              "top": 744,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<span class=\"screen-reader-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[1]/a[1]/span[1]",
+              "aria": "/document[1]/contentinfo[1]/list[1]/listitem[1]/link[1]"
+            },
+            "message": "Text contrast of 3.33 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 594,
+              "top": 744,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<span class=\"screen-reader-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[6]/div[1]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+            "bounds": {
+              "left": 0,
+              "top": 711,
+              "height": 165,
+              "width": 800
+            },
+            "snippet": "<footer>",
+            "level": "recommendation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://churros.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Home - Churros.com",
+          "pageurl": "https://churros.com/",
+          "time": 6.93,
+          "creditsremaining": 545,
+          "allitemcount": 100,
+          "totalelements": 689,
+          "waveurl": "http://wave.webaim.org/report?url=https://churros.com/",
+          "domid": "5201410cc0f1a8c0965293c636601330"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 0,
+            "items": []
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 11,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 11,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#rev_slider_1_1_forcefullwidth > DIV#rev_slider_1_1_wrapper > DIV#rev_slider_1_1 > UL:first-child > LI:first-child + LI > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV#slide-5-layer-7",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#rev_slider_1_1_forcefullwidth > DIV#rev_slider_1_1_wrapper > DIV#rev_slider_1_1 > UL:first-child > LI:first-child + LI + LI > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV#slide-3-layer-7",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#rev_slider_1_1_forcefullwidth > DIV#rev_slider_1_1_wrapper > DIV#rev_slider_1_1 > UL:first-child > LI:first-child + LI + LI + LI > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV#slide-4-layer-7",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#rev_slider_1_1_forcefullwidth > DIV#rev_slider_1_1_wrapper > DIV#rev_slider_1_1 > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > P#slider-1-layer-3",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV#zoom-social-icons-widget-2 > UL:first-child > LI:first-child > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV#zoom-social-icons-widget-2 > UL:first-child > LI:first-child + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV#zoom-social-icons-widget-2 > UL:first-child > LI:first-child + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV#zoom-social-icons-widget-2 > UL:first-child > LI:first-child + LI + LI + LI > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV#custom_html-3 > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV#custom_html-3 > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV + FOOTER > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1.08,
+                    "#ffffff",
+                    "#f6f6f6",
+                    false
+                  ],
+                  [
+                    1.08,
+                    "#ffffff",
+                    "#f6f6f6",
+                    false
+                  ],
+                  [
+                    1.08,
+                    "#ffffff",
+                    "#f6f6f6",
+                    false
+                  ],
+                  [
+                    1.08,
+                    "#ffffff",
+                    "#f6f6f6",
+                    false
+                  ],
+                  [
+                    3.32,
+                    "#818181",
+                    "#ededed",
+                    false
+                  ],
+                  [
+                    3.32,
+                    "#818181",
+                    "#ededed",
+                    false
+                  ],
+                  [
+                    3.32,
+                    "#818181",
+                    "#ededed",
+                    false
+                  ],
+                  [
+                    3.32,
+                    "#818181",
+                    "#ededed",
+                    false
+                  ],
+                  [
+                    3.32,
+                    "#818181",
+                    "#ededed",
+                    false
+                  ],
+                  [
+                    3.32,
+                    "#818181",
+                    "#ededed",
+                    false
+                  ],
+                  [
+                    1.62,
+                    "#bcbcbc",
+                    "#ededed",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 12,
+            "items": {
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child + IMG + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child + IMG + IMG + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child + IMG + IMG + IMG + IMG"
+                ]
+              },
+              "alt_duplicate": {
+                "id": "alt_duplicate",
+                "description": "A nearby image has the same alternative text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child + IMG + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER + A + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "heading_missing": {
+                "id": "heading_missing",
+                "description": "No heading structure",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > UL#menu-main-menu > LI#nav-menu-item-40 > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child > META:first-child + META + LINK + LINK + TITLE + META + META + LINK + META + META + META + META + META + META + META + META + META + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + LINK + LINK + LINK + SCRIPT + SCRIPT + STYLE + LINK + STYLE + LINK + LINK + LINK + LINK + LINK + LINK + STYLE + LINK + LINK + LINK + LINK + LINK + LINK + LINK + LINK + LINK + LINK + LINK + LINK + LINK + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + LINK + LINK + LINK + LINK + LINK + SCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + META + META + LINK + LINK + LINK + META + SCRIPT + STYLE + NOSCRIPT"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 297,
+        "axe": 26,
+        "ibm": 46,
+        "wave": 46,
+        "bulk": 0,
+        "focOl": 40,
+        "focOp": 8,
+        "hover": 60,
+        "labClash": 0,
+        "linkUl": 6,
+        "motion": 50,
+        "radioSet": 0,
+        "role": 0,
+        "styleDiff": 15
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      25
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      9
+    ],
+    [
+      "wave",
+      7
+    ],
+    [
+      "focOl",
+      5
+    ],
+    [
+      "axe",
+      4
+    ],
+    [
+      "focOp",
+      4
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}
