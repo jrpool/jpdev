@@ -1,0 +1,1338 @@
+{
+  "script": "p03c10",
+  "batch": "aetnapeersMore",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "qoeq",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.regence.com/home",
+      "what": "Regence",
+      "result": "https://www.regence.com/home"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "bytes": [
+          86772,
+          86772,
+          86813,
+          86821,
+          86286
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1.006
+        ],
+        "meanLocalRatio": 1.002,
+        "maxLocalRatio": 1.006,
+        "globalRatio": 1.006,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          788
+        ],
+        "meanPixelChange": 197,
+        "maxPixelChange": 788,
+        "changeFrequency": 0.25
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.regence.com/home",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 5,
+          "serious": 2,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "duplicate-id-active",
+            "description": "Ensures every id attribute value of active elements is unique",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".css-2mfrhs > .sign-in-dropdown.css-txst8j > .dropdown.show > .dropdown-toggle[data-toggle=\"dropdown\"][aria-haspopup=\"true\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-active",
+                    "description": "Document has active elements with the same id attribute: dropdownMenuLink",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#footer-ordinary-links",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".css-1inkqfd",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".css-u2nfpy",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".css-2mfrhs > .sign-in-dropdown.css-txst8j > .dropdown.show > .dropdown-toggle[data-toggle=\"dropdown\"][aria-haspopup=\"true\"] > span > .sign-in",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".css-10kr8xe",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.regence.com/home",
+      "what": "Regence",
+      "result": "https://www.regence.com/home"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.regence.com/home",
+      "result": {
+        "visibleElements": 255
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "total": 30,
+          "types": {
+            "outlineMissing": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 30,
+              "tagNames": {
+                "div": 1,
+                "a": 29
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [],
+          "outlinePresent": [
+            {
+              "tagName": "div",
+              "text": "Sign in; #dropdownMenuLink"
+            },
+            {
+              "tagName": "a",
+              "text": "Individuals & Families"
+            },
+            {
+              "tagName": "a",
+              "text": "Medicare"
+            },
+            {
+              "tagName": "a",
+              "text": "For Employers"
+            },
+            {
+              "tagName": "a",
+              "text": "For Producers"
+            },
+            {
+              "tagName": "a",
+              "text": "For Providers"
+            },
+            {
+              "tagName": "a",
+              "text": "Create one."
+            },
+            {
+              "tagName": "a",
+              "text": "Regence BlueCross BlueShield of Oregon and Utah, Regence BlueShield of Idaho and select counties of Washington; Regence BlueCross BlueShield of Oregon and Utah, Regence BlueShield of Idaho and select counties of Washington; #Regence-BlueCross-BlueShield-of-Oregon-and-Utah,-Regence-BlueShield-of-Idaho-and-select-counties-of-Washington"
+            },
+            {
+              "tagName": "a",
+              "text": "Why Regence"
+            },
+            {
+              "tagName": "a",
+              "text": "Why Regence"
+            },
+            {
+              "tagName": "a",
+              "text": "Why Regence"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact us"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Non-discrimination"
+            },
+            {
+              "tagName": "a",
+              "text": "Español"
+            },
+            {
+              "tagName": "a",
+              "text": "繁體中文"
+            },
+            {
+              "tagName": "a",
+              "text": "Tiếng Việt"
+            },
+            {
+              "tagName": "a",
+              "text": "한국어"
+            },
+            {
+              "tagName": "a",
+              "text": "Русский"
+            },
+            {
+              "tagName": "a",
+              "text": "Tagalog"
+            },
+            {
+              "tagName": "a",
+              "text": "Українська"
+            },
+            {
+              "tagName": "a",
+              "text": "ខ្មែរ"
+            },
+            {
+              "tagName": "a",
+              "text": "日本語"
+            },
+            {
+              "tagName": "a",
+              "text": "አማርኛ"
+            },
+            {
+              "tagName": "a",
+              "text": "Oroomiffa"
+            },
+            {
+              "tagName": "a",
+              "text": "العربية"
+            },
+            {
+              "tagName": "a",
+              "text": "ਪੰਜਾਬੀ"
+            },
+            {
+              "tagName": "a",
+              "text": "Deutsch"
+            },
+            {
+              "tagName": "a",
+              "text": "ພາສາລາວ"
+            },
+            {
+              "tagName": "a",
+              "text": "..."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 5,
+            "tagName": {
+              "span": 3,
+              "div": 1,
+              "a": 1
+            },
+            "operableWhy": {
+              "tag": 1,
+              "cursor": 4,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 45,
+            "tagName": {
+              "div": 2,
+              "a": 39,
+              "button": 2,
+              "select": 1,
+              "input[type=text]": 1
+            },
+            "focusableHow": {
+              "Tab": 45,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 43,
+              "cursor": 2,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "set ZIP"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Individuals & FamiliesMedicareFor EmployersFor ProducersFor Providers"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Create one."
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "#hamburger-nav"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "Continue my application"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Sign in; #dropdownMenuLink"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Individuals & Families"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicare"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Employers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Producers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Providers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Create one."
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Regence BlueCross BlueShield of Oregon and Utah, Regence BlueShield of Idaho and select counties of Washington; Regence BlueCross BlueShield of Oregon and Utah, Regence BlueShield of Idaho and select counties of Washington; #Regence-BlueCross-BlueShield-of-Oregon-and-Utah,-Regence-BlueShield-of-Idaho-and-select-counties-of-Washington"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Read the latest updates on COVID-19 vaccines, coverage and more."
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "latest updates on COVID-19 vaccines"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "close alert"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Continue my application"
+            },
+            {
+              "tagName": "select",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "I am looking for a:Individual & family planMedicare planGroup plan; Individual & family planMedicare planGroup plan"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ZIP code:"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Start shopping"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Why Regence"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Why Regence"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Why Regence"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "find a doctor; Find a Doctor"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "about us; About us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "contact us; Contact us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "terms & privacy; Terms & privacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ethics & compliance; Ethics & compliance"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "fraud & abuse; Fraud & abuse"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "feedback; Feedback"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "for developers; For developers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Non-discrimination"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Español"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "繁體中文"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tiếng Việt"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "한국어"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Русский"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tagalog"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Українська"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ខ្មែរ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "日本語"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "አማርኛ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Oroomiffa"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "العربية"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ਪੰਜਾਬੀ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Deutsch"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ພາສາລາວ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "..."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 2,
+          "wellLabeled": 6
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "close alert"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "x"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "I am looking for a:Individual & family planMedicare planGroup plan"
+                ]
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "ZIP code:"
+                ]
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Start shopping"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "links": 211,
+          "inline": {
+            "total": 41,
+            "underlined": 19,
+            "underlinedPercent": 46
+          }
+        },
+        "items": {
+          "underlined": [
+            "sign in",
+            "sign in",
+            "sign in",
+            "sign in",
+            "sign in",
+            "latest updates on COVID-19 vaccines",
+            "Why Regence",
+            "Why Regence",
+            "Why Regence",
+            "Contact us",
+            "Learn more",
+            "Find a Doctor",
+            "About us",
+            "Contact us",
+            "Terms & privacy",
+            "Ethics & compliance",
+            "Fraud & abuse",
+            "Feedback",
+            "For developers"
+          ],
+          "notUnderlined": [
+            "Find a doctor",
+            "Contact us",
+            "Create one.",
+            "Create one.",
+            "Proceed",
+            "Non-discrimination",
+            "Español",
+            "繁體中文",
+            "Tiếng Việt",
+            "한국어",
+            "Русский",
+            "Tagalog",
+            "Українська",
+            "ខ្មែរ",
+            "日本語",
+            "አማርኛ",
+            "Oroomiffa",
+            "العربية",
+            "ਪੰਜਾਬੀ",
+            "Deutsch",
+            "ພາສາລາວ",
+            "..."
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.regence.com/home",
+      "result": {
+        "roleElements": 28,
+        "badRoleElements": 25,
+        "tagNames": {
+          "DIV": {
+            "button": 16,
+            "listbox": 1,
+            "dialog": 1,
+            "document": 1,
+            "navigation": 2
+          },
+          "INPUT": {
+            "combobox": 2
+          },
+          "A": {
+            "button": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 3
+          },
+          "h3": {
+            "total": 8
+          },
+          "h4": {
+            "total": 3,
+            "subtotals": [
+              2,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 41,
+            "subtotals": [
+              17,
+              8,
+              5,
+              5,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 170,
+            "subtotals": [
+              149,
+              6,
+              5,
+              5,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 4,
+            "subtotals": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {},
+          "h3": {},
+          "h4": {
+            "fontWeight": {
+              "200": 2,
+              "500": 1
+            },
+            "lineHeight": {
+              "30px": 2,
+              "40px": 1
+            },
+            "fontSize": {
+              "20px": 27,
+              "28px": 12
+            }
+          },
+          "aInline": {
+            "borderStyle": {
+              "none": 40,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 40,
+              "1px": 1
+            },
+            "fontWeight": {
+              "100": 19,
+              "200": 1,
+              "300": 2,
+              "400": 13,
+              "600": 6
+            },
+            "lineHeight": {
+              "24px": 30,
+              "18px": 5,
+              "10px": 2,
+              "normal": 2,
+              "30px": 1,
+              "25.7143px": 1
+            },
+            "minWidth": {
+              "0px": 33,
+              "76px": 5,
+              "94px": 2,
+              "100px": 1
+            },
+            "textDecorationLine": {
+              "none": 22,
+              "underline": 19
+            },
+            "fontSize": {
+              "12px": 308,
+              "16px": 210,
+              "14px": 28,
+              "20px": 14,
+              "18px": 14
+            }
+          },
+          "aBlock": {
+            "fontWeight": {
+              "200": 11,
+              "300": 9,
+              "400": 150
+            },
+            "lineHeight": {
+              "24px": 156,
+              "16px": 10,
+              "normal": 4
+            },
+            "minHeight": {
+              "0px": 159,
+              "auto": 11
+            },
+            "minWidth": {
+              "0px": 159,
+              "auto": 11
+            },
+            "textDecorationLine": {
+              "none": 169,
+              "underline": 1
+            },
+            "fontSize": {
+              "16px": 2324,
+              "15px": 28,
+              "28px": 14,
+              "18px": 14
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 2,
+              "solid": 2
+            },
+            "borderWidth": {
+              "0px": 2,
+              "1px": 2
+            },
+            "fontWeight": {
+              "300": 1,
+              "400": 1,
+              "600": 1,
+              "700": 1
+            },
+            "lineHeight": {
+              "12px": 1,
+              "21px": 1,
+              "25.7143px": 1,
+              "24px": 1
+            },
+            "minHeight": {
+              "0px": 3,
+              "auto": 1
+            },
+            "minWidth": {
+              "auto": 1,
+              "0px": 1,
+              "100px": 1,
+              "170px": 1
+            },
+            "opacity": {
+              "1": 2,
+              "0.7": 1,
+              "0.2": 1
+            },
+            "fontSize": {
+              "18px": 28,
+              "21px": 14,
+              "16px": 14
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.regence.com/home",
+      "result": {
+        "totals": {
+          "violation": 3,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/a[1]",
+              "aria": "/document[1]/link[9]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 80,
+              "top": 22,
+              "height": 47,
+              "width": 472
+            },
+            "snippet": "<a href=\"/home\" aria-label=\"Regence BlueCross BlueShield of Oregon and Utah, Regence BlueShield of Idaho and select counties of Washington\" id=\"Regence-BlueCross-BlueShield-of-Oregon-and-Utah,-Regence-BlueShield-of-Idaho-and-select-counties-of-Washington\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/footer[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/contentinfo[1]/navigation[2]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 32,
+              "top": 3770,
+              "height": 32,
+              "width": 736
+            },
+            "snippet": "<div class=\"css-w9qty  delimited-links-container\" role=\"navigation\" id=\"footer-delimited-links\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/footer[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/contentinfo[1]/navigation[1]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 32,
+              "top": 3714,
+              "height": 40,
+              "width": 736
+            },
+            "snippet": "<div class=\"css-154vxxl  ordinary-links-container\" role=\"navigation\" id=\"footer-ordinary-links\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.regence.com/home",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Regence: The most trusted name in health insurance",
+          "pageurl": "https://www.regence.com/home",
+          "time": 8.04,
+          "creditsremaining": 350,
+          "allitemcount": 155,
+          "totalelements": 1168,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.regence.com/home",
+          "domid": "ddfbafe8ea100d9a1998be979ee590eb"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 0,
+            "items": []
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 13,
+            "items": {
+              "alt_long": {
+                "id": "alt_long",
+                "description": "Long alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV:first-child + DIV > DIV:first-child > A#Regence-BlueCross-BlueShield-of-Oregon-and-Utah,-Regence-BlueShield-of-Idaho-and-select-counties-of-Washington > IMG:first-child"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV#search > DIV#search-container > INPUT#searchbox",
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV#mobile-nav > NAV#mobile-nav-slideout > DIV#mobile-nav-search > DIV#mobile-search-container > INPUT#mobile-search-box"
+                ]
+              },
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV#mobile-nav > NAV#mobile-nav-slideout > DIV#side-nav > DIV:first-child > DIV:first-child > DIV:first-child > DIV#side-mobile-nav-drawer-for-producers > DIV:first-child > DIV:first-child + DIV > DIV#side-mobile-nav-subcategory-for-producers-producer-tools > DIV:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV#mobile-nav > NAV#mobile-nav-slideout > DIV#side-nav > DIV:first-child > DIV:first-child > DIV:first-child > DIV#side-mobile-nav-drawer-for-producers > DIV:first-child > DIV:first-child + DIV > DIV#side-mobile-nav-subcategory-for-producers-producer-tools > DIV:first-child + A + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV#top-nav > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#top-desktop-nav-drawer-for-producers > DIV:first-child > DIV:first-child + DIV > DIV#top-desktop-nav-subcategory-for-producers-producer-tools > DIV:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV#top-nav > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#top-desktop-nav-drawer-for-producers > DIV:first-child > DIV:first-child + DIV > DIV#top-desktop-nav-subcategory-for-producers-producer-tools > DIV:first-child + A + A + A"
+                ]
+              },
+              "underline": {
+                "id": "underline",
+                "description": "Underlined text",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV > DIV:first-child > DIV:first-child > DIV#zip-selector > DIV:first-child > SPAN:first-child > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + HR + DIV > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV#mobile-nav > NAV#mobile-nav-slideout > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + HR + DIV > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-header > DIV:first-child + DIV > SCRIPT:first-child + DIV + DIV > DIV#headerRowContent > DIV#mobile-nav > NAV#mobile-nav-slideout > DIV#mobile-zip-selector > DIV:first-child > DIV:first-child > SPAN:first-child > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + DIV + MAIN > DIV:first-child + DIV + DIV > SCRIPT:first-child + SCRIPT + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + A > SPAN:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 255,
+        "axe": 20,
+        "ibm": 10,
+        "wave": 26,
+        "bulk": 10,
+        "focOl": 0,
+        "focOp": 20,
+        "hover": 0,
+        "labClash": 4,
+        "linkUl": 66,
+        "motion": 2,
+        "radioSet": 0,
+        "role": 50,
+        "styleDiff": 47
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      52
+    ],
+    [
+      "motion",
+      13
+    ],
+    [
+      "ibm",
+      12
+    ],
+    [
+      "axe",
+      11
+    ],
+    [
+      "focOl",
+      11
+    ],
+    [
+      "focOp",
+      11
+    ],
+    [
+      "wave",
+      8
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

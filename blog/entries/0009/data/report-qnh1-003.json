@@ -1,0 +1,1985 @@
+{
+  "script": "p03c10",
+  "batch": "aetnapeersRedo",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "qnh1",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.healthcare.gov/",
+      "what": "HealthCare.gov",
+      "result": "https://www.healthcare.gov/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "bytes": [
+          344980,
+          310817,
+          310817,
+          310842,
+          310817
+        ],
+        "localRatios": [
+          1.11,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1.028,
+        "maxLocalRatio": 1.11,
+        "globalRatio": 1.11,
+        "pixelChanges": [
+          511361,
+          0,
+          22,
+          22
+        ],
+        "meanPixelChange": 127851,
+        "maxPixelChange": 511361,
+        "changeFrequency": 0.75
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 0,
+          "serious": 2,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#prefix-overlay-outer",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#prefix-overlay-form-div > form > div:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: prefix-questions",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label-title-only",
+            "description": "Ensures that every form element is not solely labeled using the title or aria-describedby attributes",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#prefix-emailInput",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "title-only",
+                    "description": "Only title used to generate label for form element",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "select-name",
+            "description": "Ensures select element has an accessible name",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "div:nth-child(2) > select",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "implicit-label",
+                    "description": "Form element does not have an implicit (wrapped) <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "explicit-label",
+                    "description": "Form element does not have an explicit <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.healthcare.gov/",
+      "what": "HealthCare.gov",
+      "result": "https://www.healthcare.gov/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "visibleElements": 243
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "total": 67,
+          "types": {
+            "outlineMissing": {
+              "total": 1,
+              "tagNames": {
+                "input[type=text]": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 66,
+              "tagNames": {
+                "a": 63,
+                "button": 3
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "input[type=text]",
+              "text": "Site Search; #input-main-nav-search"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Skip navigation; #skip-main-nav"
+            },
+            {
+              "tagName": "a",
+              "text": "HealthCare.gov"
+            },
+            {
+              "tagName": "a",
+              "text": "Abra CuidadoDeSalud.gov en español; Español"
+            },
+            {
+              "tagName": "a",
+              "text": "Log in"
+            },
+            {
+              "tagName": "a",
+              "text": "Get Coverage"
+            },
+            {
+              "tagName": "a",
+              "text": "Keep or Update Your Plan"
+            },
+            {
+              "tagName": "button",
+              "text": "See TopicsHas subitems"
+            },
+            {
+              "tagName": "a",
+              "text": "Get Answers"
+            },
+            {
+              "tagName": "button",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "text": "SEE IF I CAN ENROLL"
+            },
+            {
+              "tagName": "a",
+              "text": "SEE IF I CAN CHANGE"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "LEARN MORE"
+            },
+            {
+              "tagName": "a",
+              "text": "QUICK START GUIDEGET STARTED"
+            },
+            {
+              "tagName": "a",
+              "text": "PAY YOUR PREMIUMSEE HOW"
+            },
+            {
+              "tagName": "a",
+              "text": "GET MORE SAVINGSLEARN HOW"
+            },
+            {
+              "tagName": "a",
+              "text": "FIND LOCAL HELPSEE OPTIONS"
+            },
+            {
+              "tagName": "button",
+              "text": "Sign up"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "HealthCare.gov Blog; #updates-blog-title"
+            },
+            {
+              "tagName": "a",
+              "text": "September 09 Recently moved? You may be able to enroll in or change Marketplace coverage"
+            },
+            {
+              "tagName": "a",
+              "text": "August 26 When can I enroll in 2022 Marketplace insurance?"
+            },
+            {
+              "tagName": "a",
+              "text": "See More"
+            },
+            {
+              "tagName": "a",
+              "text": "About the Affordable Care Act"
+            },
+            {
+              "tagName": "a",
+              "text": "Regulatory and Policy Information"
+            },
+            {
+              "tagName": "a",
+              "text": "For Navigators, Assisters & Partners"
+            },
+            {
+              "tagName": "a",
+              "text": "For Agents & Brokers"
+            },
+            {
+              "tagName": "a",
+              "text": "For the Media"
+            },
+            {
+              "tagName": "a",
+              "text": "For Researchers"
+            },
+            {
+              "tagName": "a",
+              "text": "For States"
+            },
+            {
+              "tagName": "a",
+              "text": "Information in other languages"
+            },
+            {
+              "tagName": "a",
+              "text": "Questions? Call 1-800-318-2596"
+            },
+            {
+              "tagName": "a",
+              "text": "Find Local Help"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit the HealthCare.gov blog"
+            },
+            {
+              "tagName": "a",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "a",
+              "text": "All Topics"
+            },
+            {
+              "tagName": "a",
+              "text": "Glossary"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Archive"
+            },
+            {
+              "tagName": "a",
+              "text": "Nondiscrimination / Accessibility"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Settings"
+            },
+            {
+              "tagName": "a",
+              "text": "Linking Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Using This Site"
+            },
+            {
+              "tagName": "a",
+              "text": "Plain Writing"
+            },
+            {
+              "tagName": "a",
+              "text": "中文"
+            },
+            {
+              "tagName": "a",
+              "text": "Kreyòl"
+            },
+            {
+              "tagName": "a",
+              "text": "Français"
+            },
+            {
+              "tagName": "a",
+              "text": "Deutsch"
+            },
+            {
+              "tagName": "a",
+              "text": "ગુજરાતી"
+            },
+            {
+              "tagName": "a",
+              "text": "हिंदी"
+            },
+            {
+              "tagName": "a",
+              "text": "Italiano"
+            },
+            {
+              "tagName": "a",
+              "text": "日本語"
+            },
+            {
+              "tagName": "a",
+              "text": "한국어"
+            },
+            {
+              "tagName": "a",
+              "text": "Polski"
+            },
+            {
+              "tagName": "a",
+              "text": "Português"
+            },
+            {
+              "tagName": "a",
+              "text": "Русский"
+            },
+            {
+              "tagName": "a",
+              "text": "Español"
+            },
+            {
+              "tagName": "a",
+              "text": "Tagalog"
+            },
+            {
+              "tagName": "a",
+              "text": "tiếng việt"
+            },
+            {
+              "tagName": "a",
+              "text": "HHS.gov"
+            },
+            {
+              "tagName": "a",
+              "text": "Whitehouse.gov"
+            },
+            {
+              "tagName": "a",
+              "text": "USA.gov"
+            },
+            {
+              "tagName": "a",
+              "text": "Back to top"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 4,
+            "tagName": {
+              "div": 4
+            },
+            "operableWhy": {
+              "tag": 0,
+              "cursor": 4,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 67,
+            "tagName": {
+              "a": 63,
+              "button": 3,
+              "input[type=text]": 1
+            },
+            "focusableHow": {
+              "Tab": 67,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 67,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "GET STARTED"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "SEE HOW"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "LEARN HOW"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "SEE OPTIONS"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip navigation; #skip-main-nav"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HealthCare.gov"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Abra CuidadoDeSalud.gov en español; Español"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Log in"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get Coverage"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Keep or Update Your Plan"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "See TopicsHas subitems"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get Answers"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Site Search; #input-main-nav-search"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "SEE IF I CAN ENROLL"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "SEE IF I CAN CHANGE"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "LEARN MORE"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "QUICK START GUIDEGET STARTED"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "PAY YOUR PREMIUMSEE HOW"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "GET MORE SAVINGSLEARN HOW"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "FIND LOCAL HELPSEE OPTIONS"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sign up"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HealthCare.gov Blog; #updates-blog-title"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "September 09 Recently moved? You may be able to enroll in or change Marketplace coverage"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "August 26 When can I enroll in 2022 Marketplace insurance?"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "See More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About the Affordable Care Act"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Regulatory and Policy Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Navigators, Assisters & Partners"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Agents & Brokers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For the Media"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Researchers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For States"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Information in other languages"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Questions? Call 1-800-318-2596"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find Local Help"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit the HealthCare.gov blog"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "All Topics"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Glossary"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Archive"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Nondiscrimination / Accessibility"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Settings"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Linking Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Using This Site"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Plain Writing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "中文"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Kreyòl"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Français"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Deutsch"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ગુજરાતી"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "हिंदी"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Italiano"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "日本語"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "한국어"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Polski"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Português"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Русский"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Español"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tagalog"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "tiếng việt"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HHS.gov"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Whitehouse.gov"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "USA.gov"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Back to top"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "triggers": 1,
+          "targets": 36
+        },
+        "items": [
+          {
+            "tagName": "BUTTON",
+            "id": "NONE",
+            "text": "See TopicsHas subitems",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "2022 dates & deadlines"
+              },
+              {
+                "tagName": "A",
+                "text": "Coverage options for the rest of 2021"
+              },
+              {
+                "tagName": "A",
+                "text": "Marketplace tips"
+              },
+              {
+                "tagName": "A",
+                "text": "Dental coverage"
+              },
+              {
+                "tagName": "A",
+                "text": "Medicaid & CHIP"
+              },
+              {
+                "tagName": "A",
+                "text": "How to apply and enroll"
+              },
+              {
+                "tagName": "A",
+                "text": "Picking a plan"
+              },
+              {
+                "tagName": "A",
+                "text": "Change/update plans for 2021"
+              },
+              {
+                "tagName": "A",
+                "text": "See if you can change plans"
+              },
+              {
+                "tagName": "A",
+                "text": "Report income/family changes"
+              },
+              {
+                "tagName": "A",
+                "text": "Cancel a plan"
+              },
+              {
+                "tagName": "A",
+                "text": "New, lower savings available"
+              },
+              {
+                "tagName": "A",
+                "text": "See if you'll save"
+              },
+              {
+                "tagName": "A",
+                "text": "Save on your premiums"
+              },
+              {
+                "tagName": "A",
+                "text": "Cost-sharing reductions"
+              },
+              {
+                "tagName": "A",
+                "text": "High Deductible Health Plans"
+              },
+              {
+                "tagName": "A",
+                "text": "Use your coverage"
+              },
+              {
+                "tagName": "A",
+                "text": "Estimate income"
+              },
+              {
+                "tagName": "A",
+                "text": "Find local help"
+              },
+              {
+                "tagName": "A",
+                "text": "Get login help"
+              },
+              {
+                "tagName": "A",
+                "text": "Submit requested documents"
+              },
+              {
+                "tagName": "A",
+                "text": "Appeal a Marketplace decision"
+              },
+              {
+                "tagName": "A",
+                "text": "Confirm your Special Enrollment Period"
+              },
+              {
+                "tagName": "A",
+                "text": "Pay premium & check coverage status"
+              },
+              {
+                "tagName": "A",
+                "text": "Just had a baby or adopted"
+              },
+              {
+                "tagName": "A",
+                "text": "Are under 30"
+              },
+              {
+                "tagName": "A",
+                "text": "Have/offered job-based insurance"
+              },
+              {
+                "tagName": "A",
+                "text": "Are self-employed"
+              },
+              {
+                "tagName": "A",
+                "text": "Are unemployed"
+              },
+              {
+                "tagName": "A",
+                "text": "Qualify for Medicare"
+              },
+              {
+                "tagName": "A",
+                "text": "Health care & taxes"
+              },
+              {
+                "tagName": "A",
+                "text": "The penalty for not having coverage in 2018 & earl"
+              },
+              {
+                "tagName": "A",
+                "text": "Exemptions in 2018 & earlier"
+              },
+              {
+                "tagName": "A",
+                "text": "Exemptions & Catastrophic plans"
+              },
+              {
+                "tagName": "A",
+                "text": "Browse all topics >"
+              },
+              {
+                "tagName": "A",
+                "text": "See if you qualify for a Special Enrollment Period"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 15
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Site Search"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "See TopicsHas subitems"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Site Search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Sign up"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "×"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Pick your state"
+                ]
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Get email updates"
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "INPUT",
+              "type": "tel",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Get text message updates (optional)"
+                ]
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Health insurance for individuals & families"
+                ]
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Health insurance for small businesses"
+                ]
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "News & information from the HealthCare.gov blog"
+                ]
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "SIGN UP"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "CONTINUE"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "links": 221,
+          "inline": {
+            "total": 53,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Español",
+            "Get Coverage",
+            "SEE IF I CAN ENROLL",
+            "SEE IF I CAN CHANGE",
+            "Learn more",
+            "All Topics",
+            "Glossary",
+            "Contact Us",
+            "Archive",
+            "Nondiscrimination / Accessibility",
+            "Privacy Policy",
+            "Privacy Settings",
+            "Linking Policy",
+            "Using This Site",
+            "Plain Writing",
+            "中文",
+            "Kreyòl",
+            "Français",
+            "Deutsch",
+            "ગુજરાતી",
+            "हिंदी",
+            "Italiano",
+            "日本語",
+            "한국어",
+            "Polski",
+            "Português",
+            "Русский",
+            "Español",
+            "Tagalog",
+            "All Topics",
+            "Glossary",
+            "Contact Us",
+            "Archive",
+            "Nondiscrimination / Accessibility",
+            "Privacy Policy",
+            "Privacy Settings",
+            "Linking Policy",
+            "Using This Site",
+            "Plain Writing",
+            "中文",
+            "Kreyòl",
+            "Français",
+            "Deutsch",
+            "ગુજરાતી",
+            "हिंदी",
+            "Italiano",
+            "日本語",
+            "한국어",
+            "Polski",
+            "Português",
+            "Русский",
+            "Español",
+            "Tagalog"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "roleElements": 22,
+        "badRoleElements": 6,
+        "tagNames": {
+          "A": {
+            "navigation": 1
+          },
+          "SECTION": {
+            "navigation": 1
+          },
+          "DIV": {
+            "navigation": 1,
+            "main": 1,
+            "dialog": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          },
+          "h2": {
+            "total": 9,
+            "subtotals": [
+              4,
+              2,
+              2,
+              1
+            ]
+          },
+          "h3": {
+            "total": 4,
+            "subtotals": [
+              2,
+              2
+            ]
+          },
+          "aInline": {
+            "total": 53,
+            "subtotals": [
+              48,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 168,
+            "subtotals": [
+              86,
+              43,
+              7,
+              7,
+              3,
+              3,
+              2,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 5,
+            "subtotals": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {
+            "lineHeight": {
+              "67px": 1,
+              "44px": 1
+            },
+            "fontSize": {
+              "24px": 2,
+              "60px": 1
+            }
+          },
+          "h2": {
+            "fontWeight": {
+              "400": 3,
+              "700": 6
+            },
+            "lineHeight": {
+              "32px": 7,
+              "25px": 2
+            },
+            "fontSize": {
+              "20px": 33,
+              "18px": 21,
+              "24px": 9
+            }
+          },
+          "h3": {
+            "lineHeight": {
+              "25px": 2,
+              "16px": 2
+            },
+            "fontSize": {
+              "12px": 29,
+              "18px": 25
+            }
+          },
+          "aInline": {
+            "borderStyle": {
+              "none none solid": 51,
+              "none": 2
+            },
+            "borderWidth": {
+              "0px 0px 1px": 51,
+              "0px": 2
+            },
+            "fontWeight": {
+              "400": 48,
+              "600": 1,
+              "700": 4
+            },
+            "lineHeight": {
+              "16px": 48,
+              "30px": 2,
+              "19px": 1,
+              "normal": 1,
+              "20.4px": 1
+            },
+            "fontSize": {
+              "10px": 720,
+              "20px": 30,
+              "14px": 15,
+              "18px": 15,
+              "13.6px": 15
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none none solid": 148,
+              "none": 20
+            },
+            "borderWidth": {
+              "0px 0px 1px": 148,
+              "0px": 20
+            },
+            "fontStyle": {
+              "normal": 165,
+              "italic": 3
+            },
+            "fontWeight": {
+              "400": 152,
+              "600": 2,
+              "700": 14
+            },
+            "lineHeight": {
+              "24px": 96,
+              "normal": 58,
+              "16px": 4,
+              "18px": 3,
+              "12px": 2,
+              "30px": 1,
+              "10px": 1,
+              "25px": 1,
+              "14px": 1,
+              "19px": 1
+            },
+            "maxWidth": {
+              "none": 167,
+              "150px": 1
+            },
+            "minHeight": {
+              "0px": 166,
+              "auto": 1,
+              "1px": 1
+            },
+            "minWidth": {
+              "0px": 166,
+              "50px": 2
+            },
+            "textDecorationLine": {
+              "none": 161,
+              "underline": 7
+            },
+            "fontSize": {
+              "16px": 1455,
+              "15px": 750,
+              "18px": 120,
+              "14px": 60,
+              "10px": 60,
+              "12px": 30,
+              "20px": 30,
+              "0px": 15
+            }
+          },
+          "button": {
+            "fontWeight": {
+              "600": 1,
+              "700": 4
+            },
+            "lineHeight": {
+              "24px": 4,
+              "normal": 1
+            },
+            "opacity": {
+              "1": 4,
+              "0.2": 1
+            },
+            "fontSize": {
+              "16px": 45,
+              "18px": 15,
+              "24px": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "totals": {
+          "violation": 4,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/form[1]/div[1]/select[1]",
+              "aria": "/document[1]/dialog[2]/form[1]/combobox[1]"
+            },
+            "message": "Form control element <select> has no associated label",
+            "bounds": {
+              "left": 175,
+              "top": 246,
+              "height": 44,
+              "width": 450
+            },
+            "snippet": "<select class=\"prefix-questionId\" name=\"q_23536\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[2]/form[1]/div[1]/span[1]/button[1]",
+              "aria": "/document[1]/banner[1]/search[2]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 704,
+              "top": 74,
+              "height": 38,
+              "width": 71
+            },
+            "snippet": "<button type=\"submit\" class=\"btn btn-default submit\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]",
+              "aria": "/document[1]/dialog[2]"
+            },
+            "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+            "bounds": {
+              "left": 16,
+              "top": 81,
+              "height": 438,
+              "width": 768
+            },
+            "snippet": "<div aria-describedby=\"prefix-overlay-step1\" aria-modal=\"true\" role=\"dialog\" tabindex=\"0\" id=\"prefix-overlay-outer\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ValidIdRef",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[1]/form[1]/input[1]",
+              "aria": "/document[1]/dialog[2]/form[1]/textbox[1]"
+            },
+            "message": "The 'id' \"prefix-overlay-label\" specified for the ARIA property 'aria-labelledby' value is not valid",
+            "bounds": {
+              "left": 175,
+              "top": 317,
+              "height": 44,
+              "width": 450
+            },
+            "snippet": "<input title=\"Enter email address\" aria-labelledby=\"prefix-overlay-label\" id=\"prefix-emailInput\" type=\"email\" name=\"e\" placeholder=\"Enter email address\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.healthcare.gov/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Get 2021 health coverage. Health Insurance Marketplace® | HealthCare.gov",
+          "pageurl": "https://www.healthcare.gov/",
+          "time": 6.73,
+          "creditsremaining": 356,
+          "allitemcount": 277,
+          "totalelements": 1037,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.healthcare.gov/",
+          "domid": "03c3bc654245804bd16627e1e5484890"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 6,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-formStep > DIV#prefix-overlay-form-div2 > FORM#prefix-formStepForm > INPUT#prefix-smsInput",
+                  "HTML > BODY#hcgov-learn > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-formStep > DIV#prefix-overlay-form-div2 > FORM#prefix-formStepForm > DIV#prefix-questions > INPUT:first-child"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 3,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > DIV#accordion > DIV:first-child + DIV > DIV#collapseTwo > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > DIV#accordion > DIV:first-child + DIV > DIV#collapseTwo > DIV:first-child > UL:first-child > LI:first-child + LI > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > DIV#accordion > DIV:first-child + DIV > DIV#collapseTwo > DIV:first-child > UL:first-child > LI:first-child + LI + LI > DIV:first-child > DIV:first-child > A:first-child"
+                ]
+              },
+              "aria_reference_broken": {
+                "id": "aria_reference_broken",
+                "description": "Broken ARIA reference",
+                "count": 1,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-step1 > DIV#prefix-overlay-form-div > FORM:first-child > INPUT#prefix-emailInput"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 4,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 4,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV#main-body-content > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#hero-content-wrapper > DIV:first-child > H1:first-child",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV#main-body-content > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#hero-content-wrapper > DIV:first-child > H1:first-child + P + P",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV#main-body-content > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#hero-content-wrapper > DIV:first-child > H1:first-child + P + P + P + DIV > SMALL:first-child > B:first-child",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV#main-body-content > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#hero-content-wrapper > DIV:first-child > H1:first-child + P + P + P + DIV > SMALL:first-child > B:first-child > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 40,
+            "items": {
+              "select_missing_label": {
+                "id": "select_missing_label",
+                "description": "Select missing label",
+                "count": 1,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-step1 > DIV#prefix-overlay-form-div > FORM:first-child > DIV#prefix-questions > SELECT:first-child"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 2,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child > A:first-child + DIV + DIV > DIV#sidr > FORM:first-child > DIV:first-child > INPUT#mobile-search",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + A + DIV > FORM:first-child > DIV:first-child > INPUT#input-main-nav-search"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 3,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > DIV#accordion > DIV:first-child + DIV > DIV#collapseTwo > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > DIV#accordion > DIV:first-child + DIV > DIV#collapseTwo > DIV:first-child > UL:first-child > LI:first-child + LI > DIV:first-child > DIV:first-child + DIV > A:first-child",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > DIV#accordion > DIV:first-child + DIV > DIV#collapseTwo > DIV:first-child > UL:first-child > LI:first-child + LI + LI > DIV:first-child > DIV:first-child + DIV > A:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 33,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child > DIV#header > DIV:first-child > DIV#mobile-nav > DIV:first-child > A:first-child > DIV#nav-icon > DIV:first-child",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child > DIV:first-child + HR + DIV + DIV + DIV + DIV > DIV:first-child > A:first-child + DIV",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#wrapper > DIV:first-child + DIV + FOOTER > H2:first-child + DIV > DIV:first-child + DIV > HR:first-child + DIV + DIV + DIV + HR + DIV > DIV:first-child > SPAN:first-child > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN + SPAN > A:first-child + SPAN",
+                  "HTML > BODY#hcgov-learn > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-formStep > DIV#prefix-overlay-form-div2 > P#prefix-noteText"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 1,
+                "selectors": [
+                  "HTML > BODY#hcgov-learn > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-header > BUTTON:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 521,
+        "axe": 15,
+        "ibm": 10,
+        "wave": 103,
+        "bulk": 9,
+        "focOl": 4,
+        "focOp": 16,
+        "hover": 76,
+        "labClash": 0,
+        "linkUl": 159,
+        "motion": 36,
+        "radioSet": 0,
+        "role": 12,
+        "styleDiff": 81
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      93
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      14
+    ],
+    [
+      "wave",
+      7
+    ],
+    [
+      "focOl",
+      6
+    ],
+    [
+      "focOp",
+      3
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

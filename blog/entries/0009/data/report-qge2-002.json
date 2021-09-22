@@ -1,0 +1,1278 @@
+{
+  "script": "p03c10",
+  "batch": "aetnapeers",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "qge2",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.centene.com/",
+      "what": "Centene",
+      "result": "https://www.centene.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.centene.com/",
+      "result": {
+        "bytes": [
+          1505417,
+          1505417,
+          1505417,
+          1505417,
+          1505417
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.centene.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 1,
+          "serious": 1,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "a[href$=\"who-we-are\\.html\"] > h6",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".color-block-quote",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.centene.com/",
+      "what": "Centene",
+      "result": "https://www.centene.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.centene.com/",
+      "result": {
+        "visibleElements": 239
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "total": 16,
+          "types": {
+            "outlineMissing": {
+              "total": 3,
+              "tagNames": {
+                "button": 1,
+                "input[type=search]": 1,
+                "iframe": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 13,
+              "tagNames": {
+                "a": 12,
+                "button": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "button",
+              "text": "OK"
+            },
+            {
+              "tagName": "input[type=search]",
+              "text": "search; #search-box-top"
+            },
+            {
+              "tagName": "iframe",
+              "text": "&amp;amp;amp;amp;amp;amp;amp;amp;nbsp;"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Skip to Main Content"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms and Conditions"
+            },
+            {
+              "tagName": "a",
+              "text": "Centene Corporation"
+            },
+            {
+              "tagName": "button",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "text": "Who We Are"
+            },
+            {
+              "tagName": "a",
+              "text": "Why We're Different"
+            },
+            {
+              "tagName": "a",
+              "text": "Products & Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Investors"
+            },
+            {
+              "tagName": "a",
+              "text": "News"
+            },
+            {
+              "tagName": "a",
+              "text": "COVID-19 Resource Center The health and safety of our members, employees, and communities is our unc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 1,
+            "tagName": {
+              "iframe": 1
+            },
+            "focusableHow": {
+              "Tab": 1,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 33,
+            "tagName": {
+              "a": 33
+            },
+            "operableWhy": {
+              "tag": 33,
+              "cursor": 0,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 15,
+            "tagName": {
+              "a": 12,
+              "button": 2,
+              "input[type=search]": 1
+            },
+            "focusableHow": {
+              "Tab": 15,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 15,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "iframe",
+              "focusableHow": "Tab",
+              "text": "&amp;amp;amp;amp;amp;amp;amp;amp;nbsp;"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Centene Corporation logo"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Centene Signs Definitive Agreement to Acquire Magellan Health"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "National Hispanic Heritage Month"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Advancing Equity and Inclusion During National Hispanic Heritage Month"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Joe Montana the new Wellcare ambassador"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Welcoming Legendary Quarterback Joe Montana as Wellcare's Brand Ambassador"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View All News"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Our Purpose"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Local Partnerships"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Search for Jobs at Centene"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Browse Products & Services"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "See All Investor Information"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Stock Details"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Investor Toolkit"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Centene Corporation"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "HEALTHCARE IS BEST DELIVERED LOCALLY"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "LOCAL COMMUNITY INVOLVEMENT IS KEY"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Who We Are"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Why We're Different"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Products & Services"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Investors"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "News"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Equal Opportunity Employer"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Purchase Order Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Twitter; Twitter"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Facebook; Facebook"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "LinkedIn; LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "YouTube; YouTube"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to Main Content"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms and Conditions"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "OK"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Centene Corporation"
+            },
+            {
+              "tagName": "input[type=search]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "search; #search-box-top"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Who We Are"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Why We're Different"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Products & Services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Investors"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COVID-19 Resource Center The health and safety of our members, employees, and communities is our unc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 12,
+          "wellLabeled": 5
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-2\" aria-expanded=\"false\" aria-controls=\"nav-target-2\"> </button>}"
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-2-3\" aria-expanded=\"false\" aria-controls=\"nav-target-2-3\"> </button>}"
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-2-7\" aria-expanded=\"false\" aria-controls=\"nav-target-2-7\"> </button>}"
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-2-10\" aria-expanded=\"false\" aria-controls=\"nav-target-2-10\"> </button>}"
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-3\" aria-expanded=\"false\" aria-controls=\"nav-target-3\"> </button>}"
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-3-1\" aria-expanded=\"false\" aria-controls=\"nav-target-3-1\"> </button>}"
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-3-2\" aria-expanded=\"false\" aria-controls=\"nav-target-3-2\"> </button>}"
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-4\" aria-expanded=\"false\" aria-controls=\"nav-target-4\"> </button>}"
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-4-1\" aria-expanded=\"false\" aria-controls=\"nav-target-4-1\"> </button>}"
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-4-3\" aria-expanded=\"false\" aria-controls=\"nav-target-4-3\"> </button>}"
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-4-4\" aria-expanded=\"false\" aria-controls=\"nav-target-4-4\"> </button>}"
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button class=\"btn nav-dropdown-btn collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#nav-target-8\" aria-expanded=\"false\" aria-controls=\"nav-target-8\"> </button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "OK"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Toggle navigation"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "search"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Toggle navigation"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "links": 83,
+          "inline": {
+            "total": 2,
+            "underlined": 2,
+            "underlinedPercent": 100
+          }
+        },
+        "items": {
+          "underlined": [
+            "Privacy Policy",
+            "Terms and Conditions"
+          ],
+          "notUnderlined": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.centene.com/",
+      "result": {
+        "roleElements": 8,
+        "badRoleElements": 5,
+        "tagNames": {
+          "SECTION": {
+            "main": 1
+          },
+          "A": {
+            "button": 4
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 3,
+            "subtotals": [
+              2,
+              1
+            ]
+          },
+          "h2": {
+            "total": 5,
+            "subtotals": [
+              2,
+              2,
+              1
+            ]
+          },
+          "h3": {
+            "total": 1
+          },
+          "h4": {
+            "total": 1
+          },
+          "h6": {
+            "total": 2
+          },
+          "aInline": {
+            "total": 2
+          },
+          "aBlock": {
+            "total": 81,
+            "subtotals": [
+              45,
+              16,
+              6,
+              3,
+              3,
+              3,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 16,
+            "subtotals": [
+              12,
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {
+            "lineHeight": {
+              "41px": 2,
+              "57px": 1
+            },
+            "fontSize": {
+              "61px": 5,
+              "63px": 1
+            }
+          },
+          "h2": {
+            "lineHeight": {
+              "38px": 2,
+              "52px": 2,
+              "22px": 1
+            },
+            "fontSize": {
+              "45px": 15,
+              "34px": 9,
+              "16px": 6
+            }
+          },
+          "h3": {},
+          "h4": {},
+          "h6": {},
+          "aInline": {},
+          "aBlock": {
+            "borderStyle": {
+              "none none solid": 45,
+              "none": 35,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px 0px 1px": 45,
+              "0px": 35,
+              "2px": 1
+            },
+            "lineHeight": {
+              "24px": 67,
+              "20px": 10,
+              "21.4286px": 3,
+              "25.7143px": 1
+            },
+            "minHeight": {
+              "0px": 80,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 80,
+              "auto": 1
+            },
+            "textDecorationLine": {
+              "none": 74,
+              "underline": 7
+            },
+            "fontSize": {
+              "16px": 576,
+              "15px": 228,
+              "14px": 120,
+              "12px": 24,
+              "16.8px": 12,
+              "18px": 12
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 15,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 15,
+              "1px": 1
+            },
+            "lineHeight": {
+              "0px": 13,
+              "25.7143px": 2,
+              "15px": 1
+            },
+            "fontSize": {
+              "0px": 156,
+              "18px": 24,
+              "10.5px": 12
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.centene.com/",
+      "result": {
+        "totals": {
+          "violation": 8,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/header[1]/nav[1]/div[2]/div[1]/ul[1]/li[6]/div[1]/button[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]/list[2]/listitem[6]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": -65,
+              "top": 345,
+              "height": 55,
+              "width": 50
+            },
+            "snippet": "<button aria-controls=\"nav-target-8\" aria-expanded=\"false\" data-target=\"#nav-target-8\" data-toggle=\"collapse\" type=\"button\" class=\"btn nav-dropdown-btn collapsed\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/header[1]/nav[1]/div[2]/div[1]/ul[1]/li[3]/div[1]/button[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]/list[2]/listitem[3]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": -65,
+              "top": 180,
+              "height": 55,
+              "width": 50
+            },
+            "snippet": "<button aria-controls=\"nav-target-4\" aria-expanded=\"false\" data-target=\"#nav-target-4\" data-toggle=\"collapse\" type=\"button\" class=\"btn nav-dropdown-btn collapsed\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/header[1]/nav[1]/div[2]/div[1]/ul[1]/li[2]/div[1]/button[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]/list[2]/listitem[2]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": -65,
+              "top": 125,
+              "height": 55,
+              "width": 50
+            },
+            "snippet": "<button aria-controls=\"nav-target-3\" aria-expanded=\"false\" data-target=\"#nav-target-3\" data-toggle=\"collapse\" type=\"button\" class=\"btn nav-dropdown-btn collapsed\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/header[1]/nav[1]/div[2]/div[1]/ul[1]/li[1]/div[1]/button[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]/list[2]/listitem[1]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": -65,
+              "top": 70,
+              "height": 55,
+              "width": 50
+            },
+            "snippet": "<button aria-controls=\"nav-target-2\" aria-expanded=\"false\" data-target=\"#nav-target-2\" data-toggle=\"collapse\" type=\"button\" class=\"btn nav-dropdown-btn collapsed\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/span[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": -10000,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<a href=\"#main\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/header[1]/nav[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 116,
+              "width": 800
+            },
+            "snippet": "<nav class=\"clearfix\" id=\"centene-nav-main-wrapper\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/section[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/p[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.16 with its background is less than the WCAG AA minimum requirements for text of size 34px and weight of 200",
+            "bounds": {
+              "left": 50,
+              "top": 219,
+              "height": 114,
+              "width": 457
+            },
+            "snippet": "<p class=\"override-h3\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/section[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/h1[1]",
+              "aria": "/document[1]/main[1]/heading[1]"
+            },
+            "message": "Text contrast of 1.16 with its background is less than the WCAG AA minimum requirements for text of size 63px and weight of 500",
+            "bounds": {
+              "left": 50,
+              "top": 355,
+              "height": 228,
+              "width": 457
+            },
+            "snippet": "<h1>",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.centene.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Managed Care Solutions | Centene Corporation",
+          "pageurl": "https://www.centene.com/",
+          "time": 2.92,
+          "creditsremaining": 392,
+          "allitemcount": 111,
+          "totalelements": 497,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.centene.com/",
+          "domid": "b14c454b21ec8ebe9242c4c10ea4f238"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 12,
+            "items": {
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 12,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child > DIV:first-child > UL#nav-target-2 > LI:first-child + LI + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child > DIV:first-child > UL#nav-target-2 > LI:first-child + LI + LI + LI + LI + LI + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child > DIV:first-child > UL#nav-target-2 > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI > DIV:first-child > UL#nav-target-3 > LI:first-child > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI > DIV:first-child > UL#nav-target-3 > LI:first-child + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI + LI > DIV:first-child > UL#nav-target-4 > LI:first-child > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI + LI > DIV:first-child > UL#nav-target-4 > LI:first-child + LI + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI + LI > DIV:first-child > UL#nav-target-4 > LI:first-child + LI + LI + LI > DIV:first-child > A:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER > NAV#centene-nav-main-wrapper > DIV:first-child + DIV > DIV#navbar > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > DIV:first-child > A:first-child + BUTTON"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 5,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H2:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H2:first-child + Q",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H2:first-child + Q + P"
+                ],
+                "contrastdata": [
+                  [
+                    1.16,
+                    "#ffffff",
+                    "#eeeeee",
+                    true
+                  ],
+                  [
+                    1.16,
+                    "#ffffff",
+                    "#eeeeee",
+                    true
+                  ],
+                  [
+                    1,
+                    "#00548c",
+                    "#00548c",
+                    false
+                  ],
+                  [
+                    1,
+                    "#00548c",
+                    "#00548c",
+                    true
+                  ],
+                  [
+                    1,
+                    "#00548c",
+                    "#00548c",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 12,
+            "items": {
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER + SECTION + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + NAV > A:first-child > H6:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > SCRIPT:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > SCRIPT:first-child + DIV > DIV:first-child > DIV:first-child > P#redgreen",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > SCRIPT:first-child + DIV > DIV:first-child > DIV:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > SCRIPT:first-child + DIV > DIV:first-child > DIV:first-child + DIV > P:first-child + P + H1 + P + P"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P + DIV > DIV:first-child > DIV#news-results > DIV#hp-news-item-1 > DIV:first-child > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P + DIV > DIV:first-child > DIV#news-results > DIV#hp-news-item-2 > DIV:first-child > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P + DIV > DIV:first-child > DIV#news-results > DIV#hp-news-item-3 > DIV:first-child > A:first-child + DIV > P:first-child > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + SPAN + HEADER + SECTION + DIV + FOOTER + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "youtube_video": {
+                "id": "youtube_video",
+                "description": "YouTube video",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SECTION#main > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > IFRAME:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 333,
+        "axe": 7,
+        "ibm": 18,
+        "wave": 82,
+        "bulk": 9,
+        "focOl": 12,
+        "focOp": 133,
+        "hover": 0,
+        "labClash": 24,
+        "linkUl": 0,
+        "motion": 0,
+        "radioSet": 0,
+        "role": 10,
+        "styleDiff": 38
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      76
+    ],
+    [
+      "motion",
+      15
+    ],
+    [
+      "ibm",
+      9
+    ],
+    [
+      "focOl",
+      6
+    ],
+    [
+      "axe",
+      4
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "focOp",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

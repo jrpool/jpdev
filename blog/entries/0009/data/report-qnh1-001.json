@@ -1,0 +1,1578 @@
+{
+  "script": "p03c10",
+  "batch": "aetnapeersRedo",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "qnh1",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.medicare.gov/",
+      "what": "Medicare",
+      "result": "https://www.medicare.gov/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "bytes": [
+          466684,
+          466677,
+          466684,
+          466684,
+          466677
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          18,
+          18,
+          0,
+          18
+        ],
+        "meanPixelChange": 13,
+        "maxPixelChange": 18,
+        "changeFrequency": 0.75
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 8,
+          "serious": 2,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#prefix-overlay-outer",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#prefix-overlay-step1 > div:nth-child(4)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: prefix-error-outer",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "#prefix-formStepForm > div:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: prefix-questions",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "frame-title",
+            "description": "Ensures <iframe> and <frame> elements have an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "iframe[width=\"\\38 54\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-contentinfo-is-top-level",
+            "description": "Ensures the contentinfo landmark is at top level",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".m-c-footer",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-top-level",
+                    "description": "The contentinfo landmark is contained in another landmark.",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-no-duplicate-contentinfo",
+            "description": "Ensures the document has at most one contentinfo landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".m-evo--footer",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "page-no-duplicate-contentinfo",
+                    "description": "Document has more than one contentinfo landmark",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".ch-c-header__navigation-container > nav:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".m-evo--footer",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".ds-h2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#bam-coachmark > p",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".button-div",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".QSIFeedbackButton",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.medicare.gov/",
+      "what": "Medicare",
+      "result": "https://www.medicare.gov/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "visibleElements": 228
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "total": 15,
+          "types": {
+            "outlineMissing": {
+              "total": 14,
+              "tagNames": {
+                "a": 13,
+                "iframe": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 1,
+              "tagNames": {
+                "button": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "a",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "a",
+              "text": "Protect Yourself/Learn How"
+            },
+            {
+              "tagName": "a",
+              "text": "Log in/Create Account"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Find plans"
+            },
+            {
+              "tagName": "a",
+              "text": "Get started"
+            },
+            {
+              "tagName": "a",
+              "text": "Find care providers"
+            },
+            {
+              "tagName": "a",
+              "text": "Want a new plan now?"
+            },
+            {
+              "tagName": "a",
+              "text": "Apply for Medicareopens in new window"
+            },
+            {
+              "tagName": "a",
+              "text": "Get Medicare costs"
+            },
+            {
+              "tagName": "a",
+              "text": "Find local help"
+            },
+            {
+              "tagName": "a",
+              "text": "Medicare card issues"
+            },
+            {
+              "tagName": "a",
+              "text": "Mail you get about Medicare"
+            },
+            {
+              "tagName": "iframe",
+              "text": "#signup-frame"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "button",
+              "text": "Search"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 1,
+            "tagName": {
+              "iframe": 1
+            },
+            "focusableHow": {
+              "Tab": 1,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 51,
+            "tagName": {
+              "a": 44,
+              "button": 6,
+              "input[type=button]": 1
+            },
+            "operableWhy": {
+              "tag": 51,
+              "cursor": 0,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 21,
+            "tagName": {
+              "a": 16,
+              "button": 5
+            },
+            "focusableHow": {
+              "Tab": 21,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 21,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "iframe",
+              "focusableHow": "Tab",
+              "text": "#signup-frame"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Blogs"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Guard your card: How to protect your Medicare card"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Prevention is key—protect yourself with vaccines"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "News"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Medicare has faster access to new medical technology"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Close Informational Box"
+            },
+            {
+              "tagName": "input[type=button]",
+              "operableWhy": "tag",
+              "text": "#get_started"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Site Menu"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Sign up / Change plans"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Your Medicare costs"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "What Medicare covers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Drug coverage (Part D)"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Supplements & other insurance"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Claims & appeals"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Manage your health"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Forms, help, & other resources"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Site map"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Take Action"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find health & drug plans"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find care providers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find medical equipment & suppliers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find a Medicare Supplement Insurance (Medigap) policy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Get Medicare forms"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find publications"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Talk to someone"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Manage your email preferences"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Get information in other languages"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "CMS & HHS Websites"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "HealthCare.gov"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "InsureKidsNow.gov"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Medicaid.gov"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "CMS.gov"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "HHS.gov"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "USA.gov"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Helpful Links"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "FOIA"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "No Fear Act"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Inspector General"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Archive"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Downloadable databases"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find Medicare.gov on facebook (link opens in a new tab)"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Follow Medicare.gov on Twitter (link opens in a new tab)"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find Medicare.gov on YouTube (link opens in a new tab)"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "About Medicare"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Medicare Glossary"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Nondiscrimination/Accessibility"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Privacy Setting"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Linking Policy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Using this site"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Plain Writing"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Here's how you know"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cambiar a Español"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicare.gov"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "BasicsBasicsBasicsCaret Icon"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Health & Drug PlansHealth & Drug PlansHealth & Drug PlansCaret Icon"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Providers & ServicesProviders & ServicesProviders & ServicesCaret Icon"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Log in"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Protect Yourself/Learn How"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Log in/Create Account"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find plans"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get started"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find care providers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Want a new plan now?"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Apply for Medicareopens in new window"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get Medicare costs"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find local help"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicare card issues"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Mail you get about Medicare"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "mislabeled": 1,
+          "unlabeled": 0,
+          "wellLabeled": 12
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "Search Medicare",
+                "label": [
+                  "Search"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Here's how you know"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Menu"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "BasicsBasicsBasicsCaret Icon"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Health & Drug PlansHealth & Drug PlansHealth & Drug PlansCaret Icon"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Providers & ServicesProviders & ServicesProviders & ServicesCaret Icon"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Site Menu"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Take Action"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "CMS & HHS Websites"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Helpful Links"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Privacy Setting"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "links": 61,
+          "inline": {
+            "total": 7,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "About Medicare",
+            "Medicare Glossary",
+            "Nondiscrimination/Accessibility",
+            "Privacy Policy",
+            "Linking Policy",
+            "Using this site",
+            "Plain Writing"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "roleElements": 12,
+        "badRoleElements": 5,
+        "tagNames": {
+          "UL": {
+            "list": 2
+          },
+          "ARTICLE": {
+            "article": 1
+          },
+          "DIV": {
+            "article": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 12,
+            "subtotals": [
+              4,
+              4,
+              3,
+              1
+            ]
+          },
+          "h3": {
+            "total": 3,
+            "subtotals": [
+              2,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 7,
+            "subtotals": [
+              5,
+              2
+            ]
+          },
+          "aBlock": {
+            "total": 54,
+            "subtotals": [
+              31,
+              8,
+              4,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 11,
+            "subtotals": [
+              4,
+              3,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "500": 4,
+              "600": 4,
+              "700": 4
+            },
+            "lineHeight": {
+              "24px": 4,
+              "25.2px": 4,
+              "32px": 3,
+              "57.6px": 1
+            },
+            "maxWidth": {
+              "none": 8,
+              "calc(100% - 32px)": 4
+            },
+            "fontSize": {
+              "18px": 64,
+              "24px": 24,
+              "48px": 2
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "400": 1,
+              "600": 2
+            },
+            "lineHeight": {
+              "28px": 2,
+              "33.6px": 1
+            },
+            "minHeight": {
+              "0px": 2,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 2,
+              "auto": 1
+            },
+            "fontSize": {
+              "20px": 31,
+              "24px": 14
+            }
+          },
+          "aInline": {
+            "borderStyle": {
+              "none solid none none": 5,
+              "none": 2
+            },
+            "borderWidth": {
+              "0px 1px 0px 0px": 5,
+              "0px": 2
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 49,
+              "solid": 5
+            },
+            "borderWidth": {
+              "0px": 49,
+              "1px": 5
+            },
+            "fontWeight": {
+              "400": 48,
+              "500": 4,
+              "600": 2
+            },
+            "lineHeight": {
+              "24px": 37,
+              "27px": 8,
+              "20.8px": 3,
+              "45px": 3,
+              "18px": 2,
+              "19.2px": 1
+            },
+            "minHeight": {
+              "0px": 50,
+              "auto": 4
+            },
+            "minWidth": {
+              "0px": 50,
+              "auto": 4
+            },
+            "textDecorationLine": {
+              "none": 41,
+              "underline": 13
+            },
+            "fontSize": {
+              "16px": 576,
+              "18px": 224,
+              "30px": 48,
+              "12.8px": 16
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 9,
+              "solid": 2
+            },
+            "borderWidth": {
+              "0px": 9,
+              "1px": 2
+            },
+            "fontWeight": {
+              "400": 7,
+              "700": 4
+            },
+            "lineHeight": {
+              "24px": 4,
+              "25.2px": 4,
+              "14.08px": 1,
+              "20.8px": 1,
+              "18px": 1
+            },
+            "minHeight": {
+              "0px": 9,
+              "auto": 2
+            },
+            "minWidth": {
+              "0px": 9,
+              "auto": 2
+            },
+            "fontSize": {
+              "16px": 80,
+              "18px": 64,
+              "12.8px": 16,
+              "14px": 16
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "totals": {
+          "violation": 7,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Frame_HasTitle",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]/div[2]/div[2]/main[1]/div[1]/div[2]/article[1]/div[1]/div[4]/article[2]/div[1]/div[1]/iframe[1]",
+              "aria": "/document[1]/main[1]/article[1]/article[6]"
+            },
+            "message": "Inline frame does not have a 'title' attribute",
+            "bounds": {
+              "left": 351,
+              "top": 1665,
+              "height": 240,
+              "width": 426
+            },
+            "snippet": "<iframe src=\"https://www.youtube.com/embed/vScAG7rtPe8?autoplay=0&start=0&rel=0\" allowfullscreen=\"allowfullscreen\" frameborder=\"0\" height=\"480\" width=\"854\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[2]",
+              "aria": "/document[1]/dialog[1]"
+            },
+            "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+            "bounds": {
+              "left": 105,
+              "top": 38,
+              "height": 525,
+              "width": 590
+            },
+            "snippet": "<div style=\"height: 405px;\" aria-modal=\"true\" role=\"dialog\" tabindex=\"0\" id=\"prefix-overlay-outer\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"#content\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[2]/div[1]/nav[1]",
+              "aria": "/document[1]/contentinfo[1]/navigation[5]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 638,
+              "top": 2836,
+              "height": 45,
+              "width": 131
+            },
+            "snippet": "<nav class=\"m-evo--social-links \">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/header[1]/div[1]/div[1]/nav[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 678,
+              "top": 36,
+              "height": 38,
+              "width": 118
+            },
+            "snippet": "<nav>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleContentinfoLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[3]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]/contentinfo[1]"
+            },
+            "message": "Multiple elements with \"contentinfo\" role do not have unique labels",
+            "bounds": {
+              "left": 32,
+              "top": 2921,
+              "height": 248,
+              "width": 736
+            },
+            "snippet": "<footer class=\"m-c-footer\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleContentinfoLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "Multiple elements with \"contentinfo\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 2066,
+              "height": 1143,
+              "width": 800
+            },
+            "snippet": "<footer role=\"contentinfo\" class=\"m-evo--footer ds-u-fill--gray-lightest ds-u-padding-y--4\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.medicare.gov/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Medicare.gov: the official U.S. government site for Medicare | Medicare",
+          "pageurl": "https://www.medicare.gov/",
+          "time": 12.17,
+          "creditsremaining": 362,
+          "allitemcount": 170,
+          "totalelements": 624,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.medicare.gov/",
+          "domid": "638b1834dd540b5eaba9e24bbe5f373b"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 0,
+            "items": []
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 38,
+            "items": {
+              "select_missing_label": {
+                "id": "select_missing_label",
+                "description": "Select missing label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-formStep > DIV#prefix-overlay-form-div2 > FORM#prefix-formStepForm > DIV#prefix-questions > SELECT#prefix-q_74299",
+                  "HTML > HEAD:first-child + BODY > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-formStep > DIV#prefix-overlay-form-div2 > FORM#prefix-formStepForm > DIV#prefix-questions > SELECT#prefix-q_65497"
+                ]
+              },
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV#page > DIV#page-container > DIV#main-wrapper > MAIN#content > DIV:first-child > DIV#block-medicare-evo-content > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV + ARTICLE > DIV#homecard3 > SPAN:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-step2 > DIV:first-child + DIV > P:first-child + DIV + DIV > A:first-child > IMG:first-child"
+                ]
+              },
+              "label_orphaned": {
+                "id": "label_orphaned",
+                "description": "Orphaned form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-formStep > DIV#prefix-overlay-form-div2 > FORM#prefix-formStepForm > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#scopedByScopedPolyfill_1 > DIV#prefix-overlay-outer > DIV:first-child > DIV#prefix-overlay-formStep > DIV#prefix-overlay-form-div2 > FORM#prefix-formStepForm > LABEL:first-child + DIV + LABEL"
+                ]
+              },
+              "underline": {
+                "id": "underline",
+                "description": "Underlined text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV#page > DIV:first-child > DIV:first-child > DIV#medicare-header-root > DIV#ch-root > HEADER:first-child > SECTION:first-child > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV#page > DIV:first-child > DIV:first-child > DIV#medicare-header-root > DIV#ch-root > HEADER:first-child > SECTION:first-child > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child + DIV + BUTTON > SPAN:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 29,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-medicare-evo-mainnavigation-2 > DIV#link-list-block-medicare-evo-mainnavigation-2 > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-medicare-evo-takeaction > DIV#link-list-block-medicare-evo-takeaction > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-cmshhswebsites > DIV#link-list-block-medicare-evo-cmshhswebsites > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-cmshhswebsites > DIV#link-list-block-medicare-evo-cmshhswebsites > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-cmshhswebsites > DIV#link-list-block-medicare-evo-cmshhswebsites > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-cmshhswebsites > DIV#link-list-block-medicare-evo-cmshhswebsites > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-cmshhswebsites > DIV#link-list-block-medicare-evo-cmshhswebsites > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-cmshhswebsites > DIV#link-list-block-medicare-evo-cmshhswebsites > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-helpfullinks > DIV#link-list-block-medicare-evo-helpfullinks > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-helpfullinks > DIV#link-list-block-medicare-evo-helpfullinks > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-helpfullinks > DIV#link-list-block-medicare-evo-helpfullinks > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > NAV#block-medicare-evo-helpfullinks > DIV#link-list-block-medicare-evo-helpfullinks > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV#page > DIV#page-container > DIV#main-wrapper > MAIN#content > DIV:first-child > DIV#block-medicare-evo-content > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV + ARTICLE > DIV#homecard2 > SPAN:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV#page > DIV#page-container > DIV#main-wrapper > MAIN#content > DIV:first-child > DIV#block-medicare-evo-content > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV + ARTICLE > DIV#homecard3 > SPAN:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV#page > DIV#page-container > DIV#main-wrapper > MAIN#content > DIV:first-child > DIV#block-medicare-evo-content > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV + ARTICLE > DIV#homecard4 > SPAN:first-child > IMG:first-child"
+                ]
+              },
+              "youtube_video": {
+                "id": "youtube_video",
+                "description": "YouTube video",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + IFRAME + SCRIPT + A + DIV > DIV#page-wrapper > DIV#page > DIV#page-container > DIV#main-wrapper > MAIN#content > DIV:first-child > DIV#block-medicare-evo-content > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV + ARTICLE + DIV + DIV > ARTICLE:first-child + ARTICLE > H2:first-child + DIV > DIV:first-child > IFRAME:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 483,
+        "axe": 32,
+        "ibm": 26,
+        "wave": 70,
+        "bulk": 8,
+        "focOl": 56,
+        "focOp": 205,
+        "hover": 0,
+        "labClash": 2,
+        "linkUl": 21,
+        "motion": 7,
+        "radioSet": 0,
+        "role": 10,
+        "styleDiff": 46
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      123
+    ],
+    [
+      "motion",
+      13
+    ],
+    [
+      "wave",
+      13
+    ],
+    [
+      "ibm",
+      7
+    ],
+    [
+      "focOl",
+      3
+    ],
+    [
+      "focOp",
+      3
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

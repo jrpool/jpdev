@@ -1,0 +1,2178 @@
+{
+  "script": "p03c10",
+  "batch": "aetnapeersRedo",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "qnh1",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.bcbs.com/",
+      "what": "BlueCross BlueShield",
+      "result": "https://www.bcbs.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "bytes": [
+          702870,
+          585991,
+          585991,
+          585991,
+          585991
+        ],
+        "localRatios": [
+          1.199,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1.05,
+        "maxLocalRatio": 1.199,
+        "globalRatio": 1.199,
+        "pixelChanges": [
+          61955,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 15488,
+        "maxPixelChange": 61955,
+        "changeFrequency": 0.25
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 4,
+          "serious": 2,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-role",
+            "description": "Ensures role attribute has an appropriate value for the element",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".layout-featured",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "aria-allowed-role",
+                    "description": "ARIA role region is not allowed for given element",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".button--primary.button[href$=\"coronavirus-updates\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.07 (foreground color: #ffffff, background color: #f2f7f9, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".button--primary.button[rel=\"noopener\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.07 (foreground color: #ffffff, background color: #f2f7f9, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".paragraph--background-color--.paragraph--background-color__false.paragraph--vertical-alignment--top:nth-child(1) > div[data-attribute=\"ie11-helper\"] > h4",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".skip-link",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#block-views-block-emergency-alert-block-1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.bcbs.com/",
+      "what": "BlueCross BlueShield",
+      "result": "https://www.bcbs.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "visibleElements": 267
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "totals": {
+          "total": 39,
+          "types": {
+            "outlineMissing": {
+              "total": 1,
+              "tagNames": {
+                "input[type=search]": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 38,
+              "tagNames": {
+                "a": 34,
+                "button": 4
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "input[type=search]",
+              "text": "Search; #edit-keys"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "learn more about cookies; privacy policy."
+            },
+            {
+              "tagName": "a",
+              "text": "dismiss cookie message; X"
+            },
+            {
+              "tagName": "a",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "a",
+              "text": "Join us for the 2021 Health of America Virtual Forum on October 20 - 21"
+            },
+            {
+              "tagName": "a",
+              "text": "Member Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Find a Doctor"
+            },
+            {
+              "tagName": "a",
+              "text": "Individuals & Families"
+            },
+            {
+              "tagName": "a",
+              "text": "Employers"
+            },
+            {
+              "tagName": "a",
+              "text": "Medicare"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn"
+            },
+            {
+              "tagName": "a",
+              "text": "BCBS Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "The Health of America"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "button",
+              "text": "Search; #edit-submit"
+            },
+            {
+              "tagName": "button",
+              "text": "Open the Access My Benefits form; Access My Benefits"
+            },
+            {
+              "tagName": "button",
+              "text": "Open the Shop for Insurance form; Shop for Insurance"
+            },
+            {
+              "tagName": "button",
+              "text": "Show the Find a Doctor links; Find a Doctor"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit the website"
+            },
+            {
+              "tagName": "a",
+              "text": "COVID-19 Updates"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "The Health of America"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "BCBS Progress Health"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "BCBS Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Healthcare Fraud"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "text": "Cookie Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Sitemap"
+            },
+            {
+              "tagName": "a",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "a",
+              "text": "Instagram"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.bcbs.com/",
+      "result": "OPERABLE MARKING FAILED"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 119
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Open the mobile navigation menu",
+                "content": "Menu"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 31,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 33,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 34,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 35,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 36,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 37,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 38,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 39,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 40,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 41,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 42,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 43,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 44,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 45,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 46,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 47,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 48,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 49,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 50,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 51,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 52,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 53,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 54,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 55,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 56,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 57,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 58,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 59,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 60,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 61,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 62,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 63,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 64,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 65,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 66,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 67,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 68,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 69,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 70,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 71,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 72,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 73,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 74,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 75,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 76,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 77,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 78,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 79,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 80,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 81,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 82,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 83,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 84,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 85,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 86,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 87,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 88,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 89,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 90,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 91,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 92,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 93,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 94,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 95,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 96,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 97,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 98,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Return to the preceding menu",
+                "content": "Back"
+              }
+            },
+            {
+              "index": 99,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 100,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 101,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 102,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 103,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 104,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Reveal submenu"
+              }
+            },
+            {
+              "index": 105,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 106,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 107,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Open the Access My Benefits form",
+                "content": "Access My Benefits"
+              }
+            },
+            {
+              "index": 108,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search with My Member ID Card:"
+                ]
+              }
+            },
+            {
+              "index": 109,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Go"
+              }
+            },
+            {
+              "index": 110,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Zip Code"
+                ]
+              }
+            },
+            {
+              "index": 111,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Go"
+              }
+            },
+            {
+              "index": 112,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "State"
+                ]
+              }
+            },
+            {
+              "index": 113,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search the list"
+                ]
+              }
+            },
+            {
+              "index": 114,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Go"
+              }
+            },
+            {
+              "index": 115,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Open the Shop for Insurance form",
+                "content": "Shop for Insurance"
+              }
+            },
+            {
+              "index": 116,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Zip Code"
+                ]
+              }
+            },
+            {
+              "index": 117,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Go"
+              }
+            },
+            {
+              "index": 118,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Show the Find a Doctor links",
+                "content": "Find a Doctor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "totals": {
+          "links": 149,
+          "inline": {
+            "total": 8,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "find a designated doctor or hospital",
+            "find a treatment provider",
+            "Blue Cross Blue Shield Global™",
+            "GeoBlue",
+            "Medicare coverage",
+            "Blue Cross Blue Shield Global™",
+            "Blue Cross Blue Shield Global™",
+            "GeoBlue"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "roleElements": 10,
+        "badRoleElements": 9,
+        "tagNames": {
+          "DIV": {
+            "dialog": 1
+          },
+          "A": {
+            "button": 2
+          },
+          "MAIN": {
+            "main": 1
+          },
+          "SECTION": {
+            "region": 1
+          },
+          "SUMMARY": {
+            "button": 2
+          },
+          "ARTICLE": {
+            "article": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 6,
+            "subtotals": [
+              5,
+              1
+            ]
+          },
+          "h4": {
+            "total": 4
+          },
+          "aInline": {
+            "total": 8,
+            "subtotals": [
+              4,
+              2,
+              2
+            ]
+          },
+          "aBlock": {
+            "total": 141,
+            "subtotals": [
+              52,
+              43,
+              8,
+              8,
+              5,
+              5,
+              5,
+              4,
+              4,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 112,
+            "subtotals": [
+              51,
+              43,
+              8,
+              6,
+              3,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {
+            "lineHeight": {
+              "74.8px": 5,
+              "61.2px": 1
+            },
+            "fontSize": {
+              "55px": 16,
+              "45px": 5
+            }
+          },
+          "h4": {},
+          "aInline": {
+            "fontWeight": {
+              "200": 2,
+              "400": 6
+            },
+            "lineHeight": {
+              "24px": 4,
+              "19.5px": 4
+            },
+            "fontSize": {
+              "16px": 40,
+              "13px": 40
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 130,
+              "none none solid": 9,
+              "solid": 2
+            },
+            "borderWidth": {
+              "0px": 130,
+              "0px 0px 1px": 9,
+              "1px": 2
+            },
+            "fontWeight": {
+              "200": 18,
+              "300": 1,
+              "400": 99,
+              "700": 23
+            },
+            "lineHeight": {
+              "24px": 116,
+              "25.5px": 8,
+              "30px": 5,
+              "37.5px": 4,
+              "13px": 4,
+              "19.5px": 2,
+              "48px": 1,
+              "20px": 1
+            },
+            "minHeight": {
+              "0px": 98,
+              "auto": 43
+            },
+            "minWidth": {
+              "0px": 98,
+              "auto": 43
+            },
+            "fontSize": {
+              "16px": 1140,
+              "17px": 80,
+              "13px": 60,
+              "20px": 60,
+              "25px": 40,
+              "12px": 20,
+              "32px": 10
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "outset": 51,
+              "none none none solid": 43,
+              "none": 10,
+              "none none solid": 8
+            },
+            "borderWidth": {
+              "2px": 51,
+              "0px 0px 0px 1px": 43,
+              "0px": 10,
+              "0px 0px 1px": 8
+            },
+            "fontWeight": {
+              "200": 55,
+              "400": 51,
+              "700": 6
+            },
+            "lineHeight": {
+              "24px": 103,
+              "13px": 6,
+              "34.5px": 3
+            },
+            "minHeight": {
+              "0px": 69,
+              "100%": 43
+            },
+            "outlineOffset": {
+              "0px": 109,
+              "-3px": 3
+            },
+            "fontSize": {
+              "16px": 1030,
+              "13px": 60,
+              "23px": 30
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "totals": {
+          "violation": 10,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/span[1]/a[1]",
+              "aria": "/document[1]/dialog[1]/button[1]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 16,
+              "top": 554,
+              "height": 31,
+              "width": 121
+            },
+            "snippet": "<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"/privacy-policy\" class=\"cc-link\" tabindex=\"0\" role=\"button\" aria-label=\"learn more about cookies\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RegionLabel_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]",
+              "aria": "/document[1]/main[1]/region[1]"
+            },
+            "message": "Section element with an implicit \"region\" role is not labeled with an 'aria-label' or 'aria-labelledby'",
+            "bounds": {
+              "left": 0,
+              "top": 282,
+              "height": 198,
+              "width": 800
+            },
+            "snippet": "<section role=\"region\" class=\"layout-featured\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]",
+              "aria": "/document[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 16,
+              "top": 20,
+              "height": 96,
+              "width": 768
+            },
+            "snippet": "<p>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"#main-content\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/div[2]/div[1]/header[1]/div[1]/nav[2]",
+              "aria": "/document[1]/banner[1]/navigation[2]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 218,
+              "height": 60,
+              "width": 800
+            },
+            "snippet": "<nav class=\"block block-menu navigation menu--main\" id=\"block-bcbs-main-menu\" aria-labelledby=\"block-bcbs-main-menu-menu\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/div[2]/div[1]/header[1]/div[1]/nav[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": -320,
+              "top": 282,
+              "height": 600,
+              "width": 320
+            },
+            "snippet": "<nav class=\"block block-menu navigation menu--main menu--main__js-drawer\" id=\"block-bcbs-main-menu__js-clone\" aria-labelledby=\"block-bcbs-main-menu-menu__js-clone\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/main[1]/section[2]/div[1]/article[1]/div[1]/div[1]/div[2]/div[1]/div[4]/div[1]/p[2]/a[1]",
+              "aria": "/document[1]/main[1]/region[2]/article[1]/link[5]"
+            },
+            "message": "Text contrast of 1.08 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 700",
+            "bounds": {
+              "left": 627,
+              "top": 1621,
+              "height": 40,
+              "width": 147
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" href=\"https://www.bcbsprogresshealth.com/\" class=\"button button--primary\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/main[1]/section[2]/div[1]/article[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/p[2]/a[1]",
+              "aria": "/document[1]/main[1]/region[2]/article[1]/link[3]"
+            },
+            "message": "Text contrast of 1.08 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 700",
+            "bounds": {
+              "left": 227,
+              "top": 1621,
+              "height": 40,
+              "width": 147
+            },
+            "snippet": "<a href=\"/coronavirus-updates\" class=\"button button--primary\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_semantics_role",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]",
+              "aria": "/document[1]/main[1]/region[1]"
+            },
+            "message": "The ARIA role 'region' is not valid for the element <section>",
+            "bounds": {
+              "left": 0,
+              "top": 282,
+              "height": 198,
+              "width": 800
+            },
+            "snippet": "<section role=\"region\" class=\"layout-featured\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_semantics_attribute",
+            "path": {
+              "dom": "/html[1]/body[1]/noscript[1]",
+              "aria": "/document[1]"
+            },
+            "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 0,
+              "width": 0
+            },
+            "snippet": "<noscript aria-hidden=\"true\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.bcbs.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Blue Cross Blue Shield",
+          "pageurl": "https://www.bcbs.com/",
+          "time": 5.43,
+          "creditsremaining": 365,
+          "allitemcount": 374,
+          "totalelements": 903,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.bcbs.com/",
+          "domid": "05b5e53c22bc531ec3bd070c62a85711"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 0,
+            "items": []
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 5,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child > DIV:first-child > DIV:first-child > DIV#block-homeprefixstatezipcodeblock > FORM#bcbs-prefix-state-zip-search > DETAILS#edit-prefix-container > SUMMARY:first-child + DIV > DIV#edit-access-by-prefix-container > BUTTON#edit-submit-prefix > I:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > I:first-child + DIV > H4:first-child + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > I:first-child + DIV > H4:first-child + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > I:first-child + DIV > H4:first-child + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > I:first-child + DIV > H4:first-child + P + P > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1.15,
+                    "#ffffff",
+                    "#e1f1f8",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1.07,
+                    "#ffffff",
+                    "#f2f7f9",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1.07,
+                    "#ffffff",
+                    "#f2f7f9",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 18,
+            "items": {
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child > DIV:first-child > DIV:first-child > DIV#block-homeprefixstatezipcodeblock > FORM#bcbs-prefix-state-zip-search > DETAILS#edit-prefix-container > SUMMARY:first-child + DIV > DIV#edit-access-by-prefix-container > SPAN:first-child > SPAN:first-child + SPAN > IMG:first-child"
+                ]
+              },
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > I:first-child + DIV > H4:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 12,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > H2:first-child + UL > LI:first-child > A:first-child + BUTTON + DIV > DIV:first-child > DIV:first-child > P:first-child + P > STRONG:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > H2:first-child + UL > LI:first-child + LI + LI + LI > A:first-child + BUTTON + DIV > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > H2:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child + BUTTON + DIV > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + BUTTON + DIV > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + BUTTON + DIV > BUTTON:first-child + A + UL > LI:first-child > A:first-child + BUTTON + DIV > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + BUTTON + DIV > BUTTON:first-child + A + UL > LI:first-child + LI + LI > A:first-child + BUTTON + DIV > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child + BUTTON + DIV > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu__js-clone > NAV#block-utilitynavigation__js-clone > H2:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child > NAV#block-bcbs-main-menu > H2:first-child + UL > LI:first-child > A:first-child + BUTTON + DIV > DIV:first-child > DIV:first-child > P:first-child + P > STRONG:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER#js-main > DIV:first-child + DIV > DIV#block-headersmalllogo > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > I:first-child + DIV > H4:first-child + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > MAIN#main-content > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > I:first-child + DIV > H4:first-child + P + P > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + STYLE + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + A + NOSCRIPT + DIV > DIV:first-child > DIV:first-child + DIV + DIV + MAIN + FOOTER > DIV:first-child > DIV:first-child > NAV#block-footernavigation > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 383,
+        "axe": 15,
+        "ibm": 30,
+        "wave": 45,
+        "bulk": 10,
+        "focOl": 4,
+        "focOp": 150,
+        "hover": 0,
+        "labClash": 0,
+        "linkUl": 24,
+        "motion": 12,
+        "radioSet": 0,
+        "role": 18,
+        "styleDiff": 75
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      46
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      8
+    ],
+    [
+      "wave",
+      6
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focOl",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

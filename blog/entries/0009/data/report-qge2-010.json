@@ -1,0 +1,2282 @@
+{
+  "script": "p03c10",
+  "batch": "aetnapeers",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "qge2",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.ibx.com/",
+      "what": "Independence",
+      "result": "https://www.ibx.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "bytes": [
+          971766,
+          42700,
+          42700,
+          1096994,
+          1096994
+        ],
+        "localRatios": [
+          22.76,
+          1,
+          25.69,
+          1
+        ],
+        "meanLocalRatio": 12.61,
+        "maxLocalRatio": 25.69,
+        "globalRatio": 25.69,
+        "pixelChanges": [
+          703542,
+          0,
+          689683,
+          0
+        ],
+        "meanPixelChange": 348306,
+        "maxPixelChange": 703542,
+        "changeFrequency": 0.5
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.ibx.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 20,
+          "serious": 4,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "frame-title",
+            "description": "Ensures <iframe> and <frame> elements have an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".fw-iframe",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".justify-content-end",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".col-md-8 > .cube > .cube-link[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".order-3.col-md-4.col-12 > .cube > .cube-link[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href$=\"getgoodliving\\.com\\/\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".logo",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".signin",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#slide2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "a[data-slide=\"prev\"] > .sr-only",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "a[data-slide=\"next\"] > .sr-only",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".fragment_35206",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".fragment_35207",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".fragment_35208",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".carousel-control-prev.slick-arrow[role=\"button\"] > .sr-only",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "div[data-slick-index=\"\\32 \"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".carousel-control-next.slick-arrow[role=\"button\"] > .sr-only",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".container > h2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".section-grid-photos > h2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col-md-8 > .cube > .cube-link[target=\"_blank\"] > img[alt=\"\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".order-md-3",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".order-3.col-md-4.col-12 > .cube > .cube-link[target=\"_blank\"] > img[alt=\"\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href$=\"getgoodliving\\.com\\/\"] > img[alt=\"\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".section-cta",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://www.ibx.com/",
+      "what": "Independence",
+      "result": "https://www.ibx.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.ibx.com/",
+      "result": {
+        "visibleElements": 369
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "total": 76,
+          "types": {
+            "outlineMissing": {
+              "total": 4,
+              "tagNames": {
+                "button": 1,
+                "a": 2,
+                "iframe": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 72,
+              "tagNames": {
+                "a": 70,
+                "button": 1,
+                "div": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "button",
+              "text": "Register now"
+            },
+            {
+              "tagName": "a",
+              "text": "Previous"
+            },
+            {
+              "tagName": "a",
+              "text": "Next"
+            },
+            {
+              "tagName": "iframe",
+              "text": "{<iframe src=\"https://feed.mikle.com/widget/v2/130977/?preloader-text=Loading\" height=\"408px\" width=\"100%\" class=\"fw-iframe\" scrolling=\"no\" frameborder=\"0\" data-autotest-focused=\"N\"></iframe>}"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Find a doctor"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "button",
+              "text": "Search IBX.com Icon"
+            },
+            {
+              "tagName": "a",
+              "text": "Independence Blue Cross Logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Log in/Register"
+            },
+            {
+              "tagName": "a",
+              "text": "Register now"
+            },
+            {
+              "tagName": "a",
+              "text": "Couple And Daughter Smiling Because They Are Covered By Family Health Plan; Individuals and families Get coverage for yourself and your loved ones. Go"
+            },
+            {
+              "tagName": "a",
+              "text": "Over 65 Couple Smiling; Medicare Get affordable Medicare health and prescription drug plans. Go"
+            },
+            {
+              "tagName": "a",
+              "text": "Two Female Employers Discussing Health Coverage; Employers Get affordable, comprehensive coverage for your employees. Go"
+            },
+            {
+              "tagName": "a",
+              "text": "Two Health Insurance Brokers Having A Discussion About The Resources Available To Them With IBX; Brokers Get to the information you need, fast. Go"
+            },
+            {
+              "tagName": "a",
+              "text": "Smiling Healthcare Provider; Providers Get tools and resources to provide care for your IBX patients. Go"
+            },
+            {
+              "tagName": "a",
+              "text": "Helping Hand Icon"
+            },
+            {
+              "tagName": "a",
+              "text": "Gears Icon"
+            },
+            {
+              "tagName": "a",
+              "text": "Doctor Icon"
+            },
+            {
+              "tagName": "a",
+              "text": "Community Icon"
+            },
+            {
+              "tagName": "div",
+              "text": "IBX Podcast image; Workplace Changes and the Impacts on Behavioral Health‬ Gain insight into actionable strategies that"
+            },
+            {
+              "tagName": "a",
+              "text": "Listen"
+            },
+            {
+              "tagName": "a",
+              "text": "Member resources"
+            },
+            {
+              "tagName": "a",
+              "text": "Read more"
+            },
+            {
+              "tagName": "a",
+              "text": "Eating healthy"
+            },
+            {
+              "tagName": "a",
+              "text": "Well-being"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Individuals and families"
+            },
+            {
+              "tagName": "a",
+              "text": "Employers"
+            },
+            {
+              "tagName": "a",
+              "text": "Medicare"
+            },
+            {
+              "tagName": "a",
+              "text": "Find doctors and hospitals"
+            },
+            {
+              "tagName": "a",
+              "text": "Prescription drug information"
+            },
+            {
+              "tagName": "a",
+              "text": "Behavioral physical and emotional health"
+            },
+            {
+              "tagName": "a",
+              "text": "Health and wellness perks"
+            },
+            {
+              "tagName": "a",
+              "text": "Events"
+            },
+            {
+              "tagName": "a",
+              "text": "IBX Insights"
+            },
+            {
+              "tagName": "a",
+              "text": "For employers"
+            },
+            {
+              "tagName": "a",
+              "text": "For brokers"
+            },
+            {
+              "tagName": "a",
+              "text": "For providers"
+            },
+            {
+              "tagName": "a",
+              "text": "For members"
+            },
+            {
+              "tagName": "a",
+              "text": "About us"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "a",
+              "text": "IBX Foundation"
+            },
+            {
+              "tagName": "a",
+              "text": "IBX Innovation"
+            },
+            {
+              "tagName": "a",
+              "text": "Sitemap"
+            },
+            {
+              "tagName": "a",
+              "text": "Legal"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy & other policies"
+            },
+            {
+              "tagName": "a",
+              "text": "Anti-fraud"
+            },
+            {
+              "tagName": "a",
+              "text": "Developer resources"
+            },
+            {
+              "tagName": "a",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "Instagram"
+            },
+            {
+              "tagName": "a",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "text": "Youtube"
+            },
+            {
+              "tagName": "a",
+              "text": "Pinterest"
+            },
+            {
+              "tagName": "a",
+              "text": "Español"
+            },
+            {
+              "tagName": "a",
+              "text": "官话/官話广东话"
+            },
+            {
+              "tagName": "a",
+              "text": "Tagalog"
+            },
+            {
+              "tagName": "a",
+              "text": "Français"
+            },
+            {
+              "tagName": "a",
+              "text": "Tiếng Việt"
+            },
+            {
+              "tagName": "a",
+              "text": "Deutsche"
+            },
+            {
+              "tagName": "a",
+              "text": "한국어"
+            },
+            {
+              "tagName": "a",
+              "text": "ру́сский"
+            },
+            {
+              "tagName": "a",
+              "text": "язы́к"
+            },
+            {
+              "tagName": "a",
+              "text": "العَرَبِيَّة"
+            },
+            {
+              "tagName": "a",
+              "text": "मानक"
+            },
+            {
+              "tagName": "a",
+              "text": "हिन्दी"
+            },
+            {
+              "tagName": "a",
+              "text": "Italiano"
+            },
+            {
+              "tagName": "a",
+              "text": "Português"
+            },
+            {
+              "tagName": "a",
+              "text": "Kreyòl"
+            },
+            {
+              "tagName": "a",
+              "text": "Język"
+            },
+            {
+              "tagName": "a",
+              "text": "Polski"
+            },
+            {
+              "tagName": "a",
+              "text": "日本語"
+            },
+            {
+              "tagName": "a",
+              "text": "Pennsylvania Deitsch"
+            },
+            {
+              "tagName": "a",
+              "text": "ែខមរ"
+            },
+            {
+              "tagName": "a",
+              "text": "Diné bizaad"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 2,
+            "tagName": {
+              "div": 1,
+              "iframe": 1
+            },
+            "focusableHow": {
+              "Tab": 2,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 21,
+            "tagName": {
+              "a": 16,
+              "div": 5
+            },
+            "operableWhy": {
+              "tag": 16,
+              "cursor": 5,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 74,
+            "tagName": {
+              "a": 72,
+              "button": 2
+            },
+            "focusableHow": {
+              "Tab": 74,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 74,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Woman receiving groceries from United By Blue; VIDEO: Independence and United By Blue team up to deliver groceries during the pandemic Over 40,000 "
+            },
+            {
+              "tagName": "iframe",
+              "focusableHow": "Tab",
+              "text": "{<iframe src=\"https://feed.mikle.com/widget/v2/130977/?preloader-text=Loading\" height=\"408px\" width=\"100%\" class=\"fw-iframe\" scrolling=\"no\" frameborder=\"0\" data-gtm-yt-inspected-1_25=\"true\" data-autotest-focused=\"Tab\"></iframe>}"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Find a plan"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Get care"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Stay healthy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Resources"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Previous"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Listen"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Listen"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Next"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"cube\" style=\"background-image: url(/documents/35221/56641/sept-top-left.jpg/8f0b2f6b-a73e-d3da-e366-a426f3feb20d?t=1630346585153)\" alt=\"Teacher talking with students\" data-autotest-operable=\"cursor\"> </div>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Member resources"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Prostate Cancer Facts and Myths September is Prostate Cancer Awareness Month, which is a great time "
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Eating healthy"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Well-being"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find a doctor"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search IBX.com Icon"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Independence Blue Cross Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Log in/Register"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Register now"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Register now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Previous"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Next"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Couple And Daughter Smiling Because They Are Covered By Family Health Plan; Individuals and families Get coverage for yourself and your loved ones. Go"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Over 65 Couple Smiling; Medicare Get affordable Medicare health and prescription drug plans. Go"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Two Female Employers Discussing Health Coverage; Employers Get affordable, comprehensive coverage for your employees. Go"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Two Health Insurance Brokers Having A Discussion About The Resources Available To Them With IBX; Brokers Get to the information you need, fast. Go"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Smiling Healthcare Provider; Providers Get tools and resources to provide care for your IBX patients. Go"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Helping Hand Icon"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Gears Icon"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Doctor Icon"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Community Icon"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Member resources"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Read more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Eating healthy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Well-being"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Individuals and families"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Employers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicare"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find doctors and hospitals"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Prescription drug information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Behavioral physical and emotional health"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Health and wellness perks"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Events"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "IBX Insights"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For employers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For brokers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For providers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For members"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "IBX Foundation"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "IBX Innovation"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sitemap"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Legal"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy & other policies"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Anti-fraud"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Developer resources"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Instagram"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Youtube"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Pinterest"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Español"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "官话/官話广东话"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tagalog"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Français"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tiếng Việt"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Deutsche"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "한국어"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ру́сский"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "язы́к"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "العَرَبِيَّة"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "मानक"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "हिन्दी"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Italiano"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Português"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Kreyòl"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Język"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Polski"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "日本語"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Pennsylvania Deitsch"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ែខមរ"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Diné bizaad"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "triggers": 3,
+          "targets": 3
+        },
+        "items": [
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Member resources",
+            "newVisibles": [
+              {
+                "tagName": "SPAN",
+                "text": "Member resources"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Eating healthy",
+            "newVisibles": [
+              {
+                "tagName": "SPAN",
+                "text": "Eating healthy"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Well-being",
+            "newVisibles": [
+              {
+                "tagName": "SPAN",
+                "text": "Well-being"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 2,
+          "wellLabeled": 7
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" class=\"submit-btn\"><img src=\"https://www.ibx.com/o/ibxcomPublicTheme/images/icon.search.png\" alt=\"Search IBX.com Icon\"></button>}"
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "submit",
+              "content": "{<input hidden=\"\" type=\"submit\">}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search IBX.com"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "search"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Register now"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Learn more"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Learn more"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Learn more"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Learn more"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "links": 370,
+          "inline": {
+            "total": 43,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "About us",
+            "Careers",
+            "Newsroom",
+            "IBX Foundation",
+            "IBX Innovation",
+            "Facebook",
+            "Instagram",
+            "Twitter",
+            "LinkedIn",
+            "Youtube",
+            "Pinterest",
+            "Sitemap",
+            "Legal",
+            "Privacy & other policies",
+            "Anti-fraud",
+            "Developer resources",
+            "Facebook",
+            "Instagram",
+            "Twitter",
+            "LinkedIn",
+            "Youtube",
+            "Pinterest",
+            "Español",
+            "官话/官話广东话",
+            "Tagalog",
+            "Français",
+            "Tiếng Việt",
+            "Deutsche",
+            "한국어",
+            "ру́сский",
+            "язы́к",
+            "العَرَبِيَّة",
+            "मानक",
+            "हिन्दी",
+            "Italiano",
+            "Português",
+            "Kreyòl",
+            "Język",
+            "Polski",
+            "日本語",
+            "Pennsylvania Deitsch",
+            "ែខមរ",
+            "Diné bizaad"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.ibx.com/",
+      "result": {
+        "roleElements": 6,
+        "badRoleElements": 5,
+        "tagNames": {
+          "A": {
+            "button": 4
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "h3": {
+            "total": 22,
+            "subtotals": [
+              11,
+              5,
+              4,
+              1,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 43,
+            "subtotals": [
+              31,
+              6,
+              6
+            ]
+          },
+          "aBlock": {
+            "total": 327,
+            "subtotals": [
+              157,
+              134,
+              12,
+              8,
+              5,
+              4,
+              4,
+              3
+            ]
+          },
+          "button": {
+            "total": 6,
+            "subtotals": [
+              5,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "400": 3,
+              "700": 1
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "400": 2,
+              "500": 9,
+              "700": 11
+            },
+            "lineHeight": {
+              "38.4px": 11,
+              "19.2px": 5,
+              "26.88px": 4,
+              "28.8px": 2
+            },
+            "minHeight": {
+              "0px": 17,
+              "auto": 5
+            },
+            "minWidth": {
+              "0px": 17,
+              "auto": 5
+            },
+            "fontSize": {
+              "32px": 220,
+              "24px": 53,
+              "22.4px": 50,
+              "16px": 40
+            }
+          },
+          "aInline": {
+            "maxWidth": {
+              "none": 31,
+              "40px": 6,
+              "35px": 6
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 311,
+              "solid": 12,
+              "none none solid": 4
+            },
+            "borderWidth": {
+              "0px": 311,
+              "1px": 12,
+              "0px 0px 3px": 4
+            },
+            "fontWeight": {
+              "400": 178,
+              "500": 134,
+              "700": 15
+            },
+            "lineHeight": {
+              "24px": 314,
+              "28.8px": 5,
+              "30px": 4,
+              "normal": 4
+            },
+            "minHeight": {
+              "0px": 311,
+              "auto": 16
+            },
+            "minWidth": {
+              "0px": 311,
+              "auto": 16
+            },
+            "fontSize": {
+              "16px": 8721,
+              "20px": 108
+            }
+          },
+          "button": {
+            "fontWeight": {
+              "400": 1,
+              "700": 5
+            },
+            "lineHeight": {
+              "20px": 5,
+              "24px": 1
+            },
+            "minHeight": {
+              "0px": 5,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 5,
+              "auto": 1
+            },
+            "fontSize": {
+              "20px": 135,
+              "16px": 27
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.ibx.com/",
+      "result": {
+        "totals": {
+          "violation": 12,
+          "recommendation": 1,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Frame_HasTitle",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[6]/div[1]/section[1]/div[1]/div[1]/iframe[1]",
+              "aria": "/document[1]/region[2]/region[6]"
+            },
+            "message": "Inline frame does not have a 'title' attribute",
+            "bounds": {
+              "left": 168,
+              "top": 3145,
+              "height": 408,
+              "width": 464
+            },
+            "snippet": "<iframe data-gtm-yt-inspected-1_25=\"true\" frameborder=\"0\" scrolling=\"no\" class=\"fw-iframe\" width=\"100%\" height=\"408px\" src=\"https://feed.mikle.com/widget/v2/130977/?preloader-text=Loading\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[8]/div[1]/section[1]/div[1]/div[1]/div[5]/div[1]/a[1]",
+              "aria": "/document[1]/region[2]/region[8]/link[4]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 675,
+              "top": 4284,
+              "height": 80,
+              "width": 70
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://getgoodliving.com/\" class=\"cube-link\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[8]/div[1]/section[1]/div[1]/div[1]/div[4]/div[1]/a[1]",
+              "aria": "/document[1]/region[2]/region[8]/link[3]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 445,
+              "top": 4284,
+              "height": 80,
+              "width": 70
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://insights.ibx.com/category/well-being/nutrition/\" class=\"cube-link\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[8]/div[1]/section[1]/div[1]/div[1]/div[2]/div[1]/a[1]",
+              "aria": "/document[1]/region[2]/region[8]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 675,
+              "top": 3939,
+              "height": 80,
+              "width": 70
+            },
+            "snippet": "<a target=\"_blank\" href=\"https://insights.ibx.com/category/health-insurance/member-resources/\" class=\"cube-link\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[5]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[9]",
+              "aria": "/document[1]/region[2]/region[5]"
+            },
+            "message": "The <div> element has the id \"\" that is empty",
+            "bounds": {
+              "left": 4195,
+              "top": 2135,
+              "height": 856,
+              "width": 690
+            },
+            "snippet": "<div style=\"width: 690px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"7\" class=\"slick-slide slick-cloned\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[5]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[8]",
+              "aria": "/document[1]/region[2]/region[5]"
+            },
+            "message": "The <div> element has the id \"\" that is empty",
+            "bounds": {
+              "left": 3505,
+              "top": 2135,
+              "height": 856,
+              "width": 690
+            },
+            "snippet": "<div style=\"width: 690px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"6\" class=\"slick-slide slick-cloned\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[5]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[7]",
+              "aria": "/document[1]/region[2]/region[5]"
+            },
+            "message": "The <div> element has the id \"\" that is empty",
+            "bounds": {
+              "left": 2815,
+              "top": 2135,
+              "height": 794,
+              "width": 690
+            },
+            "snippet": "<div style=\"width: 690px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"5\" class=\"slick-slide slick-cloned\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[5]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[11]",
+              "aria": "/document[1]/region[2]/region[5]"
+            },
+            "message": "The <div> element has the id \"\" that is empty",
+            "bounds": {
+              "left": 5575,
+              "top": 2135,
+              "height": 757,
+              "width": 690
+            },
+            "snippet": "<div style=\"width: 690px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"9\" class=\"slick-slide slick-cloned\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[5]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[10]",
+              "aria": "/document[1]/region[2]/region[5]"
+            },
+            "message": "The <div> element has the id \"\" that is empty",
+            "bounds": {
+              "left": 4885,
+              "top": 2135,
+              "height": 794,
+              "width": 690
+            },
+            "snippet": "<div style=\"width: 690px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"8\" class=\"slick-slide slick-cloned\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[2]/div[5]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/region[2]/region[5]"
+            },
+            "message": "The <div> element has the id \"\" that is empty",
+            "bounds": {
+              "left": -1325,
+              "top": 2135,
+              "height": 757,
+              "width": 690
+            },
+            "snippet": "<div style=\"width: 690px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"-1\" class=\"slick-slide slick-cloned\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[1]/div[1]/nav[1]",
+              "aria": "/document[1]/region[1]/navigation[1]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 40,
+              "top": 0,
+              "height": 51,
+              "width": 720
+            },
+            "snippet": "<nav class=\"row justify-content-end d-none d-md-flex super-nav\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/nav[1]",
+              "aria": "/document[1]/region[1]/navigation[2]"
+            },
+            "message": "Multiple elements with \"navigation\" role do not have unique labels",
+            "bounds": {
+              "left": 25,
+              "top": 83,
+              "height": 67,
+              "width": 505
+            },
+            "snippet": "<nav class=\"d-flex justify-content-md-between justify-content-xl-around\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+            "bounds": {
+              "left": 0,
+              "top": 4960,
+              "height": 1328,
+              "width": 800
+            },
+            "snippet": "<footer role=\"contentinfo\" id=\"footer\">",
+            "level": "recommendation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.ibx.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Pennsylvania Health Insurance | Independence Blue Cross (IBX)",
+          "pageurl": "https://www.ibx.com/",
+          "time": 4.42,
+          "creditsremaining": 368,
+          "allitemcount": 154,
+          "totalelements": 1242,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.ibx.com/",
+          "domid": "55531a6682ffed5e78605c4542132139"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 1,
+            "items": {
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 1,
+                "selectors": [
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > FORM#hrefFm > SPAN:first-child + INPUT"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 4,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 4,
+                "selectors": [
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-2 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV#carouselExampleIndicators > OL:first-child + DIV > DIV#slide1 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-2 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV#carouselExampleIndicators > OL:first-child + DIV > DIV#slide1 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + P",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-2 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV#carouselExampleIndicators > OL:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV + A > SPAN:first-child + SPAN",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-2 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV#carouselExampleIndicators > OL:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV + A + A > SPAN:first-child + SPAN"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 33,
+            "items": {
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 5,
+                "selectors": [
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-9 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-9 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-9 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-9 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-12 > LINK:first-child + LINK + DIV > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child > DIV:first-child + DIV > IMG:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 1,
+                "selectors": [
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-2 > LINK:first-child + LINK + DIV > SECTION:first-child > DIV#carouselExampleIndicators > OL:first-child + DIV > DIV#slide2 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + P"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 1,
+                "selectors": [
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SECTION#content > DIV#fragment-0-12 > LINK:first-child + LINK + DIV > SECTION:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > H3:first-child + P + P > A:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 23,
+                "selectors": [
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SCRIPT:first-child + SCRIPT + NOSCRIPT + SPAN + DIV + SECTION > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SCRIPT:first-child + SCRIPT + NOSCRIPT + SPAN + DIV + SECTION > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SCRIPT:first-child + SCRIPT + NOSCRIPT + SPAN + DIV + SECTION > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > FOOTER#footer > SECTION:first-child > DIV:first-child + NAV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > P:first-child + P > A:first-child + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A + A"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 3,
+                "selectors": [
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SCRIPT:first-child + SCRIPT + NOSCRIPT",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SCRIPT:first-child + SCRIPT + NOSCRIPT + SPAN + DIV + SECTION + SECTION + FOOTER + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + IFRAME + DIV + DIV > SCRIPT:first-child + NOSCRIPT",
+                  "HTML > BODY#senna_surface1 > DIV#senna_surface1-default > SCRIPT:first-child + SCRIPT + NOSCRIPT + SPAN + DIV + SECTION + SECTION + FOOTER + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + IFRAME + DIV + DIV + SCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 1481,
+        "axe": 52,
+        "ibm": 44,
+        "wave": 78,
+        "bulk": 14,
+        "focOl": 16,
+        "focOp": 86,
+        "hover": 18,
+        "labClash": 4,
+        "linkUl": 129,
+        "motion": 961,
+        "radioSet": 0,
+        "role": 10,
+        "styleDiff": 69
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      108
+    ],
+    [
+      "ibm",
+      15
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "focOl",
+      8
+    ],
+    [
+      "axe",
+      5
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "focOp",
+      4
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

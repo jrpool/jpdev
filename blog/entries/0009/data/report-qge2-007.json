@@ -1,0 +1,2359 @@
+{
+  "script": "p03c10",
+  "batch": "aetnapeers",
+  "what": "Axe, IBM, WAVE, and 10 custom tests",
+  "timeStamp": "qge2",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://healthy.kaiserpermanente.org/front-door",
+      "what": "Kaiser Permanente",
+      "result": "https://healthy.kaiserpermanente.org/front-door"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "bytes": [
+          241226,
+          276918,
+          307424,
+          309512,
+          309538
+        ],
+        "localRatios": [
+          1.148,
+          1.11,
+          1.007,
+          1
+        ],
+        "meanLocalRatio": 1.066,
+        "maxLocalRatio": 1.148,
+        "globalRatio": 1.283,
+        "pixelChanges": [
+          106521,
+          42030,
+          4137,
+          19
+        ],
+        "meanPixelChange": 38176,
+        "maxPixelChange": 106521,
+        "changeFrequency": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 2,
+          "serious": 0,
+          "critical": 4
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-attr",
+            "description": "Ensures ARIA attributes are allowed for an element's role",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": [
+                  "#lottie123x",
+                  "#animation-container"
+                ],
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": [
+                  "#carex",
+                  "#animation-container"
+                ],
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": [
+                  "#care-forx",
+                  "#animation-container"
+                ],
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#logonserviceerrorform > input[name=\"errorHandle\"][type=\"hidden\"][autocomplete=\"off\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: errorHandle",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "#logonserviceerrorform > input[name=\"signonErrorButton\"][type=\"submit\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: SubmitOnBusinessError",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".page-heading",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".welcome-story__title-icon",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "body > .QSIFeedbackButton",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium"
+    },
+    {
+      "type": "url",
+      "which": "https://healthy.kaiserpermanente.org/front-door",
+      "what": "Kaiser Permanente",
+      "result": "https://healthy.kaiserpermanente.org/front-door"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "visibleElements": 539
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "total": 84,
+          "types": {
+            "outlineMissing": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 84,
+              "tagNames": {
+                "a": 70,
+                "button": 6,
+                "li": 8
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "CORONAVIRUS/COVID-19: Learn how to protect yourself, get care, and testing"
+            },
+            {
+              "tagName": "a",
+              "text": "Español; #header-utility-language"
+            },
+            {
+              "tagName": "button",
+              "text": "Choose your region Choose your region"
+            },
+            {
+              "tagName": "li",
+              "text": "California - Northern"
+            },
+            {
+              "tagName": "li",
+              "text": "California - Southern"
+            },
+            {
+              "tagName": "li",
+              "text": "Colorado"
+            },
+            {
+              "tagName": "li",
+              "text": "Georgia"
+            },
+            {
+              "tagName": "li",
+              "text": "Hawaii"
+            },
+            {
+              "tagName": "li",
+              "text": "Maryland / Virginia / Washington, D.C."
+            },
+            {
+              "tagName": "li",
+              "text": "Oregon / SW Washington"
+            },
+            {
+              "tagName": "li",
+              "text": "Washington"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Register"
+            },
+            {
+              "tagName": "a",
+              "text": "Kaiser Permanente Home; #accessCare"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn; #nav-0-menu-item-link-0"
+            },
+            {
+              "tagName": "a",
+              "text": "Shop Plans; #nav-0-menu-item-link-1"
+            },
+            {
+              "tagName": "a",
+              "text": "Doctors & Locations; #nav-0-menu-item-link-2"
+            },
+            {
+              "tagName": "a",
+              "text": "Health & Wellness; #nav-0-menu-item-link-3"
+            },
+            {
+              "tagName": "a",
+              "text": "Get Care; #nav-0-menu-item-link-4"
+            },
+            {
+              "tagName": "button",
+              "text": "Search; Search; #site-search-button"
+            },
+            {
+              "tagName": "a",
+              "text": "COVID-19 vaccine​"
+            },
+            {
+              "tagName": "a",
+              "text": "COVID-19 testing"
+            },
+            {
+              "tagName": "a",
+              "text": "Get a flu shot"
+            },
+            {
+              "tagName": "a",
+              "text": "Get care"
+            },
+            {
+              "tagName": "a",
+              "text": "Mental health tools"
+            },
+            {
+              "tagName": "a",
+              "text": "Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "text": "Shop plans"
+            },
+            {
+              "tagName": "a",
+              "text": "See what it’s like to be a member"
+            },
+            {
+              "tagName": "a",
+              "text": "masked hand holding a vial of medicine; COVID-19 vaccine What you need to know about the vaccine The vaccine is a safe and effective way to "
+            },
+            {
+              "tagName": "a",
+              "text": "coronavirus picture under a microscope; COVID-19 updates The latest updates on the pandemic Get answers to FAQs about COVID-19, the vaccine,"
+            },
+            {
+              "tagName": "a",
+              "text": "person walking outside with bicycle; Live well Healthy habits our doctors practice for self-care Hear what these Kaiser Permanente doctor"
+            },
+            {
+              "tagName": "a",
+              "text": "older person gardening with young child; Get care Keep up with health screenings Learn why health screenings are important and which ones you"
+            },
+            {
+              "tagName": "a",
+              "text": "adult helping child get ready for school; Mental health Tips for supporting kids this school year Prepare for the new school year with tips fr"
+            },
+            {
+              "tagName": "a",
+              "text": "two people on tablet; Get care How telehealth has transformed cancer care Learn how cancer patients and oncologists use vi"
+            },
+            {
+              "tagName": "a",
+              "text": "person getting acupuncture; Live well Learn how acupuncture works Hear from a Kaiser Permanente doctor on the basics of acupunct"
+            },
+            {
+              "tagName": "button",
+              "text": "Left Arrow; Previous article"
+            },
+            {
+              "tagName": "button",
+              "text": "Right Arrow; Next article"
+            },
+            {
+              "tagName": "a",
+              "text": "View all health topics"
+            },
+            {
+              "tagName": "a",
+              "text": "woman using smartphone at the laundromat; Mental health Guided meditations from Calm to ease anxiety Feeling overwhelmed? Try one of these gui"
+            },
+            {
+              "tagName": "a",
+              "text": "person typing on laptop computer; Live well Take our Total Health Assessment Answer questions about your health and we’ll give guidanc"
+            },
+            {
+              "tagName": "a",
+              "text": "hands holding small tomatoes; Social health Support for your total health Good health is about more than health care. From a safe "
+            },
+            {
+              "tagName": "a",
+              "text": "person on exercise mat looking at tablet; Wellness coaching Achieve your health goals Team up with our wellness coaches by phone for support w"
+            },
+            {
+              "tagName": "a",
+              "text": "person sitting cross legged on ground; Mental health Podcasts and meditations for your total health Choose from our collection of audio med"
+            },
+            {
+              "tagName": "a",
+              "text": "person exercising on mat; Fitness deals Save on your fitness favorites As a member, you can get reduced rates on a variety of "
+            },
+            {
+              "tagName": "button",
+              "text": "Left Arrow; Previous class"
+            },
+            {
+              "tagName": "button",
+              "text": "Right Arrow; Next class"
+            },
+            {
+              "tagName": "a",
+              "text": "View all programs & classes"
+            },
+            {
+              "tagName": "a",
+              "text": "Browse the Health Encyclopedia"
+            },
+            {
+              "tagName": "a",
+              "text": "Browse the Drug Encyclopedia"
+            },
+            {
+              "tagName": "a",
+              "text": "Shop plans"
+            },
+            {
+              "tagName": "a",
+              "text": "map pin"
+            },
+            {
+              "tagName": "a",
+              "text": "Find a doctor or location"
+            },
+            {
+              "tagName": "a",
+              "text": "Find a doctor or location"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn how housing is linked to personal health"
+            },
+            {
+              "tagName": "a",
+              "text": "Find out how we’re taking steps toward greater equity"
+            },
+            {
+              "tagName": "a",
+              "text": "#KPResearch"
+            },
+            {
+              "tagName": "a",
+              "text": "@nytimes"
+            },
+            {
+              "tagName": "a",
+              "text": "https://nyti.ms/3BtpdJo"
+            },
+            {
+              "tagName": "a",
+              "text": "Follow us on Twitter"
+            },
+            {
+              "tagName": "a",
+              "text": "CORONAVIRUS/COVID-19: Learn how to protect yourself, get care, and testing"
+            },
+            {
+              "tagName": "a",
+              "text": "(third party) web and mobile applications"
+            },
+            {
+              "tagName": "a",
+              "text": "Find care"
+            },
+            {
+              "tagName": "a",
+              "text": "Our organization"
+            },
+            {
+              "tagName": "a",
+              "text": "Member support"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit our other sites"
+            },
+            {
+              "tagName": "a",
+              "text": "Other Languages"
+            },
+            {
+              "tagName": "a",
+              "text": "twitter"
+            },
+            {
+              "tagName": "a",
+              "text": "facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "youtube"
+            },
+            {
+              "tagName": "a",
+              "text": "pinterest"
+            },
+            {
+              "tagName": "a",
+              "text": "instagram"
+            },
+            {
+              "tagName": "a",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "a",
+              "text": "Nondiscrimination Notice"
+            },
+            {
+              "tagName": "a",
+              "text": "Website Privacy"
+            },
+            {
+              "tagName": "a",
+              "text": "HIPAA Notice of Privacy Practices"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "text": "Rights & Responsibilities"
+            },
+            {
+              "tagName": "a",
+              "text": "Disaster Planning"
+            },
+            {
+              "tagName": "a",
+              "text": "Technical Information"
+            },
+            {
+              "tagName": "a",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Site Manager"
+            },
+            {
+              "tagName": "a",
+              "text": "Details"
+            },
+            {
+              "tagName": "a",
+              "text": "Adobe Acrobat"
+            },
+            {
+              "tagName": "a",
+              "text": "TRUSTe privacy certification program"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 0,
+            "tagName": {},
+            "operableWhy": {
+              "tag": 0,
+              "cursor": 0,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 112,
+            "tagName": {
+              "a": 95,
+              "button": 7,
+              "li": 8,
+              "input[type=text]": 1,
+              "input[type=password]": 1
+            },
+            "focusableHow": {
+              "Tab": 104,
+              "ArrowRight": 0,
+              "ArrowDown": 8
+            },
+            "operableWhy": {
+              "tag": 104,
+              "cursor": 0,
+              "onclick": 0,
+              "menuitem": 8
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Alert; COVID-19: Latest updates about the vaccine, booster shots, testing, how to protect yourself and get ; #covidAlertAnchor"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Español; #header-utility-language"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Choose your region Choose your region"
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "California - Northern"
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "California - Southern"
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "Colorado"
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "Georgia"
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "Hawaii"
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "Maryland / Virginia / Washington, D.C."
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "Oregon / SW Washington"
+            },
+            {
+              "tagName": "li",
+              "focusableHow": "ArrowDown",
+              "operableWhy": "menuitem",
+              "text": "Washington"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Register"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Kaiser Permanente Home; #accessCare"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "User ID; #userid"
+            },
+            {
+              "tagName": "input[type=password]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Password; #password"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sign in; #Submit"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Forgot user ID?; Forgot your user ID; #header-fuid-link"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Forgot password?; password; #header-fpwd-link"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms & Conditions; #header-terms-link"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Statement.; #header-privacy-link"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn; #nav-0-menu-item-link-0"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop Plans; #nav-0-menu-item-link-1"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Doctors & Locations; #nav-0-menu-item-link-2"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Health & Wellness; #nav-0-menu-item-link-3"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get Care; #nav-0-menu-item-link-4"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search; Search; #site-search-button"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COVID-19 vaccine"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COVID-19 vaccine​"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "COVID-19 testing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get a flu shot"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Mental health tools"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop plans"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "See what it’s like to be a member"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "masked hand holding a vial of medicine; COVID-19 vaccine What you need to know about the vaccine The vaccine is a safe and effective way to "
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "coronavirus picture under a microscope; COVID-19 updates The latest updates on the pandemic Get answers to FAQs about COVID-19, the vaccine,"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "person walking outside with bicycle; Live well Healthy habits our doctors practice for self-care Hear what these Kaiser Permanente doctor"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "older person gardening with young child; Get care Keep up with health screenings Learn why health screenings are important and which ones you"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "adult helping child get ready for school; Mental health Tips for supporting kids this school year Prepare for the new school year with tips fr"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "two people on tablet; Get care How telehealth has transformed cancer care Learn how cancer patients and oncologists use vi"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "person getting acupuncture; Live well Learn how acupuncture works Hear from a Kaiser Permanente doctor on the basics of acupunct"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Left Arrow; Previous article"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Right Arrow; Next article"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "View all health topics"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "woman using smartphone at the laundromat; Mental health Guided meditations from Calm to ease anxiety Feeling overwhelmed? Try one of these gui"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "person typing on laptop computer; Live well Take our Total Health Assessment Answer questions about your health and we’ll give guidanc"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "hands holding small tomatoes; Social health Support for your total health Good health is about more than health care. From a safe "
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "person on exercise mat looking at tablet; Wellness coaching Achieve your health goals Team up with our wellness coaches by phone for support w"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "person sitting cross legged on ground; Mental health Podcasts and meditations for your total health Choose from our collection of audio med"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "person exercising on mat; Fitness deals Save on your fitness favorites As a member, you can get reduced rates on a variety of "
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Left Arrow; Previous class"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Right Arrow; Next class"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "View all programs & classes"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Browse the Health Encyclopedia"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Browse the Drug Encyclopedia"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop plans"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "map pin"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find a doctor or location"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find a doctor or location"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn how housing is linked to personal health"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find out how we’re taking steps toward greater equity"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#KPResearch"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "@nytimes"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "https://nyti.ms/3BtpdJo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Follow us on Twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CORONAVIRUS/COVID-19: Learn how to protect yourself, get care, and testing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "(third party) web and mobile applications"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Get Care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Find Doctors & Locations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Health Classes"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Care When Traveling"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About KP"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Patient Quality & Safety"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News & Views"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Commitment to the Community"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Diversity & Inclusion"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Annual Report"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Media Inquiries"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "New Member Welcome"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Forms & Publications"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Support Center"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medical Information Requests"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Individual & Family Plans"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicaid/Medi-Cal"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Medicare"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Affordable Care Act"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Businesses"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "For Federal Employees"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Broker Support"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Español; #language-picker-646867643"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Other Languages"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "youtube"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "pinterest"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "instagram"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Nondiscrimination Notice"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Website Privacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "HIPAA Notice of Privacy Practices"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Rights & Responsibilities"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Disaster Planning"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Technical Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Site Manager"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Details"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Adobe Acrobat"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "TRUSTe privacy certification program"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 24
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Choose your region Choose your region"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search",
+                "content": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Navigation Menu - Opens a Simulated Dialog"
+                ],
+                "content": "Navigation Menu - Opens a Simulated Dialog Menu"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Close Navigation Menu"
+                ],
+                "content": "Close Navigation Menu"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Choose your region Choose your region"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Search"
+                ],
+                "content": "Search"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cancel Search"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Clear Search",
+                "content": "X"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Previous article"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Next article"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Previous class"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Next class"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "Close"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "No volver a mostrar esto."
+                ]
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Continuar"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cancelar"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "Close"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Sign Off"
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Stay signed on"
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "Close"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "INPUT",
+              "type": "number",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "ZIP CODE"
+                ]
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Update location"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "links": 115,
+          "inline": {
+            "total": 22,
+            "underlined": 8,
+            "underlinedPercent": 36
+          }
+        },
+        "items": {
+          "underlined": [
+            "CORONAVIRUS/COVID-19: Learn how to protect yourself, get care, and testing",
+            "View all health topics",
+            "View all programs & classes",
+            "#KPResearch",
+            "@nytimes",
+            "https://nyti.ms/3BtpdJo",
+            "CORONAVIRUS/COVID-19: Learn how to protect yourself, get care, and testing",
+            "(third party) web and mobile applications"
+          ],
+          "notUnderlined": [
+            "Español",
+            "Security",
+            "Register",
+            "Accessibility",
+            "Nondiscrimination Notice",
+            "Website Privacy",
+            "HIPAA Notice of Privacy Practices",
+            "Terms & Conditions",
+            "Rights & Responsibilities",
+            "Disaster Planning",
+            "Technical Information",
+            "Site Map",
+            "Contact Site Manager",
+            "Adobe Acrobat"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "roleElements": 54,
+        "badRoleElements": 31,
+        "tagNames": {
+          "DIV": {
+            "region": 4,
+            "heading": 1,
+            "listitem": 13,
+            "group": 7,
+            "dialog": 3,
+            "button": 1
+          },
+          "MAIN": {
+            "main": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 4
+          },
+          "h3": {
+            "total": 1
+          },
+          "h4": {
+            "total": 5
+          },
+          "aInline": {
+            "total": 22,
+            "subtotals": [
+              10,
+              4,
+              3,
+              3,
+              2
+            ]
+          },
+          "aBlock": {
+            "total": 93,
+            "subtotals": [
+              23,
+              17,
+              13,
+              13,
+              5,
+              4,
+              4,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 21,
+            "subtotals": [
+              9,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {},
+          "h3": {},
+          "h4": {},
+          "aInline": {
+            "lineHeight": {
+              "17px": 10,
+              "20px": 4,
+              "21.28px": 3,
+              "28px": 3,
+              "24px": 2
+            },
+            "textDecorationLine": {
+              "none": 14,
+              "underline": 8
+            },
+            "fontSize": {
+              "13px": 140,
+              "16px": 50,
+              "20px": 30
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 66,
+              "solid": 27
+            },
+            "borderWidth": {
+              "0px": 66,
+              "1px": 26,
+              "2px": 1
+            },
+            "fontWeight": {
+              "400": 92,
+              "700": 1
+            },
+            "lineHeight": {
+              "19.95px": 23,
+              "24px": 20,
+              "17.29px": 17,
+              "21.28px": 16,
+              "16px": 5,
+              "37px": 4,
+              "28px": 3,
+              "40px": 2,
+              "22px": 1,
+              "38px": 1,
+              "20px": 1
+            },
+            "minWidth": {
+              "0px": 92,
+              "160px": 1
+            },
+            "textDecorationLine": {
+              "none": 74,
+              "underline": 19
+            },
+            "fontSize": {
+              "16px": 270,
+              "15px": 230,
+              "13px": 180,
+              "18px": 150,
+              "20px": 40,
+              "24px": 40,
+              "32px": 20
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "solid": 12,
+              "none": 9
+            },
+            "borderWidth": {
+              "0px": 11,
+              "1px": 10
+            },
+            "lineHeight": {
+              "24px": 10,
+              "20px": 4,
+              "22px": 2,
+              "21.28px": 2,
+              "17.29px": 1,
+              "66px": 1,
+              "26.6px": 1
+            },
+            "fontSize": {
+              "18px": 90,
+              "16px": 60,
+              "14px": 30,
+              "13px": 20,
+              "20px": 10
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "totals": {
+          "violation": 18,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/a[1]/span[1]/div[1]/img[1]",
+              "aria": "/document[1]/banner[1]/link[2]/img[1]"
+            },
+            "message": "Link text is repeated in an image 'alt' value within the same link",
+            "bounds": {
+              "left": 663,
+              "top": 106,
+              "height": 24,
+              "width": 24
+            },
+            "snippet": "<img src=\"/etc.clientlibs/settings/wcm/designs/kporg/kp-foundation/clientlib-modules/styleguide/resources/assets/images/header-profile-icon.svg\" class=\"cmp-image__image\" alt=\"Sign in\" aria-hidden=\"true\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Img_HasAlt",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[10]/section[1]/div[1]/div[1]/div[1]/div[2]/header[1]/div[1]/img[1]",
+              "aria": "/document[1]/main[1]/region[9]/img[2]"
+            },
+            "message": "Image does not have an 'alt' attribute short text alternative",
+            "bounds": {
+              "left": 490,
+              "top": 6816,
+              "height": 40,
+              "width": 40
+            },
+            "snippet": "<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" class=\"welcome-story__title-icon cmp-image__image no-wh cmp-image__image--is-loading\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[6]",
+              "aria": "/document[1]/main[1]/region[5]/listitem[6]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 17,
+              "top": 3592,
+              "height": 373,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[5]",
+              "aria": "/document[1]/main[1]/region[5]/listitem[5]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 327,
+              "top": 3198,
+              "height": 394,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[4]",
+              "aria": "/document[1]/main[1]/region[5]/listitem[4]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 17,
+              "top": 3198,
+              "height": 373,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[3]",
+              "aria": "/document[1]/main[1]/region[5]/listitem[3]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 327,
+              "top": 2783,
+              "height": 415,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[2]",
+              "aria": "/document[1]/main[1]/region[5]/listitem[2]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 327,
+              "top": 2389,
+              "height": 394,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/main[1]/region[5]/listitem[1]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 17,
+              "top": 2389,
+              "height": 415,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[7]",
+              "aria": "/document[1]/main[1]/region[3]/listitem[7]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 327,
+              "top": 2858,
+              "height": 352,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[6]",
+              "aria": "/document[1]/main[1]/region[3]/listitem[6]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 17,
+              "top": 2858,
+              "height": 394,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]",
+              "aria": "/document[1]/main[1]/region[3]/listitem[5]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 327,
+              "top": 2464,
+              "height": 394,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]",
+              "aria": "/document[1]/main[1]/region[3]/listitem[4]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 17,
+              "top": 2464,
+              "height": 373,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]",
+              "aria": "/document[1]/main[1]/region[3]/listitem[3]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 327,
+              "top": 2070,
+              "height": 394,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]",
+              "aria": "/document[1]/main[1]/region[3]/listitem[2]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 327,
+              "top": 1697,
+              "height": 373,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/main[1]/region[3]/listitem[1]"
+            },
+            "message": "The element with \"listitem\" role is not contained in or owned by an element with one of the following ARIA roles: \"directory, list\"",
+            "bounds": {
+              "left": 17,
+              "top": 1697,
+              "height": 415,
+              "width": 310
+            },
+            "snippet": "<div class=\"apf-card\" role=\"listitem\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/button[2]/span[3]",
+              "aria": "/document[1]/banner[1]/button[2]"
+            },
+            "message": "Text contrast of 4.44 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 731,
+              "top": 137,
+              "height": 19,
+              "width": 44
+            },
+            "snippet": "<span id=\"menu-btn-text-id\" class=\"menu-btn-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/button[1]/span[2]",
+              "aria": "/document[1]/banner[1]/button[1]"
+            },
+            "message": "Text contrast of 4.44 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 567,
+              "top": 137,
+              "height": 19,
+              "width": 55
+            },
+            "snippet": "<span class=\"search-btn-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_semantics_attribute",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/section[1]/div[1]/header[1]/div[1]/img[1]",
+              "aria": "/document[1]/main[1]/region[2]/img[1]"
+            },
+            "message": "The ARIA attribute 'aria-hidden' is not valid for the element <img> with ARIA role 'img'",
+            "bounds": {
+              "left": 20,
+              "top": 1637,
+              "height": 40,
+              "width": 40
+            },
+            "snippet": "<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" aria-hidden=\"true\" class=\"section-title__header-image cmp-image__image no-wh cmp-image__image--is-loading\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://healthy.kaiserpermanente.org/front-door",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Custom Care & Coverage Just For You | Kaiser Permanente",
+          "pageurl": "https://healthy.kaiserpermanente.org/front-door",
+          "time": 5.34,
+          "creditsremaining": 377,
+          "allitemcount": 334,
+          "totalelements": 1202,
+          "waveurl": "http://wave.webaim.org/report?url=https://healthy.kaiserpermanente.org/front-door",
+          "domid": "b6fbb9392629ac64747660f646b4adc0"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 7,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > MAIN#container-7f4a9222d0 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > SECTION:first-child > DIV:first-child > HEADER:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > MAIN#container-7f4a9222d0 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > SECTION#find-locations-error > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + HEADER > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#container-a055295406 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#dynamic-experience-fragment-fa56052d7f > DIV:first-child > DIV:first-child > DIV:first-child > DIV#kp-header > DIV:first-child > DIV:first-child > UL:first-child + DIV + DIV + DIV + DIV > DIV#signonheader-container > DIV:first-child + LOGIN-PAGE > DIV:first-child > DIV:first-child > FORM#logonfailedform > INPUT#SubmitOnError",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#container-a055295406 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#dynamic-experience-fragment-fa56052d7f > DIV:first-child > DIV:first-child > DIV:first-child > DIV#kp-header > DIV:first-child > DIV:first-child > UL:first-child + DIV + DIV + DIV + DIV > DIV#signonheader-container > DIV:first-child + LOGIN-PAGE > DIV:first-child > DIV:first-child > FORM#logonserviceerrorform > INPUT#SubmitOnBusinessError",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#container-a055295406 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#dynamic-experience-fragment-fa56052d7f > DIV:first-child > DIV:first-child > DIV:first-child > DIV#kp-header > DIV:first-child > DIV:first-child > UL:first-child + DIV + DIV + DIV + DIV > DIV#signonheader-container > DIV:first-child + LOGIN-PAGE > DIV:first-child > DIV:first-child > FORM#logonblankerrorform > INPUT#blankLoginSubmit",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#container-a055295406 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#dynamic-experience-fragment-fa56052d7f > DIV:first-child > DIV:first-child > DIV:first-child > DIV#kp-header > DIV:first-child > DIV:first-child > UL:first-child + DIV + DIV + DIV + DIV > DIV#signonheader-container > DIV:first-child + LOGIN-PAGE > DIV:first-child > DIV:first-child > FORM#logonusererrorform > INPUT#SubmitOnBusinessError"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 11,
+            "items": {
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV#container-a055295406 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#dynamic-experience-fragment-fa56052d7f > DIV:first-child > DIV:first-child > DIV:first-child > DIV#kp-header > DIV:first-child > DIV:first-child > UL:first-child + DIV + DIV + DIV > BUTTON#mobile-search-button > SPAN:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#container-4679c91aaa > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#container-2e7464f2e5 > DIV:first-child > DIV:first-child > DIV:first-child > DIV#dynamic-experience-fragment-7e8a767321 > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV#city-search-modal > DIV:first-child > DIV:first-child > BUTTON#modal-close > IMG:first-child"
+                ]
+              },
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > MAIN#container-7f4a9222d0 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > H4:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > MAIN#container-7f4a9222d0 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > MAIN#container-7f4a9222d0 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV#dynamic-experience-fragment-f0735d4280 > DIV:first-child > DIV:first-child > DIV:first-child > FOOTER:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#text-22a32c5543 > P:first-child > I:first-child + A"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > MAIN#container-7f4a9222d0 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > SECTION#find-locations-error > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > DIV:first-child > A:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV#dynamic-experience-fragment-f0735d4280 > DIV:first-child > DIV:first-child > DIV:first-child > FOOTER:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#text-22a32c5543 > P:first-child > I:first-child > SPAN:first-child"
+                ]
+              },
+              "underline": {
+                "id": "underline",
+                "description": "Underlined text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > MAIN#container-7f4a9222d0 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > DIV#show-more-less-fd--0 > DIV:first-child + SPAN + HR + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#container-4679c91aaa > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#container-2e7464f2e5 > DIV:first-child > DIV:first-child > DIV:first-child > DIV#dynamic-experience-fragment-7e8a767321 > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV#city-search-modal > DIV:first-child > DIV:first-child > DIV#modal-content-margin > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c10",
+      "what": "3 packages and 10 custom tests, with duplication discounts",
+      "result": {
+        "total": 365,
+        "axe": 29,
+        "ibm": 68,
+        "wave": 48,
+        "bulk": 19,
+        "focOl": 0,
+        "focOp": 0,
+        "hover": 0,
+        "labClash": 0,
+        "linkUl": 42,
+        "motion": 23,
+        "radioSet": 0,
+        "role": 62,
+        "styleDiff": 74
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      158
+    ],
+    [
+      "motion",
+      13
+    ],
+    [
+      "ibm",
+      13
+    ],
+    [
+      "focOl",
+      8
+    ],
+    [
+      "axe",
+      7
+    ],
+    [
+      "wave",
+      7
+    ],
+    [
+      "focOp",
+      3
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}
