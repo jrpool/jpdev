@@ -1,0 +1,3038 @@
+{
+  "script": "p03c11",
+  "batch": "veigxRest",
+  "what": "Axe, IBM, WAVE, and 11 custom tests",
+  "timeStamp": "rihx",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://deere.com",
+      "what": "John Deere",
+      "result": "https://www.deere.com/en/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "bytes": [
+          889906,
+          889906,
+          889906,
+          889906,
+          889906
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 21,
+          "serious": 7,
+          "critical": 2
+        },
+        "items": [
+          {
+            "rule": "button-name",
+            "description": "Ensures buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#SBSsearchIcon",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#image-panel-6f12cc69-2f2b-a1da-c328-04768f60b104 > .panel-content > .image-panel > .image-text.image-panel-grey-bg > .title.shadow",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#products-support > h4",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label-title-only",
+            "description": "Ensures that every form element is not solely labeled using the title or aria-describedby attributes",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#SBSsearchInput",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "title-only",
+                    "description": "Only title used to generate label for form element",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label",
+            "description": "Ensures every form element has a label",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#search-parts",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "implicit-label",
+                    "description": "Form element does not have an implicit (wrapped) <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "explicit-label",
+                    "description": "Form element does not have an explicit <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-placeholder",
+                    "description": "Element has no placeholder attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".social-icons > ul > li:nth-child(1) > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "li:nth-child(2) > a[href$=\"JohnDeere\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".social-icons > ul > li:nth-child(3) > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".social-icons > ul > li:nth-child(4) > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href$=\"johndeere\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".nav-tier1 > li:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".nav-tier1 > li:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".border-bottom",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".nav-aux",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".nav-aux-container > .search",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "label[for=\"search-input-large\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".clear-holder > .twitter-typeahead > .tt-hint[readonly=\"\"][dir=\"ltr\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#search-input-large",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#industry-selector-464e6ce4-ea25-a937-7b54-3cb26e464f2e",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".container:nth-child(3)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#nesting-4e21b044-1e73-f47c-50a0-a6563587b9bd",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".overlay-comp",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#nesting-a48687e7-b535-9399-2ce1-36a7c2238f6e",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".SBSh2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".SBSdropdown",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#SBSsearchInput",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#SBSsearchIcon",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".other-manufactures",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "tabindex",
+            "description": "Ensures tabindex attribute values are not greater than 0",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#skipLink",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "tabindex",
+                    "description": "Element has a tabindex greater than 0",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://deere.com",
+      "what": "John Deere",
+      "result": "https://www.deere.com/en/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "visibleElements": 289
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "tabulate and list active elements contained by links or buttons",
+      "withItems": true,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "total": 73,
+          "types": {
+            "outlineMissing": {
+              "total": 3,
+              "tagNames": {
+                "input[type=search]": 1,
+                "button": 2
+              }
+            },
+            "outlinePresent": {
+              "total": 70,
+              "tagNames": {
+                "a": 67,
+                "button": 2,
+                "input[type=checkbox]": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "input[type=search]",
+              "text": "#SBSsearchInput"
+            },
+            {
+              "tagName": "button",
+              "text": "#SBSsearchIcon"
+            },
+            {
+              "tagName": "button",
+              "text": "Cookie Preferences; #ot-sdk-btn"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Skip to main content; #skipLink"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a itemprop=\"url\" class=\"nav-logo\" title=\"John Deere\" href=\"https://www.deere.com/en/\" data-autotest-focused=\"Y\" data-linkid=\"nav > top > logo\" data-linktype=\"dest-internal\" style=\"left: auto;\"></a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "John Deere Equipment; Equipment"
+            },
+            {
+              "tagName": "a",
+              "text": "John Deere Finance; Finance"
+            },
+            {
+              "tagName": "a",
+              "text": "John Deere Parts & Service; Parts & Service"
+            },
+            {
+              "tagName": "a",
+              "text": "John Deere Find a Dealer; Find a Dealer"
+            },
+            {
+              "tagName": "a",
+              "text": "John Deere Sign In; Sign In"
+            },
+            {
+              "tagName": "button",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Agriculture page; Agriculture"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Lawn & Garden page; Lawn & Garden"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Construction page; Construction"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Landscaping & Grounds Care page; Landscaping & Grounds Care"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Golf & Sports Turf page; Golf & Sports Turf"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Forestry page; Forestry"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Engines & Drivetrain page; Engines & Drivetrain"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Government & Military Sales page; Government & Military Sales"
+            },
+            {
+              "tagName": "a",
+              "text": "Visit Rental Sales page; Rental Sales"
+            },
+            {
+              "tagName": "a",
+              "text": "Discover how we help life leap forward"
+            },
+            {
+              "tagName": "a",
+              "text": "Icon of a tractor; Product Selector"
+            },
+            {
+              "tagName": "a",
+              "text": "Icon of a mechanical nut; Build & Price"
+            },
+            {
+              "tagName": "a",
+              "text": "Icon of radar locator pin; Shop Pre Owned"
+            },
+            {
+              "tagName": "a",
+              "text": "Icon of download arrow; Download Manuals"
+            },
+            {
+              "tagName": "a",
+              "text": "Icon of shopping cart; Buy Parts"
+            },
+            {
+              "tagName": "a",
+              "text": "Icon of merchandise tag; Offers & Discounts"
+            },
+            {
+              "tagName": "a",
+              "text": "Illustration of a person viewing forestry machine and productivity data on a computer screen; Get ConnectedStreamline operations in the woods and the back office with John Deere Precision Forest"
+            },
+            {
+              "tagName": "a",
+              "text": "Two people on a jobsite view JDLink data on a cell phone.; Your Connection to Enhanced ProductivityNow subscription-free and at no charge, JDLink™ connectivity"
+            },
+            {
+              "tagName": "a",
+              "text": "Start Saving"
+            },
+            {
+              "tagName": "a",
+              "text": "Buy Now"
+            },
+            {
+              "tagName": "a",
+              "text": "Read here"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about Sunreef Yachts"
+            },
+            {
+              "tagName": "a",
+              "text": "Read the story"
+            },
+            {
+              "tagName": "button",
+              "text": "Model"
+            },
+            {
+              "tagName": "input[type=checkbox]",
+              "text": "#search-parts"
+            },
+            {
+              "tagName": "a",
+              "text": "Products & Support - Equipment; Equipment"
+            },
+            {
+              "tagName": "a",
+              "text": "Products & Support - Find a Dealer; Find a Dealer"
+            },
+            {
+              "tagName": "a",
+              "text": "Products & Support - Buy Online; Buy Online"
+            },
+            {
+              "tagName": "a",
+              "text": "Products & Support - Build Your Own; Build Your Own"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - About Our Company; About Our Company"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - Our Higher Purpose; Our Higher Purpose"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - Innovation; Innovation"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - Sustainability; Sustainability"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - Diversity Equity & Inclusion; Diversity Equity & Inclusion"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - Careers; Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - Governance; Governance"
+            },
+            {
+              "tagName": "a",
+              "text": "Company Information - Investor Relations; Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "News & Publications - News and Announcements; News and Announcements"
+            },
+            {
+              "tagName": "a",
+              "text": "News & Publications - Newsroom; Newsroom"
+            },
+            {
+              "tagName": "a",
+              "text": "News & Publications - The Furrow; The Furrow"
+            },
+            {
+              "tagName": "a",
+              "text": "News & Publications - The Dirt; The Dirt"
+            },
+            {
+              "tagName": "a",
+              "text": "News & Publications - The Landing; The Landing"
+            },
+            {
+              "tagName": "a",
+              "text": "News & Publications - Power Connect; Power Connect"
+            },
+            {
+              "tagName": "a",
+              "text": "Connect with John Deere - Factory Tours; Factory Tours"
+            },
+            {
+              "tagName": "a",
+              "text": "Connect with John Deere - John Deere Historic Site; John Deere Historic Site"
+            },
+            {
+              "tagName": "a",
+              "text": "Connect with John Deere - John Deere Pavilion; John Deere Pavilion"
+            },
+            {
+              "tagName": "a",
+              "text": "Connect with John Deere - John Deere Store; John Deere Store"
+            },
+            {
+              "tagName": "a",
+              "text": "Connect with John Deere - John Deere Tractor & Engine Museum; John Deere Tractor & Engine Museum"
+            },
+            {
+              "tagName": "a",
+              "text": "Connect with John Deere - John Deere Kids; John Deere Kids"
+            },
+            {
+              "tagName": "a",
+              "text": "Connect with John Deere - John Deere Rewards; John Deere Rewards"
+            },
+            {
+              "tagName": "a",
+              "text": "United States"
+            },
+            {
+              "tagName": "a",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy and Data"
+            },
+            {
+              "tagName": "a",
+              "text": "Cookie Statement"
+            },
+            {
+              "tagName": "a",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "a",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a href=\"http://www.facebook.com/JohnDeereUSCA\" data-linkid=\"nav > footer > social > facebook\" data-linktype=\"external\" data-autotest-focused=\"Y\"><span class=\"footer-icon icon-jd_facebook\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a href=\"https://twitter.com/JohnDeere\" data-linkid=\"nav > footer > social > twitter\" data-linktype=\"external\" data-autotest-focused=\"Y\"><span class=\"footer-icon icon-jd_twitter\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a href=\"https://www.youtube.com/user/JohnDeere\" data-linkid=\"nav > footer > social > youtube\" data-linktype=\"external\" data-autotest-focused=\"Y\"><span class=\"footer-icon icon-jd_youtube\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a href=\"https://www.linkedin.com/company/john-deere\" data-linkid=\"nav > footer > social > linkedin\" data-linktype=\"external\" data-autotest-focused=\"Y\"><span class=\"footer-icon icon-jd_linkedin\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "text": "{<a href=\"http://instagram.com/johndeere\" data-linkid=\"nav > footer > social > instagram\" data-linktype=\"external\" data-autotest-focused=\"Y\"><span class=\"footer-icon icon-jd_instagram\"></span></a>}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 5,
+            "tagName": {
+              "div": 2,
+              "input[type=text]": 2,
+              "span": 1
+            },
+            "operableWhy": {
+              "tag": 2,
+              "cursor": 3,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 72,
+            "tagName": {
+              "a": 67,
+              "button": 3,
+              "input[type=search]": 1,
+              "input[type=checkbox]": 1
+            },
+            "focusableHow": {
+              "Tab": 72,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 72,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "{<div class=\"search\" data-autotest-operable=\"cursor\"> <button tabindex=\"0\" aria-label=\"Search\" class=\"btn-search\" type=\"button\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"><span class=\"icon-jd_search\"></span></button> </div>}"
+            },
+            {
+              "tagName": "input[type=text]",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "input[type=text]",
+              "operableWhy": "tag",
+              "text": "Search; Search; #search-input-large"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "#uniform-search-parts"
+            },
+            {
+              "tagName": "span",
+              "operableWhy": "cursor",
+              "text": "{<span data-autotest-operable=\"cursor\"><input value=\"manufactures\" name=\"manufactures\" type=\"checkbox\" id=\"search-parts\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\"></span>}"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to main content; #skipLink"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a itemprop=\"url\" class=\"nav-logo\" title=\"John Deere\" href=\"https://www.deere.com/en/\" data-linkid=\"nav > top > logo\" data-linktype=\"dest-internal\" data-autotest-focused=\"Tab\" style=\"left: auto;\" data-autotest-operable=\"tag\"></a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "John Deere Equipment; Equipment"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "John Deere Finance; Finance"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "John Deere Parts & Service; Parts & Service"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "John Deere Find a Dealer; Find a Dealer"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "John Deere Sign In; Sign In"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Agriculture page; Agriculture"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Lawn & Garden page; Lawn & Garden"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Construction page; Construction"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Landscaping & Grounds Care page; Landscaping & Grounds Care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Golf & Sports Turf page; Golf & Sports Turf"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Forestry page; Forestry"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Engines & Drivetrain page; Engines & Drivetrain"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Government & Military Sales page; Government & Military Sales"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Visit Rental Sales page; Rental Sales"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Discover how we help life leap forward"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Icon of a tractor; Product Selector"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Icon of a mechanical nut; Build & Price"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Icon of radar locator pin; Shop Pre Owned"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Icon of download arrow; Download Manuals"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Icon of shopping cart; Buy Parts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Icon of merchandise tag; Offers & Discounts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Illustration of a person viewing forestry machine and productivity data on a computer screen; Get ConnectedStreamline operations in the woods and the back office with John Deere Precision Forest"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Two people on a jobsite view JDLink data on a cell phone.; Your Connection to Enhanced ProductivityNow subscription-free and at no charge, JDLink™ connectivity"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Start Saving"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Buy Now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Read here"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about Sunreef Yachts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Read the story"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Model"
+            },
+            {
+              "tagName": "input[type=search]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#SBSsearchInput"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#SBSsearchIcon"
+            },
+            {
+              "tagName": "input[type=checkbox]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#search-parts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Products & Support - Equipment; Equipment"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Products & Support - Find a Dealer; Find a Dealer"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Products & Support - Buy Online; Buy Online"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Products & Support - Build Your Own; Build Your Own"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - About Our Company; About Our Company"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - Our Higher Purpose; Our Higher Purpose"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - Innovation; Innovation"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - Sustainability; Sustainability"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - Diversity Equity & Inclusion; Diversity Equity & Inclusion"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - Careers; Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - Governance; Governance"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Company Information - Investor Relations; Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News & Publications - News and Announcements; News and Announcements"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News & Publications - Newsroom; Newsroom"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News & Publications - The Furrow; The Furrow"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News & Publications - The Dirt; The Dirt"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News & Publications - The Landing; The Landing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "News & Publications - Power Connect; Power Connect"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Connect with John Deere - Factory Tours; Factory Tours"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Connect with John Deere - John Deere Historic Site; John Deere Historic Site"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Connect with John Deere - John Deere Pavilion; John Deere Pavilion"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Connect with John Deere - John Deere Store; John Deere Store"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Connect with John Deere - John Deere Tractor & Engine Museum; John Deere Tractor & Engine Museum"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Connect with John Deere - John Deere Kids; John Deere Kids"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Connect with John Deere - John Deere Rewards; John Deere Rewards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "United States"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy and Data"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie Statement"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"http://www.facebook.com/JohnDeereUSCA\" data-linkid=\"nav > footer > social > facebook\" data-linktype=\"external\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"><span class=\"footer-icon icon-jd_facebook\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://twitter.com/JohnDeere\" data-linkid=\"nav > footer > social > twitter\" data-linktype=\"external\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"><span class=\"footer-icon icon-jd_twitter\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://www.youtube.com/user/JohnDeere\" data-linkid=\"nav > footer > social > youtube\" data-linktype=\"external\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"><span class=\"footer-icon icon-jd_youtube\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://www.linkedin.com/company/john-deere\" data-linkid=\"nav > footer > social > linkedin\" data-linktype=\"external\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"><span class=\"footer-icon icon-jd_linkedin\"></span></a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"http://instagram.com/johndeere\" data-linkid=\"nav > footer > social > instagram\" data-linktype=\"external\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"><span class=\"footer-icon icon-jd_instagram\"></span></a>}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "mislabeled": 2,
+          "unlabeled": 15,
+          "wellLabeled": 10
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "Search",
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "Search",
+                "label": [
+                  "Search"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 9,
+              "tagName": "INPUT",
+              "type": "search"
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button id=\"SBSclearIcon\" class=\"btn SBSclearIcon\" style=\"display: none\" type=\"button\"><span class=\"icon-jd_close\"></span></button>}"
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button id=\"SBSsearchIcon\" class=\"btn SBSsearchIcon\" type=\"button\" style=\"color: rgb(54, 124, 43); background-color: white;\"><span class=\"icon-jd_search\"></span></button>}"
+            },
+            {
+              "index": 12,
+              "tagName": "INPUT",
+              "type": "checkbox"
+            },
+            {
+              "index": 16,
+              "tagName": "INPUT",
+              "type": "checkbox"
+            },
+            {
+              "index": 17,
+              "tagName": "INPUT",
+              "type": "checkbox"
+            },
+            {
+              "index": 18,
+              "tagName": "INPUT",
+              "type": "checkbox"
+            },
+            {
+              "index": 19,
+              "tagName": "INPUT",
+              "type": "radio"
+            },
+            {
+              "index": 20,
+              "tagName": "INPUT",
+              "type": "radio"
+            },
+            {
+              "index": 21,
+              "tagName": "INPUT",
+              "type": "radio"
+            },
+            {
+              "index": 22,
+              "tagName": "INPUT",
+              "type": "radio"
+            },
+            {
+              "index": 23,
+              "tagName": "INPUT",
+              "type": "radio"
+            },
+            {
+              "index": 24,
+              "tagName": "INPUT",
+              "type": "radio"
+            },
+            {
+              "index": 25,
+              "tagName": "INPUT",
+              "type": "radio"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Model"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Yes"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "No"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Give Feedback"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Send"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "links": 2109,
+          "inline": {
+            "total": 17,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Find a Dealer",
+            "Sign In",
+            "Agriculture",
+            "Lawn & Garden",
+            "Construction",
+            "Landscaping & Grounds Care",
+            "Golf & Sports Turf",
+            "Forestry",
+            "Engines & Drivetrain",
+            "Government & Military Sales",
+            "Rental Sales",
+            "Site Map",
+            "Privacy and Data",
+            "Cookie Statement",
+            "Terms of Use",
+            "Accessibility",
+            "Contact Us"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "total": 7,
+          "inSet": 0,
+          "percent": 0
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "roleElements": 1,
+        "badRoleElements": 0,
+        "tagNames": {}
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 8,
+            "subtotals": [
+              6,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 10,
+            "subtotals": [
+              3,
+              3,
+              2,
+              1,
+              1
+            ]
+          },
+          "h4": {
+            "total": 5,
+            "subtotals": [
+              4,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 17,
+            "subtotals": [
+              9,
+              6,
+              2
+            ]
+          },
+          "aBlock": {
+            "total": 2092,
+            "subtotals": [
+              1797,
+              255,
+              29,
+              4,
+              3,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 8,
+            "subtotals": [
+              4,
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "26px": 6,
+              "42px": 1,
+              "36px": 1
+            },
+            "fontSize": {
+              "20px": 39,
+              "30px": 3,
+              "35px": 2
+            }
+          },
+          "h3": {
+            "lineHeight": {
+              "32px": 7,
+              "28.8px": 2,
+              "26px": 1
+            },
+            "minHeight": {
+              "0px": 7,
+              "auto": 3
+            },
+            "minWidth": {
+              "0px": 7,
+              "auto": 3
+            },
+            "fontSize": {
+              "24px": 108,
+              "20px": 19,
+              "16px": 18
+            }
+          },
+          "h4": {
+            "lineHeight": {
+              "20.4px": 4,
+              "21.6px": 1
+            },
+            "fontSize": {
+              "17px": 90,
+              "18px": 20
+            }
+          },
+          "aInline": {
+            "fontSize": {
+              "17px": 216,
+              "12px": 144,
+              "16px": 48
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 2087,
+              "solid": 5
+            },
+            "borderWidth": {
+              "0px": 2087,
+              "2px": 4,
+              "1px": 1
+            },
+            "lineHeight": {
+              "26px": 2084,
+              "16px": 5,
+              "22.1px": 3
+            },
+            "maxWidth": {
+              "none": 2091,
+              "200px": 1
+            },
+            "minWidth": {
+              "0px": 2091,
+              "60px": 1
+            },
+            "textDecorationLine": {
+              "none": 2089,
+              "underline": 3
+            },
+            "fontSize": {
+              "17px": 43248,
+              "18px": 6120,
+              "24px": 720,
+              "16px": 120
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 4,
+              "solid": 4
+            },
+            "borderWidth": {
+              "0px": 4,
+              "1px": 4
+            },
+            "fontWeight": {
+              "400": 4,
+              "700": 4
+            },
+            "lineHeight": {
+              "normal": 6,
+              "16px": 1,
+              "30px": 1
+            },
+            "minWidth": {
+              "0px": 6,
+              "60px": 2
+            },
+            "fontSize": {
+              "14px": 96,
+              "17px": 48,
+              "16px": 24,
+              "30px": 24
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "totals": {
+          "violation": 44,
+          "recommendation": 1,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[12]/div[1]/div[3]/div[1]/span[1]/input[1]",
+              "aria": "/document[1]/checkbox[1]"
+            },
+            "message": "Form control element <input> has no associated label",
+            "bounds": {
+              "left": 20,
+              "top": 4649,
+              "height": 17,
+              "width": 17
+            },
+            "snippet": "<input id=\"search-parts\" type=\"checkbox\" name=\"manufactures\" value=\"manufactures\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[12]/div[1]/div[2]/div[4]/div[1]/button[2]",
+              "aria": "/document[1]/button[4]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 701,
+              "top": 4567,
+              "height": 56,
+              "width": 78
+            },
+            "snippet": "<button style=\"color: rgb(54, 124, 43); background-color: white;\" type=\"button\" class=\"btn SBSsearchIcon\" id=\"SBSsearchIcon\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/footer[1]/div[5]/ul[1]/li[5]/a[1]",
+              "aria": "/document[1]/contentinfo[1]/list[6]/listitem[5]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 486,
+              "top": 5116,
+              "height": 86,
+              "width": 24
+            },
+            "snippet": "<a data-linktype=\"external\" data-linkid=\"nav > footer > social > instagram\" href=\"http://instagram.com/johndeere\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/footer[1]/div[5]/ul[1]/li[4]/a[1]",
+              "aria": "/document[1]/contentinfo[1]/list[6]/listitem[4]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 437,
+              "top": 5116,
+              "height": 86,
+              "width": 24
+            },
+            "snippet": "<a data-linktype=\"external\" data-linkid=\"nav > footer > social > linkedin\" href=\"https://www.linkedin.com/company/john-deere\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/footer[1]/div[5]/ul[1]/li[3]/a[1]",
+              "aria": "/document[1]/contentinfo[1]/list[6]/listitem[3]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 388,
+              "top": 5116,
+              "height": 86,
+              "width": 24
+            },
+            "snippet": "<a data-linktype=\"external\" data-linkid=\"nav > footer > social > youtube\" href=\"https://www.youtube.com/user/JohnDeere\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/footer[1]/div[5]/ul[1]/li[2]/a[1]",
+              "aria": "/document[1]/contentinfo[1]/list[6]/listitem[2]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 340,
+              "top": 5116,
+              "height": 86,
+              "width": 24
+            },
+            "snippet": "<a data-linktype=\"external\" data-linkid=\"nav > footer > social > twitter\" href=\"https://twitter.com/JohnDeere\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/footer[1]/div[5]/ul[1]/li[1]/a[1]",
+              "aria": "/document[1]/contentinfo[1]/list[6]/listitem[1]/link[1]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 291,
+              "top": 5116,
+              "height": 86,
+              "width": 24
+            },
+            "snippet": "<a data-linktype=\"external\" data-linkid=\"nav > footer > social > facebook\" href=\"http://www.facebook.com/JohnDeereUSCA\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[2]/div[5]/a[1]",
+              "aria": "/document[1]/link[3]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 689,
+              "top": 17,
+              "height": 18,
+              "width": 18
+            },
+            "snippet": "<a href=\"https://dealerlocator.deere.com/servlet/country=US?locale=en_US\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[8]/div[2]/div[3]/div[1]/h3[1]",
+              "aria": "/document[1]/heading[6]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 554,
+              "top": 4043,
+              "height": 128,
+              "width": 227
+            },
+            "snippet": "<h3 class=\"g-f-color-black\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[8]/div[2]/div[3]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/link[54]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 554,
+              "top": 4411,
+              "height": 22,
+              "width": 227
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : living-john-deere : read the story\" target=\"_blank\" href=\"/en/our-company/news-and-announcements/newsroom/reversing-black-families-losing-land/\" class=\"g-f-color-black\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[8]/div[2]/div[2]/div[1]/h3[1]",
+              "aria": "/document[1]/heading[5]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 287,
+              "top": 4043,
+              "height": 32,
+              "width": 227
+            },
+            "snippet": "<h3 class=\"g-f-color-black\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[8]/div[2]/div[2]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/link[53]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 287,
+              "top": 4393,
+              "height": 44,
+              "width": 227
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : living-john-deere : learn more about sunreef yachts\" target=\"_blank\" href=\"/en/customer-stories/power-connect/family-friendly-luxury/\" class=\"g-f-color-black\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[8]/div[2]/div[1]/div[1]/h3[1]",
+              "aria": "/document[1]/heading[4]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 4043,
+              "height": 64,
+              "width": 227
+            },
+            "snippet": "<h3 class=\"g-f-color-black\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[8]/div[2]/div[1]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/link[52]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 4362,
+              "height": 22,
+              "width": 227
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : living-john-deere : read here\" target=\"_blank\" href=\"/en/our-company/news-and-announcements/newsroom/building-culture-of-security/\" class=\"g-f-color-black\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[8]/div[1]/h2[1]",
+              "aria": "/document[1]/heading[3]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 3698,
+              "height": 36,
+              "width": 760
+            },
+            "snippet": "<h2>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[7]/div[1]/div[2]/div[1]/div[1]/div[1]/h3[1]",
+              "aria": "/document[1]/heading[2]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 40,
+              "top": 3524,
+              "height": 32,
+              "width": 720
+            },
+            "snippet": "<h3>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[7]/div[1]/div[1]/div[1]/div[1]/div[1]/h3[1]",
+              "aria": "/document[1]/heading[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 40,
+              "top": 2884,
+              "height": 32,
+              "width": 720
+            },
+            "snippet": "<h3>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[4]/div[1]/div[2]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[49]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 2108,
+              "height": 20,
+              "width": 760
+            },
+            "snippet": "<a data-linktype=\"internal-defer\" data-linkid=\"image-panel : your-connection-to-enhanced-productivity : \" href=\"/en/construction/construction-technology/jdlink-telematics/\" class=\"image-panel\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[4]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[48]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 1614,
+              "height": 20,
+              "width": 760
+            },
+            "snippet": "<a data-linktype=\"internal-defer\" data-linkid=\"image-panel : get-connected : \" href=\"/en/technology-products/forestry-and-logging-technology/precision-forestry-technology/\" class=\"image-panel\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[3]/div[1]/div[6]/a[1]",
+              "aria": "/document[1]/link[47]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 22,
+              "top": 1307,
+              "height": 54,
+              "width": 756
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : quick-tools : offers-&-discounts\" target=\"_blank\" href=\"https://www.deere.com/en/finance/offers-discounts/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[3]/div[1]/div[5]/a[1]",
+              "aria": "/document[1]/link[46]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 22,
+              "top": 1248,
+              "height": 55,
+              "width": 756
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : quick-tools : buy-parts\" target=\"_blank\" href=\"https://partscatalog.deere.com/jdrc/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[3]/div[1]/div[4]/a[1]",
+              "aria": "/document[1]/link[45]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 22,
+              "top": 1189,
+              "height": 55,
+              "width": 756
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : quick-tools : download-manuals\" target=\"_blank\" href=\"https://techpubs.deere.com/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[3]/div[1]/div[3]/a[1]",
+              "aria": "/document[1]/link[44]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 22,
+              "top": 1130,
+              "height": 55,
+              "width": 756
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : quick-tools : shop-pre-owned\" target=\"_blank\" href=\"https://www.machinefinder.com/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[3]/div[1]/div[2]/a[1]",
+              "aria": "/document[1]/link[43]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 22,
+              "top": 1071,
+              "height": 55,
+              "width": 756
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : quick-tools : build-&-price\" target=\"_blank\" href=\"https://configure.deere.com/cbyo/#/en_us/products\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[3]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[42]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 22,
+              "top": 1012,
+              "height": 55,
+              "width": 756
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta : quick-tools : product-selector\" target=\"_blank\" href=\"https://www.deere.com/en/product-selector-landing/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[12]/div[1]/h2[1]",
+              "aria": "/document[1]/heading[7]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 4490,
+              "height": 36,
+              "width": 760
+            },
+            "snippet": "<h2 class=\"SBSh2\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[12]/div[1]/div[3]/div[1]/span[1]/input[1]",
+              "aria": "/document[1]/checkbox[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 4649,
+              "height": 17,
+              "width": 17
+            },
+            "snippet": "<input id=\"search-parts\" type=\"checkbox\" name=\"manufactures\" value=\"manufactures\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[12]/div[1]/div[2]/div[4]/div[1]/input[1]",
+              "aria": "/document[1]/textbox[2]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 252,
+              "top": 4566,
+              "height": 59,
+              "width": 529
+            },
+            "snippet": "<input placeholder=\"Search by PIN, Model, Equipment, or Catalog\" type=\"search\" id=\"SBSsearchInput\" title=\"Search Parts\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[12]/div[1]/div[2]/div[1]/button[1]",
+              "aria": "/document[1]/button[2]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 4566,
+              "height": 60,
+              "width": 232
+            },
+            "snippet": "<button title=\"\" data-original-title=\"\" data-content=\"<h4 class='SBSsearchByHeader'>Search By</h4><a class='SBSsearchOptions' name='model' desc='Search by PIN, Model, Equipment, or Catalog'> Model</a><br/><a class='SBSsearchOptions' name='parts' desc='Search Full or Partial Part Number'> Part Number</a><br/><a class='SBSsearchOptions' name='document' desc='Search Full or Partial Part Number'> Documents</a><br/>\" data-trigger=\"manual\" data-placement=\"bottom\" data-toggle=\"popover\" data-container=\"body\" class=\"SBSdropbtn\" type=\"button\" style=\"background-color: #367c2b\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[9]/p[1]",
+              "aria": "/document[1]/link[41]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 202,
+              "top": 627,
+              "height": 20,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[8]/p[1]",
+              "aria": "/document[1]/link[40]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 602,
+              "top": 488,
+              "height": 40,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[7]/p[1]",
+              "aria": "/document[1]/link[39]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 202,
+              "top": 498,
+              "height": 20,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[6]/p[1]",
+              "aria": "/document[1]/link[38]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 602,
+              "top": 369,
+              "height": 20,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[5]/p[1]",
+              "aria": "/document[1]/link[37]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 202,
+              "top": 369,
+              "height": 20,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[4]/p[1]",
+              "aria": "/document[1]/link[36]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 602,
+              "top": 230,
+              "height": 40,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[3]/p[1]",
+              "aria": "/document[1]/link[35]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 202,
+              "top": 240,
+              "height": 20,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[2]/p[1]",
+              "aria": "/document[1]/link[34]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 602,
+              "top": 111,
+              "height": 20,
+              "width": 149
+            },
+            "snippet": "<p class=\"industry-name\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[33]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 57,
+              "height": 129,
+              "width": 400
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta-industry-selector : agriculture\" data-industry=\"agriculture\" style=\"height: 129px;\" href=\"/en/agriculture/\" class=\"industry-col\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": -1,
+              "top": -1,
+              "height": 30,
+              "width": 30
+            },
+            "snippet": "<a href=\"#MainContentSection\" class=\"sr-only sr-only-focusable\" tabindex=\"1\" id=\"skipLink\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[7]/div[1]/div[2]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[51]"
+            },
+            "message": "Text contrast of 4.16 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 340,
+              "top": 3598,
+              "height": 44,
+              "width": 122
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta-5 :  : buy-now\" target=\"_blank\" href=\"https://e-marketing.deere.com/ViewAllProducts.do\" class=\"button5\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[7]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[50]"
+            },
+            "message": "Text contrast of 4.16 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 329,
+              "top": 2958,
+              "height": 44,
+              "width": 143
+            },
+            "snippet": "<a data-linktype=\"internal-immediate\" data-linkid=\"cta-5 :  : start-saving\" target=\"_blank\" href=\"https://www.johndeerestore.com/jdb2cstorefront/JohnDeereStore/en/John-Deere-products/Genuine-Parts/c/GenuineParts\" class=\"button5\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[4]/div[1]/div[2]/div[1]/div[1]/a[1]/div[1]/span[1]",
+              "aria": "/document[1]/link[49]"
+            },
+            "message": "Text contrast of 1.38 with its background is less than the WCAG AA minimum requirements for text of size 17px and weight of 400",
+            "bounds": {
+              "left": 35,
+              "top": 2250,
+              "height": 83,
+              "width": 331
+            },
+            "snippet": "<span class=\"cta g-f-color-yellow shadow\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[4]/div[4]/div[1]/div[1]/div[1]/div[1]/a[1]/div[1]/span[1]",
+              "aria": "/document[1]/link[48]"
+            },
+            "message": "Text contrast of 1.38 with its background is less than the WCAG AA minimum requirements for text of size 17px and weight of 400",
+            "bounds": {
+              "left": 35,
+              "top": 1782,
+              "height": 57,
+              "width": 328
+            },
+            "snippet": "<span class=\"cta g-f-color-yellow shadow\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "HAAC_Aria_Or_HTML5_Attr",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[2]/div[2]/div[4]/form[1]/span[1]/input[2]",
+              "aria": "/document[1]/form[1]/textbox[2]"
+            },
+            "message": "HTML5 attribute is in conflict with the associated ARIA attribute used on an input element",
+            "bounds": {
+              "left": 0,
+              "top": 57,
+              "height": 60,
+              "width": 800
+            },
+            "snippet": "<input style=\"position: relative; vertical-align: top; background-color: transparent;\" dir=\"auto\" spellcheck=\"false\" autocomplete=\"off\" aria-label=\"Search\" placeholder=\"Search\" type=\"text\" id=\"search-input-small\" class=\"input typeahead search-input-field tt-input\" name=\"term\" required=\"\" data-msg-required=\"\" aria-required=\"false\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+            "bounds": {
+              "left": 0,
+              "top": 4692,
+              "height": 553,
+              "width": 800
+            },
+            "snippet": "<footer id=\"ls-row-1-area-1\" class=\"ls-area footer container\">",
+            "level": "recommendation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.deere.com/en/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "John Deere US | Products & Services Information",
+          "pageurl": "https://www.deere.com/en/",
+          "time": 6.12,
+          "creditsremaining": 263,
+          "allitemcount": 491,
+          "totalelements": 4877,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.deere.com/en/",
+          "domid": "2146f54a25f1f35e58e5c3ef9e64fd1a"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 32,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 12,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + SCRIPT + LINK + DIV > DIV:first-child > H2:first-child + DIV + DIV > DIV:first-child + DIV > DIV#makeOptions > DIV:first-child > DIV:first-child > H3:first-child + DIV > INPUT#searchResults",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + SCRIPT + LINK + DIV > DIV:first-child > H2:first-child + DIV + DIV + DIV > DIV#uniform-search-parts > SPAN:first-child > INPUT#search-parts",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#completed > DIV:first-child > H2:first-child + DIV > UL:first-child > LI:first-child > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#completed > DIV:first-child > H2:first-child + DIV > UL:first-child > LI:first-child + LI > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#completed > DIV:first-child > H2:first-child + DIV > UL:first-child > LI:first-child + LI + LI > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#ownAgator > DIV:first-child > H2:first-child + DIV > UL#survey-owner > LI:first-child > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#ownAgator > DIV:first-child > H2:first-child + DIV > UL#survey-owner > LI:first-child + LI > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI + LI > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI + LI + LI > DIV:first-child > SPAN:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI + LI + LI + LI > DIV:first-child > SPAN:first-child > INPUT:first-child"
+                ]
+              },
+              "label_empty": {
+                "id": "label_empty",
+                "description": "Empty form label",
+                "count": 10,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#completed > DIV:first-child > H2:first-child + DIV > UL:first-child > LI:first-child > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#completed > DIV:first-child > H2:first-child + DIV > UL:first-child > LI:first-child + LI > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#completed > DIV:first-child > H2:first-child + DIV > UL:first-child > LI:first-child + LI + LI > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#ownAgator > DIV:first-child > H2:first-child + DIV > UL#survey-owner > LI:first-child > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#ownAgator > DIV:first-child > H2:first-child + DIV > UL#survey-owner > LI:first-child + LI > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI + LI > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI + LI + LI > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child + LI + LI + LI + LI > DIV:first-child + LABEL"
+                ]
+              },
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + SCRIPT + LINK + DIV > DIV:first-child + DIV > DIV:first-child + DIV > H4:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#intent > DIV:first-child > H2#surveyContentTaskPrompt"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + SCRIPT + LINK + DIV > DIV:first-child > H2:first-child + DIV + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > BUTTON#SBSclearIcon",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + SCRIPT + LINK + DIV > DIV:first-child > H2:first-child + DIV + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > BUTTON#SBSsearchIcon"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#menu-0001 > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > FOOTER#ls-row-1-area-1 > DIV:first-child + DIV + A + SCRIPT + DIV + DIV + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > FOOTER#ls-row-1-area-1 > DIV:first-child + DIV + A + SCRIPT + DIV + DIV + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > FOOTER#ls-row-1-area-1 > DIV:first-child + DIV + A + SCRIPT + DIV + DIV + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > FOOTER#ls-row-1-area-1 > DIV:first-child + DIV + A + SCRIPT + DIV + DIV + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > FOOTER#ls-row-1-area-1 > DIV:first-child + DIV + A + SCRIPT + DIV + DIV + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 9,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 9,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#hero-banner > DIV:first-child > PICTURE:first-child + DIV > H1:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#hero-banner > DIV:first-child > PICTURE:first-child + DIV > H1:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#hero-banner > DIV:first-child > PICTURE:first-child + DIV > H1:first-child + DIV + A",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#nesting-4e21b044-1e73-f47c-50a0-a6563587b9bd > DIV:first-child > DIV:first-child > DIV#image-panel-6f12cc69-2f2b-a1da-c328-04768f60b104 > DIV:first-child > A:first-child > PICTURE:first-child + DIV > H3:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#nesting-4e21b044-1e73-f47c-50a0-a6563587b9bd > DIV:first-child > DIV:first-child > DIV#image-panel-6f12cc69-2f2b-a1da-c328-04768f60b104 > DIV:first-child > A:first-child > PICTURE:first-child + DIV > H3:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#nesting-4e21b044-1e73-f47c-50a0-a6563587b9bd > DIV:first-child > DIV:first-child + DIV > DIV#image-panel-4931bb15-b77e-d4cb-ecd3-a3960d1b7ae5 > DIV:first-child > A:first-child > PICTURE:first-child + DIV > H3:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#nesting-4e21b044-1e73-f47c-50a0-a6563587b9bd > DIV:first-child > DIV:first-child + DIV > DIV#image-panel-4931bb15-b77e-d4cb-ecd3-a3960d1b7ae5 > DIV:first-child > A:first-child > PICTURE:first-child + DIV > H3:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child + DIV > DIV:first-child > H3:first-child + P + A",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > IMG:first-child + DIV > DIV:first-child > H3:first-child + P + A"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1.38,
+                    "#fdda01",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1.38,
+                    "#fdda01",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    4.15,
+                    "#fdda01",
+                    "#666666",
+                    false
+                  ],
+                  [
+                    4.15,
+                    "#fdda01",
+                    "#666666",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 9,
+            "items": {
+              "alt_long": {
+                "id": "alt_long",
+                "description": "Long alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#nesting-a48687e7-b535-9399-2ce1-36a7c2238f6e > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV#content-panel-2a1bfe5d-e2e4-37d8-1355-0ae77014a009 > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "fieldset_missing": {
+                "id": "fieldset_missing",
+                "description": "Missing fieldset",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + LINK + STYLE + DIV > DIV:first-child > DIV#survey-panel > DIV:first-child + DIV > DIV:first-child + DIV > DIV#slickme > DIV:first-child > DIV:first-child > DIV#satisfied > DIV:first-child > H2:first-child + DIV + DIV > UL#survey-rating > LI:first-child > DIV:first-child > SPAN:first-child > INPUT:first-child"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + SCRIPT + LINK + DIV > DIV:first-child > H2:first-child + DIV + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > INPUT#SBSsearchInput"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#MainContentSection > DIV#nesting-4e21b044-1e73-f47c-50a0-a6563587b9bd > DIV:first-child > DIV:first-child > DIV#image-panel-6f12cc69-2f2b-a1da-c328-04768f60b104 > DIV:first-child > A:first-child > PICTURE:first-child + DIV > H3:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#menu-0001 > DIV:first-child + DIV + DIV > A:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV#menu-0001 > DIV:first-child + DIV + DIV > DIV#nav-tier3-government-and-military-sale > DIV:first-child + DIV > DIV:first-child + DIV > UL:first-child + UL + UL > LI:first-child + LI + LI > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "tabindex": {
+                "id": "tabindex",
+                "description": "Tabindex",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#ls-canvas > DIV:first-child > A#skipLink"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c11",
+      "what": "3 packages and 11 custom tests, with duplication discounts",
+      "result": {
+        "total": 558,
+        "axe": 70,
+        "ibm": 92,
+        "wave": 151,
+        "bulk": 11,
+        "embAc": 0,
+        "focOl": 12,
+        "focOp": 20,
+        "hover": 0,
+        "labClash": 34,
+        "linkUl": 51,
+        "motion": 0,
+        "radioSet": 14,
+        "role": 0,
+        "styleDiff": 103
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      42
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      10
+    ],
+    [
+      "wave",
+      7
+    ],
+    [
+      "axe",
+      6
+    ],
+    [
+      "focOl",
+      4
+    ],
+    [
+      "focOp",
+      4
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

@@ -1,0 +1,3188 @@
+{
+  "script": "p03c11",
+  "batch": "veigxRest",
+  "what": "Axe, IBM, WAVE, and 11 custom tests",
+  "timeStamp": "rihx",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://colgate.com",
+      "what": "Colgate-Palmolive Company",
+      "result": "https://www.colgate.com/en-us"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "bytes": [
+          1000582,
+          1000582,
+          1000582,
+          1000582,
+          1000582
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 1,
+          "serious": 7,
+          "critical": 5
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-attr",
+            "description": "Ensures ARIA attributes are allowed for an element's role",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "div[title=\"Colgate\"]",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".our-brand-prev",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".our-brand-next",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "button-name",
+            "description": "Ensures buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".slick-current.slick-active[data-slick-index=\"\\30 \"] > .card > .card-content > .card-button[aria-label=\"\"][type=\"button\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".slick-active[data-slick-index=\"\\31 \"][aria-hidden=\"false\"] > .card > .card-content > .card-button[aria-label=\"\"][type=\"button\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-redundant-alt",
+            "description": "Ensure image alternative is not repeated as text",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".slick-current.slick-active[data-slick-index=\"\\30 \"] > .product.card > a > img",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "duplicate-img-label",
+                    "description": "Element contains <img> element with alt text that duplicates existing text",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".slick-active[data-slick-index=\"\\31 \"][aria-hidden=\"false\"] > .product.card > a > img",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "duplicate-img-label",
+                    "description": "Element contains <img> element with alt text that duplicates existing text",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "a[role=\"button\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "div[related-type=\"article\"] > .cards-container.slick-initialized.slick-slider > .slick-list.draggable > .slick-track > .slick-current.slick-active[data-slick-index=\"\\30 \"] > .card > a:nth-child(1)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "div[related-type=\"article\"] > .cards-container.slick-initialized.slick-slider > .slick-list.draggable > .slick-track > .slick-active[data-slick-index=\"\\31 \"][aria-hidden=\"false\"] > .card > a:nth-child(1)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "p:nth-child(4) > .grey-button",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".richtext_142477284_c > .component-content > .richText-content > p:nth-child(3) > .arrow.grey-button",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".richtext_142477284_c_2037061310 > .component-content > .richText-content > p:nth-child(3) > .arrow.grey-button",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".richtext_142477284_c_39523552 > .component-content > .richText-content > p:nth-child(3) > .arrow.grey-button",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#truste-consent-track",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://colgate.com",
+      "what": "Colgate-Palmolive Company",
+      "result": "https://www.colgate.com/en-us"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "visibleElements": 592
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "tabulate and list active elements contained by links or buttons",
+      "withItems": true,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "links": 4,
+          "buttons": 5,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": [
+          "<a href=\"/en-us/oral-health\" aria-label=\"Learn more about teeth whitening\" class=\"load-more\">Learn More</a>",
+          "<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"0\"></button>",
+          "<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"0\"></button>",
+          "<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"-1\"></button>",
+          "<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"-1\"></button>",
+          "<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"-1\"></button>",
+          "<a href=\"https://www.colgateprofessional.com/\" aria-label=\"Go to colgateprofessional.com\">ColgateProfessional.com</a>",
+          "<a href=\"https://shop.colgate.com/\" aria-label=\"Go to shopcolgate.com\">Shop.Colgate.com</a>",
+          "<a href=\"https://www.colgatepalmolive.com/en-us\" aria-label=\"Learn more about Colgate-Palmolive's culture\">ColgatePalmolive.com</a>"
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "total": 18,
+          "types": {
+            "outlineMissing": {
+              "total": 2,
+              "tagNames": {
+                "input[type=text]": 1,
+                "input[type=submit]": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 16,
+              "tagNames": {
+                "div": 1,
+                "a": 11,
+                "button": 4
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "input[type=text]",
+              "text": "Email*; #gigya-textbox-email"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "text": "{<input type=\"submit\" class=\"gigya-input-submit\" tabindex=\"0\" data-gigya-type=\"submit\" gigya-expression:value=\"screenset.translations['SUBMIT_8528365233759930_VALUE']\" data-screenset-element-id=\"__gig_template_element_8_1632664943646\" data-screenset-element-id-publish=\"false\" data-screenset-roles=\"instance\" gigya-default-value=\"null\" value=\"YES PLEASE!\" data-natural-tab-order=\"2\" data-autotest-focused=\"N\">}"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "div",
+              "text": "Subscribe with email; #gigya-screen-dialog-caption-gig_1632664940846_showScreenSet"
+            },
+            {
+              "tagName": "a",
+              "text": "Colgate's family of Brands"
+            },
+            {
+              "tagName": "a",
+              "text": "privacy policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Cookie Policy; #truste-cookie-button"
+            },
+            {
+              "tagName": "a",
+              "text": "Cookie preferences tool; #truste-show-consent"
+            },
+            {
+              "tagName": "button",
+              "text": "Accept; #truste-consent-button"
+            },
+            {
+              "tagName": "a",
+              "text": "Colgate® Logo"
+            },
+            {
+              "tagName": "button",
+              "text": "Search Box Button"
+            },
+            {
+              "tagName": "button",
+              "text": "Menu"
+            },
+            {
+              "tagName": "a",
+              "text": "Click here for information on Colgate’s research on certain oral care products and COVID-19"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about the power of a smile; Learn More"
+            },
+            {
+              "tagName": "button",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about teeth whitening; Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Brushing & Flossing"
+            },
+            {
+              "tagName": "a",
+              "text": "Teeth Whitening"
+            },
+            {
+              "tagName": "a",
+              "text": "Nutrition & Oral Health"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 7,
+            "tagName": {
+              "div": 7
+            },
+            "focusableHow": {
+              "Tab": 7,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 32,
+            "tagName": {
+              "a": 17,
+              "div": 12,
+              "button": 3
+            },
+            "operableWhy": {
+              "tag": 20,
+              "cursor": 12,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 73,
+            "tagName": {
+              "a": 51,
+              "button": 14,
+              "div": 8
+            },
+            "focusableHow": {
+              "Tab": 73,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 65,
+              "cursor": 8,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Colgate Total products; Colgate Total SF Do More For You Whole Mouth View Products"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Colgate® 360® Toothbrush | Colgate® 360; star_outline star_outline star_outline star_outline star_outline Colgate® 360® Toothbrush | Colgate®"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Colgate® Total SF Whitening™ Toothpaste | Colgate®; star_outline star_outline star_outline star_outline star_outline Colgate® Total SF Whitening™ Toothp"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Colgate® 360°® Advanced Optic White® Manual Toothbrush | C...; star_outline star_outline star_outline star_outline star_outline Colgate® 360°® Advanced Optic White"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "4 Causes Of Sticky Saliva And Home Remedies Wondering why you're suddenly experiencing sticky saliva"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "The Dangers Of Using A Plaque Scraper At Home Plaque removal is important for good oral health, but "
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "text": "Bumps On The Back Of The Tongue: Normal Or Abnormal? Bumps on the back of the tongue can occur due t"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Chat with colgate; Start Chat"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Previous Arrow"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Next Arrow"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Colgate® 360® Toothbrush | Colgate® 360; star_outline star_outline star_outline star_outline star_outline Colgate® 360® Toothbrush | Colgate®"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Colgate® Total SF Whitening™ Toothpaste | Colgate®; star_outline star_outline star_outline star_outline star_outline Colgate® Total SF Whitening™ Toothp"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Colgate® 360°® Advanced Optic White® Manual Toothbrush | C...; star_outline star_outline star_outline star_outline star_outline Colgate® 360°® Advanced Optic White"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Colgate® 360°® Advanced Optic White® Manual Toothbrush | C...; star_outline star_outline star_outline star_outline star_outline Colgate® 360°® Advanced Optic White"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Colgate® Magik™ Augmented Reality Toothbrush & App; star_outline star_outline star_outline star_outline star_outline Colgate® Magik™ Augmented Reality T"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Colgate® Magik™ Augmented Reality Toothbrush & App; star_outline star_outline star_outline star_outline star_outline Colgate® Magik™ Augmented Reality T"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Colgate® Total Advanced Health™ Mouthwash | Colgate®; star_outline star_outline star_outline star_outline star_outline Colgate® Total Advanced Health™ Mou"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Colgate® Total Advanced Health™ Mouthwash | Colgate®; star_outline star_outline star_outline star_outline star_outline Colgate® Total Advanced Health™ Mou"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "4 Causes Of Sticky Saliva And Home Remedies Wondering why you're suddenly experiencing sticky saliva"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "The Dangers Of Using A Plaque Scraper At Home Plaque removal is important for good oral health, but "
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Bumps On The Back Of The Tongue: Normal Or Abnormal? Bumps on the back of the tongue can occur due t"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://www.colgate.com/en-us/oral-health/adult-oral-care/bumps-on-the-back-of-the-tongue-normal-or-abnormal\" tabindex=\"-1\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <div class=\"img-wrapper\" style=\"background-image: url('https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/AdobeStock_202615161.jpg?size=thumbnail')\"> </div> </a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Bumps On The Back Of The Tongue: Normal Or Abnormal? Bumps on the back of the tongue can occur due t"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "{<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"-1\" data-autotest-operable=\"tag\"></button>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Tooth Extraction Healing Time: What's Normal? | Colgate® Sometimes, it's necessary to have a tooth p"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://www.colgate.com/en-us/oral-health/tooth-removal/tooth-extraction-healing-time-whats-normal\" tabindex=\"-1\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <div class=\"img-wrapper\" style=\"background-image: url('https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/5dce6a7978415a13a498e74c.jpg?size=thumbnail')\"> </div> </a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Tooth Extraction Healing Time: What's Normal? | Colgate® Sometimes, it's necessary to have a tooth p"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "{<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"-1\" data-autotest-operable=\"tag\"></button>}"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "How Salt Water Mouth Rinse Benefits Oral Health A salt water mouth rinse is useful for a number of d"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://www.colgate.com/en-us/oral-health/mouth-sores-and-infections/how-salt-water-mouth-rinse-benefits-oral-health\" tabindex=\"-1\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <div class=\"img-wrapper\" style=\"background-image: url('https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/AdobeStock_345415120.jpg?size=thumbnail')\"> </div> </a>}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "How Salt Water Mouth Rinse Benefits Oral Health A salt water mouth rinse is useful for a number of d"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "{<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"-1\" data-autotest-operable=\"tag\"></button>}"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie Policy; #truste-cookie-button"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie preferences tool; #truste-show-consent"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accept; #truste-consent-button"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Colgate® Logo"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search Box Button"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Menu"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Click here for information on Colgate’s research on certain oral care products and COVID-19"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about the power of a smile; Learn More"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about teeth whitening; Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Brushing & Flossing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Teeth Whitening"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Nutrition & Oral Health"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Adult Oral Care"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Gum Disease"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "X-Rays"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Mouth Sores & Infections"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Dry Mouth"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "View all our products; View Products"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about oral health education; Learn More"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate Total"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate Enamel Health"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate Charcoal"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate Hydris"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate MaxFresh"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate Optic White"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate Sensitive"
+            },
+            {
+              "tagName": "div",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Colgate 360"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "View Products"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Previous"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Colgate® 360® Toothbrush | Colgate® 360; star_outline star_outline star_outline star_outline star_outline Colgate® 360® Toothbrush | Colgate®"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Colgate® Total SF Whitening™ Toothpaste | Colgate®; star_outline star_outline star_outline star_outline star_outline Colgate® Total SF Whitening™ Toothp"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Next"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Previous"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://www.colgate.com/en-us/oral-health/dry-mouth/4-causes-of-sticky-saliva-and-home-remedies\" tabindex=\"0\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <div class=\"img-wrapper\" style=\"background-image: url('https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/252278257.jpg?size=thumbnail')\"> </div> </a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "4 Causes Of Sticky Saliva And Home Remedies Wondering why you're suddenly experiencing sticky saliva"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"0\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\"></button>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<a href=\"https://www.colgate.com/en-us/oral-health/adult-oral-care/the-dangers-of-using-a-plaque-scraper-at-home\" tabindex=\"0\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\" style=\"cursor: none;\"> <div class=\"img-wrapper\" style=\"background-image: url('https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/AdobeStock_233025248.jpg?size=thumbnail')\"> </div> </a>}"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "The Dangers Of Using A Plaque Scraper At Home Plaque removal is important for good oral health, but "
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "{<button type=\"button\" class=\"card-button\" aria-label=\"\" tabindex=\"0\" data-autotest-focused=\"Tab\" data-autotest-operable=\"tag\"></button>}"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Next"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ColgateProfessional.com"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Go to colgateprofessional.com; ColgateProfessional.com"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop.Colgate.com"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Go to shopcolgate.com; Shop.Colgate.com"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ColgatePalmolive.com"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about Colgate-Palmolive's culture; ColgatePalmolive.com"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us; Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Oral Care Center"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Oral Health Education"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Products and Brands"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Coupons"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop Now"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Our Mission"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "United States (US English)"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "ColgateProfessional.com"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Shop.Colgate.com"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Submit an Idea"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Youtube"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Brand Logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Terms Of Use"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "All Products"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About Our Ads"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Children's Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "All Articles"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Cookie Consent Tool"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Do Not Sell My Personal Information"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "All Educational Resources"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Chatbot; Chat"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "triggers": 1,
+          "targets": 1
+        },
+        "items": [
+          {
+            "tagName": "BUTTON",
+            "id": "NONE",
+            "text": "Chat",
+            "newVisibles": [
+              {
+                "tagName": "SPAN",
+                "text": "Have questions about your smile? Ask the Colgate C"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "mislabeled": 1,
+          "unlabeled": 0,
+          "wellLabeled": 19
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelTypes": [
+                "aria-label",
+                "label"
+              ],
+              "texts": {
+                "attribute": "Search Box",
+                "label": [
+                  "Search Box"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Accept"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "reset",
+              "texts": {
+                "content": "Clear"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search Box Button"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Menu"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Learn More"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Previous"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Next"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Previous"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": ""
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": ""
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": ""
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": ""
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": ""
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Next"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "ColgateProfessional.com"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Shop.Colgate.com"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "ColgatePalmolive.com"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Chatbot",
+                "content": "Chat"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "links": 229,
+          "inline": {
+            "total": 3,
+            "underlined": 2,
+            "underlinedPercent": 66
+          }
+        },
+        "items": {
+          "underlined": [
+            "Cookie Policy",
+            "Cookie preferences tool"
+          ],
+          "notUnderlined": [
+            "Learn more about our commitment to oral health education"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "roleElements": 4,
+        "badRoleElements": 3,
+        "tagNames": {
+          "DIV": {
+            "navigation": 1,
+            "main": 1,
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 25,
+            "subtotals": [
+              10,
+              5,
+              5,
+              4,
+              1
+            ]
+          },
+          "h3": {
+            "total": 14,
+            "subtotals": [
+              8,
+              3,
+              2,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 3,
+            "subtotals": [
+              2,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 226,
+            "subtotals": [
+              86,
+              39,
+              27,
+              15,
+              13,
+              9,
+              8,
+              5,
+              4,
+              4,
+              4,
+              3,
+              3,
+              3,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 19,
+            "subtotals": [
+              5,
+              4,
+              4,
+              2,
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "700": 10,
+              "900": 15
+            },
+            "lineHeight": {
+              "47px": 14,
+              "32px": 10,
+              "40px": 1
+            },
+            "maxWidth": {
+              "none": 15,
+              "383px": 10
+            },
+            "minHeight": {
+              "0px": 20,
+              "auto": 5
+            },
+            "minWidth": {
+              "0px": 20,
+              "auto": 5
+            },
+            "fontSize": {
+              "24px": 185,
+              "37px": 163,
+              "30px": 2
+            }
+          },
+          "h3": {
+            "fontStyle": {
+              "italic": 9,
+              "normal": 5
+            },
+            "fontWeight": {
+              "400": 3,
+              "700": 9,
+              "900": 2
+            },
+            "lineHeight": {
+              "28px": 8,
+              "34.5px": 3,
+              "12.65px": 2,
+              "25.3px": 1
+            },
+            "maxWidth": {
+              "none": 12,
+              "50%": 2
+            },
+            "fontSize": {
+              "20px": 252,
+              "30px": 117,
+              "11px": 73,
+              "22px": 27
+            }
+          },
+          "aInline": {
+            "fontStyle": {
+              "normal": 2,
+              "italic": 1
+            },
+            "fontWeight": {
+              "400": 2,
+              "700": 1
+            },
+            "lineHeight": {
+              "20px": 2,
+              "22px": 1
+            },
+            "maxWidth": {
+              "none": 2,
+              "80%": 1
+            },
+            "textDecorationLine": {
+              "underline": 2,
+              "none": 1
+            },
+            "fontSize": {
+              "14px": 80,
+              "15px": 40
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 214,
+              "solid": 12
+            },
+            "borderWidth": {
+              "0px": 214,
+              "2px": 12
+            },
+            "fontStyle": {
+              "normal": 159,
+              "italic": 67
+            },
+            "fontWeight": {
+              "400": 159,
+              "700": 52,
+              "900": 15
+            },
+            "lineHeight": {
+              "40px": 86,
+              "18.4px": 59,
+              "22px": 54,
+              "18px": 13,
+              "27px": 4,
+              "22.5px": 4,
+              "24px": 3,
+              "32px": 3
+            },
+            "maxWidth": {
+              "none": 225,
+              "80%": 1
+            },
+            "minHeight": {
+              "0px": 206,
+              "auto": 15,
+              "170px": 5
+            },
+            "minWidth": {
+              "0px": 206,
+              "auto": 20
+            },
+            "fontSize": {
+              "16px": 7000,
+              "15px": 1200,
+              "14px": 360,
+              "20px": 280,
+              "18px": 160,
+              "0px": 40
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 13,
+              "solid": 6
+            },
+            "borderWidth": {
+              "0px": 13,
+              "2px": 5,
+              "1px": 1
+            },
+            "lineHeight": {
+              "18.4px": 9,
+              "20.7px": 4,
+              "0px": 4,
+              "16.1px": 1,
+              "22px": 1
+            },
+            "minHeight": {
+              "0px": 12,
+              "auto": 7
+            },
+            "minWidth": {
+              "0px": 12,
+              "auto": 7
+            },
+            "fontSize": {
+              "16px": 360,
+              "18px": 160,
+              "0px": 160,
+              "14px": 80
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "totals": {
+          "violation": 49,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/button[1]",
+              "aria": "/document[1]/contentinfo[1]/button[1]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 662,
+              "top": 526,
+              "height": 62,
+              "width": 129
+            },
+            "snippet": "<button aria-label=\"Chatbot\" class=\"openChatWindow chatbot-button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/figure[1]/figcaption[1]/p[4]/a[1]",
+              "aria": "/document[1]/main[1]/link[11]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 292,
+              "top": 1694,
+              "height": 43,
+              "width": 146
+            },
+            "snippet": "<a aria-label=\"View all our products\" class=\"white-and-red\" href=\"/en-us/products\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/a[2]/button[1]",
+              "aria": "/document[1]/main[1]/link[35]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 2576,
+              "top": 3499,
+              "height": 34,
+              "width": 34
+            },
+            "snippet": "<button tabindex=\"-1\" aria-label=\"\" class=\"card-button\" type=\"button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/a[2]/button[1]",
+              "aria": "/document[1]/main[1]/link[33]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 2052,
+              "top": 3499,
+              "height": 34,
+              "width": 34
+            },
+            "snippet": "<button tabindex=\"-1\" aria-label=\"\" class=\"card-button\" type=\"button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/a[2]/button[1]",
+              "aria": "/document[1]/main[1]/link[31]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 1528,
+              "top": 3499,
+              "height": 34,
+              "width": 34
+            },
+            "snippet": "<button tabindex=\"-1\" aria-label=\"\" class=\"card-button\" type=\"button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/a[2]/button[1]",
+              "aria": "/document[1]/main[1]/link[29]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 1004,
+              "top": 3499,
+              "height": 34,
+              "width": 34
+            },
+            "snippet": "<button tabindex=\"-1\" aria-label=\"\" class=\"card-button\" type=\"button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[2]/button[1]",
+              "aria": "/document[1]/main[1]/link[27]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 480,
+              "top": 3499,
+              "height": 34,
+              "width": 34
+            },
+            "snippet": "<button tabindex=\"0\" aria-label=\"\" class=\"card-button\" type=\"button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/a[1]/img[1]",
+              "aria": "/document[1]/main[1]/link[25]/img[1]"
+            },
+            "message": "Link text is repeated in an image 'alt' value within the same link",
+            "bounds": {
+              "left": 2272,
+              "top": 2567,
+              "height": 250,
+              "width": 204
+            },
+            "snippet": "<img alt=\"Colgate® Total Advanced Health™ Mouthwash | Colgate®\" src=\"https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center-relaunch/en-us/products/mouthwash/035000556820-packshot.png?size=thumbnail\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/a[1]/img[1]",
+              "aria": "/document[1]/main[1]/link[24]/img[1]"
+            },
+            "message": "Link text is repeated in an image 'alt' value within the same link",
+            "bounds": {
+              "left": 1748,
+              "top": 2567,
+              "height": 250,
+              "width": 204
+            },
+            "snippet": "<img alt=\"Colgate® Magik™ Augmented Reality Toothbrush & App\" src=\"https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center-relaunch/en-us/products/toothbrush/035000970954-packshot.png?size=thumbnail\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/a[1]/img[1]",
+              "aria": "/document[1]/main[1]/link[23]/img[1]"
+            },
+            "message": "Link text is repeated in an image 'alt' value within the same link",
+            "bounds": {
+              "left": 1224,
+              "top": 2567,
+              "height": 250,
+              "width": 204
+            },
+            "snippet": "<img alt=\"Colgate® 360°® Advanced Optic White® Manual Toothbrush | C...\" src=\"https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center-relaunch/en-us/products/toothbrush/035000454614-packshot.png?size=thumbnail\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]/img[1]",
+              "aria": "/document[1]/main[1]/link[22]/img[1]"
+            },
+            "message": "Link text is repeated in an image 'alt' value within the same link",
+            "bounds": {
+              "left": 700,
+              "top": 2567,
+              "height": 250,
+              "width": 204
+            },
+            "snippet": "<img alt=\"Colgate® Total SF Whitening™ Toothpaste | Colgate®\" src=\"https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center-relaunch/en-us/products/toothpaste/colgate-total-whitening-toothpaste-2021.png?size=thumbnail\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]/img[1]",
+              "aria": "/document[1]/main[1]/link[21]/img[1]"
+            },
+            "message": "Link text is repeated in an image 'alt' value within the same link",
+            "bounds": {
+              "left": 176,
+              "top": 2567,
+              "height": 250,
+              "width": 204
+            },
+            "snippet": "<img alt=\"Colgate® 360® Toothbrush | Colgate® 360\" src=\"https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center-relaunch/en-us/products/toothbrush/035000688170-packshot.png?size=thumbnail\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Frame_HasTitle",
+            "path": {
+              "dom": "/html[1]/body[1]/iframe[1]",
+              "aria": "/document[1]"
+            },
+            "message": "Inline frame does not have a 'title' attribute",
+            "bounds": {
+              "left": -1000,
+              "top": -1000,
+              "height": 14,
+              "width": 34
+            },
+            "snippet": "<iframe style=\"width: 30px; height: 10px; position: absolute; top: -1000px; left: -1000px;\" data-gtm-yt-inspected-1_25=\"true\" data-gtm-yt-inspected-30966562_231=\"true\" src=\"https://cdns.eu1.gigya.com/gs/sso.htm?APIKey=3_o9IWW1EcMh25yaK-lKKXOMEt31v8zVThZPw0WZEzkguNgGgjD6wal4cEw4mgBrwF&ssoSegment=&version=latest&build=12426#m=removeToken&d=https%3A%2F%2Fwww.colgate.com&callbackID=gig_sso_cb1632664989815_2&sAPIKey=3_LsM2sSgcInWXXRguY_IOOyhZgT1lOg1KHQd6-mn8T5ivEBnz4a9S7nVST_MIxq5d&gig_loggerConfig=%7B%22logLevel%22%3A0%2C%22clientMuteLevel%22%3A0%2C%22logTheme%22%3A1%7D\" id=\"gig_sso_gig_sso_cb1632664989815_2\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_A_HasText",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/main[1]/link[26]"
+            },
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "bounds": {
+              "left": 30,
+              "top": 3079,
+              "height": 256,
+              "width": 494
+            },
+            "snippet": "<a tabindex=\"0\" href=\"https://www.colgate.com/en-us/oral-health/dry-mouth/4-causes-of-sticky-saliva-and-home-remedies\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[2]/button[1]",
+              "aria": "/document[1]/button[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 609,
+              "top": 529,
+              "height": 22,
+              "width": 82
+            },
+            "snippet": "<button class=\"truste-button2\" type=\"button\" id=\"truste-consent-button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 197,
+              "top": 541,
+              "height": 18,
+              "width": 78
+            },
+            "snippet": "<a id=\"truste-cookie-button\" target=\"_blank\" href=\"https://www.colgatepalmolive.com/en-us/legal-privacy-policy/cookies\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/figure[1]/figcaption[1]/p[4]/a[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "The <a> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 25,
+              "top": 1694,
+              "height": 43,
+              "width": 114
+            },
+            "snippet": "<a aria-label=\"Chat with colgate\" onclick=\"function openChat(event) {$('.openChatWindow').trigger('click')}; openChat()\" class=\"white-and-red\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 5624,
+              "top": 1960,
+              "height": 22,
+              "width": 252
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[2]",
+              "aria": "/document[1]/main[1]/heading[12]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 5624,
+              "top": 1918,
+              "height": 33,
+              "width": 160
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[12]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 5715,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[12]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 5624,
+              "top": 1890,
+              "height": 33,
+              "width": 158
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 4824,
+              "top": 1932,
+              "height": 22,
+              "width": 238
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[11]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 4915,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[11]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 4824,
+              "top": 1890,
+              "height": 33,
+              "width": 217
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 4024,
+              "top": 1932,
+              "height": 22,
+              "width": 356
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[10]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 4115,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[10]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 4024,
+              "top": 1890,
+              "height": 33,
+              "width": 251
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 3224,
+              "top": 1932,
+              "height": 22,
+              "width": 182
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[2]",
+              "aria": "/document[1]/main[1]/heading[9]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 3448,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[9]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 3315,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[9]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 3224,
+              "top": 1890,
+              "height": 33,
+              "width": 239
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 2424,
+              "top": 1932,
+              "height": 22,
+              "width": 179
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[8]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 2515,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[8]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 2424,
+              "top": 1890,
+              "height": 33,
+              "width": 186
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 1624,
+              "top": 1988,
+              "height": 22,
+              "width": 224
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[3]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[7]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 1624,
+              "top": 1946,
+              "height": 33,
+              "width": 240
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[2]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[6]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 1624,
+              "top": 1918,
+              "height": 33,
+              "width": 245
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[5]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 1715,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[5]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 1624,
+              "top": 1890,
+              "height": 33,
+              "width": 251
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 824,
+              "top": 1960,
+              "height": 22,
+              "width": 142
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[4]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 915,
+              "top": 1888,
+              "height": 25,
+              "width": 16
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[4]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 824,
+              "top": 1890,
+              "height": 61,
+              "width": 169
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 24,
+              "top": 1932,
+              "height": 22,
+              "width": 229
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]/sup[1]",
+              "aria": "/document[1]/main[1]/heading[3]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 900",
+            "bounds": {
+              "left": 184,
+              "top": 1888,
+              "height": 25,
+              "width": 21
+            },
+            "snippet": "<sup>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]/em[1]/strong[1]/span[1]",
+              "aria": "/document[1]/main[1]/heading[3]"
+            },
+            "message": "Text contrast of 1.11 with its background is less than the WCAG AA minimum requirements for text of size 24px and weight of 900",
+            "bounds": {
+              "left": 24,
+              "top": 1890,
+              "height": 33,
+              "width": 181
+            },
+            "snippet": "<span class=\"white-text\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_semantics_attribute",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "The ARIA attribute 'aria-disabled' is not valid for the element <div> with ARIA role 'none'",
+            "bounds": {
+              "left": 778,
+              "top": 1804,
+              "height": 16,
+              "width": 16
+            },
+            "snippet": "<div aria-disabled=\"false\" style=\"display: block;\" aria-label=\"Next Arrow\" class=\"our-brand-next slick-arrow\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_semantics_attribute",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "The ARIA attribute 'aria-disabled' is not valid for the element <div> with ARIA role 'none'",
+            "bounds": {
+              "left": 751,
+              "top": 1804,
+              "height": 16,
+              "width": 16
+            },
+            "snippet": "<div style=\"display: block;\" aria-disabled=\"true\" aria-label=\"Previous Arrow\" class=\"our-brand-prev slick-arrow slick-disabled\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_hidden_focus_misuse",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Element \"div\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+            "bounds": {
+              "left": 539,
+              "top": 3079,
+              "height": 494,
+              "width": 524
+            },
+            "snippet": "<div tabindex=\"0\" aria-hidden=\"true\" data-slick-index=\"1\" style=\"width: 524px;\" class=\"col-xs-12 col-sm-6 slick-slide\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "aria_hidden_focus_misuse",
+            "path": {
+              "dom": "/html[1]/body[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Element \"div\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+            "bounds": {
+              "left": 539,
+              "top": 2537,
+              "height": 450,
+              "width": 524
+            },
+            "snippet": "<div tabindex=\"0\" aria-hidden=\"true\" data-slick-index=\"1\" style=\"width: 524px;\" class=\"col-xs-12 col-sm-6 slick-slide\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.colgate.com/en-us",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Colgate®: Toothpaste, Toothbrushes & Oral Care Resources",
+          "pageurl": "https://www.colgate.com/en-us",
+          "time": 6.53,
+          "creditsremaining": 314,
+          "allitemcount": 634,
+          "totalelements": 2313,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.colgate.com/en-us",
+          "domid": "fc9d9315beee1ec0155b7183b421fdb7"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 81,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 34,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#gig_1632664996637_showScreenSet > DIV:first-child + DIV > DIV#gigya-modal-plugin-container-showScreenSet > DIV#gigya-modal-plugin-container-showScreenSet_content > DIV#gigya-subscribe-with-email-screen > FORM#gigya-subscribe-with-email-form > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV#gig_captcha_1_1632664999224 > DIV:first-child > TEXTAREA#g-recaptcha-response",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + LABEL + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + LABEL + DIV + DIV > LABEL:first-child + INPUT",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child"
+                ]
+              },
+              "label_empty": {
+                "id": "label_empty",
+                "description": "Empty form label",
+                "count": 16,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + DIV + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV > LABEL:first-child + LABEL"
+                ]
+              },
+              "language_missing": {
+                "id": "language_missing",
+                "description": "Language missing or invalid",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#footer > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + SCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#footer > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + SCRIPT + SCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#footer > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + SCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#footer > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > SCRIPT:first-child + SCRIPT + SCRIPT"
+                ]
+              },
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 11,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 11,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#__gigyaScreenSet_GlobalBrands-LiteRegistration > DIV#GlobalBrands-LiteRegistration > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > FORM:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > A:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 41,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 41,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#gig_1632664996637_showScreenSet > DIV:first-child + DIV > DIV:first-child > DIV#gigya-screen-dialog-caption-gig_1632664996637_showScreenSet",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#0211949715 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > H1:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#0211949715 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > H1:first-child + P",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child + P > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child + P > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child > SPAN:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child + P > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#01554140980 > DIV:first-child > DIV:first-child + DIV > DIV#0149330318 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#01554140980 > DIV:first-child > DIV:first-child + DIV > DIV#0149330318 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#01554140980 > DIV:first-child > DIV:first-child + DIV > DIV#0149330318 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#253100041 > DIV:first-child > DIV:first-child + DIV > DIV#0754204113 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#253100041 > DIV:first-child > DIV:first-child + DIV > DIV#0754204113 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#253100041 > DIV:first-child > DIV:first-child + DIV > DIV#0754204113 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV#0463375910 > DIV:first-child > DIV:first-child + DIV > DIV#01632763264 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV#0463375910 > DIV:first-child > DIV:first-child + DIV > DIV#01632763264 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV#0463375910 > DIV:first-child > DIV:first-child + DIV > DIV#01632763264 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + H2 > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV#0463375910 > DIV:first-child > DIV:first-child + DIV > DIV#01632763264 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + H2 + H2 > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV#0463375910 > DIV:first-child > DIV:first-child + DIV > DIV#01632763264 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + H2 + H2 + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#1339309511 > DIV:first-child > DIV:first-child + DIV > DIV#613765869 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#1339309511 > DIV:first-child > DIV:first-child + DIV > DIV#613765869 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#1339309511 > DIV:first-child > DIV:first-child + DIV > DIV#613765869 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV#628452735 > DIV:first-child > DIV:first-child + DIV > DIV#219459237 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV#628452735 > DIV:first-child > DIV:first-child + DIV > DIV#219459237 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV#628452735 > DIV:first-child > DIV:first-child + DIV > DIV#219459237 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child + SUP",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV#628452735 > DIV:first-child > DIV:first-child + DIV > DIV#219459237 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV#0868845864 > DIV:first-child > DIV:first-child + DIV > DIV#555580030 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV#0868845864 > DIV:first-child > DIV:first-child + DIV > DIV#555580030 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV#0868845864 > DIV:first-child > DIV:first-child + DIV > DIV#555580030 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV#570732985 > DIV:first-child > DIV:first-child + DIV > DIV#02104661025 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV#570732985 > DIV:first-child > DIV:first-child + DIV > DIV#02104661025 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV#570732985 > DIV:first-child > DIV:first-child + DIV > DIV#02104661025 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV#0692583998 > DIV:first-child > DIV:first-child + DIV > DIV#392427112 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV#0692583998 > DIV:first-child > DIV:first-child + DIV > DIV#392427112 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child > SUP:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV#0692583998 > DIV:first-child > DIV:first-child + DIV > DIV#392427112 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > EM:first-child > STRONG:first-child > SPAN:first-child + BR + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV#0692583998 > DIV:first-child > DIV:first-child + DIV > DIV#392427112 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > DIV#0777991481 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > DIV#0777991481 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child + P > SPAN:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > DIV#0777991481 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > P:first-child + P + P + P > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    true
+                  ],
+                  [
+                    1.1,
+                    "#ffffff",
+                    "#f3f3f3",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 31,
+            "items": {
+              "fieldset_missing": {
+                "id": "fieldset_missing",
+                "description": "Missing fieldset",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#gig_1632664996637_showScreenSet > DIV:first-child + DIV > DIV#gigya-modal-plugin-container-showScreenSet > DIV#gigya-modal-plugin-container-showScreenSet_content > DIV#gigya-subscribe-with-email-screen > FORM#gigya-subscribe-with-email-form > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > INPUT:first-child + LABEL"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 9,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#0211949715 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child + FIGCAPTION > H1:first-child + P + P",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV > DIV#1995176258 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > P:first-child"
+                ]
+              },
+              "link_internal_broken": {
+                "id": "link_internal_broken",
+                "description": "Broken same-page link",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#header > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#0639053842 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#header > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#1438075422 > DIV:first-child > A:first-child + DIV > DIV#01597139772 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#02084891030 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > H3:first-child + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#header > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#1438075422 > DIV:first-child > A:first-child + DIV + DIV > DIV#01200738800 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#footer > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#1814274801 > DIV:first-child > A:first-child + DIV + DIV > DIV#1859386263 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > P#responsive-element-1450523 > A:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#0211949715 > DIV:first-child > A:first-child + DIV > DIV#1748455598 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child > A:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#header > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#1438075422 > DIV:first-child > A:first-child + DIV > DIV#01597139772 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#header > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#1438075422 > DIV:first-child > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV#0790837726 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child > P:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV#1381859981 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H3:first-child + DIV > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > A:first-child + A"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV + SCRIPT + DIV + SCRIPT + SCRIPT + IFRAME + IFRAME + IFRAME + IFRAME + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#header > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#0639053842 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#header > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#1438075422 > DIV:first-child > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV#284692034 > DIV:first-child > A:first-child + DIV > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV > DIV#0211949715 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV > DIV#1075262850 > DIV:first-child > A:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + FIGURE > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + SCRIPT + STYLE + STYLE + DIV + DIV > DIV:first-child > DIV#content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + DIV + DIV > DIV#0890113968 > DIV:first-child > A:first-child + DIV + DIV > DIV#462582302 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#02052175802 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#01554140980 > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + PICTURE > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c11",
+      "what": "3 packages and 11 custom tests, with duplication discounts",
+      "result": {
+        "total": 944,
+        "axe": 51,
+        "ibm": 124,
+        "wave": 457,
+        "bulk": 21,
+        "embAc": 36,
+        "focOl": 8,
+        "focOp": 135,
+        "hover": 6,
+        "labClash": 2,
+        "linkUl": 3,
+        "motion": 0,
+        "radioSet": 0,
+        "role": 6,
+        "styleDiff": 95
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      35
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      8
+    ],
+    [
+      "wave",
+      7
+    ],
+    [
+      "focOp",
+      5
+    ],
+    [
+      "axe",
+      4
+    ],
+    [
+      "focOl",
+      4
+    ],
+    [
+      "bulk",
+      2
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

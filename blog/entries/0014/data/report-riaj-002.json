@@ -1,0 +1,2035 @@
+{
+  "script": "p03c11",
+  "batch": "veigx",
+  "what": "Axe, IBM, WAVE, and 11 custom tests",
+  "timeStamp": "riaj",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://merck.com",
+      "what": "MSD",
+      "result": "https://www.merck.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.merck.com/",
+      "result": {
+        "bytes": [
+          611616,
+          611610,
+          611611,
+          617095,
+          617097
+        ],
+        "localRatios": [
+          1,
+          1,
+          1.009,
+          1
+        ],
+        "meanLocalRatio": 1.002,
+        "maxLocalRatio": 1.009,
+        "globalRatio": 1.009,
+        "pixelChanges": [
+          46,
+          42,
+          259298,
+          42
+        ],
+        "meanPixelChange": 64857,
+        "maxPixelChange": 259298,
+        "changeFrequency": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.merck.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 3,
+          "serious": 1,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "div[aria-describedby=\"onetrust-policy-text\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".mco-two-column-content-modal-content-col-one",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: mco-two-column-content-modal-content",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href=\"\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: externalLinkModalBtn",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#tns4-item0 > .mco-content-teaser-card-item-content > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".first-link > h4",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://merck.com",
+      "what": "MSD",
+      "result": "https://www.merck.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.merck.com/",
+      "result": {
+        "visibleElements": 421
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "tabulate and list active elements contained by links or buttons",
+      "withItems": true,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "total": 3,
+          "types": {
+            "outlineMissing": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 3,
+              "tagNames": {
+                "a": 1,
+                "button": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "See our Privacy Policy"
+            },
+            {
+              "tagName": "button",
+              "text": "Customize My Settings; #onetrust-pc-btn-handler"
+            },
+            {
+              "tagName": "button",
+              "text": "Accept All Cookies; #onetrust-accept-btn-handler"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 55,
+            "tagName": {
+              "a": 25,
+              "button": 2,
+              "div": 18,
+              "small": 3,
+              "svg": 2,
+              "img": 1,
+              "input[type=checkbox]": 3,
+              "li": 1
+            },
+            "operableWhy": {
+              "tag": 30,
+              "cursor": 10,
+              "onclick": 15
+            }
+          },
+          "focusableAndOperable": {
+            "total": 3,
+            "tagName": {
+              "a": 1,
+              "button": 2
+            },
+            "focusableHow": {
+              "Tab": 3,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 3,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Site logo"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "menu icon; close icon; Search everything Close; #siteSearchToggle"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "menu icon; close icon; Menu Close; #siteNavigationToggle"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Read more"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Innovation Taking the fight against COVID-19 on the road Read more"
+            },
+            {
+              "tagName": "small",
+              "operableWhy": "cursor",
+              "text": "Taking the fight against COVID-19 on the road"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Responsibility Building a responsible business: 4 Merck CEOs on our legacy & future Learn more"
+            },
+            {
+              "tagName": "small",
+              "operableWhy": "cursor",
+              "text": "Building a responsible business: 4 Merck CEOs on our legacy & future"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "cursor",
+              "text": "Innovation Safeguarding the environment through green chemistry Read more"
+            },
+            {
+              "tagName": "small",
+              "operableWhy": "cursor",
+              "text": "Safeguarding the environment through green chemistry"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View our stories"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Read more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Read more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "View our stories"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for Fighting for health equity from inside the health care industry; Our people Fighting for health equity from inside the health care industry Carmen Villar, vice presi"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "5 people looking at their cellphones; Innovation Understanding the link between social media and health The Alliance for Advancing Health "
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for Inspiring innovation through diversity and inclusion; Responsibility Inspiring innovation through diversity and inclusion When we bring together people fr"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for 3 things I want the Black community to know about scientists like me; Our people 3 things I want the Black community to know about scientists like me Denarra Simmons, sen"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "teal talks; Responsibility Building a responsible business: 4 Merck CEOs on our legacy & future In this Teal Tal"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for Fighting for health equity from inside the health care industry; Our people Fighting for health equity from inside the health care industry Carmen Villar, vice presi; #tns4-item0"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "5 people looking at their cellphones; Innovation Understanding the link between social media and health The Alliance for Advancing Health ; #tns4-item1"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for Inspiring innovation through diversity and inclusion; Responsibility Inspiring innovation through diversity and inclusion When we bring together people fr; #tns4-item2"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for 3 things I want the Black community to know about scientists like me; Our people 3 things I want the Black community to know about scientists like me Denarra Simmons, sen; #tns4-item3"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "teal talks; Responsibility Building a responsible business: 4 Merck CEOs on our legacy & future In this Teal Tal; #tns4-item4"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for Fighting for health equity from inside the health care industry; Our people Fighting for health equity from inside the health care industry Carmen Villar, vice presi"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "5 people looking at their cellphones; Innovation Understanding the link between social media and health The Alliance for Advancing Health "
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for Inspiring innovation through diversity and inclusion; Responsibility Inspiring innovation through diversity and inclusion When we bring together people fr"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "Image for 3 things I want the Black community to know about scientists like me; Our people 3 things I want the Black community to know about scientists like me Denarra Simmons, sen"
+            },
+            {
+              "tagName": "div",
+              "operableWhy": "onclick",
+              "text": "teal talks; Responsibility Building a responsible business: 4 Merck CEOs on our legacy & future In this Teal Tal"
+            },
+            {
+              "tagName": "svg",
+              "operableWhy": "cursor",
+              "text": "Previous"
+            },
+            {
+              "tagName": "svg",
+              "operableWhy": "cursor",
+              "text": "Next"
+            },
+            {
+              "tagName": "img",
+              "operableWhy": "cursor",
+              "text": "{<img class=\"btn-pause-icon\" src=\"https://www.merck.com/wp-content/themes/mhh-merck-mco-theme/images/pause.svg\" alt=\"Pause\" data-autotest-operable=\"cursor\">}"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Patients & caregivers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Discover more"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Our work in oncology"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Join our team"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "About our responsibility"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Visit investor relations"
+            },
+            {
+              "tagName": "input[type=checkbox]",
+              "operableWhy": "tag",
+              "text": "For patients and health care professionals; #columnOne"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "MerckHelps"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Merck Access Program"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Clinical trials"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Merck Manuals"
+            },
+            {
+              "tagName": "input[type=checkbox]",
+              "operableWhy": "tag",
+              "text": "Corporate responsibility; #columnTwo"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Environmental, Social, Governance (ESG) Report"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Merck for Mothers"
+            },
+            {
+              "tagName": "input[type=checkbox]",
+              "operableWhy": "tag",
+              "text": "About Merck; #columnThree"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Merck Animal Health"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Forward-looking statement"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Cookie policy"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "cursor",
+              "text": "Cookie Preferences; #menu-item-763862"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Privacy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Transparency disclosure"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Terms of use"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Sitemap"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "See our Privacy Policy"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Customize My Settings; #onetrust-pc-btn-handler"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Accept All Cookies; #onetrust-accept-btn-handler"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 5,
+          "unlabeled": 1,
+          "wellLabeled": 27
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 7,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Strictly Necessary Cookies"
+                ],
+                "label": [
+                  "Strictly Necessary Cookies"
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Functional Cookies"
+                ],
+                "label": [
+                  "Functional Cookies"
+                ]
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Performance Cookies"
+                ],
+                "label": [
+                  "Performance Cookies"
+                ]
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Targeting Cookies"
+                ],
+                "label": [
+                  "Targeting Cookies"
+                ]
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Social Media Cookies"
+                ],
+                "label": [
+                  "Social Media Cookies"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button type=\"submit\" class=\"submit search-submit\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search everything Close"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Menu Close"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search site"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "For patients and health care professionals"
+                ]
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Corporate responsibility"
+                ]
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "About Merck"
+                ]
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Back ButtonAdvertising Cookies"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Vendor Search"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Filter",
+                "content": "Filter Button"
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select All Vendors"
+                ]
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select All Vendors"
+                ]
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select All Hosts"
+                ]
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": ""
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "REPLACE-WITH-DYANMIC-HOST-ID"
+                ]
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "View Third Party Cookies"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Clear Filters"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Information storage and access"
+                ]
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Apply"
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Confirm My Choices"
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Accept All Cookies"
+              }
+            },
+            {
+              "index": 31,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Customize My Settings"
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Accept All Cookies"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "links": 138,
+          "inline": {
+            "total": 20,
+            "underlined": 3,
+            "underlinedPercent": 15
+          }
+        },
+        "items": {
+          "underlined": [
+            "www.sec.gov",
+            "More information",
+            "See our Privacy Policy"
+          ],
+          "notUnderlined": [
+            "MerckHelps",
+            "Merck Access Program",
+            "Clinical trials",
+            "Merck Manuals",
+            "Environmental, Social, Governance (ESG) Report",
+            "Merck for Mothers",
+            "Merck Animal Health",
+            "Forward-looking statement",
+            "Cookie policy",
+            "Privacy",
+            "Transparency disclosure",
+            "Terms of use",
+            "Sitemap",
+            "Decline",
+            "Accept",
+            "Cancel",
+            "Continue"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.merck.com/",
+      "result": {
+        "roleElements": 26,
+        "badRoleElements": 4,
+        "tagNames": {
+          "DIV": {
+            "dialog": 2
+          },
+          "P": {
+            "status": 1
+          },
+          "INPUT": {
+            "button": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 3,
+            "subtotals": [
+              1,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 24,
+            "subtotals": [
+              5,
+              5,
+              5,
+              4,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "h4": {
+            "total": 14,
+            "subtotals": [
+              6,
+              6,
+              1,
+              1
+            ]
+          },
+          "h5": {
+            "total": 16,
+            "subtotals": [
+              15,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 20,
+            "subtotals": [
+              7,
+              6,
+              4,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 118,
+            "subtotals": [
+              44,
+              32,
+              12,
+              8,
+              6,
+              6,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 17,
+            "subtotals": [
+              5,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "300": 2,
+              "600": 1
+            },
+            "lineHeight": {
+              "52.06px": 1,
+              "40px": 1,
+              "28.8px": 1
+            },
+            "maxHeight": {
+              "none": 2,
+              "57.6px": 1
+            },
+            "maxWidth": {
+              "none": 2,
+              "85%": 1
+            },
+            "fontSize": {
+              "24px": 4,
+              "30px": 3,
+              "38px": 2
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "300": 10,
+              "600": 5,
+              "700": 9
+            },
+            "lineHeight": {
+              "40px": 10,
+              "22.4px": 6,
+              "20.8px": 6,
+              "12.96px": 1,
+              "15.36px": 1
+            },
+            "maxWidth": {
+              "none": 18,
+              "85%": 4,
+              "70%": 2
+            },
+            "minHeight": {
+              "0px": 19,
+              "auto": 5
+            },
+            "minWidth": {
+              "0px": 13,
+              "75%": 6,
+              "auto": 5
+            },
+            "fontSize": {
+              "16px": 246,
+              "30px": 95,
+              "12.8px": 28,
+              "12.96px": 27
+            }
+          },
+          "h4": {
+            "fontWeight": {
+              "300": 1,
+              "600": 1,
+              "700": 12
+            },
+            "lineHeight": {
+              "28px": 12,
+              "32px": 1,
+              "15.456px": 1
+            },
+            "maxWidth": {
+              "none": 13,
+              "292px": 1
+            },
+            "opacity": {
+              "0": 6,
+              "1": 8
+            },
+            "fontSize": {
+              "18px": 426,
+              "11.04px": 42,
+              "22px": 29
+            }
+          },
+          "h5": {
+            "minHeight": {
+              "0px": 15,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 15,
+              "auto": 1
+            }
+          },
+          "aInline": {
+            "borderStyle": {
+              "none": 16,
+              "solid": 4
+            },
+            "borderWidth": {
+              "0px": 16,
+              "1px": 4
+            },
+            "fontWeight": {
+              "400": 8,
+              "700": 12
+            },
+            "lineHeight": {
+              "24px": 13,
+              "16px": 4,
+              "28px": 1,
+              "normal": 1,
+              "19.512px": 1
+            },
+            "outlineOffset": {
+              "0px": 19,
+              "1px": 1
+            },
+            "outlineStyle": {
+              "none": 19,
+              "solid": 1
+            },
+            "outlineWidth": {
+              "0px": 19,
+              "2px": 1
+            },
+            "textDecorationLine": {
+              "none": 17,
+              "underline": 3
+            },
+            "fontSize": {
+              "14px": 812,
+              "16px": 232,
+              "13.12px": 58,
+              "13.008px": 58
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 67,
+              "none none solid": 50,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 67,
+              "0px 0px 1px": 50,
+              "1px": 1
+            },
+            "fontWeight": {
+              "400": 12,
+              "700": 106
+            },
+            "lineHeight": {
+              "28.008px": 76,
+              "16px": 24,
+              "18.4px": 9,
+              "32.01px": 6,
+              "24px": 1,
+              "28px": 1,
+              "normal": 1
+            },
+            "maxWidth": {
+              "none": 117,
+              "292px": 1
+            },
+            "minHeight": {
+              "0px": 107,
+              "auto": 11
+            },
+            "minWidth": {
+              "0px": 101,
+              "auto": 11,
+              "227.008px": 6
+            },
+            "opacity": {
+              "0": 6,
+              "1": 112
+            },
+            "textDecorationLine": {
+              "none": 108,
+              "underline": 10
+            },
+            "fontSize": {
+              "18px": 4408,
+              "16px": 2088,
+              "22px": 348
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 12,
+              "solid": 5
+            },
+            "borderWidth": {
+              "0px": 12,
+              "1px": 5
+            },
+            "fontWeight": {
+              "400": 7,
+              "600": 3,
+              "700": 7
+            },
+            "lineHeight": {
+              "14.08px": 5,
+              "normal": 3,
+              "20px": 2,
+              "15.6096px": 2,
+              "18.4px": 1,
+              "10.08px": 1,
+              "14.4px": 1,
+              "15.84px": 1,
+              "38px": 1
+            },
+            "maxWidth": {
+              "none": 15,
+              "200px": 1,
+              "180px": 1
+            },
+            "minHeight": {
+              "0px": 15,
+              "auto": 2
+            },
+            "minWidth": {
+              "0px": 12,
+              "auto": 2,
+              "125px": 2,
+              "155px": 1
+            },
+            "fontSize": {
+              "12.8px": 290,
+              "14.4px": 290,
+              "20px": 116,
+              "13.008px": 116,
+              "16px": 58,
+              "11.2px": 58,
+              "12px": 58
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.merck.com/",
+      "result": {
+        "totals": {
+          "violation": 18,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[5]/div[3]/div[1]",
+              "aria": "/document[1]/dialog[2]"
+            },
+            "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 157,
+              "width": 800
+            },
+            "snippet": "<div aria-describedby=\"onetrust-policy-text\" role=\"dialog\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ValidIdRef",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/header[1]/nav[1]/div[1]/div[2]/button[2]",
+              "aria": "/document[1]/banner[1]/navigation[1]/button[2]"
+            },
+            "message": "The 'id' \"primary-menu\" specified for the ARIA property 'aria-controls' value is not valid",
+            "bounds": {
+              "left": 656,
+              "top": 171,
+              "height": 52,
+              "width": 113
+            },
+            "snippet": "<button aria-expanded=\"false\" aria-controls=\"primary-menu\" class=\"btn menu-toggle\" id=\"siteNavigationToggle\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ValidIdRef",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/header[1]/nav[1]/div[1]/div[2]/button[1]",
+              "aria": "/document[1]/banner[1]/navigation[1]/button[1]"
+            },
+            "message": "The 'id' \"primary-search\" specified for the ARIA property 'aria-controls' value is not valid",
+            "bounds": {
+              "left": 395,
+              "top": 171,
+              "height": 52,
+              "width": 229
+            },
+            "snippet": "<button aria-expanded=\"false\" aria-controls=\"primary-search\" class=\"btn\" id=\"siteSearchToggle\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[9]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 1136,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" id=\"tns4-item3\" onclick=\"window.location = 'https://www.merck.com/stories/3-things-i-want-the-black-community-to-know-about-scientists-like-me/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[8]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 768,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" id=\"tns4-item2\" onclick=\"window.location = 'https://www.merck.com/stories/how-we-foster-innovation-through-our-diverse-workforce/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[7]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 400,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div id=\"tns4-item1\" onclick=\"window.location = 'https://www.merck.com/stories/understanding-the-link-between-social-media-and-health/';\" class=\"mco-content-teaser-card-item tns-item tns-slide-active\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[6]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 32,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div id=\"tns4-item0\" onclick=\"window.location = 'https://www.merck.com/stories/fighting-for-health-equity-from-inside-the-health-care-industry/';\" class=\"mco-content-teaser-card-item tns-item tns-slide-active\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[5]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": -336,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/responsible-business-merck-ceos-teal-talks/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[4]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": -704,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/3-things-i-want-the-black-community-to-know-about-scientists-like-me/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[3]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": -1072,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/how-we-foster-innovation-through-our-diverse-workforce/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[2]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": -1440,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/understanding-the-link-between-social-media-and-health/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[15]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 3344,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/responsible-business-merck-ceos-teal-talks/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[14]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 2976,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/3-things-i-want-the-black-community-to-know-about-scientists-like-me/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[13]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 2608,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/how-we-foster-innovation-through-our-diverse-workforce/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[12]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 2240,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/understanding-the-link-between-social-media-and-health/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[11]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 1872,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/fighting-for-health-equity-from-inside-the-health-care-industry/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[10]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": 1504,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" id=\"tns4-item4\" onclick=\"window.location = 'https://www.merck.com/stories/responsible-business-merck-ceos-teal-talks/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_EventHandlerMissingRole_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/article[1]/div[1]/div[7]/div[2]/div[2]/div[1]/div[1]/div[1]",
+              "aria": "/document[1]/main[1]/article[1]"
+            },
+            "message": "The <div> element with 'onclick' does not have a valid ARIA role specified",
+            "bounds": {
+              "left": -1808,
+              "top": 2233,
+              "height": 449,
+              "width": 368
+            },
+            "snippet": "<div tabindex=\"-1\" aria-hidden=\"true\" onclick=\"window.location = 'https://www.merck.com/stories/fighting-for-health-equity-from-inside-the-health-care-industry/';\" class=\"mco-content-teaser-card-item tns-item\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.merck.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Merck | Home",
+          "pageurl": "https://www.merck.com/",
+          "time": 3.52,
+          "creditsremaining": 338,
+          "allitemcount": 362,
+          "totalelements": 1242,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.merck.com/",
+          "domid": "279ceae32ffe52f6ebdeae0eb3d7914f"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 5,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > UL#hosts-list-container > LI:first-child > INPUT:first-child"
+                ]
+              },
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > UL#hosts-list-container > LI:first-child > INPUT:first-child + SECTION > DIV:first-child > DIV:first-child + DIV > H3:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > UL#hosts-list-container > LI:first-child > INPUT:first-child + SECTION > DIV:first-child > DIV:first-child + DIV > H3:first-child + H4"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > FORM#site-search > DIV#site-search-box > SPAN:first-child + INPUT + BUTTON"
+                ]
+              },
+              "link_skip_broken": {
+                "id": "link_skip_broken",
+                "description": "Broken skip link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > A:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 4,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-navigation > DIV:first-child > DIV#mastheadMenu > BUTTON#siteSearchToggle > SPAN:first-child > IMG:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-title-block-block_5e4ee07b01bc2 > DIV:first-child > DIV:first-child > H2:first-child + P + P + P + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-featured-banner-block-block_5e4ee74e01bc7 > DIV:first-child + DIV > DIV:first-child > H3:first-child + P + DIV > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    3.55,
+                    "#d9e7e6",
+                    "#00857c",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#00857c",
+                    "#00857c",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 68,
+            "items": {
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child + DIV > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child + DIV > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child + DIV > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV + DIV > PICTURE:first-child + SPAN + PICTURE > SOURCE:first-child + SOURCE + SOURCE + IMG"
+                ]
+              },
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-featured-banner-block-block_5e4ee74e01bc7 > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-two-column-content-block-block_5e4eea6f01bc8 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-two-column-content-block-block_5e4eea6f01bc8 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG"
+                ]
+              },
+              "alt_duplicate": {
+                "id": "alt_duplicate",
+                "description": "A nearby image has the same alternative text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-navigation > DIV:first-child > DIV#mastheadMenu > BUTTON#siteNavigationToggle > SPAN:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV + DIV > DIV:first-child > DIV#tns3-ow > DIV#tns3-mw > DIV#tns3-iw > UL#tns3 > LI:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV + DIV > DIV:first-child > DIV#tns3-ow > DIV#tns3-mw > DIV#tns3-iw > UL#tns3 > LI#tns3-item0 > PICTURE:first-child > SOURCE:first-child + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-two-column-content-block-block_5e4eea6f01bc8 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + IMG"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child > DIV:first-child + DIV > SMALL:first-child + H5",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + LINK + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > H4:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV + DIV + DIV + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-b5-content-block-block_5e559587cfc9d > DIV:first-child > DIV:first-child + DIV > SMALL:first-child + H3 + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-b5-content-block-block_5e5590facfc9c > DIV:first-child > DIV:first-child + DIV > SMALL:first-child + H3 + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#externalLinkModal > DIV:first-child > DIV:first-child > H3:first-child + DIV + DIV > A#externalLinkModalBtn"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 14,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-666469 > A:first-child + UL > LI#menu-item-666471 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-666469 > A:first-child + UL > LI#menu-item-666473 > A:first-child + UL > LI#menu-item-2388650 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-666469 > A:first-child + UL > LI#menu-item-666474 > A:first-child + UL > LI#menu-item-666483 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-666469 > A:first-child + UL > LI#menu-item-666475 > A:first-child + UL > LI#menu-item-666488 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-666469 > A:first-child + UL > LI#menu-item-666479 > A:first-child + UL > LI#menu-item-667793 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-14540 > A:first-child + UL > LI#menu-item-666505 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-14540 > A:first-child + UL > LI#menu-item-666513 > A:first-child + UL > LI#menu-item-666673 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-628574 > A:first-child + UL > LI#menu-item-2784133 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-137022 > A:first-child + UL > LI#menu-item-223087 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-137022 > A:first-child + UL > LI#menu-item-220673 > A:first-child + UL > LI#menu-item-666494 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-137022 > A:first-child + UL > LI#menu-item-220671 > A:first-child + UL > LI#menu-item-666496 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-650872 > A:first-child + UL > LI#menu-item-650874 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV > UL#menuMain > LI#menu-item-650872 > A:first-child + UL > LI#menu-item-650881 > A:first-child + UL > LI#menu-item-666491 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#externalLinkModal > DIV:first-child > DIV:first-child > H3:first-child + DIV + DIV > A:first-child"
+                ]
+              },
+              "event_handler": {
+                "id": "event_handler",
+                "description": "Device dependent event handler",
+                "count": 15,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV#tns4-item0",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV#tns4-item1",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV#tns4-item2",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV#tns4-item3",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV#tns4-item4",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV#tns4-ow > DIV#tns4-mw > DIV#tns4-iw > DIV#tns4 > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > UL#hosts-list-container > LI:first-child > INPUT:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > DIV#ot-content > SECTION#vendors-list > DIV:first-child > SECTION#vendor-list-content > DIV:first-child > DIV:first-child > UL#hosts-list-container > LI:first-child > INPUT:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child + DIV"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 14,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page > HEADER#masthead > NAV#site-menu > DIV:first-child > A:first-child + DIV + DIV > DIV:first-child + DIV + H4 + A",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV + DIV + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-home-hero-block-block_5e6a4637a6f74 > DIV:first-child + DIV > H5:first-child + DIV + DIV + DIV + DIV > DIV:first-child + SMALL + SMALL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-title-block-block_5e4ee07b01bc2 > DIV:first-child > DIV:first-child > H2:first-child + P + P + P + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-b5-content-block-block_5e559587cfc9d > DIV:first-child > DIV:first-child + DIV > SMALL:first-child + H3 + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-b5-content-block-block_5e5590facfc9c > DIV:first-child > DIV:first-child + DIV > SMALL:first-child + H3 + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-content-teaser-cards-block-block_5e4ee4e201bc4 > DIV:first-child > H3:first-child + P + A",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-b5-content-block-block_5e4ee5b701bc5 > DIV:first-child > DIV:first-child + DIV > SMALL:first-child + H3 + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-b5-content-block-block_5e4ee63e01bc6 > DIV:first-child > DIV:first-child + DIV > SMALL:first-child + H3 + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-featured-banner-block-block_5e4ee74e01bc7 > DIV:first-child + DIV > DIV:first-child > H3:first-child + P + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-two-column-content-block-block_5e4eea6f01bc8 > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + P + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page > DIV#content > DIV:first-child > DIV#primary > MAIN#main > ARTICLE#post-22 > DIV:first-child > DIV#mco-two-column-content-block-block_5e4eea6f01bc8 > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + P + DIV > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c11",
+      "what": "3 packages and 11 custom tests, with duplication discounts",
+      "result": {
+        "total": 677,
+        "axe": 17,
+        "ibm": 68,
+        "wave": 157,
+        "bulk": 16,
+        "embAc": 0,
+        "focOl": 0,
+        "focOp": 220,
+        "hover": 0,
+        "labClash": 12,
+        "linkUl": 51,
+        "motion": 23,
+        "radioSet": 0,
+        "role": 8,
+        "styleDiff": 105
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      36
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      4
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "focOl",
+      1
+    ],
+    [
+      "focOp",
+      1
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

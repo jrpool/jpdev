@@ -1,0 +1,1725 @@
+{
+  "script": "p03c11",
+  "batch": "veigxRest",
+  "what": "Axe, IBM, WAVE, and 11 custom tests",
+  "timeStamp": "rihx",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://mufgamericas.com",
+      "what": "MUFG",
+      "result": "https://www.mufgamericas.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "bytes": [
+          747310,
+          747310,
+          747310,
+          747310,
+          747310
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 3,
+          "moderate": 0,
+          "serious": 1,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#outbound-interstitial",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "script[charset=\"utf-8\"][async=\"\"][type=\"text\\/javascript\"]:nth-child(7)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: utag_26",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "script[charset=\"utf-8\"][async=\"\"][type=\"text\\/javascript\"]:nth-child(8)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: demandbase_js_lib",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "empty-heading",
+            "description": "Ensures headings have discernible text",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".banner-region__subtitle",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://mufgamericas.com",
+      "what": "MUFG",
+      "result": "https://www.mufgamericas.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "visibleElements": 229
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "tabulate and list active elements contained by links or buttons",
+      "withItems": true,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "total": 19,
+          "types": {
+            "outlineMissing": {
+              "total": 3,
+              "tagNames": {
+                "select": 1,
+                "input[type=submit]": 1,
+                "iframe": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 16,
+              "tagNames": {
+                "a": 14,
+                "button": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [
+            {
+              "tagName": "select",
+              "text": "Select an option.; United States-Aviation-Commodity Finance-Education-Environmental Services-Financial Institutions-Gen; #edit-product-id"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "text": "#edit-submit-next-step"
+            },
+            {
+              "tagName": "iframe",
+              "text": "#twitter-widget-0"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "button",
+              "text": "Search; .cls-1 { fill: none; stroke: #999; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 3px; "
+            },
+            {
+              "tagName": "button",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "text": "MUFG Americas logo"
+            },
+            {
+              "tagName": "a",
+              "text": "Who We Are"
+            },
+            {
+              "tagName": "a",
+              "text": "What We Do"
+            },
+            {
+              "tagName": "a",
+              "text": "Industry Solutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Insights and Experience"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Windmills; Leading the way in clean-energy financing MUFG financed over $3 billion in clean-energy and energy-s"
+            },
+            {
+              "tagName": "a",
+              "text": "Social responsibility collage; New! 2020 Corporate Social Responsibility Report We are proud to share our dedication to the communi"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 1,
+            "tagName": {
+              "iframe": 1
+            },
+            "focusableHow": {
+              "Tab": 1,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 16,
+            "tagName": {
+              "a": 15,
+              "button": 1
+            },
+            "operableWhy": {
+              "tag": 16,
+              "cursor": 0,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 18,
+            "tagName": {
+              "a": 14,
+              "button": 2,
+              "select": 1,
+              "input[type=submit]": 1
+            },
+            "focusableHow": {
+              "Tab": 18,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 18,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "iframe",
+              "focusableHow": "Tab",
+              "text": "#twitter-widget-0"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Privacy"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "California: Privacy"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "Do Not Sell My Personal Information"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "USA PATRIOT Act"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "MUFG Global"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "MUFG Brasil"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "MUFG Mexico"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Union Bank"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "PurePoint Financial"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Follow Us on YouTube"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Follow Us on LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Follow Us on Twitter"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search; .cls-1 { fill: none; stroke: #999; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 3px; "
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "MUFG Americas logo"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Who We Are"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "What We Do"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Industry Solutions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Insights and Experience"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Windmills; Leading the way in clean-energy financing MUFG financed over $3 billion in clean-energy and energy-s"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Social responsibility collage; New! 2020 Corporate Social Responsibility Report We are proud to share our dedication to the communi"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "select",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Select an option.; United States-Aviation-Commodity Finance-Education-Environmental Services-Financial Institutions-Gen; #edit-product-id"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "#edit-submit-next-step"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "triggers": 8,
+          "targets": 72
+        },
+        "items": [
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Who We Are",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Who We Are Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Core Values"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Locations"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Leadership Team"
+              },
+              {
+                "tagName": "A",
+                "text": "Our History"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Social Responsibility"
+              },
+              {
+                "tagName": "A",
+                "text": "Inclusion and Diversity"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Profile"
+              },
+              {
+                "tagName": "A",
+                "text": "Prime Rate"
+              },
+              {
+                "tagName": "A",
+                "text": "News"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Governance"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Who We Are",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Who We Are Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Core Values"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Locations"
+              },
+              {
+                "tagName": "A",
+                "text": "Our Leadership Team"
+              },
+              {
+                "tagName": "A",
+                "text": "Our History"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Social Responsibility"
+              },
+              {
+                "tagName": "A",
+                "text": "Inclusion and Diversity"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Profile"
+              },
+              {
+                "tagName": "A",
+                "text": "Prime Rate"
+              },
+              {
+                "tagName": "A",
+                "text": "News"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate Governance"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "What We Do",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "What We Do Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate & Investment Banking and Markets"
+              },
+              {
+                "tagName": "A",
+                "text": "Transaction Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Consumer, Wealth, and Commercial Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Working Capital Solutions"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "What We Do",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "What We Do Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Corporate & Investment Banking and Markets"
+              },
+              {
+                "tagName": "A",
+                "text": "Transaction Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Consumer, Wealth, and Commercial Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Working Capital Solutions"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Industry Solutions",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Industry Solutions Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Environmental Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Financial Institutions"
+              },
+              {
+                "tagName": "A",
+                "text": "Government"
+              },
+              {
+                "tagName": "A",
+                "text": "Healthcare"
+              },
+              {
+                "tagName": "A",
+                "text": "Higher Education"
+              },
+              {
+                "tagName": "A",
+                "text": "Media, Telecom and Sports Finance"
+              },
+              {
+                "tagName": "A",
+                "text": "Oil and Gas"
+              },
+              {
+                "tagName": "A",
+                "text": "Power and Utilities"
+              },
+              {
+                "tagName": "A",
+                "text": "Public Finance"
+              },
+              {
+                "tagName": "A",
+                "text": "Restaurant Finance"
+              },
+              {
+                "tagName": "A",
+                "text": "Technology"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Industry Solutions",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Industry Solutions Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Environmental Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Financial Institutions"
+              },
+              {
+                "tagName": "A",
+                "text": "Government"
+              },
+              {
+                "tagName": "A",
+                "text": "Healthcare"
+              },
+              {
+                "tagName": "A",
+                "text": "Higher Education"
+              },
+              {
+                "tagName": "A",
+                "text": "Media, Telecom and Sports Finance"
+              },
+              {
+                "tagName": "A",
+                "text": "Oil and Gas"
+              },
+              {
+                "tagName": "A",
+                "text": "Power and Utilities"
+              },
+              {
+                "tagName": "A",
+                "text": "Public Finance"
+              },
+              {
+                "tagName": "A",
+                "text": "Restaurant Finance"
+              },
+              {
+                "tagName": "A",
+                "text": "Technology"
+              }
+            ]
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Insights and Experience",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Insights and Experience Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Insights"
+              },
+              {
+                "tagName": "A",
+                "text": "Trending Topics"
+              },
+              {
+                "tagName": "A",
+                "text": "Awards"
+              },
+              {
+                "tagName": "A",
+                "text": "Global Markets Podcasts"
+              },
+              {
+                "tagName": "A",
+                "text": "Latin America Insights"
+              },
+              {
+                "tagName": "A",
+                "text": "MUFG Focus Weekly (In Japanese)"
+              },
+              {
+                "tagName": "A",
+                "text": "Events"
+              }
+            ]
+          },
+          {
+            "tagName": "A",
+            "id": "NONE",
+            "text": "Insights and Experience",
+            "newVisibles": [
+              {
+                "tagName": "A",
+                "text": "Insights and Experience Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Insights"
+              },
+              {
+                "tagName": "A",
+                "text": "Trending Topics"
+              },
+              {
+                "tagName": "A",
+                "text": "Awards"
+              },
+              {
+                "tagName": "A",
+                "text": "Global Markets Podcasts"
+              },
+              {
+                "tagName": "A",
+                "text": "Latin America Insights"
+              },
+              {
+                "tagName": "A",
+                "text": "MUFG Focus Weekly (In Japanese)"
+              },
+              {
+                "tagName": "A",
+                "text": "Events"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 15
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": ".cls-1 { fill: none; stroke: #999; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 3px; } icon-search"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Full Text Keyword Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search",
+                "content": ".cls-1 { fill: none; stroke: #999; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 3px; } icon-search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Toggle navigation"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": ".cls-1 { fill: none; stroke: #999; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 3px; } icon-search"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Full Text Keyword Search"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search",
+                "content": ".cls-1 { fill: none; stroke: #999; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 3px; } icon-search"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select an option."
+                ]
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Find Contact"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Do Not Sell My Personal Information"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "links": 65,
+          "inline": {
+            "total": 0,
+            "underlined": 0,
+            "underlinedPercent": "N/A"
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "roleElements": 3,
+        "badRoleElements": 3,
+        "tagNames": {
+          "A": {
+            "link": 2
+          },
+          "DIV": {
+            "dialog": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 14,
+            "subtotals": [
+              7,
+              4,
+              2,
+              1
+            ]
+          },
+          "h3": {
+            "total": 4
+          },
+          "aBlock": {
+            "total": 65,
+            "subtotals": [
+              48,
+              8,
+              7,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 11,
+            "subtotals": [
+              4,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "300": 1,
+              "500": 9,
+              "700": 4
+            },
+            "lineHeight": {
+              "33.6px": 7,
+              "16.8px": 4,
+              "28.8px": 2,
+              "20px": 1
+            },
+            "fontSize": {
+              "28px": 54,
+              "14px": 50,
+              "24px": 13,
+              "20px": 2
+            }
+          },
+          "h3": {},
+          "aBlock": {
+            "borderStyle": {
+              "none": 64,
+              "none solid none none": 1
+            },
+            "borderWidth": {
+              "0px": 64,
+              "0px 1px 0px 0px": 1
+            },
+            "lineHeight": {
+              "21px": 48,
+              "19.5px": 9,
+              "24px": 7,
+              "30px": 1
+            },
+            "fontSize": {
+              "14px": 912,
+              "13px": 171,
+              "16px": 133,
+              "20px": 19
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "solid": 5,
+              "none": 4,
+              "outset": 2
+            },
+            "borderWidth": {
+              "1px": 5,
+              "0px": 4,
+              "2px": 2
+            },
+            "fontWeight": {
+              "400": 10,
+              "700": 1
+            },
+            "lineHeight": {
+              "24px": 9,
+              "20px": 1,
+              "21px": 1
+            },
+            "minHeight": {
+              "0px": 10,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 10,
+              "auto": 1
+            },
+            "opacity": {
+              "1": 10,
+              "0.5": 1
+            },
+            "fontSize": {
+              "16px": 152,
+              "20px": 19,
+              "24px": 19,
+              "14px": 19
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "totals": {
+          "violation": 14,
+          "recommendation": 1,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/iframe[1]/html[1]/body[1]/div[1]/div[2]/div[2]/ol[1]/li[3]/div[1]/div[2]/div[1]/a[1]",
+              "aria": "/document[1]/main[1]/document[1]/list[1]/listitem[3]/link[2]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 50,
+              "top": 790,
+              "height": 36,
+              "width": 114
+            },
+            "snippet": "<a aria-label=\"MUFG Americas (screen name: MUFGAmericas)\" href=\"https://twitter.com/MUFGAmericas\" data-scribe=\"element:user_link\" class=\"TweetAuthor-link Identity u-linkBlend\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/iframe[1]/html[1]/body[1]/div[1]/div[2]/div[2]/ol[1]/li[2]/div[1]/div[2]/div[1]/a[1]",
+              "aria": "/document[1]/main[1]/document[1]/list[1]/listitem[2]/link[2]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 50,
+              "top": 450,
+              "height": 36,
+              "width": 114
+            },
+            "snippet": "<a aria-label=\"MUFG Americas (screen name: MUFGAmericas)\" href=\"https://twitter.com/MUFGAmericas\" data-scribe=\"element:user_link\" class=\"TweetAuthor-link Identity u-linkBlend\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/iframe[1]/html[1]/body[1]/div[1]/div[2]/div[2]/ol[1]/li[1]/div[1]/div[2]/div[1]/a[1]",
+              "aria": "/document[1]/main[1]/document[1]/list[1]/listitem[1]/link[2]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 50,
+              "top": 56,
+              "height": 36,
+              "width": 114
+            },
+            "snippet": "<a aria-label=\"MUFG Americas (screen name: MUFGAmericas)\" href=\"https://twitter.com/MUFGAmericas\" data-scribe=\"element:user_link\" class=\"TweetAuthor-link Identity u-linkBlend\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG21_Label_Accessible",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[1]/div[2]/form[1]/button[1]",
+              "aria": "/document[1]/banner[1]/form[1]/button[3]"
+            },
+            "message": "Accessible name does not match or contain the visible label text",
+            "bounds": {
+              "left": 747,
+              "top": 16,
+              "height": 26,
+              "width": 29
+            },
+            "snippet": "<button aria-label=\"Search\" class=\"search-icon search-icon--open \" type=\"button\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Html_HasLang",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/iframe[1]/html[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "message": "Page detected as HTML, but does not have a 'lang' attribute",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1183,
+              "width": 220
+            },
+            "snippet": "<html class=\"SandboxRoot var-fully-expanded var-static env-bp-min\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Header_HasContent",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/h2[1]",
+              "aria": "/document[1]/main[1]/heading[2]"
+            },
+            "message": "Heading element has no descriptive content",
+            "bounds": {
+              "left": 100,
+              "top": 398,
+              "height": 0,
+              "width": 300
+            },
+            "snippet": "<h2 class=\"banner-region__subtitle d-none d-md-block\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/head[1]/script[9]",
+              "aria": ""
+            },
+            "message": "The <script> element has the id \"utag_26\" that is already in use",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 0,
+              "width": 0
+            },
+            "snippet": "<script src=\"//tag.yieldoptimizer.com/ps/ps?t=s&p=4447&pg=ot&_rnd=0.6092718395800107\" id=\"utag_26\" charset=\"utf-8\" async=\"\" type=\"text/javascript\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/head[1]/script[12]",
+              "aria": ""
+            },
+            "message": "The <script> element has the id \"demandbase_js_lib\" that is already in use",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 0,
+              "width": 0
+            },
+            "snippet": "<script src=\"//scripts.demandbase.com/1122bc6c.min.js\" id=\"demandbase_js_lib\" charset=\"utf-8\" async=\"\" type=\"text/javascript\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "RPT_Elem_UniqueId",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[1]/div[2]/form[1]",
+              "aria": "/document[1]/banner[1]/form[1]"
+            },
+            "message": "The <form> element has the id \"\" that is empty",
+            "bounds": {
+              "left": 747,
+              "top": 16,
+              "height": 26,
+              "width": 29
+            },
+            "snippet": "<form accept-charset=\"UTF-8\" action=\"/search\" method=\"get\" class=\"search_form form-inline collapsed search_form--desktop\" id=\"\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[2]/div[1]/div[2]",
+              "aria": "/document[1]/contentinfo[1]/dialog[1]"
+            },
+            "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+            "bounds": {
+              "left": 641,
+              "top": 4653,
+              "height": 54,
+              "width": 0
+            },
+            "snippet": "<div role=\"dialog\" focusable=\"false\" tabindex=\"-1\" class=\"block_content modal_block\" id=\"outbound-interstitial\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleContentinfoLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/iframe[1]/html[1]/body[1]/div[1]/footer[1]",
+              "aria": "/document[1]/main[1]/document[1]/contentinfo[1]"
+            },
+            "message": "Multiple elements with \"contentinfo\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 1137,
+              "height": 46,
+              "width": 220
+            },
+            "snippet": "<footer data-scribe=\"section:footer\" class=\"timeline-Footer u-cf\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_MultipleContentinfoLandmarks_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]",
+              "aria": "/document[1]/contentinfo[1]"
+            },
+            "message": "Multiple elements with \"contentinfo\" role do not have unique labels",
+            "bounds": {
+              "left": 0,
+              "top": 4308,
+              "height": 459,
+              "width": 800
+            },
+            "snippet": "<footer class=\"page__footer row justify-content-center\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/a[1]",
+              "aria": "/document[1]/link[1]"
+            },
+            "message": "Text contrast of 3.33 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 1,
+              "width": 1
+            },
+            "snippet": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+            "path": {
+              "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[4]/div[1]/div[7]/div[1]/div[1]/div[2]/div[1]/div[1]/iframe[1]/html[1]/body[1]/div[1]/footer[1]",
+              "aria": "/document[1]/main[1]/document[1]/contentinfo[1]"
+            },
+            "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+            "bounds": {
+              "left": 0,
+              "top": 1137,
+              "height": 46,
+              "width": 220
+            },
+            "snippet": "<footer data-scribe=\"section:footer\" class=\"timeline-Footer u-cf\">",
+            "level": "recommendation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.mufgamericas.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Homepage | MUFG Americas",
+          "pageurl": "https://www.mufgamericas.com/",
+          "time": 2.62,
+          "creditsremaining": 284,
+          "allitemcount": 86,
+          "totalelements": 451,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.mufgamericas.com/",
+          "domid": "0010349399b414b27da669d681296d45"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 1,
+            "items": {
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--banner > DIV:first-child > DIV:first-child > PICTURE:first-child + DIV > H1:first-child + H2"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 5,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--banner > DIV:first-child > DIV:first-child > PICTURE:first-child + DIV > H1:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--content > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > H3:first-child + H2 + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > H3:first-child + H2 + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--content > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > H3:first-child + H2 + P + P > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    3.32,
+                    "#0066ff",
+                    "#d6d6d6",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    4.47,
+                    "#0066ff",
+                    "#f6f6f6",
+                    false
+                  ],
+                  [
+                    4.47,
+                    "#0066ff",
+                    "#f6f6f6",
+                    false
+                  ],
+                  [
+                    4.47,
+                    "#0066ff",
+                    "#f6f6f6",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 8,
+            "items": {
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--banner > DIV:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--content > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > MAIN##main-content > DIV#region--content > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + IMG"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > DIV:first-child + HEADER > DIV#region--header_bottom > DIV:first-child + DIV + DIV > NAV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > DIV:first-child + HEADER > DIV#region--header_bottom > DIV:first-child + DIV + DIV > NAV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > DIV:first-child + HEADER > DIV#region--header_bottom > DIV:first-child + DIV + DIV > NAV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + DIV > A:first-child + DIV > DIV:first-child + HEADER > DIV#region--header_bottom > DIV:first-child + DIV + DIV > NAV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c11",
+      "what": "3 packages and 11 custom tests, with duplication discounts",
+      "result": {
+        "total": 393,
+        "axe": 10,
+        "ibm": 54,
+        "wave": 30,
+        "bulk": 8,
+        "embAc": 0,
+        "focOl": 12,
+        "focOp": 65,
+        "hover": 176,
+        "labClash": 0,
+        "linkUl": 0,
+        "motion": 0,
+        "radioSet": 0,
+        "role": 6,
+        "styleDiff": 32
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      36
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      9
+    ],
+    [
+      "focOl",
+      3
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "focOp",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

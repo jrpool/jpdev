@@ -1,0 +1,905 @@
+{
+  "script": "p03c11",
+  "batch": "veigxRest",
+  "what": "Axe, IBM, WAVE, and 11 custom tests",
+  "timeStamp": "rihx",
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://bell.ca",
+      "what": "Bell Canada",
+      "result": "https://www.bell.ca/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "bytes": [
+          213152,
+          213535,
+          236160,
+          236685,
+          237272
+        ],
+        "localRatios": [
+          1.002,
+          1.106,
+          1.002,
+          1.002
+        ],
+        "meanLocalRatio": 1.028,
+        "maxLocalRatio": 1.106,
+        "globalRatio": 1.113,
+        "pixelChanges": [
+          157,
+          246504,
+          160,
+          155
+        ],
+        "meanPixelChange": 61744,
+        "maxPixelChange": 246504,
+        "changeFrequency": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.bell.ca/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 3,
+          "moderate": 7,
+          "serious": 2,
+          "critical": 3
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-attr",
+            "description": "Ensures ARIA attributes are allowed for an element's role",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".icon-change",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".rsx-federal-bar-store-locator",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-required-children",
+            "description": "Ensures elements with an ARIA role that require child roles contain them",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".rsx-expandable-sections",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "aria-required-children",
+                    "description": "Required ARIA child role not present: tab",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-aria",
+            "description": "Ensures every id attribute value used in ARIA and in labels is unique",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".Secondary_Offers_Brs > .hp-offer-main > .hp-offer-content-wrap > .hp-offer-content > .rsx-margin-30-top.rsx-inline-block[data-omni-s_odbanc=\"Default\\|Learn\\ more\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: lrn_moreid",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".Secondary_Offers_Brs",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: Secondary_Offers_Brs_OntarioFibeDuoLTOFTTN",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "empty-heading",
+            "description": "Ensures headings have discernible text",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".hp-personal-title",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#Personalized_Recommendations_Tile_1 > .hp-personal-col-content > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".rsx-connector-nav",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport-large",
+            "description": "Ensures <meta name=\"viewport\"> can scale a significant amount",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport-large",
+                    "description": "<meta> tag limits zooming on mobile devices",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".hp-banner-carousel-pause",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#shop",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".change-region-container.change-region-province-only > .region-confirmation",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".change-region-provinces-button > .change-region-link[href=\"javascript\\:void\\(0\\)\"][role=\"link\"] > .change-region-text",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".change-region-popup > .change-region-container.change-region-province-only > .change-region-close",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#rsx-video-player-close",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://bell.ca",
+      "what": "Bell Canada",
+      "result": "https://www.bell.ca/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.bell.ca/",
+      "result": {
+        "visibleElements": 4
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "tabulate and list active elements contained by links or buttons",
+      "withItems": true,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "types": {
+            "outlineMissing": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 0,
+            "tagName": {},
+            "operableWhy": {
+              "tag": 0,
+              "cursor": 0,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 0,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [],
+          "focusableAndOperable": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "targets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 0
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "inline": {
+            "total": 0,
+            "underlined": 0,
+            "underlinedPercent": "N/A"
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.bell.ca/",
+      "result": {
+        "roleElements": 0,
+        "badRoleElements": 0,
+        "tagNames": {}
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          }
+        },
+        "items": {
+          "h1": {}
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.bell.ca/",
+      "result": {
+        "totals": {
+          "violation": 3,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Html_HasLang",
+            "path": {
+              "dom": "/html[1]",
+              "aria": ""
+            },
+            "message": "Page detected as HTML, but does not have a 'lang' attribute",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 600,
+              "width": 800
+            },
+            "snippet": "<html>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Body_FirstASkips_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]",
+              "aria": "/document[1]"
+            },
+            "message": "The page does not provide a way to quickly navigate to the main content (ARIA \"main\" landmark or a skip link)",
+            "bounds": {
+              "left": 8,
+              "top": 8,
+              "height": 584,
+              "width": 784
+            },
+            "snippet": "<body>",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/center[1]/h1[1]",
+              "aria": "/document[1]/heading[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 8,
+              "top": 8,
+              "height": 37,
+              "width": 784
+            },
+            "snippet": "<h1>",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.bell.ca/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Mobile phones, TV, Internet and Home phone service | Bell Canada",
+          "pageurl": "https://www.bell.ca/",
+          "time": 10.34,
+          "creditsremaining": 317,
+          "allitemcount": 582,
+          "totalelements": 1648,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.bell.ca/",
+          "domid": "e6db91a1591eef4251606e220ef80b91"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 8,
+            "items": {
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 1,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#personalizedRecommendations > DIV#hp-personal-cxp-title > H2:first-child"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 5,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV > DIV:first-child > DIV:first-child > SPAN:first-child + SPAN + DIV > DIV:first-child > SPAN:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#accessMyBell_lightbox > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + A",
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#accessMyBell_lightbox > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#accessMyBell_lightbox > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#accessMyBell_lightbox > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > A:first-child"
+                ]
+              },
+              "aria_reference_broken": {
+                "id": "aria_reference_broken",
+                "description": "Broken ARIA reference",
+                "count": 2,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#personalizedRecommendations > DIV#hp-recommendation-cards > DIV#Personalized_Recommendations_Tile_1 > DIV:first-child + DIV > H5:first-child + P + A",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child + HR + DIV > DIV:first-child + HR + SCRIPT + DIV > DIV:first-child > A:first-child + A + A + A + A + A + A + DIV > DIV:first-child > DIV#shop-our-services-modal"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 1,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 1,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV + DIV > A:first-child + BUTTON + SCRIPT + BUTTON + DIV > FORM#rsx-connector-search > SPAN:first-child + INPUT + SPAN"
+                ],
+                "contrastdata": [
+                  [
+                    1.03,
+                    "#555555",
+                    "#00549a",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 42,
+            "items": {
+              "alt_duplicate": {
+                "id": "alt_duplicate",
+                "description": "A nearby image has the same alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#hpBannerCarousel > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV#cloned_carousel-banner-id-1 > DIV#cloned_e7b87a73-d289-4e30-a920-6666c04a9805 > DIV:first-child > DIV#cloned_iphone-banner > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "legend_missing": {
+                "id": "legend_missing",
+                "description": "Fieldset missing legend",
+                "count": 1,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV + SPAN > DIV:first-child > SELECT:first-child + A + DIV > FIELDSET:first-child"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 2,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV + SPAN > DIV:first-child > SELECT:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV + DIV > A:first-child + BUTTON + SCRIPT + BUTTON + DIV > FORM#rsx-connector-search > SPAN:first-child + INPUT"
+                ]
+              },
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > MAIN#maincontent > DIV#personalizedRecommendations > DIV#hp-recommendation-cards > DIV#Personalized_Recommendations_Tile_1 > DIV:first-child + DIV > H5:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 1,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV#rsx-voice-search-overlay > BUTTON:first-child + DIV > DIV:first-child > SPAN:first-child + P"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 15,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > A:first-child + DIV > DIV:first-child + DIV + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV + SPAN > DIV:first-child > SELECT:first-child + A + DIV + A",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + UL > LI:first-child > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child + A + DIV + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV > DIV:first-child > DIV:first-child + DIV + SPAN > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV > DIV:first-child > DIV:first-child > SPAN:first-child + SPAN > SPAN:first-child + A",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV > DIV:first-child > DIV:first-child > SPAN:first-child + SPAN + DIV > DIV:first-child > SPAN:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV > DIV:first-child > DIV:first-child + SPAN > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > DIV#footer_backtotop_adtg > DIV:first-child + DIV + DIV > A:first-child"
+                ]
+              },
+              "event_handler": {
+                "id": "event_handler",
+                "description": "Device dependent event handler",
+                "count": 5,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > A:first-child + DIV > A:first-child + DIV > DIV:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > I:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > I:first-child + I",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > I:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > I:first-child + I"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 11,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + UL > LI:first-child > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + UL > LI:first-child + LI > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI + LI > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI + LI + LI > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child + A + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child + LI + LI > P:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV > DIV:first-child + DIV + UL + STYLE + STYLE + UL > LI:first-child + LI > I:first-child + SPAN",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER > A:first-child + DIV + INPUT + SCRIPT + DIV > DIV:first-child > DIV:first-child + STYLE + NAV + DIV > A:first-child + BUTTON + SCRIPT + BUTTON + DIV + BUTTON + DIV > DIV:first-child > A:first-child > I:first-child + SPAN + SPAN"
+                ]
+              },
+              "underline": {
+                "id": "underline",
+                "description": "Underlined text",
+                "count": 1,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV > DIV:first-child > DIV:first-child + DIV > A:first-child > SPAN:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 3,
+                "selectors": [
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child + HR + DIV > DIV:first-child + HR + SCRIPT + DIV > DIV:first-child > A:first-child",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child + HR + DIV > DIV:first-child + HR + SCRIPT + DIV > DIV:first-child > A:first-child + A",
+                  "HTML#shop > HEAD:first-child + BODY > INPUT:first-child + DIV + HEADER + svg + DIV + DIV + SCRIPT + MAIN + STYLE + FOOTER > A:first-child + DIV > DIV:first-child + HR + DIV > DIV:first-child + HR + SCRIPT + DIV > DIV:first-child > A:first-child + A + A + A + A + A + A + DIV > DIV:first-child > DIV#shop-our-services-modal > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > H3:first-child + P + H3 + P + P + P + H3 + P + H3 + P + H3 + P + H3 + P + H3 + P + P + A"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c11",
+      "what": "3 packages and 11 custom tests, with duplication discounts",
+      "result": {
+        "total": 185,
+        "axe": 46,
+        "ibm": 10,
+        "wave": 103,
+        "bulk": 0,
+        "embAc": 0,
+        "focOl": 0,
+        "focOp": 0,
+        "hover": 0,
+        "labClash": 0,
+        "linkUl": 0,
+        "motion": 26,
+        "radioSet": 0,
+        "role": 0,
+        "styleDiff": 0
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "motion",
+      14
+    ],
+    [
+      "wave",
+      11
+    ],
+    [
+      "axe",
+      3
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOl",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "hover",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "ibm",
+      0
+    ]
+  ]
+}
