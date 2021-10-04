@@ -1,0 +1,1655 @@
+{
+  "script": "p03c13",
+  "batch": "cvsMajorRest",
+  "what": "Axe, IBM, WAVE, and 13 custom tests",
+  "strict": true,
+  "timeStamp": "t0hg",
+  "logCount": 9,
+  "logSize": 960,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.cvs.com/optical/",
+      "what": "CVS Optical",
+      "result": "https://www.cvs.com/optical/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "bytes": [
+          340385,
+          342694,
+          342694,
+          344275,
+          344275
+        ],
+        "localRatios": [
+          1.007,
+          1,
+          1.005,
+          1
+        ],
+        "meanLocalRatio": 1.003,
+        "maxLocalRatio": 1.007,
+        "globalRatio": 1.011,
+        "pixelChanges": [
+          385,
+          0,
+          5543,
+          0
+        ],
+        "meanPixelChange": 1482,
+        "maxPixelChange": 5543,
+        "changeFrequency": 0.5
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 10,
+          "serious": 3,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-attr",
+            "description": "Ensures ARIA attributes are allowed for an element's role",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".glyphicon",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-command-name",
+            "description": "Ensures every ARIA button, link and menuitem has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#LPMcontainer-1633364042739-0",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-active",
+            "description": "Ensures every id attribute value of active elements is unique",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".g-header__top-nav-item:nth-child(1) > .g-header__top-nav-link",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-active",
+                    "description": "Document has active elements with the same id attribute: sign-in",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".g-header__top-nav-item:nth-child(3) > .g-header__top-nav-link",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-active",
+                    "description": "Document has active elements with the same id attribute: create-an-account",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "h3",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#LPMcontainer-1633364042739-0",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".disclaimer",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".g-footer__top",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href$=\"CVS\"] > .h-visual-hide",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".g-footer__social-item:nth-child(2) > .g-footer__social-link[target=\"_blank\"][rel=\"noopener\"] > .h-visual-hide",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".g-footer__social-item:nth-child(3) > .g-footer__social-link[target=\"_blank\"][rel=\"noopener\"] > .h-visual-hide",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".g-footer__social-item:nth-child(4) > .g-footer__social-link > .h-visual-hide",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".g-footer__social-link[href$=\"customer-care\"] > .h-visual-hide",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".g-footer__bottom",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.cvs.com/optical/",
+      "what": "CVS Optical",
+      "result": "https://www.cvs.com/optical/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "visibleElements": 176
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "tabulate and list active elements contained by links or buttons",
+      "withItems": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "tabulate and list focusable elements with and without focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "total": 17,
+          "types": {
+            "indicatorMissing": {
+              "total": 2,
+              "tagNames": {
+                "button": 2
+              }
+            },
+            "indicatorPresent": {
+              "total": 15,
+              "tagNames": {
+                "a": 15
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "button",
+              "text": "Menu"
+            },
+            {
+              "tagName": "button",
+              "text": "Collapse Menu"
+            }
+          ],
+          "indicatorPresent": [
+            {
+              "tagName": "a",
+              "text": "Skip navigation to main content."
+            },
+            {
+              "tagName": "a",
+              "text": "CVS Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "text": "Sign In; #sign-in"
+            },
+            {
+              "tagName": "a",
+              "text": "Create an Account; #create-an-account"
+            },
+            {
+              "tagName": "a",
+              "text": "CVS Optical"
+            },
+            {
+              "tagName": "a",
+              "text": "My Optical Account; #my-optical-account"
+            },
+            {
+              "tagName": "a",
+              "text": "Sign In; #sign-in"
+            },
+            {
+              "tagName": "a",
+              "text": "Create an Account; #create-an-account"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Lenses; #nav-contact-lenses"
+            },
+            {
+              "tagName": "a",
+              "text": "Glasses; #nav-glasses"
+            },
+            {
+              "tagName": "a",
+              "text": "Customer Care; #nav-customer"
+            },
+            {
+              "tagName": "a",
+              "text": "Locations & Scheduling; #nav-locate-and-sched"
+            },
+            {
+              "tagName": "a",
+              "text": "Close dialog; ×; #acsFocusFirst"
+            },
+            {
+              "tagName": "a",
+              "text": "No, thanks; No, thanks"
+            },
+            {
+              "tagName": "a",
+              "text": "Yes, I'll give feedback (Opens in a new window); Yes, I'll give feedback"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "total": 8,
+          "types": {
+            "outlineMissing": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 8,
+              "tagNames": {
+                "a": 8
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Skip navigation to main content."
+            },
+            {
+              "tagName": "a",
+              "text": "CVS Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "text": "Sign In; #sign-in"
+            },
+            {
+              "tagName": "a",
+              "text": "Create an Account; #create-an-account"
+            },
+            {
+              "tagName": "a",
+              "text": "CVS Optical"
+            },
+            {
+              "tagName": "a",
+              "text": "Close dialog; ×; #acsFocusFirst"
+            },
+            {
+              "tagName": "a",
+              "text": "No, thanks; No, thanks"
+            },
+            {
+              "tagName": "a",
+              "text": "Yes, I'll give feedback (Opens in a new window); Yes, I'll give feedback"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 0,
+            "tagName": {},
+            "focusableHow": {
+              "Tab": 0,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 39,
+            "tagName": {
+              "a": 37,
+              "input[type=search]": 1,
+              "button": 1
+            },
+            "operableWhy": {
+              "tag": 39,
+              "cursor": 0,
+              "onclick": 0
+            }
+          },
+          "focusableAndOperable": {
+            "total": 12,
+            "tagName": {
+              "a": 12
+            },
+            "focusableHow": {
+              "Tab": 12,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 12,
+              "cursor": 0,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [],
+          "operableNotFocusable": [
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Locations & Scheduling; #nav-locate-and-sched"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Reorder Contacts; #nav-renew"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Renew a Prescription; #nav-quickrenew"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Check Insurance; #nav-insurance"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "0 Basket; #basket-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "*; #discount_link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "*; #p_anchor_1"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Shop Contacts"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "*; #p_anchor_2"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Shop Glasses"
+            },
+            {
+              "tagName": "input[type=search]",
+              "operableWhy": "tag",
+              "text": "Enter your brand here"
+            },
+            {
+              "tagName": "button",
+              "operableWhy": "tag",
+              "text": "#search_all_brands_btn"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Shop All Brands"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Emery; Emery - $79"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "My Account; #my-account-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Customer Care; #customer-care-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "How to Order; #how-to-order-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Optical Center Locations; #optical-center-locations-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "FAQ; #faq-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Articles; #articles-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Site Map; #site-map-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "CVS.com; #cvs-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "CVS Photo; #cvs-photo-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "MinuteClinic; #minute-clinic-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Store Locator; #store-locator-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Weekly Ad; #weekly-ad-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "CVSHealth.com; #cvs-health-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Investors; #investors-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Newsroom; #newsroom-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Social Responsibility; #social-responsibility-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Careers; #careers-link"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Phone"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Email"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "a",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip navigation to main content."
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CVS Pharmacy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Sign In; #sign-in"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Create an Account; #create-an-account"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CVS Optical"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "My Optical Account; #my-optical-account"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Lenses; #nav-contact-lenses"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Glasses; #nav-glasses"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Customer Care; #nav-customer"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Close dialog; ×; #acsFocusFirst"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "No, thanks; No, thanks"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Yes, I'll give feedback (Opens in a new window); Yes, I'll give feedback"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "visibilityTargets": 0,
+          "opacityTargets": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 1,
+          "wellLabeled": 8
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button id=\"search_all_brands_btn\" class=\"optical__find-submit button\" type=\"submit\"><span class=\"glyphicon glyphicon-search\" aria-label=\"Search Brands Button\"></span></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Menu"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Collapse Menu"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Enter your brand here"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "No, keep item"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cancel"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "links": 51,
+          "inline": {
+            "total": 5,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Sign In",
+            "Create an Account",
+            "*",
+            "*",
+            "*"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "roleElements": 10,
+        "badRoleElements": 1,
+        "tagNames": {
+          "DIV": {
+            "dialog": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "h3": {
+            "total": 1
+          },
+          "aInline": {
+            "total": 5,
+            "subtotals": [
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 46,
+            "subtotals": [
+              17,
+              9,
+              5,
+              3,
+              3,
+              3,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 8,
+            "subtotals": [
+              3,
+              2,
+              2,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "34.2857px": 3,
+              "36px": 1
+            },
+            "fontSize": {
+              "24px": 12,
+              "30px": 2
+            }
+          },
+          "h3": {},
+          "aInline": {
+            "fontWeight": {
+              "400": 4,
+              "700": 1
+            },
+            "lineHeight": {
+              "21px": 2,
+              "27px": 1,
+              "40.5px": 1,
+              "43.56px": 1
+            },
+            "fontSize": {
+              "14px": 12,
+              "18px": 6,
+              "27px": 6,
+              "39.6px": 6
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 42,
+              "solid": 4
+            },
+            "borderWidth": {
+              "0px": 42,
+              "2px": 4
+            },
+            "fontWeight": {
+              "400": 43,
+              "700": 3
+            },
+            "lineHeight": {
+              "21px": 20,
+              "16px": 10,
+              "18px": 6,
+              "27px": 5,
+              "34.5px": 5
+            },
+            "maxWidth": {
+              "none": 45,
+              "185px": 1
+            },
+            "minHeight": {
+              "0px": 43,
+              "auto": 3
+            },
+            "minWidth": {
+              "0px": 43,
+              "auto": 3
+            },
+            "textDecorationLine": {
+              "none": 28,
+              "underline": 18
+            },
+            "fontSize": {
+              "14px": 120,
+              "16px": 60,
+              "18px": 48,
+              "23px": 30,
+              "12px": 18
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 7,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 7,
+              "2px": 1
+            },
+            "fontWeight": {
+              "400": 5,
+              "700": 3
+            },
+            "lineHeight": {
+              "21px": 3,
+              "30px": 2,
+              "27px": 2,
+              "16px": 1
+            },
+            "minHeight": {
+              "0px": 7,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 7,
+              "auto": 1
+            },
+            "textDecorationLine": {
+              "none": 6,
+              "underline": 2
+            },
+            "fontSize": {
+              "21px": 18,
+              "30px": 12,
+              "18px": 12,
+              "16px": 6
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "withNewContent": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "totals": {
+          "violation": 16,
+          "recommendation": 0,
+          "ignored": 0
+        },
+        "items": [
+          {
+            "ruleId": "WCAG20_Input_ExplicitLabel",
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]/button[1]",
+              "aria": "/document[1]/main[1]/form[1]/button[1]"
+            },
+            "message": "Form control element <button> has no associated label",
+            "bounds": {
+              "left": 633,
+              "top": 1454,
+              "height": 45,
+              "width": 50
+            },
+            "snippet": "<button type=\"submit\" class=\"optical__find-submit button\" id=\"search_all_brands_btn\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "WCAG20_Frame_HasTitle",
+            "path": {
+              "dom": "/html[1]/head[1]/iframe[1]",
+              "aria": ""
+            },
+            "message": "Inline frame does not have a 'title' attribute",
+            "bounds": {
+              "left": 0,
+              "top": 0,
+              "height": 0,
+              "width": 0
+            },
+            "snippet": "<iframe style=\"width: 0px; height: 0px; border: 0px;\" src=\"javascript:false\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[2]/ul[1]",
+              "aria": "/document[1]/list[5]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 18,
+              "top": 2916,
+              "height": 21,
+              "width": 764
+            },
+            "snippet": "<ul class=\"g-l-row g-footer__bottom-links\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/ul[1]",
+              "aria": "/document[1]/list[4]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 10,
+              "top": 2818,
+              "height": 50,
+              "width": 780
+            },
+            "snippet": "<ul class=\"g-footer__social\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[3]/li[6]/a[1]",
+              "aria": "/document[1]/list[3]/listitem[6]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 547,
+              "top": 2697,
+              "height": 16,
+              "width": 50
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"careers-link\" href=\"http://jobs.cvshealth.com/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[3]/li[5]/a[1]",
+              "aria": "/document[1]/list[3]/listitem[5]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 547,
+              "top": 2661,
+              "height": 16,
+              "width": 129
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"social-responsibility-link\" href=\"http://www.cvshealth.com/social-responsibility\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[3]/li[4]/a[1]",
+              "aria": "/document[1]/list[3]/listitem[4]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 547,
+              "top": 2625,
+              "height": 16,
+              "width": 67
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"newsroom-link\" href=\"http://www.cvshealth.com/newsroom\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[3]/li[3]/a[1]",
+              "aria": "/document[1]/list[3]/listitem[3]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 547,
+              "top": 2589,
+              "height": 16,
+              "width": 57
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"investors-link\" href=\"http://investors.cvshealth.com/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[3]/li[2]/a[1]",
+              "aria": "/document[1]/list[3]/listitem[2]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 547,
+              "top": 2553,
+              "height": 16,
+              "width": 100
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"cvs-health-link\" href=\"http://www.cvshealth.com/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[2]/li[6]/a[1]",
+              "aria": "/document[1]/list[2]/listitem[6]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 284,
+              "top": 2697,
+              "height": 16,
+              "width": 66
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" id=\"weekly-ad-link\" class=\"g-footer__link\" href=\"/weeklyad\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[2]/li[5]/a[1]",
+              "aria": "/document[1]/list[2]/listitem[5]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 284,
+              "top": 2661,
+              "height": 16,
+              "width": 85
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"store-locator-link\" href=\"/store-locator/landing\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[2]/li[4]/a[1]",
+              "aria": "/document[1]/list[2]/listitem[4]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 284,
+              "top": 2625,
+              "height": 16,
+              "width": 77
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"minute-clinic-link\" href=\"/minuteclinic\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[2]/li[3]/a[1]",
+              "aria": "/document[1]/list[2]/listitem[3]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 284,
+              "top": 2589,
+              "height": 16,
+              "width": 70
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"cvs-photo-link\" href=\"/account/sso/intersite-sso-service.jsp?target=photo\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[2]/li[2]/a[1]",
+              "aria": "/document[1]/list[2]/listitem[2]/link[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 284,
+              "top": 2553,
+              "height": 16,
+              "width": 60
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"g-footer__link\" id=\"cvs-link\" href=\"/\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[2]/div[1]/div[1]/ul[1]",
+              "aria": "/document[1]/list[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 20,
+              "top": 2512,
+              "height": 276,
+              "width": 234
+            },
+            "snippet": "<ul class=\"g-footer__links\">",
+            "level": "violation"
+          },
+          {
+            "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+            "path": {
+              "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]",
+              "aria": "/document[1]"
+            },
+            "message": "Content is not within a landmark element",
+            "bounds": {
+              "left": 10,
+              "top": 2026,
+              "height": 36,
+              "width": 780
+            },
+            "snippet": "<p class=\"disclaimer__one\" id=\"disclaimer-1\">",
+            "level": "violation"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.cvs.com/optical/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "CVS Optical - FREE Shipping on Glasses & Contact Lenses",
+          "pageurl": "https://www.cvs.com/optical/",
+          "time": 4.12,
+          "creditsremaining": 1053,
+          "allitemcount": 61,
+          "totalelements": 279,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.cvs.com/optical/",
+          "domid": "1f8083a33975bf84fc3560ecb3e3114c"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 1,
+            "items": {
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > DIV#vue_wrapper > DIV:first-child + DIV > LINK:first-child + DIV > DIV:first-child > DIV:first-child + DIV > H3:first-child + FORM > DIV:first-child > BUTTON#search_all_brands_btn"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 4,
+            "items": {
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > DIV#vue_wrapper > DIV:first-child + DIV > LINK:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > H2:first-child + DIV > A:first-child > IMG:first-child"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > DIV#vue_wrapper > DIV:first-child + DIV > LINK:first-child + DIV > DIV:first-child > DIV:first-child + DIV > H3:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > DIV#vue_wrapper > DIV:first-child + DIV > LINK:first-child + DIV > DIV:first-child > DIV#optical__home-card > DIV#optical__home-heading-image > DIV#optical__home-heading-container-1 > H1:first-child + P",
+                  "HTML > HEAD:first-child + BODY > MAIN#main > DIV#vue_wrapper > DIV:first-child + DIV > LINK:first-child + DIV > DIV:first-child > DIV#optical__home-card > DIV#optical__home-heading-image > DIV#optical__home-heading-container-2 > P#optical__home-card-heading-2"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c13",
+      "what": "3 packages and 13 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 4",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOl": "multiply outlineless-when-focused elements by 3",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements adding visible content when hovered by 4, elements made visible by 2, elements with opacity changes by 0.3; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log messages by logWeights.count, sum of characters in log messages by logWeights.size",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 330,
+          "axe": 38,
+          "bulk": 2,
+          "embAc": 0,
+          "focInd": 10,
+          "focOl": 0,
+          "focOp": 156,
+          "hover": 0,
+          "ibm": 34,
+          "labClash": 2,
+          "linkUl": 15,
+          "log": 14,
+          "motion": 5,
+          "radioSet": 0,
+          "role": 2,
+          "styleDiff": 41,
+          "wave": 11
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      36
+    ],
+    [
+      "motion",
+      13
+    ],
+    [
+      "ibm",
+      6
+    ],
+    [
+      "focInd",
+      5
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "axe",
+      3
+    ],
+    [
+      "focOp",
+      3
+    ],
+    [
+      "focOl",
+      2
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}
