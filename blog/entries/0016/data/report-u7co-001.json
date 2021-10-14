@@ -1,0 +1,4301 @@
+{
+  "script": "p03c13",
+  "batch": "ccvaxRest",
+  "what": "Axe, IBM, WAVE, and 13 custom tests",
+  "strict": true,
+  "timeStamp": "u7co",
+  "logCount": 7,
+  "logSize": 98,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.syb.com/",
+      "what": "Stock Yards Bank & Trust",
+      "result": "https://www.syb.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "report motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.syb.com/",
+      "result": {
+        "bytes": [
+          871753,
+          871753,
+          871753,
+          871753,
+          871753
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "conduct and report an Axe test",
+      "url": "https://www.syb.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 1,
+          "serious": 0,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "img[border=\"\\30 \"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#header-menu",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.syb.com/",
+      "what": "Stock Yards Bank & Trust",
+      "result": "https://www.syb.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "report the count of visible elements",
+      "url": "https://www.syb.com/",
+      "result": {
+        "visibleElements": 333
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "tabulate and list active elements contained by links or buttons",
+      "withItems": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "tabulate and list focusable elements with and without focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "total": 219,
+          "types": {
+            "indicatorMissing": {
+              "total": 4,
+              "tagNames": {
+                "button": 4
+              }
+            },
+            "indicatorPresent": {
+              "total": 215,
+              "tagNames": {
+                "a": 184,
+                "input[type=search]": 2,
+                "button": 15,
+                "select": 4,
+                "input[type=text]": 4,
+                "input[type=password]": 3,
+                "input[type=submit]": 2,
+                "ul": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "button",
+              "text": "Close menu pane."
+            },
+            {
+              "tagName": "button",
+              "text": "Close menu pane."
+            },
+            {
+              "tagName": "button",
+              "text": "Close login pane."
+            },
+            {
+              "tagName": "button",
+              "text": "Close login pane."
+            }
+          ],
+          "indicatorPresent": [
+            {
+              "tagName": "a",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "input[type=search]",
+              "text": "Search; #mobile-search"
+            },
+            {
+              "tagName": "button",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "text": "Personal"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Checking"
+            },
+            {
+              "tagName": "a",
+              "text": "Savings"
+            },
+            {
+              "tagName": "a",
+              "text": "Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Debit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "CardValet®"
+            },
+            {
+              "tagName": "a",
+              "text": "Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Overdraft Privilege"
+            },
+            {
+              "tagName": "a",
+              "text": "Mortgage"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Lenders"
+            },
+            {
+              "tagName": "a",
+              "text": "Consumer Loans"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth Management & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "Stock Yards Financial Services"
+            },
+            {
+              "tagName": "a",
+              "text": "CDs"
+            },
+            {
+              "tagName": "a",
+              "text": "IRAs"
+            },
+            {
+              "tagName": "a",
+              "text": "Health Savings Accounts"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "Business"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit, Loans, & Leasing"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Commercial Real Estate"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Deposit Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Treasury Management"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Retirement Plan Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "The Stock Yards Difference"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "a",
+              "text": "Financial Planning"
+            },
+            {
+              "tagName": "a",
+              "text": "Investment Management"
+            },
+            {
+              "tagName": "a",
+              "text": "IRA & Retirement Rollovers"
+            },
+            {
+              "tagName": "a",
+              "text": "Trust Administration & Estate Settlement"
+            },
+            {
+              "tagName": "a",
+              "text": "Services for Businesses and Institutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Trust Online Access"
+            },
+            {
+              "tagName": "a",
+              "text": "Tying Up Loose Ends"
+            },
+            {
+              "tagName": "a",
+              "text": "Additional Resources"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Calculators"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Merger"
+            },
+            {
+              "tagName": "a",
+              "text": "Loan Payment Options"
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-1"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #mobile-user-id"
+            },
+            {
+              "tagName": "input[type=password]",
+              "text": "Password; #mobile-password"
+            },
+            {
+              "tagName": "button",
+              "text": "Login"
+            },
+            {
+              "tagName": "a",
+              "text": "Forgot Password"
+            },
+            {
+              "tagName": "a",
+              "text": "Download our app from the App Store."
+            },
+            {
+              "tagName": "a",
+              "text": "Download our app from the Google Play Store."
+            },
+            {
+              "tagName": "button",
+              "text": "Dismiss alert; ×"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More About the Commonwealth Merger; Learn More"
+            },
+            {
+              "tagName": "button",
+              "text": "Dismiss alert; ×"
+            },
+            {
+              "tagName": "a",
+              "text": "Home; Stock Yards Bank & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Locations"
+            },
+            {
+              "tagName": "input[type=search]",
+              "text": "Search; #edit-keys"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "text": "Search"
+            },
+            {
+              "tagName": "button",
+              "text": "Personal"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Checking"
+            },
+            {
+              "tagName": "a",
+              "text": "Savings"
+            },
+            {
+              "tagName": "button",
+              "text": "Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Debit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "CardValet®"
+            },
+            {
+              "tagName": "a",
+              "text": "Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Overdraft Privilege"
+            },
+            {
+              "tagName": "button",
+              "text": "Mortgage"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Lenders"
+            },
+            {
+              "tagName": "a",
+              "text": "Consumer Loans"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth Management & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "Stock Yards Financial Services"
+            },
+            {
+              "tagName": "a",
+              "text": "CDs"
+            },
+            {
+              "tagName": "a",
+              "text": "IRAs"
+            },
+            {
+              "tagName": "a",
+              "text": "Health Savings Accounts"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "button",
+              "text": "Business"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "button",
+              "text": "Business Credit, Loans, & Leasing"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Commercial Real Estate"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Deposit Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Treasury Management"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Retirement Plan Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Convenience Services"
+            },
+            {
+              "tagName": "button",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "The Stock Yards Difference"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "a",
+              "text": "Financial Planning"
+            },
+            {
+              "tagName": "a",
+              "text": "Investment Management"
+            },
+            {
+              "tagName": "a",
+              "text": "IRA & Retirement Rollovers"
+            },
+            {
+              "tagName": "a",
+              "text": "Trust Administration & Estate Settlement"
+            },
+            {
+              "tagName": "a",
+              "text": "Services for Businesses and Institutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Trust Online Access"
+            },
+            {
+              "tagName": "a",
+              "text": "Tying Up Loose Ends"
+            },
+            {
+              "tagName": "button",
+              "text": "Additional Resources"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Calculators"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Merger"
+            },
+            {
+              "tagName": "a",
+              "text": "Loan Payment Options"
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-2"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #desktop-username"
+            },
+            {
+              "tagName": "input[type=password]",
+              "text": "Password; #desktop-password"
+            },
+            {
+              "tagName": "button",
+              "text": "Login"
+            },
+            {
+              "tagName": "a",
+              "text": "Forgot Password"
+            },
+            {
+              "tagName": "ul",
+              "text": "Your Trusted Partner Since 1904 About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us; About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about PPP Loans; Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about Wealth Management; Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about Mortgage Loans; Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about business banking services; Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Location Finder"
+            },
+            {
+              "tagName": "a",
+              "text": "Personal"
+            },
+            {
+              "tagName": "a",
+              "text": "Checking"
+            },
+            {
+              "tagName": "a",
+              "text": "Savings"
+            },
+            {
+              "tagName": "a",
+              "text": "Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Debit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "CardValet®"
+            },
+            {
+              "tagName": "a",
+              "text": "Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Overdraft Privilege"
+            },
+            {
+              "tagName": "a",
+              "text": "Mortgage"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Lenders"
+            },
+            {
+              "tagName": "a",
+              "text": "Consumer Loans"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth Management & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "Stock Yards Financial Services"
+            },
+            {
+              "tagName": "a",
+              "text": "CDs"
+            },
+            {
+              "tagName": "a",
+              "text": "IRAs"
+            },
+            {
+              "tagName": "a",
+              "text": "Health Savings Accounts"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "Business"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit, Loans, & Leasing"
+            },
+            {
+              "tagName": "a",
+              "text": "Commercial Real Estate"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Deposit Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Treasury Management"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Retirement Plan Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "a",
+              "text": "The Stock Yards Difference"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "a",
+              "text": "Financial Planning"
+            },
+            {
+              "tagName": "a",
+              "text": "Investment Management"
+            },
+            {
+              "tagName": "a",
+              "text": "IRA & Retirement Rollovers"
+            },
+            {
+              "tagName": "a",
+              "text": "Trust Administration & Estate Settlement"
+            },
+            {
+              "tagName": "a",
+              "text": "Services for Businesses and Institutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Trust Online Access"
+            },
+            {
+              "tagName": "a",
+              "text": "Tying Up Loose Ends"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Calculators"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Merger"
+            },
+            {
+              "tagName": "a",
+              "text": "Loan Payment Options"
+            },
+            {
+              "tagName": "a",
+              "text": "Home"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Regulation F"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-3"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #user-id-forgot-modal"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "text": "{<input class=\"button right\" type=\"submit\" value=\"Submit\" data-autotest-focused=\"Y\">}"
+            },
+            {
+              "tagName": "button",
+              "text": "Close modal; ×"
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-4"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #modal-user-id"
+            },
+            {
+              "tagName": "input[type=password]",
+              "text": "Password; #modal-password"
+            },
+            {
+              "tagName": "button",
+              "text": "Login"
+            },
+            {
+              "tagName": "a",
+              "text": "Forgot Password"
+            },
+            {
+              "tagName": "button",
+              "text": "Close modal; ×"
+            },
+            {
+              "tagName": "a",
+              "text": "Cancel"
+            },
+            {
+              "tagName": "a",
+              "text": "Continue"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.syb.com/",
+      "what": "Stock Yards Bank & Trust",
+      "result": "https://www.syb.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOl",
+      "what": "tabulate and list focusable elements with and without focus outlines",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "total": 219,
+          "types": {
+            "outlineMissing": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 219,
+              "tagNames": {
+                "a": 184,
+                "button": 19,
+                "input[type=search]": 2,
+                "select": 4,
+                "input[type=text]": 4,
+                "input[type=password]": 3,
+                "input[type=submit]": 2,
+                "ul": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "outlineMissing": [],
+          "outlinePresent": [
+            {
+              "tagName": "a",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "button",
+              "text": "Close menu pane."
+            },
+            {
+              "tagName": "input[type=search]",
+              "text": "Search; #mobile-search"
+            },
+            {
+              "tagName": "button",
+              "text": "Search"
+            },
+            {
+              "tagName": "a",
+              "text": "Personal"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Checking"
+            },
+            {
+              "tagName": "a",
+              "text": "Savings"
+            },
+            {
+              "tagName": "a",
+              "text": "Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Debit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "CardValet®"
+            },
+            {
+              "tagName": "a",
+              "text": "Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Overdraft Privilege"
+            },
+            {
+              "tagName": "a",
+              "text": "Mortgage"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Lenders"
+            },
+            {
+              "tagName": "a",
+              "text": "Consumer Loans"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth Management & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "Stock Yards Financial Services"
+            },
+            {
+              "tagName": "a",
+              "text": "CDs"
+            },
+            {
+              "tagName": "a",
+              "text": "IRAs"
+            },
+            {
+              "tagName": "a",
+              "text": "Health Savings Accounts"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "Business"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit, Loans, & Leasing"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Commercial Real Estate"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Deposit Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Treasury Management"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Retirement Plan Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "The Stock Yards Difference"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "a",
+              "text": "Financial Planning"
+            },
+            {
+              "tagName": "a",
+              "text": "Investment Management"
+            },
+            {
+              "tagName": "a",
+              "text": "IRA & Retirement Rollovers"
+            },
+            {
+              "tagName": "a",
+              "text": "Trust Administration & Estate Settlement"
+            },
+            {
+              "tagName": "a",
+              "text": "Services for Businesses and Institutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Trust Online Access"
+            },
+            {
+              "tagName": "a",
+              "text": "Tying Up Loose Ends"
+            },
+            {
+              "tagName": "a",
+              "text": "Additional Resources"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Calculators"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Merger"
+            },
+            {
+              "tagName": "a",
+              "text": "Loan Payment Options"
+            },
+            {
+              "tagName": "button",
+              "text": "Close menu pane."
+            },
+            {
+              "tagName": "button",
+              "text": "Close login pane."
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-1"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #mobile-user-id"
+            },
+            {
+              "tagName": "input[type=password]",
+              "text": "Password; #mobile-password"
+            },
+            {
+              "tagName": "button",
+              "text": "Login"
+            },
+            {
+              "tagName": "a",
+              "text": "Forgot Password"
+            },
+            {
+              "tagName": "a",
+              "text": "Download our app from the App Store."
+            },
+            {
+              "tagName": "a",
+              "text": "Download our app from the Google Play Store."
+            },
+            {
+              "tagName": "button",
+              "text": "Close login pane."
+            },
+            {
+              "tagName": "button",
+              "text": "Dismiss alert; ×"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn More About the Commonwealth Merger; Learn More"
+            },
+            {
+              "tagName": "button",
+              "text": "Dismiss alert; ×"
+            },
+            {
+              "tagName": "a",
+              "text": "Home; Stock Yards Bank & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Locations"
+            },
+            {
+              "tagName": "input[type=search]",
+              "text": "Search; #edit-keys"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "text": "Search"
+            },
+            {
+              "tagName": "button",
+              "text": "Personal"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Checking"
+            },
+            {
+              "tagName": "a",
+              "text": "Savings"
+            },
+            {
+              "tagName": "button",
+              "text": "Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Debit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "CardValet®"
+            },
+            {
+              "tagName": "a",
+              "text": "Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Overdraft Privilege"
+            },
+            {
+              "tagName": "button",
+              "text": "Mortgage"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Lenders"
+            },
+            {
+              "tagName": "a",
+              "text": "Consumer Loans"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth Management & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "Stock Yards Financial Services"
+            },
+            {
+              "tagName": "a",
+              "text": "CDs"
+            },
+            {
+              "tagName": "a",
+              "text": "IRAs"
+            },
+            {
+              "tagName": "a",
+              "text": "Health Savings Accounts"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "button",
+              "text": "Business"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "button",
+              "text": "Business Credit, Loans, & Leasing"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "Commercial Real Estate"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Deposit Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Treasury Management"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Retirement Plan Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Convenience Services"
+            },
+            {
+              "tagName": "button",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "a",
+              "text": "Overview"
+            },
+            {
+              "tagName": "a",
+              "text": "The Stock Yards Difference"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "a",
+              "text": "Financial Planning"
+            },
+            {
+              "tagName": "a",
+              "text": "Investment Management"
+            },
+            {
+              "tagName": "a",
+              "text": "IRA & Retirement Rollovers"
+            },
+            {
+              "tagName": "a",
+              "text": "Trust Administration & Estate Settlement"
+            },
+            {
+              "tagName": "a",
+              "text": "Services for Businesses and Institutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Trust Online Access"
+            },
+            {
+              "tagName": "a",
+              "text": "Tying Up Loose Ends"
+            },
+            {
+              "tagName": "button",
+              "text": "Additional Resources"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Calculators"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Merger"
+            },
+            {
+              "tagName": "a",
+              "text": "Loan Payment Options"
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-2"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #desktop-username"
+            },
+            {
+              "tagName": "input[type=password]",
+              "text": "Password; #desktop-password"
+            },
+            {
+              "tagName": "button",
+              "text": "Login"
+            },
+            {
+              "tagName": "a",
+              "text": "Forgot Password"
+            },
+            {
+              "tagName": "ul",
+              "text": "Your Trusted Partner Since 1904 About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us; About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about PPP Loans; Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about Wealth Management; Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about Mortgage Loans; Learn more"
+            },
+            {
+              "tagName": "a",
+              "text": "Learn more about business banking services; Learn More"
+            },
+            {
+              "tagName": "a",
+              "text": "Location Finder"
+            },
+            {
+              "tagName": "a",
+              "text": "Personal"
+            },
+            {
+              "tagName": "a",
+              "text": "Checking"
+            },
+            {
+              "tagName": "a",
+              "text": "Savings"
+            },
+            {
+              "tagName": "a",
+              "text": "Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Debit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "CardValet®"
+            },
+            {
+              "tagName": "a",
+              "text": "Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Overdraft Privilege"
+            },
+            {
+              "tagName": "a",
+              "text": "Mortgage"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Lenders"
+            },
+            {
+              "tagName": "a",
+              "text": "Consumer Loans"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth Management & Trust"
+            },
+            {
+              "tagName": "a",
+              "text": "Stock Yards Financial Services"
+            },
+            {
+              "tagName": "a",
+              "text": "CDs"
+            },
+            {
+              "tagName": "a",
+              "text": "IRAs"
+            },
+            {
+              "tagName": "a",
+              "text": "Health Savings Accounts"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "Business"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit, Loans, & Leasing"
+            },
+            {
+              "tagName": "a",
+              "text": "Commercial Real Estate"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Deposit Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "text": "Treasury Management"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Retirement Plan Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Business Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "a",
+              "text": "The Stock Yards Difference"
+            },
+            {
+              "tagName": "a",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "a",
+              "text": "Financial Planning"
+            },
+            {
+              "tagName": "a",
+              "text": "Investment Management"
+            },
+            {
+              "tagName": "a",
+              "text": "IRA & Retirement Rollovers"
+            },
+            {
+              "tagName": "a",
+              "text": "Trust Administration & Estate Settlement"
+            },
+            {
+              "tagName": "a",
+              "text": "Services for Businesses and Institutions"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Trust Online Access"
+            },
+            {
+              "tagName": "a",
+              "text": "Tying Up Loose Ends"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "text": "Calculators"
+            },
+            {
+              "tagName": "a",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Kentucky Bank Merger"
+            },
+            {
+              "tagName": "a",
+              "text": "Loan Payment Options"
+            },
+            {
+              "tagName": "a",
+              "text": "Home"
+            },
+            {
+              "tagName": "a",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "text": "Regulation F"
+            },
+            {
+              "tagName": "a",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-3"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #user-id-forgot-modal"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "text": "{<input class=\"button right\" type=\"submit\" value=\"Submit\" data-autotest-focused=\"Y\">}"
+            },
+            {
+              "tagName": "button",
+              "text": "Close modal; ×"
+            },
+            {
+              "tagName": "select",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-4"
+            },
+            {
+              "tagName": "input[type=text]",
+              "text": "Username; #modal-user-id"
+            },
+            {
+              "tagName": "input[type=password]",
+              "text": "Password; #modal-password"
+            },
+            {
+              "tagName": "button",
+              "text": "Login"
+            },
+            {
+              "tagName": "a",
+              "text": "Forgot Password"
+            },
+            {
+              "tagName": "button",
+              "text": "Close modal; ×"
+            },
+            {
+              "tagName": "a",
+              "text": "Cancel"
+            },
+            {
+              "tagName": "a",
+              "text": "Continue"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.syb.com/",
+      "what": "Stock Yards Bank & Trust",
+      "result": "https://www.syb.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "tabulate and list visible focusable and operable elements",
+      "withItems": true,
+      "revealAll": false,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "focusableNotOperable": {
+            "total": 1,
+            "tagName": {
+              "ul": 1
+            },
+            "focusableHow": {
+              "Tab": 1,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            }
+          },
+          "operableNotFocusable": {
+            "total": 4,
+            "tagName": {
+              "li": 4
+            },
+            "operableWhy": {
+              "tag": 0,
+              "cursor": 0,
+              "onclick": 0,
+              "menuitem": 4
+            }
+          },
+          "focusableAndOperable": {
+            "total": 85,
+            "tagName": {
+              "a": 73,
+              "button": 7,
+              "input[type=search]": 1,
+              "input[type=submit]": 1,
+              "select": 1,
+              "input[type=text]": 1,
+              "input[type=password]": 1
+            },
+            "focusableHow": {
+              "Tab": 85,
+              "ArrowRight": 0,
+              "ArrowDown": 0
+            },
+            "operableWhy": {
+              "tag": 81,
+              "cursor": 4,
+              "onclick": 0
+            }
+          }
+        },
+        "items": {
+          "focusableNotOperable": [
+            {
+              "tagName": "ul",
+              "focusableHow": "Tab",
+              "text": "Your Trusted Partner Since 1904 About Us"
+            }
+          ],
+          "operableNotFocusable": [
+            {
+              "tagName": "li",
+              "operableWhy": "menuitem",
+              "text": "Personal; Personal Overview Checking Savings Convenience Services Overview Debit Cards CardValet® Credit Cards"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "menuitem",
+              "text": "Business; Business Overview Business Credit, Loans, & Leasing Overview Commercial Real Estate Business Credit "
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "menuitem",
+              "text": "Wealth; Wealth Overview The Stock Yards Difference Meet Our Team Financial Planning Investment Management IR"
+            },
+            {
+              "tagName": "li",
+              "operableWhy": "menuitem",
+              "text": "Additional Resources; Additional Resources Contact Us Branch & ATM Locator Lost or Stolen Card About Us Careers Calculator"
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Dismiss alert; ×"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn More About the Commonwealth Merger; Learn More"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Dismiss alert; ×"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Home; Stock Yards Bank & Trust"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Locations"
+            },
+            {
+              "tagName": "input[type=search]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search; #edit-keys"
+            },
+            {
+              "tagName": "input[type=submit]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Search"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Personal"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Business"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "cursor",
+              "text": "Additional Resources"
+            },
+            {
+              "tagName": "select",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Select which system to login to; Personal or Business Online BankingWealth Management & TrustBrokerage Services; #login-select-2"
+            },
+            {
+              "tagName": "input[type=text]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Username; #desktop-username"
+            },
+            {
+              "tagName": "input[type=password]",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Password; #desktop-password"
+            },
+            {
+              "tagName": "button",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Login"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Forgot Password"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About Us; About Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about PPP Loans; Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about Wealth Management; Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about Mortgage Loans; Learn more"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Learn more about business banking services; Learn More"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Location Finder"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Personal"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Checking"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Savings"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Debit Cards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CardValet®"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Overdraft Privilege"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Mortgage"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Meet Our Lenders"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Consumer Loans"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wealth Management & Trust"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Stock Yards Financial Services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "CDs"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "IRAs"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Health Savings Accounts"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Business"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Business Credit, Loans, & Leasing"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Commercial Real Estate"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Business Credit Cards"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Business Deposit Services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Private Banking"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Treasury Management"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Business Retirement Plan Services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Business Convenience Services"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Wealth"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "The Stock Yards Difference"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Financial Planning"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Investment Management"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "IRA & Retirement Rollovers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Trust Administration & Estate Settlement"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Services for Businesses and Institutions"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Kentucky Bank Trust Online Access"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Tying Up Loose Ends"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "About Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Careers"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Calculators"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Reorder Checks"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Kentucky Bank Merger"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Loan Payment Options"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Home"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Branch & ATM Locator"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Security"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Regulation F"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Lost or Stolen Card"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "a",
+              "focusableHow": "Tab",
+              "operableWhy": "tag",
+              "text": "Twitter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.syb.com/",
+      "what": "Stock Yards Bank & Trust",
+      "result": "https://www.syb.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "tabulate and list hover-caused context additions",
+      "withItems": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "triggers": 8,
+          "visibilityTargets": 168,
+          "opacityTargets": 0
+        },
+        "items": [
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Personal",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Overview"
+              },
+              {
+                "tagName": "LI",
+                "text": "Checking"
+              },
+              {
+                "tagName": "A",
+                "text": "Checking"
+              },
+              {
+                "tagName": "LI",
+                "text": "Savings"
+              },
+              {
+                "tagName": "A",
+                "text": "Savings"
+              },
+              {
+                "tagName": "LI",
+                "text": "Convenience Services"
+              },
+              {
+                "tagName": "BUTTON",
+                "text": "Convenience Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "Mortgage"
+              },
+              {
+                "tagName": "BUTTON",
+                "text": "Mortgage"
+              },
+              {
+                "tagName": "LI",
+                "text": "Consumer Loans"
+              },
+              {
+                "tagName": "A",
+                "text": "Consumer Loans"
+              },
+              {
+                "tagName": "LI",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "LI",
+                "text": "Wealth Management & Trust"
+              },
+              {
+                "tagName": "A",
+                "text": "Wealth Management & Trust"
+              },
+              {
+                "tagName": "LI",
+                "text": "Stock Yards Financial Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Stock Yards Financial Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "CDs"
+              },
+              {
+                "tagName": "A",
+                "text": "CDs"
+              },
+              {
+                "tagName": "LI",
+                "text": "IRAs"
+              },
+              {
+                "tagName": "A",
+                "text": "IRAs"
+              },
+              {
+                "tagName": "LI",
+                "text": "Health Savings Accounts"
+              },
+              {
+                "tagName": "A",
+                "text": "Health Savings Accounts"
+              },
+              {
+                "tagName": "LI",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "A",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "LI",
+                "text": "Lost or Stolen Card"
+              },
+              {
+                "tagName": "A",
+                "text": "Lost or Stolen Card"
+              }
+            ],
+            "opacityChangers": []
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "NONE",
+            "text": "Personal",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Overview"
+              },
+              {
+                "tagName": "LI",
+                "text": "Checking"
+              },
+              {
+                "tagName": "A",
+                "text": "Checking"
+              },
+              {
+                "tagName": "LI",
+                "text": "Savings"
+              },
+              {
+                "tagName": "A",
+                "text": "Savings"
+              },
+              {
+                "tagName": "LI",
+                "text": "Convenience Services"
+              },
+              {
+                "tagName": "BUTTON",
+                "text": "Convenience Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "Mortgage"
+              },
+              {
+                "tagName": "BUTTON",
+                "text": "Mortgage"
+              },
+              {
+                "tagName": "LI",
+                "text": "Consumer Loans"
+              },
+              {
+                "tagName": "A",
+                "text": "Consumer Loans"
+              },
+              {
+                "tagName": "LI",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "LI",
+                "text": "Wealth Management & Trust"
+              },
+              {
+                "tagName": "A",
+                "text": "Wealth Management & Trust"
+              },
+              {
+                "tagName": "LI",
+                "text": "Stock Yards Financial Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Stock Yards Financial Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "CDs"
+              },
+              {
+                "tagName": "A",
+                "text": "CDs"
+              },
+              {
+                "tagName": "LI",
+                "text": "IRAs"
+              },
+              {
+                "tagName": "A",
+                "text": "IRAs"
+              },
+              {
+                "tagName": "LI",
+                "text": "Health Savings Accounts"
+              },
+              {
+                "tagName": "A",
+                "text": "Health Savings Accounts"
+              },
+              {
+                "tagName": "LI",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "A",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "LI",
+                "text": "Lost or Stolen Card"
+              },
+              {
+                "tagName": "A",
+                "text": "Lost or Stolen Card"
+              }
+            ],
+            "opacityChangers": []
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Business",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Overview"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Credit, Loans, & Leasing"
+              },
+              {
+                "tagName": "BUTTON",
+                "text": "Business Credit, Loans, & Leasing"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Deposit Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Business Deposit Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "LI",
+                "text": "Treasury Management"
+              },
+              {
+                "tagName": "A",
+                "text": "Treasury Management"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Retirement Plan Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Business Retirement Plan Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Convenience Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Business Convenience Services"
+              }
+            ],
+            "opacityChangers": []
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "NONE",
+            "text": "Business",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Overview"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Credit, Loans, & Leasing"
+              },
+              {
+                "tagName": "BUTTON",
+                "text": "Business Credit, Loans, & Leasing"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Deposit Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Business Deposit Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "A",
+                "text": "Private Banking"
+              },
+              {
+                "tagName": "LI",
+                "text": "Treasury Management"
+              },
+              {
+                "tagName": "A",
+                "text": "Treasury Management"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Retirement Plan Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Business Retirement Plan Services"
+              },
+              {
+                "tagName": "LI",
+                "text": "Business Convenience Services"
+              },
+              {
+                "tagName": "A",
+                "text": "Business Convenience Services"
+              }
+            ],
+            "opacityChangers": []
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Wealth",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Overview"
+              },
+              {
+                "tagName": "LI",
+                "text": "The Stock Yards Difference"
+              },
+              {
+                "tagName": "A",
+                "text": "The Stock Yards Difference"
+              },
+              {
+                "tagName": "LI",
+                "text": "Meet Our Team"
+              },
+              {
+                "tagName": "A",
+                "text": "Meet Our Team"
+              },
+              {
+                "tagName": "LI",
+                "text": "Financial Planning"
+              },
+              {
+                "tagName": "A",
+                "text": "Financial Planning"
+              },
+              {
+                "tagName": "LI",
+                "text": "Investment Management"
+              },
+              {
+                "tagName": "A",
+                "text": "Investment Management"
+              },
+              {
+                "tagName": "LI",
+                "text": "IRA & Retirement Rollovers"
+              },
+              {
+                "tagName": "A",
+                "text": "IRA & Retirement Rollovers"
+              },
+              {
+                "tagName": "LI",
+                "text": "Trust Administration & Estate Settlement"
+              },
+              {
+                "tagName": "A",
+                "text": "Trust Administration & Estate Settlement"
+              },
+              {
+                "tagName": "LI",
+                "text": "Services for Businesses and Institutions"
+              },
+              {
+                "tagName": "A",
+                "text": "Services for Businesses and Institutions"
+              },
+              {
+                "tagName": "LI",
+                "text": "Kentucky Bank Trust Online Access"
+              },
+              {
+                "tagName": "A",
+                "text": "Kentucky Bank Trust Online Access"
+              },
+              {
+                "tagName": "LI",
+                "text": "Tying Up Loose Ends"
+              },
+              {
+                "tagName": "A",
+                "text": "Tying Up Loose Ends"
+              }
+            ],
+            "opacityChangers": []
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "NONE",
+            "text": "Wealth",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Overview"
+              },
+              {
+                "tagName": "A",
+                "text": "Overview"
+              },
+              {
+                "tagName": "LI",
+                "text": "The Stock Yards Difference"
+              },
+              {
+                "tagName": "A",
+                "text": "The Stock Yards Difference"
+              },
+              {
+                "tagName": "LI",
+                "text": "Meet Our Team"
+              },
+              {
+                "tagName": "A",
+                "text": "Meet Our Team"
+              },
+              {
+                "tagName": "LI",
+                "text": "Financial Planning"
+              },
+              {
+                "tagName": "A",
+                "text": "Financial Planning"
+              },
+              {
+                "tagName": "LI",
+                "text": "Investment Management"
+              },
+              {
+                "tagName": "A",
+                "text": "Investment Management"
+              },
+              {
+                "tagName": "LI",
+                "text": "IRA & Retirement Rollovers"
+              },
+              {
+                "tagName": "A",
+                "text": "IRA & Retirement Rollovers"
+              },
+              {
+                "tagName": "LI",
+                "text": "Trust Administration & Estate Settlement"
+              },
+              {
+                "tagName": "A",
+                "text": "Trust Administration & Estate Settlement"
+              },
+              {
+                "tagName": "LI",
+                "text": "Services for Businesses and Institutions"
+              },
+              {
+                "tagName": "A",
+                "text": "Services for Businesses and Institutions"
+              },
+              {
+                "tagName": "LI",
+                "text": "Kentucky Bank Trust Online Access"
+              },
+              {
+                "tagName": "A",
+                "text": "Kentucky Bank Trust Online Access"
+              },
+              {
+                "tagName": "LI",
+                "text": "Tying Up Loose Ends"
+              },
+              {
+                "tagName": "A",
+                "text": "Tying Up Loose Ends"
+              }
+            ],
+            "opacityChangers": []
+          },
+          {
+            "tagName": "LI",
+            "id": "NONE",
+            "text": "Additional Resources",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Contact Us"
+              },
+              {
+                "tagName": "A",
+                "text": "Contact Us"
+              },
+              {
+                "tagName": "LI",
+                "text": "Branch & ATM Locator"
+              },
+              {
+                "tagName": "A",
+                "text": "Branch & ATM Locator"
+              },
+              {
+                "tagName": "LI",
+                "text": "Lost or Stolen Card"
+              },
+              {
+                "tagName": "A",
+                "text": "Lost or Stolen Card"
+              },
+              {
+                "tagName": "LI",
+                "text": "About Us"
+              },
+              {
+                "tagName": "A",
+                "text": "About Us"
+              },
+              {
+                "tagName": "LI",
+                "text": "Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Careers"
+              },
+              {
+                "tagName": "LI",
+                "text": "Calculators"
+              },
+              {
+                "tagName": "A",
+                "text": "Calculators"
+              },
+              {
+                "tagName": "LI",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "A",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "LI",
+                "text": "Investor Relations"
+              },
+              {
+                "tagName": "A",
+                "text": "Investor Relations"
+              },
+              {
+                "tagName": "LI",
+                "text": "Security"
+              },
+              {
+                "tagName": "A",
+                "text": "Security"
+              },
+              {
+                "tagName": "LI",
+                "text": "Kentucky Bank Merger"
+              },
+              {
+                "tagName": "A",
+                "text": "Kentucky Bank Merger"
+              },
+              {
+                "tagName": "LI",
+                "text": "Loan Payment Options"
+              },
+              {
+                "tagName": "A",
+                "text": "Loan Payment Options"
+              }
+            ],
+            "opacityChangers": []
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "NONE",
+            "text": "Additional Resources",
+            "newVisibles": [
+              {
+                "tagName": "LI",
+                "text": "Contact Us"
+              },
+              {
+                "tagName": "A",
+                "text": "Contact Us"
+              },
+              {
+                "tagName": "LI",
+                "text": "Branch & ATM Locator"
+              },
+              {
+                "tagName": "A",
+                "text": "Branch & ATM Locator"
+              },
+              {
+                "tagName": "LI",
+                "text": "Lost or Stolen Card"
+              },
+              {
+                "tagName": "A",
+                "text": "Lost or Stolen Card"
+              },
+              {
+                "tagName": "LI",
+                "text": "About Us"
+              },
+              {
+                "tagName": "A",
+                "text": "About Us"
+              },
+              {
+                "tagName": "LI",
+                "text": "Careers"
+              },
+              {
+                "tagName": "A",
+                "text": "Careers"
+              },
+              {
+                "tagName": "LI",
+                "text": "Calculators"
+              },
+              {
+                "tagName": "A",
+                "text": "Calculators"
+              },
+              {
+                "tagName": "LI",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "A",
+                "text": "Reorder Checks"
+              },
+              {
+                "tagName": "LI",
+                "text": "Investor Relations"
+              },
+              {
+                "tagName": "A",
+                "text": "Investor Relations"
+              },
+              {
+                "tagName": "LI",
+                "text": "Security"
+              },
+              {
+                "tagName": "A",
+                "text": "Security"
+              },
+              {
+                "tagName": "LI",
+                "text": "Kentucky Bank Merger"
+              },
+              {
+                "tagName": "A",
+                "text": "Kentucky Bank Merger"
+              },
+              {
+                "tagName": "LI",
+                "text": "Loan Payment Options"
+              },
+              {
+                "tagName": "A",
+                "text": "Loan Payment Options"
+              }
+            ],
+            "opacityChangers": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.syb.com/",
+      "what": "Stock Yards Bank & Trust",
+      "result": "https://www.syb.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "tabulate and describe inconsistencies in labeling",
+      "withItems": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 36
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close menu pane."
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close menu pane."
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close login pane."
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select which system to login to"
+                ]
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Username"
+                ]
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "INPUT",
+              "type": "password",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Password"
+                ]
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Login"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close login pane."
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Main Menu"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Login"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Dismiss alert",
+                "content": "×"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Dismiss alert",
+                "content": "×"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "INPUT",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search",
+                "content": ""
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Personal"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Convenience Services"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Mortgage"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Business"
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Business Credit, Loans, & Leasing"
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Wealth"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Additional Resources"
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select which system to login to"
+                ]
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Username"
+                ]
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "INPUT",
+              "type": "password",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Password"
+                ]
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Login"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select which system to login to"
+                ]
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Username"
+                ]
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close modal",
+                "content": "×"
+              }
+            },
+            {
+              "index": 31,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Select which system to login to"
+                ]
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Username"
+                ]
+              }
+            },
+            {
+              "index": 33,
+              "tagName": "INPUT",
+              "type": "password",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Password"
+                ]
+              }
+            },
+            {
+              "index": 34,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Login"
+              }
+            },
+            {
+              "index": 35,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close modal",
+                "content": "×"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "tabulate and list underlined and other inline links",
+      "withItems": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "links": 185,
+          "inline": {
+            "total": 16,
+            "underlined": 3,
+            "underlinedPercent": 18
+          }
+        },
+        "items": {
+          "underlined": [
+            "Learn More",
+            "Forgot Password",
+            "Forgot Password"
+          ],
+          "notUnderlined": [
+            "About Us",
+            "Contact",
+            "Careers",
+            "Locations",
+            "Home",
+            "Privacy Policy",
+            "Branch & ATM Locator",
+            "Security",
+            "Contact Us",
+            "Regulation F",
+            "Lost or Stolen Card",
+            "Cancel",
+            "Continue"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "tabulate and list radio buttons in and not in accessible fieldsets",
+      "withItems": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "tabulate elements with inaccessible roles",
+      "url": "https://www.syb.com/",
+      "result": {
+        "roleElements": 135,
+        "badRoleElements": 12,
+        "tagNames": {
+          "UL": {
+            "group": 7
+          },
+          "DIV": {
+            "region": 1,
+            "dialog": 3
+          },
+          "ARTICLE": {
+            "article": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "tabulate and list style inconsistencies",
+      "withItems": true,
+      "url": "https://www.syb.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 13,
+            "subtotals": [
+              3,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 16,
+            "subtotals": [
+              11,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 169,
+            "subtotals": [
+              56,
+              49,
+              46,
+              3,
+              3,
+              3,
+              3,
+              2,
+              2,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 21,
+            "subtotals": [
+              4,
+              4,
+              3,
+              3,
+              2,
+              2,
+              2,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "borderStyle": {
+              "none": 10,
+              "none solid none none": 2,
+              "none solid": 1
+            },
+            "borderWidth": {
+              "0px": 10,
+              "0px 1px 0px 0px": 2,
+              "0px 1px": 1
+            },
+            "fontWeight": {
+              "400": 2,
+              "500": 4,
+              "600": 3,
+              "700": 4
+            },
+            "lineHeight": {
+              "25.76px": 3,
+              "33.6px": 3,
+              "36.4px": 3,
+              "56px": 2,
+              "39.2px": 1,
+              "110px": 1
+            },
+            "minHeight": {
+              "0px": 10,
+              "auto": 3
+            },
+            "minWidth": {
+              "0px": 10,
+              "auto": 3
+            },
+            "fontSize": {
+              "26px": 39,
+              "24px": 24,
+              "40px": 21,
+              "18.4px": 9,
+              "100px": 6,
+              "28px": 5
+            }
+          },
+          "aInline": {
+            "fontWeight": {
+              "400": 13,
+              "600": 2,
+              "700": 1
+            },
+            "lineHeight": {
+              "25.6px": 12,
+              "17.6px": 2,
+              "21.76px": 1,
+              "22.4px": 1
+            },
+            "textDecorationLine": {
+              "none": 13,
+              "underline": 3
+            },
+            "fontSize": {
+              "16px": 168,
+              "17.6px": 28,
+              "13.6px": 14,
+              "14px": 14
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 167,
+              "solid": 2
+            },
+            "borderWidth": {
+              "0px": 167,
+              "1px": 2
+            },
+            "fontWeight": {
+              "300": 1,
+              "400": 64,
+              "500": 95,
+              "600": 6,
+              "700": 3
+            },
+            "lineHeight": {
+              "16px": 105,
+              "25.6px": 47,
+              "17.6px": 6,
+              "24px": 5,
+              "28.16px": 3,
+              "51.2px": 3
+            },
+            "minHeight": {
+              "0px": 164,
+              "auto": 5
+            },
+            "minWidth": {
+              "0px": 164,
+              "auto": 3,
+              "51%": 2
+            },
+            "textDecorationLine": {
+              "none": 160,
+              "underline": 9
+            },
+            "fontSize": {
+              "16px": 2198,
+              "17.6px": 126,
+              "32px": 42
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 18,
+              "solid": 2,
+              "none solid none none": 1
+            },
+            "borderWidth": {
+              "0px": 18,
+              "1px": 2,
+              "0px 1px 0px 0px": 1
+            },
+            "fontWeight": {
+              "300": 2,
+              "400": 10,
+              "600": 5,
+              "700": 4
+            },
+            "lineHeight": {
+              "17.6px": 5,
+              "19.2px": 4,
+              "21px": 4,
+              "32px": 3,
+              "16px": 3,
+              "28px": 2
+            },
+            "fontSize": {
+              "17.6px": 70,
+              "19.2px": 56,
+              "21px": 56,
+              "32px": 42,
+              "16px": 42,
+              "28px": 28
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "conduct and report an IBM test",
+      "url": "https://www.syb.com/",
+      "result": {
+        "content": {
+          "error": "ERROR: ibm test failed"
+        },
+        "url": {
+          "error": "ERROR: ibm test failed"
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.syb.com/",
+      "what": "Stock Yards Bank & Trust",
+      "result": "https://www.syb.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "conduct and report a WAVE test",
+      "url": "https://www.syb.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Home Page | Stock Yards Bank & Trust",
+          "pageurl": "https://www.syb.com/",
+          "time": 2.82,
+          "creditsremaining": 744,
+          "allitemcount": 291,
+          "totalelements": 775,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.syb.com/",
+          "domid": "32a76b83d48117797e639ce8ad403dcf"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 1,
+            "items": {
+              "alt_spacer_missing": {
+                "id": "alt_spacer_missing",
+                "description": "Spacer image missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > MAIN#main-content > DIV:first-child + DIV + DIV > DIV:first-child > SECTION:first-child > DIV:first-child > DIV#block-homepagepixel > IMG:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 11,
+            "items": {
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > MAIN#main-content > DIV:first-child > DIV#landing-banner > DIV#ddnkm7-orbit > IMG:first-child + DIV > UL:first-child > LI:first-child > FIGURE:first-child > DIV:first-child + DIV > FIGCAPTION:first-child > H2:first-child + P",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > MAIN#main-content > DIV:first-child + DIV + DIV > DIV:first-child > SECTION:first-child > DIV:first-child > DIV#block-syb-content > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + P",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child + DIV + HEADER + MAIN + FOOTER > DIV:first-child > NAV#footer-main-menu > UL:first-child > LI:first-child + LI + LI + LI > P:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + DIV + DIV > DIV#q2_external_link_message > H2:first-child + P + P > A:first-child + A"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV#off-canvas-left > DIV:first-child > BUTTON:first-child + DIV + DIV + DIV > NAV#mobile-menu > UL:first-child > LI#11taja-acc-menu-link > UL#whsqdy-acc-menu > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV#off-canvas-left > DIV:first-child > BUTTON:first-child + DIV + DIV + DIV > NAV#mobile-menu > UL:first-child > LI#11taja-acc-menu-link > UL#whsqdy-acc-menu > LI#ceqpyk-acc-menu-link > UL#8g3rtk-acc-menu > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV#off-canvas-left > DIV:first-child > BUTTON:first-child + DIV + DIV + DIV > NAV#mobile-menu > UL:first-child > LI#11taja-acc-menu-link > UL#whsqdy-acc-menu > LI#dumlgo-acc-menu-link > UL#go64in-acc-menu > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV#off-canvas-left > DIV:first-child > BUTTON:first-child + DIV + DIV + DIV > NAV#mobile-menu > UL:first-child > LI#9h2at7-acc-menu-link > UL#huwvf8-acc-menu > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV#off-canvas-left > DIV:first-child > BUTTON:first-child + DIV + DIV + DIV > NAV#mobile-menu > UL:first-child > LI#9h2at7-acc-menu-link > UL#huwvf8-acc-menu > LI#7w5vdg-acc-menu-link > UL#g5q6kg-acc-menu > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV#off-canvas-left > DIV:first-child > BUTTON:first-child + DIV + DIV + DIV > NAV#mobile-menu > UL:first-child > LI#dc7pk4-acc-menu-link > UL#q5bjvf-acc-menu > LI:first-child > A:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child + DIV > DIV#block-syb-views-block-alerts-block-1 > DIV:first-child > DIV:first-child > DIV#alerts > DIV:first-child + DIV > P:first-child > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "p03c13",
+      "what": "3 packages and 13 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 4",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOl": "multiply outlineless-when-focused elements by 3",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements adding visible content when hovered by 4, elements made visible by 2, elements with opacity changes by 0.3; sum",
+          "ibm": "",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log messages by logWeights.count, sum of characters in log messages by logWeights.size",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01
+        },
+        "inferences": {
+          "ibm": 117
+        },
+        "deficit": {
+          "total": 728,
+          "axe": 8,
+          "bulk": 16,
+          "embAc": 0,
+          "focInd": 20,
+          "focOl": 0,
+          "focOp": 17,
+          "hover": 368,
+          "ibm": null,
+          "labClash": 0,
+          "linkUl": 39,
+          "log": 4,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 24,
+          "styleDiff": 89,
+          "wave": 26
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      74
+    ],
+    [
+      "ibm",
+      40
+    ],
+    [
+      "focInd",
+      39
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "focOl",
+      9
+    ],
+    [
+      "focOp",
+      3
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}
