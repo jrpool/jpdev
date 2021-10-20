@@ -1,0 +1,5369 @@
+{
+  "script": "a11y00",
+  "batch": "amdwxRest",
+  "what": "Axe, IBM, WAVE, and 13 custom tests",
+  "strict": true,
+  "timeStamp": "vr1w",
+  "logCount": 611,
+  "logSize": 156923,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.asm.com/",
+      "what": "ASM Pacific Technology",
+      "result": "https://www.asm.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.asm.com/",
+      "result": {
+        "bytes": [
+          872710,
+          720405,
+          603811,
+          599997,
+          978055
+        ],
+        "localRatios": [
+          1.211,
+          1.193,
+          1.006,
+          1.63
+        ],
+        "meanLocalRatio": 1.26,
+        "maxLocalRatio": 1.63,
+        "globalRatio": 1.63,
+        "pixelChanges": [
+          301626,
+          315214,
+          342981,
+          328648
+        ],
+        "meanPixelChange": 322117,
+        "maxPixelChange": 342981,
+        "changeFrequency": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.asm.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 18,
+          "serious": 6,
+          "critical": 4
+        },
+        "items": [
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".article:nth-child(2) > div",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: _#= dataContainerId =#_",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "empty-heading",
+            "description": "Ensures headings have discernible text",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".slide:nth-child(5) > .slide-overlay > h1",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#ctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2_divHighlight > .red",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#ctl00_ctl20_imgLogo",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".slide:nth-child(5) > img",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "input-button-name",
+            "description": "Ensures input buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "input[type=\"button\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "non-empty-if-present",
+                    "description": "Element has a value attribute and the value attribute is empty",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "non-empty-value",
+                    "description": "Element has no value attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label",
+            "description": "Ensures every form element has a label",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "input[type=\"text\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "implicit-label",
+                    "description": "Form element does not have an implicit (wrapped) <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "explicit-label",
+                    "description": "Form element does not have an explicit <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-placeholder",
+                    "description": "Element has no placeholder attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "a[href=\"\\/\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".slide:nth-child(5)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#WebPartWPQ3 > .ms-rtestate-field > .None.wide.highlight > .image > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[target=\"”_blank”\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "p > .video-popup.cboxElement.image",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".image > .video-popup.cboxElement.image",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#main-header",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".generic:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".generic:nth-child(2) > a[href$=\"about\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".generic:nth-child(3) > a[href$=\"solutions\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".generic:nth-child(4) > a[href$=\"technology\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".generic:nth-child(5) > a[href$=\"news-room\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".generic:nth-child(6) > a[href$=\"support\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".career > a[href$=\"careers\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".special:nth-child(8) > a[href$=\"investors\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".slide:nth-child(5)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#WebPartWPQ3 > .ms-rtestate-field",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#WebPartWPQ5 > .ms-rtestate-field",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#ctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#WebPartWPQ4 > .ms-rtestate-field",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#WebPartWPQ2 > .ms-rtestate-field",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.asm.com/",
+      "what": "ASM Pacific Technology",
+      "result": "https://www.asm.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.asm.com/",
+      "result": {
+        "visibleElements": 123
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "total": 162,
+          "types": {
+            "indicatorMissing": {
+              "total": 157,
+              "tagNames": {
+                "A": 157
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 5,
+              "tagNames": {
+                "INPUT": 2,
+                "BUTTON": 3
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Home"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to our About section"
+            },
+            {
+              "tagName": "A",
+              "text": "Company profile"
+            },
+            {
+              "tagName": "A",
+              "text": "Our story"
+            },
+            {
+              "tagName": "A",
+              "text": "Layering the future"
+            },
+            {
+              "tagName": "A",
+              "text": "History"
+            },
+            {
+              "tagName": "A",
+              "text": "Our founder"
+            },
+            {
+              "tagName": "A",
+              "text": "Strategy ＆ focus areas"
+            },
+            {
+              "tagName": "A",
+              "text": "Breakthrough technology"
+            },
+            {
+              "tagName": "A",
+              "text": "Focus areas"
+            },
+            {
+              "tagName": "A",
+              "text": "Markets ＆ products"
+            },
+            {
+              "tagName": "A",
+              "text": "Mission ＆ strategy"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate responsibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Executive Commitment Statement"
+            },
+            {
+              "tagName": "A",
+              "text": "Environmental"
+            },
+            {
+              "tagName": "A",
+              "text": "Ethics"
+            },
+            {
+              "tagName": "A",
+              "text": "Health ＆ safety"
+            },
+            {
+              "tagName": "A",
+              "text": "Labor"
+            },
+            {
+              "tagName": "A",
+              "text": "Supply chain"
+            },
+            {
+              "tagName": "A",
+              "text": "Organization"
+            },
+            {
+              "tagName": "A",
+              "text": "Management Board"
+            },
+            {
+              "tagName": "A",
+              "text": "Supervisory Board"
+            },
+            {
+              "tagName": "A",
+              "text": "Supplier management"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate calendar"
+            },
+            {
+              "tagName": "A",
+              "text": "Research and our partners"
+            },
+            {
+              "tagName": "A",
+              "text": "Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact us"
+            },
+            {
+              "tagName": "A",
+              "text": "Solutions"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to our Solutions section"
+            },
+            {
+              "tagName": "A",
+              "text": "Products"
+            },
+            {
+              "tagName": "A",
+              "text": "Atomic Layer Deposition - products"
+            },
+            {
+              "tagName": "A",
+              "text": "Low Pressure Chemical Vapor Deposition ＆ Diffusion - products"
+            },
+            {
+              "tagName": "A",
+              "text": "Epitaxy - products"
+            },
+            {
+              "tagName": "A",
+              "text": "Plasma Enhanced Chemical Vapor Deposition"
+            },
+            {
+              "tagName": "A",
+              "text": "Plasma Enhanced ALD"
+            },
+            {
+              "tagName": "A",
+              "text": "Patents"
+            },
+            {
+              "tagName": "A",
+              "text": "Trademark list"
+            },
+            {
+              "tagName": "A",
+              "text": "Technology"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to our Technology section"
+            },
+            {
+              "tagName": "A",
+              "text": "Key technologies"
+            },
+            {
+              "tagName": "A",
+              "text": "All about ALD"
+            },
+            {
+              "tagName": "A",
+              "text": "Atomic Layer Deposition"
+            },
+            {
+              "tagName": "A",
+              "text": "LPCVD, diffusion and oxidation"
+            },
+            {
+              "tagName": "A",
+              "text": "Epitaxy"
+            },
+            {
+              "tagName": "A",
+              "text": "Plasma-Enhanced Chemical Vapor Deposition"
+            },
+            {
+              "tagName": "A",
+              "text": "Plasma-Enhanced Atomic Layer Deposition"
+            },
+            {
+              "tagName": "A",
+              "text": "Innovations"
+            },
+            {
+              "tagName": "A",
+              "text": "Future innovations"
+            },
+            {
+              "tagName": "A",
+              "text": "Chip making"
+            },
+            {
+              "tagName": "A",
+              "text": "Chip making process"
+            },
+            {
+              "tagName": "A",
+              "text": "News room"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to our News room section"
+            },
+            {
+              "tagName": "A",
+              "text": "News overview"
+            },
+            {
+              "tagName": "A",
+              "text": "Events calendar"
+            },
+            {
+              "tagName": "A",
+              "text": "Press releases alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact PR"
+            },
+            {
+              "tagName": "A",
+              "text": "Support"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to our Support section"
+            },
+            {
+              "tagName": "A",
+              "text": "Technical service and spares support"
+            },
+            {
+              "tagName": "A",
+              "text": "PerforMAX service programs"
+            },
+            {
+              "tagName": "A",
+              "text": "PerforMAX Spares Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Customer training"
+            },
+            {
+              "tagName": "A",
+              "text": "Field Support Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Spare Parts Support"
+            },
+            {
+              "tagName": "A",
+              "text": "Product performance upgrade"
+            },
+            {
+              "tagName": "A",
+              "text": "Pre-owned advantage services"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to our Careers section"
+            },
+            {
+              "tagName": "A",
+              "text": "Discover ASM"
+            },
+            {
+              "tagName": "A",
+              "text": "Culture"
+            },
+            {
+              "tagName": "A",
+              "text": "Diversity"
+            },
+            {
+              "tagName": "A",
+              "text": "Fields of interest"
+            },
+            {
+              "tagName": "A",
+              "text": "Innovation driven"
+            },
+            {
+              "tagName": "A",
+              "text": "Inside ASM"
+            },
+            {
+              "tagName": "A",
+              "text": "Our role in the world"
+            },
+            {
+              "tagName": "A",
+              "text": "Product lines"
+            },
+            {
+              "tagName": "A",
+              "text": "Graduates"
+            },
+            {
+              "tagName": "A",
+              "text": "ASM Accelerate program"
+            },
+            {
+              "tagName": "A",
+              "text": "Internships"
+            },
+            {
+              "tagName": "A",
+              "text": "Your future"
+            },
+            {
+              "tagName": "A",
+              "text": "Experienced professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Leading edge technologies"
+            },
+            {
+              "tagName": "A",
+              "text": "The next step"
+            },
+            {
+              "tagName": "A",
+              "text": "Why work for ASM"
+            },
+            {
+              "tagName": "A",
+              "text": "Career development"
+            },
+            {
+              "tagName": "A",
+              "text": "Job benefits"
+            },
+            {
+              "tagName": "A",
+              "text": "Meet our young professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Top reasons to work for ASM"
+            },
+            {
+              "tagName": "A",
+              "text": "Join us"
+            },
+            {
+              "tagName": "A",
+              "text": "How to apply"
+            },
+            {
+              "tagName": "A",
+              "text": "Job list Asia"
+            },
+            {
+              "tagName": "A",
+              "text": "Job list Europe"
+            },
+            {
+              "tagName": "A",
+              "text": "Job list North America"
+            },
+            {
+              "tagName": "A",
+              "text": "Open application"
+            },
+            {
+              "tagName": "A",
+              "text": "Video gallery"
+            },
+            {
+              "tagName": "A",
+              "text": "FAQ"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to our Investors section"
+            },
+            {
+              "tagName": "A",
+              "text": "ASMI ＆ Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Share information"
+            },
+            {
+              "tagName": "A",
+              "text": "Share price"
+            },
+            {
+              "tagName": "A",
+              "text": "Historical lookup"
+            },
+            {
+              "tagName": "A",
+              "text": "Investment calculator"
+            },
+            {
+              "tagName": "A",
+              "text": "Research coverage"
+            },
+            {
+              "tagName": "A",
+              "text": "Dividend and capital repayment"
+            },
+            {
+              "tagName": "A",
+              "text": "Share buyback"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate governance"
+            },
+            {
+              "tagName": "A",
+              "text": "Management Board"
+            },
+            {
+              "tagName": "A",
+              "text": "Supervisory Board"
+            },
+            {
+              "tagName": "A",
+              "text": "AGM/EGM"
+            },
+            {
+              "tagName": "A",
+              "text": "Articles of Association"
+            },
+            {
+              "tagName": "A",
+              "text": "Policies"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Annual / Interim Reports (IFRS)"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Responsibility Reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Quarterly reports"
+            },
+            {
+              "tagName": "A",
+              "text": "US GAAP Annual reports / Forms 20-F"
+            },
+            {
+              "tagName": "A",
+              "text": "Webcasts ＆ presentations"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor library"
+            },
+            {
+              "tagName": "A",
+              "text": "Press releases"
+            },
+            {
+              "tagName": "A",
+              "text": "Sign up"
+            },
+            {
+              "tagName": "A",
+              "text": "Calendar"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Your documents"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "More"
+            },
+            {
+              "tagName": "A",
+              "text": "Upcoming Earnings call Q3 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "ASMI Investor Day 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "AGM/EGM 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "Earnings call Q2 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor presentation Q2 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "More"
+            },
+            {
+              "tagName": "A",
+              "text": "View"
+            },
+            {
+              "tagName": "A",
+              "text": "More"
+            },
+            {
+              "tagName": "A",
+              "text": "ASM INTERNATIONAL N.V. ANNOUNCES AVAILABILITY AND TIMING OF THE THIRD QUARTER 2021 CONFERENCE CALL A"
+            },
+            {
+              "tagName": "A",
+              "text": "Read more"
+            },
+            {
+              "tagName": "A",
+              "text": "ASM INTERNATIONAL N.V. ANNOUNCES VOTING RESULTS OF THE EXTRAORDINARY GENERAL MEETING OF SHAREHOLDERS"
+            },
+            {
+              "tagName": "A",
+              "text": "Read more"
+            },
+            {
+              "tagName": "A",
+              "text": "ASM INTERNATIONAL AIMS TO ACHIEVE NET ZERO BY 2035"
+            },
+            {
+              "tagName": "A",
+              "text": "Read more"
+            },
+            {
+              "tagName": "A",
+              "text": "ASM INTERNATIONAL HOSTS INVESTOR DAY, UPDATES Q3 2021 GUIDANCE"
+            },
+            {
+              "tagName": "A",
+              "text": "Read more"
+            },
+            {
+              "tagName": "A",
+              "text": "© 2021 ASM International"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms of use"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy policy"
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.asm.com/",
+      "what": "ASM Pacific Technology",
+      "result": "https://www.asm.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "total": 194,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "focusableAndOperable": {
+              "total": 194,
+              "tagNames": {
+                "INPUT": 27,
+                "A": 164,
+                "BUTTON": 3
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [],
+          "focusableAndOperable": [
+            {
+              "tagName": "INPUT",
+              "id": "_wpcmWpid",
+              "text": "<input type=\"hidden\" name=\"_wpcmWpid\" id=\"_wpcmWpid\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "wpcmVal",
+              "text": "<input type=\"hidden\" name=\"wpcmVal\" id=\"wpcmVal\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOWebPartPage_PostbackSource",
+              "text": "<input type=\"hidden\" name=\"MSOWebPartPage_PostbackSource\" id=\"MSOWebPartPage_Pos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_SelectedWpId",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_SelectedWpId\" id=\"MSOTlPn_SelectedWpId\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_View",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_View\" id=\"MSOTlPn_View\" value=\"0\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_ShowSettings",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_ShowSettings\" id=\"MSOTlPn_ShowSettings\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOGallery_SelectedLibrary",
+              "text": "<input type=\"hidden\" name=\"MSOGallery_SelectedLibrary\" id=\"MSOGallery_SelectedLi",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOGallery_FilterString",
+              "text": "<input type=\"hidden\" name=\"MSOGallery_FilterString\" id=\"MSOGallery_FilterString\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_Button",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_Button\" id=\"MSOTlPn_Button\" value=\"none\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTTARGET",
+              "text": "<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTARGUMENT",
+              "text": "<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"__EVENTARGUMENT\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__REQUESTDIGEST",
+              "text": "<input type=\"hidden\" name=\"__REQUESTDIGEST\" id=\"__REQUESTDIGEST\" value=\"0x42FDEB",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_DisplayModeName",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_DisplayModeName\" id=\"MSOSPWebPart",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_ExitingDesignMode",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_ExitingDesignMode\" id=\"MSOSPWebPa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOWebPartPage_Shared",
+              "text": "<input type=\"hidden\" name=\"MSOWebPartPage_Shared\" id=\"MSOWebPartPage_Shared\" val",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOLayout_LayoutChanges",
+              "text": "<input type=\"hidden\" name=\"MSOLayout_LayoutChanges\" id=\"MSOLayout_LayoutChanges\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOLayout_InDesignMode",
+              "text": "<input type=\"hidden\" name=\"MSOLayout_InDesignMode\" id=\"MSOLayout_InDesignMode\" v",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "_wpSelected",
+              "text": "<input type=\"hidden\" name=\"_wpSelected\" id=\"_wpSelected\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "_wzSelected",
+              "text": "<input type=\"hidden\" name=\"_wzSelected\" id=\"_wzSelected\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_OldDisplayModeName",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_OldDisplayModeName\" id=\"MSOSPWebP",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_StartWebPartEditingName",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_StartWebPartEditingName\" id=\"MSOS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_EndWebPartEditing",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_EndWebPartEditing\" id=\"MSOSPWebPa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__LASTFOCUS",
+              "text": "<input type=\"hidden\" name=\"__LASTFOCUS\" id=\"__LASTFOCUS\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATE",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"/wEPDwUKLTI2OTgz",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATEGENERATOR",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/\" style=\"cursor: default;\"> <img id=\"ctl00_ctl20_imgLogo\" src=\"/_catal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"text\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"button\" style=\"cursor: default;\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to our About section",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Company profile",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Layering the future",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our founder",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Strategy ＆ focus areas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Breakthrough technology",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Focus areas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Markets ＆ products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Mission ＆ strategy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate responsibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Executive Commitment Statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environmental",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ethics",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Health ＆ safety",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Labor",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supply chain",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Organization",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Management Board",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supervisory Board",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier management",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate calendar",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research and our partners",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Solutions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to our Solutions section",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Atomic Layer Deposition - products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Low Pressure Chemical Vapor Deposition ＆ Diffusion - products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Epitaxy - products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Plasma Enhanced Chemical Vapor Deposition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Plasma Enhanced ALD",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patents",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Trademark list",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Technology",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to our Technology section",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key technologies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "All about ALD",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Atomic Layer Deposition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LPCVD, diffusion and oxidation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Epitaxy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Plasma-Enhanced Chemical Vapor Deposition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Plasma-Enhanced Atomic Layer Deposition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Innovations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Future innovations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Chip making",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Chip making process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News room",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to our News room section",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Events calendar",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press releases alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact PR",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to our Support section",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Technical service and spares support",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PerforMAX service programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PerforMAX Spares Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Customer training",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Field Support Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Spare Parts Support",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Product performance upgrade",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Pre-owned advantage services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to our Careers section",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Discover ASM",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Culture",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Diversity",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fields of interest",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Innovation driven",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Inside ASM",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our role in the world",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Product lines",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Graduates",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ASM Accelerate program",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Internships",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Your future",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Experienced professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Leading edge technologies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The next step",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why work for ASM",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career development",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Job benefits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Meet our young professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Top reasons to work for ASM",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Join us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "How to apply",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Job list Asia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Job list Europe",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Job list North America",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Open application",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Video gallery",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FAQ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/careers\" style=\"cursor: default;\"><img src=\"/PublishingImages/menu/",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to our Investors section",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ASMI ＆ Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Share information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Share price",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Historical lookup",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investment calculator",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research coverage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dividend and capital repayment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Share buyback",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Management Board",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supervisory Board",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AGM/EGM",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Articles of Association",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Policies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Annual / Interim Reports (IFRS)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Responsibility Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quarterly reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "US GAAP Annual reports / Forms 20-F",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Webcasts ＆ presentations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor library",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press releases",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sign up",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Calendar",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Your documents",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/investors\" style=\"cursor: default;\"><img src=\"/PublishingImages/menu/i",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://player.vimeo.com/video/616831473\" class=\"slide\" style=\"cursor: ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://player.vimeo.com/video/580735597\" class=\"slide\" style=\"display:",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://player.vimeo.com/video/541735851\" class=\"slide\" style=\"display:",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.asm.com/Downloads/Intel%202020%20PQS%20Award%20v4.pdf\" clas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://asmi-corporatereporting.com/2020\" class=\"slide\" style=\"display:",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"http://www.asm.com/about/strategy-and-focus-areas/breakthrough-technolo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"http://www.asm.com/en/careers\" class=\"slide\" style=\"display: none; curs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"http://asmi-corporatereporting.com/2020\" style=\"cursor: default;\"> <img",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://investorday.asm.com/\" target=\"”_blank”\" style=\"cursor: default;",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a><img src=\"/PublishingImages/home/02_ASM-COM_home-webpart-corprep2015.jpg\"></a",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Upcoming Earnings call Q3 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ASMI Investor Day 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AGM/EGM 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Earnings call Q2 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor presentation Q2 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a><img src=\"/PublishingImages/home/highlight_at-a-glance_2015.png\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"video-popup image cboxElement\" href=\"https://player.vimeo.com/video/58",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"video-popup image cboxElement\" href=\"https://player.vimeo.com/video/33",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"video-popup image cboxElement\" href=\"http://player.vimeo.com/video/633",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712_hypMoreLink",
+              "text": "More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ASM INTERNATIONAL N.V. ANNOUNCES AVAILABILITY AND TIMING OF THE THIRD QUARTER 20",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ASM INTERNATIONAL N.V. ANNOUNCES VOTING RESULTS OF THE EXTRAORDINARY GENERAL MEE",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ASM INTERNATIONAL AIMS TO ACHIEVE NET ZERO BY 2035",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ASM INTERNATIONAL HOSTS INVESTOR DAY, UPDATES Q3 2021 GUIDANCE",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "ctl00_ctl23_FooterLinks_ctl00_link",
+              "text": "© 2021 ASM International",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "ctl00_ctl23_FooterLinks_ctl01_link",
+              "text": "Terms of use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "ctl00_ctl23_FooterLinks_ctl02_link",
+              "text": "Privacy policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "cboxPrevious",
+              "text": "<button type=\"button\" id=\"cboxPrevious\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "cboxNext",
+              "text": "<button type=\"button\" id=\"cboxNext\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "cboxSlideshow",
+              "text": "<button id=\"cboxSlideshow\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.asm.com/",
+      "what": "ASM Pacific Technology",
+      "result": "https://www.asm.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "triggers": 14,
+          "madeVisible": 240,
+          "opacityChanged": 0,
+          "opacityAffected": 0,
+          "unhoverables": 0
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "About Go to our About section Company profile Our ",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our About section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Company profile"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our story"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Layering the future"
+                },
+                {
+                  "tagName": "A",
+                  "text": "History"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our founder"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Strategy ＆ focus areas"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Breakthrough technology"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Focus areas"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Markets ＆ products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Mission ＆ strategy"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate responsibility"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Executive Commitment Statement"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Environmental"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Ethics"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Health ＆ safety"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Labor"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supply chain"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Organization"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Management Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supervisory Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supplier management"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate calendar"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Research and our partners"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Locations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact us"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our About section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Company profile"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our story"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Layering the future"
+                },
+                {
+                  "tagName": "A",
+                  "text": "History"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our founder"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Strategy ＆ focus areas"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Breakthrough technology"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Focus areas"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Markets ＆ products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Mission ＆ strategy"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate responsibility"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Executive Commitment Statement"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Environmental"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Ethics"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Health ＆ safety"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Labor"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supply chain"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Organization"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Management Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supervisory Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supplier management"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate calendar"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Research and our partners"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Locations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact us"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Solutions Go to our Solutions section Products Ato",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Solutions section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Atomic Layer Deposition - products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Low Pressure Chemical Vapor Deposition ＆ Diffusion"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Epitaxy - products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma Enhanced Chemical Vapor Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma Enhanced ALD"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Patents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Trademark list"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Solutions",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Solutions section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Atomic Layer Deposition - products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Low Pressure Chemical Vapor Deposition ＆ Diffusion"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Epitaxy - products"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma Enhanced Chemical Vapor Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma Enhanced ALD"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Patents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Trademark list"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Technology Go to our Technology section Key techno",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Technology section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key technologies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "All about ALD"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Atomic Layer Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "LPCVD, diffusion and oxidation"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Epitaxy"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma-Enhanced Chemical Vapor Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma-Enhanced Atomic Layer Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Innovations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Future innovations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Chip making"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Chip making process"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Technology",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Technology section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key technologies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "All about ALD"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Atomic Layer Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "LPCVD, diffusion and oxidation"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Epitaxy"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma-Enhanced Chemical Vapor Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Plasma-Enhanced Atomic Layer Deposition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Innovations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Future innovations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Chip making"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Chip making process"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "News room Go to our News room section News overvie",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our News room section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "News overview"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Events calendar"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Press releases alerts"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact PR"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News room",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our News room section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "News overview"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Events calendar"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Press releases alerts"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact PR"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Support Go to our Support section Technical servic",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Support section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Technical service and spares support"
+                },
+                {
+                  "tagName": "A",
+                  "text": "PerforMAX service programs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "PerforMAX Spares Programs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Customer training"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Field Support Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Spare Parts Support"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Product performance upgrade"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Pre-owned advantage services"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Support section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Technical service and spares support"
+                },
+                {
+                  "tagName": "A",
+                  "text": "PerforMAX service programs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "PerforMAX Spares Programs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Customer training"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Field Support Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Spare Parts Support"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Product performance upgrade"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Pre-owned advantage services"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Careers Go to our Careers section Discover ASM Cul",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Careers section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Discover ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Culture"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Diversity"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Fields of interest"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Innovation driven"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Inside ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our role in the world"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Product lines"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Graduates"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ASM Accelerate program"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Internships"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Your future"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Experienced professionals"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Leading edge technologies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "The next step"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Why work for ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Career development"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job benefits"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Meet our young professionals"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Top reasons to work for ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Join us"
+                },
+                {
+                  "tagName": "A",
+                  "text": "How to apply"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job list Asia"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job list Europe"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job list North America"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Open application"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Video gallery"
+                },
+                {
+                  "tagName": "A",
+                  "text": "FAQ"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact"
+                },
+                {
+                  "tagName": "A",
+                  "text": "<a href=\"/en/careers\"><img src=\"/PublishingImages/"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Careers section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Discover ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Culture"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Diversity"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Fields of interest"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Innovation driven"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Inside ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our role in the world"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Product lines"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Graduates"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ASM Accelerate program"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Internships"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Your future"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Experienced professionals"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Leading edge technologies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "The next step"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Why work for ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Career development"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job benefits"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Meet our young professionals"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Top reasons to work for ASM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Join us"
+                },
+                {
+                  "tagName": "A",
+                  "text": "How to apply"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job list Asia"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job list Europe"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Job list North America"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Open application"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Video gallery"
+                },
+                {
+                  "tagName": "A",
+                  "text": "FAQ"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact"
+                },
+                {
+                  "tagName": "A",
+                  "text": "<a href=\"/en/careers\"><img src=\"/PublishingImages/"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Investors Go to our Investors section ASMI ＆ Inves",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Investors section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ASMI ＆ Investors"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Share information"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Share price"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Historical lookup"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Investment calculator"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Research coverage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Dividend and capital repayment"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Share buyback"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate governance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Management Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supervisory Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "AGM/EGM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Articles of Association"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Policies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate reports"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Annual / Interim Reports (IFRS)"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Responsibility Reports"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Quarterly reports"
+                },
+                {
+                  "tagName": "A",
+                  "text": "US GAAP Annual reports / Forms 20-F"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Webcasts ＆ presentations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Investor library"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Press releases"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sign up"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Calendar"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Your documents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "<a href=\"/investors\"><img src=\"/PublishingImages/m"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Go to our Investors section"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ASMI ＆ Investors"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Share information"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Share price"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Historical lookup"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Investment calculator"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Research coverage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Dividend and capital repayment"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Share buyback"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate governance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Management Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Supervisory Board"
+                },
+                {
+                  "tagName": "A",
+                  "text": "AGM/EGM"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Articles of Association"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Policies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate reports"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Annual / Interim Reports (IFRS)"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Responsibility Reports"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Quarterly reports"
+                },
+                {
+                  "tagName": "A",
+                  "text": "US GAAP Annual reports / Forms 20-F"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Webcasts ＆ presentations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Investor library"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Press releases"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sign up"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Calendar"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Your documents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "<a href=\"/investors\"><img src=\"/PublishingImages/m"
+                }
+              ],
+              "opacityChanged": []
+            }
+          ],
+          "unhoverables": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.asm.com/",
+      "what": "ASM Pacific Technology",
+      "result": "https://www.asm.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 5,
+          "wellLabeled": 0
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "button"
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" id=\"cboxPrevious\"></button>}"
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" id=\"cboxNext\"></button>}"
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button id=\"cboxSlideshow\"></button>}"
+            }
+          ],
+          "wellLabeled": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "links": 164,
+          "inline": {
+            "total": 0,
+            "underlined": 0,
+            "underlinedPercent": "N/A"
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.asm.com/",
+      "result": {
+        "roleElements": 1,
+        "badRoleElements": 1,
+        "tagNames": {
+          "DIV": {
+            "dialog": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 7
+          },
+          "h6": {
+            "total": 4
+          },
+          "aBlock": {
+            "total": 164,
+            "subtotals": [
+              142,
+              9,
+              7,
+              3,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 3
+          }
+        },
+        "items": {
+          "h1": {},
+          "h6": {},
+          "aBlock": {
+            "borderStyle": {
+              "none": 163,
+              "none none solid solid": 1
+            },
+            "borderWidth": {
+              "0px": 163,
+              "0px 0px 1px 1px": 1
+            },
+            "fontWeight": {
+              "400": 155,
+              "700": 9
+            },
+            "lineHeight": {
+              "normal": 153,
+              "12px": 8,
+              "14px": 3
+            },
+            "textDecorationLine": {
+              "none": 157,
+              "underline": 7
+            },
+            "fontSize": {
+              "12px": 1793,
+              "16px": 11
+            }
+          },
+          "button": {}
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.asm.com/",
+      "result": {
+        "totals": {
+          "total": 19,
+          "tagNames": {
+            "DIV": 11,
+            "A": 7,
+            "IMG": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Go to our About section Company profile Our story Layering the future History Our founder Strategy ＆"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Go to our Solutions section Products Atomic Layer Deposition - products Low Pressure Chemical Vapor "
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Go to our Technology section Key technologies All about ALD Atomic Layer Deposition LPCVD, diffusion"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Go to our News room section News overview Events calendar Press releases alerts Contact PR"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Go to our Support section Technical service and spares support PerforMAX service programs PerforMAX "
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Go to our Careers section Discover ASM Culture Diversity Fields of interest Innovation driven Inside"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Go to our Investors section ASMI ＆ Investors Share information Share price Historical lookup Investm"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "IMG",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "cboxOverlay",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "colorbox",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "cboxWrapper",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.asm.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 18,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[2]",
+                "aria": "/document[1]/form[1]/button[1]"
+              },
+              "message": "Form control element <input> has no associated label",
+              "bounds": {
+                "left": 165,
+                "top": 26,
+                "height": 21,
+                "width": 16
+              },
+              "snippet": "<input type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]",
+                "aria": "/document[1]/form[1]/textbox[1]"
+              },
+              "message": "Form control element <input> has no associated label",
+              "bounds": {
+                "left": 8,
+                "top": 32,
+                "height": 21,
+                "width": 153
+              },
+              "snippet": "<input type=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/form[1]/link[3]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 2449,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<img src=\"/PublishingImages/home/R_and_D_3800x1600.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[8]/div[1]/div[1]/div[2]/a[1]/img[1]",
+                "aria": "/document[1]/form[1]/list[1]/listitem[8]/link[3]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 2415,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<img src=\"/PublishingImages/menu/investors.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[7]/div[1]/div[1]/div[2]/a[1]/img[1]",
+                "aria": "/document[1]/form[1]/list[1]/listitem[7]/link[3]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 1885,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<img src=\"/PublishingImages/menu/careers.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/form[1]/link[1]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 22,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<img src=\"/_catalogs/masterpage/images/logo.png\" id=\"ctl00_ctl20_imgLogo\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[15]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 3113,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://player.vimeo.com/video/339130327?autoplay=true\" class=\"video-popup image cboxElement\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/p[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[14]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 2953,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://player.vimeo.com/video/580735597?autoplay=true\" class=\"video-popup image cboxElement\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[11]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 2635,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a target=\"”_blank”\" href=\"https://investorday.asm.com/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[10]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 2465,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a href=\"http://asmi-corporatereporting.com/2020\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[3]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 2435,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a class=\"slide\" href=\"https://player.vimeo.com/video/616831473\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[8]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/form[1]/list[1]/listitem[8]/link[3]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 2401,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"/investors\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[7]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/form[1]/list[1]/listitem[7]/link[3]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 1871,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"/en/careers\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Header_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/a[1]/div[1]/h1[1]",
+                "aria": "/document[1]/form[1]/link[3]/heading[1]"
+              },
+              "message": "Heading element has no descriptive content",
+              "bounds": {
+                "left": 8,
+                "top": 2475,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<h1>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[9]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "The <div> element has the id \"_#= dataContainerId =#_\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 3733,
+                "height": 52,
+                "width": 784
+              },
+              "snippet": "<div id=\"_#= dataContainerId =#_\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[9]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "The <div> element has the id \"_#= dataContainerId =#_\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 3631,
+                "height": 52,
+                "width": 784
+              },
+              "snippet": "<div id=\"_#= dataContainerId =#_\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[9]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "The <div> element has the id \"_#= dataContainerId =#_\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 3511,
+                "height": 70,
+                "width": 784
+              },
+              "snippet": "<div id=\"_#= dataContainerId =#_\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/footer[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 8,
+                "top": 3801,
+                "height": 54,
+                "width": 784
+              },
+              "snippet": "<footer class=\"s4-notdlg\" id=\"footer1\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 14,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[2]",
+                "aria": "/document[1]/form[1]/button[1]"
+              },
+              "message": "Form control element <input> has no associated label",
+              "bounds": {
+                "left": 924,
+                "top": 0,
+                "height": 24,
+                "width": 26
+              },
+              "snippet": "<input type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]",
+                "aria": "/document[1]/form[1]/textbox[1]"
+              },
+              "message": "Form control element <input> has no associated label",
+              "bounds": {
+                "left": 803,
+                "top": 0,
+                "height": 24,
+                "width": 121
+              },
+              "snippet": "<input type=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/form[1]/link[3]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 0,
+                "top": 184,
+                "height": 400,
+                "width": 950
+              },
+              "snippet": "<img src=\"/PublishingImages/home/R_and_D_3800x1600.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/form[1]/link[1]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 15,
+                "top": 18,
+                "height": 50,
+                "width": 166
+              },
+              "snippet": "<img src=\"/_catalogs/masterpage/images/logo.png\" id=\"ctl00_ctl20_imgLogo\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[7]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[15]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 720,
+                "top": 791,
+                "height": 14,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://player.vimeo.com/video/339130327?autoplay=true\" class=\"video-popup image cboxElement\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/p[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[14]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 240,
+                "top": 791,
+                "height": 14,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://player.vimeo.com/video/580735597?autoplay=true\" class=\"video-popup image cboxElement\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[11]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 495,
+                "top": 621,
+                "height": 14,
+                "width": 0
+              },
+              "snippet": "<a target=\"”_blank”\" href=\"https://investorday.asm.com/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[10]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 240,
+                "top": 621,
+                "height": 14,
+                "width": 0
+              },
+              "snippet": "<a href=\"http://asmi-corporatereporting.com/2020\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[3]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 0,
+                "top": 184,
+                "height": 400,
+                "width": 950
+              },
+              "snippet": "<a class=\"slide\" href=\"https://player.vimeo.com/video/616831473\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 15,
+                "top": 18,
+                "height": 50,
+                "width": 166
+              },
+              "snippet": "<a href=\"/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Header_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/a[1]/div[1]/h1[1]",
+                "aria": "/document[1]/form[1]/link[3]/heading[1]"
+              },
+              "message": "Heading element has no descriptive content",
+              "bounds": {
+                "left": 770,
+                "top": 352,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<h1>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[9]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "The <div> element has the id \"_#= dataContainerId =#_\" that is already in use",
+              "bounds": {
+                "left": 721,
+                "top": 1054,
+                "height": 88,
+                "width": 190
+              },
+              "snippet": "<div id=\"_#= dataContainerId =#_\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[9]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "The <div> element has the id \"_#= dataContainerId =#_\" that is already in use",
+              "bounds": {
+                "left": 484,
+                "top": 1054,
+                "height": 74,
+                "width": 190
+              },
+              "snippet": "<div id=\"_#= dataContainerId =#_\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/div[1]/div[3]/div[1]/span[1]/div[2]/div[2]/div[1]/div[9]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "The <div> element has the id \"_#= dataContainerId =#_\" that is already in use",
+              "bounds": {
+                "left": 247,
+                "top": 1054,
+                "height": 116,
+                "width": 190
+              },
+              "snippet": "<div id=\"_#= dataContainerId =#_\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[3]/footer[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 1250,
+                "height": 50,
+                "width": 800
+              },
+              "snippet": "<footer class=\"s4-notdlg\" id=\"footer1\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.asm.com/",
+      "what": "ASM Pacific Technology",
+      "result": "https://www.asm.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.asm.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Home",
+          "pageurl": "https://www.asm.com/",
+          "time": 4.63,
+          "creditsremaining": 495,
+          "allitemcount": 110,
+          "totalelements": 678,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.asm.com/",
+          "domid": "6eb9ff5d16032be2b0a11b9a64d2cccb"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 31,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#imgPrefetch > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#imgPrefetch > IMG:first-child + IMG"
+                ]
+              },
+              "alt_link_missing": {
+                "id": "alt_link_missing",
+                "description": "Linked image missing alternative text",
+                "count": 17,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#main-header > DIV:first-child > A:first-child > IMG#ctl00_ctl20_imgLogo",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartWPQ3 > DIV:first-child > DIV#WebPartWPQ3 > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartWPQ5 > DIV:first-child > DIV#WebPartWPQ5 > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV#ctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV#ctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789_divHighlight > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c > DIV#ctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c > DIV#ctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c_divHighlight > H6:first-child + P + A + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartWPQ4 > DIV:first-child > DIV#WebPartWPQ4 > DIV:first-child > DIV:first-child > P:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartWPQ2 > DIV:first-child > DIV#WebPartWPQ2 > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartWPQ1 > DIV:first-child > DIV#WebPartWPQ1 > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child"
+                ]
+              },
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#main-header > DIV:first-child > A:first-child + DIV > DIV:first-child > INPUT:first-child"
+                ]
+              },
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child > IMG:first-child + DIV > P:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A > IMG:first-child + DIV > P:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A > IMG:first-child + DIV > P:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A > IMG:first-child + DIV > P:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A + A > IMG:first-child + DIV > P:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A + A + A > IMG:first-child + DIV > P:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A + A + A + A > IMG:first-child + DIV > P:first-child + H1"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxPrevious",
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxNext",
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxSlideshow",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#main-header > DIV:first-child > A:first-child + DIV > DIV:first-child > INPUT:first-child + INPUT"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 8,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartWPQ5 > DIV:first-child > DIV#WebPartWPQ5 > DIV:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2 > DIV#ctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2 > DIV#ctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2_divHighlight > H6:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    4.27,
+                    "#e3000f",
+                    "#efefef",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 22,
+            "items": {
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV#ctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV#ctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789_divHighlight > DIV:first-child + H6"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV#ctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789 > DIV#ctl00_SPWebPartManager1_g_e695b652_6420_44c9_b5b9_62a1ea317789_divHighlight > DIV:first-child + H6 + P + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c > DIV#ctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c > DIV#ctl00_SPWebPartManager1_g_c3e1d43d_cc9a_4f1e_a471_37b82982a23c_divHighlight > H6:first-child + P + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child > A#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712_hypMoreLink",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 12,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-navigation > DIV:first-child > DIV#ctl00_ctl22_nav > UL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartWPQ1 > DIV:first-child > DIV#WebPartWPQ1 > DIV:first-child > DIV:first-child > A:first-child + H6 + P + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV#ctl00_SPWebPartManager1_g_66e81952_c1f6_49fe_af01_ec69b8595712 > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV#_#= dataContainerId =#_ > A:first-child + P > A:first-child"
+                ]
+              },
+              "link_pdf": {
+                "id": "link_pdf",
+                "description": "Link to PDF document",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV#ctl00_SPWebPartManager1_g_8bc62dad_2ef1_44e2_8221_9004acb56c37 > DIV:first-child > A:first-child + A + A + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV#main-content > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV#main-page > DIV:first-child + DIV > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2 > DIV:first-child > DIV#WebPartctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2 > DIV#ctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2 > DIV#ctl00_SPWebPartManager1_g_e598ed02_b961_413c_810d_6f3a07dbadb2_divHighlight > H6:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y00",
+      "what": "3 packages and 13 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 4",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log messages by logWeights.count, sum of characters in log messages by logWeights.size",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 3648,
+          "axe": 71,
+          "bulk": 0,
+          "embAc": 0,
+          "focInd": 785,
+          "focOp": 0,
+          "hover": 536,
+          "ibm": 54,
+          "labClash": 10,
+          "linkUl": 0,
+          "log": 1874,
+          "motion": 59,
+          "radioSet": 0,
+          "role": 2,
+          "styleDiff": 16,
+          "wave": 184,
+          "zIndex": 57
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      54
+    ],
+    [
+      "motion",
+      15
+    ],
+    [
+      "ibm",
+      7
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
