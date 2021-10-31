@@ -8,91 +8,69 @@
         <meta name="publisher" name="Jonathan Robert Pool">
         <meta name="description" content="measuring digital accessibility">
         <meta name="keywords" content="accessibility a11y web testing">
-        <title>Automatically measuring digital accessibility</title>
+        <title>Measuring digital accessibility with Autotest</title>
         <link rel="stylesheet" href="../../../../site/style.css">
       </head>
       <body>
         <main>
           <header>
-            <h1>Automatically measuring digital accessibility</h1>
+            <h1>Measuring digital accessibility with Autotest</h1>
             <p class="author">Jonathan Robert Pool</p>
             <p class="summary">Impossible, or just problematic?</p>
           </header>
           <h2>Introduction</h2>
-          <p><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/#what">Web accessibility</a>, or more generally digital accessibility, is similar to physical accessibility. Just as buildings can be made friendly to wheelchair users with ramps and wide doors, websites and mobile apps can be made friendly to people who can&rsquo;t see well or at all, or move their limbs or mice, with barrier-free design and implementation.</p>
-          <p>There are numerous methods for measuring web accessibility. This report relies on fully automatic methods. By not relying at all on human testing, I am losing some information that human testers could provide, but I am also gaining replicability and improvability. Others can repeat the same tests to check the results and can create new versions of the tests, and additional tests, to make the results more valid.</p>
-          <p>The following table reports the results of executing a battery of accessibility tests, named <code>a11y03</code>. The tests performed include three packages of tests created by others:</p>
+          <p><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/#what">Web accessibility</a>, or more generally digital accessibility, is similar to physical accessibility. Just as buildings can be made friendly to wheelchair users with ramps and wide doors, websites, mobile apps, email messages, and digital files can be made friendly to people who can&rsquo;t see well or at all, move their limbs or mice, or remember numbers, with barrier-free design and implementation. Just as there are detailed <a href="https://www.ada.gov/regs2010/2010ADAStandards/2010ADAstandards.htm">standards for physical accessibility</a>, there are also <a href="https://www.w3.org/TR/WCAG21/">international industry standards for digital accessibility</a>. The latter are <a href="https://www.w3.org/WAI/policies/">incorporated into law in about 20 countries</a>.</p>
+          <p>There is an <a href="https://www.w3.org/standards/webdesign/accessibility#case">expert consensus</a> that accessible digital products benefit not only persons with recognized disabilities, but also most other users of those products. Thus, accessibility is a closer approximation to quality in general than one might have guessed.</p>
+          <p>If you care about digital accessibility, you presumably want to measure it. You want to be able to say, <q>Our main competitor&rsquo;s home page is 30% more accessible than ours</q> or <q>The latest revisions made the app even less accessible than it was before</q>. Measuring accessibility gives you a target to aim for and a tool for monitoring your progress.</p>
+          <p>And, if you want to measure the accessibility of many digital artifacts at frequent intervals, automating the measurement will help. Automated measurement loses some information that human testers could provide, but gains affordability, replicability, and improvability. If you use a fully automated method to measure the accessibility of my digital product, I can apply the same method to check your results, and I can create new versions of your method to make the results more valid. It also becomes feasible to produce large-scale comparisons, such as <a href="https://disabilityhealth.jhu.edu/vaccinedashboard/webaccess/">Vaccine Website Accessibility</a>, published by Johns Hopkins University.</p>
+          <h2>Tools</h2>
+          <p>Products that automatically measure digital accessibility are sold or licensed for up to hundreds of thousands of dollars. But there are also open-source, free, and nearly free automatic measuring tools available for anybody to use. Three of the prominent ones are:</p>
           <ul>
-            <li>Axe, created by Deque (138 tests)</li>
-            <li>Equal Access Accessibility Checker, created by IBM (163 tests)</li>
-            <li>WAVE, created by WebAIM (110 tests)</li>
+            <li><a href="https://github.com/dequelabs/axe-core">axe-core</a>, created by Deque (138 tests)</li>
+            <li><a href="https://github.com/IBMa/equal-access">Equal Access</a>, created by IBM (163 tests)</li>
+            <li><a href="https://wave.webaim.org/">WAVE</a>, created by WebAIM (110 tests)</li>
           </ul>
-          <p>In addition, there are 16 tests that I created in order to detect accessibility problems that the above packages are not designed to find. Thus, in all, <code>a11y03</code> conducts 427 tests.</p>
-          <p>Not only can accessibility be measured by many different tests, but one can aggregate the results of tests in an infinity of ways to yield a total score, if one wants to compare and rank digital products on accessibility. The <code>a11y03</code> battery applies weights to the results of individual tests and subtracts discounts from some results to compensate for multiple tests discovering the same problems. The weights and discounts reflect the severity ratings incorporated into the three packages, and also express my own opinions about the relative importances of accessibility problems. These weights and discounts can be modified by others to express other opinions.</p>
-          <p>The engine used for administering this battery of tests is <a href="https://github.com/jrpool/autotest">Autotest</a>.</p>
-          <h2>Findings</h2>
-          <p>The tests include three external packages of tests: Axe, IBM Accessibility Checker, and WAVE. In addition, there are thirteen accessibility tests defined in Autotest, chiefly testing aspects of accessibility that the test packages do not cover.</p>
-          <p>For the main page of each company&rsquo;s website, Autotest generated a deficit score. A score of 0 indicates that a page has passed all the tests. Any deficit score greater than 0 indicates that at least one test has found at least one fault on the page.</p>
-          <p>The tests were conducted in October 2021.</p>
-          <p>In the table below:</p>
+          <p></p>
+          <p>These tools are partly, but only partly, duplicative. Using them all provides more comprehensive measurement than using only one of them.</p>
+          <p>But, even though among them they perform 411 tests, much of accessibility lies beyond the reach of these tools. As one example, many users are annoyed by content that keeps blinking, flashing, or moving, and some users can suffer nausea or seizures from such content. None of the above tools is designed to report such motion.</p>
+          <h2>Autotest</h2>
+          <p><a href="https://github.com/jrpool/autotest">Autotest</a> is an automated testing prototype, incorporating work that began in 2018. It operates web browsers (versions of Chrome, Safari, and Firefox), following your instructions to navigate the web and perform actions on web pages. At any point in a browsing process, you can tell it what test or tests to perform. You can have it weight and aggregate the results of its tests to produce a total score for a page, site, or process. You give it all the instructions in advance; once it starts, it follows the instructions automatically.</p>
+          <p>You give instructions to Autotest by writing a <dfn>script</dfn>; the documentation explains how to do this. If you are a JavaScript developer, you can also revise and extend the existing tests and scoring rules.</p>
+          <p>You can define a <q>batch</q> of web pages and apply a script to all of them. Autotest will output a report for each page, and you can collect their scores to create a comparative report.</p>
+          <p>There are about 30 tests currently available in Autotest. Of these, 19 are used in an accessibility-measurement procedure named <code>a11y03</code>. These tests (starting with the three test packages named above) are:</p>
           <ul>
-            <li>Each name in the <q>Page</q> column is a link to the page that was tested.</li>
-            <li>Each number in the <q>Deficit as a number</q> column is a link to the detailed results.</li>
+            <li><code>axe-core</code></li>
+            <li><code>Equal Access</code></li>
+            <li><code>WAVE</code></li>
+            <li><code>motion</code>: measures spontaneous movement on the page</li>
+            <li><code>bulk</code>: measures content bloat</li>
+            <li><code>zIndex</code>: measures 3-D layering</li>
+            <li><code>radioSet</code>: measures nonstandard grouping of radio buttons</li>
+            <li><code>role</code>: measures deprecated use of role categories</li>
+            <li><code>focOp</code>: measures discrepancies in types of page content</li>
+            <li><code>labClash</code>: measures violations of labeling requirements</li>
+            <li><code>styleDiff</code>: measures erratic variation in item appearance</li>
+            <li><code>linkUl</code>: measures difficulty of seeing links</li>
+            <li><code>focInd</code>: measures ambiguity of user&rsquo;s location on page</li>
+            <li><code>embAc</code>: measures click ambiguity on buttons and links</li>
+            <li><code>hover</code>: measures surprises caused by hovering</li>
+            <li><code>focAll</code>: measures interference with Tab-key navigation</li>
+            <li><code>menuNav</code>: measures nonstandard navigation within menus</li>
+            <li><code>tabNav</code>: measures nonstandard navigation within tabs</li>
+            <li><code>log</code>: measures page interference with automated testing</li>
           </ul>
-          <table class="allBorder">
-            <caption>Accessibility deficits of web pages</caption>
-            <thead>
-              <tr><th rowspan="2">Page</th><th colspan="2">Deficit</th></tr>
-              <tr><th>Number</th><th>Bar</th></tr>
-            </thead>
-            <tbody class="secondCellRight">
-              <tr><th><a href="https://www.silergy.com/">Silergy</a></th><td><a href="data/report-vqr3-000.json">427</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="3.2924666512452774%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.kimberly-clark.com.mx/">Kimberly-Clark de Mexico</a></th><td><a href="data/report-vr1w-003.json">458</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="3.5314981879867378%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.grupofleury.com.br/SitePages/Home.aspx">Fleury</a></th><td><a href="data/report-vr1w-019.json">540</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="4.163775156141568%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.naspers.com/">Naspers</a></th><td><a href="data/report-vr1w-029.json">637</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="4.911712545300332%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.clicksgroup.co.za/">Clicks Group</a></th><td><a href="data/report-vqr3-007.json">733</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="5.6519392397254995%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.unicharm.co.jp/en/home.html">Unicharm</a></th><td><a href="data/report-vqr3-008.json">844</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="6.5078263551546%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.sercomm.com/home.aspx">Sercomm</a></th><td><a href="data/report-vr1w-025.json">953</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="7.348292081116509%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://kpjhealth.com.my/home/">KPJ Healthcare</a></th><td><a href="data/report-vr1w-026.json">961</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="7.409977638985272%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.qualcomm.com/">Qualcomm</a></th><td><a href="data/report-vr1w-004.json">986</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="7.60274500732516%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.ttigroup.com/">Techtronic Industries</a></th><td><a href="data/report-vqr3-001.json">1032</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="7.957436965070553%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.sunnyfriend.com.tw/">Sunny Friend Environmental Technology</a></th><td><a href="data/report-vr1w-020.json">1109</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="8.551160459557407%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.tpicomposites.com/">TPI Composites</a></th><td><a href="data/report-vr1w-022.json">1162</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="8.959827280437967%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.barrick.com/English/home/default.aspx">Barrick Gold</a></th><td><a href="data/report-vr1w-017.json">1190</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="9.17572673297864%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.smprime.com/">SM Prime Holdings</a></th><td><a href="data/report-vr1w-018.json">1351</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="10.417148585087517%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.nvidia.com/en-us/">NVIDIA</a></th><td><a href="data/report-vr1w-013.json">1385</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="10.679312206029763%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.fordotosan.com.tr/tr">Ford Otomotiv Sanayi</a></th><td><a href="data/report-vr1w-005.json">1404</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="10.825815405968077%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.unilever.com/">Unilever</a></th><td><a href="data/report-vqr3-009.json">1433</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="11.049425553242347%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.ihhhealthcare.com/">IHH Healthcare</a></th><td><a href="data/report-vr1w-002.json">1457</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="11.23448222684864%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://mdiasbranco.com.br/">M. Dias Branco</a></th><td><a href="data/report-vr1w-031.json">1488</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="11.4735137635901%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.bimbholdings.com/">BIMB Holdings</a></th><td><a href="data/report-vr1w-023.json">1510</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="11.643149047729201%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.telin.net/">Telekomunikasi Indonesia</a></th><td><a href="data/report-vqr3-005.json">1716</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="13.231552162849873%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.takaful-malaysia.com.my/lang/bm/home/Pages/Default.aspx">Syarikat Takaful Malaysia Keluarga</a></th><td><a href="data/report-vr1w-030.json">1860</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="14.341892204487625%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.bdms.co.th/">Bangkok Dusit Medical Services</a></th><td><a href="data/report-vr1w-008.json">1888</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="14.557791657028298%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.advantech.com/">Advantech</a></th><td><a href="data/report-vqr3-006.json">1916</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="14.773691109568972%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.colgatepalmolive.com/en-us">Colgate-Palmolive</a></th><td><a href="data/report-vr1w-016.json">1930</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="14.88164083583931%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.kerrylogistics.com/">Kerry Logistics Network</a></th><td><a href="data/report-vr1w-028.json">2010</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="15.498496414526949%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.kcsouthern.com/">Kansas City Southern Industries</a></th><td><a href="data/report-vqr3-004.json">2057</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="15.860899067005937%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://vfc.com/">VF</a></th><td><a href="data/report-vr1w-012.json">2437</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="18.790963065772225%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.kce.co.th/TH/index.aspx">KCE Electronics</a></th><td><a href="data/report-vr1w-027.json">2496</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="19.24589405505436%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.tsmc.com/chinese">Taiwan Semiconductor</a></th><td><a href="data/report-vqr3-002.json">2500</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="19.276736833988743%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.hikma.com/home/">Hikma Pharmaceuticals</a></th><td><a href="data/report-vr1w-006.json">2508</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="19.338422391857506%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.monolithicpower.com/">Monolithic Power Systems</a></th><td><a href="data/report-vqr3-003.json">2543</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="19.60829670753335%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.indofoodcbp.com/">Indofood CBP Sukses Makmur</a></th><td><a href="data/report-vr1w-015.json">2587</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="19.94756727581155%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://hartalega.com.my/">Hartalega Holdings</a></th><td><a href="data/report-vr1w-024.json">2610</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="20.124913254684248%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.towngas.com/tc/Home">Hong Kong & China Gas</a></th><td><a href="data/report-vr1w-009.json">2934</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="22.623178348369187%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.riotinto.com/">Rio Tinto</a></th><td><a href="data/report-vr1w-021.json">3288</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="25.352764284061994%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.stc.com.sa/wps/wcm/connect/arabic/individual/individual">Saudi Telecom</a></th><td><a href="data/report-vr1w-000.json">3599</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="27.750790346210195%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.asm.com/">ASM Pacific Technology</a></th><td><a href="data/report-vr1w-014.json">3648</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="28.12861438815637%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.samsung.com/us/">Samsung Electronics</a></th><td><a href="data/report-vr1w-010.json">4352</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="33.5569434806076%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.lghnh.com:984/index.jsp">LG Household & Health Care</a></th><td><a href="data/report-vr1w-011.json">5337</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="41.151977793199165%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://www.deltaww.com/en-US/index">Delta Electronics</a></th><td><a href="data/report-vr1w-007.json">6456</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="49.78024520009253%" fill="red"></rect></svg></td></tr>
-              <tr><th><a href="https://shop.wilcon.com.ph/">Wilcon Depot</a></th><td><a href="data/report-vr1w-001.json">12969</a></td><td><svg width="100%" height="1rem"><rect height="100%" width="100%" fill="red"></rect></svg></td></tr>
-            </tbody>
-          </table>
+          <p>The <code>a11y03</code> procedure applies weights and duplication discounts to the results of these tests and generates a total <q>deficit</q> score.</p>
+          <p>Autotest has no opinion as to what tests best measure accessibility. Each user can decide what instructions to give it.</p>
+          <p>But the <code>a11y03</code> procedure <strong>is</strong> opinionated. It counts conformity to prescriptive industry standards, but reaches further, attempting to estimate total accessibility. It emphasizes simplicity, predictability, and fulfillment of established expectations. It also treats automated browsing as an essential prerequisite for accessibility, because (1) users with disabilities (and others) often use machines to mediate between them and the digital world, and (2) automated accessibility testing is necessary to ensure that digital products are accessible. Therefore, <code>a11y03</code> adds to the deficit scores of pages that block automated browsing. The total deficit scores generated by <code>a11y03</code> incorporate weights that express opinions on severity. For the three test packages, the weights are applied to the various severity levels that they report.</p>
+          <p>Autotest (in various versions) has powered some web-page accessibility comparisons, including:</p>
+          <ul>
+            <li>New York City candidates in 2021 for <a href="https://jpdev.pro/jpdev/blog/entries/0001/index.html">mayor</a>, <a href="https://jpdev.pro/jpdev/blog/entries/0005/index.html">public advocate</a>, <a href="https://jpdev.pro/jpdev/blog/entries/0006/index.html">Manhattan district attorney</a>, and <a href="https://jpdev.pro/jpdev/blog/entries/0004/index.html">comptroller</a></li>
+            <li><a href="https://jpdev.pro/jpdev/blog/entries/0008/index.html">Accessibility organizations</a></li>
+            <li><a href="https://jpdev.pro/jpdev/blog/entries/0019/index.html">Human-rights organizations</a></li>
+          </ul>
           <footer>
-            <p class="date">Produced <time itemprop="datePublished" datetime="2021-10-20">2021/10/20</time></p>
-            <p class="moddate">Revised <time itemprop="dateModified" datetime="2021-10-20">2021/10/20</time></p>
+            <p class="date">Produced <time itemprop="datePublished" datetime="2021-10-31">2021/10/31</time></p>
+            <p class="moddate">Revised <time itemprop="dateModified" datetime="2021-10-31">2021/10/31</time></p>
           </footer>
         </main>
       </body>
