@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jonathan Robert Pool">
+    <meta name="creator" content="Jonathan Robert Pool">
+    <meta name="publisher" name="Jonathan Robert Pool">
+    <meta name="description" content="blog entry">
+    <meta name="keywords" content="blog">
+    <title>Accessibility test validation</title>
+    <link rel="stylesheet" href="../../../../site/style.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="home"><a href="../../index.html">R&amp;D notes</a></p>
+        <h1>Accessibility test validation</h1>
+        <p class="author">Jonathan Robert Pool</p>
+        <p class="summary">If experts fail a test, is the test broken?</p>
+      </header>
+      <h2>Introduction</h2>
+      <p>Almost everybody in the world wants or needs to use digital technology, and <a href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html">one out of four to five persons has a disability</a>. Persons with disabilities can use digital technology more successfully if it incorporates the standards and techniques of <dfn><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">digital accessibility</a></dfn>. Accessible websites typically work better for all users, not only those with disabilities, and are also easier to discover in web searches. The pressures for accessibility include compliance with laws and regulations, as well.</p>
+      <p>To ensure that digital products are accessible, one tests them. A valid test finds all the faults that it is intended to find and does not find any fault unless it really exists. In other words, it reports neither <dfn>false negatives</dfn> nor <dfn>false positives</dfn>. But, just as you cannot assume a website is accessible without testing it, you also cannot assume that any test is valid without testing (i.e. validating) the test.</p>
+      <h2>Seeking a gold standard</h2>
+      <p>Consider the problem of false positives (wrongly reporting a fault). To check a test for them, it would be ideal to have a body of digital products that are known to be completely accessible. Then one could perform tests on those products and expect the tests to report no faults. Such a set of perfect products could be considered a <dfn>gold standard</dfn> of accessibility.</p>
+      <p>As a first step, it is common to <strong>construct</strong> artifacts for test validation. If one creates a test, one can also create products that should pass the test and then perform the test on those products. If the test reports a fault, one can investigate the cause. But there is a risk of making the validator too easy. A gold standard that <strong>others</strong> have created would validate more trustably.</p>
+      <p>A natural candidate for an independent gold standard is a set of digital products created by accessibility experts. They should know how to make things accessible. Their own artifacts should be accessible. If, for example, they are in the business of accessibility consulting, they would be risking their reputation by creating an inaccessible website to market their services.</p>
+      <h2>Testing a theory of testing a test</h2>
+      <p>Let us put this idea into practice and discover how well it works.</p>
+      <p>I have created a battery of eleven accessibility tests named <q>Combo11</q> (run by the <a href="https://github.com/jrpool/autotest">Autotest application</a>). I started validating it by trying to code a <a href="https://jpdev.pro/jpdev/blog/entries/0000/passing.html">perfectly accessible web page</a> and debugging with it. Once that page passed all the tests, I identified a set of 41 web pages produced by accessibility experts, to serve, potentially, as an independent gold standard. I ran Combo11 on those 41 pages, and it reported <dfn>deficit</dfn> scores. A score of 0 indicates that a page has passed all the tests. Any deficit score greater than 0 indicates that at least one test has found at least one fault on the page.</p>
+      <p>Here are the results:</p>
+      <table class="allBorder">
+        <caption>Results of testing accessibility experts&rsquo; web pages with Combo11</caption>
+        <thead>
+          <tr><th rowspan="2">Page</th><th colspan="2">Deficit as a</th></tr>
+          <tr><th>Number</th><th>Bar</th>
+        </thead>
+        <tbody class="secondCellRight">
+          <tr><th><a href="https://webaim.org/">WebAIM</a></th><td>43</td><td><svg width="100%" height="1rem"><rect height="100%" width="1.3884404262189216%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.w3.org/WAI/standards-guidelines/aria/">W3C WAI-ARIA</a></th><td>102</td><td><svg width="100%" height="1rem"><rect height="100%" width="3.2935098482402325%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://designsystem.digital.gov/documentation/accessibility/">U.S. Web Design System</a></th><td>102</td><td><svg width="100%" height="1rem"><rect height="100%" width="3.2935098482402325%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.accessibilityassociation.org/s/">IAAP</a></th><td>105</td><td><svg width="100%" height="1rem"><rect height="100%" width="3.3903777849531807%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.digitalaccessibilitycentre.org/">Digital Accessibility Centre</a></th><td>117</td><td><svg width="100%" height="1rem"><rect height="100%" width="3.7778495318049727%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.barrierbreak.com/">Barrier Break</a></th><td>121</td><td><svg width="100%" height="1rem"><rect height="100%" width="3.90700678075557%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.mindscreen.de/">mindscreen</a></th><td>124</td><td><svg width="100%" height="1rem"><rect height="100%" width="4.003874717468518%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.funka.com/en/">Funka</a></th><td>133</td><td><svg width="100%" height="1rem"><rect height="100%" width="4.294478527607362%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.access-for-all.ch/ch/">Zugang für alle</a></th><td>138</td><td><svg width="100%" height="1rem"><rect height="100%" width="4.455925088795609%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://usablenet.com/">UsableNet</a></th><td>143</td><td><svg width="100%" height="1rem"><rect height="100%" width="4.6173716499838555%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://convergeaccessibility.com/">Converge Accessibility</a></th><td>158</td><td><svg width="100%" height="1rem"><rect height="100%" width="5.101711333548596%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://knowbility.org/">Knowbility</a></th><td>163</td><td><svg width="100%" height="1rem"><rect height="100%" width="5.2631578947368425%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.aph.org/accessibility-solutions/">American Printing House</a></th><td>187</td><td><svg width="100%" height="1rem"><rect height="100%" width="6.038101388440427%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://tenon.io/">Tenon</a></th><td>193</td><td><svg width="100%" height="1rem"><rect height="100%" width="6.231837261866322%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.essentialaccessibility.com/">eSSENTIAL Accessibility</a></th><td>211</td><td><svg width="100%" height="1rem"><rect height="100%" width="6.81304488214401%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.accessibilityoz.com/">AccessibilityOz</a></th><td>215</td><td><svg width="100%" height="1rem"><rect height="100%" width="6.942202131094608%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.levelaccess.com/">Level Access</a></th><td>228</td><td><svg width="100%" height="1rem"><rect height="100%" width="7.361963190184049%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://equalentry.com/">Equal Entry</a></th><td>228</td><td><svg width="100%" height="1rem"><rect height="100%" width="7.361963190184049%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.evinced.com/">Evinced</a></th><td>229</td><td><svg width="100%" height="1rem"><rect height="100%" width="7.394252502421699%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.accessibilityshield.com/">Accessibility Shield</a></th><td>234</td><td><svg width="100%" height="1rem"><rect height="100%" width="7.5556990636099455%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.peatworks.org/">PEAT</a></th><td>252</td><td><svg width="100%" height="1rem"><rect height="100%" width="8.136906683887632%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.mozilla.org/en-US/">Mozilla</a></th><td>270</td><td><svg width="100%" height="1rem"><rect height="100%" width="8.71811430416532%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://theweco.com/">WeCo</a></th><td>277</td><td><svg width="100%" height="1rem"><rect height="100%" width="8.944139489828867%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.csun.edu/cod">CSUN Center on Disabilities</a></th><td>300</td><td><svg width="100%" height="1rem"><rect height="100%" width="9.6867936712948%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://onlineada.com/">Online ADA</a></th><td>310</td><td><svg width="100%" height="1rem"><rect height="100%" width="10.009686793671294%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.hearcolors.com.mx/">Fundación Hearcolors</a></th><td>312</td><td><svg width="100%" height="1rem"><rect height="100%" width="10.074265418146593%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.bfit-bund.de/DE/Home/home_node.html">Überwachungsstelle des BFIT-Bund</a></th><td>339</td><td><svg width="100%" height="1rem"><rect height="100%" width="10.946076848563125%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://myblindspot.org/">My Blind Spot</a></th><td>364</td><td><svg width="100%" height="1rem"><rect height="100%" width="11.75330965450436%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.abilitynet.org.uk/">AbilityNet</a></th><td>472</td><td><svg width="100%" height="1rem"><rect height="100%" width="15.240555376170487%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://atos.net/en/lp/accessibility-and-assistive-technology-iux">Atos</a></th><td>477</td><td><svg width="100%" height="1rem"><rect height="100%" width="15.402001937358735%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.audioeye.com/">AudioEye</a></th><td>577</td><td><svg width="100%" height="1rem"><rect height="100%" width="18.630933161123668%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.crawfordtech.com/accessibilitynow">Crawford Technologies</a></th><td>623</td><td><svg width="100%" height="1rem"><rect height="100%" width="20.11624152405554%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.microassist.com/">Microassist</a></th><td>628</td><td><svg width="100%" height="1rem"><rect height="100%" width="20.277688085243785%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://cidi.gatech.edu/">Georgia Tech CIDI</a></th><td>660</td><td><svg width="100%" height="1rem"><rect height="100%" width="21.310946076848563%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://accessibleweb.com/">Accessible Web</a></th><td>919</td><td><svg width="100%" height="1rem"><rect height="100%" width="29.67387794639974%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.tpgi.com/">TPGi</a></th><td>1012</td><td><svg width="100%" height="1rem"><rect height="100%" width="32.67678398450113%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.visionaustralia.org/services/digital-access">Vision Australia</a></th><td>1014</td><td><svg width="100%" height="1rem"><rect height="100%" width="32.74136260897643%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://www.viscardicenter.org/digital-accessibility-services/web-accessibility/">Viscardi Center</a></th><td>1100</td><td><svg width="100%" height="1rem"><rect height="100%" width="35.51824346141427%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://deque.com/">Deque</a></th><td>1239</td><td><svg width="100%" height="1rem"><rect height="100%" width="40.00645786244753%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://siteimprove.com/en-us/accessibility/">Siteimprove</a></th><td>2292</td><td><svg width="100%" height="1rem"><rect height="100%" width="74.00710364869228%" fill="red"></rect></svg></td></tr>
+          <tr><th><a href="https://accessibe.com/">AccessiBe</a></th><td>3097</td><td><svg width="100%" height="1rem"><rect height="100%" width="100%" fill="red"></rect></svg></td></tr>
+        </tbody>
+      </table>
+      <p>The table above shows that all 41 independent expert pages failed at least one test. Why? There are three possible explanations:</p>
+      <ul>
+        <li>The tests are correct, and the pages are faulty. Combo11 is reporting real faults.</li>
+        <li>The pages are accessible, and tests are faulty. Combo11 is reporting false positives.</li>
+        <li>Accessibility is variously interpreted. The page creators consider their pages accessible, but Combo11 disagrees.</li>
+      </ul>
+      <p>Neither a test nor a web page is likely to be perfect, and there are legitimate differences of interpretation of perfection. Therefore, all three explanations are likely appropriate for some of the reported faults.</p>
+      <p>Combo11 is a combination of 11 tests. Here is a list of them. For each test, the number of pages failing the test is shown.</p>
+      <table class="allBorder">
+        <caption>Combo11 tests and counts of pages failing them</caption>
+        <thead><tr><th>Test</th><th>Failing pages</th></tr></thead>
+        <tbody class="secondCellRight">
+          <tr><th>styleDiff</th><td>41</td></tr>
+          <tr><th>wave1</th><td>40</td></tr>
+          <tr><th>bulk</th><td>39</td></tr>
+          <tr><th>linkUl</th><td>35</td></tr>
+          <tr><th>axe</th><td>34</td></tr>
+          <tr><th>focOl</th><td>34</td></tr>
+          <tr><th>roleS</th><td>31</td></tr>
+          <tr><th>focOp</th><td>29</td></tr>
+          <tr><th>hover</th><td>13</td></tr>
+          <tr><th>labClash</th><td>10</td></tr>
+          <tr><th>radioSet</th><td>0</td></tr>
+        </tbody>
+      </table>
+      <p>Two of these tests are actually batteries of tests created by other projects: <code>axe</code> (<a href="https://github.com/dequelabs/axe-core">Axe by Deque</a>) and <code>wave1</code> (<a href="https://wave.webaim.org/">WAVE by WebAIM</a>). The other eight tests are custom-created.</p>
+      <h2>Inspecting</h2>
+      <p>To begin validating this battery of tests, let us inspect a few reported faults.</p>
+      <h3>Roles</h3>
+      <p>Here is a piece of one of the 41 pages:</p>
+      <p><img src="buttonLinks.png" alt="3 blue rectangles with white text, Accept, Reject, and Read More"></p>
+      <p>They look like 3 buttons, but in fact they are links, created with the HTML <code>a</code> element. An <code>a</code> element in HTML has the role <code>link</code>. But this page changes the role of the first two links by adding the attribute <code>role="button"</code> to them. So now those two links have the role of <code>button</code>, while the third one still has the role of <code>link</code>.</p>
+      <p>The <code>roleS</code> test reports these role reassignments as faults. In HTML, the <code>button</code> element automatically has the <code>button</code> role. The test considers it a poor practice for accessibility to change the role of an HTML element when, instead, one could have used the element that already has the role.</p>
+      <p>This rejection has a reasonable basis. A role implies particular behaviors. Giving an element a <code>button</code> role is a <a href="https://www.w3.org/TR/wai-aria-practices/#no_aria_better_bad_aria">promise that the element will behave exactly like a button</a>. But such a promise is difficult to keep, because element behaviors are complex. In fact, the page breaks its promise to make the first two links behave like buttons. A user can click a button not only with a mouse, but also with either the <kbd>Enter</kbd> key or the <kbd>Space</kbd> key (after using the <kbd>Tab</kbd> key to move to the button). But, for these two links with the <code>button</code> role, the <kbd>Space</kbd> key scrolls the page instead, as it normally does. Promise broken. Reassigning roles also complicates the code and makes it harder to test and, when somebody else revises it later, more likely to break.</p>
+      <h3>Styles</h3>
+      <p>The same page that contains the <q>Read More</q> link shown above also contains this <q>Learn more</q> link.</p>
+      <p><img src="link.png" alt="link with text Learn more and a right-pointing caret"></p>
+      <p>Both are links, without any special role assignment. But they look very different. The <code>styleDiff</code> test faults the page for giving dissimilar <code>style</code> properties (and thus dissimilar appearances) to its links. (It does the same for buttons and the six levels of headings.) The test considers this a poor practice for accessibility. It complicates the user&rsquo;s task of identifying items on the page. It makes user mistakes more likely. And these harms will tend particularly to befall users with visual, memory, attention, or learning disabilities.</p>
+      <h3>Focus indicators</h3>
+      <p>Using the <kbd>Tab</kbd> key to move around a page changes the <dfn>focus</dfn>. The element that has the focus is the one the user will act on if the user presses an appropriate key. On an accessible page, the current focus is always made visible, with a <dfn>focus indicator</dfn>. The standard focus indicator is an outline. (Navigate on this page with your <kbd>Tab</kbd> key to see the outline move.) The <code>focOl</code> test considers it a poor practice to hide the outline or replace it with some other focus indicator. The idea is that users have learned to recognize focus by the outline, and using some other indicator will tend to confuse them.</p>
+      <p>Here is a list of links that have failed the <code>focOl</code> test.</p>
+      <p><img src="focus.png" alt="3 links, of which the first is blue on white and the second and third are white on a blue"></p>
+      <p>The third link has the focus. The page is designed to show focus on a link by inverting its color style. The link changes from blue on white to white on blue. Not only must the user learn to recognize this nonstandard focus indicator, but the page uses exactly the same indicator to show that the user is hovering over a link with the mouse. The second link here is being hovered over. Which one is in focus, and which one is being hovered over? It isn&rsquo;t obvious. But pressing the <kbd>Enter</kbd> key will follow the <strong>focused</strong> link, not the <strong>hovered</strong> link. So using the same indicator for two different purposes can confuse the user and lead to mistakes.</p>
+      <h3>Labels</h3>
+      <p>When an accessible form asks the user to input text, the form tells the user what information is requested. Preceding the input field with explanatory text works well for some users, but not all. Accessibility standards require input labels to be formally specified, so other software can help users understand forms.</p>
+      <p>Here is an input field on one of the pages, asking for the user&rsquo;s first name.</p>
+      <p><img src="input.png" alt="input field, preceded by First Name"></p>
+      <p>The HTML code for this input makes the phrase <q>First Name</q> a label for the input. However, this labeling fails the <code>labClash</code> test, because the code, shown below, uses two different and incompatible labeling methods. <code>for="fld_8768091_1"</code> and <code>aria-labelledby="fld_8768091Label"</code> are competing to perform the same function.</p>
+      <pre>&lt;div data-field-wrapper="fld_8768091" class="form-group" id="fld_8768091_1-wrap">
+        &lt;label id="fld_8768091Label" for="fld_8768091_1" class="control-label">First Name &lt;span aria-hidden="true" role="presentation" class="field_required" style="color:#ee0000;">*&lt;/span>&lt;/label>
+        &lt;div class="">
+          &lt;input required="" type="text" data-field="fld_8768091" class=" form-control" id="fld_8768091_1" name="fld_8768091" value="" data-type="text" aria-required="true" aria-labelledby="fld_8768091Label" field_signature="3876002848" form_signature="10360417896781115281">			&lt;/div>
+      &lt;/div></pre>
+      <p>When this mistake is made, the user&rsquo;s equipment is expected to pay attention to one of the labeling methods and disregard the other. But this conflict could do harm if the user&rsquo;s equipment is faulty. And such a coding error increases the cost and fragility of future code maintenance and testing. So the <code>labClash</code> test considers it an accessibility fault.</p>
+      <h3>Keyboard navigation</h3>
+      <p>Accessible web pages do not assume that users can hover, click, and drag. Some users prefer to navigate entirely with a keyboard. Others must do so, since a mouse, trackpad, or joystick may be impractical if you are blind or have very limited motor control. In such cases, users navigate with keyboard keys (or with special devices that pretend to be keyboards) to place the focus on an element, and they then use other keyboard keys to operate on the element. One pattern is to use the <kbd>Tab</kbd> key to navigate and the <kbd>Enter</kbd> key to operate. But the rules require or permit other keys to be used under particular conditions.</p>
+      <p>The <code>focOp</code> test reports a fault whenever a page contains an element that the user expects to be able to operate on, but the standard procedures for keyboard navigation cannot put that element into focus.</p>
+      <p>The three elements shown below appear on one of the pages.</p>
+      <p><img src="carousel.png" alt="Lonely Planet and Pillsbury logos, followed by right-pointing angle bracket"></p>
+      <p>The first two are links, and the last is a <code>div</code> element with the role of <code>button</code>. The intent of the button is to rotate the logo links in a carousel, so that eventually you can see each link. But the rotation button is not coded to indicate that it rotates a carousel. So, when the <code>focOp</code> test is trying to navigate to all operable elements, it does not use that button. These two links are initially hidden and are never rotated into visibility, so they never get focused. The <code>focOp</code> test reports them as operable elements that are unreachable by keyboard.</p>
+      <h3>Mouse navigation</h3>
+      <p>Adding new content to a web page when a user moves a mouse is likely to disorient some users, especially if they are easily startled or they have difficulty precisely controlling the mouse, seeing the page, or keeping track of what they are attending to. Some web pages pop menus open when the user hovers over menu titles. The idea is that the user will keep moving the mouse to one of the menu items and click it. But that action can fail if the user moves too slowly or erratically.</p>
+      <p><img src="hover.png" alt="Menu opened in reaction to a hover, stretching to the space under adjacent menu titles"></p>
+      <p>One of the expert pages contains the menu bar shown above. The <q>Workplace Services</q> menu is open, because the mouse is hovering over its title. Suppose you want to move the mouse over to the <q>About our Workplace Services</q> item and click it. As you move the mouse left, it is likely to pass through the space occupied by the next menu&rsquo;s title, <q>Digital Accessibility</q>. If it does, then suddenly the item you want to click will disappear and the next menu will open instead. The same problem can arise if you move the mouse cursor aside in order to read the menu title.</p>
+      <p>While such pop-up menus can be made more accessible in various ways, the result is a complex interface that is hard to use or annoying for some persons, while also being harder to test. The <code>hover</code> test of Combo11 considers it an accessibility fault for a page to add more visible content in reaction to any element being hovered over.</p>
+      <h3>Omissions</h3>
+      <p>The examples above are real faults if you agree with the tests, false positives if you consider the tests too strict, or matters of interpretation if you are on the fence.</p>
+      <p>Combo11 contains additional tests not discussed above, but it still only begins to cover the requirements for an accessible web page. These 41 pages, despite their expert authorship, may contain additional accessibility faults that Combo11 is not designed to detect&mdash;or false negatives: faults that it erroneously overlooks.</p>
+      <p>One example is the lack of form-completion help to users. The input field shown above should, according to one <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">accessibility standard</a>, contain an <code>autocomplete="given-name"</code> attribute. That would formally specify what the input field needs, so a user&rsquo;s software can populate the field. That is particularly valuable for users with mobility or memory disabilities. Combo11 does not (yet) test for that fault.</p>
+      <p>The <q>Learn more</q> link shown above exhibits another fault that Combo11 does not test for: undifferentiated links. It is one of 13 links on the page with exactly the same text, but pointing to 13 different destinations. When that happens, users who can see the page can see the text immediately above and figure out what topic each link will elucidate. But what about blind users? They might have decided to navigate from link to link, listening to each link. They will hear <q>Learn more</q> repeatedly. They will not know what any of these links will help them learn more about. An accessible web page adds labels to such links, allowing the user&rsquo;s equipment to announce a detailed description of each link.</p>
+      <h2>Conclusion</h2>
+      <p>These examples caution against assuming that digital products created by accessibility experts are a gold standard. They cannot be trusted to be accessible. Testing them for accessibility is still necessary. Using them&mdash;skeptically&mdash;in the validation of one&rsquo;s accessibility tests is valuable, but the diagnosis of test results requires care. When an expert&rsquo;s product fails a test, the test might be at fault, the product might be at fault, or reasonable experts might disagree about where the fault lies. Through this tension between tester and tested, it should be possible to improve tests, improve digital products, and clarify interpretations of accessibility.</p>
+      <footer>
+        <p>This work is entirely my own and does not represent my employer, CVS Health. I thank Susan Colowick for editorial comments on an earlier draft.</p>
+        <p>To inspect the data reported here, begin with the <a href="data/summary.json">summary</a>. To inspect any file referenced in the summary, visit <code>data/details/fff.json</code>, replacing <code>fff.json</code> with the file name.</p>
+        <p class="date">Published <time itemprop="datePublished" datetime="2021-08-16">2021/08/16</time></p>
+        <p class="moddate">Revised <time itemprop="dateModified" datetime="2021-08-22">2021/08/22</time></p>
+      </footer>
+    </main>
+  </body>
+</html>
