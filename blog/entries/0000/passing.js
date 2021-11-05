@@ -4,8 +4,6 @@
 const controlledMenu = button => document.getElementById(button.getAttribute('aria-controls'));
 // Returns the button controlling a menu.
 const controller = menu => document.body.querySelector(`button[aria-controls=${menu.id}`);
-// Returns whether an element is a menu.
-const isMenu = element => element && ['menu', 'menubar'].includes(element.getAttribute('role'));
 // Returns whether an element is a menu item.
 const isMenuItem = element => element.getAttribute('role') === 'menuitem';
 // Returns the focus type of a menu.
@@ -76,7 +74,7 @@ const activeIndexOf = (isButton, buttonOrMenu) => {
     const tabIndexes = items.map(item => item.tabIndex);
     return tabIndexes.indexOf(0);
   }
-}
+};
 // Makes the specified (or the last if -1) menu item active and close any sibling menus.
 const setActive = (focusType, menu, itemIndex) => {
   // Identify the menu items.
@@ -166,11 +164,8 @@ const keyNav = (isBar, menu, key, focusType) => {
   // Otherwise, if the request is for a menu item with an initial letter:
   else if (/^[a-zA-Z]$/.test(key)) {
     // Change the index to the next matching menu item’s, if there is one.
-    const matches = menuItems.map(
-      (item, index) =>
-      item.textContent.toLowerCase().trim().startsWith(key.toLowerCase())
-      ? index
-      : -1
+    const matches = menuItems.map((item, index) =>
+      item.textContent.toLowerCase().trim().startsWith(key.toLowerCase()) ? index : -1
     );
     const laterMatches = matches.filter(index => index > -1 && index > oldIndex);
     if (laterMatches.length) {
@@ -232,11 +227,6 @@ document.body.addEventListener('click', event => {
             }
           }
         }
-      }
-      // Otherwise, if the target is the menu item:
-      else if (target === menuItem) {
-        // Prevent the menu from being closed.
-        openButtons = openButtons.filter(button => button !== ownerButton);
       }
     }
   }
