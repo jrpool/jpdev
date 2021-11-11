@@ -1,0 +1,4810 @@
+{
+  "script": "a11y04",
+  "batch": "esgRest",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "ywtb",
+  "logCount": 14,
+  "logSize": 651,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "bytes": [
+          572692,
+          572692,
+          572692,
+          572692,
+          572692
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 6,
+          "serious": 0,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-role",
+            "description": "Ensures role attribute has an appropriate value for the element",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".m-skip-to-main",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "aria-allowed-role",
+                    "description": "ARIA role complementary is not allowed for given element",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".col-sm-5 > .row > h3",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-complementary-is-top-level",
+            "description": "Ensures the complementary landmark or aside is at top level",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".m-skip-to-main",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-top-level",
+                    "description": "The complementary landmark is contained in another landmark.",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-contentinfo-is-top-level",
+            "description": "Ensures the contentinfo landmark is at top level",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#wr-footer-div",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-top-level",
+                    "description": "The contentinfo landmark is contained in another landmark.",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "span[aria-label=\"Skip\\ to\\ main\\ content\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "maximum-scale on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "cookie-warning",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#QSIFeedbackButton-btn > div > div:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "visibleElements": 313
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 1,
+          "selects": 0
+        },
+        "items": [
+          "<input class=\"form-control search-input\" id=\"search\" placeholder=\"Search\" type=\"text\">"
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "tabFocusables": 54,
+        "tabFocused": 53,
+        "discrepancy": -1
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "total": 147,
+          "types": {
+            "indicatorMissing": {
+              "total": 2,
+              "tagNames": {
+                "INPUT": 1,
+                "A": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 19,
+              "tagNames": {
+                "A": 18,
+                "BUTTON": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 126,
+              "tagNames": {
+                "A": 120,
+                "BUTTON": 4,
+                "INPUT": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Read Now"
+            },
+            {
+              "tagName": "A",
+              "text": "Read Blog"
+            },
+            {
+              "tagName": "A",
+              "text": "Apply by Sept. 13"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Read Blog"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": "Read more"
+            },
+            {
+              "tagName": "A",
+              "text": "Read more"
+            },
+            {
+              "tagName": "A",
+              "text": "Read more"
+            },
+            {
+              "tagName": "A",
+              "text": "Get started"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Feedback"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "A",
+              "text": "Cookie Policy"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "OK"
+            },
+            {
+              "tagName": "A",
+              "text": "Toggle navigation Menu"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "LOGIN"
+            },
+            {
+              "tagName": "A",
+              "text": "REGISTER"
+            },
+            {
+              "tagName": "A",
+              "text": "Request a service"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Request a service"
+            },
+            {
+              "tagName": "A",
+              "text": "Outage Map"
+            },
+            {
+              "tagName": "A",
+              "text": "Search"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "☓"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Residential Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Residential Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Seasonal Residents"
+            },
+            {
+              "tagName": "A",
+              "text": "Working Safely at Home"
+            },
+            {
+              "tagName": "A",
+              "text": "Have You Been Disconnected?"
+            },
+            {
+              "tagName": "A",
+              "text": "Financial Assistance"
+            },
+            {
+              "tagName": "A",
+              "text": "Electric Vehicle Buyer's Guide"
+            },
+            {
+              "tagName": "A",
+              "text": "Indigenous Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "Find More"
+            },
+            {
+              "tagName": "A",
+              "text": "View My Bill"
+            },
+            {
+              "tagName": "A",
+              "text": "Understand My Bill"
+            },
+            {
+              "tagName": "A",
+              "text": "Report a Power Outage"
+            },
+            {
+              "tagName": "A",
+              "text": "Billing & Payment Methods"
+            },
+            {
+              "tagName": "A",
+              "text": "Move In/Move Out Requests"
+            },
+            {
+              "tagName": "A",
+              "text": "Unregistered Easements"
+            },
+            {
+              "tagName": "A",
+              "text": "Business Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Business Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Commercial/Industrial, Generators and LDCs"
+            },
+            {
+              "tagName": "A",
+              "text": "Links and Forms"
+            },
+            {
+              "tagName": "A",
+              "text": "Farmers"
+            },
+            {
+              "tagName": "A",
+              "text": "Builders & Contractors"
+            },
+            {
+              "tagName": "A",
+              "text": "Find More"
+            },
+            {
+              "tagName": "A",
+              "text": "Outage Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "Retrofit Program"
+            },
+            {
+              "tagName": "A",
+              "text": "Request a Service"
+            },
+            {
+              "tagName": "A",
+              "text": "Summary Billing"
+            },
+            {
+              "tagName": "A",
+              "text": "Net Metering"
+            },
+            {
+              "tagName": "A",
+              "text": "Rates & Billing"
+            },
+            {
+              "tagName": "A",
+              "text": "Rates & Billing"
+            },
+            {
+              "tagName": "A",
+              "text": "Understand Your Bill"
+            },
+            {
+              "tagName": "A",
+              "text": "Rates & Charges"
+            },
+            {
+              "tagName": "A",
+              "text": "Billing & Payment Methods"
+            },
+            {
+              "tagName": "A",
+              "text": "Meters"
+            },
+            {
+              "tagName": "A",
+              "text": "Find More"
+            },
+            {
+              "tagName": "A",
+              "text": "View Bill"
+            },
+            {
+              "tagName": "A",
+              "text": "Paperless Billing"
+            },
+            {
+              "tagName": "A",
+              "text": "Billing & Payment Methods"
+            },
+            {
+              "tagName": "A",
+              "text": "AutoPay"
+            },
+            {
+              "tagName": "A",
+              "text": "High Usage Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "Saving Money & Energy"
+            },
+            {
+              "tagName": "A",
+              "text": "For Homes"
+            },
+            {
+              "tagName": "A",
+              "text": "myEnergy Marketplace"
+            },
+            {
+              "tagName": "A",
+              "text": "AffordAbility Fund"
+            },
+            {
+              "tagName": "A",
+              "text": "Financial Assistance"
+            },
+            {
+              "tagName": "A",
+              "text": "Fuel Switching"
+            },
+            {
+              "tagName": "A",
+              "text": "Tips and Tools"
+            },
+            {
+              "tagName": "A",
+              "text": "For Business"
+            },
+            {
+              "tagName": "A",
+              "text": "Financial Assistance"
+            },
+            {
+              "tagName": "A",
+              "text": "Programs and Incentives"
+            },
+            {
+              "tagName": "A",
+              "text": "Power Outages & Safety"
+            },
+            {
+              "tagName": "A",
+              "text": "Power Outages & Safety"
+            },
+            {
+              "tagName": "A",
+              "text": "Outage Map"
+            },
+            {
+              "tagName": "A",
+              "text": "Outage Tools"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Health & Safety"
+            },
+            {
+              "tagName": "A",
+              "text": "When The Power Goes Out"
+            },
+            {
+              "tagName": "A",
+              "text": "Life Support Notification"
+            },
+            {
+              "tagName": "A",
+              "text": "Vegetation Management"
+            },
+            {
+              "tagName": "A",
+              "text": "Find More"
+            },
+            {
+              "tagName": "A",
+              "text": "Outage Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "Damage Claims"
+            },
+            {
+              "tagName": "A",
+              "text": "Tree Trimming"
+            },
+            {
+              "tagName": "A",
+              "text": "Temporary Disconnect"
+            },
+            {
+              "tagName": "A",
+              "text": "Underground Cable Locates"
+            },
+            {
+              "tagName": "A",
+              "text": "Support Centre & FAQs"
+            },
+            {
+              "tagName": "A",
+              "text": "Support Centre & FAQs"
+            },
+            {
+              "tagName": "A",
+              "text": "Frequently Asked Questions"
+            },
+            {
+              "tagName": "A",
+              "text": "Forms & Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "We're Here to Help"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "Regulatory Affairs"
+            },
+            {
+              "tagName": "A",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "En Francais"
+            },
+            {
+              "tagName": "A",
+              "text": "View My Bill"
+            },
+            {
+              "tagName": "A",
+              "text": "Understanding My Bill"
+            },
+            {
+              "tagName": "A",
+              "text": "Outage Map"
+            },
+            {
+              "tagName": "A",
+              "text": "Report a Power Outage"
+            },
+            {
+              "tagName": "A",
+              "text": "Moving In/Moving Out"
+            },
+            {
+              "tagName": "A",
+              "text": "WATTS"
+            },
+            {
+              "tagName": "A",
+              "text": "Sign Up for Paperless Billing"
+            },
+            {
+              "tagName": "A",
+              "text": "View Time-of-Use Rates"
+            },
+            {
+              "tagName": "A",
+              "text": "Sign Up for Outage Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn About High Usage Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "View Our Outage Map"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "Regulatory Affairs"
+            },
+            {
+              "tagName": "A",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "En Français"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy & Cookies"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Chat with us"
+            },
+            {
+              "tagName": "A",
+              "text": "Reach us by phone"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "total": 185,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 5,
+              "tagNames": {
+                "A": 4,
+                "BUTTON": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 180,
+              "tagNames": {
+                "A": 148,
+                "INPUT": 27,
+                "BUTTON": 5
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "A",
+              "id": "linkTurnOnAcc",
+              "text": "Turn on more accessible mode",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "linkTurnOffAcc",
+              "text": "Turn off more accessible mode",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "slide-close-btn",
+              "text": "Toggle navigationMenu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"navbar-brand logo\" href=\"/\" tabindex=\"-1\" title=\"Welcome to Hydro One\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "QSIFeedbackButton-close-btn",
+              "text": "<button role=\"button\" id=\"QSIFeedbackButton-close-btn\" tabindex=\"-1\" style=\"curs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to main content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "_wpcmWpid",
+              "text": "<input type=\"hidden\" name=\"_wpcmWpid\" id=\"_wpcmWpid\" value=\"\" autocomplete=\"off\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "wpcmVal",
+              "text": "<input type=\"hidden\" name=\"wpcmVal\" id=\"wpcmVal\" value=\"\" autocomplete=\"off\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOWebPartPage_PostbackSource",
+              "text": "<input type=\"hidden\" name=\"MSOWebPartPage_PostbackSource\" id=\"MSOWebPartPage_Pos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_SelectedWpId",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_SelectedWpId\" id=\"MSOTlPn_SelectedWpId\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_View",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_View\" id=\"MSOTlPn_View\" value=\"0\" autocomplet",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_ShowSettings",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_ShowSettings\" id=\"MSOTlPn_ShowSettings\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOGallery_SelectedLibrary",
+              "text": "<input type=\"hidden\" name=\"MSOGallery_SelectedLibrary\" id=\"MSOGallery_SelectedLi",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOGallery_FilterString",
+              "text": "<input type=\"hidden\" name=\"MSOGallery_FilterString\" id=\"MSOGallery_FilterString\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOTlPn_Button",
+              "text": "<input type=\"hidden\" name=\"MSOTlPn_Button\" id=\"MSOTlPn_Button\" value=\"none\" auto",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTTARGET",
+              "text": "<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" autocomple",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTARGUMENT",
+              "text": "<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"__EVENTARGUMENT\" value=\"\" autoco",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__REQUESTDIGEST",
+              "text": "<input type=\"hidden\" name=\"__REQUESTDIGEST\" id=\"__REQUESTDIGEST\" value=\"0x3A2A07",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_DisplayModeName",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_DisplayModeName\" id=\"MSOSPWebPart",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_ExitingDesignMode",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_ExitingDesignMode\" id=\"MSOSPWebPa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOWebPartPage_Shared",
+              "text": "<input type=\"hidden\" name=\"MSOWebPartPage_Shared\" id=\"MSOWebPartPage_Shared\" val",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOLayout_LayoutChanges",
+              "text": "<input type=\"hidden\" name=\"MSOLayout_LayoutChanges\" id=\"MSOLayout_LayoutChanges\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOLayout_InDesignMode",
+              "text": "<input type=\"hidden\" name=\"MSOLayout_InDesignMode\" id=\"MSOLayout_InDesignMode\" v",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "_wpSelected",
+              "text": "<input type=\"hidden\" name=\"_wpSelected\" id=\"_wpSelected\" value=\"\" autocomplete=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "_wzSelected",
+              "text": "<input type=\"hidden\" name=\"_wzSelected\" id=\"_wzSelected\" value=\"\" autocomplete=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_OldDisplayModeName",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_OldDisplayModeName\" id=\"MSOSPWebP",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_StartWebPartEditingName",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_StartWebPartEditingName\" id=\"MSOS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "MSOSPWebPartManager_EndWebPartEditing",
+              "text": "<input type=\"hidden\" name=\"MSOSPWebPartManager_EndWebPartEditing\" id=\"MSOSPWebPa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATE",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"/wEPDwUBMA9kFgJm",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATEGENERATOR",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "ctl00_ctl60_ExplicitLogin",
+              "text": "Sign In",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Cookie Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "h1-cookie-warning-btn-accept",
+              "text": "OK",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Toggle navigation Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"navbar-brand logo desktop-hide\" href=\"/\" title=\"hydroone logo\" style=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "mobile-search-bar-wysdom-search-bar-input",
+              "text": "<input id=\"mobile-search-bar-wysdom-search-bar-input\" class=\"wysdom-search-input",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button type=\"submit\" class=\"wysdom-search-submit \" style=\"cursor: default;\"><sp",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "comm-a-login",
+              "text": "LOGIN",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "comm-a-register",
+              "text": "REGISTER",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"link log-icon\" title=\"Login\"><span class=\"icon icon-my-account\"></span",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "comm-a-my-account",
+              "text": "myAccount",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request a service",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request a service",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Outage Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "search",
+              "text": "<input class=\"form-control search-input\" id=\"search\" placeholder=\"Search\" type=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "☓",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "wysdom-search-bar-wysdom-search-bar-input",
+              "text": "<input id=\"wysdom-search-bar-wysdom-search-bar-input\" class=\"wysdom-search-input",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button type=\"submit\" class=\"wysdom-search-submit \" style=\"cursor: default;\"><sp",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Residential Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Residential Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Seasonal Residents",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Working Safely at Home",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Have You Been Disconnected?",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financial Assistance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Electric Vehicle Buyer's Guide",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Indigenous Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View My Bill",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Understand My Bill",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Report a Power Outage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Billing & Payment Methods",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Move In/Move Out Requests",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Unregistered Easements",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Business Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Business Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Commercial/Industrial, Generators and LDCs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Links and Forms",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Farmers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Builders & Contractors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Outage Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Retrofit Program",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request a Service",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Summary Billing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Net Metering",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Rates & Billing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Rates & Billing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Understand Your Bill",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Rates & Charges",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Billing & Payment Methods",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Meters",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View Bill",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Paperless Billing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Billing & Payment Methods",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AutoPay",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "High Usage Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Saving Money & Energy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "For Homes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "myEnergy Marketplace",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AffordAbility Fund",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financial Assistance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fuel Switching",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tips and Tools",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "For Business",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financial Assistance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Programs and Incentives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Power Outages & Safety",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Power Outages & Safety",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Outage Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Outage Tools",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Health & Safety",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "When The Power Goes Out",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Life Support Notification",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Vegetation Management",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Outage Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Damage Claims",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tree Trimming",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Temporary Disconnect",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Underground Cable Locates",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support Centre & FAQs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support Centre & FAQs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Frequently Asked Questions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Forms & Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "We're Here to Help",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Regulatory Affairs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "En Francais",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Help for Chrome users.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Help for Firefox users.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "For Internet Explorer users.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "For Safari users.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "clicking here",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View My Bill",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Understanding My Bill",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Outage Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Report a Power Outage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Moving In/Moving Out",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read Now",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Apply by Sept. 13",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "WATTS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Get started",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "back-to-top",
+              "text": "<a class=\"scroll-top-link\" id=\"back-to-top\" style=\"cursor: default;\"><span class",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sign Up for Paperless Billing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View Time-of-Use Rates",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sign Up for Outage Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn About High Usage Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View Our Outage Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://twitter.com/HydroOne\" target=\"_blank\" title=\"Twitter\" class=\"so",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.facebook.com/HydroOneOfficial\" target=\"_blank\" title=\"Faceb",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.instagram.com/hydrooneofficial\" target=\"_blank\" title=\"Inst",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://ca.linkedin.com/company/hydro-one\" target=\"_blank\" title=\"Linke",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.youtube.com/c/hydroonechannel\" target=\"_blank\" title=\"Youtu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Regulatory Affairs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "En Français",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy & Cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Terms of Use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Site Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "h1-chat-download-btn-id",
+              "text": "<a aria-label=\"Download transcript\" class=\"h1-chat-download-btn ng-hide\" href=\"#",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "h1-chat-minimize-btn-id",
+              "text": "<a aria-label=\"Minimise\" class=\"h1-chat-cloase-btn\" href=\"#\" id=\"h1-chat-minimiz",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "h1-chat-close-btn-id",
+              "text": "<a aria-label=\"Close\" class=\"\" href=\"#\" id=\"h1-chat-close-btn-id\" title=\"Close\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "h1-chat_2",
+              "text": "Chat with us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reach us by phone",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "h1-chat-prime",
+              "text": "<a class=\"h1-chat-btn\" id=\"h1-chat-prime\" role=\"button\" tabindex=\"0\" ng-reflect-",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "QSIFeedbackButton-btn",
+              "text": "Feedback",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "triggers": 13,
+          "madeVisible": 148,
+          "opacityChanged": 6,
+          "opacityAffected": 12,
+          "unhoverables": 24
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Residential Services Residential Services Seasonal",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span> <img alt=\"icon: house with plug\" src=\"/Publ"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Residential Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Seasonal Residents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Working Safely at Home"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Have You Been Disconnected?"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Assistance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Electric Vehicle Buyer's Guide"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Indigenous Relations"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span> <img alt=\"icon: web page search\" src=\"/Publ"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "View My Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Understand My Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Report a Power Outage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Billing & Payment Methods"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Move In/Move Out Requests"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Unregistered Easements"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Residential Services",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span> <img alt=\"icon: house with plug\" src=\"/Publ"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Residential Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Seasonal Residents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Working Safely at Home"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Have You Been Disconnected?"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Assistance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Electric Vehicle Buyer's Guide"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Indigenous Relations"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span> <img alt=\"icon: web page search\" src=\"/Publ"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "View My Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Understand My Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Report a Power Outage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Billing & Payment Methods"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Move In/Move Out Requests"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Unregistered Easements"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Business Services Business Services Commercial/Ind",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: hands holding a dollar sign\""
+                },
+                {
+                  "tagName": "A",
+                  "text": "Business Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Commercial/Industrial, Generators and LDCs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Links and Forms"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Farmers"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Builders & Contractors"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: web page search\" src=\"/Publi"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Alerts"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Retrofit Program"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Request a Service"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Summary Billing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Net Metering"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Business Services",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: hands holding a dollar sign\""
+                },
+                {
+                  "tagName": "A",
+                  "text": "Business Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Commercial/Industrial, Generators and LDCs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Links and Forms"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Farmers"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Builders & Contractors"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: web page search\" src=\"/Publi"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Alerts"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Retrofit Program"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Request a Service"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Summary Billing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Net Metering"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Rates & Billing Rates & Billing Understand Your Bi",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: hydro bill\" src=\"/Publishing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Rates & Billing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Understand Your Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Rates & Charges"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Billing & Payment Methods"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Meters"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: web page search\" src=\"/Publi"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "View Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Paperless Billing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Billing & Payment Methods"
+                },
+                {
+                  "tagName": "A",
+                  "text": "AutoPay"
+                },
+                {
+                  "tagName": "A",
+                  "text": "High Usage Alerts"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Rates & Billing",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: hydro bill\" src=\"/Publishing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Rates & Billing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Understand Your Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Rates & Charges"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Billing & Payment Methods"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Meters"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: web page search\" src=\"/Publi"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "View Bill"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Paperless Billing"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Billing & Payment Methods"
+                },
+                {
+                  "tagName": "A",
+                  "text": "AutoPay"
+                },
+                {
+                  "tagName": "A",
+                  "text": "High Usage Alerts"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Saving Money & Energy For Homes myEnergy Marketpla",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: Save energy at home\" src=\"/P"
+                },
+                {
+                  "tagName": "A",
+                  "text": "For Homes"
+                },
+                {
+                  "tagName": "A",
+                  "text": "myEnergy Marketplace"
+                },
+                {
+                  "tagName": "A",
+                  "text": "AffordAbility Fund"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Assistance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Fuel Switching"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Tips and Tools"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: Save money for business\" src"
+                },
+                {
+                  "tagName": "A",
+                  "text": "For Business"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Assistance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Programs and Incentives"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Saving Money & Energy",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: Save energy at home\" src=\"/P"
+                },
+                {
+                  "tagName": "A",
+                  "text": "For Homes"
+                },
+                {
+                  "tagName": "A",
+                  "text": "myEnergy Marketplace"
+                },
+                {
+                  "tagName": "A",
+                  "text": "AffordAbility Fund"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Assistance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Fuel Switching"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Tips and Tools"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: Save money for business\" src"
+                },
+                {
+                  "tagName": "A",
+                  "text": "For Business"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Assistance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Programs and Incentives"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Power Outages & Safety Power Outages & Safety Outa",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span> <img alt=\"icon: storm cloud with pin\" src=\""
+                },
+                {
+                  "tagName": "A",
+                  "text": "Power Outages & Safety"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Map"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Tools"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Health & Safety"
+                },
+                {
+                  "tagName": "A",
+                  "text": "When The Power Goes Out"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Life Support Notification"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Vegetation Management"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: web page search\" src=\"/Publi"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Alerts"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Damage Claims"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Tree Trimming"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Temporary Disconnect"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Underground Cable Locates"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Power Outages & Safety",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span> <img alt=\"icon: storm cloud with pin\" src=\""
+                },
+                {
+                  "tagName": "A",
+                  "text": "Power Outages & Safety"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Map"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Tools"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Health & Safety"
+                },
+                {
+                  "tagName": "A",
+                  "text": "When The Power Goes Out"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Life Support Notification"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Vegetation Management"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: web page search\" src=\"/Publi"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Find More"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Outage Alerts"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Damage Claims"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Tree Trimming"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Temporary Disconnect"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Underground Cable Locates"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Support Centre & FAQs Support Centre & FAQs Freque",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: mobile chat\" src=\"/Publishin"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Support Centre & FAQs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Frequently Asked Questions"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Forms & Resources"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact Us"
+                },
+                {
+                  "tagName": "A",
+                  "text": "We're Here to Help"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support Centre & FAQs",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span><img alt=\"icon: mobile chat\" src=\"/Publishin"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Support Centre & FAQs"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Frequently Asked Questions"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Forms & Resources"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact Us"
+                },
+                {
+                  "tagName": "A",
+                  "text": "We're Here to Help"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "QSIFeedbackButton-btn",
+              "text": "Feedback",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "circle",
+                  "text": "<circle cx=\"6\" cy=\"50\" fill=\"#363F48\" r=\"6\" stroke"
+                },
+                {
+                  "tagName": "circle",
+                  "text": "<circle cx=\"26\" cy=\"50\" fill=\"#363F48\" r=\"6\" strok"
+                },
+                {
+                  "tagName": "circle",
+                  "text": "<circle cx=\"46\" cy=\"50\" fill=\"#363F48\" r=\"6\" strok"
+                },
+                {
+                  "tagName": "circle",
+                  "text": "<circle cx=\"6\" cy=\"50\" fill=\"#363F48\" r=\"6\" stroke"
+                },
+                {
+                  "tagName": "circle",
+                  "text": "<circle cx=\"26\" cy=\"50\" fill=\"#363F48\" r=\"6\" strok"
+                },
+                {
+                  "tagName": "circle",
+                  "text": "<circle cx=\"46\" cy=\"50\" fill=\"#363F48\" r=\"6\" strok"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Turnonmoreaccessiblemode"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "InvestorRelations"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "InvestorRelations"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "RegulatoryAffairs"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RegulatoryAffairs"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ContactUs"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ContactUs"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "EnFrançais"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EnFrançais"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Privacy&Cookies"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy&Cookies"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "TermsofUse"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "TermsofUse"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "SiteMap"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SiteMap"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<imgalt=\"NeedHelp?\"src=\"/StyleLibrary/H1/images/ch"
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<imgsrc=\"https://siteintercept.qualtrics.com/WRSit"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 4,
+          "wellLabeled": 5
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button type=\"submit\" class=\"wysdom-search-submit \"><span class=\"font-awesome-icon fa fa-search\"></span></button>}"
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button type=\"submit\" class=\"wysdom-search-submit \"><span class=\"font-awesome-icon fa fa-search\"></span></button>}"
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button role=\"button\" id=\"QSIFeedbackButton-close-btn\" tabindex=\"-1\" style=\"cursor: pointer; border: 0px; padding: 0px; background-color: transparent; z-index: 2000000001; margin: 0px;\"><img src=\"https://siteintercept.qualtrics.com/WRSiteInterceptEngine/../WRQualtricsShared/Graphics/siteintercept/wr-dialog-close-btn-black.png\" alt=\"Close\" style=\"height: 17px; width: 17px;\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "accept",
+                "content": "OK"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "☓"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "search"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Feedback"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "links": 133,
+          "inline": {
+            "total": 13,
+            "underlined": 1,
+            "underlinedPercent": 7
+          }
+        },
+        "items": {
+          "underlined": [
+            "WATTS"
+          ],
+          "notUnderlined": [
+            "Cookie Policy",
+            "clicking here",
+            "Careers",
+            "Investor Relations",
+            "Regulatory Affairs",
+            "Newsroom",
+            "Contact Us",
+            "En Français",
+            "Privacy & Cookies",
+            "Terms of Use",
+            "Accessibility",
+            "Site Map"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "roleElements": 28,
+        "badRoleElements": 28,
+        "tagNames": {
+          "SPAN": {
+            "complementary": 1
+          },
+          "A": {
+            "complementary": 1,
+            "button": 18
+          },
+          "NOSCRIPT": {
+            "complementary": 1
+          },
+          "DIV": {
+            "complementary": 1,
+            "navigation": 1,
+            "main": 1,
+            "contentinfo": 1,
+            "dialog": 1
+          },
+          "BUTTON": {
+            "button": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          },
+          "h2": {
+            "total": 11
+          },
+          "h3": {
+            "total": 2
+          },
+          "h4": {
+            "total": 17,
+            "subtotals": [
+              15,
+              2
+            ]
+          },
+          "aInline": {
+            "total": 13,
+            "subtotals": [
+              6,
+              4,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 120,
+            "subtotals": [
+              52,
+              11,
+              9,
+              8,
+              5,
+              5,
+              5,
+              4,
+              3,
+              3,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 6,
+            "subtotals": [
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {
+            "fontWeight": {
+              "600": 1,
+              "700": 1
+            },
+            "fontSize": {
+              "18px": 2,
+              "40px": 1
+            }
+          },
+          "h2": {},
+          "h3": {},
+          "h4": {
+            "fontWeight": {
+              "500": 2,
+              "700": 15
+            },
+            "lineHeight": {
+              "28.6px": 15,
+              "19.8px": 2
+            },
+            "fontSize": {
+              "26px": 345,
+              "18px": 63
+            }
+          },
+          "aInline": {
+            "borderStyle": {
+              "none": 12,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 12,
+              "1px": 1
+            },
+            "fontWeight": {
+              "600": 12,
+              "700": 1
+            },
+            "lineHeight": {
+              "20px": 6,
+              "25.7143px": 6,
+              "28.6px": 1
+            },
+            "textDecorationLine": {
+              "none": 12,
+              "underline": 1
+            },
+            "fontSize": {
+              "18px": 192,
+              "14px": 160,
+              "17px": 32,
+              "26px": 32
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 116,
+              "solid": 4
+            },
+            "borderWidth": {
+              "0px": 116,
+              "1px": 4
+            },
+            "fontWeight": {
+              "300": 3,
+              "400": 18,
+              "500": 13,
+              "600": 85,
+              "700": 1
+            },
+            "lineHeight": {
+              "20px": 76,
+              "22px": 13,
+              "17.1429px": 8,
+              "0px": 7,
+              "32px": 5,
+              "22.8571px": 4,
+              "24px": 4,
+              "30px": 1,
+              "21.4286px": 1,
+              "45.7143px": 1
+            },
+            "maxWidth": {
+              "none": 106,
+              "122px": 9,
+              "130px": 2,
+              "97px": 1,
+              "80px": 1,
+              "74px": 1
+            },
+            "minHeight": {
+              "0px": 109,
+              "32px": 7,
+              "1px": 4
+            },
+            "minWidth": {
+              "0px": 113,
+              "32px": 7
+            },
+            "fontSize": {
+              "14px": 2496,
+              "20px": 352,
+              "16px": 288,
+              "12px": 256,
+              "18px": 192,
+              "0px": 192,
+              "15px": 32,
+              "32px": 32
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 4,
+              "solid": 2
+            },
+            "borderWidth": {
+              "0px": 4,
+              "1px": 2
+            },
+            "fontWeight": {
+              "400": 3,
+              "700": 3
+            },
+            "lineHeight": {
+              "22.5px": 2,
+              "22.8571px": 1,
+              "27.1429px": 1,
+              "20px": 1,
+              "normal": 1
+            },
+            "minHeight": {
+              "0px": 5,
+              "auto": 1
+            },
+            "minWidth": {
+              "38.25px": 2,
+              "90px": 1,
+              "0px": 1,
+              "84px": 1,
+              "72px": 1
+            },
+            "fontSize": {
+              "22.5px": 64,
+              "16px": 32,
+              "19px": 32,
+              "14px": 32,
+              "12px": 32
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "totals": {
+          "total": 21,
+          "tagNames": {
+            "A": 3,
+            "DIV": 8,
+            "UL": 7,
+            "SECTION": 1,
+            "ENV-CTRL": 1,
+            "BUTTON": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Skip to main content"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Hydro One or a third party may use cookies to remember your location preferences, to authenticate yo"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "mobile-search-bar-wysdom-search-bar-autocomplete",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "slide-close-btn",
+            "text": "Toggle navigationMenu"
+          },
+          {
+            "tagName": "DIV",
+            "id": "wysdom-search-bar-wysdom-search-bar-autocomplete",
+            "text": ""
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Residential Services Seasonal Residents Working Safely at Home Have You Been Disconnected? Financial"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Business Services Commercial/Industrial, Generators and LDCs Links and Forms Farmers Builders & Cont"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Rates & Billing Understand Your Bill Rates & Charges Billing & Payment Methods Meters Find More View"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "For Homes myEnergy Marketplace AffordAbility Fund Financial Assistance Fuel Switching Tips and Tools"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Power Outages & Safety Outage Map Outage Tools Corporate Health & Safety When The Power Goes Out Lif"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Support Centre & FAQs Frequently Asked Questions Forms & Resources Contact Us We're Here to Help"
+          },
+          {
+            "tagName": "SECTION",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "ENV-CTRL",
+            "id": "envName",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Contact UsHours of OperationMonday to Friday 07:30 AM - 08:00 PM ESTChat with usReach us by phoneCon"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Contact UsHours of OperationMonday to Friday 07:30 AM - 08:00 PM ESTChat with usReach us by phone"
+          },
+          {
+            "tagName": "A",
+            "id": "h1-chat-prime",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Feedback"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Feedback"
+          },
+          {
+            "tagName": "DIV",
+            "id": "QSIFeedbackButton-target-container",
+            "text": ""
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "QSIFeedbackButton-close-btn",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 14,
+            "recommendation": 3,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/cookie-warning[1]/div[1]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/form[1]/button[1]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 8,
+                "top": 148,
+                "height": 21,
+                "width": 36
+              },
+              "snippet": "<button id=\"h1-cookie-warning-btn-accept\" class=\"btn h1-cookie-btn cookie-accept\" aria-label=\"accept\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/cookie-warning[1]/div[1]/div[1]/div[1]/div[1]/p[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[2]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 255,
+                "top": 114,
+                "height": 17,
+                "width": 91
+              },
+              "snippet": "<a target=\"_blank\" href=\"/privacy-and-cookies\" class=\"h1-cookie-privacy-link\" aria-label=\"Click here to see Privacy Policy\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/div[1]/div[1]/top-menu[1]/div[1]/div[1]/ul[1]/li[6]/div[1]/div[2]/div[1]/form[1]/button[1]",
+                "aria": "/document[1]/form[1]/navigation[1]/list[2]/listitem[6]/form[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 48,
+                "top": 546,
+                "height": 6,
+                "width": 16
+              },
+              "snippet": "<button class=\"wysdom-search-submit \" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]/ul[1]/li[1]/div[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/form[1]/navigation[1]/list[1]/listitem[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 48,
+                "top": 235,
+                "height": 6,
+                "width": 16
+              },
+              "snippet": "<button class=\"wysdom-search-submit \" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 194,
+                "height": 94,
+                "width": 38
+              },
+              "snippet": "<button style=\"position: fixed; visibility: visible; cursor: pointer; border: none; background-color: transparent; padding: 0px; margin: 0px; bottom: 313px; left: 0px; width: 38px; transition: all 0.5s ease 0s;\" aria-controls=\"QSIFeedbackButton-target-container\" aria-expanded=\"false\" id=\"QSIFeedbackButton-btn\" role=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]/a[1]",
+                "aria": "/document[1]/complementary[1]/complementary[1]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 133
+              },
+              "snippet": "<a aria-label=\"Skip to Main Content\" role=\"complementary\" style=\"z-index: 800;\" tabindex=\"0\" href=\"#page-content\" class=\"m-skip-to-main x-hidden-focus\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]",
+                "aria": "/document[1]/complementary[1]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 133
+              },
+              "snippet": "<span aria-label=\"Skip to main content\" role=\"complementary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/form[1]/region[1]/link[5]"
+              },
+              "message": "Text contrast of 1.07 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 434,
+                "top": 3020,
+                "height": 17,
+                "width": 84
+              },
+              "snippet": "<a style=\"color: yellow !important;\" href=\"#\" class=\"btn btn-app-link para-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/a[4]",
+                "aria": "/document[1]/form[1]/region[1]/link[4]"
+              },
+              "message": "Text contrast of 1.07 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 493,
+                "top": 2986,
+                "height": 17,
+                "width": 106
+              },
+              "snippet": "<a style=\"color: yellow !important;\" href=\"https://support.apple.com/kb/ph21411?locale=en_US\" class=\"btn btn-lg btn-app-link para-link col-md-3 col-xs-12\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/a[3]",
+                "aria": "/document[1]/form[1]/region[1]/link[3]"
+              },
+              "message": "Text contrast of 1.07 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 312,
+                "top": 2986,
+                "height": 17,
+                "width": 181
+              },
+              "snippet": "<a style=\"color: yellow !important;\" href=\"https://support.microsoft.com/en-ca/help/17442/windows-internet-explorer-delete-manage-cookies\" class=\"btn btn-lg btn-app-link para-link col-md-3 col-xs-12\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/a[2]",
+                "aria": "/document[1]/form[1]/region[1]/link[2]"
+              },
+              "message": "Text contrast of 1.07 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 163,
+                "top": 2986,
+                "height": 17,
+                "width": 150
+              },
+              "snippet": "<a style=\"color: yellow !important;\" href=\"https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences\" class=\"btn btn-lg btn-app-link para-link col-md-3 col-xs-12\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/region[1]/link[1]"
+              },
+              "message": "Text contrast of 1.07 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 8,
+                "top": 2986,
+                "height": 17,
+                "width": 155
+              },
+              "snippet": "<a style=\"color: yellow !important;\" href=\"https://support.google.com/chrome/answer/95647?hl=en&ref_topic=7438325\" class=\"btn btn-lg btn-app-link para-link col-md-3 col-xs-12\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]/a[1]",
+                "aria": "/document[1]/complementary[1]/complementary[1]"
+              },
+              "message": "The ARIA role 'complementary' is not valid for the element <a>",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 133
+              },
+              "snippet": "<a aria-label=\"Skip to Main Content\" role=\"complementary\" style=\"z-index: 800;\" tabindex=\"0\" href=\"#page-content\" class=\"m-skip-to-main x-hidden-focus\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[2]",
+                "aria": "/document[1]/complementary[2]"
+              },
+              "message": "The ARIA role 'complementary' is not valid for the element <noscript>",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-label=\"iframe content\" role=\"complementary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryLandmarkLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]/a[1]",
+                "aria": "/document[1]/complementary[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a visible label",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 133
+              },
+              "snippet": "<a aria-label=\"Skip to Main Content\" role=\"complementary\" style=\"z-index: 800;\" tabindex=\"0\" href=\"#page-content\" class=\"m-skip-to-main x-hidden-focus\">",
+              "level": "recommendation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryLandmarkLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]",
+                "aria": "/document[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a visible label",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 133
+              },
+              "snippet": "<span aria-label=\"Skip to main content\" role=\"complementary\">",
+              "level": "recommendation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryLandmarkLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[2]",
+                "aria": "/document[1]/complementary[2]"
+              },
+              "message": "The element with \"complementary\" role does not have a visible label",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-label=\"iframe content\" role=\"complementary\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 6,
+            "recommendation": 3,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/cookie-warning[1]/div[1]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/form[1]/button[1]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 670,
+                "top": 525,
+                "height": 50,
+                "width": 90
+              },
+              "snippet": "<button id=\"h1-cookie-warning-btn-accept\" class=\"btn h1-cookie-btn cookie-accept\" aria-label=\"accept\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[5]/div[1]/div[1]/cookie-warning[1]/div[1]/div[1]/div[1]/div[1]/p[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[2]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 579,
+                "top": 500,
+                "height": 20,
+                "width": 103
+              },
+              "snippet": "<a target=\"_blank\" href=\"/privacy-and-cookies\" class=\"h1-cookie-privacy-link\" aria-label=\"Click here to see Privacy Policy\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]/a[1]",
+                "aria": "/document[1]/complementary[1]/complementary[1]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": -10000,
+                "top": 0,
+                "height": 20,
+                "width": 20
+              },
+              "snippet": "<a aria-label=\"Skip to Main Content\" role=\"complementary\" style=\"z-index: 800;\" tabindex=\"0\" href=\"#page-content\" class=\"m-skip-to-main x-hidden-focus\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]",
+                "aria": "/document[1]/complementary[1]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<span aria-label=\"Skip to main content\" role=\"complementary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]/a[1]",
+                "aria": "/document[1]/complementary[1]/complementary[1]"
+              },
+              "message": "The ARIA role 'complementary' is not valid for the element <a>",
+              "bounds": {
+                "left": -10000,
+                "top": 0,
+                "height": 20,
+                "width": 20
+              },
+              "snippet": "<a aria-label=\"Skip to Main Content\" role=\"complementary\" style=\"z-index: 800;\" tabindex=\"0\" href=\"#page-content\" class=\"m-skip-to-main x-hidden-focus\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[2]",
+                "aria": "/document[1]/complementary[2]"
+              },
+              "message": "The ARIA role 'complementary' is not valid for the element <noscript>",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-label=\"iframe content\" role=\"complementary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryLandmarkLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]/a[1]",
+                "aria": "/document[1]/complementary[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a visible label",
+              "bounds": {
+                "left": -10000,
+                "top": 0,
+                "height": 20,
+                "width": 20
+              },
+              "snippet": "<a aria-label=\"Skip to Main Content\" role=\"complementary\" style=\"z-index: 800;\" tabindex=\"0\" href=\"#page-content\" class=\"m-skip-to-main x-hidden-focus\">",
+              "level": "recommendation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryLandmarkLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/span[1]",
+                "aria": "/document[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a visible label",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<span aria-label=\"Skip to main content\" role=\"complementary\">",
+              "level": "recommendation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryLandmarkLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[2]",
+                "aria": "/document[1]/complementary[2]"
+              },
+              "message": "The element with \"complementary\" role does not have a visible label",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-label=\"iframe content\" role=\"complementary\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hydroone.com/",
+      "what": "Hydro One (NALFX)",
+      "result": "https://www.hydroone.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.hydroone.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Hydro One",
+          "pageurl": "https://www.hydroone.com/",
+          "time": 4.12,
+          "creditsremaining": 895,
+          "allitemcount": 272,
+          "totalelements": 1102,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.hydroone.com/",
+          "domid": "4466f0e7be1b7e7b8895718a8b79b926"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 3,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child > SPAN#comm-span-search > INPUT#search"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child > A:first-child + A + SPAN > SPAN:first-child + SPAN + SPAN + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV#mobile-search-bar > FORM#mobile-search-bar-wysdom-search-bar-form > DIV:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child + DIV > DIV#wysdom-search-bar > FORM#wysdom-search-bar-wysdom-search-bar-form > DIV:first-child + BUTTON"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 84,
+            "items": {
+              "text_justified": {
+                "id": "text_justified",
+                "description": "Justified text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV:first-child + DIV > DIV#pageContent > DIV:first-child > DIV#ctl00_PlaceHolderMain_ctl01__ControlWrapper_RichHtmlField > P:first-child"
+                ]
+              },
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY + ENV-CTRL + NEED-HELP > DIV:first-child > DIV:first-child > DIV#h1-chat-header-id > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "alt_duplicate": {
+                "id": "alt_duplicate",
+                "description": "A nearby image has the same alternative text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > STYLE:first-child + DIV > A:first-child + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > STYLE:first-child + DIV > A:first-child + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > STYLE:first-child + DIV > A:first-child + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > STYLE:first-child + DIV > A:first-child + A + A + A + A > IMG:first-child"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_ctl51_g_acc73dc4_06c8_4dd7_a4d4_6b0af7173f62 > DIV:first-child > DIV#WebPartctl00_ctl51_g_acc73dc4_06c8_4dd7_a4d4_6b0af7173f62 > DIV#ctl00_ctl51_g_acc73dc4_06c8_4dd7_a4d4_6b0af7173f62 > DIV:first-child > SECTION:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child + DIV > DIV:first-child > H4:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > SECTION#cookieDisabled > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child + A + A + A + A + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_ctl51_g_c79aa97c_5e06_494b_959a_e12295a7a435 > DIV:first-child > DIV#WebPartctl00_ctl51_g_c79aa97c_5e06_494b_959a_e12295a7a435 > DIV#ctl00_ctl51_g_c79aa97c_5e06_494b_959a_e12295a7a435 > DIV:first-child > SECTION:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child + DIV > DIV:first-child > H4:first-child + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_ctl51_g_c79aa97c_5e06_494b_959a_e12295a7a435 > DIV:first-child > DIV#WebPartctl00_ctl51_g_c79aa97c_5e06_494b_959a_e12295a7a435 > DIV#ctl00_ctl51_g_c79aa97c_5e06_494b_959a_e12295a7a435 > DIV:first-child > SECTION:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > IMG:first-child + DIV > DIV:first-child > H4:first-child + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV:first-child > SPAN#DeltaPlaceHolderMain > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#MSOZoneCell_WebPartctl00_ctl51_g_7a438d3b_ca60_4bf3_b27c_33fdb3c2b055 > DIV:first-child > DIV#WebPartctl00_ctl51_g_7a438d3b_ca60_4bf3_b27c_33fdb3c2b055 > DIV#ctl00_ctl51_g_7a438d3b_ca60_4bf3_b27c_33fdb3c2b055 > DIV:first-child > SECTION:first-child > STYLE:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child + DIV > DIV:first-child > H4:first-child + A"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + SCRIPT + SCRIPT + SPAN + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + SCRIPT + SCRIPT + SPAN + NOSCRIPT + SPAN + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + SCRIPT + SCRIPT + SPAN + NOSCRIPT + SPAN + NOSCRIPT + FORM + SCRIPT + SCRIPT + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + SCRIPT + SCRIPT + SPAN + NOSCRIPT + SPAN + NOSCRIPT + FORM + SCRIPT + SCRIPT + NOSCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 62,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#slide-nav > DIV:first-child > DIV:first-child + TOP-MENU > DIV:first-child > DIV#slidemenu > A:first-child + A + LOGIN-CONTROL + DIV + UL + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV#s4-workspace > DIV#s4-bodyContainer > DIV:first-child > DIV#page-content > DIV:first-child > DIV#wr-footer-div > DIV:first-child + FOOTER-SECONDARY + FOOTER-PRIMARY > DIV#wr-footer-div-WR > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 1005,
+          "axe": 22,
+          "bulk": 14,
+          "embAc": 5,
+          "focAll": 3,
+          "focInd": 67,
+          "focOp": 20,
+          "hover": 398,
+          "ibm": 42,
+          "labClash": 8,
+          "linkUl": 36,
+          "log": 13,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 56,
+          "styleDiff": 78,
+          "tabNav": 0,
+          "wave": 180,
+          "zIndex": 63
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      95
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      10
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

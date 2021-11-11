@@ -1,0 +1,5021 @@
+{
+  "script": "a11y04",
+  "batch": "esg",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "yttf",
+  "logCount": 0,
+  "logSize": 0,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "bytes": [
+          784292,
+          784292,
+          519533,
+          519533,
+          519537
+        ],
+        "localRatios": [
+          1,
+          1.51,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1.127,
+        "maxLocalRatio": 1.51,
+        "globalRatio": 1.51,
+        "pixelChanges": [
+          0,
+          252585,
+          0,
+          3404
+        ],
+        "meanPixelChange": 63997,
+        "maxPixelChange": 252585,
+        "changeFrequency": 0.5
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 2,
+          "moderate": 12,
+          "serious": 4,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".sfContentBlock > .region-menu > .map-link-wrap > .map-link",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: map-links",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".mobileMenuLink[href$=\"transmissions\"][runat=\"server\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: MobileNavLink",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".top-news-story > img",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-no-duplicate-banner",
+            "description": "Ensures the document has at most one banner landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".mast-head",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "page-no-duplicate-banner",
+                    "description": "Document has more than one banner landmark",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".mast-head",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".non-mobile-mast-head",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#icon-facebook",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#icon-twitter",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#icon-linkedin",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#icon-youtube",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".flexslider",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".top-news",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#MainContent_T173FF507002_Col00 > .sfContentBlock",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".tabs-nav",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#tab1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".my-allison",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".investor-relations",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#aspnetForm > .sfContentBlock",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "visibleElements": 150
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "tabFocusables": 40,
+        "tabFocused": 40,
+        "discrepancy": 0
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "total": 153,
+          "types": {
+            "indicatorMissing": {
+              "total": 153,
+              "tagNames": {
+                "INPUT": 2,
+                "A": 151
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "English"
+            },
+            {
+              "tagName": "A",
+              "text": "Spanish / EspaÑol"
+            },
+            {
+              "tagName": "A",
+              "text": "Portuguese / PortuguÊs"
+            },
+            {
+              "tagName": "A",
+              "text": "English"
+            },
+            {
+              "tagName": "A",
+              "text": "Spanish / EspaÑol"
+            },
+            {
+              "tagName": "A",
+              "text": "Italian / Italiano"
+            },
+            {
+              "tagName": "A",
+              "text": "French / FRANÇAIS"
+            },
+            {
+              "tagName": "A",
+              "text": "Russian / русский"
+            },
+            {
+              "tagName": "A",
+              "text": "German / Deutsch"
+            },
+            {
+              "tagName": "A",
+              "text": "Turkish / TÜrkÇe"
+            },
+            {
+              "tagName": "A",
+              "text": "KOREAN / 한국어"
+            },
+            {
+              "tagName": "A",
+              "text": "Chinese / 中文"
+            },
+            {
+              "tagName": "A",
+              "text": "JAPANESE / 英和辞書"
+            },
+            {
+              "tagName": "A",
+              "text": "Sales + Service Locator"
+            },
+            {
+              "tagName": "A",
+              "text": "Suppliers"
+            },
+            {
+              "tagName": "A",
+              "text": "Merchandise"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "My Allison"
+            },
+            {
+              "tagName": "A",
+              "text": "Allison Transmission"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "English"
+            },
+            {
+              "tagName": "A",
+              "text": "Spanish / EspaÑol"
+            },
+            {
+              "tagName": "A",
+              "text": "Portuguese / PortuguÊs"
+            },
+            {
+              "tagName": "A",
+              "text": "English"
+            },
+            {
+              "tagName": "A",
+              "text": "Spanish / EspaÑol"
+            },
+            {
+              "tagName": "A",
+              "text": "Italian / Italiano"
+            },
+            {
+              "tagName": "A",
+              "text": "French / FRANÇAIS"
+            },
+            {
+              "tagName": "A",
+              "text": "Russian / русский"
+            },
+            {
+              "tagName": "A",
+              "text": "German / Deutsch"
+            },
+            {
+              "tagName": "A",
+              "text": "Turkish / TÜrkÇe"
+            },
+            {
+              "tagName": "A",
+              "text": "KOREAN / 한국어"
+            },
+            {
+              "tagName": "A",
+              "text": "Chinese / 中文"
+            },
+            {
+              "tagName": "A",
+              "text": "JAPANESE / 英和辞書"
+            },
+            {
+              "tagName": "A",
+              "text": "Transmissions"
+            },
+            {
+              "tagName": "A",
+              "text": "Vocational Applications"
+            },
+            {
+              "tagName": "A",
+              "text": "Agriculture"
+            },
+            {
+              "tagName": "A",
+              "text": "Coach"
+            },
+            {
+              "tagName": "A",
+              "text": "Construction"
+            },
+            {
+              "tagName": "A",
+              "text": "Defense"
+            },
+            {
+              "tagName": "A",
+              "text": "Distribution"
+            },
+            {
+              "tagName": "A",
+              "text": "Energy"
+            },
+            {
+              "tagName": "A",
+              "text": "Fire + Emergency"
+            },
+            {
+              "tagName": "A",
+              "text": "Mining"
+            },
+            {
+              "tagName": "A",
+              "text": "Municipal + Service"
+            },
+            {
+              "tagName": "A",
+              "text": "Port Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Refuse"
+            },
+            {
+              "tagName": "A",
+              "text": "RV + Motorhome"
+            },
+            {
+              "tagName": "A",
+              "text": "School Bus"
+            },
+            {
+              "tagName": "A",
+              "text": "Specialty"
+            },
+            {
+              "tagName": "A",
+              "text": "Tractor"
+            },
+            {
+              "tagName": "A",
+              "text": "Transit + City Bus"
+            },
+            {
+              "tagName": "A",
+              "text": "Models"
+            },
+            {
+              "tagName": "A",
+              "text": "Bus Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Emergency Vehicle Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Highway Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Hybrid Bus™"
+            },
+            {
+              "tagName": "A",
+              "text": "Military Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Motorhome Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Off Road Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Oil Field Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Pupil Transport / Shuttle Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Regional Haul Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Rugged Duty Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Specialty Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "Truck RV Series™"
+            },
+            {
+              "tagName": "A",
+              "text": "EV Solutions"
+            },
+            {
+              "tagName": "A",
+              "text": "eGen Flex™"
+            },
+            {
+              "tagName": "A",
+              "text": "eGen Power™"
+            },
+            {
+              "tagName": "A",
+              "text": "Why Allison"
+            },
+            {
+              "tagName": "A",
+              "text": "FuelSense®"
+            },
+            {
+              "tagName": "A",
+              "text": "Natural Gas"
+            },
+            {
+              "tagName": "A",
+              "text": "xFE"
+            },
+            {
+              "tagName": "A",
+              "text": "Components"
+            },
+            {
+              "tagName": "A",
+              "text": "Parts + Service"
+            },
+            {
+              "tagName": "A",
+              "text": "Become an Authorized Dealer"
+            },
+            {
+              "tagName": "A",
+              "text": "Genuine Parts"
+            },
+            {
+              "tagName": "A",
+              "text": "Remanufactured Transmissions"
+            },
+            {
+              "tagName": "A",
+              "text": "Approved Fluids"
+            },
+            {
+              "tagName": "A",
+              "text": "On-Highway Fluids"
+            },
+            {
+              "tagName": "A",
+              "text": "Off-Highway Fluids"
+            },
+            {
+              "tagName": "A",
+              "text": "Extended Transmission Coverage"
+            },
+            {
+              "tagName": "A",
+              "text": "My Transmission"
+            },
+            {
+              "tagName": "A",
+              "text": "Fluid + Filter Calculator"
+            },
+            {
+              "tagName": "A",
+              "text": "Using Authorized Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Service Information + Tools"
+            },
+            {
+              "tagName": "A",
+              "text": "Allison HUB™"
+            },
+            {
+              "tagName": "A",
+              "text": "Electronic Diagnostics + Tools"
+            },
+            {
+              "tagName": "A",
+              "text": "Publications"
+            },
+            {
+              "tagName": "A",
+              "text": "Training"
+            },
+            {
+              "tagName": "A",
+              "text": "FAQ/Service Tips"
+            },
+            {
+              "tagName": "A",
+              "text": "Company"
+            },
+            {
+              "tagName": "A",
+              "text": "Certifications + Policies"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Leadership"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Responsibility"
+            },
+            {
+              "tagName": "A",
+              "text": "History + Heritage"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Gallery"
+            },
+            {
+              "tagName": "A",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Vantage Power"
+            },
+            {
+              "tagName": "A",
+              "text": "Vehicle Electrification + Environmental Test Center"
+            },
+            {
+              "tagName": "A",
+              "text": "Visitors and Deliveries"
+            },
+            {
+              "tagName": "A",
+              "text": "Walker Die Casting"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers at Allison"
+            },
+            {
+              "tagName": "A",
+              "text": "Job Search"
+            },
+            {
+              "tagName": "A",
+              "text": "Meet Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Life at Allison"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Values"
+            },
+            {
+              "tagName": "A",
+              "text": "Inclusion and Diversity"
+            },
+            {
+              "tagName": "A",
+              "text": "Internships at Allison Transmission"
+            },
+            {
+              "tagName": "A",
+              "text": "Transmissions"
+            },
+            {
+              "tagName": "A",
+              "text": "EV Solutions"
+            },
+            {
+              "tagName": "A",
+              "text": "Why Allison"
+            },
+            {
+              "tagName": "A",
+              "text": "Parts + Service"
+            },
+            {
+              "tagName": "A",
+              "text": "Company"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers at Allison"
+            },
+            {
+              "tagName": "A",
+              "text": "Sales + Service Locator"
+            },
+            {
+              "tagName": "A",
+              "text": "Suppliers"
+            },
+            {
+              "tagName": "A",
+              "text": "Merchandise"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "My Allison"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "GO"
+            },
+            {
+              "tagName": "A",
+              "text": "Studio Allison Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": "FracTran™ Learn more"
+            },
+            {
+              "tagName": "A",
+              "text": "Vehicle Electrification + Environmental Test Center Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "1"
+            },
+            {
+              "tagName": "A",
+              "text": "2"
+            },
+            {
+              "tagName": "A",
+              "text": "3"
+            },
+            {
+              "tagName": "A",
+              "text": "Next"
+            },
+            {
+              "tagName": "A",
+              "text": "Full Story"
+            },
+            {
+              "tagName": "A",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "1"
+            },
+            {
+              "tagName": "A",
+              "text": "2"
+            },
+            {
+              "tagName": "A",
+              "text": "3"
+            },
+            {
+              "tagName": "A",
+              "text": "Find a facility"
+            },
+            {
+              "tagName": "A",
+              "text": "Calculate fluid intervals"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Search My Transmission"
+            },
+            {
+              "tagName": "A",
+              "text": "Visit Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "Allison Transmission"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms of use"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Social Media Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Site Map"
+            },
+            {
+              "tagName": "A",
+              "text": "This website uses cookies."
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "total": 163,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 1,
+              "tagNames": {
+                "A": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 162,
+              "tagNames": {
+                "INPUT": 11,
+                "A": 151
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Previous",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "INPUT",
+              "id": "ctl15_TSSM",
+              "text": "<input type=\"hidden\" name=\"ctl15_TSSM\" id=\"ctl15_TSSM\" value=\";Telerik.Sitefinit",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATE",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"L6qGHsoTqHsa1eYn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATEGENERATOR",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTVALIDATION",
+              "text": "<input type=\"hidden\" name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"5WWc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "SFSearchHolder_T173FF507010_ctl00_ctl00_searchTextBox",
+              "text": "<input name=\"ctl00$SFSearchHolder$T173FF507010$ctl00$ctl00$searchTextBox\" type=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "SFSearchHolder_T173FF507010_ctl00_ctl00_searchButton",
+              "text": "<input type=\"submit\" name=\"ctl00$SFSearchHolder$T173FF507010$ctl00$ctl00$searchB",
+              "byTag": true,
+              "byOnClick": true,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input name=\"ctl00$ctl14\" type=\"submit\" class=\"search-btn search-closed\" value=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "map-links",
+              "text": "<a class=\"map-link\" id=\"map-links\" style=\"cursor: default;\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Spanish / EspaÑol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Portuguese / PortuguÊs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Spanish / EspaÑol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Italian / Italiano",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "French / FRANÇAIS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Russian / русский",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "German / Deutsch",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Turkish / TÜrkÇe",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "KOREAN / 한국어",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Chinese / 中文",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "JAPANESE / 英和辞書",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sales + Service Locator",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Merchandise",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "My Allison",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "HomepageLink",
+              "text": "Allison Transmission",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"mobile-nav-btn\" href=\"#\" style=\"cursor: default;\"> </a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "map-links",
+              "text": "<a class=\"map-link\" id=\"map-links\" style=\"cursor: default;\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Spanish / EspaÑol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Portuguese / PortuguÊs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Spanish / EspaÑol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Italian / Italiano",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "French / FRANÇAIS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Russian / русский",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "German / Deutsch",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Turkish / TÜrkÇe",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "KOREAN / 한국어",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Chinese / 中文",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "JAPANESE / 英和辞書",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transmissions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Vocational Applications",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Agriculture",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Coach",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Construction",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Distribution",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Energy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fire + Emergency",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Mining",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Municipal + Service",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Port Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Refuse",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RV + Motorhome",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "School Bus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Specialty",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tractor",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transit + City Bus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Models",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Bus Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Emergency Vehicle Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Highway Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hybrid Bus™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Military Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Motorhome Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Off Road Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Oil Field Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Pupil Transport / Shuttle Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Regional Haul Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Rugged Duty Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Specialty Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Truck RV Series™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EV Solutions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "eGen Flex™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "eGen Power™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why Allison",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FuelSense®",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Natural Gas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "xFE",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Components",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Parts + Service",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Become an Authorized Dealer",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Genuine Parts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Remanufactured Transmissions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Approved Fluids",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "On-Highway Fluids",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Off-Highway Fluids",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Extended Transmission Coverage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "My Transmission",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fluid + Filter Calculator",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Using Authorized Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Service Information + Tools",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Allison HUB™",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Electronic Diagnostics + Tools",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Publications",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Training",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FAQ/Service Tips",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Company",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Certifications + Policies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Leadership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Responsibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History + Heritage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Gallery",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Vantage Power",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Vehicle Electrification + Environmental Test Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Visitors and Deliveries",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Walker Die Casting",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers at Allison",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Job Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Meet Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Life at Allison",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Values",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Inclusion and Diversity",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Internships at Allison Transmission",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Transmissions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "EV Solutions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Why Allison",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Parts + Service",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Company",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Careers at Allison",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Sales + Service Locator",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Merchandise",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "MobileNavLink",
+              "text": "My Allison",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "mobileSearch",
+              "text": "<input id=\"mobileSearch\" class=\"mob-sea hasPlaceholder\" type=\"text\" placeholder=",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "GO",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Studio Allison Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FracTran™ Learn more",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Vehicle Electrification + Environmental Test Center Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ctl00_HomePageBannerSlider_ctl00_ctl00_ctl00_dynamicContentListView_ClientState",
+              "text": "<input id=\"ctl00_HomePageBannerSlider_ctl00_ctl00_ctl00_dynamicContentListView_C",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find a facility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Calculate fluid intervals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ctl00_MainContent_ctl00_ctl00_ctl00_dynamicContentListView_ClientState",
+              "text": "<input id=\"ctl00_MainContent_ctl00_ctl00_ctl00_dynamicContentListView_ClientStat",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "ctl00_MainContent_C010_newsFrontendList_ctl00_ctl00_NewsList_ctrl0_FullStory",
+              "text": "Full Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ctl00_MainContent_C010_newsFrontendList_ctl00_ctl00_NewsList_ClientState",
+              "text": "<input id=\"ctl00_MainContent_C010_newsFrontendList_ctl00_ctl00_NewsList_ClientSt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Search My Transmission",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Visit Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Allison Transmission",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Terms of use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Social Media Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Site Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "This website uses cookies.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "icon-facebook",
+              "text": "<a class=\"icon-facebook\" id=\"icon-facebook\" href=\"https://www.facebook.com/ALLIS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "icon-twitter",
+              "text": "<a class=\"icon-twitter\" id=\"icon-twitter\" href=\"https://twitter.com/AllisonTrans",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "icon-linkedin",
+              "text": "<a class=\"icon-linkedin\" id=\"icon-linkedin\" href=\"https://www.linkedin.com/compa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "icon-youtube",
+              "text": "<a class=\"icon-youtube\" id=\"icon-youtube\" href=\"https://www.youtube.com/c/Alliso",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "triggers": 8,
+          "madeVisible": 88,
+          "opacityChanged": 1,
+          "opacityAffected": 1,
+          "unhoverables": 2
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "A",
+              "id": "map-links",
+              "text": "<a class=\"map-link\" id=\"map-links\"></a>",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "Choose your region + Language"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "North America"
+                },
+                {
+                  "tagName": "A",
+                  "text": "English"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Central + South America"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Spanish / EspaÑol"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Portuguese / PortuguÊs"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Europe + Middle East + Africa"
+                },
+                {
+                  "tagName": "A",
+                  "text": "English"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Spanish / EspaÑol"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Italian / Italiano"
+                },
+                {
+                  "tagName": "A",
+                  "text": "French / FRANÇAIS"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Russian / русский"
+                },
+                {
+                  "tagName": "A",
+                  "text": "German / Deutsch"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Turkish / TÜrkÇe"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Asia Pacific"
+                },
+                {
+                  "tagName": "A",
+                  "text": "KOREAN / 한국어"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Chinese / 中文"
+                },
+                {
+                  "tagName": "A",
+                  "text": "JAPANESE / 英和辞書"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Transmissions Vocational Applications Agriculture ",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Vocational Applications"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Agriculture"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Coach"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Construction"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Defense"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Distribution"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Energy"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Fire + Emergency"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Mining"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Municipal + Service"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Port Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Refuse"
+                },
+                {
+                  "tagName": "A",
+                  "text": "RV + Motorhome"
+                },
+                {
+                  "tagName": "A",
+                  "text": "School Bus"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Specialty"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Tractor"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Transit + City Bus"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Models"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Bus Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Emergency Vehicle Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Highway Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Hybrid Bus™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Military Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Motorhome Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Off Road Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Oil Field Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Pupil Transport / Shuttle Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Regional Haul Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Rugged Duty Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Specialty Series™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Truck RV Series™"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "EV Solutions eGen Flex™ eGen Power™",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "eGen Flex™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "eGen Power™"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Why Allison FuelSense® Natural Gas xFE Components",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "FuelSense®"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Natural Gas"
+                },
+                {
+                  "tagName": "A",
+                  "text": "xFE"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Components"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Parts + Service Become an Authorized Dealer Genuin",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Become an Authorized Dealer"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Genuine Parts"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Remanufactured Transmissions"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Approved Fluids"
+                },
+                {
+                  "tagName": "A",
+                  "text": "On-Highway Fluids"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Off-Highway Fluids"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Extended Transmission Coverage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "My Transmission"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Fluid + Filter Calculator"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Using Authorized Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Service Information + Tools"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Allison HUB™"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Electronic Diagnostics + Tools"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Publications"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Training"
+                },
+                {
+                  "tagName": "A",
+                  "text": "FAQ/Service Tips"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Company Certifications + Policies Corporate Leader",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Certifications + Policies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Leadership"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Responsibility"
+                },
+                {
+                  "tagName": "A",
+                  "text": "History + Heritage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Investors"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Media Gallery"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Newsroom"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Vantage Power"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Vehicle Electrification + Environmental Test Cente"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Visitors and Deliveries"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Walker Die Casting"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Careers at Allison Job Search Meet Our Team Life a",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Job Search"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Meet Our Team"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Life at Allison"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our Values"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Inclusion and Diversity"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Internships at Allison Transmission"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Next",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "A",
+                  "text": "Next"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "StudioAllisonLearnmore"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "StudioAllisonLearnmore"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 2,
+          "wellLabeled": 2
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "links": 152,
+          "inline": {
+            "total": 7,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "1",
+            "2",
+            "3",
+            "Terms of use",
+            "Privacy Policy",
+            "Social Media Policy",
+            "Site Map"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "roleElements": 7,
+        "badRoleElements": 4,
+        "tagNames": {
+          "INPUT": {
+            "textbox": 1
+          },
+          "SPAN": {
+            "button": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          },
+          "UL": {
+            "listbox": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 18,
+            "subtotals": [
+              11,
+              5,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 35
+          },
+          "aInline": {
+            "total": 7,
+            "subtotals": [
+              4,
+              3
+            ]
+          },
+          "aBlock": {
+            "total": 145,
+            "subtotals": [
+              35,
+              35,
+              27,
+              11,
+              11,
+              5,
+              3,
+              3,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "28.8px": 11,
+              "21px": 6,
+              "38.4px": 1
+            },
+            "minHeight": {
+              "0px": 17,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 17,
+              "auto": 1
+            },
+            "fontSize": {
+              "21px": 93,
+              "24px": 77,
+              "32px": 19
+            }
+          },
+          "h3": {},
+          "aInline": {
+            "lineHeight": {
+              "24px": 4,
+              "21px": 3
+            },
+            "minHeight": {
+              "0px": 4,
+              "auto": 3
+            },
+            "minWidth": {
+              "0px": 4,
+              "auto": 3
+            },
+            "fontSize": {
+              "16px": 216,
+              "14px": 162
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 138,
+              "solid": 7
+            },
+            "borderWidth": {
+              "0px": 138,
+              "2px": 7
+            },
+            "fontWeight": {
+              "100": 3,
+              "400": 93,
+              "700": 49
+            },
+            "lineHeight": {
+              "13px": 38,
+              "14px": 35,
+              "normal": 35,
+              "24px": 13,
+              "26.4px": 11,
+              "28px": 3,
+              "20px": 3,
+              "23.1px": 3,
+              "21px": 2,
+              "63px": 1,
+              "38.4px": 1
+            },
+            "maxWidth": {
+              "none": 143,
+              "194px": 2
+            },
+            "minHeight": {
+              "0px": 144,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 142,
+              "100px": 2,
+              "auto": 1
+            },
+            "opacity": {
+              "0": 2,
+              "1": 143
+            },
+            "fontSize": {
+              "13px": 3942,
+              "14px": 2322,
+              "22px": 594,
+              "20px": 324,
+              "16px": 324,
+              "13.5px": 108,
+              "68px": 54,
+              "0px": 54,
+              "32px": 54,
+              "12px": 54
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "totals": {
+          "total": 98,
+          "tagNames": {
+            "HEADER": 2,
+            "DIV": 17,
+            "A": 78,
+            "SPAN": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "HEADER",
+            "id": "",
+            "text": "Choose your region + Language North America English Central + South America Spanish / EspaÑol Portug"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Choose your region + Language North America English Central + South America Spanish / EspaÑol Portug"
+          },
+          {
+            "tagName": "HEADER",
+            "id": "",
+            "text": "Allison Transmission Choose your region + Language North America English Central + South America Spa"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Allison Transmission Choose your region + Language North America English Central + South America Spa"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Choose your region + Language North America English Central + South America Spanish / EspaÑol Portug"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Transmissions"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Vocational Applications Agriculture Coach Construction Defense Distribution Energy Fire + Emergency "
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Vocational Applications Agriculture Coach Construction Defense Distribution Energy Fire + Emergency "
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Vocational Applications"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Agriculture"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Coach"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Construction"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Defense"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Distribution"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Energy"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Fire + Emergency"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Mining"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Municipal + Service"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Port Services"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Refuse"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "RV + Motorhome"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "School Bus"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Specialty"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Tractor"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Transit + City Bus"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Models Bus Series™ Emergency Vehicle Series™ Highway Series™ Hybrid Bus™ Military Series™ Motorhome "
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Models"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Bus Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Emergency Vehicle Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Highway Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Hybrid Bus™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Military Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Motorhome Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Off Road Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Oil Field Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Pupil Transport / Shuttle Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Regional Haul Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Rugged Duty Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Specialty Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Truck RV Series™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "EV Solutions"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "eGen Flex™ eGen Power™"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "eGen Flex™ eGen Power™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "eGen Flex™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "eGen Power™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Why Allison"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "FuelSense® Natural Gas xFE Components"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "FuelSense® Natural Gas xFE Components"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "FuelSense®"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Natural Gas"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "xFE"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Components"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Parts + Service"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Become an Authorized Dealer Genuine Parts Remanufactured Transmissions Approved Fluids On-Highway Fl"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Become an Authorized Dealer Genuine Parts Remanufactured Transmissions Approved Fluids On-Highway Fl"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Become an Authorized Dealer"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Genuine Parts"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Remanufactured Transmissions"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Approved Fluids"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "On-Highway Fluids"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Off-Highway Fluids"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Extended Transmission Coverage"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "My Transmission"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Fluid + Filter Calculator"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Using Authorized Services"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Service Information + Tools"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Allison HUB™"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Electronic Diagnostics + Tools"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Publications"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Training"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "FAQ/Service Tips"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Company"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Certifications + Policies Corporate Leadership Corporate Responsibility History + Heritage Investors"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Certifications + Policies Corporate Leadership Corporate Responsibility History + Heritage Investors"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Certifications + Policies"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Corporate Leadership"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Corporate Responsibility"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "History + Heritage"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Investors"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Media Gallery"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Newsroom"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Vantage Power"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Vehicle Electrification + Environmental Test Center"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Visitors and Deliveries"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Walker Die Casting"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Careers at Allison"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Job Search Meet Our Team Life at Allison Our Values Inclusion and Diversity Internships at Allison T"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Job Search Meet Our Team Life at Allison Our Values Inclusion and Diversity Internships at Allison T"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Job Search"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Meet Our Team"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Life at Allison"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Values"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Inclusion and Diversity"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Internships at Allison Transmission"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Previous"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Next"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "View Applications 1 2 3 Sales + Service Locator\nFind an Allison authorized service facility near you"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": "View Applications"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 26,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]/div[1]/div[1]/div[1]/fieldset[1]/span[1]/input[1]",
+                "aria": "/document[1]/form[1]/banner[1]/textbox[1]"
+              },
+              "message": "Form control with \"textbox\" role has no associated label",
+              "bounds": {
+                "left": 24,
+                "top": 16,
+                "height": 21,
+                "width": 153
+              },
+              "snippet": "<input aria-autocomplete=\"list\" aria-owns=\"SFSearchHolder_T173FF507010_ctl00_ctl00_searchTextBox_listbox\" aria-readonly=\"false\" aria-disabled=\"false\" aria-haspopup=\"true\" role=\"textbox\" autocomplete=\"off\" data-role=\"autocomplete\" class=\"sfsearchTxt k-input\" id=\"SFSearchHolder_T173FF507010_ctl00_ctl00_searchTextBox\" type=\"text\" name=\"ctl00$SFSearchHolder$T173FF507010$ctl00$ctl00$searchTextBox\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[2]/section[2]/div[1]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/form[1]/region[3]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 3121,
+                "height": 160,
+                "width": 305
+              },
+              "snippet": "<img src=\"https://www.allisontransmission.com/images/default-source/pictures-of-press-releases/houtch.tmb-.png?Culture=en&sfvrsn=e357c21d_9\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Fieldset_HasLegend",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]/div[1]/div[1]/div[1]/fieldset[1]",
+                "aria": "/document[1]/form[1]/banner[1]"
+              },
+              "message": "<fieldset> element does not have a <legend>",
+              "bounds": {
+                "left": 10,
+                "top": 8,
+                "height": 41,
+                "width": 780
+              },
+              "snippet": "<fieldset class=\"sfsearchBox inactive\" id=\"SFSearchHolder_T173FF507010_ctl00_ctl00_main\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 701,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a href=\"#\" class=\"mobile-nav-btn\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[4]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[4]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 4014,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.youtube.com/c/AllisonTransmissioninc\" id=\"icon-youtube\" class=\"icon-youtube\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[3]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[3]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3996,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.linkedin.com/company/allison-transmission\" id=\"icon-linkedin\" class=\"icon-linkedin\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[2]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[2]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3978,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://twitter.com/AllisonTrans\" id=\"icon-twitter\" class=\"icon-twitter\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[1]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3960,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.facebook.com/ALLISONTRANSMISSION/\" id=\"icon-facebook\" class=\"icon-facebook\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[9]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[9]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1665,
+                "height": 26,
+                "width": 133
+              },
+              "snippet": "<a target=\"_blank\" href=\"/merchandise\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[8]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[8]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1618,
+                "height": 26,
+                "width": 98
+              },
+              "snippet": "<a target=\"_self\" href=\"/suppliers\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[7]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[7]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1571,
+                "height": 26,
+                "width": 240
+              },
+              "snippet": "<a target=\"_self\" href=\"/sales-service-locator\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[6]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[6]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1524,
+                "height": 26,
+                "width": 184
+              },
+              "snippet": "<a target=\"_self\" href=\"/careers\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[5]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[5]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1477,
+                "height": 26,
+                "width": 101
+              },
+              "snippet": "<a target=\"_self\" href=\"/company\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[4]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[4]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1431,
+                "height": 26,
+                "width": 155
+              },
+              "snippet": "<a target=\"_self\" href=\"/parts-service\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[3]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[3]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1384,
+                "height": 26,
+                "width": 127
+              },
+              "snippet": "<a target=\"_self\" href=\"/why-allison\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[2]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[2]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1337,
+                "height": 26,
+                "width": 134
+              },
+              "snippet": "<a target=\"_self\" href=\"/ev-solutions\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[11]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[11]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1759,
+                "height": 26,
+                "width": 112
+              },
+              "snippet": "<a target=\"_self\" href=\"/my-allison\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]/div[1]/ul[1]/li[10]/h2[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]/list[1]/listitem[10]/heading[1]/link[1]"
+              },
+              "message": "The <a> element has the id \"MobileNavLink\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 1712,
+                "height": 26,
+                "width": 82
+              },
+              "snippet": "<a target=\"_self\" href=\"/contact\" runat=\"server\" id=\"MobileNavLink\" class=\"mobileMenuLink\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/div[1]/span[1]/a[1]",
+                "aria": "/document[1]/form[1]/banner[2]"
+              },
+              "message": "The <a> element has the id \"map-links\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 701,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a id=\"map-links\" class=\"map-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]",
+                "aria": "/document[1]/form[1]/banner[2]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 8,
+                "top": 643,
+                "height": 1185,
+                "width": 784
+              },
+              "snippet": "<header class=\"clearfix non-mobile\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]",
+                "aria": "/document[1]/form[1]/banner[1]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 613,
+                "width": 784
+              },
+              "snippet": "<header class=\"clearfix mast-head\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[2]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 1290,
+                "height": 537,
+                "width": 784
+              },
+              "snippet": "<nav class=\"mobile-nav\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 1162,
+                "height": 108,
+                "width": 784
+              },
+              "snippet": "<nav class=\"non-mobile-nav\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]/div[1]/nav[1]",
+                "aria": "/document[1]/form[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 531,
+                "height": 90,
+                "width": 784
+              },
+              "snippet": "<nav class=\"non-mobile-mast-head\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]",
+                "aria": "/document[1]/form[1]/banner[2]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 643,
+                "height": 1185,
+                "width": 784
+              },
+              "snippet": "<header class=\"clearfix non-mobile\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]",
+                "aria": "/document[1]/form[1]/banner[1]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 613,
+                "width": 784
+              },
+              "snippet": "<header class=\"clearfix mast-head\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 8,
+                "top": 3773,
+                "height": 259,
+                "width": 784
+              },
+              "snippet": "<footer role=\"contentinfo\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 17,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/section[1]/div[1]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/form[1]/region[2]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 528,
+                "top": 377,
+                "height": 160,
+                "width": 335
+              },
+              "snippet": "<img src=\"https://www.allisontransmission.com/images/default-source/pictures-of-press-releases/houtch.tmb-.png?Culture=en&sfvrsn=e357c21d_9\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[4]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[4]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 149,
+                "top": 1375,
+                "height": 27,
+                "width": 27
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.youtube.com/c/AllisonTransmissioninc\" id=\"icon-youtube\" class=\"icon-youtube\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[3]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[3]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 113,
+                "top": 1375,
+                "height": 27,
+                "width": 27
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.linkedin.com/company/allison-transmission\" id=\"icon-linkedin\" class=\"icon-linkedin\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[2]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[2]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 77,
+                "top": 1375,
+                "height": 27,
+                "width": 27
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://twitter.com/AllisonTrans\" id=\"icon-twitter\" class=\"icon-twitter\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]/div[2]/div[1]/div[1]/ul[2]/li[1]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/list[2]/listitem[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 40,
+                "top": 1375,
+                "height": 27,
+                "width": 27
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.facebook.com/ALLISONTRANSMISSION/\" id=\"icon-facebook\" class=\"icon-facebook\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]",
+                "aria": "/document[1]/form[1]/banner[2]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 40,
+                "height": 100,
+                "width": 800
+              },
+              "snippet": "<header class=\"clearfix non-mobile\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]",
+                "aria": "/document[1]/form[1]/banner[1]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 40,
+                "width": 800
+              },
+              "snippet": "<header class=\"clearfix mast-head\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]/div[1]/nav[1]",
+                "aria": "/document[1]/form[1]/banner[2]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 184,
+                "top": 40,
+                "height": 100,
+                "width": 576
+              },
+              "snippet": "<nav class=\"non-mobile-nav\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]/div[1]/nav[1]",
+                "aria": "/document[1]/form[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 101,
+                "top": 0,
+                "height": 40,
+                "width": 528
+              },
+              "snippet": "<nav class=\"non-mobile-mast-head\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[2]",
+                "aria": "/document[1]/form[1]/banner[2]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 40,
+                "height": 100,
+                "width": 800
+              },
+              "snippet": "<header class=\"clearfix non-mobile\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/header[1]",
+                "aria": "/document[1]/form[1]/banner[1]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 40,
+                "width": 800
+              },
+              "snippet": "<header class=\"clearfix mast-head\" role=\"banner\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]/span[1]",
+                "aria": "/document[1]/form[1]/region[1]/list[1]/listitem[3]/link[1]"
+              },
+              "message": "Text contrast of 2.86 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 400",
+              "bounds": {
+                "left": 20,
+                "top": 312,
+                "height": 25,
+                "width": 760
+              },
+              "snippet": "<span class=\"caption-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]",
+                "aria": "/document[1]/form[1]/region[1]/list[1]/listitem[3]/link[1]"
+              },
+              "message": "Text contrast of 2.86 with its background is less than the WCAG AA minimum requirements for text of size 20px and weight of 700",
+              "bounds": {
+                "left": 0,
+                "top": 264,
+                "height": 93,
+                "width": 800
+              },
+              "snippet": "<a href=\"/veet\" class=\"flex-caption-blue\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[2]/a[1]/span[1]",
+                "aria": "/document[1]/form[1]/region[1]/list[1]/listitem[2]/link[1]"
+              },
+              "message": "Text contrast of 2.86 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 400",
+              "bounds": {
+                "left": -780,
+                "top": 312,
+                "height": 25,
+                "width": 760
+              },
+              "snippet": "<span class=\"caption-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[2]/a[1]",
+                "aria": "/document[1]/form[1]/region[1]/list[1]/listitem[2]/link[1]"
+              },
+              "message": "Text contrast of 2.86 with its background is less than the WCAG AA minimum requirements for text of size 20px and weight of 700",
+              "bounds": {
+                "left": -800,
+                "top": 264,
+                "height": 93,
+                "width": 800
+              },
+              "snippet": "<a href=\"/allison-fractran\" class=\"flex-caption-blue\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/a[1]/span[1]",
+                "aria": "/document[1]/form[1]/region[1]/list[1]/listitem[1]/link[1]"
+              },
+              "message": "Text contrast of 2.86 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 400",
+              "bounds": {
+                "left": -1580,
+                "top": 312,
+                "height": 25,
+                "width": 760
+              },
+              "snippet": "<span class=\"caption-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/a[1]",
+                "aria": "/document[1]/form[1]/region[1]/list[1]/listitem[1]/link[1]"
+              },
+              "message": "Text contrast of 2.86 with its background is less than the WCAG AA minimum requirements for text of size 20px and weight of 700",
+              "bounds": {
+                "left": -1600,
+                "top": 264,
+                "height": 93,
+                "width": 800
+              },
+              "snippet": "<a href=\"https://studioallison.com/\" class=\"flex-caption-blue\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/footer[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 1248,
+                "height": 180,
+                "width": 800
+              },
+              "snippet": "<footer role=\"contentinfo\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://allisontransmission.com/",
+      "what": "Allison Transmission (CCVAX)",
+      "result": "https://allisontransmission.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://allisontransmission.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Allison Transmission Home",
+          "pageurl": "https://allisontransmission.com/",
+          "time": 3.42,
+          "creditsremaining": 1102,
+          "allitemcount": 193,
+          "totalelements": 564,
+          "waveurl": "http://wave.webaim.org/report?url=https://allisontransmission.com/",
+          "domid": "e6c8974c6e09ac095be4a00fb8447404"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 17,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION > DIV:first-child > DIV#MainContent_T173FF507002_Col00 > DIV:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "alt_spacer_missing": {
+                "id": "alt_spacer_missing",
+                "description": "Spacer image missing alternative text",
+                "count": 9,
+                "selectors": [
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG + IMG + IMG",
+                  "HTML > HEAD#Head1 > META:first-child + TITLE + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + META + META + META + META + SCRIPT + LINK + LINK + LINK + META + META + META + META + META + META + META + STYLE + META + LINK + LINK + LINK + LINK + LINK + STYLE + SCRIPT + IMG + IMG + IMG + IMG + IMG + IMG + IMG + IMG + IMG"
+                ]
+              },
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER > DIV:first-child > DIV:first-child > DIV#SFSearchHolder_T173FF507010 > FIELDSET#SFSearchHolder_T173FF507010_ctl00_ctl00_main > SPAN:first-child > INPUT#SFSearchHolder_T173FF507010_ctl00_ctl00_searchTextBox",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV + NAV > DIV:first-child > SCRIPT:first-child + UL + DIV > INPUT#mobileSearch"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialFacebook > A#icon-facebook",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialTwitter > A#icon-twitter",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialLinkedIn > A#icon-linkedin",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV + FOOTER > DIV:first-child + DIV > DIV:first-child > DIV:first-child > UL#social-media-icons > LI#socialYouTube > A#icon-youtube"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 1,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION > DIV:first-child > DIV#HomePageBannerSlider_T173FF507012_Col00 > DIV:first-child > DIV:first-child > DIV:first-child + OL > LI:first-child > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#da291c",
+                    "#da291c",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 73,
+            "items": {
+              "legend_missing": {
+                "id": "legend_missing",
+                "description": "Fieldset missing legend",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER > DIV:first-child > DIV:first-child > DIV#SFSearchHolder_T173FF507010 > FIELDSET#SFSearchHolder_T173FF507010_ctl00_ctl00_main"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 70,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + DIV > H3:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + UL + H3 + H3 + H3 + H3 + H3 + UL + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER > DIV:first-child > H1:first-child + A + DIV + NAV > DIV:first-child > UL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child + DIV > DIV:first-child > H3:first-child + H3 + H3 + H3 + H3 + H3 > A:first-child"
+                ]
+              },
+              "youtube_video": {
+                "id": "youtube_video",
+                "description": "YouTube video",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FORM#aspnetForm > DIV:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + HEADER + HEADER + DIV + SCRIPT + SCRIPT + SCRIPT + SECTION + DIV > SCRIPT:first-child + SECTION + SECTION > DIV:first-child > DIV#MainContent_T173FF507002_Col01 > DIV:first-child > DIV:first-child + DIV > UL:first-child > LI#tab3 > H2:first-child + P + BR + P > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 1753,
+          "axe": 45,
+          "bulk": 0,
+          "embAc": 0,
+          "focAll": 0,
+          "focInd": 765,
+          "focOp": 4,
+          "hover": 212,
+          "ibm": 91,
+          "labClash": 4,
+          "linkUl": 21,
+          "log": 0,
+          "menuNav": 0,
+          "motion": 34,
+          "radioSet": 0,
+          "role": 8,
+          "styleDiff": 70,
+          "tabNav": 0,
+          "wave": 205,
+          "zIndex": 294
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      81
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      4
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focAll",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

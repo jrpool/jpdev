@@ -1,0 +1,4342 @@
+{
+  "script": "a11y04",
+  "batch": "esgRest",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "ywtb",
+  "logCount": 44,
+  "logSize": 4190,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "bytes": [
+          1325650,
+          1760615,
+          1760615,
+          1722526,
+          1017072
+        ],
+        "localRatios": [
+          1.328,
+          1,
+          1.022,
+          1.694
+        ],
+        "meanLocalRatio": 1.261,
+        "maxLocalRatio": 1.694,
+        "globalRatio": 1.731,
+        "pixelChanges": [
+          631150,
+          0,
+          78355,
+          655891
+        ],
+        "meanPixelChange": 341349,
+        "maxPixelChange": 655891,
+        "changeFrequency": 0.75
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 4,
+          "serious": 5,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".et_pb_slide_2 > .et_pb_container.clearfix > .et_pb_slider_container_inner > .et_pb_slide_description > .et_pb_button_wrapper > .et_pb_button.et_pb_more_button",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.38 (foreground color: #ffffff, background color: #429e42, font size: 15.0pt (20px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "frame-title",
+            "description": "Ensures <iframe> and <frame> elements have an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".et_pb_text_1_tb_footer > .et_pb_text_inner > iframe",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label-title-only",
+            "description": "Ensures that every form element is not solely labeled using the title or aria-describedby attributes",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".et-search-field",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "title-only",
+                    "description": "Only title used to generate label for form element",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".et-pb-arrow-prev",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".et-pb-arrow-next",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "maximum-scale on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".et_pb_slide_2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".et-pb-controllers",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "visibleElements": 114
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "tabFocusables": 31,
+        "tabFocused": 31,
+        "discrepancy": 0
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "total": 110,
+          "types": {
+            "indicatorMissing": {
+              "total": 110,
+              "tagNames": {
+                "A": 92,
+                "SELECT": 1,
+                "INPUT": 7,
+                "IFRAME": 4,
+                "DIV": 2,
+                "TEXTAREA": 2,
+                "BUTTON": 2
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "SELECT",
+              "text": "Select Language中文EnglishEspañolTürkçe"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Company Overview"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Footprint"
+            },
+            {
+              "tagName": "A",
+              "text": "Management"
+            },
+            {
+              "tagName": "A",
+              "text": "Board of Directors"
+            },
+            {
+              "tagName": "A",
+              "text": "Diversity, Equity and Inclusion"
+            },
+            {
+              "tagName": "A",
+              "text": "Industries & Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Wind"
+            },
+            {
+              "tagName": "A",
+              "text": "Wind Energy Market"
+            },
+            {
+              "tagName": "A",
+              "text": "Blade Capabilities"
+            },
+            {
+              "tagName": "A",
+              "text": "Materials"
+            },
+            {
+              "tagName": "A",
+              "text": "Precision Molding"
+            },
+            {
+              "tagName": "A",
+              "text": "Production Process"
+            },
+            {
+              "tagName": "A",
+              "text": "Quality & Inspection"
+            },
+            {
+              "tagName": "A",
+              "text": "Research & Development"
+            },
+            {
+              "tagName": "A",
+              "text": "Transportation"
+            },
+            {
+              "tagName": "A",
+              "text": "Transportation Market"
+            },
+            {
+              "tagName": "A",
+              "text": "Automotive"
+            },
+            {
+              "tagName": "A",
+              "text": "Bus"
+            },
+            {
+              "tagName": "A",
+              "text": "Commercial & Delivery Vehicles"
+            },
+            {
+              "tagName": "A",
+              "text": "Engineering & Design"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Field Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Life at TPI"
+            },
+            {
+              "tagName": "A",
+              "text": "Why TPI"
+            },
+            {
+              "tagName": "A",
+              "text": "Associate Training and Development"
+            },
+            {
+              "tagName": "A",
+              "text": "Benefits"
+            },
+            {
+              "tagName": "A",
+              "text": "Career Opportunities"
+            },
+            {
+              "tagName": "A",
+              "text": "Engineering"
+            },
+            {
+              "tagName": "A",
+              "text": "Manufacturing"
+            },
+            {
+              "tagName": "A",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "EHS Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "EHS & Quality Certificates"
+            },
+            {
+              "tagName": "A",
+              "text": "Human Rights Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Legal Forms"
+            },
+            {
+              "tagName": "A",
+              "text": "Quality Policies"
+            },
+            {
+              "tagName": "A",
+              "text": "Videos"
+            },
+            {
+              "tagName": "A",
+              "text": "Suppliers"
+            },
+            {
+              "tagName": "A",
+              "text": "Supplier Strategy"
+            },
+            {
+              "tagName": "A",
+              "text": "Procurement NDA"
+            },
+            {
+              "tagName": "A",
+              "text": "Supplier EHS Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Supplier Portal"
+            },
+            {
+              "tagName": "A",
+              "text": "Supplier Quality Statement"
+            },
+            {
+              "tagName": "A",
+              "text": "Supplier Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": "ESG Statement"
+            },
+            {
+              "tagName": "A",
+              "text": "Communities and Economic Impacts"
+            },
+            {
+              "tagName": "A",
+              "text": "Environment Topics"
+            },
+            {
+              "tagName": "A",
+              "text": "Environment"
+            },
+            {
+              "tagName": "A",
+              "text": "Energy and Emissions"
+            },
+            {
+              "tagName": "A",
+              "text": "Environmental Compliance"
+            },
+            {
+              "tagName": "A",
+              "text": "Materials and Waste"
+            },
+            {
+              "tagName": "A",
+              "text": "Governance"
+            },
+            {
+              "tagName": "A",
+              "text": "Health & Safety"
+            },
+            {
+              "tagName": "A",
+              "text": "Material Topics"
+            },
+            {
+              "tagName": "A",
+              "text": "Reporting"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Diversity, Equity and Inclusion"
+            },
+            {
+              "tagName": "A",
+              "text": "Industries & Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Life at TPI"
+            },
+            {
+              "tagName": "A",
+              "text": "Newsroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Suppliers"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Wind Energy"
+            },
+            {
+              "tagName": "A",
+              "text": "More Info"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": "click here"
+            },
+            {
+              "tagName": "A",
+              "text": "More Info"
+            },
+            {
+              "tagName": "A",
+              "text": "Transportation"
+            },
+            {
+              "tagName": "A",
+              "text": "More Info"
+            },
+            {
+              "tagName": "A",
+              "text": "Previous"
+            },
+            {
+              "tagName": "A",
+              "text": "Next"
+            },
+            {
+              "tagName": "A",
+              "text": "1"
+            },
+            {
+              "tagName": "A",
+              "text": "2"
+            },
+            {
+              "tagName": "A",
+              "text": "3"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Contact TPI"
+            },
+            {
+              "tagName": "A",
+              "text": "Career Opportunities"
+            },
+            {
+              "tagName": "A",
+              "text": "Follow"
+            },
+            {
+              "tagName": "A",
+              "text": "Follow"
+            },
+            {
+              "tagName": "A",
+              "text": "Follow"
+            },
+            {
+              "tagName": "A",
+              "text": "Follow"
+            },
+            {
+              "tagName": "A",
+              "text": "Follow"
+            },
+            {
+              "tagName": "A",
+              "text": "Follow"
+            },
+            {
+              "tagName": "A",
+              "text": "Follow"
+            },
+            {
+              "tagName": "A",
+              "text": "Locations"
+            },
+            {
+              "tagName": "DIV",
+              "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "TEXTAREA",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "×"
+            },
+            {
+              "tagName": "DIV",
+              "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "TEXTAREA",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "×"
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "total": 202,
+          "types": {
+            "onlyFocusable": {
+              "total": 4,
+              "tagNames": {
+                "DIV": 4
+              }
+            },
+            "onlyOperable": {
+              "total": 13,
+              "tagNames": {
+                "SPAN": 13
+              }
+            },
+            "focusableAndOperable": {
+              "total": 185,
+              "tagNames": {
+                "A": 142,
+                "SELECT": 2,
+                "INPUT": 29,
+                "IFRAME": 8,
+                "TEXTAREA": 2,
+                "BUTTON": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Please fill out the form to download the pdfName* Email Address* gform.initializ"
+            },
+            {
+              "tagName": "DIV",
+              "id": "gf_4",
+              "text": "<div id=\"gf_4\" class=\"gform_anchor\" tabindex=\"0\"></div>"
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Please fill out the form to download the pdfName* Email Address* gform.initializ"
+            },
+            {
+              "tagName": "DIV",
+              "id": "gf_3",
+              "text": "<div id=\"gf_3\" class=\"gform_anchor\" tabindex=\"0\"></div>"
+            }
+          ],
+          "onlyOperable": [
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"menu-closed\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"et_close_search_field\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "Contribute a better translation",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"activity-link\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.tpicomposites.com/\" style=\"cursor: default;\"> <img src=\"htt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SELECT",
+              "id": "gtranslate_selector",
+              "text": "Select Language中文EnglishEspañolTürkçe",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "Select LanguageAfrikaansAlbanianAmharicArabicArmenianAzerbaijaniBasqueBelarusian",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Translate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Company Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Footprint",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Management",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Board of Directors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Diversity, Equity and Inclusion",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Industries & Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Wind",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Wind Energy Market",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Blade Capabilities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Materials",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Precision Molding",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Production Process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quality & Inspection",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research & Development",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transportation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transportation Market",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Automotive",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Bus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Commercial & Delivery Vehicles",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Engineering & Design",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Field Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Life at TPI",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why TPI",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Associate Training and Development",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Benefits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career Opportunities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Engineering",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manufacturing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EHS Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EHS & Quality Certificates",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Human Rights Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Legal Forms",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quality Policies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Videos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Strategy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Procurement NDA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier EHS Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Portal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Quality Statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ESG Statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Communities and Economic Impacts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environment Topics",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Energy and Emissions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environmental Compliance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Materials and Waste",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Health & Safety",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Material Topics",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reporting",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"#\" style=\"cursor: default;\"><img src=\"/wp-content/uploads/2020/05/tpi_I",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Company Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Footprint",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Management",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Board of Directors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Diversity, Equity and Inclusion",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Industries & Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Wind",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Wind Energy Market",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Blade Capabilities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Materials",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Precision Molding",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Production Process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quality & Inspection",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research & Development",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transportation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transportation Market",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Automotive",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Bus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Commercial & Delivery Vehicles",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Engineering & Design",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Field Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Life at TPI",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why TPI",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Associate Training and Development",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Benefits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career Opportunities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Engineering",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manufacturing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Newsroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EHS Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EHS & Quality Certificates",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Human Rights Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Legal Forms",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quality Policies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Videos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Strategy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Procurement NDA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier EHS Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Portal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Quality Statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supplier Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ESG Statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Communities and Economic Impacts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environment Topics",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Energy and Emissions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environmental Compliance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Materials and Waste",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Health & Safety",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Material Topics",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reporting",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"#\" style=\"cursor: default;\"><img src=\"/wp-content/uploads/2020/05/tpi_I",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"search\" class=\"et-search-field\" placeholder=\"Search …\" value=\"\" nam",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Wind Energy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More Info",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "click here",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More Info",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transportation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More Info",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Previous",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe src=\"https://irpages2.eqs.com/websites/tpicomposites/English/6100.html\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact TPI",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career Opportunities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Follow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Follow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Follow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Follow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Follow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Follow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Follow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gforms-pum\" value=\"{&quot;closepopup&quot;:false,&qu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "input_4_1",
+              "text": "<input name=\"input_1\" id=\"input_4_1\" type=\"text\" value=\"\" class=\"large\" placehol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "input_4_2",
+              "text": "<input name=\"input_2\" id=\"input_4_2\" type=\"text\" value=\"\" class=\"large\" placehol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "input_4_4",
+              "text": "<input name=\"input_4\" id=\"input_4_4\" type=\"hidden\" class=\"gform_hidden\" aria-inv",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe title=\"reCAPTCHA\" src=\"https://www.google.com/recaptcha/api2/anchor?ar=1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "TEXTAREA",
+              "id": "g-recaptcha-response",
+              "text": "<textarea id=\"g-recaptcha-response\" name=\"g-recaptcha-response\" class=\"g-recaptc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "gform_submit_button_4",
+              "text": "<input type=\"submit\" id=\"gform_submit_button_4\" class=\"gform_button button\" valu",
+              "byTag": true,
+              "byOnClick": true,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"gform_ajax\" value=\"form_id=4&amp;title=&amp;descripti",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"is_submit_4\" value=\"1\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_submit\" value=\"4\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_unique_id\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"state_4\" value=\"WyJbXSIsImNkYTZi",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "gform_target_page_number_4",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_target_page_number_4\" id=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "gform_source_page_number_4",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_source_page_number_4\" id=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"gform_field_values\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"pum_form_popup_id\" value=\"4302\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "gform_ajax_frame_4",
+              "text": "<iframe style=\"display:none;width:0px;height:0px;\" src=\"about:blank\" name=\"gform",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "×",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gforms-pum\" value=\"{&quot;closepopup&quot;:false,&qu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "input_3_1",
+              "text": "<input name=\"input_1\" id=\"input_3_1\" type=\"text\" value=\"\" class=\"large\" placehol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "input_3_2",
+              "text": "<input name=\"input_2\" id=\"input_3_2\" type=\"text\" value=\"\" class=\"large\" placehol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "input_3_4",
+              "text": "<input name=\"input_4\" id=\"input_3_4\" type=\"hidden\" class=\"gform_hidden\" aria-inv",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe title=\"reCAPTCHA\" src=\"https://www.google.com/recaptcha/api2/anchor?ar=1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "TEXTAREA",
+              "id": "g-recaptcha-response-1",
+              "text": "<textarea id=\"g-recaptcha-response-1\" name=\"g-recaptcha-response\" class=\"g-recap",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe style=\"display: none;\"></iframe>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "gform_submit_button_3",
+              "text": "<input type=\"submit\" id=\"gform_submit_button_3\" class=\"gform_button button\" valu",
+              "byTag": true,
+              "byOnClick": true,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"gform_ajax\" value=\"form_id=3&amp;title=&amp;descripti",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"is_submit_3\" value=\"1\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_submit\" value=\"3\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_unique_id\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"state_3\" value=\"WyJbXSIsImNkYTZi",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "gform_target_page_number_3",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_target_page_number_3\" id=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "gform_source_page_number_3",
+              "text": "<input type=\"hidden\" class=\"gform_hidden\" name=\"gform_source_page_number_3\" id=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"gform_field_values\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"pum_form_popup_id\" value=\"3975\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "gform_ajax_frame_3",
+              "text": "<iframe style=\"display:none;width:0px;height:0px;\" src=\"about:blank\" name=\"gform",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "×",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe title=\"recaptcha challenge\" src=\"https://www.google.com/recaptcha/api2/b",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe title=\"recaptcha challenge\" src=\"https://www.google.com/recaptcha/api2/b",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "triggers": 1,
+          "madeVisible": 0,
+          "opacityChanged": 2,
+          "opacityAffected": 4,
+          "unhoverables": 10
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Next",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "A",
+                  "text": "Previous"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Next"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Industries&Services"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LifeatTPI"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Suppliers"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Previous"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 3,
+          "wellLabeled": 10
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "search"
+            },
+            {
+              "index": 5,
+              "tagName": "TEXTAREA",
+              "type": "textarea"
+            },
+            {
+              "index": 10,
+              "tagName": "TEXTAREA",
+              "type": "textarea"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Website Language Selector"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Language Translate Widget"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Name*"
+                ]
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email Address*"
+                ]
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Name*"
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email Address*"
+                ]
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close",
+                "content": "×"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "links": 142,
+          "inline": {
+            "total": 7,
+            "underlined": 1,
+            "underlinedPercent": 14
+          }
+        },
+        "items": {
+          "underlined": [
+            "click here"
+          ],
+          "notUnderlined": [
+            "Translate",
+            "1",
+            "2",
+            "3",
+            "Contact TPI",
+            "Career Opportunities"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "roleElements": 5,
+        "badRoleElements": 2,
+        "tagNames": {
+          "DIV": {
+            "dialog": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 3
+          },
+          "h3": {
+            "total": 3,
+            "subtotals": [
+              2,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 7,
+            "subtotals": [
+              2,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 135,
+            "subtotals": [
+              49,
+              39,
+              10,
+              10,
+              8,
+              7,
+              3,
+              3,
+              2,
+              2,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 2
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {},
+          "h3": {
+            "fontWeight": {
+              "500": 1,
+              "700": 2
+            },
+            "lineHeight": {
+              "22px": 2,
+              "18px": 1
+            },
+            "fontSize": {
+              "22px": 13,
+              "18px": 5
+            }
+          },
+          "aInline": {
+            "fontWeight": {
+              "400": 1,
+              "500": 5,
+              "700": 1
+            },
+            "lineHeight": {
+              "30px": 3,
+              "23.8px": 3,
+              "23px": 1
+            },
+            "opacity": {
+              "1": 5,
+              "0.5": 2
+            },
+            "textDecorationLine": {
+              "none": 6,
+              "underline": 1
+            },
+            "fontSize": {
+              "14px": 21,
+              "18px": 14,
+              "12px": 7,
+              "20px": 7
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 78,
+              "none none solid": 47,
+              "solid": 10
+            },
+            "borderWidth": {
+              "0px": 85,
+              "0px 0px 1px": 47,
+              "2px": 3
+            },
+            "fontWeight": {
+              "400": 3,
+              "500": 14,
+              "600": 108,
+              "700": 10
+            },
+            "lineHeight": {
+              "23px": 60,
+              "28px": 49,
+              "14px": 10,
+              "26px": 7,
+              "46px": 3,
+              "34px": 3,
+              "23.8px": 2,
+              "30px": 1
+            },
+            "opacity": {
+              "0": 2,
+              "1": 133
+            },
+            "fontSize": {
+              "14px": 469,
+              "15px": 413,
+              "46px": 21,
+              "20px": 21,
+              "48px": 14,
+              "18px": 7
+            }
+          },
+          "button": {}
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "totals": {
+          "total": 58,
+          "tagNames": {
+            "HEADER": 1,
+            "DIV": 30,
+            "UL": 11,
+            "SPAN": 11,
+            "FORM": 1,
+            "A": 2,
+            "BUTTON": 2
+          }
+        },
+        "items": [
+          {
+            "tagName": "HEADER",
+            "id": "main-header",
+            "text": "Select Language中文EnglishEspañolTürkçe\n#goog-gt-tt {display:none !important;}\n.goog-te-banner-frame {"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Select Language中文EnglishEspañolTürkçe\n#goog-gt-tt {display:none !important;}\n.goog-te-banner-frame {"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Company Overview Global Footprint Management Board of Directors"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Wind Wind Energy Market Blade Capabilities Materials Precision Molding Production Process Quality & "
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Wind Energy Market Blade Capabilities Materials Precision Molding Production Process Quality & Inspe"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Transportation Market Automotive Bus Commercial & Delivery Vehicles Engineering & Design"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Field Services"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Why TPI Associate Training and Development Benefits Career Opportunities Engineering Manufacturing"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "EHS Policy EHS & Quality Certificates Human Rights Policy Legal Forms Quality Policies Videos"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Supplier Strategy Procurement NDA Supplier EHS Policy Supplier Portal Supplier Quality Statement Sup"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "ESG Statement Communities and Economic Impacts Environment Topics Environment Energy and Emissions E"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Environment Energy and Emissions Environmental Compliance Materials and Waste"
+          },
+          {
+            "tagName": "UL",
+            "id": "mobile_menu",
+            "text": "About Company Overview Global Footprint Management Board of Directors Diversity, Equity and Inclusio"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "FORM",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Wind EnergyTPI has manufactured over 70,000 wind blades since 2001 with an excellent field performan"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Wind EnergyTPI has manufactured over 70,000 wind blades since 2001 with an excellent field performan"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Sustainability We are excited to announce the release of TPI’s 2020 ESG Report. Please click here to"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "TransportationFor more than 5 decades TPI has been leading the industry in providing innovative comp"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Previous"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Next"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "123"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Subscribe to Email Alerts Contact TPICareer Opportunities FollowFollowFollowFollowFollowFollowFollow"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Subscribe to Email Alerts"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Contact TPICareer Opportunities FollowFollowFollowFollowFollowFollowFollow"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Locations"
+          },
+          {
+            "tagName": "DIV",
+            "id": "pum-4302",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "DIV",
+            "id": "popmake-4302",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "×"
+          },
+          {
+            "tagName": "DIV",
+            "id": "pum-3975",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "DIV",
+            "id": "popmake-3975",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Please fill out the form to download the pdfName* Email Address* gform.initializeOnLoaded( function("
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "×"
+          },
+          {
+            "tagName": "DIV",
+            "id": "goog-gt-tt",
+            "text": "Original textContribute a better translation"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 30,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Label_RefValid",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[5]/label[1]",
+                "aria": "/document[1]/dialog[2]/form[1]/list[1]/listitem[5]"
+              },
+              "message": "The value \"input_3_6\" of the 'for' attribute is not the 'id' of a valid <input> element",
+              "bounds": {
+                "left": -1,
+                "top": 2126,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<label for=\"input_3_6\" class=\"gfield_label screen-reader-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Label_RefValid",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[5]/label[1]",
+                "aria": "/document[1]/dialog[1]/form[1]/list[1]/listitem[5]"
+              },
+              "message": "The value \"input_4_6\" of the 'for' attribute is not the 'id' of a valid <input> element",
+              "bounds": {
+                "left": -1,
+                "top": 1730,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<label for=\"input_4_6\" class=\"gfield_label screen-reader-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Frame_HasTitle",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/iframe[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "Inline frame does not have a 'title' attribute",
+              "bounds": {
+                "left": 95,
+                "top": 1098,
+                "height": 250,
+                "width": 625
+              },
+              "snippet": "<iframe style=\"width: 100%; height: 250px;\" src=\"https://irpages2.eqs.com/websites/tpicomposites/English/6100.html\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Valerie_Label_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[5]/label[1]",
+                "aria": "/document[1]/dialog[2]/form[1]/list[1]/listitem[5]"
+              },
+              "message": "The <label> element does not have descriptive text that identifies the expected input",
+              "bounds": {
+                "left": -1,
+                "top": 2126,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<label for=\"input_3_6\" class=\"gfield_label screen-reader-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Valerie_Label_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[5]/label[1]",
+                "aria": "/document[1]/dialog[1]/form[1]/list[1]/listitem[5]"
+              },
+              "message": "The <label> element does not have descriptive text that identifies the expected input",
+              "bounds": {
+                "left": -1,
+                "top": 1730,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<label for=\"input_4_6\" class=\"gfield_label screen-reader-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]",
+                "aria": "/document[1]/dialog[2]"
+              },
+              "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+              "bounds": {
+                "left": 0,
+                "top": 1943,
+                "height": 396,
+                "width": 800
+              },
+              "snippet": "<div aria-hidden=\"true\" role=\"dialog\" data-popmake=\"{\"id\":3975,\"slug\":\"esg-report\",\"theme_id\":3968,\"cookies\":[],\"triggers\":[{\"type\":\"click_open\",\"settings\":{\"extra_selectors\":\"\",\"cookie_name\":null}}],\"mobile_disabled\":null,\"tablet_disabled\":null,\"meta\":{\"display\":{\"stackable\":false,\"overlay_disabled\":false,\"scrollable_content\":false,\"disable_reposition\":false,\"size\":\"medium\",\"responsive_min_width\":\"0%\",\"responsive_min_width_unit\":false,\"responsive_max_width\":\"100%\",\"responsive_max_width_unit\":false,\"custom_width\":\"640px\",\"custom_width_unit\":false,\"custom_height\":\"380px\",\"custom_height_unit\":false,\"custom_height_auto\":false,\"location\":\"center\",\"position_from_trigger\":false,\"position_top\":\"100\",\"position_left\":\"0\",\"position_bottom\":\"0\",\"position_right\":\"0\",\"position_fixed\":false,\"animation_type\":\"fade\",\"animation_speed\":\"350\",\"animation_origin\":\"center top\",\"overlay_zindex\":false,\"zindex\":\"1999999999\"},\"close\":{\"text\":\"\",\"button_delay\":\"0\",\"overlay_click\":false,\"esc_press\":false,\"f4_press\":false},\"click_open\":[]}}\" class=\"pum pum-overlay pum-theme-3968 pum-theme-lightbox popmake-overlay click_open\" id=\"pum-3975\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]",
+                "aria": "/document[1]/dialog[1]"
+              },
+              "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+              "bounds": {
+                "left": 0,
+                "top": 1529,
+                "height": 414,
+                "width": 800
+              },
+              "snippet": "<div aria-hidden=\"true\" role=\"dialog\" data-popmake=\"{\"id\":4302,\"slug\":\"2019-esg-report\",\"theme_id\":3968,\"cookies\":[],\"triggers\":[{\"type\":\"click_open\",\"settings\":{\"extra_selectors\":\"\",\"cookie_name\":null}}],\"mobile_disabled\":null,\"tablet_disabled\":null,\"meta\":{\"display\":{\"stackable\":false,\"overlay_disabled\":false,\"scrollable_content\":false,\"disable_reposition\":false,\"size\":\"medium\",\"responsive_min_width\":\"0%\",\"responsive_min_width_unit\":false,\"responsive_max_width\":\"100%\",\"responsive_max_width_unit\":false,\"custom_width\":\"640px\",\"custom_width_unit\":false,\"custom_height\":\"380px\",\"custom_height_unit\":false,\"custom_height_auto\":false,\"location\":\"center top\",\"position_from_trigger\":false,\"position_top\":\"100\",\"position_left\":\"0\",\"position_bottom\":\"0\",\"position_right\":\"0\",\"position_fixed\":false,\"animation_type\":\"fade\",\"animation_speed\":\"350\",\"animation_origin\":\"center top\",\"overlay_zindex\":false,\"zindex\":\"1999999999\"},\"close\":{\"text\":\"\",\"button_delay\":\"0\",\"overlay_click\":false,\"esc_press\":false,\"f4_press\":false},\"click_open\":[]}}\" class=\"pum pum-overlay pum-theme-3968 pum-theme-lightbox popmake-overlay click_open\" id=\"pum-4302\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/a[1]",
+                "aria": "/document[1]/article[1]/link[12]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 380,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a class=\"et-pb-active-control\" href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/a[1]",
+                "aria": "/document[1]/article[1]/link[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 380,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a class=\"et-pb-active-control\" href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/article[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 334,
+                "top": 711,
+                "height": 50,
+                "width": 134
+              },
+              "snippet": "<a href=\"https://www.tpicomposites.com/industries-services/wind/wind-energy-market/\" class=\"et_pb_button et_pb_more_button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]",
+                "aria": "/document[1]/article[1]/heading[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 178,
+                "top": 505,
+                "height": 36,
+                "width": 444
+              },
+              "snippet": "<h2 class=\"et_pb_slide_title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]/article[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 178,
+                "top": 541,
+                "height": 120,
+                "width": 444
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/a[3]",
+                "aria": "/document[1]/article[1]/link[14]"
+              },
+              "message": "Text contrast of 2.49 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 500",
+              "bounds": {
+                "left": 414,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/a[2]",
+                "aria": "/document[1]/article[1]/link[13]"
+              },
+              "message": "Text contrast of 2.49 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 500",
+              "bounds": {
+                "left": 397,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/a[3]",
+                "aria": "/document[1]/article[1]/link[9]"
+              },
+              "message": "Text contrast of 2.49 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 500",
+              "bounds": {
+                "left": 414,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/a[2]",
+                "aria": "/document[1]/article[1]/link[8]"
+              },
+              "message": "Text contrast of 2.49 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 500",
+              "bounds": {
+                "left": 397,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/input[1]",
+                "aria": "/document[1]/dialog[2]/form[1]/button[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 674,
+                "top": 2237,
+                "height": 48,
+                "width": 111
+              },
+              "snippet": "<input onkeypress=\"if( event.keyCode == 13 ){ if(window[\"gf_submitting_3\"]){return false;} window[\"gf_submitting_3\"]=true;  jQuery(\"#gform_3\").trigger(\"submit\",[true]); }\" onclick=\"if(window[\"gf_submitting_3\"]){return false;}  window[\"gf_submitting_3\"]=true;  \" value=\"Submit\" class=\"gform_button button\" id=\"gform_submit_button_3\" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[5]/div[1]/div[1]/div[1]/iframe[1]",
+                "aria": "/document[1]/dialog[2]/form[1]/list[1]/listitem[5]"
+              },
+              "message": "Element \"iframe\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 2127,
+                "height": 78,
+                "width": 304
+              },
+              "snippet": "<iframe sandbox=\"allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox\" scrolling=\"no\" frameborder=\"0\" name=\"a-ye8wex7huwjk\" role=\"presentation\" height=\"78\" width=\"304\" src=\"https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LdG56kZAAAAAGjuBlZGmsa7f6pmtM8KtxdflE5O&co=aHR0cHM6Ly93d3cudHBpY29tcG9zaXRlcy5jb206NDQz&hl=en&v=kcXVPRWG7fMILHmzon0--fD3&theme=light&size=normal&cb=8zm5y5c2o1ov\" title=\"reCAPTCHA\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[3]/div[1]/input[1]",
+                "aria": "/document[1]/dialog[2]/form[1]/list[1]/listitem[3]/textbox[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 400,
+                "top": 2057,
+                "height": 54,
+                "width": 384
+              },
+              "snippet": "<input aria-invalid=\"false\" aria-required=\"true\" placeholder=\"Email Address\" class=\"large\" value=\"\" type=\"text\" id=\"input_3_2\" name=\"input_2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[2]/div[1]/input[1]",
+                "aria": "/document[1]/dialog[2]/form[1]/list[1]/listitem[2]/textbox[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 2057,
+                "height": 54,
+                "width": 384
+              },
+              "snippet": "<input aria-invalid=\"false\" aria-required=\"true\" placeholder=\"Name\" class=\"large\" value=\"\" type=\"text\" id=\"input_3_1\" name=\"input_1\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/dialog[2]"
+              },
+              "message": "Element \"div\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 1989,
+                "height": 0,
+                "width": 800
+              },
+              "snippet": "<div tabindex=\"0\" class=\"gform_anchor\" id=\"gf_3\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]",
+                "aria": "/document[1]/dialog[2]"
+              },
+              "message": "Element \"div\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 1943,
+                "height": 372,
+                "width": 800
+              },
+              "snippet": "<div tabindex=\"0\" class=\"pum-content popmake-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/button[1]",
+                "aria": "/document[1]/dialog[2]/button[1]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 2315,
+                "height": 24,
+                "width": 24
+              },
+              "snippet": "<button aria-label=\"Close\" class=\"pum-close popmake-close\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/input[1]",
+                "aria": "/document[1]/dialog[1]/form[1]/button[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 674,
+                "top": 1841,
+                "height": 48,
+                "width": 111
+              },
+              "snippet": "<input onkeypress=\"if( event.keyCode == 13 ){ if(window[\"gf_submitting_4\"]){return false;} window[\"gf_submitting_4\"]=true;  jQuery(\"#gform_4\").trigger(\"submit\",[true]); }\" onclick=\"if(window[\"gf_submitting_4\"]){return false;}  window[\"gf_submitting_4\"]=true;  \" value=\"Submit\" class=\"gform_button button\" id=\"gform_submit_button_4\" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[5]/div[1]/div[1]/div[1]/iframe[1]",
+                "aria": "/document[1]/dialog[1]/form[1]/list[1]/listitem[5]"
+              },
+              "message": "Element \"iframe\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 1731,
+                "height": 78,
+                "width": 304
+              },
+              "snippet": "<iframe sandbox=\"allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox\" scrolling=\"no\" frameborder=\"0\" name=\"a-ezgfxrm5iy1k\" role=\"presentation\" height=\"78\" width=\"304\" src=\"https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LdG56kZAAAAAGjuBlZGmsa7f6pmtM8KtxdflE5O&co=aHR0cHM6Ly93d3cudHBpY29tcG9zaXRlcy5jb206NDQz&hl=en&v=kcXVPRWG7fMILHmzon0--fD3&theme=light&size=normal&cb=fjf9gfdimo8i\" title=\"reCAPTCHA\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[3]/div[1]/input[1]",
+                "aria": "/document[1]/dialog[1]/form[1]/list[1]/listitem[3]/textbox[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 400,
+                "top": 1661,
+                "height": 54,
+                "width": 384
+              },
+              "snippet": "<input aria-invalid=\"false\" aria-required=\"true\" placeholder=\"Email Address\" class=\"large\" value=\"\" type=\"text\" id=\"input_4_2\" name=\"input_2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/ul[1]/li[2]/div[1]/input[1]",
+                "aria": "/document[1]/dialog[1]/form[1]/list[1]/listitem[2]/textbox[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 1661,
+                "height": 54,
+                "width": 384
+              },
+              "snippet": "<input aria-invalid=\"false\" aria-required=\"true\" placeholder=\"Name\" class=\"large\" value=\"\" type=\"text\" id=\"input_4_1\" name=\"input_1\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/dialog[1]"
+              },
+              "message": "Element \"div\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 1593,
+                "height": 0,
+                "width": 800
+              },
+              "snippet": "<div tabindex=\"0\" class=\"gform_anchor\" id=\"gf_4\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]",
+                "aria": "/document[1]/dialog[1]"
+              },
+              "message": "Element \"div\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 1529,
+                "height": 390,
+                "width": 800
+              },
+              "snippet": "<div tabindex=\"0\" class=\"pum-content popmake-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/button[1]",
+                "aria": "/document[1]/dialog[1]/button[1]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 1919,
+                "height": 24,
+                "width": 24
+              },
+              "snippet": "<button aria-label=\"Close\" class=\"pum-close popmake-close\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/footer[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 976,
+                "height": 553,
+                "width": 800
+              },
+              "snippet": "<footer class=\"et-l et-l--footer\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 7,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Frame_HasTitle",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/iframe[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "Inline frame does not have a 'title' attribute",
+              "bounds": {
+                "left": 95,
+                "top": 1098,
+                "height": 250,
+                "width": 625
+              },
+              "snippet": "<iframe style=\"width: 100%; height: 250px;\" src=\"https://irpages2.eqs.com/websites/tpicomposites/English/6100.html\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/a[1]",
+                "aria": "/document[1]/article[1]/link[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 380,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a class=\"et-pb-active-control\" href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/article[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 334,
+                "top": 711,
+                "height": 50,
+                "width": 134
+              },
+              "snippet": "<a href=\"https://www.tpicomposites.com/industries-services/wind/wind-energy-market/\" class=\"et_pb_button et_pb_more_button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/h2[1]",
+                "aria": "/document[1]/article[1]/heading[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 178,
+                "top": 505,
+                "height": 36,
+                "width": 444
+              },
+              "snippet": "<h2 class=\"et_pb_slide_title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]/article[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 178,
+                "top": 541,
+                "height": 120,
+                "width": 444
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/a[3]",
+                "aria": "/document[1]/article[1]/link[9]"
+              },
+              "message": "Text contrast of 2.49 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 500",
+              "bounds": {
+                "left": 414,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/a[2]",
+                "aria": "/document[1]/article[1]/link[8]"
+              },
+              "message": "Text contrast of 2.49 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 500",
+              "bounds": {
+                "left": 397,
+                "top": 933,
+                "height": 7,
+                "width": 7
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/footer[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 976,
+                "height": 553,
+                "width": 800
+              },
+              "snippet": "<footer class=\"et-l et-l--footer\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.tpicomposites.com/",
+      "what": "TPI Composites (AMDWX)",
+      "result": "https://www.tpicomposites.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.tpicomposites.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "TPI Composites Inc - Home",
+          "pageurl": "https://www.tpicomposites.com/",
+          "time": 5.03,
+          "creditsremaining": 634,
+          "allitemcount": 91,
+          "totalelements": 781,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.tpicomposites.com/",
+          "domid": "1d72994699f1dd962092fc9ebdc6113f"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 4,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pum-4302 > DIV#popmake-4302 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#gform_wrapper_4 > FORM#gform_4 > INPUT:first-child + DIV > UL#gform_fields_4 > LI#field_4_6 > DIV#input_4_6 > DIV:first-child > TEXTAREA#g-recaptcha-response",
+                  "HTML > HEAD:first-child + BODY > DIV#pum-3975 > DIV#popmake-3975 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#gform_wrapper_3 > FORM#gform_3 > INPUT:first-child + DIV > UL#gform_fields_3 > LI#field_3_6 > DIV#input_3_6 > DIV:first-child > TEXTAREA#g-recaptcha-response-1"
+                ]
+              },
+              "label_empty": {
+                "id": "label_empty",
+                "description": "Empty form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pum-4302 > DIV#popmake-4302 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#gform_wrapper_4 > FORM#gform_4 > INPUT:first-child + DIV > UL#gform_fields_4 > LI#field_4_6 > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pum-3975 > DIV#popmake-3975 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#gform_wrapper_3 > FORM#gform_3 > INPUT:first-child + DIV > UL#gform_fields_3 > LI#field_3_6 > LABEL:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 1,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > DIV#et-main-area > DIV#main-content > ARTICLE#post-96 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    3.38,
+                    "#ffffff",
+                    "#429e42",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 11,
+            "items": {
+              "text_justified": {
+                "id": "text_justified",
+                "description": "Justified text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#goog-gt-tt > DIV:first-child + DIV + DIV > DIV:first-child"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > HEADER#main-header > DIV:first-child + DIV > DIV:first-child > FORM:first-child > INPUT:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > DIV#et-main-area > DIV#main-content > ARTICLE#post-96 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > P:first-child > A:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > DIV#et-main-area > DIV#main-content > ARTICLE#post-96 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > DIV#et-main-area > DIV#main-content > ARTICLE#post-96 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > DIV#et-main-area > DIV#main-content > ARTICLE#post-96 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child"
+                ]
+              },
+              "link_pdf": {
+                "id": "link_pdf",
+                "description": "Link to PDF document",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > HEADER#main-header > DIV:first-child > DIV#et-top-navigation > NAV#top-menu-nav > UL#top-menu > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > HEADER#main-header > DIV:first-child > DIV#et-top-navigation > NAV#top-menu-nav > UL#top-menu > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > HEADER#main-header > DIV:first-child > DIV#et-top-navigation > DIV#et_mobile_nav_menu > DIV:first-child > UL#mobile_menu > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child + SPAN + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > HEADER#main-header > DIV:first-child > DIV#et-top-navigation > DIV#et_mobile_nav_menu > DIV:first-child > UL#mobile_menu > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child + SPAN + UL > LI:first-child + LI + LI > A:first-child"
+                ]
+              },
+              "javascript_jumpmenu": {
+                "id": "javascript_jumpmenu",
+                "description": "JavaScript jump menu",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#page-container > DIV#et-boc > HEADER#main-header > DIV:first-child > DIV:first-child + DIV > SELECT#gtranslate_selector"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 1190,
+          "axe": 29,
+          "bulk": 0,
+          "embAc": 0,
+          "focAll": 0,
+          "focInd": 550,
+          "focOp": 56,
+          "hover": 24,
+          "ibm": 104,
+          "labClash": 6,
+          "linkUl": 18,
+          "log": 63,
+          "menuNav": 0,
+          "motion": 72,
+          "radioSet": 0,
+          "role": 4,
+          "styleDiff": 50,
+          "tabNav": 0,
+          "wave": 40,
+          "zIndex": 174
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      51
+    ],
+    [
+      "motion",
+      16
+    ],
+    [
+      "ibm",
+      11
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
