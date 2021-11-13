@@ -1,0 +1,3260 @@
+{
+  "script": "a11y05",
+  "batch": "jpchar1",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "10eyv",
+  "logCount": 15,
+  "logSize": 805,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "bytes": [
+          553911,
+          553911,
+          553911,
+          553911,
+          553911
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 2,
+          "serious": 10,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "button-name",
+            "description": "Ensures buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".search-button-top",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#post-469384 > .site-chicklet > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.75 (foreground color: #ffb600, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-469315 > .site-chicklet > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.75 (foreground color: #ffb600, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-469271 > .site-chicklet > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.75 (foreground color: #ffb600, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".context-footer > span",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.75 (foreground color: #ffffff, background color: #ffb600, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#signup-in-sidebar-newsletter > input[name=\"_wpnonce\"][value=\"b887328417\"][type=\"hidden\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: _wpnonce",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".header-right > .context-header.social-nav > li:nth-child(2) > .icon-facebook.icon[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".header-right > .context-header.social-nav > li:nth-child(3) > .icon-twitter.icon[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".context-footer > li:nth-child(2) > .icon-facebook.icon[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".context-footer > li:nth-child(3) > .icon-twitter.icon[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "list",
+            "description": "Ensures that lists are structured correctly",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".header-right > .context-header.social-nav",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "only-listitems",
+                    "description": "List element has direct children that are not allowed inside <li> elements",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".context-footer",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "only-listitems",
+                    "description": "List element has direct children that are not allowed inside <li> elements",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "label[for=\"signup-inline-newsletter-email\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#signup-inline-newsletter > .newsletter-input-wrap",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "visibleElements": 452
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "tabFocusables": 112,
+        "tabFocused": 113,
+        "discrepancy": 1
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "total": 129,
+          "types": {
+            "indicatorMissing": {
+              "total": 15,
+              "tagNames": {
+                "SELECT": 1,
+                "BUTTON": 7,
+                "INPUT": 4,
+                "IFRAME": 3
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 114,
+              "tagNames": {
+                "A": 114
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "SELECT",
+              "text": "OUR SITES HOME USA NYC MASS LA CHI SF DEN CAL"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "SEARCH"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "SEARCH"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Sign Up"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Sign Up"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Streetsblog NYC"
+            },
+            {
+              "tagName": "A",
+              "text": "Staff & Board"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Funders"
+            },
+            {
+              "tagName": "A",
+              "text": "Comment Moderation Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Streetsblog Logo"
+            },
+            {
+              "tagName": "A",
+              "text": "HOME"
+            },
+            {
+              "tagName": "A",
+              "text": "USA"
+            },
+            {
+              "tagName": "A",
+              "text": "NYC"
+            },
+            {
+              "tagName": "A",
+              "text": "MASS"
+            },
+            {
+              "tagName": "A",
+              "text": "LA"
+            },
+            {
+              "tagName": "A",
+              "text": "CHI"
+            },
+            {
+              "tagName": "A",
+              "text": "SF"
+            },
+            {
+              "tagName": "A",
+              "text": "DEN"
+            },
+            {
+              "tagName": "A",
+              "text": "CAL"
+            },
+            {
+              "tagName": "A",
+              "text": "STREETFILMS"
+            },
+            {
+              "tagName": "A",
+              "text": "DONATE"
+            },
+            {
+              "tagName": "A",
+              "text": "Streetsblog NYC Logo"
+            },
+            {
+              "tagName": "A",
+              "text": "Parking Madness 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "Coronavirus Crisis"
+            },
+            {
+              "tagName": "A",
+              "text": "Transit"
+            },
+            {
+              "tagName": "A",
+              "text": "Congestion Pricing"
+            },
+            {
+              "tagName": "A",
+              "text": "Open Streets"
+            },
+            {
+              "tagName": "A",
+              "text": "Calendar"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "The Parks Department’s E-Bike Policy is Not Consistent with State Law"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Dave Colon"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 12, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "32 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": "[Read more]"
+            },
+            {
+              "tagName": "A",
+              "text": "STREETSBLOG USA"
+            },
+            {
+              "tagName": "A",
+              "text": "Report: We Need to Ditch Cars 40% Of The Time"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Kea Wilson"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 12, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "No Comments"
+            },
+            {
+              "tagName": "A",
+              "text": "[Read more]"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Friday’s Headlines: Lots of Carnage (and Too Much Cuomo) Edition"
+            },
+            {
+              "tagName": "A",
+              "text": "Gersh Kuntzman"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 12, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "18 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": "STREETSBLOG USA"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "America’s Most Toxic Car Ad: The Finals!"
+            },
+            {
+              "tagName": "A",
+              "text": "Kea Wilson"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 12, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "No Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Driver Kills Elderly Woman Near Gridlocked Canal Street"
+            },
+            {
+              "tagName": "A",
+              "text": "Julianne Cuba"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 11, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "20 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "UPDATE: Williamsburg Man Killed by Speeding, Drugged Teen Driver"
+            },
+            {
+              "tagName": "A",
+              "text": "Gersh Kuntzman"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 11, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "11 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Thursday’s Headlines: ‘Tear Down This Road’ Edition"
+            },
+            {
+              "tagName": "A",
+              "text": "Eve Kessler"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 11, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "7 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "USPS Truck Driver Charged with Misdemeanor for Killing Upper West Sider Jeffrey Williamson"
+            },
+            {
+              "tagName": "A",
+              "text": "Gersh Kuntzman"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 11, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "22 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": "STREETSBLOG USA"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "COP26 ‘Transport Day’ Ignored Everything But EVs"
+            },
+            {
+              "tagName": "A",
+              "text": "Kea Wilson"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 11, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "No Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Idea of ‘Tearing Down the BQE’ Gets Fresh Look as Feds Open Their Wallets"
+            },
+            {
+              "tagName": "A",
+              "text": "Julianne Cuba"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 11, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "34 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Corey Johnson Tells DOT that It Better Put out the ‘Streets Master Plan’ on Time"
+            },
+            {
+              "tagName": "A",
+              "text": "Gersh Kuntzman"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 10, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "9 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Woman Moped Rider Hit by Truck Driver in Williamsburg Dies"
+            },
+            {
+              "tagName": "A",
+              "text": "Gersh Kuntzman"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 10, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "19 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "A Round and a Roundy: The Only Chart Dave Chokshi Needs"
+            },
+            {
+              "tagName": "A",
+              "text": "Streetsblog"
+            },
+            {
+              "tagName": "A",
+              "text": "Nov 10, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "7 Comments"
+            },
+            {
+              "tagName": "A",
+              "text": "Load more stories"
+            },
+            {
+              "tagName": "A",
+              "text": "Director of Engagement, NACTO, New York"
+            },
+            {
+              "tagName": "A",
+              "text": "Assistant Press Secretary, New York City Department of Transportation, NYC"
+            },
+            {
+              "tagName": "A",
+              "text": "Public Realm Programming & Community Engagement Manager, Street Plans, NYC"
+            },
+            {
+              "tagName": "A",
+              "text": "Deputy Press Secretary, NYC Department of Transportation (New York)"
+            },
+            {
+              "tagName": "A",
+              "text": "Director of Press, NYC Department of Transportation, New York"
+            },
+            {
+              "tagName": "A",
+              "text": "Post a Job"
+            },
+            {
+              "tagName": "A",
+              "text": "See More Jobs"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Streetsblog NYC"
+            },
+            {
+              "tagName": "A",
+              "text": "Staff & Board"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Funders"
+            },
+            {
+              "tagName": "A",
+              "text": "Comment Moderation Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Streetsblog NYC Logo"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "total": 135,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "focusableAndOperable": {
+              "total": 135,
+              "tagNames": {
+                "A": 114,
+                "SELECT": 1,
+                "BUTTON": 7,
+                "INPUT": 10,
+                "IFRAME": 3
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Streetsblog NYC",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Staff & Board",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Funders",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Comment Moderation Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Streetsblog Logo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "OUR SITES HOME USA NYC MASS LA CHI SF DEN CAL",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HOME",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "USA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "NYC",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MASS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CHI",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "DEN",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CAL",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "STREETFILMS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "DONATE",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"search-button-top\" style=\"cursor: default;\"> <svg> <use xlink:hre",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"search\" class=\"search-field\" placeholder=\"Search\" value=\"\" name=\"s\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "SEARCH",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Streetsblog NYC Logo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Parking Madness 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Coronavirus Crisis",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transit",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Congestion Pricing",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Open Streets",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Calendar",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"search-button-top-mobile\" style=\"cursor: default;\"> <svg> <use xl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"menu-toggle\"> <svg> <use xlink:href=\"#icon-hamburger\"> </use></sv",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"search\" class=\"search-field\" placeholder=\"Search\" value=\"\" name=\"s\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "SEARCH",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Parks Department’s E-Bike Policy is Not Consistent with State Law",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/12/the-parks-departments-e-bike-pol",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dave Colon",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 12, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "32 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "[Read more]",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "STREETSBLOG USA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Report: We Need to Ditch Cars 40% Of The Time",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://usa.streetsblog.org/2021/11/12/report-climate-goals-impossible-",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kea Wilson",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 12, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "No Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "[Read more]",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/12/fridays-headlines-lots-of-carnag",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Friday’s Headlines: Lots of Carnage (and Too Much Cuomo) Edition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Gersh Kuntzman",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 12, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "18 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "STREETSBLOG USA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://usa.streetsblog.org/2021/11/11/americas-most-toxic-car-ad-the-f",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "America’s Most Toxic Car Ad: The Finals!",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kea Wilson",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 12, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "No Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/11/driver-kills-elderly-woman-near-",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Driver Kills Elderly Woman Near Gridlocked Canal Street",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Julianne Cuba",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 11, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "20 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/11/williamsburg-man-critically-inju",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "UPDATE: Williamsburg Man Killed by Speeding, Drugged Teen Driver",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Gersh Kuntzman",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 11, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "11 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/11/thursdays-headlines-tear-down-th",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Thursday’s Headlines: ‘Tear Down This Road’ Edition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Eve Kessler",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 11, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "7 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/11/usps-truck-driver-charged-with-m",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "USPS Truck Driver Charged with Misdemeanor for Killing Upper West Sider Jeffrey ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Gersh Kuntzman",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 11, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "22 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "STREETSBLOG USA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://usa.streetsblog.org/2021/11/10/cop26-transport-day-ignores-ever",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "COP26 ‘Transport Day’ Ignored Everything But EVs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kea Wilson",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 11, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "No Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/11/idea-of-tearing-down-the-bqe-get",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Idea of ‘Tearing Down the BQE’ Gets Fresh Look as Feds Open Their Wallets",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Julianne Cuba",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 11, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "34 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/10/corey-johnson-tells-dot-that-it-",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corey Johnson Tells DOT that It Better Put out the ‘Streets Master Plan’ on Time",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Gersh Kuntzman",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 10, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "9 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/10/woman-moped-rider-hit-by-truck-d",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Woman Moped Rider Hit by Truck Driver in Williamsburg Dies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Gersh Kuntzman",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 10, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "19 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://nyc.streetsblog.org/2021/11/10/a-round-and-a-roundy-the-only-ch",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "A Round and a Roundy: The Only Chart Dave Chokshi Needs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Streetsblog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nov 10, 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "7 Comments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Load more stories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "_wpnonce",
+              "text": "<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"b887328417\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"_wp_http_referer\" value=\"/\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "signup-in-sidebar-newsletter-email",
+              "text": "<input type=\"email\" id=\"signup-in-sidebar-newsletter-email\" name=\"email\" placeho",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Sign Up",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "signup-in-sidebar-newsletterlist_2845be4371",
+              "text": "<input type=\"hidden\" id=\"signup-in-sidebar-newsletterlist_2845be4371\" name=\"list",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "google_ads_iframe_/2855024/sidebar_top_300x250_0",
+              "text": "<iframe id=\"google_ads_iframe_/2855024/sidebar_top_300x250_0\" title=\"3rd party a",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Director of Engagement, NACTO, New York",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Assistant Press Secretary, New York City Department of Transportation, NYC",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Public Realm Programming & Community Engagement Manager, Street Plans, NYC",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Deputy Press Secretary, NYC Department of Transportation (New York)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Director of Press, NYC Department of Transportation, New York",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Post a Job",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "See More Jobs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "_wpnonce",
+              "text": "<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"b887328417\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"_wp_http_referer\" value=\"/\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "signup-inline-newsletter-email",
+              "text": "<input type=\"email\" id=\"signup-inline-newsletter-email\" name=\"email\" placeholder",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Sign Up",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "signup-inline-newsletterlist_2845be4371",
+              "text": "<input type=\"hidden\" id=\"signup-inline-newsletterlist_2845be4371\" name=\"list_284",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Streetsblog NYC",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Staff & Board",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Funders",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Comment Moderation Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Streetsblog NYC Logo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe src=\"https://02a22bc305f98eaa9a58b443690c3b19.safeframe.googlesyndicatio",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe src=\"https://www.google.com/recaptcha/api2/aframe\" width=\"0\" height=\"0\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "madeVisible": 0,
+          "opacityChanged": 0,
+          "opacityAffected": 0,
+          "unhoverables": 0
+        },
+        "items": {
+          "triggers": [],
+          "unhoverables": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 6,
+          "wellLabeled": 6
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "SELECT",
+              "type": "select-one"
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"search-button-top\"> <svg> <use xlink:href=\"#icon-search\"> </use></svg> </button>}"
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "search"
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"search-button-top-mobile\"> <svg> <use xlink:href=\"#icon-search\"> </use></svg> </button>}"
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"menu-toggle\"> <svg> <use xlink:href=\"#icon-hamburger\"> </use></svg> </button>}"
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "search"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "SEARCH"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "SEARCH"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Subscribe to our Daily Email Digest"
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Sign Up"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Subscribe to our Daily Email Digest"
+                ]
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Sign Up"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "links": 114,
+          "inline": {
+            "total": 41,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Dave Colon",
+            "Nov 12, 2021",
+            "32 Comments",
+            "[Read more]",
+            "Kea Wilson",
+            "Nov 12, 2021",
+            "No Comments",
+            "[Read more]",
+            "Gersh Kuntzman",
+            "Nov 12, 2021",
+            "18 Comments",
+            "Kea Wilson",
+            "Nov 12, 2021",
+            "No Comments",
+            "Julianne Cuba",
+            "Nov 11, 2021",
+            "20 Comments",
+            "Gersh Kuntzman",
+            "Nov 11, 2021",
+            "11 Comments",
+            "Eve Kessler",
+            "Nov 11, 2021",
+            "7 Comments",
+            "Gersh Kuntzman",
+            "Nov 11, 2021",
+            "22 Comments",
+            "Kea Wilson",
+            "Nov 11, 2021",
+            "No Comments",
+            "Julianne Cuba",
+            "Nov 11, 2021",
+            "34 Comments",
+            "Gersh Kuntzman",
+            "Nov 10, 2021",
+            "9 Comments",
+            "Gersh Kuntzman",
+            "Nov 10, 2021",
+            "19 Comments",
+            "Streetsblog",
+            "Nov 10, 2021",
+            "7 Comments"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "roleElements": 9,
+        "badRoleElements": 3,
+        "tagNames": {
+          "HEADER": {
+            "banner": 1
+          },
+          "MAIN": {
+            "main": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 14,
+            "subtotals": [
+              11,
+              2,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 41,
+            "subtotals": [
+              39,
+              2
+            ]
+          },
+          "aBlock": {
+            "total": 73,
+            "subtotals": [
+              21,
+              11,
+              11,
+              6,
+              6,
+              5,
+              5,
+              3,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 7,
+            "subtotals": [
+              2,
+              2,
+              2,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "borderStyle": {
+              "none": 13,
+              "none none solid": 1
+            },
+            "borderWidth": {
+              "0px": 13,
+              "0px 0px 1px": 1
+            },
+            "lineHeight": {
+              "24px": 11,
+              "normal": 3
+            },
+            "fontSize": {
+              "20px": 99,
+              "24px": 20
+            }
+          },
+          "aInline": {
+            "fontWeight": {
+              "400": 39,
+              "700": 2
+            },
+            "fontSize": {
+              "12px": 585,
+              "15px": 30
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 72,
+              "none solid none none": 1
+            },
+            "borderWidth": {
+              "0px": 72,
+              "0px 1px 0px 0px": 1
+            },
+            "fontWeight": {
+              "400": 51,
+              "700": 22
+            },
+            "lineHeight": {
+              "normal": 51,
+              "24px": 11,
+              "17px": 6,
+              "18px": 5
+            },
+            "minHeight": {
+              "0px": 66,
+              "auto": 7
+            },
+            "minWidth": {
+              "0px": 66,
+              "auto": 7
+            },
+            "fontSize": {
+              "16px": 390,
+              "14px": 165,
+              "20px": 165,
+              "9px": 90,
+              "17px": 90,
+              "18px": 75,
+              "12px": 45,
+              "24px": 30,
+              "13px": 30,
+              "32px": 15
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 5,
+              "none none none solid": 2
+            },
+            "borderWidth": {
+              "0px": 5,
+              "0px 0px 0px 3px": 2
+            },
+            "lineHeight": {
+              "normal": 5,
+              "0px": 2
+            },
+            "minHeight": {
+              "0px": 4,
+              "auto": 3
+            },
+            "minWidth": {
+              "0px": 4,
+              "auto": 3
+            },
+            "fontSize": {
+              "13.3333px": 75,
+              "4.8px": 30
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "totals": {
+          "total": 3,
+          "tagNames": {
+            "INPUT": 2,
+            "DIV": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "SEARCH"
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 6,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/header[1]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 750,
+                "top": 12,
+                "height": 18,
+                "width": 15
+              },
+              "snippet": "<button class=\"search-button-top\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Html_HasLang",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[2]/div[2]/div[1]/div[1]/div[1]/iframe[1]/html[1]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Page detected as HTML, but does not have a 'lang' attribute",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 300
+              },
+              "snippet": "<html>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/ul[2]/span[1]",
+                "aria": "/document[1]/contentinfo[1]/list[2]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 400",
+              "bounds": {
+                "left": 638,
+                "top": 3642,
+                "height": 28,
+                "width": 47
+              },
+              "snippet": "<span>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[2]/div[1]/article[7]/span[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[9]/link[1]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 700",
+              "bounds": {
+                "left": 36,
+                "top": 2014,
+                "height": 14,
+                "width": 107
+              },
+              "snippet": "<a href=\"https://usa.streetsblog.org/2021/11/10/cop26-transport-day-ignores-everything-but-evs/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[2]/div[1]/article[2]/span[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[4]/link[1]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 700",
+              "bounds": {
+                "left": 36,
+                "top": 822,
+                "height": 14,
+                "width": 107
+              },
+              "snippet": "<a href=\"https://usa.streetsblog.org/2021/11/11/americas-most-toxic-car-ad-the-finals/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[1]/article[2]/span[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[2]/link[1]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 700",
+              "bounds": {
+                "left": 502,
+                "top": 158,
+                "height": 14,
+                "width": 107
+              },
+              "snippet": "<a href=\"https://usa.streetsblog.org/2021/11/12/report-climate-goals-impossible-unless-sustainable-transport-claims-40-percent-of-mode-share/\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 7,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/header[1]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 750,
+                "top": 12,
+                "height": 18,
+                "width": 15
+              },
+              "snippet": "<button class=\"search-button-top\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Html_HasLang",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[2]/div[2]/div[1]/div[1]/div[1]/iframe[1]/html[1]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Page detected as HTML, but does not have a 'lang' attribute",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 300
+              },
+              "snippet": "<html>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[2]/div[2]/div[1]/div[1]/div[1]/iframe[1]/html[1]/body[1]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/document[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 0,
+                "top": 236,
+                "height": 17,
+                "width": 300
+              },
+              "snippet": "<a onclick=\"ha('aw0')\" onmouseover=\"ss('aw0')\" onmousedown=\"st('aw0')\" onfocus=\"ss('aw0')\" href=\"https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjsth3brTaJDeI8e6EMiIBsF929X8VJODxuBstO_FE8sevo_Od9z6zVtWA2pEyN6p38pSgKXSsO-5xwdIYYrsqBKsTCs6qSpEOW8JR2lbtp3xV_EYbjM50vXLJtOq1QtqJTA_SJ8AWIMeMvln2OuBDnikljOczutOdOXqsMk4aiDi_kQXvOsn6_N45bAkaRXpcAUB5W8mKm2TAGfAZPvs_Ummyj_QEzeseSfLgbqLhPiZGhmk1J0m-gNJPoUDp8rOJi5rBYIfxoJJUQyvUPRRY62cDuw8DPO6kXWfyxNGSOyzNiibklW5zPe4X0xc1Rfb&sig=Cg0ArKJSzALUsz5r0UoJ&fbs_aeid=[gw_fbsaeid]&adurl=http://www.vaccaroandwhite.com/\" target=\"_top\" id=\"aw0\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/ul[2]/span[1]",
+                "aria": "/document[1]/contentinfo[1]/list[2]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 400",
+              "bounds": {
+                "left": 638,
+                "top": 3650,
+                "height": 28,
+                "width": 47
+              },
+              "snippet": "<span>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[2]/div[1]/article[7]/span[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[9]/link[1]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 700",
+              "bounds": {
+                "left": 36,
+                "top": 2022,
+                "height": 14,
+                "width": 107
+              },
+              "snippet": "<a href=\"https://usa.streetsblog.org/2021/11/10/cop26-transport-day-ignores-everything-but-evs/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[2]/div[1]/article[2]/span[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[4]/link[1]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 700",
+              "bounds": {
+                "left": 36,
+                "top": 830,
+                "height": 14,
+                "width": 107
+              },
+              "snippet": "<a href=\"https://usa.streetsblog.org/2021/11/11/americas-most-toxic-car-ad-the-finals/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[4]/div[1]/main[1]/div[1]/article[2]/span[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[2]/link[1]"
+              },
+              "message": "Text contrast of 1.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 700",
+              "bounds": {
+                "left": 502,
+                "top": 166,
+                "height": 14,
+                "width": 107
+              },
+              "snippet": "<a href=\"https://usa.streetsblog.org/2021/11/12/report-climate-goals-impossible-unless-sustainable-transport-claims-40-percent-of-mode-share/\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://nyc.streetsblog.org/",
+      "what": "Streetsblog NYC",
+      "result": "https://nyc.streetsblog.org/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://nyc.streetsblog.org/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Streetsblog New York City – Covering the fight for sustainable cities",
+          "pageurl": "https://nyc.streetsblog.org/",
+          "time": 2.92,
+          "creditsremaining": 337,
+          "allitemcount": 90,
+          "totalelements": 628,
+          "waveurl": "http://wave.webaim.org/report?url=https://nyc.streetsblog.org/",
+          "domid": "ecee3c44cba6df899d9ed37e612bd7ef"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 5,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#sticky-header-wrapper > HEADER#masthead > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child + BUTTON + DIV > FORM:first-child > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#sticky-header-wrapper > HEADER#masthead > DIV:first-child + DIV + DIV > FORM:first-child > INPUT:first-child"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#sticky-header-wrapper > HEADER#masthead > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#sticky-header-wrapper > HEADER#masthead > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > UL:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#sticky-header-wrapper > HEADER#masthead > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > UL:first-child + BUTTON + DIV > BUTTON:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 4,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV#nyc-top-stories > ARTICLE#post-469384 > SPAN:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469315 > SPAN:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469271 > SPAN:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > FOOTER#colophon > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child + UL > SPAN:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1.75,
+                    "#ffb600",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1.75,
+                    "#ffb600",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1.75,
+                    "#ffb600",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1.75,
+                    "#ffffff",
+                    "#ffb600",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 21,
+            "items": {
+              "select_missing_label": {
+                "id": "select_missing_label",
+                "description": "Select missing label",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#sticky-header-wrapper > HEADER#masthead > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL#header-top-menu > DIV:first-child > SELECT:first-child"
+                ]
+              },
+              "alt_long": {
+                "id": "alt_long",
+                "description": "Long alternative text",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV#nyc-top-stories > ARTICLE#post-469151 > DIV:first-child > DIV:first-child > DIV:first-child > HEADER:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469328 > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469259 > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 16,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV#nyc-top-stories > ARTICLE#post-469151 > DIV:first-child > DIV:first-child > DIV:first-child > HEADER:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV#nyc-top-stories > ARTICLE#post-469384 > SPAN:first-child + DIV > DIV:first-child > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV#nyc-top-stories > ARTICLE#post-469384 > SPAN:first-child + DIV > DIV:first-child > DIV:first-child > HEADER:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469326 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469315 > SPAN:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469315 > SPAN:first-child + DIV > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469328 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469321 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469284 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469259 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469271 > SPAN:first-child + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469271 > SPAN:first-child + DIV > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469264 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469257 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469249 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#content > DIV#primary > MAIN#main > DIV:first-child + DIV > DIV#post-list > ARTICLE#post-469244 > DIV:first-child > DIV:first-child + DIV > DIV:first-child > HEADER:first-child > H2:first-child > A:first-child"
+                ]
+              },
+              "javascript_jumpmenu": {
+                "id": "javascript_jumpmenu",
+                "description": "JavaScript jump menu",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#wrap-site > DIV#page > DIV#sticky-header-wrapper > HEADER#masthead > DIV:first-child > DIV:first-child > DIV:first-child + DIV > UL#header-top-menu > DIV:first-child > SELECT:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y05",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 250 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 426,
+          "axe": 35,
+          "bulk": 17,
+          "embAc": 0,
+          "focAll": 3,
+          "focInd": 75,
+          "focOp": 0,
+          "hover": 0,
+          "ibm": 16,
+          "labClash": 12,
+          "linkUl": 123,
+          "log": 15,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 6,
+          "styleDiff": 46,
+          "tabNav": 0,
+          "wave": 69,
+          "zIndex": 9
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      91
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      4
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

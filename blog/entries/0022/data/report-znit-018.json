@@ -1,0 +1,3162 @@
+{
+  "script": "a11y04",
+  "batch": "char0",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "znit",
+  "logCount": 127,
+  "logSize": 6366,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "bytes": [
+          967816,
+          967816,
+          967816,
+          967816,
+          967816
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://earthjustice.org/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 4,
+          "serious": 1,
+          "critical": 2
+        },
+        "items": [
+          {
+            "rule": "button-name",
+            "description": "Ensures buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#search-icon",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".button--big",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.56 (foreground color: #0093bb, background color: #ffffff, font size: 11.3pt (15px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "li:nth-child(10)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: menu-fontsize",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-main-is-top-level",
+            "description": "Ensures the main landmark is at top level",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".l-footer",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-top-level",
+                    "description": "The main landmark is contained in another landmark.",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-no-duplicate-main",
+            "description": "Ensures the document has at most one main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".l-content",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "page-no-duplicate-main",
+                    "description": "Document has more than one main landmark",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".l-content",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#block-menu-menu-menu-footer-about",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "user-scalable=no on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://earthjustice.org/",
+      "result": {
+        "visibleElements": 208
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://earthjustice.org/",
+      "result": {
+        "tabFocusables": 61,
+        "tabFocused": 70,
+        "discrepancy": 9
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "total": 70,
+          "types": {
+            "indicatorMissing": {
+              "total": 6,
+              "tagNames": {
+                "INPUT": 5,
+                "IFRAME": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 1,
+              "tagNames": {
+                "BUTTON": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 63,
+              "tagNames": {
+                "A": 63
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "The law makes change."
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "About Earthjustice"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Offices"
+            },
+            {
+              "tagName": "A",
+              "text": "Never Rest"
+            },
+            {
+              "tagName": "A",
+              "text": "Financials"
+            },
+            {
+              "tagName": "A",
+              "text": "Your Donation at Work"
+            },
+            {
+              "tagName": "A",
+              "text": "Career Opportunities"
+            },
+            {
+              "tagName": "A",
+              "text": "Diversity, Equity, and Inclusion"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Work"
+            },
+            {
+              "tagName": "A",
+              "text": "Climate and Energy"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthy Communities"
+            },
+            {
+              "tagName": "A",
+              "text": "The Wild"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Clients"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Stories"
+            },
+            {
+              "tagName": "A",
+              "text": "Victories"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Room"
+            },
+            {
+              "tagName": "A",
+              "text": "En Español"
+            },
+            {
+              "tagName": "A",
+              "text": "Take Action"
+            },
+            {
+              "tagName": "A",
+              "text": "Action Center"
+            },
+            {
+              "tagName": "A",
+              "text": "Action Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "The Action Tip Guide"
+            },
+            {
+              "tagName": "A",
+              "text": "Make a Tribute Gift"
+            },
+            {
+              "tagName": "A",
+              "text": "Manage Monthly Gift"
+            },
+            {
+              "tagName": "A",
+              "text": "Other Ways To Give"
+            },
+            {
+              "tagName": "A",
+              "text": "Donate"
+            },
+            {
+              "tagName": "A",
+              "text": "Donate"
+            },
+            {
+              "tagName": "A",
+              "text": "National Monuments"
+            },
+            {
+              "tagName": "A",
+              "text": "biodiversity defense"
+            },
+            {
+              "tagName": "A",
+              "text": "Latest"
+            },
+            {
+              "tagName": "A",
+              "text": "For 50 years, Earthjustice has been the legal backbone for the environmental movement. See our impac"
+            },
+            {
+              "tagName": "A",
+              "text": "The story behind the photo."
+            },
+            {
+              "tagName": "A",
+              "text": "Regional offices 14 Regional offices"
+            },
+            {
+              "tagName": "A",
+              "text": "Lawyers 170 Lawyers"
+            },
+            {
+              "tagName": "A",
+              "text": "Active legal proceedings630+ Active legal proceedings"
+            },
+            {
+              "tagName": "A",
+              "text": "Meet our clients"
+            },
+            {
+              "tagName": "A",
+              "text": "Who We Are"
+            },
+            {
+              "tagName": "A",
+              "text": "Diversity, Equity, and Inclusion"
+            },
+            {
+              "tagName": "A",
+              "text": "Board of Trustees"
+            },
+            {
+              "tagName": "A",
+              "text": "Annual Reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Victories"
+            },
+            {
+              "tagName": "A",
+              "text": "Career Opportunities"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Request for Legal Assistance"
+            },
+            {
+              "tagName": "A",
+              "text": "Donate"
+            },
+            {
+              "tagName": "A",
+              "text": "Action Center"
+            },
+            {
+              "tagName": "A",
+              "text": "Email & Text Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "Renew Your Support"
+            },
+            {
+              "tagName": "A",
+              "text": "Become a Justice Partner"
+            },
+            {
+              "tagName": "A",
+              "text": "Legacy Gift Planning"
+            },
+            {
+              "tagName": "A",
+              "text": "Earthjustice Store"
+            },
+            {
+              "tagName": "A",
+              "text": "Supporter FAQ"
+            },
+            {
+              "tagName": "A",
+              "text": "Manage my monthly gift"
+            },
+            {
+              "tagName": "A",
+              "text": "Manage email subscriptions"
+            },
+            {
+              "tagName": "A",
+              "text": "Update contact information"
+            },
+            {
+              "tagName": "A",
+              "text": "View my gift history"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "We respect your privacy."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "total": 85,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 1,
+              "tagNames": {
+                "DIV": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 84,
+              "tagNames": {
+                "A": 73,
+                "BUTTON": 1,
+                "INPUT": 8,
+                "IFRAME": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "DIV",
+              "id": "backtotop",
+              "text": "Back to top",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to main content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/\" title=\"Home\" rel=\"home\" class=\"site-logo adaptive-image\" style=\"curs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The law makes change.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Earthjustice",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Offices",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Never Rest",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financials",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Your Donation at Work",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career Opportunities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Diversity, Equity, and Inclusion",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Work",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Climate and Energy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthy Communities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Wild",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Clients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Stories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Victories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Room",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "En Español",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Take Action",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Action Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Action Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Action Tip Guide",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Make a Tribute Gift",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manage Monthly Gift",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Other Ways To Give",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Donate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "search-icon",
+              "text": "<button id=\"search-icon\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Donate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-search-block-form--2",
+              "text": "<input title=\"Enter the terms you wish to search for.\" placeholder=\"Search site\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "National Monuments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "biodiversity defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Latest",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-submit",
+              "text": "<input type=\"submit\" id=\"edit-submit\" name=\"op\" value=\"Search\" class=\"form-submi",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"form_build_id\" value=\"form-bYi09_rpwovMt5e5iuYpQfBFrR",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"form_id\" value=\"search_block_form\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "main-content",
+              "text": "<a id=\"main-content\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "For 50 years, Earthjustice has been the legal backbone for the environmental mov",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The story behind the photo.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Regional offices 14 Regional offices",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Lawyers 170 Lawyers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Active legal proceedings630+ Active legal proceedings",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Meet our clients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"email\" autocomplete=\"email\" x-autocompletetype=\"email\" pattern=\"^([",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "YesSignMeUpForUpdatesForBinder_Value",
+              "text": "<input id=\"YesSignMeUpForUpdatesForBinder_Value\" type=\"hidden\" name=\"YesSignMeUp",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"text\" autocomplete=\"on\" false=\"\" title=\"\" name=\"PersonalUrl\" value=",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"submit\" value=\"Sign up\" class=\"at-submit btn-at btn-at-primary\" sty",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Instagram",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "YouTube",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LinkedIn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reddit",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "TikTok",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Who We Are",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Diversity, Equity, and Inclusion",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Board of Trustees",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Annual Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Victories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career Opportunities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request for Legal Assistance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Donate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Action Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email & Text Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Renew Your Support",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Become a Justice Partner",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Legacy Gift Planning",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Earthjustice Store",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supporter FAQ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manage my monthly gift",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manage email subscriptions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Update contact information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View my gift history",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"charitynav\" href=\"https://www.charitynavigator.org/index.cfm?bay=searc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"bbb\" href=\"https://www.bbb.org/charity-reviews/national/environment/ea",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"//earthjustice.org/\" title=\"Home\" rel=\"home\" class=\"logo\" style=\"cursor",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "We respect your privacy.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://pla",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "rufous-sandbox",
+              "text": "<iframe id=\"rufous-sandbox\" scrolling=\"no\" frameborder=\"0\" allowtransparency=\"tr",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "triggers": 1,
+          "madeVisible": 0,
+          "opacityChanged": 1,
+          "opacityAffected": 14,
+          "unhoverables": 3
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "menu-32621-1",
+              "text": "Take ActionAction CenterAction AlertsThe Action Ti",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Action CenterAction AlertsThe Action Tip GuideMake"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "—"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "—"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 1,
+          "wellLabeled": 5
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button id=\"search-icon\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email Address"
+                ]
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "(Optional)"
+                ]
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Sign up"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "links": 73,
+          "inline": {
+            "total": 14,
+            "underlined": 2,
+            "underlinedPercent": 14
+          }
+        },
+        "items": {
+          "underlined": [
+            "The story behind the photo.",
+            "We respect your privacy."
+          ],
+          "notUnderlined": [
+            "The law makes change.",
+            "National Monuments",
+            "biodiversity defense",
+            "Latest",
+            "For 50 years, Earthjustice has been the legal backbone for the environmental movement. See our impact.",
+            "Facebook",
+            "Twitter",
+            "Instagram",
+            "YouTube",
+            "LinkedIn",
+            "Reddit",
+            "TikTok"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://earthjustice.org/",
+      "result": {
+        "roleElements": 8,
+        "badRoleElements": 7,
+        "tagNames": {
+          "HEADER": {
+            "banner": 1
+          },
+          "DIV": {
+            "main": 2
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          },
+          "NAV": {
+            "navigation": 3
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 5,
+            "subtotals": [
+              4,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 14,
+            "subtotals": [
+              7,
+              3,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 59,
+            "subtotals": [
+              23,
+              21,
+              9,
+              4,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 1
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "400": 1,
+              "700": 4
+            },
+            "lineHeight": {
+              "16.8px": 4,
+              "36px": 1
+            },
+            "fontSize": {
+              "14px": 18,
+              "36px": 2
+            }
+          },
+          "aInline": {
+            "fontWeight": {
+              "400": 13,
+              "700": 1
+            },
+            "lineHeight": {
+              "0px": 7,
+              "19.5px": 3,
+              "normal": 2,
+              "48.4px": 1,
+              "13.2px": 1
+            },
+            "textDecorationLine": {
+              "none": 12,
+              "underline": 2
+            },
+            "fontSize": {
+              "0px": 42,
+              "13px": 18,
+              "16px": 6,
+              "22px": 6,
+              "11px": 6,
+              "14px": 6
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 31,
+              "solid none none": 27,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 31,
+              "5px 0px 0px": 27,
+              "1px": 1
+            },
+            "fontWeight": {
+              "400": 58,
+              "700": 1
+            },
+            "lineHeight": {
+              "25px": 23,
+              "15px": 21,
+              "normal": 9,
+              "34px": 4,
+              "22px": 1,
+              "16.5px": 1
+            },
+            "minWidth": {
+              "0px": 58,
+              "150px": 1
+            },
+            "fontSize": {
+              "25px": 138,
+              "15px": 132,
+              "16px": 54,
+              "34px": 24,
+              "22px": 6
+            }
+          },
+          "button": {}
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://earthjustice.org/",
+      "result": {
+        "totals": {
+          "total": 61,
+          "tagNames": {
+            "IMG": 1,
+            "UL": 1,
+            "LI": 29,
+            "A": 27,
+            "BUTTON": 1,
+            "DIV": 2
+          }
+        },
+        "items": [
+          {
+            "tagName": "IMG",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "UL",
+            "id": "superfish-1",
+            "text": "About UsAbout EarthjusticeOur TeamOfficesNever RestFinancialsYour Donation at WorkCareer Opportuniti"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32425-1",
+            "text": "About UsAbout EarthjusticeOur TeamOfficesNever RestFinancialsYour Donation at WorkCareer Opportuniti"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "About Us"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32426-1",
+            "text": "About Earthjustice"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "About Earthjustice"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32427-1",
+            "text": "Our Team"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Team"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32428-1",
+            "text": "Offices"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Offices"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32837-1",
+            "text": "Never Rest"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Never Rest"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32429-1",
+            "text": "Financials"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Financials"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32430-1",
+            "text": "Your Donation at Work"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Your Donation at Work"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32431-1",
+            "text": "Career Opportunities"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Career Opportunities"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32627-1",
+            "text": "Diversity, Equity, and Inclusion"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Diversity, Equity, and Inclusion"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32433-1",
+            "text": "Our WorkClimate and EnergyHealthy CommunitiesThe WildOur ProgramsOur ClientsOur StoriesVictoriesPres"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Work"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32436-1",
+            "text": "Climate and Energy"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Climate and Energy"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32435-1",
+            "text": "Healthy Communities"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Healthy Communities"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32434-1",
+            "text": "The Wild"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "The Wild"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32848-1",
+            "text": "Our Programs"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Programs"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32437-1",
+            "text": "Our Clients"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Clients"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32438-1",
+            "text": "Our Stories"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Stories"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32439-1",
+            "text": "Victories"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Victories"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32440-1",
+            "text": "Press Room"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Press Room"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32452-1",
+            "text": "En Español"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "En Español"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-fontsize",
+            "text": "—"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32621-1",
+            "text": "Take ActionAction CenterAction AlertsThe Action Tip GuideMake a Tribute GiftManage Monthly GiftOther"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Take Action"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32624-1",
+            "text": "Action Center"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Action Center"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32622-1",
+            "text": "Action Alerts"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Action Alerts"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32626-1",
+            "text": "The Action Tip Guide"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "The Action Tip Guide"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32652-1",
+            "text": "Make a Tribute Gift"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Make a Tribute Gift"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32845-1",
+            "text": "Manage Monthly Gift"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Manage Monthly Gift"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-32625-1",
+            "text": "Other Ways To Give"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Other Ways To Give"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-fontsize",
+            "text": "—"
+          },
+          {
+            "tagName": "LI",
+            "id": "menu-1378-1",
+            "text": "Donate"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Donate"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "search-icon",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "backtotop",
+            "text": "Back to top"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://earthjustice.org/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 22,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[2]/div[2]/button[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 748,
+                "top": 22,
+                "height": 52,
+                "width": 52
+              },
+              "snippet": "<button id=\"search-icon\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Fieldset_HasLegend",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/form[1]/fieldset[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/region[2]/form[1]"
+              },
+              "message": "<fieldset> element does not have a <legend>",
+              "bounds": {
+                "left": 260,
+                "top": 1422,
+                "height": 76,
+                "width": 280
+              },
+              "snippet": "<fieldset id=\"NVSignupForm574669-ContactInformation\" class=\"at-fieldset ContactInformation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Fieldset_HasLegend",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/section[1]/form[1]/fieldset[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/region[1]/form[1]"
+              },
+              "message": "<fieldset> element does not have a <legend>",
+              "bounds": {
+                "left": 260,
+                "top": 1294,
+                "height": 76,
+                "width": 280
+              },
+              "snippet": "<fieldset id=\"NVSignupForm574669-ContactInformation\" class=\"at-fieldset ContactInformation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/form[1]/fieldset[1]/div[1]/div[1]/label[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/region[2]/form[1]"
+              },
+              "message": "The <label> element has the id \"NVSignupForm574669-ContactInformation-EmailAddress\" that is already in use",
+              "bounds": {
+                "left": 260,
+                "top": 1422,
+                "height": 76,
+                "width": 280
+              },
+              "snippet": "<label id=\"NVSignupForm574669-ContactInformation-EmailAddress\" class=\"at-text   EmailAddress\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/form[1]/fieldset[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/region[2]/form[1]"
+              },
+              "message": "The <fieldset> element has the id \"NVSignupForm574669-ContactInformation\" that is already in use",
+              "bounds": {
+                "left": 260,
+                "top": 1422,
+                "height": 76,
+                "width": 280
+              },
+              "snippet": "<fieldset id=\"NVSignupForm574669-ContactInformation\" class=\"at-fieldset ContactInformation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/contentinfo[1]/main[1]"
+              },
+              "message": "The <div> element has the id \"NVSignupForm574669\" that is already in use",
+              "bounds": {
+                "left": 60,
+                "top": 1422,
+                "height": 118,
+                "width": 680
+              },
+              "snippet": "<div id=\"NVSignupForm574669\" class=\"at-form at-mode-person\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[2]/div[2]/div[1]/ul[1]/li[3]/ul[1]/li[7]",
+                "aria": "/document[1]/banner[1]/list[1]/listitem[3]/list[1]/listitem[7]"
+              },
+              "message": "The <li> element has the id \"menu-fontsize\" that is already in use",
+              "bounds": {
+                "left": -1599444,
+                "top": -3199943,
+                "height": 16,
+                "width": 15
+              },
+              "snippet": "<li style=\"padding:0;position:absolute;top:-99999em;width:auto;\" id=\"menu-fontsize\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 153
+              },
+              "snippet": "<a class=\"element-invisible element-focusable\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/nav[3]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/navigation[3]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 522,
+                "top": 1680,
+                "height": 322,
+                "width": 251
+              },
+              "snippet": "<nav class=\"block block--menu block--menu-menu-menu-footer-impact\" role=\"navigation\" id=\"block-menu-menu-menu-footer-impact\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/nav[2]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 271,
+                "top": 1680,
+                "height": 322,
+                "width": 251
+              },
+              "snippet": "<nav class=\"block block--menu block--menu-menu-menu-footer-involved\" role=\"navigation\" id=\"block-menu-menu-menu-footer-involved\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 20,
+                "top": 1680,
+                "height": 322,
+                "width": 251
+              },
+              "snippet": "<nav class=\"block block--menu block--menu-menu-menu-footer-about\" role=\"navigation\" id=\"block-menu-menu-menu-footer-about\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 1161,
+                "height": 1019,
+                "width": 800
+              },
+              "snippet": "<div role=\"main\" class=\"l-footer\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[2]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 77,
+                "height": 1084,
+                "width": 800
+              },
+              "snippet": "<div role=\"main\" class=\"l-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[7]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[7]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 485,
+                "top": 1585,
+                "height": 0,
+                "width": 33
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-tiktok\" title=\"TikTok\" href=\"https://www.tiktok.com/@earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[6]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[6]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 447,
+                "top": 1585,
+                "height": 0,
+                "width": 38
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-reddit\" title=\"Reddit\" href=\"https://www.reddit.com/user/earthjustice/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[5]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[5]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 409,
+                "top": 1585,
+                "height": 0,
+                "width": 38
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-linkedin\" title=\"LinkedIn\" href=\"https://www.linkedin.com/company/earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[4]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[4]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 373,
+                "top": 1585,
+                "height": 0,
+                "width": 36
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-youtube\" title=\"YouTube\" href=\"https://youtube.com/Earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[3]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[3]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 343,
+                "top": 1585,
+                "height": 0,
+                "width": 30
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-instagram\" title=\"Instagram\" href=\"https://instagram.com/Earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[2]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[2]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 313,
+                "top": 1585,
+                "height": 0,
+                "width": 30
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-twitter\" title=\"Twitter\" href=\"https://twitter.com/earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[1]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 283,
+                "top": 1585,
+                "height": 0,
+                "width": 30
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-facebook\" title=\"Facebook\" href=\"https://facebook.com/Earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/link[6]"
+              },
+              "message": "Text contrast of 3.56 with its background is less than the WCAG AA minimum requirements for text of size 17px and weight of 700",
+              "bounds": {
+                "left": 277,
+                "top": 1011,
+                "height": 50,
+                "width": 248
+              },
+              "snippet": "<a title=\"Meet our clients.\" class=\"button--big\" href=\"//earthjustice.org/our_work/clients\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Text contrast of 3.56 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 153
+              },
+              "snippet": "<a class=\"element-invisible element-focusable\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsVisibleLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique visible labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 2180,
+                "width": 800
+              },
+              "snippet": "<body style=\"overflow-x: hidden;\" class=\"html front not-logged-in page-mahalo jquery-once-1-processed superfish-toggle-not-active\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 18,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[2]/div[2]/button[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 748,
+                "top": 22,
+                "height": 52,
+                "width": 52
+              },
+              "snippet": "<button id=\"search-icon\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Fieldset_HasLegend",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/section[1]/form[1]/fieldset[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/region[1]/form[1]"
+              },
+              "message": "<fieldset> element does not have a <legend>",
+              "bounds": {
+                "left": 260,
+                "top": 1294,
+                "height": 76,
+                "width": 280
+              },
+              "snippet": "<fieldset id=\"NVSignupForm574669-ContactInformation\" class=\"at-fieldset ContactInformation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[2]/div[2]/div[1]/ul[1]/li[3]/ul[1]/li[7]",
+                "aria": "/document[1]/banner[1]/list[1]/listitem[3]/list[1]/listitem[7]"
+              },
+              "message": "The <li> element has the id \"menu-fontsize\" that is already in use",
+              "bounds": {
+                "left": -1599444,
+                "top": -3199943,
+                "height": 16,
+                "width": 15
+              },
+              "snippet": "<li style=\"padding:0;position:absolute;top:-99999em;width:auto;\" id=\"menu-fontsize\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 153
+              },
+              "snippet": "<a class=\"element-invisible element-focusable\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/nav[3]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/navigation[3]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 522,
+                "top": 1552,
+                "height": 322,
+                "width": 251
+              },
+              "snippet": "<nav class=\"block block--menu block--menu-menu-menu-footer-impact\" role=\"navigation\" id=\"block-menu-menu-menu-footer-impact\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/nav[2]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 271,
+                "top": 1552,
+                "height": 322,
+                "width": 251
+              },
+              "snippet": "<nav class=\"block block--menu block--menu-menu-menu-footer-involved\" role=\"navigation\" id=\"block-menu-menu-menu-footer-involved\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 20,
+                "top": 1552,
+                "height": 322,
+                "width": 251
+              },
+              "snippet": "<nav class=\"block block--menu block--menu-menu-menu-footer-about\" role=\"navigation\" id=\"block-menu-menu-menu-footer-about\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 1161,
+                "height": 947,
+                "width": 800
+              },
+              "snippet": "<div role=\"main\" class=\"l-footer\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[2]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 77,
+                "height": 1084,
+                "width": 800
+              },
+              "snippet": "<div role=\"main\" class=\"l-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[7]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[7]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 485,
+                "top": 1457,
+                "height": 0,
+                "width": 33
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-tiktok\" title=\"TikTok\" href=\"https://www.tiktok.com/@earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[6]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[6]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 447,
+                "top": 1457,
+                "height": 0,
+                "width": 38
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-reddit\" title=\"Reddit\" href=\"https://www.reddit.com/user/earthjustice/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[5]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[5]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 409,
+                "top": 1457,
+                "height": 0,
+                "width": 38
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-linkedin\" title=\"LinkedIn\" href=\"https://www.linkedin.com/company/earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[4]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[4]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 373,
+                "top": 1457,
+                "height": 0,
+                "width": 36
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-youtube\" title=\"YouTube\" href=\"https://youtube.com/Earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[3]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[3]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 343,
+                "top": 1457,
+                "height": 0,
+                "width": 30
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-instagram\" title=\"Instagram\" href=\"https://instagram.com/Earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[2]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[2]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 313,
+                "top": 1457,
+                "height": 0,
+                "width": 30
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-twitter\" title=\"Twitter\" href=\"https://twitter.com/earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/main[1]/link[1]"
+              },
+              "message": "Text contrast of 2.53 with its background is less than the WCAG AA minimum requirements for text of size undefinedpx and weight of 400",
+              "bounds": {
+                "left": 283,
+                "top": 1457,
+                "height": 0,
+                "width": 30
+              },
+              "snippet": "<a target=\"_blank\" class=\"icomoon-icon icon-facebook\" title=\"Facebook\" href=\"https://facebook.com/Earthjustice\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/link[6]"
+              },
+              "message": "Text contrast of 3.56 with its background is less than the WCAG AA minimum requirements for text of size 17px and weight of 700",
+              "bounds": {
+                "left": 277,
+                "top": 1011,
+                "height": 50,
+                "width": 248
+              },
+              "snippet": "<a title=\"Meet our clients.\" class=\"button--big\" href=\"//earthjustice.org/our_work/clients\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Text contrast of 3.56 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 153
+              },
+              "snippet": "<a class=\"element-invisible element-focusable\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsVisibleLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique visible labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 2108,
+                "width": 800
+              },
+              "snippet": "<body style=\"overflow-x: hidden;\" class=\"html front not-logged-in page-mahalo jquery-once-1-processed superfish-toggle-not-active\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://earthjustice.org/",
+      "what": "Earthjustice",
+      "result": "https://earthjustice.org/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://earthjustice.org/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Earthjustice: Environmental Law: Because the Earth Needs a Good Lawyer | Earthjustice",
+          "pageurl": "https://earthjustice.org/",
+          "time": 3.22,
+          "creditsremaining": 361,
+          "allitemcount": 56,
+          "totalelements": 400,
+          "waveurl": "http://wave.webaim.org/report?url=https://earthjustice.org/",
+          "domid": "daf5e0ae860d86f4b5d2a4ac782de13f"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 1,
+            "items": {
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child > DIV:first-child + DIV > DIV#block-superfish-1 > BUTTON#search-icon"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 2,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > P:first-child + P > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    3.56,
+                    "#0093bb",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    3.56,
+                    "#0093bb",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 17,
+            "items": {
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV > A:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > P:first-child + P"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child > DIV:first-child + DIV > DIV#block-superfish-1 > DIV:first-child > UL#superfish-1 > LI#menu-32425-1 > A:first-child + UL > LI#menu-32426-1 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child > DIV:first-child + DIV > DIV#block-superfish-1 > DIV:first-child > UL#superfish-1 > LI#menu-32621-1 > A:first-child + UL > LI#menu-32624-1 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child + DIV > NAV#block-menu-menu-menu-footer-impact > H2:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child + DIV > NAV#block-menu-menu-menu-footer-impact > H2:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child + DIV > NAV#block-menu-menu-menu-footer-impact > H2:first-child + UL > LI:first-child + LI + LI + LI > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV > DIV#block-search-form > DIV:first-child > FORM#search-block-form > DIV:first-child > H2:first-child + DIV > LABEL:first-child + INPUT + DIV"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child > DIV:first-child + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV#block-block-193 > H2:first-child + DIV > P:first-child + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV#block-block-193 > H2:first-child + DIV > P:first-child + DIV + DIV > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV#block-block-193 > H2:first-child + DIV > P:first-child + DIV + DIV > A:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV#block-block-193 > H2:first-child + DIV > P:first-child + DIV + DIV > A:first-child + A + A + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV#block-block-193 > H2:first-child + DIV > P:first-child + DIV + DIV > A:first-child + A + A + A + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV#block-block-193 > H2:first-child + DIV > P:first-child + DIV + DIV > A:first-child + A + A + A + A + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV#block-block-193 > H2:first-child + DIV > P:first-child + DIV + DIV > A:first-child + A + A + A + A + A + A"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 603,
+          "axe": 26,
+          "bulk": 5,
+          "embAc": 0,
+          "focAll": 27,
+          "focInd": 33,
+          "focOp": 4,
+          "hover": 12,
+          "ibm": 62,
+          "labClash": 2,
+          "linkUl": 36,
+          "log": 127,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 14,
+          "styleDiff": 30,
+          "tabNav": 0,
+          "wave": 42,
+          "zIndex": 183
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      132
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      4
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focInd",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

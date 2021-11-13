@@ -1,0 +1,4963 @@
+{
+  "script": "a11y04",
+  "batch": "jpchar",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "zkv3",
+  "logCount": 20,
+  "logSize": 3190,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "bytes": [
+          1111210,
+          437089,
+          435906,
+          435906,
+          1095977
+        ],
+        "localRatios": [
+          2.542,
+          1.003,
+          1,
+          2.514
+        ],
+        "meanLocalRatio": 1.765,
+        "maxLocalRatio": 2.542,
+        "globalRatio": 2.549,
+        "pixelChanges": [
+          432622,
+          0,
+          0,
+          273867
+        ],
+        "meanPixelChange": 176622,
+        "maxPixelChange": 432622,
+        "changeFrequency": 0.5
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 1,
+          "serious": 3,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "button-name",
+            "description": "Ensures buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#sitesearch > .search-input > button",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-active",
+            "description": "Ensures every id attribute value of active elements is unique",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#sitesearch > .search-input > input",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-active",
+                    "description": "Document has active elements with the same id attribute: s",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "html-lang-valid",
+            "description": "Ensures the lang attribute of the <html> element has a valid value",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "valid-lang",
+                    "description": "Value of lang attribute not included in the list of valid languages",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".col-md-8 > nav",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".search-select",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "visibleElements": 358
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "tabFocusables": 112,
+        "tabFocused": 107,
+        "discrepancy": -5
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "total": 180,
+          "types": {
+            "indicatorMissing": {
+              "total": 5,
+              "tagNames": {
+                "INPUT": 2,
+                "IFRAME": 3
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 4,
+              "tagNames": {
+                "A": 4
+              }
+            },
+            "outlinePresent": {
+              "total": 171,
+              "tagNames": {
+                "A": 169,
+                "BUTTON": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Castaway Mountain: Love and Loss Among the Wastepickers of Mumbai"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Eng"
+            },
+            {
+              "tagName": "A",
+              "text": "US English"
+            },
+            {
+              "tagName": "A",
+              "text": "中文"
+            },
+            {
+              "tagName": "A",
+              "text": "Español"
+            },
+            {
+              "tagName": "A",
+              "text": "Français"
+            },
+            {
+              "tagName": "A",
+              "text": "Русский"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Advanced"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Welcome"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Mission and Vision"
+            },
+            {
+              "tagName": "A",
+              "text": "Staff and Trustees"
+            },
+            {
+              "tagName": "A",
+              "text": "Fellows"
+            },
+            {
+              "tagName": "A",
+              "text": "Jobs and Internships"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "History"
+            },
+            {
+              "tagName": "A",
+              "text": "Financial Information"
+            },
+            {
+              "tagName": "A",
+              "text": "Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Artificial Intelligence & Equality Initiative (AIEI)"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Climate Governance Initiative"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie New Leaders"
+            },
+            {
+              "tagName": "A",
+              "text": "EIA Interviews"
+            },
+            {
+              "tagName": "A",
+              "text": "The Doorstep"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Ethics Review"
+            },
+            {
+              "tagName": "A",
+              "text": "Model International Mobility Convention (MIMC)"
+            },
+            {
+              "tagName": "A",
+              "text": "Protests in Perspective"
+            },
+            {
+              "tagName": "A",
+              "text": "U.S. Global Engagement"
+            },
+            {
+              "tagName": "A",
+              "text": "Past Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Multimedia"
+            },
+            {
+              "tagName": "A",
+              "text": "All Audio, Video, Transcripts"
+            },
+            {
+              "tagName": "A",
+              "text": "Past Series"
+            },
+            {
+              "tagName": "A",
+              "text": "About Carnegie Ethics Studio"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie on YouTube"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie on iTunes"
+            },
+            {
+              "tagName": "A",
+              "text": "Education"
+            },
+            {
+              "tagName": "A",
+              "text": "Overview"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Council 2020 Internship Program"
+            },
+            {
+              "tagName": "A",
+              "text": "Worksheets and Excerpts on History and Government"
+            },
+            {
+              "tagName": "A",
+              "text": "Thinking Democratically"
+            },
+            {
+              "tagName": "A",
+              "text": "1919: The Year of the Crack Up"
+            },
+            {
+              "tagName": "A",
+              "text": "Moral Leadership and the Environment"
+            },
+            {
+              "tagName": "A",
+              "text": "Lesson Plan Ideas"
+            },
+            {
+              "tagName": "A",
+              "text": "Short Expert Videos and Flipped Classroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Primary Sources"
+            },
+            {
+              "tagName": "A",
+              "text": "Content Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Book Notes"
+            },
+            {
+              "tagName": "A",
+              "text": "Events"
+            },
+            {
+              "tagName": "A",
+              "text": "Upcoming"
+            },
+            {
+              "tagName": "A",
+              "text": "Past"
+            },
+            {
+              "tagName": "A",
+              "text": "Event Policies"
+            },
+            {
+              "tagName": "A",
+              "text": "News"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Ethics Newsletter"
+            },
+            {
+              "tagName": "A",
+              "text": "Current News"
+            },
+            {
+              "tagName": "A",
+              "text": "Experts"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Releases"
+            },
+            {
+              "tagName": "A",
+              "text": "Publications"
+            },
+            {
+              "tagName": "A",
+              "text": "Ethics & International Affairs"
+            },
+            {
+              "tagName": "A",
+              "text": "Articles, Blogs, Reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Ethics Online"
+            },
+            {
+              "tagName": "A",
+              "text": "Ethics on Film"
+            },
+            {
+              "tagName": "A",
+              "text": "Translated Articles"
+            },
+            {
+              "tagName": "A",
+              "text": "From Our Archives: 100 for 100"
+            },
+            {
+              "tagName": "A",
+              "text": "Archive"
+            },
+            {
+              "tagName": "A",
+              "text": "Support"
+            },
+            {
+              "tagName": "A",
+              "text": "Donate Now"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Welcome"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Mission and Vision"
+            },
+            {
+              "tagName": "A",
+              "text": "Staff and Trustees"
+            },
+            {
+              "tagName": "A",
+              "text": "Fellows"
+            },
+            {
+              "tagName": "A",
+              "text": "Jobs and Internships"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "History"
+            },
+            {
+              "tagName": "A",
+              "text": "Financial Information"
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Artificial Intelligence & Equality Initiative (AIEI)"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Climate Governance Initiative"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie New Leaders"
+            },
+            {
+              "tagName": "A",
+              "text": "EIA Interviews"
+            },
+            {
+              "tagName": "A",
+              "text": "The Doorstep"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Ethics Review"
+            },
+            {
+              "tagName": "A",
+              "text": "Model International Mobility Convention (MIMC)"
+            },
+            {
+              "tagName": "A",
+              "text": "Protests in Perspective"
+            },
+            {
+              "tagName": "A",
+              "text": "U.S. Global Engagement"
+            },
+            {
+              "tagName": "A",
+              "text": "Past Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "All Audio, Video, Transcripts"
+            },
+            {
+              "tagName": "A",
+              "text": "Past Series"
+            },
+            {
+              "tagName": "A",
+              "text": "About Carnegie Ethics Studio"
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Overview"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Council 2020 Internship Program"
+            },
+            {
+              "tagName": "A",
+              "text": "Worksheets and Excerpts on History and Government"
+            },
+            {
+              "tagName": "A",
+              "text": "Thinking Democratically"
+            },
+            {
+              "tagName": "A",
+              "text": "1919: The Year of the Crack Up"
+            },
+            {
+              "tagName": "A",
+              "text": "Moral Leadership and the Environment"
+            },
+            {
+              "tagName": "A",
+              "text": "Lesson Plan Ideas"
+            },
+            {
+              "tagName": "A",
+              "text": "Short Expert Videos and Flipped Classroom"
+            },
+            {
+              "tagName": "A",
+              "text": "Primary Sources"
+            },
+            {
+              "tagName": "A",
+              "text": "Content Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Book Notes"
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Upcoming"
+            },
+            {
+              "tagName": "A",
+              "text": "Past"
+            },
+            {
+              "tagName": "A",
+              "text": "Event Policies"
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Ethics Newsletter"
+            },
+            {
+              "tagName": "A",
+              "text": "Current News"
+            },
+            {
+              "tagName": "A",
+              "text": "Experts"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Releases"
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Ethics & International Affairs"
+            },
+            {
+              "tagName": "A",
+              "text": "Articles, Blogs, Reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Carnegie Ethics Online"
+            },
+            {
+              "tagName": "A",
+              "text": "Ethics on Film"
+            },
+            {
+              "tagName": "A",
+              "text": "Translated Articles"
+            },
+            {
+              "tagName": "A",
+              "text": "From Our Archives: 100 for 100"
+            },
+            {
+              "tagName": "A",
+              "text": "Archive"
+            },
+            {
+              "tagName": "A",
+              "text": "Main Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Donate Now"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Advanced Search"
+            },
+            {
+              "tagName": "A",
+              "text": "Eng"
+            },
+            {
+              "tagName": "A",
+              "text": "US English"
+            },
+            {
+              "tagName": "A",
+              "text": "中文"
+            },
+            {
+              "tagName": "A",
+              "text": "Español"
+            },
+            {
+              "tagName": "A",
+              "text": "Français"
+            },
+            {
+              "tagName": "A",
+              "text": "Русский"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "1"
+            },
+            {
+              "tagName": "A",
+              "text": "2"
+            },
+            {
+              "tagName": "A",
+              "text": "3"
+            },
+            {
+              "tagName": "A",
+              "text": "4"
+            },
+            {
+              "tagName": "A",
+              "text": "5"
+            },
+            {
+              "tagName": "A",
+              "text": "6"
+            },
+            {
+              "tagName": "A",
+              "text": "7"
+            },
+            {
+              "tagName": "A",
+              "text": "8"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "All Upcoming"
+            },
+            {
+              "tagName": "A",
+              "text": "Live"
+            },
+            {
+              "tagName": "A",
+              "text": "Next"
+            },
+            {
+              "tagName": "A",
+              "text": "212-838-4120"
+            },
+            {
+              "tagName": "A",
+              "text": "info@cceia.org"
+            },
+            {
+              "tagName": "A",
+              "text": "Sitemap"
+            },
+            {
+              "tagName": "A",
+              "text": "Credits"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "total": 192,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 3,
+              "tagNames": {
+                "A": 3
+              }
+            },
+            "focusableAndOperable": {
+              "total": 189,
+              "tagNames": {
+                "A": 181,
+                "INPUT": 2,
+                "BUTTON": 2,
+                "IFRAME": 4
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Previous",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Previous",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/\" class=\"navbar-brand\" style=\"cursor: default;\"><img src=\"/images/Carn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Eng",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "US English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "中文",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Español",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Français",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Русский",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "s",
+              "text": "<input type=\"text\" name=\"q\" id=\"s\" autocomplete=\"off\" dir=\"ltr\" spellcheck=\"fals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button type=\"submit\" class=\"btn-search\" style=\"cursor: default;\"><span class=\"i",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"\" class=\"arrow-down search-select\" style=\"cursor: default;\"> </a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Advanced",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-about",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Welcome",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Mission and Vision",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Staff and Trustees",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fellows",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Jobs and Internships",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financial Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-programs",
+              "text": "Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Artificial Intelligence & Equality Initiative (AIEI)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Climate Governance Initiative",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie New Leaders",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EIA Interviews",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Doorstep",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Ethics Review",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Model International Mobility Convention (MIMC)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Protests in Perspective",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "U.S. Global Engagement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Past Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-studio",
+              "text": "Multimedia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "All Audio, Video, Transcripts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Past Series",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Carnegie Ethics Studio",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie on YouTube",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie on iTunes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-education",
+              "text": "Education",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Council 2020 Internship Program",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Worksheets and Excerpts on History and Government",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Thinking Democratically",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1919: The Year of the Crack Up",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Moral Leadership and the Environment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Lesson Plan Ideas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Short Expert Videos and Flipped Classroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Primary Sources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Content Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Book Notes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-calendar",
+              "text": "Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Upcoming",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Past",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Event Policies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-news",
+              "text": "News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Ethics Newsletter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Current News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Experts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Releases",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-publications",
+              "text": "Publications",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ethics & International Affairs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Articles, Blogs, Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Ethics Online",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ethics on Film",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Translated Articles",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "From Our Archives: 100 for 100",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Archive",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "subnav-join_us",
+              "text": "Support",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Donate Now",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"\" class=\"nav-trigger\" style=\"cursor: default;\"><span class=\"icon-bars\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"\" class=\"nav-closer\" style=\"cursor: default;\"><span class=\"icon-close\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Welcome",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Mission and Vision",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Staff and Trustees",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fellows",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Jobs and Internships",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financial Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Artificial Intelligence & Equality Initiative (AIEI)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Climate Governance Initiative",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie New Leaders",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EIA Interviews",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Doorstep",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Ethics Review",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Model International Mobility Convention (MIMC)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Protests in Perspective",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "U.S. Global Engagement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Past Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Multimedia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "All Audio, Video, Transcripts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Past Series",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Carnegie Ethics Studio",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Education",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Council 2020 Internship Program",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Worksheets and Excerpts on History and Government",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Thinking Democratically",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1919: The Year of the Crack Up",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Moral Leadership and the Environment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Lesson Plan Ideas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Short Expert Videos and Flipped Classroom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Primary Sources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Content Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Book Notes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Upcoming",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Past",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Event Policies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Ethics Newsletter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Current News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Experts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Releases",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Publications",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ethics & International Affairs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Articles, Blogs, Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carnegie Ethics Online",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ethics on Film",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Translated Articles",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "From Our Archives: 100 for 100",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Archive",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Main Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Donate Now",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "s",
+              "text": "<input type=\"text\" name=\"q\" id=\"s\" autocomplete=\"off\" dir=\"ltr\" spellcheck=\"fals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button type=\"submit\" class=\"btn-search\" style=\"cursor: default;\"><span class=\"i",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Advanced Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Eng",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "US English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "中文",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Español",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Français",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Русский",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "4",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "5",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "6",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "7",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "8",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.c2g2.net/\" target=\"_blank\" style=\"cursor: default;\"><img sr",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.carnegieaie.org/\" target=\"_blank\" style=\"cursor: default;\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.internationalmobilityconvention.org/\" target=\"_blank\" style",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.carnegiecouncil.org/programs/the-doorstep\" target=\"_blank\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.carnegiecouncil.org/programs/001\" target=\"_blank\" style=\"cu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.ethicsandinternationalaffairs.org/\" target=\"_blank\" style=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "All Upcoming",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Live",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Castaway Mountain: Love and Loss Among the Wastepickers of Mumbai",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://ethicsempowered.org/\" target=\"_blank\" style=\"cursor: default;\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://globalethicsday.org/\" target=\"_blank\" style=\"cursor: default;\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.youtube.com/carnegiecouncil\" target=\"_blank\" style=\"cursor:",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "twitter-widget-0",
+              "text": "<iframe id=\"twitter-widget-0\" scrolling=\"no\" frameborder=\"0\" allowtransparency=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe name=\"f49da9c01b652\" width=\"1000px\" height=\"1000px\" data-testid=\"fb:page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "212-838-4120",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "info@cceia.org",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sitemap",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Credits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://twitter.com/carnegiecouncil\" target=\"_blank\" title=\"Twitter\" st",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.facebook.com/carnegiecouncil\" target=\"_blank\" title=\"Facebo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://instagram.com/carnegie_council\" target=\"_blank\" title=\"Instagra",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.youtube.com/carnegiecouncil\" target=\"_blank\" title=\"YouTube",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://itunes.apple.com/us/podcast/carnegie-council-audio-podcast/id13",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/resources/rss\" title=\"RSS Feed\" style=\"cursor: default;\"><span class=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/about/newsletter/index\" target=\"_blank\" title=\"Newsletter Signup\" styl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://pla",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "rufous-sandbox",
+              "text": "<iframe id=\"rufous-sandbox\" scrolling=\"no\" frameborder=\"0\" allowtransparency=\"tr",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "madeVisible": 0,
+          "opacityChanged": 0,
+          "opacityAffected": 0,
+          "unhoverables": 120
+        },
+        "items": {
+          "triggers": [],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Welcome"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Welcome"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "OurMissionandVision"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "OurMissionandVision"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "StaffandTrustees"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "StaffandTrustees"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Fellows"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fellows"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "JobsandInternships"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "JobsandInternships"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "History"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "FinancialInformation"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FinancialInformation"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CarnegieArtificialIntelligence&EqualityInitiative("
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CarnegieArtificialIntelligence&EqualityInitiative("
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CarnegieClimateGovernanceInitiative"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CarnegieClimateGovernanceInitiative"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CarnegieNewLeaders"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CarnegieNewLeaders"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "EIAInterviews"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EIAInterviews"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "TheDoorstep"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "TheDoorstep"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "GlobalEthicsReview"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "GlobalEthicsReview"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ModelInternationalMobilityConvention(MIMC)"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ModelInternationalMobilityConvention(MIMC)"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ProtestsinPerspective"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ProtestsinPerspective"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "U.S.GlobalEngagement"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "U.S.GlobalEngagement"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PastPrograms"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PastPrograms"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "AllAudio,Video,Transcripts"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AllAudio,Video,Transcripts"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PastSeries"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PastSeries"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "AboutCarnegieEthicsStudio"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AboutCarnegieEthicsStudio"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Overview"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Overview"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CarnegieCouncil2020InternshipProgram"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CarnegieCouncil2020InternshipProgram"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "WorksheetsandExcerptsonHistoryandGovernment"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "WorksheetsandExcerptsonHistoryandGovernment"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ThinkingDemocratically"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ThinkingDemocratically"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "1919:TheYearoftheCrackUp"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "1919:TheYearoftheCrackUp"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "MoralLeadershipandtheEnvironment"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MoralLeadershipandtheEnvironment"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "LessonPlanIdeas"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LessonPlanIdeas"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ShortExpertVideosandFlippedClassroom"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ShortExpertVideosandFlippedClassroom"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PrimarySources"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PrimarySources"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ContentResources"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ContentResources"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "BookNotes"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "BookNotes"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Upcoming"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Upcoming"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Past"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Past"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "EventPolicies"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EventPolicies"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CarnegieEthicsNewsletter"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CarnegieEthicsNewsletter"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CurrentNews"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CurrentNews"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Experts"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Experts"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "MediaMentions"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MediaMentions"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PressReleases"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PressReleases"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Ethics&InternationalAffairs"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ethics&InternationalAffairs"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Articles,Blogs,Reports"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Articles,Blogs,Reports"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CarnegieEthicsOnline"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CarnegieEthicsOnline"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "EthicsonFilm"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EthicsonFilm"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "TranslatedArticles"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "TranslatedArticles"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "FromOurArchives:100for100"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FromOurArchives:100for100"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Archive"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Archive"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MainMenu"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "DonateNow"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "DonateNow"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "TimeforanHonestScientificDiscourseonAI&DeepLearnin"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "JustOut:\"Ethics&InternationalAffairs\"Fall2021Issue"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "TheDoorstep:TheEvangelicalRightTakesLatinAmerica,w"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "GlobalEthicsDaySpecialEvent:OntheFrontlinesofDemoc"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "NegotiatingtheNewSTARTTreaty,withRoseGottemoellerA"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "GlobalEthicsReview:Midnight'sBorders,withSuchitraV"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "C2GTalk:AnIntroductiontotheSeries,withC2GExecutive"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CarnegieCouncilAnnounces2021ImpactInitiativesCarne"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 4,
+          "wellLabeled": 0
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button type=\"submit\" class=\"btn-search\"><span class=\"icon-search\"></span></button>}"
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button type=\"submit\" class=\"btn-search\"><span class=\"icon-search\"></span></button>}"
+            }
+          ],
+          "wellLabeled": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "links": 176,
+          "inline": {
+            "total": 10,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "US English",
+            "中文",
+            "Español",
+            "Français",
+            "Русский",
+            "212-838-4120",
+            "info@cceia.org",
+            "Sitemap",
+            "Credits",
+            "Privacy Policy"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "roleElements": 8,
+        "badRoleElements": 8,
+        "tagNames": {
+          "A": {
+            "button": 8
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 8
+          },
+          "h2": {
+            "total": 3
+          },
+          "aInline": {
+            "total": 10,
+            "subtotals": [
+              5,
+              5
+            ]
+          },
+          "aBlock": {
+            "total": 166,
+            "subtotals": [
+              77,
+              50,
+              16,
+              8,
+              7,
+              3,
+              2,
+              2,
+              1
+            ]
+          },
+          "button": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {},
+          "aInline": {
+            "lineHeight": {
+              "22.8571px": 5,
+              "20px": 5
+            },
+            "fontSize": {
+              "16px": 55,
+              "14px": 55
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 141,
+              "none none solid": 17,
+              "solid": 8
+            },
+            "borderWidth": {
+              "0px": 141,
+              "0px 0px 1px": 16,
+              "1px": 8,
+              "0px 0px 2px": 1
+            },
+            "fontWeight": {
+              "400": 148,
+              "700": 18
+            },
+            "lineHeight": {
+              "22.8571px": 113,
+              "20.5714px": 50,
+              "normal": 2,
+              "18.5714px": 1
+            },
+            "maxHeight": {
+              "none": 159,
+              "24px": 7
+            },
+            "opacity": {
+              "0": 3,
+              "1": 163
+            },
+            "fontSize": {
+              "16px": 1265,
+              "14.4px": 550,
+              "13px": 11
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 1,
+              "outset": 1
+            },
+            "borderWidth": {
+              "0px": 1,
+              "2px": 1
+            },
+            "lineHeight": {
+              "normal": 1,
+              "22.8571px": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "totals": {
+          "total": 40,
+          "tagNames": {
+            "HEADER": 1,
+            "DIV": 19,
+            "UL": 8,
+            "A": 2,
+            "LI": 8,
+            "OL": 1,
+            "SPAN": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "HEADER",
+            "id": "",
+            "text": "Eng US English 中文 Español Français Русский Advanced About Welcome\nOur Mission and Vision\nStaff and T"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "US English 中文 Español Français Русский"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Advanced"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Welcome\nOur Mission and Vision\nStaff and Trustees\nFellows\nJobs and Internships\nContact\nHistory\nFinan"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Carnegie Artificial Intelligence & Equality Initiative (AIEI)\nCarnegie Climate Governance Initiative"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "All Audio, Video, Transcripts\nPast Series\nAbout Carnegie Ethics Studio\nCarnegie on YouTube Carnegie "
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Overview\nCarnegie Council 2020 Internship Program\nWorksheets and Excerpts on History and Government "
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Upcoming\nPast\nEvent Policies"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Carnegie Ethics Newsletter Current News\nExperts\nMedia Mentions\nPress Releases"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Ethics & International Affairs\nArticles, Blogs, Reports\nCarnegie Ethics Online\nEthics on Film\nTransl"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Donate Now"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "About\nMain Menu\nAbout Welcome Our Mission and Vision Staff and Trustees Fellows Jobs and Internships"
+          },
+          {
+            "tagName": "DIV",
+            "id": "about",
+            "text": "Main Menu\nAbout Welcome Our Mission and Vision Staff and Trustees Fellows Jobs and Internships Conta"
+          },
+          {
+            "tagName": "DIV",
+            "id": "programs",
+            "text": "Main Menu\nPrograms Carnegie Artificial Intelligence & Equality Initiative (AIEI) Carnegie Climate Go"
+          },
+          {
+            "tagName": "DIV",
+            "id": "studio",
+            "text": "Main Menu\nMultimedia All Audio, Video, Transcripts Past Series About Carnegie Ethics Studio"
+          },
+          {
+            "tagName": "DIV",
+            "id": "education",
+            "text": "Main Menu\nEducation Overview Carnegie Council 2020 Internship Program Worksheets and Excerpts on His"
+          },
+          {
+            "tagName": "DIV",
+            "id": "calendar",
+            "text": "Main Menu\nEvents Upcoming Past Event Policies"
+          },
+          {
+            "tagName": "DIV",
+            "id": "news",
+            "text": "Main Menu\nNews Carnegie Ethics Newsletter Current News Experts Media Mentions Press Releases"
+          },
+          {
+            "tagName": "DIV",
+            "id": "publications",
+            "text": "Main Menu\nPublications Ethics & International Affairs Articles, Blogs, Reports Carnegie Ethics Onlin"
+          },
+          {
+            "tagName": "DIV",
+            "id": "join_us",
+            "text": "Main Menu\nSupport Donate Now"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Time for an Honest Scientific Discourse on AI & Deep Learning, with Gary Marcus\nIn this episode of t"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Time for an Honest Scientific Discourse on AI & Deep Learning, with Gary Marcus\nIn this episode of t"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Just Out: \"Ethics & International Affairs\" Fall 2021 Issue\nThe highlight of this issue is a book sym"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Just Out: \"Ethics & International Affairs\" Fall 2021 Issue\nThe highlight of this issue is a book sym"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "The Doorstep: The Evangelical Right Takes Latin America, with Francisco de Santibañes\nIt's election "
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "The Doorstep: The Evangelical Right Takes Latin America, with Francisco de Santibañes\nIt's election "
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Global Ethics Day Special Event: On the Frontlines of Democracy\nWhether it's rigging elections in Ho"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Global Ethics Day Special Event: On the Frontlines of Democracy\nWhether it's rigging elections in Ho"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Negotiating the New START Treaty, with Rose Gottemoeller\nAs the U.S. chief negotiator of the New STA"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Negotiating the New START Treaty, with Rose Gottemoeller\nAs the U.S. chief negotiator of the New STA"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Global Ethics Review: Midnight's Borders, with Suchitra Vijayan\n\"What does it mean for us to think a"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Global Ethics Review: Midnight's Borders, with Suchitra Vijayan\n\"What does it mean for us to think a"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "C2GTalk: An Introduction to the Series, with C2G Executive Director Janos Pasztor\nCarnegie Climate G"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "C2GTalk: An Introduction to the Series, with C2G Executive Director Janos Pasztor\nCarnegie Climate G"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Carnegie Council Announces 2021 Impact Initiatives\nCarnegie Council is pleased to announce its 2021 "
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Carnegie Council Announces 2021 Impact Initiatives\nCarnegie Council is pleased to announce its 2021 "
+          },
+          {
+            "tagName": "OL",
+            "id": "",
+            "text": "12345678"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": "All Upcoming\nLive"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 20,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/form[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/form[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 161,
+                "top": 78,
+                "height": 6,
+                "width": 16
+              },
+              "snippet": "<button class=\"btn-search\" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/form[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 161,
+                "top": 2361,
+                "height": 6,
+                "width": 16
+              },
+              "snippet": "<button class=\"btn-search\" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[5]/img[1]",
+                "aria": "/document[1]/banner[1]/link[7]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 511,
+                "top": 47,
+                "height": 18,
+                "width": 72
+              },
+              "snippet": "<img border=\"0\" title=\"Русский\" alt=\"Русский\" src=\"/images/flags/ru_RU.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[4]/img[1]",
+                "aria": "/document[1]/banner[1]/link[6]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 382,
+                "top": 47,
+                "height": 18,
+                "width": 71
+              },
+              "snippet": "<img border=\"0\" title=\"Français\" alt=\"Français\" src=\"/images/flags/fr_FR.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[3]/img[1]",
+                "aria": "/document[1]/banner[1]/link[5]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 259,
+                "top": 47,
+                "height": 18,
+                "width": 68
+              },
+              "snippet": "<img border=\"0\" title=\"Español\" alt=\"Español\" src=\"/images/flags/es.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[2]/img[1]",
+                "aria": "/document[1]/banner[1]/link[4]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 175,
+                "top": 44,
+                "height": 22,
+                "width": 48
+              },
+              "snippet": "<img border=\"0\" title=\"中文\" alt=\"中文\" src=\"/images/flags/zh_CN.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/banner[1]/link[3]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 8,
+                "top": 47,
+                "height": 18,
+                "width": 90
+              },
+              "snippet": "<img border=\"0\" title=\"US English\" alt=\"US English\" src=\"/images/flags/en_US.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/a[5]/img[1]",
+                "aria": "/document[1]/main[1]/link[7]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 511,
+                "top": 2441,
+                "height": 18,
+                "width": 72
+              },
+              "snippet": "<img border=\"0\" title=\"Русский\" alt=\"Русский\" src=\"/images/flags/ru_RU.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/a[4]/img[1]",
+                "aria": "/document[1]/main[1]/link[6]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 382,
+                "top": 2441,
+                "height": 18,
+                "width": 71
+              },
+              "snippet": "<img border=\"0\" title=\"Français\" alt=\"Français\" src=\"/images/flags/fr_FR.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/a[3]/img[1]",
+                "aria": "/document[1]/main[1]/link[5]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 259,
+                "top": 2441,
+                "height": 18,
+                "width": 68
+              },
+              "snippet": "<img border=\"0\" title=\"Español\" alt=\"Español\" src=\"/images/flags/es.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/a[2]/img[1]",
+                "aria": "/document[1]/main[1]/link[4]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 175,
+                "top": 2438,
+                "height": 22,
+                "width": 48
+              },
+              "snippet": "<img border=\"0\" title=\"中文\" alt=\"中文\" src=\"/images/flags/zh_CN.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_LinkTextNotRedundant",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/main[1]/link[3]/img[1]"
+              },
+              "message": "Link text is repeated in an image 'alt' value within the same link",
+              "bounds": {
+                "left": 8,
+                "top": 2441,
+                "height": 18,
+                "width": 90
+              },
+              "snippet": "<img border=\"0\" title=\"US English\" alt=\"US English\" src=\"/images/flags/en_US.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Html_HasLang",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[5]/div[2]/div[1]/ul[1]/li[4]/div[1]/iframe[1]/html[1]",
+                "aria": "/document[1]/main[1]/list[7]/listitem[4]"
+              },
+              "message": "Page detected as HTML, but does not have a 'lang' attribute",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 600,
+                "width": 275
+              },
+              "snippet": "<html>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Elem_Lang_Valid",
+              "path": {
+                "dom": "/html[1]",
+                "aria": ""
+              },
+              "message": "Specified 'lang' attribute does not include a valid primary language",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 4086,
+                "width": 800
+              },
+              "snippet": "<html lang=\"en_US\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/p[1]/a[2]",
+                "aria": "/document[1]/banner[1]/link[9]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 1181,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a class=\"nav-closer\" href=\"\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/p[1]/a[1]",
+                "aria": "/document[1]/banner[1]/link[8]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 1181,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a class=\"nav-trigger\" href=\"\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[1]/div[2]/form[1]/div[1]/a[1]",
+                "aria": "/document[1]/banner[1]/form[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 177,
+                "top": 67,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a class=\"arrow-down search-select\" href=\"\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/form[1]/textbox[1]"
+              },
+              "message": "The <input> element has the id \"s\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 2349,
+                "height": 21,
+                "width": 153
+              },
+              "snippet": "<input placeholder=\"Search\" style=\"outline: none;\" spellcheck=\"false\" dir=\"ltr\" autocomplete=\"off\" id=\"s\" name=\"q\" type=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[2]/nav[1]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 4078,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<nav class=\"social-nav-follow\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 4060,
+                "height": 18,
+                "width": 784
+              },
+              "snippet": "<nav>",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 21,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/form[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 821,
+                "top": 544,
+                "height": 24,
+                "width": 23
+              },
+              "snippet": "<button class=\"btn-search\" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Elem_Lang_Valid",
+              "path": {
+                "dom": "/html[1]",
+                "aria": ""
+              },
+              "message": "Specified 'lang' attribute does not include a valid primary language",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1977,
+                "width": 800
+              },
+              "snippet": "<html lang=\"en_US\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/form[1]/textbox[1]"
+              },
+              "message": "The <input> element has the id \"s\" that is already in use",
+              "bounds": {
+                "left": 821,
+                "top": 519,
+                "height": 24,
+                "width": 190
+              },
+              "snippet": "<input placeholder=\"Search\" style=\"outline: none;\" spellcheck=\"false\" dir=\"ltr\" autocomplete=\"off\" id=\"s\" name=\"q\" type=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[2]/nav[1]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 581,
+                "top": 1932,
+                "height": 29,
+                "width": 180
+              },
+              "snippet": "<nav class=\"social-nav-follow\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 40,
+                "top": 1912,
+                "height": 20,
+                "width": 720
+              },
+              "snippet": "<nav>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[1]/p[1]/a[2]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/link[2]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+              "bounds": {
+                "left": 558,
+                "top": 1853,
+                "height": 18,
+                "width": 91
+              },
+              "snippet": "<a href=\"mailto:info@cceia.org\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[1]/p[1]/a[1]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+              "bounds": {
+                "left": 460,
+                "top": 1853,
+                "height": 18,
+                "width": 87
+              },
+              "snippet": "<a href=\"tel:212-838-4120\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[1]/nav[1]/a[3]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/navigation[1]/link[3]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+              "bounds": {
+                "left": 152,
+                "top": 1913,
+                "height": 18,
+                "width": 81
+              },
+              "snippet": "<a href=\"/misc/privacy\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[1]/nav[1]/a[2]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/navigation[1]/link[2]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+              "bounds": {
+                "left": 100,
+                "top": 1913,
+                "height": 18,
+                "width": 42
+              },
+              "snippet": "<a href=\"/misc/credits\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/footer[1]/div[1]/div[1]/nav[1]/a[1]",
+                "aria": "/document[1]/main[1]/contentinfo[1]/navigation[1]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+              "bounds": {
+                "left": 40,
+                "top": 1913,
+                "height": 18,
+                "width": 49
+              },
+              "snippet": "<a href=\"/misc/sitemap\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[5]/div[2]/div[1]/ul[1]/li[4]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/list[7]/listitem[4]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 868,
+                "top": 1580,
+                "height": 20,
+                "width": 195
+              },
+              "snippet": "<a data-twitter-extracted-i1636433650989739115=\"true\" data-widget-id=\"294558128756891649\" href=\"https://twitter.com/carnegiecouncil\" data-dnt=\"true\" class=\"twitter-timeline\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[5]/div[1]/div[1]/ul[1]/li[2]/a[1]",
+                "aria": "/document[1]/main[1]/list[6]/listitem[2]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 720,
+                "top": 1515,
+                "height": 50,
+                "width": 40
+              },
+              "snippet": "<a href=\"#\" class=\"flex-next\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[4]/div[1]/div[1]/span[1]/a[2]",
+                "aria": "/document[1]/main[1]/link[15]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 700",
+              "bounds": {
+                "left": 319,
+                "top": 1163,
+                "height": 24,
+                "width": 52
+              },
+              "snippet": "<a href=\"/live\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[4]/div[1]/div[1]/span[1]/a[1]",
+                "aria": "/document[1]/main[1]/link[14]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 700",
+              "bounds": {
+                "left": 176,
+                "top": 1163,
+                "height": 22,
+                "width": 127
+              },
+              "snippet": "<a href=\"/calendar/upcoming\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ol[1]/li[8]/a[1]",
+                "aria": "/document[1]/main[1]/list[3]/listitem[8]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 242,
+                "top": 599,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ol[1]/li[7]/a[1]",
+                "aria": "/document[1]/main[1]/list[3]/listitem[7]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 214,
+                "top": 599,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ol[1]/li[6]/a[1]",
+                "aria": "/document[1]/main[1]/list[3]/listitem[6]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 186,
+                "top": 599,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ol[1]/li[5]/a[1]",
+                "aria": "/document[1]/main[1]/list[3]/listitem[5]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 158,
+                "top": 599,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ol[1]/li[4]/a[1]",
+                "aria": "/document[1]/main[1]/list[3]/listitem[4]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 130,
+                "top": 599,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ol[1]/li[3]/a[1]",
+                "aria": "/document[1]/main[1]/list[3]/listitem[3]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 102,
+                "top": 599,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ol[1]/li[2]/a[1]",
+                "aria": "/document[1]/main[1]/list[3]/listitem[2]/link[1]"
+              },
+              "message": "Text contrast of 4.17 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 74,
+                "top": 599,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<a href=\"#\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.carnegiecouncil.org/",
+      "what": "Carnegie Council",
+      "result": "https://www.carnegiecouncil.org/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.carnegiecouncil.org/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Carnegie Council for Ethics in International Affairs",
+          "pageurl": "https://www.carnegiecouncil.org/",
+          "time": 4.02,
+          "creditsremaining": 436,
+          "allitemcount": 150,
+          "totalelements": 587,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.carnegiecouncil.org/",
+          "domid": "b92a0c4e7984c3081bcdbffc8d9a16ca"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 8,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > FORM#sitesearch > DIV:first-child > INPUT#s",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM#mobile-sitesearch > DIV:first-child > INPUT#s"
+                ]
+              },
+              "language_missing": {
+                "id": "language_missing",
+                "description": "Language missing or invalid",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > FORM#sitesearch > DIV:first-child > INPUT:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM#mobile-sitesearch > DIV:first-child > INPUT:first-child + BUTTON"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > FORM#sitesearch > DIV:first-child > INPUT:first-child + BUTTON + A",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + FORM + UL + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + FORM + UL + P > A:first-child + A"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 18,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 18,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H1:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H1:first-child + DIV",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H1:first-child + DIV > I:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > OL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > OL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > OL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > OL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > OL:first-child > LI:first-child + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > OL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV > UL:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > OL:first-child > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > H2:first-child + SPAN > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > H2:first-child + SPAN > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > H2:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > P:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > P:first-child + P + NAV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > P:first-child + P + NAV > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > P:first-child + P + NAV > A:first-child + A + A"
+                ],
+                "contrastdata": [
+                  [
+                    1.13,
+                    "#ffffff",
+                    "#f0f0f0",
+                    true
+                  ],
+                  [
+                    1.13,
+                    "#ffffff",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    1.13,
+                    "#ffffff",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ],
+                  [
+                    4.17,
+                    "#3f72c4",
+                    "#f0f0f0",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 31,
+            "items": {
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 10,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child + A + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child + A + A + A + A > IMG:first-child"
+                ]
+              },
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 9,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child > IMG:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 12,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + DIV > A:first-child + A + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child + A + A + A > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER:first-child + DIV > MAIN:first-child > DIV:first-child > UL:first-child + DIV > FORM:first-child + P + DIV > A:first-child + DIV > A:first-child + A + A + A + A > IMG:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 865,
+          "axe": 18,
+          "bulk": 18,
+          "embAc": 0,
+          "focAll": 15,
+          "focInd": 37,
+          "focOp": 12,
+          "hover": 240,
+          "ibm": 70,
+          "labClash": 8,
+          "linkUl": 30,
+          "log": 41,
+          "menuNav": 0,
+          "motion": 87,
+          "radioSet": 0,
+          "role": 16,
+          "styleDiff": 39,
+          "tabNav": 0,
+          "wave": 114,
+          "zIndex": 120
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      170
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      7
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "focAll",
+      2
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
