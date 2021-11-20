@@ -1,0 +1,2816 @@
+{
+  "script": "a11y05",
+  "batch": "jpchar4",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "10fzs",
+  "logCount": 7,
+  "logSize": 483,
+  "prohibitedCount": 7,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "bytes": [
+          450705,
+          450705,
+          450705,
+          450705,
+          450705
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 4,
+          "serious": 4,
+          "critical": 3
+        },
+        "items": [
+          {
+            "rule": "aria-hidden-focus",
+            "description": "Ensures aria-hidden elements do not contain focusable elements",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#header__search",
+                "impact": "serious"
+              },
+              {
+                "selector": ".teaser__image-link[href$=\"felony-ati\"][aria-hidden=\"true\"]",
+                "impact": "serious"
+              },
+              {
+                "selector": ".teaser__image-link[href=\"\\/node\\/30156\"][aria-hidden=\"true\"]",
+                "impact": "serious"
+              }
+            ]
+          },
+          {
+            "rule": "aria-valid-attr",
+            "description": "Ensures attributes that begin with aria- are valid ARIA attributes",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".header__search-button",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "aria-valid-attr",
+                    "description": "Invalid ARIA attribute name: aria-control",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "button-name",
+            "description": "Ensures buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".banner__close-button",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".home-intro__link > a[href$=\"about\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.79 (foreground color: #d22630, background color: #080c10, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".newsletter-signup__heading",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".banner__title",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label",
+            "description": "Ensures every form element has a label",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#nav-trigger",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "hidden-explicit-label",
+                    "description": "Form element has explicit <label> that is hidden",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".dialog-off-canvas-main-canvas > div:nth-child(3)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "visibleElements": 213
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "tabFocusables": 43,
+        "tabFocused": 58,
+        "discrepancy": 15
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "total": 59,
+          "types": {
+            "indicatorMissing": {
+              "total": 2,
+              "tagNames": {
+                "INPUT": 2
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 12,
+              "tagNames": {
+                "A": 12
+              }
+            },
+            "outlinePresent": {
+              "total": 45,
+              "tagNames": {
+                "A": 37,
+                "INPUT": 3,
+                "BUTTON": 5
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Rethinking Incarceration"
+            },
+            {
+              "tagName": "A",
+              "text": "Engaging Communities"
+            },
+            {
+              "tagName": "A",
+              "text": "Aiding Survivors"
+            },
+            {
+              "tagName": "A",
+              "text": "Preventing Crime"
+            },
+            {
+              "tagName": "A",
+              "text": "Improving Decision-making"
+            },
+            {
+              "tagName": "A",
+              "text": "Advancing Fairness"
+            },
+            {
+              "tagName": "A",
+              "text": "Strengthening Families"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Youtube"
+            },
+            {
+              "tagName": "A",
+              "text": "Instagram"
+            },
+            {
+              "tagName": "A",
+              "text": "RSS"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Expand"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "People"
+            },
+            {
+              "tagName": "A",
+              "text": "Message from the Director"
+            },
+            {
+              "tagName": "A",
+              "text": "Awards"
+            },
+            {
+              "tagName": "A",
+              "text": "Announcements"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Partners"
+            },
+            {
+              "tagName": "A",
+              "text": "Areas of Focus"
+            },
+            {
+              "tagName": "A",
+              "text": "Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Publications & Digital Media"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Expand"
+            },
+            {
+              "tagName": "A",
+              "text": "All"
+            },
+            {
+              "tagName": "A",
+              "text": "New Thinking Podcast"
+            },
+            {
+              "tagName": "A",
+              "text": "Videos"
+            },
+            {
+              "tagName": "A",
+              "text": "Books"
+            },
+            {
+              "tagName": "A",
+              "text": "Press"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Search"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Search"
+            },
+            {
+              "tagName": "A",
+              "text": "Donate"
+            },
+            {
+              "tagName": "A",
+              "text": "More About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Taking Reform Out of Its Comfort Zone"
+            },
+            {
+              "tagName": "A",
+              "text": "Supervised Release: A Proven Alternative to Bail"
+            },
+            {
+              "tagName": "A",
+              "text": "Learning from Crisis: Remote Justice in Criminal Courts"
+            },
+            {
+              "tagName": "A",
+              "text": "Closing Rikers Island: A Roadmap for Reducing Jail in New York City"
+            },
+            {
+              "tagName": "A",
+              "text": "The Crisis on Rikers: The Time for Action is Now"
+            },
+            {
+              "tagName": "A",
+              "text": "25 Years: Transforming Justice Together"
+            },
+            {
+              "tagName": "A",
+              "text": "Changemakers in Action"
+            },
+            {
+              "tagName": "A",
+              "text": "Areas of Focus"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Expert Assistance"
+            },
+            {
+              "tagName": "A",
+              "text": "Research"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility Statement"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Sign Up Now"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "total": 66,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 2,
+              "tagNames": {
+                "A": 1,
+                "INPUT": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 64,
+              "tagNames": {
+                "A": 52,
+                "INPUT": 7,
+                "BUTTON": 5
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "A",
+              "id": "main-content",
+              "text": "<a id=\"main-content\" tabindex=\"-1\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"text\" name=\"b_06b134af7022aa7be07277259_85f50e3591 \" tabindex=\"-1\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to main content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/\" title=\"Home\" rel=\"home\" class=\"logo\" style=\"cursor: default;\"> <img ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.courtinnovation.org/\" class=\"logo__image-link--horizontal\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "nav-trigger",
+              "text": "<input type=\"checkbox\" id=\"nav-trigger\" class=\"nav-trigger js-mobile-nav-trigger",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Expand",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "People",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Message from the Director",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Awards",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Announcements",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Partners",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Areas of Focus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Publications & Digital Media",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Expand",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "All",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "New Thinking Podcast",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Videos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Books",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-keys",
+              "text": "<input title=\"Enter the terms you wish to search for.\" placeholder=\"Search\" data",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input autocomplete=\"off\" data-drupal-selector=\"form-5exruy6cw2bghnglzg-hgt07l01",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input data-drupal-selector=\"edit-search-api-page-block-form-site-search\" type=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-submit",
+              "text": "<input class=\"search-form__submit button js-form-submit form-submit\" data-drupal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Donate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/publications/felony-ati\" class=\"teaser__image-link\" aria-hidden=\"true\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Taking Reform Out of Its Comfort Zone",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Supervised Release: A Proven Alternative to Bail",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learning from Crisis: Remote Justice in Criminal Courts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Closing Rikers Island: A Roadmap for Reducing Jail in New York City",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Crisis on Rikers: The Time for Action is Now",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/node/30156\" class=\"teaser__image-link\" aria-hidden=\"true\" style=\"curso",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/node/30156\" style=\"cursor: default;\"> <picture> <source srcset=\"/sites",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "25 Years: Transforming Justice Together",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Changemakers in Action",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Areas of Focus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Rethinking Incarceration",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Engaging Communities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Aiding Survivors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Preventing Crime",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Improving Decision-making",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Advancing Fairness",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Strengthening Families",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/\" title=\"Home\" rel=\"home\" class=\"logo\" style=\"cursor: default;\"> <img ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.courtinnovation.org/\" class=\"logo__image-link--horizontal\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Expert Assistance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility Statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "mce-EMAIL",
+              "text": "<input type=\"email\" value=\"\" name=\"EMAIL\" class=\"newsletter-signup__input\" id=\"m",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "mc-embedded-subscribe",
+              "text": "<input type=\"submit\" value=\"Submit\" name=\"subscribe\" id=\"mc-embedded-subscribe\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Youtube",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Instagram",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RSS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sign Up Now",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"banner__close-button\" style=\"cursor: default;\"> <svg class=\"banne",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "triggers": 4,
+          "madeVisible": 24,
+          "opacityChanged": 0,
+          "opacityAffected": 0,
+          "unhoverables": 2
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "About Expand About People Message from the Directo",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "About"
+                },
+                {
+                  "tagName": "A",
+                  "text": "People"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Message from the Director"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Awards"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Announcements"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Careers"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Partners"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "About"
+                },
+                {
+                  "tagName": "A",
+                  "text": "People"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Message from the Director"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Awards"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Announcements"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Careers"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Partners"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Publications & Digital Media Expand All New Thinki",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "All"
+                },
+                {
+                  "tagName": "A",
+                  "text": "New Thinking Podcast"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Videos"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Books"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Publications & Digital Media",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "All"
+                },
+                {
+                  "tagName": "A",
+                  "text": "New Thinking Podcast"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Videos"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Books"
+                }
+              ],
+              "opacityChanged": []
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Search"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 2,
+          "wellLabeled": 9
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 7,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"banner__close-button\"> <svg class=\"banner__close-icon\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" x=\"0px\" y=\"0px\" width=\"25px\" height=\"25px\" viewBox=\"0 0 357 357\" enable-background=\"new 0 0 30 30\" xml:space=\"preserve\"> <polygon points=\"357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 214.2,178.5\"></polygon> </svg> </button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Open Menu"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Expand"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Expand"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email Address"
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Submit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "links": 53,
+          "inline": {
+            "total": 2,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Changemakers in Action",
+            "Areas of Focus"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "roleElements": 7,
+        "badRoleElements": 7,
+        "tagNames": {
+          "HEADER": {
+            "banner": 1
+          },
+          "NAV": {
+            "navigation": 3
+          },
+          "MAIN": {
+            "main": 1
+          },
+          "ARTICLE": {
+            "article": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "h3": {
+            "total": 6,
+            "subtotals": [
+              4,
+              2
+            ]
+          },
+          "h4": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 51,
+            "subtotals": [
+              12,
+              11,
+              7,
+              5,
+              4,
+              4,
+              2,
+              2,
+              2,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 5,
+            "subtotals": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {
+            "lineHeight": {
+              "28px": 3,
+              "64px": 1
+            },
+            "fontSize": {
+              "28px": 8,
+              "64px": 2
+            }
+          },
+          "h3": {
+            "lineHeight": {
+              "31.1093px": 4,
+              "37.3312px": 2
+            },
+            "fontSize": {
+              "26.6667px": 30,
+              "32px": 15
+            }
+          },
+          "h4": {
+            "lineHeight": {
+              "18.6667px": 1,
+              "24px": 1
+            },
+            "fontSize": {
+              "18px": 12,
+              "18.6667px": 11
+            }
+          },
+          "aInline": {
+            "borderStyle": {
+              "none none solid": 1,
+              "none": 1
+            },
+            "borderWidth": {
+              "0px 0px 1px": 1,
+              "0px": 1
+            },
+            "fontWeight": {
+              "400": 1,
+              "500": 1
+            },
+            "lineHeight": {
+              "24px": 1,
+              "64px": 1
+            },
+            "fontSize": {
+              "16px": 12,
+              "64px": 12
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 49,
+              "none none solid": 2
+            },
+            "borderWidth": {
+              "0px": 49,
+              "0px 0px 1.15625px": 2
+            },
+            "fontWeight": {
+              "400": 21,
+              "500": 27,
+              "700": 3
+            },
+            "lineHeight": {
+              "28px": 14,
+              "16px": 14,
+              "17.7778px": 12,
+              "24px": 5,
+              "31.1093px": 4,
+              "37.3312px": 2
+            },
+            "minHeight": {
+              "0px": 50,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 50,
+              "auto": 1
+            },
+            "textDecorationLine": {
+              "none": 39,
+              "underline": 12
+            },
+            "fontSize": {
+              "16px": 228,
+              "18.6667px": 168,
+              "17.7778px": 144,
+              "26.6667px": 48,
+              "32px": 24
+            }
+          },
+          "button": {
+            "lineHeight": {
+              "16px": 4,
+              "18.6667px": 1
+            },
+            "minHeight": {
+              "0px": 4,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 4,
+              "auto": 1
+            },
+            "fontSize": {
+              "16px": 48,
+              "18.6667px": 12
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "totals": {
+          "total": 17,
+          "tagNames": {
+            "HEADER": 1,
+            "DIV": 8,
+            "LABEL": 1,
+            "SECTION": 3,
+            "PICTURE": 2,
+            "H2": 1,
+            "UL": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "HEADER",
+            "id": "",
+            "text": "Open Menu Main navigation About Expand About People Message from the Director Awards Announcements C"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "text": "Open Menu"
+          },
+          {
+            "tagName": "DIV",
+            "id": "header__search",
+            "text": "Search Search"
+          },
+          {
+            "tagName": "DIV",
+            "id": "block-cci-content",
+            "text": "<picture> <source media=\"all and (min-width: 2200px)\" type=\"image/jpeg\" data-srcset=\"/sites/default/"
+          },
+          {
+            "tagName": "SECTION",
+            "id": "",
+            "text": "<picture> <source media=\"all and (min-width: 2200px)\" type=\"image/jpeg\" data-srcset=\"/sites/default/"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "We work to create a fair, effective, and humane justice system by performing original research and h"
+          },
+          {
+            "tagName": "SECTION",
+            "id": "",
+            "text": "Audio Taking Reform Out of Its Comfort Zone Justice reforms often exclude people with charges involv"
+          },
+          {
+            "tagName": "DIV",
+            "id": "block-cci-views-block-areas-of-focus-block-1",
+            "text": "<img src=\"/themes/custom/cci/components/components/home-aof/home-aof__bg--large__680.jpg\" alt=\"\" loa"
+          },
+          {
+            "tagName": "SECTION",
+            "id": "",
+            "text": "<img src=\"/themes/custom/cci/components/components/home-aof/home-aof__bg--large__680.jpg\" alt=\"\" loa"
+          },
+          {
+            "tagName": "PICTURE",
+            "id": "",
+            "text": "<img src=\"/themes/custom/cci/components/components/home-aof/home-aof__bg--large__680.jpg\" alt=\"\" loa"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "<img src=\"/themes/custom/cci/components/components/home-aof/home-aof__bg--small__620.jpg\" alt=\"\" loa"
+          },
+          {
+            "tagName": "PICTURE",
+            "id": "",
+            "text": "<img src=\"/themes/custom/cci/components/components/home-aof/home-aof__bg--small__620.jpg\" alt=\"\" loa"
+          },
+          {
+            "tagName": "H2",
+            "id": "",
+            "text": "Areas of Focus"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Rethinking Incarceration Engaging Communities Aiding Survivors Preventing Crime Improving Decision-m"
+          },
+          {
+            "tagName": "DIV",
+            "id": "block-notificationmessages",
+            "text": "Add Innovation to Your Inbox Receive important updates about our work transforming the justice syste"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 16,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[1]/input[1]",
+                "aria": "/document[1]/contentinfo[1]/form[1]/textbox[1]"
+              },
+              "message": "Form control element <input> has no associated label",
+              "bounds": {
+                "left": -5000,
+                "top": 4571,
+                "height": 43,
+                "width": 182
+              },
+              "snippet": "<input value=\"\" tabindex=\"-1\" name=\"b_06b134af7022aa7be07277259_85f50e3591  \" type=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 0,
+                "top": 5005,
+                "height": 49,
+                "width": 59
+              },
+              "snippet": "<button class=\"banner__close-button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 5005,
+                "height": 49,
+                "width": 59
+              },
+              "snippet": "<button class=\"banner__close-button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/h4[1]",
+                "aria": "/document[1]/heading[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 4890,
+                "height": 18,
+                "width": 800
+              },
+              "snippet": "<h4 class=\"banner__title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/link[2]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 4966,
+                "height": 39,
+                "width": 169
+              },
+              "snippet": "<a class=\"link--button banner__link\" href=\"/sign-up\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 4908,
+                "height": 21,
+                "width": 800
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/section[1]/div[3]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/article[1]/region[1]/link[1]"
+              },
+              "message": "Text contrast of 3.79 with its background is less than the WCAG AA minimum requirements for text of size 16.9303px and weight of 700",
+              "bounds": {
+                "left": 89,
+                "top": 535,
+                "height": 23,
+                "width": 176
+              },
+              "snippet": "<a href=\"/about\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[1]",
+                "aria": "/document[1]"
+              },
+              "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[1]/nav[1]/ul[1]/li[4]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/list[1]/listitem[4]/list[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'list'",
+              "bounds": {
+                "left": 0,
+                "top": 149,
+                "height": 172,
+                "width": 800
+              },
+              "snippet": "<ul aria-expanded=\"false\" id=\"mobile-menu--1-4\" data-depth=\"1\" class=\"menu menu--main\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[1]/nav[1]/ul[1]/li[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/list[1]/listitem[1]/list[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'list'",
+              "bounds": {
+                "left": 0,
+                "top": -399,
+                "height": 343,
+                "width": 800
+              },
+              "snippet": "<ul aria-expanded=\"false\" id=\"mobile-menu--1-1\" data-depth=\"1\" class=\"menu menu--main\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/list[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'list'",
+              "bounds": {
+                "left": 0,
+                "top": -458,
+                "height": 857,
+                "width": 800
+              },
+              "snippet": "<ul aria-expanded=\"true\" id=\"mobile-menu--0-0\" data-depth=\"0\" class=\"menu menu--main\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[2]/input[1]",
+                "aria": "/document[1]/banner[1]/form[1]/button[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 729,
+                "top": 451,
+                "height": 44,
+                "width": 44
+              },
+              "snippet": "<input value=\"Search\" name=\"op\" id=\"edit-submit\" type=\"submit\" data-drupal-selector=\"edit-submit\" class=\"search-form__submit button js-form-submit form-submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[1]/input[1]",
+                "aria": "/document[1]/banner[1]/form[1]/textbox[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 56,
+                "top": 451,
+                "height": 44,
+                "width": 674
+              },
+              "snippet": "<input class=\"form-search\" maxlength=\"128\" size=\"15\" value=\"\" name=\"keys\" id=\"edit-keys\" type=\"search\" data-drupal-selector=\"edit-keys\" placeholder=\"Search\" title=\"Enter the terms you wish to search for.\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/section[2]/div[1]/article[1]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[1]/region[2]/article[1]/link[1]"
+              },
+              "message": "Element \"a\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 683,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a aria-hidden=\"true\" class=\"teaser__image-link\" href=\"/publications/felony-ati\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/div[1]/article[1]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[1]/article[1]/link[1]"
+              },
+              "message": "Element \"a\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 2659,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a aria-hidden=\"true\" class=\"teaser__image-link\" href=\"/node/30156\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 14,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[1]/input[1]",
+                "aria": "/document[1]/contentinfo[1]/form[1]/textbox[1]"
+              },
+              "message": "Form control element <input> has no associated label",
+              "bounds": {
+                "left": -5000,
+                "top": 5553,
+                "height": 43,
+                "width": 201
+              },
+              "snippet": "<input value=\"\" tabindex=\"-1\" name=\"b_06b134af7022aa7be07277259_85f50e3591  \" type=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 0,
+                "top": 476,
+                "height": 47,
+                "width": 49
+              },
+              "snippet": "<button class=\"banner__close-button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 476,
+                "height": 47,
+                "width": 49
+              },
+              "snippet": "<button class=\"banner__close-button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/h4[1]",
+                "aria": "/document[1]/heading[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 56,
+                "top": 469,
+                "height": 24,
+                "width": 238
+              },
+              "snippet": "<h4 class=\"banner__title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/link[2]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 56,
+                "top": 532,
+                "height": 43,
+                "width": 200
+              },
+              "snippet": "<a class=\"link--button banner__link\" href=\"/sign-up\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 56,
+                "top": 493,
+                "height": 24,
+                "width": 619
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/section[1]/div[3]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/article[1]/region[1]/link[1]"
+              },
+              "message": "Text contrast of 3.79 with its background is less than the WCAG AA minimum requirements for text of size 16.9303px and weight of 700",
+              "bounds": {
+                "left": 89,
+                "top": 536,
+                "height": 22,
+                "width": 165
+              },
+              "snippet": "<a href=\"/about\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[1]",
+                "aria": "/document[1]"
+              },
+              "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/list[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'list'",
+              "bounds": {
+                "left": 0,
+                "top": -458,
+                "height": 342,
+                "width": 800
+              },
+              "snippet": "<ul aria-expanded=\"true\" id=\"mobile-menu--0-0\" data-depth=\"0\" class=\"menu menu--main\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[2]/input[1]",
+                "aria": "/document[1]/banner[1]/form[1]/button[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 729,
+                "top": -64,
+                "height": 44,
+                "width": 44
+              },
+              "snippet": "<input value=\"Search\" name=\"op\" id=\"edit-submit\" type=\"submit\" data-drupal-selector=\"edit-submit\" class=\"search-form__submit button js-form-submit form-submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[1]/input[1]",
+                "aria": "/document[1]/banner[1]/form[1]/textbox[1]"
+              },
+              "message": "Element \"input\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 56,
+                "top": -64,
+                "height": 44,
+                "width": 674
+              },
+              "snippet": "<input class=\"form-search\" maxlength=\"128\" size=\"15\" value=\"\" name=\"keys\" id=\"edit-keys\" type=\"search\" data-drupal-selector=\"edit-keys\" placeholder=\"Search\" title=\"Enter the terms you wish to search for.\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/section[2]/div[1]/article[1]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[1]/region[2]/article[1]/link[1]"
+              },
+              "message": "Element \"a\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 683,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a aria-hidden=\"true\" class=\"teaser__image-link\" href=\"/publications/felony-ati\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/div[1]/article[1]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/article[1]/article[1]/link[1]"
+              },
+              "message": "Element \"a\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 0,
+                "top": 3204,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a aria-hidden=\"true\" class=\"teaser__image-link\" href=\"/node/30156\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.courtinnovation.org/",
+      "what": "Center for Court Innovation",
+      "result": "https://www.courtinnovation.org/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.courtinnovation.org/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Center for Court Innovation",
+          "pageurl": "https://www.courtinnovation.org/",
+          "time": 2.72,
+          "creditsremaining": 262,
+          "allitemcount": 86,
+          "totalelements": 373,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.courtinnovation.org/",
+          "domid": "8eda63acafa11d7d8131dcae9f5b7f7c"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 3,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > FORM#mc-embedded-subscribe-form > H4:first-child + LABEL + DIV > INPUT:first-child"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER + DIV > DIV#block-notificationmessages > DIV:first-child > DIV:first-child + DIV > BUTTON:first-child"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-content > ARTICLE:first-child > SECTION:first-child + SECTION + DIV > ARTICLE:first-child > DIV:first-child > A:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 5,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child + INPUT + LABEL + DIV > DIV#header__search > DIV#block-searchapipagesearchblockform > FORM#search-api-page-block-form-site-search > DIV:first-child > LABEL:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-content > ARTICLE:first-child > SECTION:first-child > DIV:first-child + NOSCRIPT + DIV + DIV > DIV:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-views-block-areas-of-focus-block-1 > DIV:first-child > SECTION:first-child > PICTURE:first-child + DIV > PICTURE:first-child + H2 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > NAV#block-cci-footer > H2#block-cci-footer-menu",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > NAV#block-socialnavigation > H2#block-socialnavigation-menu"
+                ],
+                "contrastdata": [
+                  [
+                    2.14,
+                    "#484848",
+                    "#080c10",
+                    false
+                  ],
+                  [
+                    3.79,
+                    "#d22630",
+                    "#080c10",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#080c10",
+                    "#080c10",
+                    true
+                  ],
+                  [
+                    1,
+                    "#080c10",
+                    "#080c10",
+                    true
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 28,
+            "items": {
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > FORM#mc-embedded-subscribe-form > H4:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER + DIV > DIV#block-notificationmessages > DIV:first-child > DIV:first-child > DIV:first-child > H4:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child + INPUT + LABEL + DIV > DIV:first-child > NAV#block-mainnavigation-5 > UL#mobile-menu--0-0 > LI:first-child > UL#mobile-menu--1-1 > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child + INPUT + LABEL + DIV > DIV:first-child > NAV#block-mainnavigation-5 > UL#mobile-menu--0-0 > LI:first-child + LI + LI + LI > UL#mobile-menu--1-4 > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-content > ARTICLE:first-child > SECTION:first-child + SECTION > DIV:first-child > ARTICLE:first-child > DIV:first-child + DIV > SPAN:first-child + H3 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-content > ARTICLE:first-child > SECTION:first-child + SECTION + DIV > ARTICLE:first-child > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-content > ARTICLE:first-child > SECTION:first-child + SECTION + DIV > ARTICLE:first-child > DIV:first-child + DIV > SPAN:first-child + H3 > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 12,
+                "selectors": [
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + STYLE + LINK + LINK + META + META + META + META + META + META + META + META + META + META + META + META + META + META + LINK + LINK + SCRIPT + TITLE + STYLE + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT + LINK + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-content > ARTICLE:first-child > SECTION:first-child > DIV:first-child + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-views-block-areas-of-focus-block-1 > DIV:first-child > SECTION:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child > HEADER:first-child + DIV > DIV:first-child + MAIN > A:first-child + DIV > DIV:first-child > DIV#block-cci-views-block-areas-of-focus-block-1 > DIV:first-child > SECTION:first-child > PICTURE:first-child + DIV > PICTURE:first-child > SOURCE:first-child + NOSCRIPT"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV#block-fundingtext > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > P:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > NAV#block-cci-footer > H2:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > NAV#block-socialnavigation > H2:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > NAV#block-socialnavigation > H2:first-child + UL > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > NAV#block-socialnavigation > H2:first-child + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > NAV#block-socialnavigation > H2:first-child + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + NOSCRIPT + DIV > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + DIV > NAV#block-socialnavigation > H2:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y05",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 250 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 557,
+          "axe": 37,
+          "bulk": 0,
+          "embAc": 0,
+          "focAll": 45,
+          "focInd": 46,
+          "focOp": 8,
+          "hover": 68,
+          "ibm": 48,
+          "labClash": 4,
+          "linkUl": 6,
+          "log": 113,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 14,
+          "styleDiff": 41,
+          "tabNav": 0,
+          "wave": 76,
+          "zIndex": 51
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      68
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      3
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focInd",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
