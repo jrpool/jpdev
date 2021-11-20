@@ -1,0 +1,4376 @@
+{
+  "script": "a11y04",
+  "batch": "esgRest",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "ywtb",
+  "logCount": 0,
+  "logSize": 0,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "bytes": [
+          1019040,
+          1019040,
+          1019040,
+          1480308,
+          1480308
+        ],
+        "localRatios": [
+          1,
+          1,
+          1.453,
+          1
+        ],
+        "meanLocalRatio": 1.113,
+        "maxLocalRatio": 1.453,
+        "globalRatio": 1.453,
+        "pixelChanges": [
+          0,
+          0,
+          557124,
+          0
+        ],
+        "meanPixelChange": 139281,
+        "maxPixelChange": 557124,
+        "changeFrequency": 0.25
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 0,
+          "serious": 8,
+          "critical": 3
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-attr",
+            "description": "Ensures ARIA attributes are allowed for an element's role",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#slick-slide02",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "aria-allowed-attr",
+                    "description": "ARIA attribute is not allowed: aria-selected=\"false\"",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-hidden-focus",
+            "description": "Ensures aria-hidden elements do not contain focusable elements",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#slick-slide00",
+                "impact": "serious"
+              },
+              {
+                "selector": "#slick-slide01",
+                "impact": "serious"
+              },
+              {
+                "selector": "#slick-slide03",
+                "impact": "serious"
+              },
+              {
+                "selector": "#slick-slide04",
+                "impact": "serious"
+              }
+            ]
+          },
+          {
+            "rule": "aria-input-field-name",
+            "description": "Ensures every ARIA input field has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".slick-track",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-required-children",
+            "description": "Ensures elements with an ARIA role that require child roles contain them",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".slick-dots",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "aria-required-children",
+                    "description": "Required ARIA child role not present: tab",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "button-name",
+            "description": "Ensures buttons have discernible text",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".mf_finder_searchBox_submit",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "button-has-visible-text",
+                    "description": "Element does not have inner text that is visible to screen readers",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label-title-only",
+            "description": "Ensures that every form element is not solely labeled using the title or aria-describedby attributes",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".mf_finder_searchBox_query_input",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "title-only",
+                    "description": "Only title used to generate label for form element",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "list",
+            "description": "Ensures that lists are structured correctly",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".uc-carousel-content",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "only-listitems",
+                    "description": "List element has direct children that are not allowed inside <li> elements",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "li[data-slick-index=\"\\32 \"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "presentation-role-conflict",
+            "description": "Flags elements whose role is none or presentation and which cause the role conflict resolution to trigger.",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#slick-slide02",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "has-global-aria-attribute",
+                    "description": "Element does not have global ARIA attribute",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "visibleElements": 695
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "tabFocusables": 64,
+        "tabFocused": 66,
+        "discrepancy": 2
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "total": 115,
+          "types": {
+            "indicatorMissing": {
+              "total": 5,
+              "tagNames": {
+                "A": 2,
+                "INPUT": 2,
+                "IFRAME": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 1,
+              "tagNames": {
+                "A": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 109,
+              "tagNames": {
+                "A": 91,
+                "BUTTON": 13,
+                "SELECT": 4,
+                "INPUT": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "AddToAny"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "More…"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "日本語"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "メニュー"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us Top"
+            },
+            {
+              "tagName": "A",
+              "text": "Message from the Top"
+            },
+            {
+              "tagName": "A",
+              "text": "The Unicharm Way"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Governance"
+            },
+            {
+              "tagName": "A",
+              "text": "Company Profile"
+            },
+            {
+              "tagName": "A",
+              "text": "Business Operations"
+            },
+            {
+              "tagName": "A",
+              "text": "Offices and Group Companies"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate History"
+            },
+            {
+              "tagName": "A",
+              "text": "Thoughts on the Charm Ring"
+            },
+            {
+              "tagName": "A",
+              "text": "For Material Suppliers"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustainability Top"
+            },
+            {
+              "tagName": "A",
+              "text": "Message from the President & CEO"
+            },
+            {
+              "tagName": "A",
+              "text": "Unicharm Group’s COVID-19 Initiatives"
+            },
+            {
+              "tagName": "A",
+              "text": "Kyo-sei Life Vision 2030"
+            },
+            {
+              "tagName": "A",
+              "text": "Unicharm Group Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": "Key Topics Safeguarding the Well-being of Individuals"
+            },
+            {
+              "tagName": "A",
+              "text": "Key TopicsSafeguarding the Well-being of Society"
+            },
+            {
+              "tagName": "A",
+              "text": "Key TopicsSafeguarding the Well-being of Our Planet"
+            },
+            {
+              "tagName": "A",
+              "text": "Key TopicsUnicharm Principles"
+            },
+            {
+              "tagName": "A",
+              "text": "External Evaluations"
+            },
+            {
+              "tagName": "A",
+              "text": "GRI Standard Comparison Table"
+            },
+            {
+              "tagName": "A",
+              "text": "ESG Information List"
+            },
+            {
+              "tagName": "A",
+              "text": "List of Contents"
+            },
+            {
+              "tagName": "A",
+              "text": "Editorial Policy/Contents"
+            },
+            {
+              "tagName": "A",
+              "text": "Download Sustainability Report 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "An Illustrated Guide toRecycling Unicharm Disposable Diapers"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Relations Top"
+            },
+            {
+              "tagName": "A",
+              "text": "Integrated Report 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "A Quick Guide to Unicharm"
+            },
+            {
+              "tagName": "A",
+              "text": "IR News"
+            },
+            {
+              "tagName": "A",
+              "text": "Financial Data"
+            },
+            {
+              "tagName": "A",
+              "text": "IR library"
+            },
+            {
+              "tagName": "A",
+              "text": "Calendar of IR Events"
+            },
+            {
+              "tagName": "A",
+              "text": "Stock Information"
+            },
+            {
+              "tagName": "A",
+              "text": "General Meeting of Shareholders"
+            },
+            {
+              "tagName": "A",
+              "text": "Stock Quote"
+            },
+            {
+              "tagName": "A",
+              "text": "Disclosure Policy (Established in June 2018)"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Brands"
+            },
+            {
+              "tagName": "A",
+              "text": "日本語"
+            },
+            {
+              "tagName": "SELECT",
+              "text": "All htmlpdfdocxlsppt"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "SELECT",
+              "text": "matchrecent"
+            },
+            {
+              "tagName": "SELECT",
+              "text": "102030"
+            },
+            {
+              "tagName": "SELECT",
+              "text": "nonesmallmediumlarge"
+            },
+            {
+              "tagName": "A",
+              "text": "Top"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "prev"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "next"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "1"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "2"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "3"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "4"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "5"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Our Brands"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Kyo-sei Life Vision 2030"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Safeguarding the Well-being of Individuals"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Safeguarding the Well-being of Society"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Safeguarding the Well-being of Our Planet"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Unicharm Principles"
+            },
+            {
+              "tagName": "A",
+              "text": "2021.10.13 Connects with the frontline field a few thousands kilometers away through DX (Digital Tra"
+            },
+            {
+              "tagName": "A",
+              "text": "2021.10.12 Unicharm's efforts to promote sustainable supply chains\n～ Addressing human rights issues "
+            },
+            {
+              "tagName": "A",
+              "text": "2021.07.30 Unicharm Group's Integrated Report 2021 released"
+            },
+            {
+              "tagName": "A",
+              "text": "Full List"
+            },
+            {
+              "tagName": "A",
+              "text": "2021.11.05 Presentation Materials for the Third Quarter of the Fiscal Year Ending December 31, 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "2021.11.05 Notice Concerning Application for Selection of “Prime Market”in Tokyo Stock Exchange New "
+            },
+            {
+              "tagName": "A",
+              "text": "2021.11.05 Summary of Consolidated Financial Results for the Third Quarter of the Fiscal Year Ending"
+            },
+            {
+              "tagName": "A",
+              "text": "Full List"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Line"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "PAGE TOP"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustainability"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Brands"
+            },
+            {
+              "tagName": "A",
+              "text": "Website Terms of Use"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Sitemap"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "total": 135,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 12,
+              "tagNames": {
+                "A": 6,
+                "LI": 5,
+                "DIV": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 123,
+              "tagNames": {
+                "A": 97,
+                "BUTTON": 16,
+                "INPUT": 5,
+                "SELECT": 4,
+                "IFRAME": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco.html\" class=\"\" tabindex=\"-1\" style=\"cursor: default;\"> <p c",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special02.html\" class=\"\" tabindex=\"-1\" style=\"cursor: defau",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special03.html\" class=\"\" tabindex=\"-1\" style=\"cursor: defau",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special04.html\" class=\"\" tabindex=\"-1\" style=\"cursor: defau",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco.html\" class=\"\" tabindex=\"-1\" style=\"cursor: default;\"> <p c",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special01.html\" class=\"\" tabindex=\"-1\" style=\"cursor: defau",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "slick-slide00",
+              "text": "1",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "slick-slide01",
+              "text": "2",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "slick-slide02",
+              "text": "3",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "slick-slide03",
+              "text": "4",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "slick-slide04",
+              "text": "5",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "PAGE TOP",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/home.html\" class=\"\" style=\"cursor: default;\"> <p class=\"uc-object u",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Worldwide Site",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "日本語",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "メニュー",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us Top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Message from the Top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Unicharm Way",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Company Profile",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Business Operations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Offices and Group Companies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Thoughts on the Charm Ring",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "For Material Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability Top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Message from the President & CEO",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Unicharm Group’s COVID-19 Initiatives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kyo-sei Life Vision 2030",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Unicharm Group Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key Topics Safeguarding the Well-being of Individuals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key TopicsSafeguarding the Well-being of Society",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key TopicsSafeguarding the Well-being of Our Planet",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key TopicsUnicharm Principles",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "External Evaluations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "GRI Standard Comparison Table",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ESG Information List",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "List of Contents",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Editorial Policy/Contents",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Download Sustainability Report 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "An Illustrated Guide toRecycling Unicharm Disposable Diapers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations Top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Integrated Report 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "A Quick Guide to Unicharm",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "IR News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financial Data",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "IR library",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Calendar of IR Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Stock Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "General Meeting of Shareholders",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Stock Quote",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Disclosure Policy (Established in June 2018)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Brands",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Worldwide Site",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "日本語",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"page\" value=\"1\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"d\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "All htmlpdfdocxlsppt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"text\" name=\"q\" autocomplete=\"off\" title=\"search query\" placeholder=",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button type=\"submit\" class=\"mf_finder_searchBox_submit\" style=\"cursor: default;",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "matchrecent",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "102030",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "nonesmallmediumlarge",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special01.html\" class=\"\" tabindex=\"0\" style=\"cursor: defaul",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "prev",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "4",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "5",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/company.html\" class=\"\" style=\"cursor: default;\"> <p class=\"uc-objec",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/ir.html\" class=\"\" style=\"cursor: default;\"> <p class=\"uc-object uc-",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/brand.html\" class=\"\" style=\"cursor: default;\"> <p class=\"uc-object ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Brands",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www2.unicharm.co.jp/english/csr/kyoseilifevision/index.html\" cl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kyo-sei Life Vision 2030",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special01.html\" class=\"\" style=\"cursor: default;\"> <p class",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Safeguarding the Well-being of Individuals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special02.html\" class=\"\" style=\"cursor: default;\"> <p class",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Safeguarding the Well-being of Society",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special03.html\" class=\"\" style=\"cursor: default;\"> <p class",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Safeguarding the Well-being of Our Planet",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special04.html\" class=\"\" style=\"cursor: default;\"> <p class",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Unicharm Principles",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2021.10.13 Connects with the frontline field a few thousands kilometers away thr",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2021.10.12 Unicharm's efforts to promote sustainable supply chains\n～ Addressing ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2021.07.30 Unicharm Group's Integrated Report 2021 released",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Full List",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2021.11.05 Presentation Materials for the Third Quarter of the Fiscal Year Endin",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2021.11.05 Notice Concerning Application for Selection of “Prime Market”in Tokyo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2021.11.05 Summary of Consolidated Financial Results for the Third Quarter of th",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Full List",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/gran-deli.html\" class=\"\" target=\"_b",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/best.html\" class=\"\" target=\"_blank\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/ginspoon.html\" class=\"\" target=\"_bl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/allwell.html\" class=\"\" target=\"_bla",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/deosheet.html\" class=\"\" target=\"_bl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/manner-wear.html\" class=\"\" target=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/deotoilet-c.html\" class=\"\" target=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.sofy.jp/en/home.html\" class=\"\" target=\"_blank\" ref=\"noopene",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.moony.com/en/home.html\" class=\"\" target=\"_blank\" ref=\"noopen",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.mamypoko.jp/en/home.html\" class=\"\" target=\"_blank\" ref=\"noo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.torepanman.jp/en/home.html\" class=\"\" target=\"_blank\" ref=\"n",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.oyasumiman.jp/en/home.html\" class=\"\" target=\"_blank\" ref=\"n",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.moony.com/en/home.html\" class=\"\" target=\"_blank\" ref=\"noopen",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Line",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "PAGE TOP",
+              "byTag": true,
+              "byOnClick": true,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustainability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Brands",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Website Terms of Use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sitemap",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Worldwide Site",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/home.html\" class=\"\" target=\"_blank\" ref=\"noopener\" style=\"cursor: d",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "a2a_copy_link_text",
+              "text": "<input id=\"a2a_copy_link_text\" type=\"text\" title=\"Copy link\" readonly=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "a2apage_find",
+              "text": "<input id=\"a2apage_find\" class=\"a2a_menu_find a2a_localize\" type=\"text\" autocomp",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AddToAny",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "a2apage_show_more_less",
+              "text": "More…",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "a2a_sm_ifr",
+              "text": "<iframe id=\"a2a_sm_ifr\" title=\"AddToAny Utility Frame\" transparency=\"true\" allow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "cboxPrevious",
+              "text": "<button type=\"button\" id=\"cboxPrevious\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "cboxNext",
+              "text": "<button type=\"button\" id=\"cboxNext\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "cboxSlideshow",
+              "text": "<button type=\"button\" id=\"cboxSlideshow\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "triggers": 41,
+          "madeVisible": 76,
+          "opacityChanged": 48,
+          "opacityAffected": 232,
+          "unhoverables": 7
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/home.html\" class=\"\"> <p class=\"uc-obj",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "About Us About Us TopMessage from the TopThe Unich",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "About Us Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Message from the Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "The Unicharm Way"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Governance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Company Profile"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Business Operations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Offices and Group Companies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate History"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Thoughts on the Charm Ring"
+                },
+                {
+                  "tagName": "A",
+                  "text": "For Material Suppliers"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "About Us TopMessage from the TopThe Unicharm WayCo"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "About Us",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "About Us Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Message from the Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "The Unicharm Way"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Governance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Company Profile"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Business Operations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Offices and Group Companies"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate History"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Thoughts on the Charm Ring"
+                },
+                {
+                  "tagName": "A",
+                  "text": "For Material Suppliers"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "About Us TopMessage from the TopThe Unicharm WayCo"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Sustainability Sustainability TopMessage from the ",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Sustainability Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Message from the President & CEO"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Unicharm Group’s COVID-19 Initiatives"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Kyo-sei Life Vision 2030"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Unicharm Group Sustainability"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key Topics Safeguarding the Well-being of Individu"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key TopicsSafeguarding the Well-being of Society"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key TopicsSafeguarding the Well-being of Our Plane"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key TopicsUnicharm Principles"
+                },
+                {
+                  "tagName": "A",
+                  "text": "External Evaluations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "GRI Standard Comparison Table"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ESG Information List"
+                },
+                {
+                  "tagName": "A",
+                  "text": "List of Contents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Editorial Policy/Contents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Download Sustainability Report 2021"
+                },
+                {
+                  "tagName": "A",
+                  "text": "An Illustrated Guide toRecycling Unicharm Disposab"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Sustainability TopMessage from the President & CEO"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Sustainability",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Sustainability Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Message from the President & CEO"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Unicharm Group’s COVID-19 Initiatives"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Kyo-sei Life Vision 2030"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Unicharm Group Sustainability"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key Topics Safeguarding the Well-being of Individu"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key TopicsSafeguarding the Well-being of Society"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key TopicsSafeguarding the Well-being of Our Plane"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Key TopicsUnicharm Principles"
+                },
+                {
+                  "tagName": "A",
+                  "text": "External Evaluations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "GRI Standard Comparison Table"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ESG Information List"
+                },
+                {
+                  "tagName": "A",
+                  "text": "List of Contents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Editorial Policy/Contents"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Download Sustainability Report 2021"
+                },
+                {
+                  "tagName": "A",
+                  "text": "An Illustrated Guide toRecycling Unicharm Disposab"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Sustainability TopMessage from the President & CEO"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Investor Relations Investor Relations TopIntegrate",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Investor Relations Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Integrated Report 2021"
+                },
+                {
+                  "tagName": "A",
+                  "text": "A Quick Guide to Unicharm"
+                },
+                {
+                  "tagName": "A",
+                  "text": "IR News"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Data"
+                },
+                {
+                  "tagName": "A",
+                  "text": "IR library"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Calendar of IR Events"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Stock Information"
+                },
+                {
+                  "tagName": "A",
+                  "text": "General Meeting of Shareholders"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Stock Quote"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Disclosure Policy (Established in June 2018)"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact Us"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Investor Relations TopIntegrated Report 2021A Quic"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Investor Relations",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Investor Relations Top"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Integrated Report 2021"
+                },
+                {
+                  "tagName": "A",
+                  "text": "A Quick Guide to Unicharm"
+                },
+                {
+                  "tagName": "A",
+                  "text": "IR News"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Financial Data"
+                },
+                {
+                  "tagName": "A",
+                  "text": "IR library"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Calendar of IR Events"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Stock Information"
+                },
+                {
+                  "tagName": "A",
+                  "text": "General Meeting of Shareholders"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Stock Quote"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Disclosure Policy (Established in June 2018)"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact Us"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Investor Relations TopIntegrated Report 2021A Quic"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "<li class=\"uc-carousel-item slick-slide\" data-slic",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                },
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special04.html\" class=\"\" tabi",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                },
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "<li class=\"uc-carousel-item slick-slide\" data-slic",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                },
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco.html\" class=\"\" tabindex=\"-1\">",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                },
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "<li class=\"uc-carousel-item slick-slide slick-clon",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                },
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special01.html\" class=\"\" tabi",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                },
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/company.html\" class=\"\"> <p class=\"uc-",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/ir.html\" class=\"\"> <p class=\"uc-objec",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/brand.html\" class=\"\"> <p class=\"uc-ob",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www2.unicharm.co.jp/english/csr/k",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                },
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special01.html\" class=\"\"> <p ",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special02.html\" class=\"\"> <p ",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special03.html\" class=\"\"> <p ",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/csr-eco/special04.html\" class=\"\"> <p ",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/gran-",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/best.",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/ginsp",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/allwe",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/deosh",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/manne",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.unicharmpet.com/en/brand/deoto",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.sofy.jp/en/home.html\" class=\"",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.moony.com/en/home.html\" class=",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.mamypoko.jp/en/home.html\" cla",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.torepanman.jp/en/home.html\" c",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.oyasumiman.jp/en/home.html\" c",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://jp.moony.com/en/home.html\" class=",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Facebook",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_facebook"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_facebook"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Twitter",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_twitter\""
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_twitter\""
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Line",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_line\" st"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Line",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_line\" st"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/en/home.html\" class=\"\" target=\"_blank\" r",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"/content/dam/sites/www_unicharm_co_jp/im"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "<divclass=\"uc-mod-media-01\"><ahref=\"/en/csr-eco.ht"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<pclass=\"uc-object\"><imgsrc=\"/content/dam/sites/ww"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "<divclass=\"uc-mod-media-01\"><ahref=\"/en/csr-eco/sp"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<pclass=\"uc-object\"><imgsrc=\"/content/dam/sites/ww"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "<divclass=\"uc-mod-media-01\"><ahref=\"/en/csr-eco/sp"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<pclass=\"uc-object\"><imgsrc=\"/content/dam/sites/ww"
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "PAGETOP"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 7,
+          "wellLabeled": 16
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button type=\"submit\" class=\"mf_finder_searchBox_submit\"><span></span></button>}"
+            },
+            {
+              "index": 18,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 19,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" id=\"cboxPrevious\"></button>}"
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" id=\"cboxNext\"></button>}"
+            },
+            {
+              "index": 22,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" id=\"cboxSlideshow\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "メニュー"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "About Us"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Sustainability"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Investor Relations"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "All htmlpdfdocxlsppt"
+                ]
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "matchrecent"
+                ]
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "102030"
+                ]
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "nonesmallmediumlarge"
+                ]
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "prev"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "next"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "1"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "2"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "3"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "4"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "5"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "PAGE TOP"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "links": 103,
+          "inline": {
+            "total": 0,
+            "underlined": 0,
+            "underlinedPercent": "N/A"
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "roleElements": 22,
+        "badRoleElements": 14,
+        "tagNames": {
+          "DIV": {
+            "listbox": 1,
+            "dialog": 3
+          },
+          "LI": {
+            "option": 5
+          },
+          "BUTTON": {
+            "button": 5
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 4
+          },
+          "h3": {
+            "total": 9,
+            "subtotals": [
+              5,
+              4
+            ]
+          },
+          "aBlock": {
+            "total": 103,
+            "subtotals": [
+              38,
+              36,
+              8,
+              4,
+              4,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 16,
+            "subtotals": [
+              11,
+              3,
+              2
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {},
+          "h3": {
+            "fontWeight": {
+              "400": 4,
+              "700": 5
+            },
+            "lineHeight": {
+              "29.4px": 5,
+              "19.6px": 4
+            },
+            "fontSize": {
+              "21px": 60,
+              "14px": 30
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 97,
+              "solid": 4,
+              "none none solid": 1,
+              "solid none": 1
+            },
+            "borderWidth": {
+              "0px": 97,
+              "1px": 4,
+              "0px 0px 4px": 1,
+              "1px 0px": 1
+            },
+            "fontWeight": {
+              "400": 46,
+              "700": 57
+            },
+            "lineHeight": {
+              "27.2px": 42,
+              "22.5px": 38,
+              "37.4px": 8,
+              "16px": 4,
+              "14px": 4,
+              "19.5px": 4,
+              "0px": 1,
+              "12px": 1,
+              "24px": 1
+            },
+            "minWidth": {
+              "0px": 101,
+              "304px": 2
+            },
+            "fontSize": {
+              "16px": 630,
+              "15px": 532,
+              "22px": 112,
+              "13px": 56,
+              "14px": 42,
+              "0px": 42,
+              "12px": 28
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 13,
+              "none none solid": 3
+            },
+            "borderWidth": {
+              "0px": 13,
+              "0px 0px 4px": 3
+            },
+            "fontWeight": {
+              "400": 13,
+              "700": 3
+            },
+            "lineHeight": {
+              "27.2px": 11,
+              "16px": 3,
+              "0px": 2
+            },
+            "fontSize": {
+              "16px": 196,
+              "0px": 28
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "totals": {
+          "total": 20,
+          "tagNames": {
+            "DIV": 17,
+            "BUTTON": 1,
+            "P": 1,
+            "IFRAME": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Worldwide Site 日本語 メニュー About Us About Us TopMessage from the TopThe Unicharm WayCorporate Governanc"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Worldwide Site"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "日本語"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "メニュー"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "About Us About Us TopMessage from the TopThe Unicharm WayCorporate GovernanceCompany ProfileBusiness"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "About Us TopMessage from the TopThe Unicharm WayCorporate GovernanceCompany ProfileBusiness Operatio"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Sustainability TopMessage from the President & CEOUnicharm Group’s COVID-19 InitiativesKyo-sei Life "
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Investor Relations TopIntegrated Report 2021A Quick Guide to UnicharmIR NewsFinancial DataIR library"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "PAGE TOP"
+          },
+          {
+            "tagName": "P",
+            "id": "",
+            "text": "PAGE TOP"
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2a_overlay",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2a_modal",
+            "text": "✓Thanks for sharing!"
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2apage_full",
+            "text": "AddToAny"
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2apage_dropdown",
+            "text": "More…"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "IFRAME",
+            "id": "a2a_sm_ifr",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "cboxOverlay",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "colorbox",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "cboxWrapper",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 16,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/list[1]/listbox[1]"
+              },
+              "message": "Form control with \"listbox\" role has no associated label",
+              "bounds": {
+                "left": -1232,
+                "top": 1294,
+                "height": 222,
+                "width": 8960
+              },
+              "snippet": "<div role=\"listbox\" style=\"opacity: 1; width: 8960px; transform: translate3d(-1280px, 0px, 0px);\" class=\"slick-track\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/form[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 8,
+                "top": 1144,
+                "height": 6,
+                "width": 16
+              },
+              "snippet": "<button class=\"mf_finder_searchBox_submit\" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[5]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation04\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 1674,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide04\" aria-controls=\"navigation04\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[4]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation03\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 1653,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide03\" aria-controls=\"navigation03\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[3]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation02\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 1632,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide02\" aria-controls=\"navigation02\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[2]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation01\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 1611,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide01\" aria-controls=\"navigation01\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation00\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 1590,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide00\" aria-controls=\"navigation00\" aria-selected=\"true\" role=\"presentation\" aria-hidden=\"false\" class=\"slick-active\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[5]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 48,
+                "top": 1674,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide04\" aria-controls=\"navigation04\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[4]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 48,
+                "top": 1653,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide03\" aria-controls=\"navigation03\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[3]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 48,
+                "top": 1632,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide02\" aria-controls=\"navigation02\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[2]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 48,
+                "top": 1611,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide01\" aria-controls=\"navigation01\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 48,
+                "top": 1590,
+                "height": 21,
+                "width": 744
+              },
+              "snippet": "<li id=\"slick-slide00\" aria-controls=\"navigation00\" aria-selected=\"true\" role=\"presentation\" aria-hidden=\"false\" class=\"slick-active\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[5]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[5]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 48,
+                "top": 1674,
+                "height": 21,
+                "width": 24
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[4]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[4]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 48,
+                "top": 1653,
+                "height": 21,
+                "width": 24
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[3]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[3]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 48,
+                "top": 1632,
+                "height": 21,
+                "width": 24
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[2]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[2]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 48,
+                "top": 1611,
+                "height": 21,
+                "width": 24
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 16,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/list[1]/listbox[1]"
+              },
+              "message": "Form control with \"listbox\" role has no associated label",
+              "bounds": {
+                "left": -800,
+                "top": 141,
+                "height": 0,
+                "width": 5600
+              },
+              "snippet": "<div role=\"listbox\" style=\"opacity: 1; width: 5600px; transform: translate3d(-800px, 0px, 0px);\" class=\"slick-track\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/form[1]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 724,
+                "top": 29,
+                "height": 16,
+                "width": 16
+              },
+              "snippet": "<button class=\"mf_finder_searchBox_submit\" type=\"submit\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[5]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation04\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 449,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide04\" aria-controls=\"navigation04\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[4]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation03\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 419,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide03\" aria-controls=\"navigation03\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[3]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation02\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 389,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide02\" aria-controls=\"navigation02\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[2]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation01\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 359,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide01\" aria-controls=\"navigation01\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The 'id' \"navigation00\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 329,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide00\" aria-controls=\"navigation00\" aria-selected=\"true\" role=\"presentation\" aria-hidden=\"false\" class=\"slick-active\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[5]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 449,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide04\" aria-controls=\"navigation04\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[4]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 419,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide03\" aria-controls=\"navigation03\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[3]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 389,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide02\" aria-controls=\"navigation02\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[2]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 359,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide01\" aria-controls=\"navigation01\" aria-selected=\"false\" role=\"presentation\" aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]"
+              },
+              "message": "The ARIA attribute 'aria-selected' is not valid for the element <li> with ARIA role 'none'",
+              "bounds": {
+                "left": 329,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<li id=\"slick-slide00\" aria-controls=\"navigation00\" aria-selected=\"true\" role=\"presentation\" aria-hidden=\"false\" class=\"slick-active\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[5]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[5]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 449,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[4]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[4]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 419,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[3]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[3]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 389,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[2]/li[2]/button[1]",
+                "aria": "/document[1]/main[1]/toolbar[1]/tablist[1]/button[2]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 359,
+                "top": 570,
+                "height": 22,
+                "width": 22
+              },
+              "snippet": "<button tabindex=\"0\" role=\"button\" data-role=\"none\" type=\"button\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.unicharm.co.jp/en/home.html",
+      "what": "Unicharm (AMDWX)",
+      "result": "https://www.unicharm.co.jp/en/home.html"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.unicharm.co.jp/en/home.html",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Top-Unicharm Company Information",
+          "pageurl": "https://www.unicharm.co.jp/en/home.html",
+          "time": 8.83,
+          "creditsremaining": 601,
+          "allitemcount": 162,
+          "totalelements": 1006,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.unicharm.co.jp/en/home.html",
+          "domid": "6b5c54453849c51db299656b6ed882e0"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 4,
+            "items": {
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM:first-child > INPUT:first-child + INPUT + DIV > DIV:first-child > LABEL:first-child + DIV + BUTTON",
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxPrevious",
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxNext",
+                  "HTML > HEAD:first-child + BODY > DIV#colorbox > DIV#cboxWrapper > DIV:first-child + DIV > DIV#cboxContent > BUTTON#cboxSlideshow"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 1,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child + DIV + UL > LI#slick-slide00 > BUTTON:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1.1,
+                    "#262626",
+                    "#1e2766",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 19,
+            "items": {
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM:first-child > INPUT:first-child + INPUT + DIV > DIV:first-child > LABEL:first-child + DIV > INPUT:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV + SCRIPT + SCRIPT + DIV + DIV + DIV > DIV#a2a_modal > DIV#a2a_copy_link > INPUT#a2a_copy_link_text",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV + SCRIPT + SCRIPT + DIV + DIV + DIV > DIV#a2apage_full > DIV:first-child > DIV#a2apage_find_container > INPUT#a2apage_find"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > LINK:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SECTION:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SECTION:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SECTION:first-child > DIV:first-child + DIV + DIV > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SECTION:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SECTION:first-child > DIV:first-child + DIV + DIV > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SECTION:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SECTION:first-child > DIV:first-child + DIV + DIV > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SECTION:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SECTION:first-child > DIV:first-child + DIV + DIV > DIV:first-child > P:first-child > A:first-child"
+                ]
+              },
+              "link_pdf": {
+                "id": "link_pdf",
+                "description": "Link to PDF document",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > SECTION:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > BUTTON:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > HEADER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > SCRIPT:first-child + OL > LI:first-child > A:first-child > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child > DIV:first-child > H1:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child > A:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child + LI > A:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > DIV:first-child + MAIN > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > UL:first-child > LI:first-child + LI + LI > A:first-child > SPAN:first-child + SPAN"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 846,
+          "axe": 49,
+          "bulk": 36,
+          "embAc": 0,
+          "focAll": 6,
+          "focInd": 28,
+          "focOp": 48,
+          "hover": 380,
+          "ibm": 50,
+          "labClash": 14,
+          "linkUl": 0,
+          "log": 0,
+          "menuNav": 0,
+          "motion": 45,
+          "radioSet": 0,
+          "role": 28,
+          "styleDiff": 46,
+          "tabNav": 0,
+          "wave": 56,
+          "zIndex": 60
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      117
+    ],
+    [
+      "ibm",
+      20
+    ],
+    [
+      "motion",
+      15
+    ],
+    [
+      "wave",
+      9
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "focAll",
+      2
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "embAc",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

@@ -1,0 +1,5152 @@
+{
+  "script": "a11y04",
+  "batch": "esg",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "yttf",
+  "logCount": 15,
+  "logSize": 1753,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "bytes": [
+          689819,
+          705949,
+          857586,
+          649369,
+          780255
+        ],
+        "localRatios": [
+          1.023,
+          1.215,
+          1.321,
+          1.202
+        ],
+        "meanLocalRatio": 1.19,
+        "maxLocalRatio": 1.321,
+        "globalRatio": 1.321,
+        "pixelChanges": [
+          280473,
+          381268,
+          360336,
+          361553
+        ],
+        "meanPixelChange": 345907,
+        "maxPixelChange": 381268,
+        "changeFrequency": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.baxter.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 1,
+          "serious": 0,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "duplicate-id-aria",
+            "description": "Ensures every id attribute value used in ARIA and in labels is unique",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#global-search-form > .search-bar__input[name=\"search_api_fulltext\"][type=\"text\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: search_api_fulltext",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "empty-heading",
+            "description": "Ensures headings have discernible text",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".branding-x--right > .wrapper--small > .section-title.section-title--home > .wrapper > h2:nth-child(1)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".two-col-image-section:nth-child(1) > .wrapper > .two-col-image-section__content > h3",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.baxter.com/",
+      "result": {
+        "visibleElements": 411
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.baxter.com/",
+      "result": {
+        "tabFocusables": 92,
+        "tabFocused": 91,
+        "discrepancy": -1
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "total": 130,
+          "types": {
+            "indicatorMissing": {
+              "total": 20,
+              "tagNames": {
+                "A": 9,
+                "BUTTON": 8,
+                "INPUT": 2,
+                "OBJECT": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 104,
+              "tagNames": {
+                "A": 104
+              }
+            },
+            "outlinePresent": {
+              "total": 6,
+              "tagNames": {
+                "A": 1,
+                "BUTTON": 4,
+                "DIV": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "OBJECT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Previous"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Next"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Go to slide 1"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Go to slide 2"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Go to slide 3"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Go to slide 4"
+            },
+            {
+              "tagName": "A",
+              "text": "Perspectives"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Insights • November 4, 2021 Filling a Critical Role in Pharmaceutical Drug Development an"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Release • October 28, 2021 Baxter Reports Third-Quarter 2021 Results"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Release • October 21, 2021 Baxter and bioMérieux Announce CE Mark for NEPHROCLEAR™ CCL14 Test "
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "COVID-19"
+            },
+            {
+              "tagName": "A",
+              "text": "News"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Partners and Suppliers"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Site"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Perspectives"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Story"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Products"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Critical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Hospital Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Nutritional Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Renal Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Surgical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Critical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Hospital Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Nutritional Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Renal Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Surgical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Perspectives"
+            },
+            {
+              "tagName": "A",
+              "text": "Community Engagement"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Insights"
+            },
+            {
+              "tagName": "A",
+              "text": "Patient Stories"
+            },
+            {
+              "tagName": "A",
+              "text": "People of Baxter"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Story"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Leadership"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Responsibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Fueling Collaborative Innovation"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Responsibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Responsibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Inclusion & Diversity"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Governance"
+            },
+            {
+              "tagName": "A",
+              "text": "Our History"
+            },
+            {
+              "tagName": "A",
+              "text": "COVID-19"
+            },
+            {
+              "tagName": "A",
+              "text": "News"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Partners and Suppliers"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Site"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Products"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Products"
+            },
+            {
+              "tagName": "A",
+              "text": "Read More"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients"
+            },
+            {
+              "tagName": "A",
+              "text": "Critical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Hospital Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Nutritional Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Renal Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Surgical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Critical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Hospital Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Nutritional Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Renal Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Surgical Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Products"
+            },
+            {
+              "tagName": "A",
+              "text": "Safety Data Sheets"
+            },
+            {
+              "tagName": "A",
+              "text": "Authorized Distributors"
+            },
+            {
+              "tagName": "A",
+              "text": "Perspectives"
+            },
+            {
+              "tagName": "A",
+              "text": "Patients' Stories"
+            },
+            {
+              "tagName": "A",
+              "text": "Healthcare Insights"
+            },
+            {
+              "tagName": "A",
+              "text": "People of Baxter"
+            },
+            {
+              "tagName": "A",
+              "text": "Community Engagement"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Story"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Leadership"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Governance"
+            },
+            {
+              "tagName": "A",
+              "text": "Fueling Collaborative Innovation"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Responsibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Inclusion & Diversity"
+            },
+            {
+              "tagName": "A",
+              "text": "Our History"
+            },
+            {
+              "tagName": "A",
+              "text": "Policies & Positions"
+            },
+            {
+              "tagName": "A",
+              "text": "Product Security"
+            },
+            {
+              "tagName": "A",
+              "text": "COVID-19"
+            },
+            {
+              "tagName": "A",
+              "text": "News"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Partners and Suppliers"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Site"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Global Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "California Privacy"
+            },
+            {
+              "tagName": "A",
+              "text": "HIPAA Notice of Privacy Practices"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "A",
+              "text": "Cookies"
+            },
+            {
+              "tagName": "A",
+              "text": "Site Map"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Search"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Play Video"
+            },
+            {
+              "tagName": "DIV",
+              "text": "Cookie PreferencesBy clicking “Accept All Cookies”, you agree to the storing of cookies on your devi"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Cookies Settings"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Accept All Cookies"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "total": 225,
+          "types": {
+            "onlyFocusable": {
+              "total": 2,
+              "tagNames": {
+                "OBJECT": 1,
+                "DIV": 1
+              }
+            },
+            "onlyOperable": {
+              "total": 20,
+              "tagNames": {
+                "SPAN": 6,
+                "DIV": 7,
+                "A": 3,
+                "LI": 4
+              }
+            },
+            "focusableAndOperable": {
+              "total": 203,
+              "tagNames": {
+                "A": 141,
+                "BUTTON": 41,
+                "INPUT": 9,
+                "DIV": 2,
+                "SELECT": 9,
+                "IFRAME": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [
+            {
+              "tagName": "OBJECT",
+              "id": "hero-video_flash_api",
+              "text": "<object type=\"application/x-shockwave-flash\" data=\"//players.brightcove.net/vide"
+            },
+            {
+              "tagName": "DIV",
+              "id": "onetrust-banner-sdk",
+              "text": "Cookie PreferencesBy clicking “Accept All Cookies”, you agree to the storing of "
+            }
+          ],
+          "onlyOperable": [
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"subnav__toggle arrow-link down-arrow\" style=\"cursor: default;\"></sp",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"subnav__toggle arrow-link down-arrow\" style=\"cursor: default;\"></sp",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"subnav__toggle arrow-link down-arrow\" style=\"cursor: default;\"></sp",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"subnav__toggle arrow-link down-arrow\" style=\"cursor: default;\"></sp",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"vjs-volume-control vjs-control vjs-volume-horizontal\" style=\"cursor:",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Loaded: 0%",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "1xPlayback Rate2x1.75x1.5x1.25x1x, selected0.75x0.5x",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "ChaptersChapters",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Descriptionsdescriptions off, selected",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Captionscaptions settings, opens captions settings dialogcaptions off, selected",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Audio Track",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Go to slide 1",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Go to slide 2",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Go to slide 3",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Go to slide 4",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"ot-switch-nob\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"ot-switch-nob\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to main content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "COVID-19",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Partners and Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Site",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/\" title=\"Home\" rel=\"home\" class=\"logo center\" style=\"cursor: default;\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"menu-toggle\" aria-label=\"Menu\" aria-controls=\"Mobile Navigation\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "search_api_fulltext",
+              "text": "<input id=\"search_api_fulltext\" type=\"text\" class=\"search-bar__input\" name=\"sear",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Critical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospital Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nutritional Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Renal Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Surgical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients' Stories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Insights",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "People of Baxter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Community Engagement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Leadership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fueling Collaborative Innovation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Responsibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Inclusion & Diversity",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Critical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospital Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nutritional Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Renal Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Surgical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "search_api_fulltext",
+              "text": "<input id=\"search_api_fulltext\" type=\"text\" class=\"search-bar__input\" name=\"sear",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Critical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospital Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nutritional Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Renal Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Surgical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Critical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospital Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nutritional Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Renal Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Surgical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Community Engagement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Insights",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patient Stories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "People of Baxter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Leadership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Responsibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fueling Collaborative Innovation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Responsibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Responsibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Inclusion & Diversity",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "COVID-19",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Partners and Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Site",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Play Video",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Play",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Mute",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div tabindex=\"0\" class=\"vjs-volume-bar vjs-slider-bar vjs-slider vjs-slider-hor",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Loaded: 0%",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Seek to live, currently behind liveLIVE",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Playback Rate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Chapters",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Descriptions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Captions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Audio Track",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Picture-in-Picture",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Fullscreen",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "WhiteBlackRedGreenBlueYellowMagentaCyan",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "OpaqueSemi-Transparent",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "BlackWhiteRedGreenBlueYellowMagentaCyan",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "OpaqueSemi-TransparentTransparent",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "BlackWhiteRedGreenBlueYellowMagentaCyan",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "TransparentSemi-TransparentOpaque",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "50%75%100%125%150%175%200%300%400%",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "NoneRaisedDepressedUniformDropshadow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "Proportional Sans-SerifMonospace Sans-SerifProportional SerifMonospace SerifCasu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Reset restore all settings to the default values",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Done",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Close Modal Dialog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Close Modal Dialog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "hero-video-controls",
+              "text": "<button class=\"hero--video__controls\" id=\"hero-video-controls\" data-module=\"Hero",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Previous",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Go to slide 1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Go to slide 2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Go to slide 3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Go to slide 4",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Insights • November 4, 2021 Filling a Critical Role in Pharmaceutical",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Release • October 28, 2021 Baxter Reports Third-Quarter 2021 Results",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Release • October 21, 2021 Baxter and bioMérieux Announce CE Mark for NEPH",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Critical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospital Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nutritional Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Renal Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Surgical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Critical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospital Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nutritional Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Renal Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Surgical Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Products",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Safety Data Sheets",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Authorized Distributors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Patients' Stories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Healthcare Insights",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "People of Baxter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Community Engagement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Leadership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fueling Collaborative Innovation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Responsibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Inclusion & Diversity",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Policies & Positions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Product Security",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "COVID-19",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Partners and Suppliers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Site",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.linkedin.com/company/baxter-healthcare/?WT.svl=www.baxter.c",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.facebook.com/BaxterInternationalInc/\" target=\"_blank\" rel=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://twitter.com/baxter_intl?WT.svl=www.baxter.com\" target=\"_blank\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.youtube.com/user/BaxterInternational?WT.svl=www.baxter.com\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "California Privacy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HIPAA Notice of Privacy Practices",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Terms of Use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Site Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "close-pc-btn-handler",
+              "text": "<button id=\"close-pc-btn-handler\" class=\"ot-close-icon\" aria-label=\"Close\" style",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "accept-recommended-btn-handler",
+              "text": "Allow All",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button ot-accordion=\"true\" aria-expanded=\"false\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Cookies Details‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button ot-accordion=\"true\" aria-expanded=\"false\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ot-group-id-C0002",
+              "text": "<input type=\"checkbox\" name=\"ot-group-id-C0002\" id=\"ot-group-id-C0002\" aria-chec",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Cookies Details‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button ot-accordion=\"true\" aria-expanded=\"false\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ot-group-id-C0004",
+              "text": "<input type=\"checkbox\" name=\"ot-group-id-C0004\" id=\"ot-group-id-C0004\" aria-chec",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Cookies Details‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Back Button",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "vendor-search-handler",
+              "text": "<input id=\"vendor-search-handler\" type=\"text\" placeholder=\"Search...\" name=\"vend",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-btn-handler",
+              "text": "Filter Icon",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "clear-filters-handler",
+              "text": "Clear",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "chkbox-id",
+              "text": "<input id=\"chkbox-id\" type=\"checkbox\" aria-checked=\"false\" class=\"category-filte",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-apply-handler",
+              "text": "Apply",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-cancel-handler",
+              "text": "Cancel",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-hosts-groups-handler",
+              "text": "<input id=\"select-all-hosts-groups-handler\" type=\"checkbox\" aria-checked=\"false\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-vendor-groups-handler",
+              "text": "<input id=\"select-all-vendor-groups-handler\" type=\"checkbox\" aria-checked=\"false",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-vendor-leg-handler",
+              "text": "<input id=\"select-all-vendor-leg-handler\" type=\"checkbox\" aria-checked=\"false\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"ot-host-box\" aria-expanded=\"false\" style=\"cursor: default;\"></but",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Confirm My Choices",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.onetrust.com/products/cookie-consent/\" target=\"_blank\" rel=",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe class=\"ot-text-resize\" title=\"onetrust-text-resize\" style=\"position: abs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-pc-btn-handler",
+              "text": "Cookies Settings",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-accept-btn-handler",
+              "text": "Accept All Cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "triggers": 2,
+          "madeVisible": 0,
+          "opacityChanged": 2,
+          "opacityAffected": 2,
+          "unhoverables": 12
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-pc-btn-handler",
+              "text": "Cookies Settings",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "BUTTON",
+                  "text": "Cookies Settings"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-accept-btn-handler",
+              "text": "Accept All Cookies",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "BUTTON",
+                  "text": "Accept All Cookies"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LearnMore"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ReadMore"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ReadMore"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ReadMore"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HealthcareInsights•November4,2021FillingaCriticalR"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PressRelease•October28,2021BaxterReportsThird-Quar"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PressRelease•October21,2021BaxterandbioMérieuxAnno"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SiteMap"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 2,
+          "unlabeled": 2,
+          "wellLabeled": 55
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 40,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Performance Cookies"
+                ],
+                "label": [
+                  "Performance Cookies"
+                ]
+              }
+            },
+            {
+              "index": 43,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Targeting Cookies"
+                ],
+                "label": [
+                  "Targeting Cookies"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 55,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"ot-host-box\" aria-expanded=\"false\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Menu"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search",
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Play Video"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Play"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Mute"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Seek to live, currently behind liveLIVE"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Playback Rate"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Chapters"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Descriptions"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Captions"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Audio Track"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Picture-in-Picture"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Fullscreen"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Text",
+                  "Color"
+                ]
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Text",
+                  "Transparency"
+                ]
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Background",
+                  "Color"
+                ]
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Background",
+                  "Transparency"
+                ]
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Window",
+                  "Color"
+                ]
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Window",
+                  "Transparency"
+                ]
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Font Size"
+                ]
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Text Edge Style"
+                ]
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Font Family"
+                ]
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Reset restore all settings to the default values"
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Done"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Close Modal Dialog"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Close Modal Dialog"
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "play"
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Previous"
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Next"
+              }
+            },
+            {
+              "index": 31,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Go to slide 1"
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Go to slide 2"
+              }
+            },
+            {
+              "index": 33,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Go to slide 3"
+              }
+            },
+            {
+              "index": 34,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Go to slide 4"
+              }
+            },
+            {
+              "index": 35,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            },
+            {
+              "index": 36,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Allow All"
+              }
+            },
+            {
+              "index": 37,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Strictly Necessary Cookies"
+                ]
+              }
+            },
+            {
+              "index": 38,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 39,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Performance Cookies"
+                ]
+              }
+            },
+            {
+              "index": 41,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 42,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Targeting Cookies"
+                ]
+              }
+            },
+            {
+              "index": 44,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 45,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Back",
+                "content": "Back Button"
+              }
+            },
+            {
+              "index": 46,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Vendor Search"
+                ]
+              }
+            },
+            {
+              "index": 47,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Filter",
+                "content": "Filter Icon"
+              }
+            },
+            {
+              "index": 48,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Clear"
+              }
+            },
+            {
+              "index": 49,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 50,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Apply"
+              }
+            },
+            {
+              "index": 51,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 52,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 53,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 54,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 56,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Confirm My Choices"
+              }
+            },
+            {
+              "index": 57,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cookies Settings"
+              }
+            },
+            {
+              "index": 58,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Accept All Cookies"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "links": 140,
+          "inline": {
+            "total": 8,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "COVID-19",
+            "News",
+            "Investors",
+            "Careers",
+            "Partners and Suppliers",
+            "Contact Us",
+            "Global Site",
+            "Our Products"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.baxter.com/",
+      "result": {
+        "roleElements": 46,
+        "badRoleElements": 19,
+        "tagNames": {
+          "A": {
+            "button": 4
+          },
+          "DIV": {
+            "region": 2,
+            "slider": 2,
+            "dialog": 3,
+            "document": 3,
+            "group": 4
+          },
+          "P": {
+            "status": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 14,
+            "subtotals": [
+              9,
+              4,
+              1
+            ]
+          },
+          "h3": {
+            "total": 19,
+            "subtotals": [
+              6,
+              4,
+              3,
+              3,
+              1,
+              1,
+              1
+            ]
+          },
+          "h4": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 8,
+            "subtotals": [
+              7,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 132,
+            "subtotals": [
+              36,
+              34,
+              21,
+              15,
+              8,
+              5,
+              4,
+              4,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 41,
+            "subtotals": [
+              10,
+              6,
+              4,
+              4,
+              3,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "45px": 9,
+              "22.5px": 4,
+              "21.6px": 1
+            },
+            "fontSize": {
+              "18px": 65,
+              "36px": 54
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "300": 4,
+              "400": 3,
+              "600": 1,
+              "700": 11
+            },
+            "lineHeight": {
+              "30px": 6,
+              "52.5px": 4,
+              "37.5px": 3,
+              "25.5px": 3,
+              "21.6px": 1,
+              "18.144px": 1,
+              "24.96px": 1
+            },
+            "minHeight": {
+              "0px": 15,
+              "auto": 4
+            },
+            "minWidth": {
+              "0px": 15,
+              "auto": 4
+            },
+            "fontSize": {
+              "24px": 129,
+              "42px": 106,
+              "17px": 90,
+              "30px": 51,
+              "19.2px": 34,
+              "12.96px": 33,
+              "18px": 32
+            }
+          },
+          "h4": {
+            "fontWeight": {
+              "400": 1,
+              "700": 3
+            },
+            "lineHeight": {
+              "19.712px": 3,
+              "15.456px": 1
+            },
+            "maxWidth": {
+              "60%": 3,
+              "none": 1
+            },
+            "minHeight": {
+              "25px": 3,
+              "0px": 1
+            },
+            "fontSize": {
+              "14.08px": 108,
+              "11.04px": 38
+            }
+          },
+          "aInline": {
+            "fontWeight": {
+              "400": 7,
+              "500": 1
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 114,
+              "solid": 13,
+              "none solid none none": 5
+            },
+            "borderWidth": {
+              "0px": 114,
+              "2px": 9,
+              "0px 1px 0px 0px": 5,
+              "1px": 4
+            },
+            "fontWeight": {
+              "400": 49,
+              "500": 62,
+              "700": 21
+            },
+            "lineHeight": {
+              "32.4px": 40,
+              "27px": 36,
+              "36px": 34,
+              "21.6px": 15,
+              "30px": 4,
+              "32px": 1,
+              "19.512px": 1,
+              "normal": 1
+            },
+            "minHeight": {
+              "0px": 127,
+              "auto": 5
+            },
+            "minWidth": {
+              "0px": 127,
+              "auto": 5
+            },
+            "opacity": {
+              "0": 1,
+              "1": 131
+            },
+            "textDecorationLine": {
+              "none": 130,
+              "underline": 2
+            },
+            "fontSize": {
+              "18px": 3154,
+              "15px": 1520,
+              "12px": 228,
+              "16px": 76,
+              "13.008px": 38
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 33,
+              "solid": 8
+            },
+            "borderWidth": {
+              "0px": 34,
+              "1px": 7
+            },
+            "fontWeight": {
+              "400": 28,
+              "600": 2,
+              "700": 11
+            },
+            "lineHeight": {
+              "14px": 11,
+              "12px": 10,
+              "0px": 6,
+              "normal": 4,
+              "32.4px": 2,
+              "25.2px": 2,
+              "15.6096px": 2,
+              "21.6px": 1,
+              "35px": 1,
+              "42px": 1,
+              "14.4px": 1
+            },
+            "maxWidth": {
+              "none": 30,
+              "394px": 10,
+              "200px": 1
+            },
+            "minHeight": {
+              "0px": 40,
+              "20px": 1
+            },
+            "minWidth": {
+              "0px": 37,
+              "125px": 2,
+              "56px": 1,
+              "calc(50% - 5px)": 1
+            },
+            "opacity": {
+              "0": 1,
+              "1": 39,
+              "0.5": 1
+            },
+            "outlineOffset": {
+              "0px": 39,
+              "1px": 2
+            },
+            "fontSize": {
+              "14px": 456,
+              "12px": 418,
+              "0px": 228,
+              "13.008px": 190,
+              "18px": 76,
+              "16.8px": 76,
+              "28px": 38,
+              "16px": 38,
+              "14.4px": 38
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.baxter.com/",
+      "result": {
+        "totals": {
+          "total": 108,
+          "tagNames": {
+            "UL": 1,
+            "HEADER": 1,
+            "LI": 13,
+            "DIV": 46,
+            "A": 34,
+            "SPAN": 4,
+            "BUTTON": 9
+          }
+        },
+        "items": [
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Skip to main content"
+          },
+          {
+            "tagName": "HEADER",
+            "id": "",
+            "text": "Utility Menu COVID-19 News Investors Careers Partners and Suppliers Contact Us Global Site Main Menu"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "COVID-19"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "News"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Investors"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Careers"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Partners and Suppliers"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Contact Us"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Global Site"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Patients"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Healthcare Professionals"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Perspectives"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Our Story"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Our Products"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": "Search"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Search"
+          },
+          {
+            "tagName": "DIV",
+            "id": "mega-nav",
+            "text": "Healthcare Professionals Committed to helping you meet the evolving challenges and opportunities in "
+          },
+          {
+            "tagName": "DIV",
+            "id": "nav0dd4697f-6549-408e-990e-f6ea1d872253",
+            "text": "Healthcare Professionals Committed to helping you meet the evolving challenges and opportunities in "
+          },
+          {
+            "tagName": "DIV",
+            "id": "navaa43e5ff-af25-496f-aa75-d2786cc95ee9",
+            "text": "Perspectives For nearly a decade, we have worked at the intersection of saving and sustaining lives."
+          },
+          {
+            "tagName": "DIV",
+            "id": "nav37f3c650-b899-435c-80cd-9c26f5a81ed5",
+            "text": "Our Story Our 90-year heritage gives us distinct perspective on the needs of patients and caregivers"
+          },
+          {
+            "tagName": "DIV",
+            "id": "navd888da05-01f8-441c-bc27-4a3e98de8127",
+            "text": "Patients Helping you reach a healthy life, full of possibility. Patients Critical Care When every mo"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Search Patients Critical Care Hospital Care Nutritional Care Renal Care Surgical Care Healthcare Pro"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Search"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Patients"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Critical Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Hospital Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Nutritional Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Renal Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Surgical Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Healthcare Professionals"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Critical Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Hospital Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Nutritional Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Renal Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Surgical Care"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Perspectives"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Community Engagement"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Healthcare Insights"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Patient Stories"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "People of Baxter"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Story"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Leadership"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Corporate Responsibility"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Fueling Collaborative Innovation"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Corporate Responsibility"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Corporate Responsibility"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Inclusion & Diversity"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Governance"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our History"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "COVID-19"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "News"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Investors"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Careers"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Partners and Suppliers"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Contact Us"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Global Site"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Products"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "TextColorWhiteBlackRedGreenBlueYellowMagentaCyanTransparencyOpaqueSemi-TransparentBackgroundColorBla"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Close Modal Dialog"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Close Modal Dialog"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "hero-video-controls",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "At the Intersection of Saving and Sustaining Lives"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Our Commitment to Providers and Patients We work at the critical intersection where innovations that"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Advancing Modern Healthcare We are leading global conversations to help improve and personalize heal"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Previous"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Patient Story Unlocking a Life of Possibilities with Home Parenteral Nutrition For 19-year-old Nutri"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Patient Story Living Well with Kidney Disease An estimated 850 million people have kidney disease gl"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "People of Baxter Delivering Care in More Ways Than One Baxter service specialist Pedro Perez routine"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "People of Baxter Employing Expertise During a Pandemic Our senior medical lead and infectious diseas"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Next"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Headlines"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "onetrust-pc-sdk",
+            "text": "Privacy Preference CenterWhen you visit any website, it may store or retrieve information on your br"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "These cookies are necessary for the website to function and cannot be switched off in our systems. T"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Performance Cookies"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "These cookies allow us to count visits and traffic sources so we can measure and improve the perform"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Targeting Cookies"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "These cookies may be set through our site by our advertising partners. They may be used by those com"
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-anchor",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-fltr-cnt",
+            "text": "Clear checkbox label labelApply Cancel"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "checkbox label label"
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-sel-blk",
+            "text": "Consent Leg.Interest checkbox label label checkbox label label checkbox label label"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "checkbox label label checkbox label label checkbox label label"
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-selall-hostcntr",
+            "text": "checkbox label label"
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-selall-vencntr",
+            "text": "checkbox label label"
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-selall-licntr",
+            "text": "checkbox label label"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "View Cookies"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Namecookie name"
+          },
+          {
+            "tagName": "DIV",
+            "id": "onetrust-banner-sdk",
+            "text": "Cookie PreferencesBy clicking “Accept All Cookies”, you agree to the storing of cookies on your devi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.baxter.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 14,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Object_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/header[1]/div[1]/div[1]/div[1]/object[1]",
+                "aria": "/document[1]/main[1]/banner[1]/region[1]"
+              },
+              "message": "An <object> element does not have a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 3315,
+                "height": 150,
+                "width": 300
+              },
+              "snippet": "<object class=\"vjs-tech\" name=\"hero-video_flash_api\" id=\"hero-video_flash_api\" height=\"100%\" width=\"100%\" data=\"//players.brightcove.net/videojs-flashls-source-handler/1.4.8/video-js.swf\" type=\"application/x-shockwave-flash\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_LabelBefore",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[2]/div[1]/form[1]/input[1]",
+                "aria": "/document[1]/banner[1]/form[1]/textbox[1]"
+              },
+              "message": "Label text is located after its associated text input or <select> element",
+              "bounds": {
+                "left": 56,
+                "top": 558,
+                "height": 21,
+                "width": 153
+              },
+              "snippet": "<input placeholder=\"Search...\" name=\"search_api_fulltext\" class=\"search-bar__input\" type=\"text\" id=\"search_api_fulltext\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Label_UniqueFor",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[4]/div[1]/div[1]/div[1]/form[1]/label[1]",
+                "aria": "/document[1]/banner[1]/form[2]"
+              },
+              "message": "Form control has more than one label",
+              "bounds": {
+                "left": 8,
+                "top": 2716,
+                "height": 17,
+                "width": 44
+              },
+              "snippet": "<label class=\"visually-hidden\" for=\"search_api_fulltext\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Header_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/section[3]/div[1]/div[1]/div[1]/h2[1]",
+                "aria": "/document[1]/main[1]/region[3]/heading[1]"
+              },
+              "message": "Heading element has no descriptive content",
+              "bounds": {
+                "left": 8,
+                "top": 4182,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[4]/div[1]/div[1]/div[1]/form[1]/input[1]",
+                "aria": "/document[1]/banner[1]/form[2]/textbox[1]"
+              },
+              "message": "The <input> element has the id \"search_api_fulltext\" that is already in use",
+              "bounds": {
+                "left": 56,
+                "top": 2715,
+                "height": 21,
+                "width": 153
+              },
+              "snippet": "<input placeholder=\"Search...\" name=\"search_api_fulltext\" class=\"search-bar__input\" type=\"text\" id=\"search_api_fulltext\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/ul[1]/li[4]/a[1]",
+                "aria": "/document[1]/banner[1]/navigation[2]/list[1]/listitem[4]/button[1]"
+              },
+              "message": "The 'id' \"37f3c650-b899-435c-80cd-9c26f5a81ed5\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 451,
+                "height": 17,
+                "width": 64
+              },
+              "snippet": "<a class=\"arrow-link down-arrow\" data-menu=\"37f3c650-b899-435c-80cd-9c26f5a81ed5\" aria-expanded=\"false\" aria-controls=\"37f3c650-b899-435c-80cd-9c26f5a81ed5\" aria-haspopup=\"true\" tabindex=\"0\" role=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/ul[1]/li[3]/a[1]",
+                "aria": "/document[1]/banner[1]/navigation[2]/list[1]/listitem[3]/button[1]"
+              },
+              "message": "The 'id' \"aa43e5ff-af25-496f-aa75-d2786cc95ee9\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 433,
+                "height": 17,
+                "width": 80
+              },
+              "snippet": "<a class=\"arrow-link down-arrow\" data-menu=\"aa43e5ff-af25-496f-aa75-d2786cc95ee9\" aria-expanded=\"false\" aria-controls=\"aa43e5ff-af25-496f-aa75-d2786cc95ee9\" aria-haspopup=\"true\" tabindex=\"0\" role=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+                "aria": "/document[1]/banner[1]/navigation[2]/list[1]/listitem[2]/button[1]"
+              },
+              "message": "The 'id' \"0dd4697f-6549-408e-990e-f6ea1d872253\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 415,
+                "height": 17,
+                "width": 159
+              },
+              "snippet": "<a class=\"arrow-link down-arrow\" data-menu=\"0dd4697f-6549-408e-990e-f6ea1d872253\" aria-expanded=\"false\" aria-controls=\"0dd4697f-6549-408e-990e-f6ea1d872253\" aria-haspopup=\"true\" tabindex=\"0\" role=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+                "aria": "/document[1]/banner[1]/navigation[2]/list[1]/listitem[1]/button[1]"
+              },
+              "message": "The 'id' \"d888da05-01f8-441c-bc27-4a3e98de8127\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 397,
+                "height": 17,
+                "width": 51
+              },
+              "snippet": "<a class=\"arrow-link down-arrow\" data-menu=\"d888da05-01f8-441c-bc27-4a3e98de8127\" aria-expanded=\"false\" aria-controls=\"d888da05-01f8-441c-bc27-4a3e98de8127\" aria-haspopup=\"true\" tabindex=\"0\" role=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "The 'id' \"Mobile, Navigation\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 551,
+                "height": 6,
+                "width": 16
+              },
+              "snippet": "<button aria-hidden=\"false\" aria-controls=\"Mobile Navigation\" aria-label=\"Menu\" class=\"menu-toggle\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/ul[1]",
+                "aria": "/document[1]/list[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 8,
+                "top": 16,
+                "height": 18,
+                "width": 784
+              },
+              "snippet": "<ul data-module=\"SkipLink\" class=\"skip\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/nav[2]",
+                "aria": "/document[1]/banner[1]/navigation[3]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 485,
+                "height": 39,
+                "width": 784
+              },
+              "snippet": "<nav data-module=\"SearchToggle\" class=\"nav__product-search\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[1]",
+                "aria": "/document[1]"
+              },
+              "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/header[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/banner[1]/region[1]"
+              },
+              "message": "The ARIA attribute 'aria-disabled' is not valid for the element <div> with ARIA role 'none'",
+              "bounds": {
+                "left": 8,
+                "top": 3315,
+                "height": 150,
+                "width": 300
+              },
+              "snippet": "<div style=\"background-image: url(\"https://cf-images.us-east-1.prod.boltdns.net/v1/jit/1992769035001/aa5508b3-0023-4486-aacd-91c1e9a717a5/main/1280x720/7s925ms/match/image.jpg\");\" aria-disabled=\"false\" tabindex=\"-1\" class=\"vjs-poster\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 9,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Object_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/header[1]/div[1]/div[1]/div[1]/object[1]",
+                "aria": "/document[1]/main[1]/banner[1]/region[1]"
+              },
+              "message": "An <object> element does not have a text alternative",
+              "bounds": {
+                "left": 0,
+                "top": 64,
+                "height": 500,
+                "width": 800
+              },
+              "snippet": "<object class=\"vjs-tech\" name=\"hero-video_flash_api\" id=\"hero-video_flash_api\" height=\"100%\" width=\"100%\" data=\"//players.brightcove.net/videojs-flashls-source-handler/1.4.8/video-js.swf\" type=\"application/x-shockwave-flash\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Label_RefValid",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[4]/div[1]/div[1]/div[1]/form[1]/label[1]",
+                "aria": "/document[1]/banner[1]/form[2]"
+              },
+              "message": "The value \"search_api_fulltext\" of the 'for' attribute is not the 'id' of a valid <input> element",
+              "bounds": {
+                "left": 815,
+                "top": 94,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<label class=\"visually-hidden\" for=\"search_api_fulltext\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Header_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/div[1]/section[3]/div[1]/div[1]/div[1]/h2[1]",
+                "aria": "/document[1]/main[1]/region[3]/heading[1]"
+              },
+              "message": "Heading element has no descriptive content",
+              "bounds": {
+                "left": 30,
+                "top": 2669,
+                "height": 0,
+                "width": 740
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[4]/div[1]/div[1]/div[1]/form[1]/input[1]",
+                "aria": "/document[1]/banner[1]/form[2]/textbox[1]"
+              },
+              "message": "The <input> element has the id \"search_api_fulltext\" that is already in use",
+              "bounds": {
+                "left": 815,
+                "top": 94,
+                "height": 42,
+                "width": 770
+              },
+              "snippet": "<input placeholder=\"Search...\" name=\"search_api_fulltext\" class=\"search-bar__input\" type=\"text\" id=\"search_api_fulltext\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "The 'id' \"Mobile, Navigation\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 746,
+                "top": 8,
+                "height": 47,
+                "width": 39
+              },
+              "snippet": "<button aria-hidden=\"false\" aria-controls=\"Mobile Navigation\" aria-label=\"Menu\" class=\"menu-toggle\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/ul[1]",
+                "aria": "/document[1]/list[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": -40,
+                "height": 40,
+                "width": 800
+              },
+              "snippet": "<ul data-module=\"SkipLink\" class=\"skip\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[4]/div[1]/div[1]/div[1]/form[1]/label[1]",
+                "aria": "/document[1]/banner[1]/form[2]"
+              },
+              "message": "Text contrast of 1.24 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 500",
+              "bounds": {
+                "left": 815,
+                "top": 94,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<label class=\"visually-hidden\" for=\"search_api_fulltext\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[1]",
+                "aria": "/document[1]"
+              },
+              "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/main[1]/header[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/banner[1]/region[1]"
+              },
+              "message": "The ARIA attribute 'aria-disabled' is not valid for the element <div> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 64,
+                "height": 500,
+                "width": 800
+              },
+              "snippet": "<div style=\"background-image: url(\"https://cf-images.us-east-1.prod.boltdns.net/v1/jit/1992769035001/aa5508b3-0023-4486-aacd-91c1e9a717a5/main/1280x720/7s925ms/match/image.jpg\");\" aria-disabled=\"false\" tabindex=\"-1\" class=\"vjs-poster\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.baxter.com/",
+      "what": "Baxter (VEIGX)",
+      "result": "https://www.baxter.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.baxter.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "At the Intersection of Saving and Sustaining Lives | Baxter",
+          "pageurl": "https://www.baxter.com/",
+          "time": 4.32,
+          "creditsremaining": 1048,
+          "allitemcount": 380,
+          "totalelements": 1059,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.baxter.com/",
+          "domid": "96336104a31b4453b7453b3e0e0587e9"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 8,
+            "items": {
+              "label_multiple": {
+                "id": "label_multiple",
+                "description": "Multiple form labels",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > UL:first-child + HEADER > DIV:first-child + DIV > DIV:first-child > FORM#global-search-form > INPUT#search_api_fulltext",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > UL:first-child + HEADER > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > FORM#global-search-form--2 > INPUT#search_api_fulltext"
+                ]
+              },
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 3,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION > DIV:first-child > H3:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION > DIV:first-child > H3:first-child + H4"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child"
+                ]
+              },
+              "aria_menu_broken": {
+                "id": "aria_menu_broken",
+                "description": "Broken ARIA menu",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV > BUTTON:first-child + DIV > UL:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV + DIV + DIV + DIV > BUTTON:first-child + DIV > UL:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 1,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > H1:first-child > SPAN:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1.14,
+                    "#ffffff",
+                    "#efefef",
+                    true
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 36,
+            "items": {
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION > SECTION:first-child + SECTION + SECTION > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION + SECTION > DIV:first-child > SECTION:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + P + DIV > IMG:first-child"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION > SECTION:first-child > DIV:first-child > DIV:first-child + DIV > H3:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child > P:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SPAN:first-child + H3 + A",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SPAN:first-child + H3 + A",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SPAN:first-child + H3 + A",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SPAN:first-child + H3 + A"
+                ]
+              },
+              "link_pdf": {
+                "id": "link_pdf",
+                "description": "Link to PDF document",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > UL:first-child + HEADER + MAIN + DIV > DIV#block-bax-commercial-default-footer > FOOTER:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child"
+                ]
+              },
+              "flash": {
+                "id": "flash",
+                "description": "Flash",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT#hero-video_flash_api"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV + BUTTON > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV + BUTTON + UL > LI:first-child > BUTTON:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV + BUTTON + UL > LI:first-child + LI > BUTTON:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV + BUTTON + UL > LI:first-child + LI + LI > BUTTON:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child + DIV > DIV:first-child + DIV > DIV#block-bax-commercial-content > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV + BUTTON + UL > LI:first-child + LI + LI + LI > BUTTON:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child + DIV"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 14,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > UL:first-child + HEADER > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + UL > LI:first-child > A:first-child + SPAN + UL > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > UL:first-child + HEADER > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child + UL > LI:first-child > A:first-child + SPAN + UL > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV > BUTTON:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV > DIV:first-child + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV > BUTTON:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV + DIV > BUTTON:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV + DIV + DIV > BUTTON:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV + DIV + DIV + DIV > BUTTON:first-child",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV > BUTTON:first-child + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV + DIV + DIV + DIV + BUTTON + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV > P:first-child + DIV + BUTTON",
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + DIV > MAIN#main-content > HEADER:first-child > DIV:first-child > DIV:first-child > DIV#hero-video > OBJECT:first-child + SCRIPT + DIV + DIV + DIV + BUTTON + DIV + DIV + DIV + DIV > BUTTON:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 1306,
+          "axe": 10,
+          "bulk": 14,
+          "embAc": 0,
+          "focAll": 3,
+          "focInd": 412,
+          "focOp": 82,
+          "hover": 32,
+          "ibm": 44,
+          "labClash": 8,
+          "linkUl": 24,
+          "log": 25,
+          "menuNav": 0,
+          "motion": 81,
+          "radioSet": 0,
+          "role": 38,
+          "styleDiff": 103,
+          "tabNav": 0,
+          "wave": 106,
+          "zIndex": 324
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      188
+    ],
+    [
+      "motion",
+      15
+    ],
+    [
+      "ibm",
+      7
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

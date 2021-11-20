@@ -1,0 +1,4009 @@
+{
+  "script": "a11y04",
+  "batch": "esgRest",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "ywtb",
+  "logCount": 16,
+  "logSize": 536,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "bytes": [
+          464174,
+          464174,
+          464174,
+          464174,
+          464174
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 10,
+          "serious": 3,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "aria-input-field-name",
+            "description": "Ensures every ARIA input field has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".slick-track",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".iubenda-cs-reject-btn",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.94 (foreground color: #808080, background color: #ffffff, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-aria",
+            "description": "Ensures every id attribute value used in ARIA and in labels is unique",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "div:nth-child(16)",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: move-helper-text",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-no-duplicate-banner",
+            "description": "Ensures the document has at most one banner landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#banner",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "page-no-duplicate-banner",
+                    "description": "Document has more than one banner landmark",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".nav-access",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#banner",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "nested-interactive",
+            "description": "Nested interactive controls are not announced by screen readers",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".slick-slide",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "no-focusable-content",
+                    "description": "Element has focusable descendants",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".announcement-banner",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "div:nth-child(16)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "div:nth-child(17)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "div:nth-child(18)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "div:nth-child(19)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "div:nth-child(20)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "skip-link",
+            "description": "Ensure all skip links have a focusable target",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "a[href$=\"\\#search\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "skip-link",
+                    "description": "No skip link target",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "visibleElements": 272
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "tabFocusables": 52,
+        "tabFocused": 85,
+        "discrepancy": 33
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "total": 90,
+          "types": {
+            "indicatorMissing": {
+              "total": 4,
+              "tagNames": {
+                "INPUT": 1,
+                "DIV": 1,
+                "BUTTON": 2
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 6,
+              "tagNames": {
+                "A": 6
+              }
+            },
+            "outlinePresent": {
+              "total": 80,
+              "tagNames": {
+                "A": 78,
+                "BUTTON": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "DIV",
+              "text": "NoticeWe and selected partners use cookies or similar technologies as specified in the cookie policy"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Decline"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Accept"
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Dismantling & Demolition"
+            },
+            {
+              "tagName": "A",
+              "text": "Collection"
+            },
+            {
+              "tagName": "A",
+              "text": "Transportation & Logistics"
+            },
+            {
+              "tagName": "A",
+              "text": "Certified Destruction"
+            },
+            {
+              "tagName": "A",
+              "text": "Marine Service & Repair"
+            },
+            {
+              "tagName": "A",
+              "text": "Sell My Scrap"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Skip to Search"
+            },
+            {
+              "tagName": "A",
+              "text": "Skip to Content"
+            },
+            {
+              "tagName": "A",
+              "text": "Skip to Footer"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Metal"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Customer Portal"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Sell to Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Get a Quote"
+            },
+            {
+              "tagName": "A",
+              "text": "Manufacturing Scrap"
+            },
+            {
+              "tagName": "A",
+              "text": "Trades"
+            },
+            {
+              "tagName": "A",
+              "text": "Metal Collector"
+            },
+            {
+              "tagName": "A",
+              "text": "Scrap Dealer"
+            },
+            {
+              "tagName": "A",
+              "text": "Commercial Junk Vehicles"
+            },
+            {
+              "tagName": "A",
+              "text": "Demolition"
+            },
+            {
+              "tagName": "A",
+              "text": "Municipal Recycling"
+            },
+            {
+              "tagName": "A",
+              "text": "Appliances"
+            },
+            {
+              "tagName": "A",
+              "text": "Household"
+            },
+            {
+              "tagName": "A",
+              "text": "About Metal Theft"
+            },
+            {
+              "tagName": "A",
+              "text": "Materials We Accept"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Metal buys all types of metal scrap arising from manufacturing processes, scrap dealers, metal "
+            },
+            {
+              "tagName": "A",
+              "text": "Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Get a Quote"
+            },
+            {
+              "tagName": "A",
+              "text": "Bin and Container Service"
+            },
+            {
+              "tagName": "A",
+              "text": "Bin Quote"
+            },
+            {
+              "tagName": "A",
+              "text": "Demolition Scrap"
+            },
+            {
+              "tagName": "A",
+              "text": "Factory Dismantling"
+            },
+            {
+              "tagName": "A",
+              "text": "Certified Destruction"
+            },
+            {
+              "tagName": "A",
+              "text": "Utility Equipment"
+            },
+            {
+              "tagName": "A",
+              "text": "Stevedoring"
+            },
+            {
+              "tagName": "A",
+              "text": "Processing Capabilities"
+            },
+            {
+              "tagName": "A",
+              "text": "Transportation & Logistics"
+            },
+            {
+              "tagName": "A",
+              "text": "Marine Services"
+            },
+            {
+              "tagName": "A",
+              "text": "We utilize robust logistics and processing techniques to maximize recovery rates. Convenient drop of"
+            },
+            {
+              "tagName": "A",
+              "text": "Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "Brokerage"
+            },
+            {
+              "tagName": "A",
+              "text": "Non-Ferrous Brokerage"
+            },
+            {
+              "tagName": "A",
+              "text": "Ferrous Brokerage"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Metal buys and sells ferrous and non-ferrous metal across the globe."
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "Why Choose Sims"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Metal is a leading metal recycler that buys, processes and sells ferrous and non-ferrous metal "
+            },
+            {
+              "tagName": "A",
+              "text": "Blog"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Close"
+            },
+            {
+              "tagName": "A",
+              "text": "Details"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Customer Portal"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Get a Quote"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More About the Coalition"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Search"
+            },
+            {
+              "tagName": "A",
+              "text": "Complete Location List"
+            },
+            {
+              "tagName": "A",
+              "text": "More About Sims Metal"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Information"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Limited Website"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Metal"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Metal"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Yard Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Limited"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Metal is a business division of Sims Limited. Learn more about how Sims Limited plays an integr"
+            },
+            {
+              "tagName": "A",
+              "text": "Other Business Divisions (external websites)"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Lifecycle Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Municipal Recycling"
+            },
+            {
+              "tagName": "A",
+              "text": "Sims Resource Renewal"
+            },
+            {
+              "tagName": "A",
+              "text": "Visit Us on LinkedIn (opens new window)"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Legal"
+            },
+            {
+              "tagName": "A",
+              "text": "cookie policy"
+            },
+            {
+              "tagName": "A",
+              "text": "privacy policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "total": 90,
+          "types": {
+            "onlyFocusable": {
+              "total": 1,
+              "tagNames": {
+                "DIV": 1
+              }
+            },
+            "onlyOperable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "focusableAndOperable": {
+              "total": 89,
+              "tagNames": {
+                "A": 84,
+                "BUTTON": 4,
+                "INPUT": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "NoticeWe and selected partners use cookies or similar technologies as specified "
+            }
+          ],
+          "onlyOperable": [],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to Content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to Footer",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Metal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Customer Portal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "js-menu-toggle",
+              "text": "Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sell to Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Get a Quote",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manufacturing Scrap",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Trades",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Metal Collector",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Scrap Dealer",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Commercial Junk Vehicles",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Demolition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Municipal Recycling",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Appliances",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Household",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Metal Theft",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Materials We Accept",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Metal buys all types of metal scrap arising from manufacturing processes, s",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Get a Quote",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Bin and Container Service",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Bin Quote",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Demolition Scrap",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Factory Dismantling",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Certified Destruction",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Utility Equipment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Stevedoring",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Processing Capabilities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transportation & Logistics",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Marine Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "We utilize robust logistics and processing techniques to maximize recovery rates",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Brokerage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Non-Ferrous Brokerage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ferrous Brokerage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Metal buys and sells ferrous and non-ferrous metal across the globe.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why Choose Sims",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Metal is a leading metal recycler that buys, processes and sells ferrous an",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Close",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Details",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "js-internal-toggle",
+              "text": "Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Customer Portal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Get a Quote",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More About the Coalition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input class=\"search-field field\" type=\"text\" placeholder=\"Enter city and state/",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Complete Location List",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dismantling & Demolition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Collection",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transportation & Logistics",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Certified Destruction",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Marine Service & Repair",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sell My Scrap",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "More About Sims Metal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Limited Website",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Metal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Metal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Yard Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Limited",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Metal is a business division of Sims Limited. Learn more about how Sims Lim",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Other Business Divisions (external websites)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Lifecycle Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Municipal Recycling",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sims Resource Renewal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Visit Us on LinkedIn (opens new window)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Terms of Use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Legal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "cookie policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "privacy policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Decline",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Accept",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "triggers": 12,
+          "madeVisible": 64,
+          "opacityChanged": 4,
+          "opacityAffected": 4,
+          "unhoverables": 10
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "menu-item-1467",
+              "text": "Sell to Us Get a Quote Manufacturing Scrap Trades ",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Get a Quote"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Manufacturing Scrap"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Trades"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Metal Collector"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Scrap Dealer"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Commercial Junk Vehicles"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Demolition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Municipal Recycling"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Appliances"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Household"
+                },
+                {
+                  "tagName": "A",
+                  "text": "About Metal Theft"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Materials We Accept"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sims Metal buys all types of metal scrap arising f"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sell to Us",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Get a Quote"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Manufacturing Scrap"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Trades"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Metal Collector"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Scrap Dealer"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Commercial Junk Vehicles"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Demolition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Municipal Recycling"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Appliances"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Household"
+                },
+                {
+                  "tagName": "A",
+                  "text": "About Metal Theft"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Materials We Accept"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sims Metal buys all types of metal scrap arising f"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "menu-item-1475",
+              "text": "Services Get a Quote Bin and Container Service Bin",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Get a Quote"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Bin and Container Service"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Demolition Scrap"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Factory Dismantling"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Certified Destruction"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Utility Equipment"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Stevedoring"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Processing Capabilities"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Transportation & Logistics"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Marine Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "We utilize robust logistics and processing techniq"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Get a Quote"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Bin and Container Service"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Demolition Scrap"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Factory Dismantling"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Certified Destruction"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Utility Equipment"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Stevedoring"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Processing Capabilities"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Transportation & Logistics"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Marine Services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "We utilize robust logistics and processing techniq"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "menu-item-1483",
+              "text": "Brokerage Non-Ferrous Brokerage Ferrous Brokerage ",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Non-Ferrous Brokerage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Ferrous Brokerage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sims Metal buys and sells ferrous and non-ferrous "
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Brokerage",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Non-Ferrous Brokerage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Ferrous Brokerage"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sims Metal buys and sells ferrous and non-ferrous "
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "menu-item-3490",
+              "text": "About Us Locations Why Choose Sims Careers Contact",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Locations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Why Choose Sims"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Careers"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact Us"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sims Metal is a leading metal recycler that buys, "
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Locations"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Why Choose Sims"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Careers"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Contact Us"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Sims Metal is a leading metal recycler that buys, "
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "cookie policy",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "A",
+                  "text": "cookie policy"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "privacy policy",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "A",
+                  "text": "privacy policy"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Decline",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "BUTTON",
+                  "text": "Decline"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Accept",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "BUTTON",
+                  "text": "Accept"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SkiptoSearch"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SkiptoContent"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SkiptoFooter"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SimsMetal"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SimsLimited"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "OtherBusinessDivisions(externalwebsites)"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "TermsofUse"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "TermsofUse"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PrivacyPolicy"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PrivacyPolicy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 1,
+          "wellLabeled": 4
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Close"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Decline"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Accept"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "links": 84,
+          "inline": {
+            "total": 2,
+            "underlined": 2,
+            "underlinedPercent": 100
+          }
+        },
+        "items": {
+          "underlined": [
+            "cookie policy",
+            "privacy policy"
+          ],
+          "notUnderlined": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "roleElements": 21,
+        "badRoleElements": 15,
+        "tagNames": {
+          "NAV": {
+            "navigation": 5
+          },
+          "DIV": {
+            "listbox": 1,
+            "option": 4,
+            "document": 1
+          },
+          "MAIN": {
+            "main": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          },
+          "BUTTON": {
+            "button": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          },
+          "h2": {
+            "total": 8,
+            "subtotals": [
+              7,
+              1
+            ]
+          },
+          "h3": {
+            "total": 6
+          },
+          "h4": {
+            "total": 3
+          },
+          "aInline": {
+            "total": 2
+          },
+          "aBlock": {
+            "total": 82,
+            "subtotals": [
+              28,
+              8,
+              8,
+              6,
+              6,
+              6,
+              4,
+              3,
+              3,
+              3,
+              3,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 4,
+            "subtotals": [
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {
+            "lineHeight": {
+              "55.68px": 1,
+              "72px": 1
+            },
+            "maxWidth": {
+              "none": 1,
+              "792px": 1
+            },
+            "fontSize": {
+              "64px": 2,
+              "48px": 1
+            }
+          },
+          "h2": {
+            "maxWidth": {
+              "none": 7,
+              "1600px": 1
+            }
+          },
+          "h3": {},
+          "h4": {},
+          "aInline": {},
+          "aBlock": {
+            "borderStyle": {
+              "none": 54,
+              "none solid none none": 28
+            },
+            "borderWidth": {
+              "0px": 54,
+              "0px 1px 0px 0px": 28
+            },
+            "fontWeight": {
+              "400": 34,
+              "600": 36,
+              "700": 12
+            },
+            "lineHeight": {
+              "19.05px": 29,
+              "22.86px": 15,
+              "10.8px": 8,
+              "23.4px": 8,
+              "17.78px": 6,
+              "21.6px": 4,
+              "16.51px": 3,
+              "15.24px": 3,
+              "20.32px": 3,
+              "55.68px": 1,
+              "14px": 1,
+              "0px": 1
+            },
+            "minHeight": {
+              "0px": 76,
+              "auto": 6
+            },
+            "minWidth": {
+              "0px": 76,
+              "auto": 6
+            },
+            "fontSize": {
+              "15px": 703,
+              "18px": 532,
+              "14px": 133,
+              "13px": 57,
+              "12px": 57,
+              "16px": 57,
+              "48px": 19
+            }
+          },
+          "button": {
+            "fontWeight": {
+              "600": 1,
+              "700": 3
+            },
+            "lineHeight": {
+              "19.6px": 2,
+              "14.95px": 1,
+              "18.4px": 1
+            },
+            "minHeight": {
+              "auto": 2,
+              "0px": 2
+            },
+            "minWidth": {
+              "auto": 2,
+              "0px": 2
+            },
+            "textDecorationLine": {
+              "none": 2,
+              "underline": 2
+            },
+            "fontSize": {
+              "14px": 38,
+              "13px": 19,
+              "16px": 19
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "totals": {
+          "total": 15,
+          "tagNames": {
+            "HEADER": 1,
+            "DIV": 7,
+            "A": 6,
+            "UL": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "HEADER",
+            "id": "banner",
+            "text": "Sims Metal Investors\nCustomer Portal\nContact Us Menu Sell to Us Get a Quote Manufacturing Scrap Trad"
+          },
+          {
+            "tagName": "DIV",
+            "id": "js-menu-primary-wrapper",
+            "text": "Sell to Us Get a Quote Manufacturing Scrap Trades Metal Collector Scrap Dealer Commercial Junk Vehic"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Sell to Us"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Services"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Bin Quote"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Locations"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Brokerage"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "About Us"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Blog"
+          },
+          {
+            "tagName": "DIV",
+            "id": "secondary-header",
+            "text": "Menu Investors\nCustomer Portal\nContact Us"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Menu Investors\nCustomer Portal\nContact Us"
+          },
+          {
+            "tagName": "DIV",
+            "id": "iubenda-cs-banner",
+            "text": "NoticeWe and selected partners use cookies or similar technologies as specified in the cookie policy"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "NoticeWe and selected partners use cookies or similar technologies as specified in the cookie policy"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "NoticeWe and selected partners use cookies or similar technologies as specified in the cookie policy"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "DeclineAccept"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 39,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[3]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/link[3]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 554,
+                "top": 1286,
+                "height": 66,
+                "width": 187
+              },
+              "snippet": "<a href=\"https://calmetalrecyclers.com/\" aria-label=\"Follow link\" class=\"cta-link -primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[2]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/link[2]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 310,
+                "top": 1258,
+                "height": 46,
+                "width": 182
+              },
+              "snippet": "<a aria-label=\"Follow link\" href=\"https://www.simsmm.com/services/bin-and-container-service/bin-quote/\" class=\"cta-link -primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/link[1]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 66,
+                "top": 1246,
+                "height": 46,
+                "width": 176
+              },
+              "snippet": "<a href=\"https://www.simsmm.com/contact-us/\" aria-label=\"Follow link\" class=\"cta-link -primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Label_RefValid",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/div[1]/form[1]/label[1]",
+                "aria": "/document[1]/main[1]/region[2]/form[1]"
+              },
+              "message": "The value \"location-map-finder-search-field\" of the 'for' attribute is not the 'id' of a valid <input> element",
+              "bounds": {
+                "left": 145,
+                "top": 1539,
+                "height": 27,
+                "width": 422
+              },
+              "snippet": "<label for=\"location-map-finder-search-field\" class=\"label\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]/div[1]/div[1]",
+                "aria": "/document[1]/banner[2]/listbox[1]"
+              },
+              "message": "Form control with \"listbox\" role has no associated label",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 1280
+              },
+              "snippet": "<div style=\"opacity: 1; width: 1280px; transform: translate3d(0px, 0px, 0px);\" role=\"listbox\" class=\"slick-track\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[9]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[8]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[7]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[6]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[12]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[11]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[10]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/region[5]/option[3]"
+              },
+              "message": "The 'id' \"slick-slide02\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 547,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-hidden=\"true\" aria-describedby=\"slick-slide02\" role=\"option\" tabindex=\"-1\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/region[5]/option[2]"
+              },
+              "message": "The 'id' \"slick-slide01\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 294,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-hidden=\"true\" aria-describedby=\"slick-slide01\" role=\"option\" tabindex=\"-1\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/region[5]/option[1]"
+              },
+              "message": "The 'id' \"slick-slide00\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 40,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-hidden=\"true\" aria-describedby=\"slick-slide00\" role=\"option\" tabindex=\"-1\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[2]/listbox[1]/option[1]"
+              },
+              "message": "The 'id' \"slick-slide10\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 1280
+              },
+              "snippet": "<div aria-describedby=\"slick-slide10\" role=\"option\" tabindex=\"-1\" aria-hidden=\"false\" data-slick-index=\"0\" style=\"background-image: url(\"https://1dmx3j9s5ex6ub8i2s4ql15l-wpengine.netdna-ssl.com/wp-content/uploads/sites/3/2021/08/SM-2021-Hero-Banner.png\"); width: 1280px;\" class=\"column slick-slide slick-current slick-active\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/region[5]/option[3]"
+              },
+              "message": "The element with \"option\" role is not contained in or owned by an element with one of the following ARIA roles: \"group, listbox\"",
+              "bounds": {
+                "left": 547,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-hidden=\"true\" aria-describedby=\"slick-slide02\" role=\"option\" tabindex=\"-1\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/region[5]/option[2]"
+              },
+              "message": "The element with \"option\" role is not contained in or owned by an element with one of the following ARIA roles: \"group, listbox\"",
+              "bounds": {
+                "left": 294,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-hidden=\"true\" aria-describedby=\"slick-slide01\" role=\"option\" tabindex=\"-1\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/region[5]/option[1]"
+              },
+              "message": "The element with \"option\" role is not contained in or owned by an element with one of the following ARIA roles: \"group, listbox\"",
+              "bounds": {
+                "left": 40,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-hidden=\"true\" aria-describedby=\"slick-slide00\" role=\"option\" tabindex=\"-1\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 40,
+                "top": 149,
+                "height": 40,
+                "width": 452
+              },
+              "snippet": "<p class=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 613,
+                "top": 161,
+                "height": 46,
+                "width": 148
+              },
+              "snippet": "<a class=\"wp-block-button__link\" href=\"https://www.simsmm.com/about-us/covid/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 552,
+                "top": 131,
+                "height": 18,
+                "width": 209
+              },
+              "snippet": "<button class=\"close -light\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[3]",
+                "aria": "/document[1]/banner[3]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 931,
+                "height": 2,
+                "width": 800
+              },
+              "snippet": "<header class=\"no-hero\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]",
+                "aria": "/document[1]/banner[2]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 800
+              },
+              "snippet": "<header class=\"hero-slider slick-initialized slick-slider\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]",
+                "aria": "/document[1]/banner[1]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 107,
+                "width": 800
+              },
+              "snippet": "<header itemtype=\"http://schema.org/WPHeader\" itemscope=\"itemscope\" id=\"banner\" role=\"banner\" class=\"site-header\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/nav[1]",
+                "aria": "/document[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 800
+              },
+              "snippet": "<nav class=\"nav-access\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[2]/nav[2]",
+                "aria": "/document[1]/banner[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 293,
+                "top": 60,
+                "height": 47,
+                "width": 468
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[2]/nav[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 529,
+                "top": 20,
+                "height": 22,
+                "width": 247
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-secondary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[2]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 40,
+                "top": 4216,
+                "height": 22,
+                "width": 720
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-colophon\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 240,
+                "top": 3638,
+                "height": 359,
+                "width": 520
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-footer\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[3]",
+                "aria": "/document[1]/banner[3]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 931,
+                "height": 2,
+                "width": 800
+              },
+              "snippet": "<header class=\"no-hero\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]",
+                "aria": "/document[1]/banner[2]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 800
+              },
+              "snippet": "<header class=\"hero-slider slick-initialized slick-slider\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]",
+                "aria": "/document[1]/banner[1]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 107,
+                "width": 800
+              },
+              "snippet": "<header itemtype=\"http://schema.org/WPHeader\" itemscope=\"itemscope\" id=\"banner\" role=\"banner\" class=\"site-header\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[13]/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]",
+                "aria": "/document[1]/alertdialog[1]/button[1]"
+              },
+              "message": "Text contrast of 3.95 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 700",
+              "bounds": {
+                "left": 544,
+                "top": 537,
+                "height": 35,
+                "width": 114
+              },
+              "snippet": "<button aria-pressed=\"false\" role=\"button\" tabindex=\"0\" style=\"background-color:#fff!important;color:gray!important;\" class=\"iubenda-cs-reject-btn iubenda-cs-btn-primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[3]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 597,
+                "top": 1049,
+                "height": 105,
+                "width": 100
+              },
+              "snippet": "<figure class=\"aligncenter is-resized\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[2]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 350,
+                "top": 1081,
+                "height": 105,
+                "width": 100
+              },
+              "snippet": "<figure class=\"aligncenter is-resized\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 104,
+                "top": 1049,
+                "height": 105,
+                "width": 100
+              },
+              "snippet": "<figure class=\"aligncenter is-resized\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 33,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[3]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/link[3]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 554,
+                "top": 1286,
+                "height": 66,
+                "width": 187
+              },
+              "snippet": "<a href=\"https://calmetalrecyclers.com/\" aria-label=\"Follow link\" class=\"cta-link -primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[2]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/link[2]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 310,
+                "top": 1258,
+                "height": 46,
+                "width": 182
+              },
+              "snippet": "<a aria-label=\"Follow link\" href=\"https://www.simsmm.com/services/bin-and-container-service/bin-quote/\" class=\"cta-link -primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/link[1]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 66,
+                "top": 1246,
+                "height": 46,
+                "width": 176
+              },
+              "snippet": "<a href=\"https://www.simsmm.com/contact-us/\" aria-label=\"Follow link\" class=\"cta-link -primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Label_RefValid",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/div[1]/form[1]/label[1]",
+                "aria": "/document[1]/main[1]/region[2]/form[1]"
+              },
+              "message": "The value \"location-map-finder-search-field\" of the 'for' attribute is not the 'id' of a valid <input> element",
+              "bounds": {
+                "left": 145,
+                "top": 1539,
+                "height": 27,
+                "width": 422
+              },
+              "snippet": "<label for=\"location-map-finder-search-field\" class=\"label\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]/div[1]/div[1]",
+                "aria": "/document[1]/banner[2]/listbox[1]"
+              },
+              "message": "Form control with \"listbox\" role has no associated label",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 800
+              },
+              "snippet": "<div style=\"opacity: 1; width: 800px; transform: translate3d(0px, 0px, 0px);\" role=\"listbox\" class=\"slick-track\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[7]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[6]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]",
+                "aria": "/document[1]"
+              },
+              "message": "The <div> element has the id \"move-helper-text\" that is already in use",
+              "bounds": {
+                "left": -17982,
+                "top": -17982,
+                "height": 22,
+                "width": 959
+              },
+              "snippet": "<div style=\"position: absolute; top: -999em; left: -999em;\" id=\"move-helper-text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/region[5]/option[3]"
+              },
+              "message": "The 'id' \"slick-slide02\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 547,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-describedby=\"slick-slide02\" role=\"option\" tabindex=\"-1\" aria-hidden=\"true\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/region[5]/option[2]"
+              },
+              "message": "The 'id' \"slick-slide01\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 294,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-describedby=\"slick-slide01\" role=\"option\" tabindex=\"-1\" aria-hidden=\"true\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/region[5]/option[1]"
+              },
+              "message": "The 'id' \"slick-slide00\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 40,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-describedby=\"slick-slide00\" role=\"option\" tabindex=\"-1\" aria-hidden=\"true\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[2]/listbox[1]/option[1]"
+              },
+              "message": "The 'id' \"slick-slide10\" specified for the ARIA property 'aria-describedby' value is not valid",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 800
+              },
+              "snippet": "<div aria-describedby=\"slick-slide10\" role=\"option\" tabindex=\"-1\" aria-hidden=\"false\" data-slick-index=\"0\" style=\"background-image: url(\"https://1dmx3j9s5ex6ub8i2s4ql15l-wpengine.netdna-ssl.com/wp-content/uploads/sites/3/2021/08/SM-2021-Hero-Banner.png\"); width: 800px;\" class=\"column slick-slide slick-current slick-active\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/region[5]/option[3]"
+              },
+              "message": "The element with \"option\" role is not contained in or owned by an element with one of the following ARIA roles: \"group, listbox\"",
+              "bounds": {
+                "left": 547,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-describedby=\"slick-slide02\" role=\"option\" tabindex=\"-1\" aria-hidden=\"true\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/region[5]/option[2]"
+              },
+              "message": "The element with \"option\" role is not contained in or owned by an element with one of the following ARIA roles: \"group, listbox\"",
+              "bounds": {
+                "left": 294,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-describedby=\"slick-slide01\" role=\"option\" tabindex=\"-1\" aria-hidden=\"true\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[5]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/region[5]/option[1]"
+              },
+              "message": "The element with \"option\" role is not contained in or owned by an element with one of the following ARIA roles: \"group, listbox\"",
+              "bounds": {
+                "left": 40,
+                "top": 3132,
+                "height": 386,
+                "width": 214
+              },
+              "snippet": "<div aria-describedby=\"slick-slide00\" role=\"option\" tabindex=\"-1\" aria-hidden=\"true\" style=\"\" class=\"column\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 40,
+                "top": 149,
+                "height": 40,
+                "width": 452
+              },
+              "snippet": "<p class=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 613,
+                "top": 161,
+                "height": 46,
+                "width": 148
+              },
+              "snippet": "<a class=\"wp-block-button__link\" href=\"https://www.simsmm.com/about-us/covid/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 552,
+                "top": 131,
+                "height": 18,
+                "width": 209
+              },
+              "snippet": "<button class=\"close -light\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[3]",
+                "aria": "/document[1]/banner[3]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 931,
+                "height": 2,
+                "width": 800
+              },
+              "snippet": "<header class=\"no-hero\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]",
+                "aria": "/document[1]/banner[2]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 800
+              },
+              "snippet": "<header class=\"hero-slider slick-initialized slick-slider\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OneBannerInSiblingSet_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]",
+                "aria": "/document[1]/banner[1]"
+              },
+              "message": "There is more than one element with \"banner\" role on the page",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 107,
+                "width": 800
+              },
+              "snippet": "<header itemtype=\"http://schema.org/WPHeader\" itemscope=\"itemscope\" id=\"banner\" role=\"banner\" class=\"site-header\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/nav[1]",
+                "aria": "/document[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 800
+              },
+              "snippet": "<nav class=\"nav-access\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[2]/nav[2]",
+                "aria": "/document[1]/banner[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 293,
+                "top": 60,
+                "height": 47,
+                "width": 468
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-primary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/div[2]/nav[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 529,
+                "top": 20,
+                "height": 22,
+                "width": 247
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-secondary\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[2]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 40,
+                "top": 4216,
+                "height": 22,
+                "width": 720
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-colophon\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 240,
+                "top": 3638,
+                "height": 359,
+                "width": 520
+              },
+              "snippet": "<nav itemtype=\"http://schema.org/SiteNavigationElement\" itemscope=\"itemscope\" role=\"navigation\" class=\"nav-footer\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[3]",
+                "aria": "/document[1]/banner[3]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 931,
+                "height": 2,
+                "width": 800
+              },
+              "snippet": "<header class=\"no-hero\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[2]",
+                "aria": "/document[1]/banner[2]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 231,
+                "height": 700,
+                "width": 800
+              },
+              "snippet": "<header class=\"hero-slider slick-initialized slick-slider\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleBannerLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]",
+                "aria": "/document[1]/banner[1]"
+              },
+              "message": "Multiple elements with \"banner\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 107,
+                "width": 800
+              },
+              "snippet": "<header itemtype=\"http://schema.org/WPHeader\" itemscope=\"itemscope\" id=\"banner\" role=\"banner\" class=\"site-header\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[3]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 597,
+                "top": 1049,
+                "height": 105,
+                "width": 100
+              },
+              "snippet": "<figure class=\"aligncenter is-resized\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[2]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 350,
+                "top": 1081,
+                "height": 105,
+                "width": 100
+              },
+              "snippet": "<figure class=\"aligncenter is-resized\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 104,
+                "top": 1049,
+                "height": 105,
+                "width": 100
+              },
+              "snippet": "<figure class=\"aligncenter is-resized\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.simsmm.com/",
+      "what": "Sims Metal Management (NALFX)",
+      "result": "https://www.simsmm.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.simsmm.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Sims Metal | scrap metal recycler | scrap metal yard | metal recycling",
+          "pageurl": "https://www.simsmm.com/",
+          "time": 4.52,
+          "creditsremaining": 664,
+          "allitemcount": 137,
+          "totalelements": 453,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.simsmm.com/",
+          "domid": "0d92e9a2390a5200f0612185d0853178"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 6,
+            "items": {
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + FORM > LABEL:first-child > SPAN:first-child + INPUT"
+                ]
+              },
+              "link_skip_broken": {
+                "id": "link_skip_broken",
+                "description": "Broken skip link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + NAV > A:first-child"
+                ]
+              },
+              "aria_reference_broken": {
+                "id": "aria_reference_broken",
+                "description": "Broken ARIA reference",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + NAV + HEADER + DIV + HEADER > DIV:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION + SECTION + SECTION + H2 + P + DIV + SECTION > DIV:first-child > H2:first-child + DIV > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION + SECTION + SECTION + H2 + P + DIV + SECTION > DIV:first-child > H2:first-child + DIV > DIV:first-child + DIV",
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION + SECTION + SECTION + H2 + P + DIV + SECTION > DIV:first-child > H2:first-child + DIV > DIV:first-child + DIV + DIV"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 4,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child > DIV:first-child > H2:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child > DIV:first-child > H2:first-child + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION + SECTION + SECTION > DIV:first-child > DIV:first-child > H2:first-child + DIV > P:first-child + DIV + P",
+                  "HTML > HEAD:first-child + BODY > DIV#iubenda-cs-banner > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > BUTTON:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    3.94,
+                    "#808080",
+                    "#ffffff",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 5,
+            "items": {
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child + SECTION + SECTION + SECTION + H2 + P + DIV + SECTION > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child + H4"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child + NAV + HEADER + DIV + HEADER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > P:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > MAIN#main > SECTION:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#iubenda-cs-banner > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#iubenda-cs-paragraph > A:first-child + A"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > NOSCRIPT:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 684,
+          "axe": 39,
+          "bulk": 2,
+          "embAc": 0,
+          "focAll": 99,
+          "focInd": 38,
+          "focOp": 1,
+          "hover": 196,
+          "ibm": 138,
+          "labClash": 2,
+          "linkUl": 0,
+          "log": 13,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 30,
+          "styleDiff": 47,
+          "tabNav": 0,
+          "wave": 34,
+          "zIndex": 45
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      83
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      5
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "focAll",
+      2
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

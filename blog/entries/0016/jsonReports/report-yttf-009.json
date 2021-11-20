@@ -1,0 +1,2825 @@
+{
+  "script": "a11y04",
+  "batch": "esg",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "yttf",
+  "logCount": 0,
+  "logSize": 0,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://addus.com/",
+      "result": {
+        "bytes": [
+          853752,
+          853752,
+          853752,
+          853752,
+          853752
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://addus.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 13,
+          "serious": 1,
+          "critical": 2
+        },
+        "items": [
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".border-heading",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".contact-widget > h5",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "img[src$=\"dimond\\.png\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".nbri-logo > a[target=\"_blank\"] > img",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".nbri-logo > a[target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "section:nth-child(4)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#h-our-approach-is-simple-we-provide-great-care-and-we-pay-attention-to-your-needs",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#button-block-block_5d1abe18c1b69",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".wp-block-column:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".logo-right",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".desktop",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".content-block > h2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".content-block > p",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".button-c[href$=\"careers\\/\"][target=\"\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "section:nth-child(8)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://addus.com/",
+      "result": {
+        "visibleElements": 212
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://addus.com/",
+      "result": {
+        "tabFocusables": 56,
+        "tabFocused": 56,
+        "discrepancy": 0
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "total": 77,
+          "types": {
+            "indicatorMissing": {
+              "total": 77,
+              "tagNames": {
+                "A": 77
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Payors"
+            },
+            {
+              "tagName": "A",
+              "text": "Online Bill Pay"
+            },
+            {
+              "tagName": "A",
+              "text": "COVID-19 P&P"
+            },
+            {
+              "tagName": "A",
+              "text": "888.233.8746"
+            },
+            {
+              "tagName": "A",
+              "text": "About Addus"
+            },
+            {
+              "tagName": "A",
+              "text": "Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "Career Center"
+            },
+            {
+              "tagName": "A",
+              "text": "Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Request Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Join Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "About Addus"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Story"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Services"
+            },
+            {
+              "tagName": "A",
+              "text": "In-Home Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Home Health"
+            },
+            {
+              "tagName": "A",
+              "text": "Hospice"
+            },
+            {
+              "tagName": "A",
+              "text": "Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "Career Center"
+            },
+            {
+              "tagName": "A",
+              "text": "Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Online Bill Pay"
+            },
+            {
+              "tagName": "A",
+              "text": "Billing FAQ"
+            },
+            {
+              "tagName": "A",
+              "text": "Funding Sources"
+            },
+            {
+              "tagName": "A",
+              "text": "VendorProof"
+            },
+            {
+              "tagName": "A",
+              "text": "Request Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Join Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Investors"
+            },
+            {
+              "tagName": "A",
+              "text": "Payors"
+            },
+            {
+              "tagName": "A",
+              "text": "Online Bill Pay"
+            },
+            {
+              "tagName": "A",
+              "text": "COVID-19 P&P"
+            },
+            {
+              "tagName": "A",
+              "text": "Search Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "Join our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Request Care"
+            },
+            {
+              "tagName": "A",
+              "text": "Home Care In-home assistance with activities of daily living."
+            },
+            {
+              "tagName": "A",
+              "text": "Home Health In-home medical and skilled healthcare services."
+            },
+            {
+              "tagName": "A",
+              "text": "Hospice In-home comfort care for patient and family."
+            },
+            {
+              "tagName": "A",
+              "text": "Join Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Alabama"
+            },
+            {
+              "tagName": "A",
+              "text": "Arizona"
+            },
+            {
+              "tagName": "A",
+              "text": "Arkansas"
+            },
+            {
+              "tagName": "A",
+              "text": "California"
+            },
+            {
+              "tagName": "A",
+              "text": "Delaware"
+            },
+            {
+              "tagName": "A",
+              "text": "Florida"
+            },
+            {
+              "tagName": "A",
+              "text": "Georgia"
+            },
+            {
+              "tagName": "A",
+              "text": "Idaho"
+            },
+            {
+              "tagName": "A",
+              "text": "Illinois"
+            },
+            {
+              "tagName": "A",
+              "text": "Kentucky"
+            },
+            {
+              "tagName": "A",
+              "text": "Michigan"
+            },
+            {
+              "tagName": "A",
+              "text": "Montana"
+            },
+            {
+              "tagName": "A",
+              "text": "New Mexico"
+            },
+            {
+              "tagName": "A",
+              "text": "New York"
+            },
+            {
+              "tagName": "A",
+              "text": "Ohio"
+            },
+            {
+              "tagName": "A",
+              "text": "Oregon"
+            },
+            {
+              "tagName": "A",
+              "text": "Pennsylvania"
+            },
+            {
+              "tagName": "A",
+              "text": "South Carolina"
+            },
+            {
+              "tagName": "A",
+              "text": "Tennessee"
+            },
+            {
+              "tagName": "A",
+              "text": "Texas"
+            },
+            {
+              "tagName": "A",
+              "text": "Virginia"
+            },
+            {
+              "tagName": "A",
+              "text": "Washington"
+            },
+            {
+              "tagName": "A",
+              "text": "Wisconsin"
+            },
+            {
+              "tagName": "A",
+              "text": "Search Locations"
+            },
+            {
+              "tagName": "A",
+              "text": "630.296.3400"
+            },
+            {
+              "tagName": "A",
+              "text": "888.233.8746"
+            },
+            {
+              "tagName": "A",
+              "text": "info1@addus.com"
+            },
+            {
+              "tagName": "A",
+              "text": "Make a Confidential Report"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "A",
+              "text": "Sitemap"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "HIPAA Notice of Privacy Practices"
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "total": 86,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "focusableAndOperable": {
+              "total": 86,
+              "tagNames": {
+                "A": 86
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://addus.com\" style=\"cursor: default;\"><img src=\"https://addus.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Payors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Online Bill Pay",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "COVID-19 P&P",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "888.233.8746",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Addus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "In-Home Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home Health",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospice",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Online Bill Pay",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Billing FAQ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Funding Sources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "VendorProof",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Join Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"tel:8882338746\" style=\"cursor: default;\"> <img src=\"https://addus.com/w",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Addus",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "In-Home Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home Health",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospice",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Career Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Online Bill Pay",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Billing FAQ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Funding Sources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "VendorProof",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Join Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Payors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Online Bill Pay",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "COVID-19 P&P",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Search Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Join our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request Care",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home Care In-home assistance with activities of daily living.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home Health In-home medical and skilled healthcare services.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospice In-home comfort care for patient and family.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Join Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Alabama",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Arizona",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Arkansas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "California",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Delaware",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Florida",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Georgia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Idaho",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Illinois",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kentucky",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Michigan",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Montana",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "New Mexico",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "New York",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ohio",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Oregon",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Pennsylvania",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "South Carolina",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tennessee",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Texas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Virginia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Washington",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Wisconsin",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Search Locations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "630.296.3400",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "888.233.8746",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "info1@addus.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Make a Confidential Report",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Terms of Use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sitemap",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"http://www.linkedin.com/company/240039?trk=tyah\" target=\"_blank\" style=",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.facebook.com/AddusHomeCare\" target=\"_blank\" style=\"cursor: ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a target=\"_blank\" href=\"https://www.nbrii.com/about/clients/circle-of-excellenc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HIPAA Notice of Privacy Practices",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "triggers": 7,
+          "madeVisible": 5,
+          "opacityChanged": 7,
+          "opacityAffected": 51,
+          "unhoverables": 0
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "menu-item-337",
+              "text": "About Addus Our Story Our Team",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Our Story"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our Team"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Our Story Our Team"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Addus",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Our Story Our Team"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "menu-item-539",
+              "text": "Services In-Home Care Home Health Hospice",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "In-Home Care"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Home Health"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Hospice"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "In-Home Care Home Health Hospice"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "In-Home Care Home Health Hospice"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "menu-item-799",
+              "text": "Resources Online Bill Pay Billing FAQ Funding Sour",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Online Bill Pay"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Billing FAQ"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Funding Sources"
+                },
+                {
+                  "tagName": "A",
+                  "text": "VendorProof"
+                }
+              ],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Online Bill Pay Billing FAQ Funding Sources Vendor"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Online Bill Pay Billing FAQ Funding Sources Vendor"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Request Care",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "UL",
+                  "text": "Online Bill Pay Billing FAQ Funding Sources Vendor"
+                }
+              ]
+            }
+          ],
+          "unhoverables": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 0
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "links": 86,
+          "inline": {
+            "total": 15,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Locations",
+            "Career Center",
+            "Request Care",
+            "Join Our Team",
+            "Search Locations",
+            "Join our Team",
+            "630.296.3400",
+            "888.233.8746",
+            "info1@addus.com",
+            "Make a Confidential Report",
+            "Contact",
+            "Privacy",
+            "Terms of Use",
+            "Sitemap",
+            "HIPAA Notice of Privacy Practices"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://addus.com/",
+      "result": {
+        "roleElements": 0,
+        "badRoleElements": 0,
+        "tagNames": {}
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 3
+          },
+          "h4": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          },
+          "h5": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 15,
+            "subtotals": [
+              4,
+              3,
+              2,
+              2,
+              2,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 71,
+            "subtotals": [
+              23,
+              6,
+              6,
+              5,
+              4,
+              4,
+              3,
+              3,
+              3,
+              3,
+              3,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {},
+          "h4": {
+            "borderStyle": {
+              "none none solid": 1,
+              "none": 1
+            },
+            "borderWidth": {
+              "0px 0px 1px": 1,
+              "0px": 1
+            },
+            "lineHeight": {
+              "30.24px": 1,
+              "24px": 1
+            },
+            "fontSize": {
+              "20px": 6,
+              "25.2px": 5
+            }
+          },
+          "h5": {
+            "lineHeight": {
+              "29.7px": 3,
+              "27px": 1
+            },
+            "fontSize": {
+              "22px": 24,
+              "20px": 10
+            }
+          },
+          "aInline": {
+            "borderStyle": {
+              "none none solid": 9,
+              "none": 4,
+              "solid": 2
+            },
+            "borderWidth": {
+              "0px 0px 1px": 9,
+              "0px": 4,
+              "1px": 2
+            },
+            "fontWeight": {
+              "400": 11,
+              "500": 2,
+              "600": 2
+            },
+            "lineHeight": {
+              "23.4px": 4,
+              "20.8px": 4,
+              "35.2px": 3,
+              "22.1px": 2,
+              "19.2px": 1,
+              "19.5px": 1
+            },
+            "minWidth": {
+              "0px": 11,
+              "148px": 2,
+              "247px": 2
+            },
+            "fontSize": {
+              "16px": 80,
+              "18px": 40,
+              "17px": 20,
+              "13px": 10
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none none solid": 39,
+              "none": 11,
+              "solid none": 10,
+              "solid none none": 8,
+              "solid": 3
+            },
+            "borderWidth": {
+              "0px 0px 1px": 33,
+              "0px": 17,
+              "1px 0px": 10,
+              "1px 0px 0px": 8,
+              "1px": 3
+            },
+            "fontWeight": {
+              "400": 57,
+              "500": 12,
+              "600": 2
+            },
+            "lineHeight": {
+              "23.76px": 23,
+              "23.4px": 13,
+              "20px": 11,
+              "12px": 9,
+              "25.74px": 6,
+              "15px": 4,
+              "22.1px": 2,
+              "19.5px": 1,
+              "19.8px": 1,
+              "20.8px": 1
+            },
+            "maxWidth": {
+              "none": 69,
+              "295px": 2
+            },
+            "minWidth": {
+              "0px": 68,
+              "160px": 2,
+              "200px": 1
+            },
+            "fontSize": {
+              "19.8px": 300,
+              "18px": 130,
+              "20px": 110,
+              "12px": 90,
+              "15px": 50,
+              "17px": 20,
+              "13px": 10
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://addus.com/",
+      "result": {
+        "totals": {
+          "total": 12,
+          "tagNames": {
+            "HEADER": 1,
+            "UL": 3,
+            "DIV": 7,
+            "A": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "HEADER",
+            "id": "",
+            "text": "Investors\nPayors\nOnline Bill Pay\nCOVID-19 P&P 888.233.8746 About Addus Our Story Our Team Services I"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Our Story Our Team"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "In-Home Care Home Health Hospice"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Online Bill Pay Billing FAQ Funding Sources VendorProof"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Request Care Join Our Team"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "About Addus Our Story Our Team Services In-Home Care Home Health Hospice Locations\nCareer Center\nRes"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Search Locations Join our Team"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Engaged, energized, and compassionate Our caregivers find meaning in serving and building relationsh"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Search Locations"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://addus.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 11,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/section[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/p[1]/img[1]",
+                "aria": "/document[1]/region[2]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 198,
+                "top": 4435,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<img src=\"/wp-content/uploads/dimond.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/contentinfo[1]/link[7]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 40,
+                "top": 5653,
+                "height": 91,
+                "width": 90
+              },
+              "snippet": "<img src=\"https://addus.com/wp-content/uploads/circle-of-excellence.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[7]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 40,
+                "top": 5728,
+                "height": 20,
+                "width": 90
+              },
+              "snippet": "<a href=\"https://www.nbrii.com/about/clients/circle-of-excellence\" target=\"_blank\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 691,
+                "top": 56,
+                "height": 22,
+                "width": 39
+              },
+              "snippet": "<a href=\"tel:8882338746\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[1]/div[1]/div[2]/h2[1]",
+                "aria": "/document[1]/heading[3]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 107,
+                "top": 2720,
+                "height": 88,
+                "width": 594
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[2]/div[3]/a[1]",
+                "aria": "/document[1]/link[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 150,
+                "top": 2125,
+                "height": 424,
+                "width": 500
+              },
+              "snippet": "<a href=\"https://addus.com/hospice/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[2]/div[2]/a[1]",
+                "aria": "/document[1]/link[6]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 150,
+                "top": 1676,
+                "height": 424,
+                "width": 500
+              },
+              "snippet": "<a href=\"https://addus.com/home-health/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[5]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 150,
+                "top": 1227,
+                "height": 424,
+                "width": 500
+              },
+              "snippet": "<a href=\"https://addus.com/home-community/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/h4[1]",
+                "aria": "/document[1]/heading[2]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 47,
+                "top": 1158,
+                "height": 40,
+                "width": 707
+              },
+              "snippet": "<h4 class=\"border-heading\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/h2[1]",
+                "aria": "/document[1]/heading[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 40,
+                "top": 618,
+                "height": 132,
+                "width": 720
+              },
+              "snippet": "<h2 id=\"h-our-approach-is-simple-we-provide-great-care-and-we-pay-attention-to-your-needs\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/link[4]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 313,
+                "top": 792,
+                "height": 51,
+                "width": 175
+              },
+              "snippet": "<a class=\" button-c \" target=\"\" href=\"https://addus.com/contact/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 4842,
+                "height": 943,
+                "width": 800
+              },
+              "snippet": "<footer>",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 11,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/section[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/p[1]/img[1]",
+                "aria": "/document[1]/region[2]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 198,
+                "top": 4427,
+                "height": 15,
+                "width": 15
+              },
+              "snippet": "<img src=\"/wp-content/uploads/dimond.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/contentinfo[1]/link[7]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 40,
+                "top": 5653,
+                "height": 91,
+                "width": 90
+              },
+              "snippet": "<img src=\"https://addus.com/wp-content/uploads/circle-of-excellence.png\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[7]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 40,
+                "top": 5728,
+                "height": 20,
+                "width": 90
+              },
+              "snippet": "<a href=\"https://www.nbrii.com/about/clients/circle-of-excellence\" target=\"_blank\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 691,
+                "top": 56,
+                "height": 22,
+                "width": 39
+              },
+              "snippet": "<a href=\"tel:8882338746\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[1]/div[1]/div[2]/h2[1]",
+                "aria": "/document[1]/heading[3]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 107,
+                "top": 2720,
+                "height": 88,
+                "width": 594
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[2]/div[3]/a[1]",
+                "aria": "/document[1]/link[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 150,
+                "top": 2125,
+                "height": 424,
+                "width": 500
+              },
+              "snippet": "<a href=\"https://addus.com/hospice/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[2]/div[2]/a[1]",
+                "aria": "/document[1]/link[6]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 150,
+                "top": 1676,
+                "height": 424,
+                "width": 500
+              },
+              "snippet": "<a href=\"https://addus.com/home-health/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[5]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 150,
+                "top": 1227,
+                "height": 424,
+                "width": 500
+              },
+              "snippet": "<a href=\"https://addus.com/home-community/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/h4[1]",
+                "aria": "/document[1]/heading[2]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 47,
+                "top": 1158,
+                "height": 40,
+                "width": 707
+              },
+              "snippet": "<h4 class=\"border-heading\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/h2[1]",
+                "aria": "/document[1]/heading[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 40,
+                "top": 618,
+                "height": 132,
+                "width": 720
+              },
+              "snippet": "<h2 id=\"h-our-approach-is-simple-we-provide-great-care-and-we-pay-attention-to-your-needs\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/link[4]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 313,
+                "top": 792,
+                "height": 51,
+                "width": 175
+              },
+              "snippet": "<a class=\" button-c \" target=\"\" href=\"https://addus.com/contact/\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 4842,
+                "height": 943,
+                "width": 800
+              },
+              "snippet": "<footer>",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://addus.com/",
+      "what": "Addus HomeCare (CCVAX)",
+      "result": "https://addus.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://addus.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Addus HomeCare | In Home Care, Home Health & Hospice Care Agency",
+          "pageurl": "https://addus.com/",
+          "time": 2.62,
+          "creditsremaining": 1111,
+          "allitemcount": 50,
+          "totalelements": 363,
+          "waveurl": "http://wave.webaim.org/report?url=https://addus.com/",
+          "domid": "48ae42801b890b0d4ace161cfe777b68"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 3,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION + DIV + DIV + DIV + SECTION > DIV:first-child > DIV:first-child > H2:first-child + DIV > IMG:first-child + DIV > DIV:first-child > DIV:first-child + DIV > P:first-child > IMG:first-child"
+                ]
+              },
+              "alt_link_missing": {
+                "id": "alt_link_missing",
+                "description": "Linked image missing alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#cssmenu > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION + DIV + DIV + DIV + SECTION + FOOTER > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > A:first-child > IMG:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 11,
+            "items": {
+              "alt_suspicious": {
+                "id": "alt_suspicious",
+                "description": "Suspicious alternative text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER > DIV:first-child > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION > DIV:first-child > IMG:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > IMG:first-child"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION + DIV + DIV > DIV:first-child > DIV#teaser-block_5d26fe61ff0d4 > DIV:first-child > DIV:first-child > H4:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION + DIV + DIV + DIV + SECTION + FOOTER > DIV:first-child > DIV:first-child + DIV > H5:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > UL#menu-main-navigation > LI#menu-item-337 > A:first-child + UL > LI#menu-item-858 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > UL#menu-main-navigation > LI#menu-item-539 > A:first-child + UL > LI#menu-item-384 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#cssmenu > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > UL#menu-main-navigation-1 > LI:first-child > SPAN:first-child + A + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#cssmenu > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > UL#menu-main-navigation-1 > LI:first-child + LI > SPAN:first-child + A + UL > LI:first-child > A:first-child"
+                ]
+              },
+              "link_pdf": {
+                "id": "link_pdf",
+                "description": "Link to PDF document",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION + DIV + DIV + DIV + SECTION + FOOTER > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child + DIV > P:first-child > BR:first-child + A"
+                ]
+              },
+              "event_handler": {
+                "id": "event_handler",
+                "description": "Device dependent event handler",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION + DIV + DIV + DIV + SECTION + FOOTER > DIV:first-child > DIV:first-child + DIV + DIV > H4:first-child + DIV + DIV > A:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV:first-child + HEADER + DIV + SECTION + DIV + DIV + DIV + SECTION + FOOTER > DIV:first-child > DIV:first-child + DIV + DIV > H4:first-child + DIV + DIV > A:first-child + A > IMG:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 677,
+          "axe": 41,
+          "bulk": 0,
+          "embAc": 0,
+          "focAll": 0,
+          "focInd": 385,
+          "focOp": 0,
+          "hover": 48,
+          "ibm": 28,
+          "labClash": 0,
+          "linkUl": 45,
+          "log": 0,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 0,
+          "styleDiff": 60,
+          "tabNav": 0,
+          "wave": 34,
+          "zIndex": 36
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      104
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      3
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focInd",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

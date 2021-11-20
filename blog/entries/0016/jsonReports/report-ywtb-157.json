@@ -1,0 +1,3456 @@
+{
+  "script": "a11y04",
+  "batch": "esgRest",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "ywtb",
+  "logCount": 9,
+  "logSize": 189,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 1,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "bytes": [
+          1054985,
+          1008307,
+          1002513,
+          1025483,
+          591490
+        ],
+        "localRatios": [
+          1.046,
+          1.006,
+          1.023,
+          1.734
+        ],
+        "meanLocalRatio": 1.202,
+        "maxLocalRatio": 1.734,
+        "globalRatio": 1.784,
+        "pixelChanges": [
+          307837,
+          327317,
+          317182,
+          312673
+        ],
+        "meanPixelChange": 316252,
+        "maxPixelChange": 327317,
+        "changeFrequency": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.ncino.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 17,
+          "serious": 1,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "a[href=\"\\.\\/\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "user-scalable=no on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#cookie-banner",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#notice",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#home_banner",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".main",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".alt.section > .container > h2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".alt.section > .container > p",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col-md-2.col-sm-4.col-xs-6:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col-md-2.col-sm-4.col-xs-6:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col-md-2.col-sm-4.col-xs-6:nth-child(4)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col-md-2.col-sm-4.col-xs-6:nth-child(5)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col-md-2.col-sm-4.col-xs-6:nth-child(7)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".col-md-2.col-sm-4.col-xs-6:nth-child(8)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".container > div:nth-child(5)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".section.container:nth-child(4)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".section.container:nth-child(5)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".alt:nth-child(6)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.ncino.com/",
+      "result": {
+        "visibleElements": 194
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.ncino.com/",
+      "result": {
+        "tabFocusables": 37,
+        "tabFocused": 37,
+        "discrepancy": 0
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "total": 55,
+          "types": {
+            "indicatorMissing": {
+              "total": 36,
+              "tagNames": {
+                "A": 34,
+                "BUTTON": 2
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 16,
+              "tagNames": {
+                "A": 16
+              }
+            },
+            "outlinePresent": {
+              "total": 3,
+              "tagNames": {
+                "INPUT": 2,
+                "A": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": "Cookie Preference Center"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Cookie Preference Center"
+            },
+            {
+              "tagName": "A",
+              "text": "Accept"
+            },
+            {
+              "tagName": "A",
+              "text": "Manage"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Confirm My Choices"
+            },
+            {
+              "tagName": "A",
+              "text": "Deutsch"
+            },
+            {
+              "tagName": "A",
+              "text": "English"
+            },
+            {
+              "tagName": "A",
+              "text": "Español"
+            },
+            {
+              "tagName": "A",
+              "text": "Français"
+            },
+            {
+              "tagName": "A",
+              "text": "Italiano"
+            },
+            {
+              "tagName": "A",
+              "text": "日本語"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "☰X"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Platform"
+            },
+            {
+              "tagName": "A",
+              "text": "Success"
+            },
+            {
+              "tagName": "A",
+              "text": "Journey"
+            },
+            {
+              "tagName": "A",
+              "text": "Culture"
+            },
+            {
+              "tagName": "A",
+              "text": "Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Deutsch"
+            },
+            {
+              "tagName": "A",
+              "text": "English"
+            },
+            {
+              "tagName": "A",
+              "text": "Español"
+            },
+            {
+              "tagName": "A",
+              "text": "Français"
+            },
+            {
+              "tagName": "A",
+              "text": "Italiano"
+            },
+            {
+              "tagName": "A",
+              "text": "日本語"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "View Success Stories"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Read Our Story"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore"
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Home"
+            },
+            {
+              "tagName": "A",
+              "text": "Pause"
+            },
+            {
+              "tagName": "A",
+              "text": "Unmute"
+            },
+            {
+              "tagName": "A",
+              "text": "Back to Top"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms & Conditions"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Log In"
+            },
+            {
+              "tagName": "A",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Instagram"
+            },
+            {
+              "tagName": "A",
+              "text": "RSS"
+            },
+            {
+              "tagName": "A",
+              "text": "YouTube"
+            },
+            {
+              "tagName": "A",
+              "text": "GlassDoor"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "See a Demo"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "total": 101,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 6,
+              "tagNames": {
+                "DIV": 6
+              }
+            },
+            "focusableAndOperable": {
+              "total": 95,
+              "tagNames": {
+                "A": 91,
+                "INPUT": 2,
+                "BUTTON": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "DIV",
+              "id": "cookie_details_close",
+              "text": "<div id=\"cookie_details_close\" class=\"close_grey\" style=\"cursor: default;\"></div",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"toggle\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"toggle\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"toggle\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Deutsch English Español Français Italiano 日本語",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "Deutsch English Español Français Italiano 日本語",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Cookie Preference Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Cookie Preference Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "cookie-banner-ok",
+              "text": "Accept",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"checkbox\" class=\"switch simple-switch\" name=\"performance\" checked=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"checkbox\" class=\"switch simple-switch\" name=\"marketing\" checked=\"ch",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "cookie-save",
+              "text": "Confirm My Choices",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Deutsch",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Español",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Français",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Italiano",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "日本語",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "menu-toggle",
+              "text": "☰X",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Leadership Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Consulting Partners",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Technology Partners",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Platform",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Benefits/Value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "How it Works",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Solutions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Features",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Integrations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Security",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Demo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Success",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Customers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Case Studies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "User Spotlights",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Customer Snapshots",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Customer Videos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Journey",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Implementation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Change Management",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Community",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "University",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Customer Success",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Culture",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Culture",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Where We Live",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Benefits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Awards",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "nVolve",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recent News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Analyst Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "White Papers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Webinars",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Videos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Brand",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Deutsch",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "English",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Español",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Français",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Italiano",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "日本語",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Pause",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Unmute",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "See a Demo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View Success Stories",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Read Our Story",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Back to Top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Terms & Conditions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "footer_login",
+              "text": "Log In",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LinkedIn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Instagram",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RSS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "YouTube",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "GlassDoor",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "triggers": 12,
+          "madeVisible": 0,
+          "opacityChanged": 12,
+          "opacityAffected": 12,
+          "unhoverables": 4
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "About Our Story Leadership Team Consulting Partner",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Platform Overview Benefits/Value How it Works Solu",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Platform",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Success Overview Our Customers Case Studies User S",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Success",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Journey Overview Implementation Change Management ",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Journey",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Culture Overview Culture Careers Where We Live Ben",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Culture",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Resources Recent News Analyst Reports White Papers",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Resources",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"highlight\"></span>"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Pause"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Pause"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Unmute"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Unmute"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 4
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {}
+            },
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {}
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Confirm My Choices"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "☰X"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "links": 91,
+          "inline": {
+            "total": 10,
+            "underlined": 4,
+            "underlinedPercent": 40
+          }
+        },
+        "items": {
+          "underlined": [
+            "Cookie Preference Center",
+            "Privacy Policy",
+            "Cookie Preference Center",
+            "Learn More"
+          ],
+          "notUnderlined": [
+            "Careers",
+            "Investor Relations",
+            "Terms & Conditions",
+            "Privacy Policy",
+            "Contact",
+            "Log In"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.ncino.com/",
+      "result": {
+        "roleElements": 0,
+        "badRoleElements": 0,
+        "tagNames": {}
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "h3": {
+            "total": 2
+          },
+          "aInline": {
+            "total": 10,
+            "subtotals": [
+              6,
+              3,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 81,
+            "subtotals": [
+              40,
+              7,
+              7,
+              6,
+              6,
+              6,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "52.8px": 3,
+              "70.4px": 1
+            },
+            "minHeight": {
+              "0px": 3,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 3,
+              "auto": 1
+            },
+            "fontSize": {
+              "48px": 12,
+              "64px": 2
+            }
+          },
+          "h3": {},
+          "aInline": {
+            "lineHeight": {
+              "18.5714px": 6,
+              "22.8571px": 3,
+              "25.2px": 1
+            },
+            "textDecorationLine": {
+              "none": 6,
+              "underline": 4
+            },
+            "fontSize": {
+              "13px": 42,
+              "16px": 21,
+              "18px": 7
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 67,
+              "solid": 13,
+              "none none solid": 1
+            },
+            "borderWidth": {
+              "0px": 67,
+              "1px": 12,
+              "3px": 1,
+              "0px 0px 2px": 1
+            },
+            "lineHeight": {
+              "18px": 53,
+              "23.4px": 8,
+              "18.5714px": 7,
+              "17.1429px": 6,
+              "30.6px": 3,
+              "20px": 2,
+              "20.4px": 1,
+              "42.8571px": 1
+            },
+            "minHeight": {
+              "0px": 72,
+              "auto": 9
+            },
+            "minWidth": {
+              "0px": 72,
+              "auto": 9
+            },
+            "fontSize": {
+              "16px": 280,
+              "18px": 126,
+              "12px": 91,
+              "13px": 49,
+              "14px": 14,
+              "30px": 7
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "solid": 1,
+              "outset": 1
+            },
+            "borderWidth": {
+              "1px": 1,
+              "2px": 1
+            },
+            "lineHeight": {
+              "30.6px": 1,
+              "18px": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.ncino.com/",
+      "result": {
+        "totals": {
+          "total": 12,
+          "tagNames": {
+            "DIV": 10,
+            "HEADER": 1,
+            "A": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "DIV",
+            "id": "cookie-banner",
+            "text": "Our website uses necessary cookies in order to function and give you the best experience possible. W"
+          },
+          {
+            "tagName": "DIV",
+            "id": "cookie-preference-modal",
+            "text": "Preference Center When you visit our website, we may use cookies to store or retrieve information on"
+          },
+          {
+            "tagName": "DIV",
+            "id": "cookie_details_close",
+            "text": ""
+          },
+          {
+            "tagName": "HEADER",
+            "id": "site-navigation",
+            "text": "Deutsch English Español Français Italiano 日本語 Contact ☰X Home About Our Story Leadership Team Consul"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Deutsch English Español Français Italiano 日本語"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Home"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Deutsch English Español Français Italiano 日本語"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "notice",
+            "text": "Wells Fargo Selects nCino to Enhance Commercial Banking Lending | Learn More"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "PauseUnmute"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "The Worldwide Leader in Cloud Banking See a Demo"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.ncino.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 28,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/banner[1]/link[8]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 335,
+                "top": 33,
+                "height": 50,
+                "width": 130
+              },
+              "snippet": "<a class=\"ncino_logo\" href=\"./\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/h2[1]",
+                "aria": "/document[1]/heading[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 30,
+                "top": 2918,
+                "height": 52,
+                "width": 740
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/div[2]/div[3]/a[1]",
+                "aria": "/document[1]/link[15]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 4126,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"news/whitepapers\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/div[2]/div[2]/a[1]",
+                "aria": "/document[1]/link[14]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 3735,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"platform\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[13]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 3319,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"about\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/h2[1]",
+                "aria": "/document[1]/heading[6]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 30,
+                "top": 1709,
+                "height": 104,
+                "width": 740
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[4]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 430,
+                "top": 2581,
+                "height": 100,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[3]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 60,
+                "top": 2581,
+                "height": 125,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[2]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 430,
+                "top": 2111,
+                "height": 125,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 60,
+                "top": 2111,
+                "height": 100,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[3]/div[1]/h2[1]",
+                "aria": "/document[1]/heading[5]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 40,
+                "top": 1021,
+                "height": 52,
+                "width": 720
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[3]/div[1]/div[3]/a[1]",
+                "aria": "/document[1]/link[8]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 1582,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"success\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 109,
+                "top": 513,
+                "height": 200,
+                "width": 584
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[2]/h1[1]",
+                "aria": "/document[1]/heading[3]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 99,
+                "top": 185,
+                "height": 30,
+                "width": 603
+              },
+              "snippet": "<h1>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 250,
+                "top": 345,
+                "height": 88,
+                "width": 300
+              },
+              "snippet": "<a class=\"btn\" href=\"platform/demo\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[1]/div[1]/ul[1]",
+                "aria": "/document[1]/list[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 695,
+                "height": 34,
+                "width": 800
+              },
+              "snippet": "<ul class=\"ui-video-background-controls\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/a[1]",
+                "aria": "/document[1]/link[6]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 583,
+                "top": 111,
+                "height": 16,
+                "width": 72
+              },
+              "snippet": "<a href=\"https://www.globenewswire.com/news-release/2021/09/01/2290387/0/en/Wells-Fargo-Selects-nCino-to-Enhance-Commercial-Banking-Lending.html\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 42,
+                "top": 299,
+                "height": 198,
+                "width": 380
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[4]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 52,
+                "top": 517,
+                "height": 41,
+                "width": 170
+              },
+              "snippet": "<a class=\"ghost_btn\" id=\"cookie-banner-ok\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/ul[1]/li[7]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/banner[1]/list[1]/listitem[7]/link[1]"
+              },
+              "message": "Text contrast of 4.40 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 400",
+              "bounds": {
+                "left": -843,
+                "top": 528,
+                "height": 14,
+                "width": 72
+              },
+              "snippet": "<span class=\"title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/button[1]/span[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "Text contrast of 1.27 with its background is less than the WCAG AA minimum requirements for text of size 32px and weight of 400",
+              "bounds": {
+                "left": 6,
+                "top": 47,
+                "height": 16,
+                "width": 73
+              },
+              "snippet": "<span class=\"menu_open\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]/a[3]",
+                "aria": "/document[1]/link[3]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 167,
+                "top": 477,
+                "height": 17,
+                "width": 185
+              },
+              "snippet": "<a class=\"cookie-banner-preference\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]/a[2]",
+                "aria": "/document[1]/link[2]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 42,
+                "top": 455,
+                "height": 39,
+                "width": 363
+              },
+              "snippet": "<a href=\"https://www.ncino.com/privacy-policy#personal-info\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 42,
+                "top": 411,
+                "height": 39,
+                "width": 324
+              },
+              "snippet": "<a class=\"cookie-banner-preference\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 42,
+                "top": 299,
+                "height": 198,
+                "width": 380
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/a[2]",
+                "aria": "/document[1]/link[5]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 400",
+              "bounds": {
+                "left": 242,
+                "top": 517,
+                "height": 41,
+                "width": 170
+              },
+              "snippet": "<a class=\"ghost_btn cookie-banner-preference\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[4]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 400",
+              "bounds": {
+                "left": 52,
+                "top": 517,
+                "height": 41,
+                "width": 170
+              },
+              "snippet": "<a class=\"ghost_btn\" id=\"cookie-banner-ok\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/list[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'list'",
+              "bounds": {
+                "left": -1000,
+                "top": 139,
+                "height": 437,
+                "width": 800
+              },
+              "snippet": "<ul class=\" nav-menu\" aria-expanded=\"false\" id=\"primary-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 4652,
+                "height": 144,
+                "width": 800
+              },
+              "snippet": "<footer id=\"footer\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 28,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/banner[1]/link[8]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 335,
+                "top": 33,
+                "height": 50,
+                "width": 130
+              },
+              "snippet": "<a class=\"ncino_logo\" href=\"./\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/h2[1]",
+                "aria": "/document[1]/heading[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 30,
+                "top": 2943,
+                "height": 52,
+                "width": 740
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/div[2]/div[3]/a[1]",
+                "aria": "/document[1]/link[15]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 4151,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"news/whitepapers\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/div[2]/div[2]/a[1]",
+                "aria": "/document[1]/link[14]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 3760,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"platform\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[5]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[13]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 3344,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"about\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/h2[1]",
+                "aria": "/document[1]/heading[6]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 30,
+                "top": 1709,
+                "height": 104,
+                "width": 740
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[4]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 430,
+                "top": 2606,
+                "height": 100,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[3]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 60,
+                "top": 2606,
+                "height": 125,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[2]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 430,
+                "top": 2136,
+                "height": 125,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[4]/div[2]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 60,
+                "top": 2136,
+                "height": 100,
+                "width": 310
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[3]/div[1]/h2[1]",
+                "aria": "/document[1]/heading[5]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 40,
+                "top": 1021,
+                "height": 52,
+                "width": 720
+              },
+              "snippet": "<h2>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[3]/div[1]/div[3]/a[1]",
+                "aria": "/document[1]/link[8]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 300,
+                "top": 1582,
+                "height": 47,
+                "width": 200
+              },
+              "snippet": "<a class=\"ghost_btn\" href=\"success\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[2]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 109,
+                "top": 513,
+                "height": 200,
+                "width": 584
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[2]/h1[1]",
+                "aria": "/document[1]/heading[3]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 81,
+                "top": 185,
+                "height": 30,
+                "width": 639
+              },
+              "snippet": "<h1>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/link[7]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 250,
+                "top": 345,
+                "height": 88,
+                "width": 300
+              },
+              "snippet": "<a class=\"btn\" href=\"platform/demo\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/div[1]/div[1]/ul[1]",
+                "aria": "/document[1]/list[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 695,
+                "height": 34,
+                "width": 800
+              },
+              "snippet": "<ul class=\"ui-video-background-controls\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/a[1]",
+                "aria": "/document[1]/link[6]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 583,
+                "top": 111,
+                "height": 17,
+                "width": 73
+              },
+              "snippet": "<a href=\"https://www.globenewswire.com/news-release/2021/09/01/2290387/0/en/Wells-Fargo-Selects-nCino-to-Enhance-Commercial-Banking-Lending.html\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 42,
+                "top": 299,
+                "height": 198,
+                "width": 380
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[4]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 52,
+                "top": 517,
+                "height": 41,
+                "width": 170
+              },
+              "snippet": "<a class=\"ghost_btn\" id=\"cookie-banner-ok\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/ul[1]/li[7]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/banner[1]/list[1]/listitem[7]/link[1]"
+              },
+              "message": "Text contrast of 4.40 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 400",
+              "bounds": {
+                "left": -844,
+                "top": 528,
+                "height": 14,
+                "width": 73
+              },
+              "snippet": "<span class=\"title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/button[1]/span[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "Text contrast of 1.27 with its background is less than the WCAG AA minimum requirements for text of size 32px and weight of 400",
+              "bounds": {
+                "left": 6,
+                "top": 47,
+                "height": 16,
+                "width": 73
+              },
+              "snippet": "<span class=\"menu_open\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]/a[3]",
+                "aria": "/document[1]/link[3]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 224,
+                "top": 476,
+                "height": 19,
+                "width": 186
+              },
+              "snippet": "<a class=\"cookie-banner-preference\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]/a[2]",
+                "aria": "/document[1]/link[2]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 42,
+                "top": 476,
+                "height": 19,
+                "width": 97
+              },
+              "snippet": "<a href=\"https://www.ncino.com/privacy-policy#personal-info\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 42,
+                "top": 432,
+                "height": 19,
+                "width": 186
+              },
+              "snippet": "<a class=\"cookie-banner-preference\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/p[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 42,
+                "top": 299,
+                "height": 198,
+                "width": 380
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/a[2]",
+                "aria": "/document[1]/link[5]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 400",
+              "bounds": {
+                "left": 242,
+                "top": 517,
+                "height": 41,
+                "width": 170
+              },
+              "snippet": "<a class=\"ghost_btn cookie-banner-preference\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[4]"
+              },
+              "message": "Text contrast of 3.12 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 400",
+              "bounds": {
+                "left": 52,
+                "top": 517,
+                "height": 41,
+                "width": 170
+              },
+              "snippet": "<a class=\"ghost_btn\" id=\"cookie-banner-ok\" href=\"javascript:;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[2]/div[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/list[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'list'",
+              "bounds": {
+                "left": -1000,
+                "top": 139,
+                "height": 437,
+                "width": 800
+              },
+              "snippet": "<ul class=\" nav-menu\" aria-expanded=\"false\" id=\"primary-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/footer[1]",
+                "aria": "/document[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 0,
+                "top": 4638,
+                "height": 144,
+                "width": 800
+              },
+              "snippet": "<footer id=\"footer\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.ncino.com/",
+      "what": "nCino (CCVAX)",
+      "result": "https://www.ncino.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.ncino.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "nCino Bank Operating System",
+          "pageurl": "https://www.ncino.com/",
+          "time": 2.32,
+          "creditsremaining": 562,
+          "allitemcount": 50,
+          "totalelements": 463,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.ncino.com/",
+          "domid": "06165eea6635324e085337bd9aca3e3f"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 2,
+            "items": {
+              "label_empty": {
+                "id": "label_empty",
+                "description": "Empty form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#cookie-preference > DIV#cookie-preference-modal > DIV:first-child > DIV:first-child + DIV > DIV#cookie-options > DIV:first-child > DIV:first-child + DIV > DIV:first-child + LABEL",
+                  "HTML > HEAD:first-child + BODY > DIV#cookie-preference > DIV#cookie-preference-modal > DIV:first-child > DIV:first-child + DIV > DIV#cookie-options > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + LABEL"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 4,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#content > DIV#home_banner > DIV:first-child > VIDEO:first-child + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#content > DIV#home_banner > DIV:first-child > VIDEO:first-child + DIV > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#content > DIV#home_banner > DIV:first-child + DIV > H1:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#content > DIV#home_banner > DIV:first-child + DIV > H1:first-child + H2"
+                ],
+                "contrastdata": [
+                  [
+                    3.53,
+                    "#0092c7",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    3.53,
+                    "#0092c7",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 12,
+            "items": {
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#cookie-banner > DIV:first-child > DIV#cookie-banner-options > A#cookie-banner-ok",
+                  "HTML > HEAD:first-child + BODY > DIV#cookie-banner > DIV:first-child > DIV#cookie-banner-options > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > HEADER#site-navigation > DIV:first-child + DIV > DIV#nav > UL#primary-menu > LI:first-child > SPAN:first-child + A + DIV > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > HEADER#site-navigation > DIV:first-child + DIV > DIV#nav > UL#primary-menu > LI:first-child + LI + LI + LI + LI + LI > SPAN:first-child + A + DIV > UL:first-child > LI:first-child > A:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#content > DIV:first-child + DIV > DIV:first-child > DIV#home_intro > P:first-child > SPAN:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > FOOTER#footer > DIV:first-child > DIV#footer_icons > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FOOTER#footer > DIV:first-child > DIV#footer_icons > DIV:first-child + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FOOTER#footer > DIV:first-child > DIV#footer_icons > DIV:first-child + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FOOTER#footer > DIV:first-child > DIV#footer_icons > DIV:first-child + DIV + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FOOTER#footer > DIV:first-child > DIV#footer_icons > DIV:first-child + DIV + DIV + DIV + DIV > A:first-child",
+                  "HTML > HEAD:first-child + BODY > FOOTER#footer > DIV:first-child > DIV#footer_icons > DIV:first-child + DIV + DIV + DIV + DIV + DIV > A:first-child"
+                ]
+              },
+              "html5_video_audio": {
+                "id": "html5_video_audio",
+                "description": "HTML5 video or audio",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#content > DIV#home_banner > DIV:first-child > VIDEO:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 641,
+          "axe": 42,
+          "bulk": 0,
+          "embAc": 0,
+          "focAll": 0,
+          "focInd": 228,
+          "focOp": 24,
+          "hover": 59,
+          "ibm": 60,
+          "labClash": 0,
+          "linkUl": 18,
+          "log": 16,
+          "menuNav": 0,
+          "motion": 77,
+          "radioSet": 0,
+          "role": 0,
+          "styleDiff": 41,
+          "tabNav": 0,
+          "wave": 40,
+          "zIndex": 36
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      47
+    ],
+    [
+      "motion",
+      16
+    ],
+    [
+      "ibm",
+      6
+    ],
+    [
+      "focAll",
+      3
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "wave",
+      2
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

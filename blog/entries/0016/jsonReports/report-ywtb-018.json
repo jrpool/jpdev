@@ -1,0 +1,4775 @@
+{
+  "script": "a11y04",
+  "batch": "esgRest",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "ywtb",
+  "logCount": 9,
+  "logSize": 752,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "bytes": [
+          799600,
+          799600,
+          799600,
+          799600,
+          799600
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 4,
+          "moderate": 3,
+          "serious": 5,
+          "critical": 4
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-attr",
+            "description": "Ensures ARIA attributes are allowed for an element's role",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "#youtube-field-player",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-label",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": "svg[aria-labelledby=\"youTubeEStitle\"]",
+                "impact": "critical",
+                "must pass all of": [
+                  {
+                    "check": "aria-prohibited-attr",
+                    "description": "ARIA attribute cannot be used: aria-labelledby",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-dialog-name",
+            "description": "Ensures every ARIA dialog and alertdialog node has an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#onetrust-banner-sdk",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".stock-date",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.97 (foreground color: #ffffff, background color: #ff0800, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".copy-right.field--name-body.field--type-text-with-summary > p > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 4.23 (foreground color: #f21b24, background color: #ffffff, font size: 15.0pt (20px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "strong",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 3.94 (foreground color: #808080, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#onetrust-policy-text > a",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 1.8 (foreground color: #f21924, background color: #535355, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-aria",
+            "description": "Ensures every id attribute value used in ARIA and in labels is unique",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".hidden:nth-child(3) > .form-item.js-form-item.form-type-textfield > .form-text[placeholder=\"Pesquisar\"][data-drupal-selector=\"edit-search-api-fulltext\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-aria",
+                    "description": "Document has multiple elements referenced with ARIA with the same id attribute: edit-search-api-fulltext",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "g[transform=\"translate\\(2\\.000000\\,\\ 13\\.000000\\)\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: renováveis-ex",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "g[transform=\"translate\\(2\\.000000\\,\\ 13\\.000000\\)\"] > path:nth-child(1)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: Shape",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "g[transform=\"translate\\(2\\.000000\\,\\ 13\\.000000\\)\"] > path:nth-child(2)",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: Path",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "svg[viewBox=\"\\31 4\\ 14\\ 400\\ 400\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: Layer_1",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".col-sm-4.col-xs-12.views-row:nth-child(2) > .read-more > .teaser-content > .content-fields-container > .teaser-title",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "a[href=\"\\/pt-pt\\/node\\/18891\"] > .teaser-img > div > .field--name-field-media-image.field--type-image.field > img[width=\"\\34 70\"][height=\"\\35 00\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#block-renewables-theme-mainnavigation-2",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "visibleElements": 345
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "tabFocusables": 39,
+        "tabFocused": 36,
+        "discrepancy": -3
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "total": 112,
+          "types": {
+            "indicatorMissing": {
+              "total": 103,
+              "tagNames": {
+                "A": 96,
+                "INPUT": 1,
+                "BUTTON": 3,
+                "DIV": 2,
+                "IFRAME": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 9,
+              "tagNames": {
+                "SECTION": 3,
+                "INPUT": 1,
+                "BUTTON": 5
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": "Passar para o conteúdo principal"
+            },
+            {
+              "tagName": "A",
+              "text": "EN"
+            },
+            {
+              "tagName": "A",
+              "text": "PT"
+            },
+            {
+              "tagName": "A",
+              "text": "ES"
+            },
+            {
+              "tagName": "A",
+              "text": "logo_renovaveis_desktoprenováveis-ex"
+            },
+            {
+              "tagName": "A",
+              "text": "EDPR"
+            },
+            {
+              "tagName": "A",
+              "text": "Quem somos"
+            },
+            {
+              "tagName": "A",
+              "text": "Visão, valores e compromissos"
+            },
+            {
+              "tagName": "A",
+              "text": "Estrutura organizacional"
+            },
+            {
+              "tagName": "A",
+              "text": "Ética & Compliance"
+            },
+            {
+              "tagName": "A",
+              "text": "O que nós fazemos"
+            },
+            {
+              "tagName": "A",
+              "text": "EDPR fatos e números"
+            },
+            {
+              "tagName": "A",
+              "text": "A nossa indústria"
+            },
+            {
+              "tagName": "A",
+              "text": "Stakeholders"
+            },
+            {
+              "tagName": "A",
+              "text": "Responsablilidade social"
+            },
+            {
+              "tagName": "A",
+              "text": "Carreiras"
+            },
+            {
+              "tagName": "A",
+              "text": "Carreiras"
+            },
+            {
+              "tagName": "A",
+              "text": "Junte-se a nós"
+            },
+            {
+              "tagName": "A",
+              "text": "Porquê trabalhar na EDPR"
+            },
+            {
+              "tagName": "A",
+              "text": "Investidores"
+            },
+            {
+              "tagName": "A",
+              "text": "Investidores"
+            },
+            {
+              "tagName": "A",
+              "text": "Estrutura acionista"
+            },
+            {
+              "tagName": "A",
+              "text": "Analistas financeiros"
+            },
+            {
+              "tagName": "A",
+              "text": "Relatório e contas online 2020 (em inglês)"
+            },
+            {
+              "tagName": "A",
+              "text": "Relatórios e resultados"
+            },
+            {
+              "tagName": "A",
+              "text": "Comunicados ao mercado"
+            },
+            {
+              "tagName": "A",
+              "text": "Informação de bolsa"
+            },
+            {
+              "tagName": "A",
+              "text": "Gráfico de cotações"
+            },
+            {
+              "tagName": "A",
+              "text": "Política de dividendos"
+            },
+            {
+              "tagName": "A",
+              "text": "Pagamento de dividendos"
+            },
+            {
+              "tagName": "A",
+              "text": "Dados chaves"
+            },
+            {
+              "tagName": "A",
+              "text": "Project bonds"
+            },
+            {
+              "tagName": "A",
+              "text": "Dados da empresa"
+            },
+            {
+              "tagName": "A",
+              "text": "Assembleias gerais"
+            },
+            {
+              "tagName": "A",
+              "text": "Órgãos de governo e estrutura de gestão"
+            },
+            {
+              "tagName": "A",
+              "text": "Inovação"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustentabilidade"
+            },
+            {
+              "tagName": "A",
+              "text": "Sustentabilidade"
+            },
+            {
+              "tagName": "A",
+              "text": "Dimensão ambiental"
+            },
+            {
+              "tagName": "A",
+              "text": "Dimensão social"
+            },
+            {
+              "tagName": "A",
+              "text": "Dimensão económica"
+            },
+            {
+              "tagName": "A",
+              "text": "Media"
+            },
+            {
+              "tagName": "A",
+              "text": "Fornecedores"
+            },
+            {
+              "tagName": "A",
+              "text": "Fornecedores"
+            },
+            {
+              "tagName": "A",
+              "text": "Condições de contratação"
+            },
+            {
+              "tagName": "A",
+              "text": "Cadeia de fornecimento sustentável"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "China"
+            },
+            {
+              "tagName": "A",
+              "text": "Vietnam"
+            },
+            {
+              "tagName": "A",
+              "text": "Moçambique"
+            },
+            {
+              "tagName": "A",
+              "text": "Nigéria"
+            },
+            {
+              "tagName": "A",
+              "text": "Bélgica"
+            },
+            {
+              "tagName": "A",
+              "text": "França"
+            },
+            {
+              "tagName": "A",
+              "text": "Grécia"
+            },
+            {
+              "tagName": "A",
+              "text": "Hungria"
+            },
+            {
+              "tagName": "A",
+              "text": "Itália"
+            },
+            {
+              "tagName": "A",
+              "text": "Irlanda"
+            },
+            {
+              "tagName": "A",
+              "text": "Polónia"
+            },
+            {
+              "tagName": "A",
+              "text": "EDP Institucional"
+            },
+            {
+              "tagName": "A",
+              "text": "EDP Renewables"
+            },
+            {
+              "tagName": "A",
+              "text": "Roménia"
+            },
+            {
+              "tagName": "A",
+              "text": "EDP Institucional"
+            },
+            {
+              "tagName": "A",
+              "text": "EDP Renewables"
+            },
+            {
+              "tagName": "A",
+              "text": "Reino Unido"
+            },
+            {
+              "tagName": "A",
+              "text": "Canadá"
+            },
+            {
+              "tagName": "A",
+              "text": "México"
+            },
+            {
+              "tagName": "A",
+              "text": "EUA"
+            },
+            {
+              "tagName": "A",
+              "text": "EDP Institucional"
+            },
+            {
+              "tagName": "A",
+              "text": "EDP Renewables"
+            },
+            {
+              "tagName": "A",
+              "text": "Colômbia"
+            },
+            {
+              "tagName": "A",
+              "text": "Perú"
+            },
+            {
+              "tagName": "A",
+              "text": "portugal.edp.com"
+            },
+            {
+              "tagName": "A",
+              "text": "espana.edp.com"
+            },
+            {
+              "tagName": "A",
+              "text": "brasil.edp.com"
+            },
+            {
+              "tagName": "A",
+              "text": "edpr.com"
+            },
+            {
+              "tagName": "DIV",
+              "text": "edpr EDPR reforça a sua presença na região da Ásia-PacíficoA companhia chegou a acordo para adquirir"
+            },
+            {
+              "tagName": "A",
+              "text": "Mais detalhes"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Next"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "1"
+            },
+            {
+              "tagName": "A",
+              "text": "Conheça a nossa empresa."
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "A EDPR reforça a sua presença na região da Ásia-Pacífico através do investimento no grupo Sunseap, d"
+            },
+            {
+              "tagName": "A",
+              "text": "Apresentação de Resultados 9M21 da EDPR 28/10/2021"
+            },
+            {
+              "tagName": "A",
+              "text": "EDPR assegura CAE a 15 anos para projeto solar de 209 MWac no Brasil25/10/2021O projeto localiza-se "
+            },
+            {
+              "tagName": "A",
+              "text": "Mais Notícias"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Annual Report 2020"
+            },
+            {
+              "tagName": "A",
+              "text": "Innovation"
+            },
+            {
+              "tagName": "A",
+              "text": "Join Us"
+            },
+            {
+              "tagName": "A",
+              "text": "What we do"
+            },
+            {
+              "tagName": "A",
+              "text": "Contatos."
+            },
+            {
+              "tagName": "A",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "A",
+              "text": ".cls-1 { fill: none; } .cls-2 { fill: #000; } Twitter_Logo_Blue"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Política de Cookies"
+            },
+            {
+              "tagName": "A",
+              "text": "Política de Proteção de Dados Pessoais"
+            },
+            {
+              "tagName": "A",
+              "text": "Aviso de Privacidade"
+            },
+            {
+              "tagName": "A",
+              "text": "Condições Legais"
+            },
+            {
+              "tagName": "A",
+              "text": "Política de Integridade"
+            },
+            {
+              "tagName": "DIV",
+              "text": "Os cookies neste site podem ser utilizados pela EDP e pelos seus parceiros para melhorar a navegação"
+            },
+            {
+              "tagName": "A",
+              "text": "Política de Cookies"
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": [
+            {
+              "tagName": "SECTION",
+              "text": "EDP no mundo"
+            },
+            {
+              "tagName": "SECTION",
+              "text": ""
+            },
+            {
+              "tagName": "SECTION",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Definições de cookies"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Rejeitar Todos"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Aceitar todos os cookies"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "total": 162,
+          "types": {
+            "onlyFocusable": {
+              "total": 5,
+              "tagNames": {
+                "SECTION": 3,
+                "DIV": 2
+              }
+            },
+            "onlyOperable": {
+              "total": 20,
+              "tagNames": {
+                "DIV": 9,
+                "SELECT": 1,
+                "A": 2,
+                "LI": 3,
+                "BUTTON": 2,
+                "SPAN": 2,
+                "SECTION": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 137,
+              "tagNames": {
+                "A": 99,
+                "INPUT": 11,
+                "BUTTON": 25,
+                "IFRAME": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [
+            {
+              "tagName": "SECTION",
+              "id": "block-renewables-theme-edpworld",
+              "text": "EDP no mundo"
+            },
+            {
+              "tagName": "SECTION",
+              "id": "block-renewables-theme-menubutton",
+              "text": "<section id=\"block-renewables-theme-menubutton\" class=\"header-site-menu-button m"
+            },
+            {
+              "tagName": "SECTION",
+              "id": "block-renewables-theme-clicktosearch",
+              "text": "<section id=\"block-renewables-theme-clicktosearch\" class=\"data-site-search extra"
+            },
+            {
+              "tagName": "DIV",
+              "id": "slick-slide00",
+              "text": "edpr EDPR reforça a sua presença na região da Ásia-PacíficoA companhia chegou a "
+            },
+            {
+              "tagName": "DIV",
+              "id": "onetrust-banner-sdk",
+              "text": "Os cookies neste site podem ser utilizados pela EDP e pelos seus parceiros para "
+            }
+          ],
+          "onlyOperable": [
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "EDP no mundo",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "pt",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "ENPTES",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"close-search-btn\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SELECT",
+              "id": "",
+              "text": "<select class=\"search-select2-autocomplete select2-hidden-accessible\" data-selec",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"search-enter\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"voice-search\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"opt first-opt\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"opt second-opt\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div class=\"opt third-opt\" style=\"cursor: default;\"></div>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Mais detalhes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "conheça esta iniciativa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "1",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "2",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "slick-slide-control01",
+              "text": "2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "3",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "slick-slide-control02",
+              "text": "3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"ot-switch-nob\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"ot-switch-nob\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SECTION",
+              "id": "",
+              "text": "33Acrosshost descriptionView Cookies",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Passar para o conteúdo principal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EN",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PT",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ES",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "logo_renovaveis_desktoprenováveis-ex",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDPR",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quem somos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Visão, valores e compromissos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Estrutura organizacional",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ética & Compliance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "O que nós fazemos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDPR fatos e números",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "A nossa indústria",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Stakeholders",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Responsablilidade social",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carreiras",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Carreiras",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Junte-se a nós",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Porquê trabalhar na EDPR",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investidores",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investidores",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Estrutura acionista",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Analistas financeiros",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Relatório e contas online 2020 (em inglês)",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Relatórios e resultados",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Comunicados ao mercado",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Informação de bolsa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Gráfico de cotações",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Política de dividendos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Pagamento de dividendos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dados chaves",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Project bonds",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dados da empresa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Assembleias gerais",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Órgãos de governo e estrutura de gestão",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Inovação",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustentabilidade",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sustentabilidade",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dimensão ambiental",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dimensão social",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dimensão económica",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fornecedores",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fornecedores",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Condições de contratação",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Cadeia de fornecimento sustentável",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input class=\"select2-search__field\" type=\"search\" tabindex=\"0\" autocomplete=\"of",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-search-api-fulltext",
+              "text": "<input placeholder=\"Pesquisar\" data-drupal-selector=\"edit-search-api-fulltext\" c",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-search-api-fulltext",
+              "text": "<input placeholder=\"Pesquisar\" data-drupal-selector=\"edit-search-api-fulltext\" c",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-submit-corp-global-search-single",
+              "text": "<input data-drupal-selector=\"edit-submit-corp-global-search-single\" class=\"butto",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button type=\"button\" class=\"close\" style=\"cursor: default;\"></button>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "China",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Vietnam",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Moçambique",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nigéria",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Bélgica",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "França",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Grécia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hungria",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Itália",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Irlanda",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Polónia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDP Institucional",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDP Renewables",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Roménia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDP Institucional",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDP Renewables",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reino Unido",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Canadá",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "México",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EUA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDP Institucional",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDP Renewables",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Colômbia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Perú",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "portugal.edp.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "espana.edp.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "brasil.edp.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "edpr.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "main-content",
+              "text": "<a id=\"main-content\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Previous",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Mais detalhes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "slick-slide-control00",
+              "text": "1",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Conheça a nossa empresa.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "youtube-field-player",
+              "text": "<iframe src=\"https://www.youtube-nocookie.com/embed/6xKcDbsqmLI?wmode=opaque&amp",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "A EDPR reforça a sua presença na região da Ásia-Pacífico através do investimento",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Apresentação de Resultados 9M21 da EDPR 28/10/2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EDPR assegura CAE a 15 anos para projeto solar de 209 MWac no Brasil25/10/2021O ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Mais Notícias",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/pt-pt\" title=\"EDPR Logo\" style=\"cursor: default;\"><div class=\"menu_lin",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"\" title=\"Access\" style=\"cursor: default;\"><div class=\"menu_link_content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Annual Report 2020",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Innovation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Join Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "What we do",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contatos.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LinkedIn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": ".cls-1 { fill: none; } .cls-2 { fill: #000; } Twitter_Logo_Blue",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.youtube.com/user/EDPRENOVAVEIS\" title=\"Youtube\" target=\"_bl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Política de Cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Política de Proteção de Dados Pessoais",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Aviso de Privacidade",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Condições Legais",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Política de Integridade",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "close-pc-btn-handler",
+              "text": "<button id=\"close-pc-btn-handler\" class=\"ot-close-icon\" aria-label=\"Fechar\" styl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Política de Cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "accept-recommended-btn-handler",
+              "text": "Permitir todos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button aria-expanded=\"false\" ot-accordion=\"true\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Detalhes dos cookies‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button aria-expanded=\"false\" ot-accordion=\"true\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ot-group-id-C0002",
+              "text": "<input type=\"checkbox\" name=\"ot-group-id-C0002\" id=\"ot-group-id-C0002\" aria-chec",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Detalhes dos cookies‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button aria-expanded=\"false\" ot-accordion=\"true\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ot-group-id-C0004",
+              "text": "<input type=\"checkbox\" name=\"ot-group-id-C0004\" id=\"ot-group-id-C0004\" aria-chec",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Detalhes dos cookies‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Back Button",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "vendor-search-handler",
+              "text": "<input id=\"vendor-search-handler\" type=\"text\" placeholder=\"Search...\" name=\"vend",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-btn-handler",
+              "text": "Filter Icon",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "clear-filters-handler",
+              "text": "Clear",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "chkbox-id",
+              "text": "<input id=\"chkbox-id\" type=\"checkbox\" aria-checked=\"false\" class=\"category-filte",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-apply-handler",
+              "text": "Apply",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-cancel-handler",
+              "text": "Cancel",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-hosts-groups-handler",
+              "text": "<input id=\"select-all-hosts-groups-handler\" type=\"checkbox\" aria-checked=\"false\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-vendor-groups-handler",
+              "text": "<input id=\"select-all-vendor-groups-handler\" type=\"checkbox\" aria-checked=\"false",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-vendor-leg-handler",
+              "text": "<input id=\"select-all-vendor-leg-handler\" type=\"checkbox\" aria-checked=\"false\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"ot-host-box\" aria-expanded=\"false\" style=\"cursor: default;\"></but",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Rejeitar todos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Confirmar as minhas escolhas",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://onetrust.com/poweredbyonetrust\" target=\"_blank\" rel=\"noopener n",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe class=\"ot-text-resize\" title=\"onetrust-text-resize\" style=\"position:abso",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"onetrust-close-btn-handler onetrust-close-btn-ui banner-close-but",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Política de Cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-pc-btn-handler",
+              "text": "Definições de cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-reject-all-handler",
+              "text": "Rejeitar Todos",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-accept-btn-handler",
+              "text": "Aceitar todos os cookies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"onetrust-close-btn-handler onetrust-close-btn-ui banner-close-but",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "triggers": 3,
+          "madeVisible": 0,
+          "opacityChanged": 3,
+          "opacityAffected": 3,
+          "unhoverables": 12
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-pc-btn-handler",
+              "text": "Definições de cookies",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "BUTTON",
+                  "text": "Definições de cookies"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-reject-all-handler",
+              "text": "Rejeitar Todos",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "BUTTON",
+                  "text": "Rejeitar Todos"
+                }
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "onetrust-accept-btn-handler",
+              "text": "Aceitar todos os cookies",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "BUTTON",
+                  "text": "Aceitar todos os cookies"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Whatwedo"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Whatwedo"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PolíticadeCookies"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PolíticadeCookies"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PolíticadeProteçãodeDadosPessoais"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PolíticadeProteçãodeDadosPessoais"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "AvisodePrivacidade"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AvisodePrivacidade"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "CondiçõesLegais"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "CondiçõesLegais"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PolíticadeIntegridade"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PolíticadeIntegridade"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "mislabeled": 2,
+          "unlabeled": 5,
+          "wellLabeled": 32
+        },
+        "items": {
+          "mislabeled": [
+            {
+              "index": 16,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Cookies analíticos"
+                ],
+                "label": [
+                  "Cookies analíticos"
+                ]
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelTypes": [
+                "aria-labelledby",
+                "label"
+              ],
+              "texts": {
+                "referred": [
+                  "Cookies de publicidade"
+                ],
+                "label": [
+                  "Cookies de publicidade"
+                ]
+              }
+            }
+          ],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "SELECT",
+              "type": "select-multiple"
+            },
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "search"
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "content": "{<button type=\"button\" class=\"close\"></button>}"
+            },
+            {
+              "index": 31,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"ot-host-box\" aria-expanded=\"false\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Fulltext search",
+                  "Fulltext search"
+                ]
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Apply"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Previous",
+                "content": "Previous"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Next",
+                "content": "Next"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "1 of 3",
+                "content": "1"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "2 of 3",
+                "content": "2"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "3 of 3",
+                "content": "3"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Fechar"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Permitir todos"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Cookies estritamente necessários"
+                ]
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Detalhes dos cookies‎"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Cookies analíticos"
+                ]
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Detalhes dos cookies‎"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Cookies de publicidade"
+                ]
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Detalhes dos cookies‎"
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Back",
+                "content": "Back Button"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Vendor Search"
+                ]
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Filter",
+                "content": "Filter Icon"
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Clear"
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Apply"
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Rejeitar todos"
+              }
+            },
+            {
+              "index": 33,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Confirmar as minhas escolhas"
+              }
+            },
+            {
+              "index": 34,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Fechar"
+              }
+            },
+            {
+              "index": 35,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Definições de cookies"
+              }
+            },
+            {
+              "index": 36,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Rejeitar Todos"
+              }
+            },
+            {
+              "index": 37,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Aceitar todos os cookies"
+              }
+            },
+            {
+              "index": 38,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Fechar"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "links": 101,
+          "inline": {
+            "total": 37,
+            "underlined": 2,
+            "underlinedPercent": 5
+          }
+        },
+        "items": {
+          "underlined": [
+            "Política de Cookies",
+            "Política de Cookies"
+          ],
+          "notUnderlined": [
+            "Quem somos",
+            "Visão, valores e compromissos",
+            "Estrutura organizacional",
+            "Ética & Compliance",
+            "O que nós fazemos",
+            "EDPR fatos e números",
+            "A nossa indústria",
+            "Stakeholders",
+            "Responsablilidade social",
+            "Carreiras",
+            "Junte-se a nós",
+            "Porquê trabalhar na EDPR",
+            "Investidores",
+            "Estrutura acionista",
+            "Analistas financeiros",
+            "Relatório e contas online 2020 (em inglês)",
+            "Relatórios e resultados",
+            "Comunicados ao mercado",
+            "Informação de bolsa",
+            "Gráfico de cotações",
+            "Política de dividendos",
+            "Pagamento de dividendos",
+            "Dados chaves",
+            "Dados da empresa",
+            "Assembleias gerais",
+            "Órgãos de governo e estrutura de gestão",
+            "Inovação",
+            "Sustentabilidade",
+            "Dimensão ambiental",
+            "Dimensão social",
+            "Dimensão económica",
+            "Media",
+            "Fornecedores",
+            "Condições de contratação",
+            "Cadeia de fornecimento sustentável"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "roleElements": 28,
+        "badRoleElements": 12,
+        "tagNames": {
+          "SECTION": {
+            "navigation": 1
+          },
+          "NAV": {
+            "navigation": 4
+          },
+          "SPAN": {
+            "combobox": 1
+          },
+          "INPUT": {
+            "searchbox": 1
+          },
+          "DIV": {
+            "main": 1,
+            "dialog": 2
+          },
+          "ARTICLE": {
+            "article": 1
+          },
+          "FOOTER": {
+            "contentinfo": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 4,
+            "subtotals": [
+              2,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 9,
+            "subtotals": [
+              5,
+              2,
+              1,
+              1
+            ]
+          },
+          "h4": {
+            "total": 8,
+            "subtotals": [
+              3,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 37,
+            "subtotals": [
+              33,
+              2,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 64,
+            "subtotals": [
+              32,
+              6,
+              5,
+              5,
+              4,
+              4,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 27,
+            "subtotals": [
+              4,
+              3,
+              3,
+              3,
+              3,
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "lineHeight": {
+              "47px": 2,
+              "30.8px": 1,
+              "30px": 1
+            },
+            "fontSize": {
+              "47px": 7,
+              "20px": 5,
+              "28px": 2
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "400": 5,
+              "700": 4
+            },
+            "lineHeight": {
+              "33px": 5,
+              "20.8px": 2,
+              "24px": 1,
+              "17.056px": 1
+            },
+            "fontSize": {
+              "30px": 40,
+              "16px": 36,
+              "13.12px": 14
+            }
+          },
+          "h4": {
+            "fontWeight": {
+              "400": 2,
+              "500": 3,
+              "600": 2,
+              "700": 1
+            },
+            "lineHeight": {
+              "27px": 3,
+              "21px": 3,
+              "15.4112px": 1,
+              "15.552px": 1
+            },
+            "maxWidth": {
+              "none": 5,
+              "90%": 3
+            },
+            "minHeight": {
+              "0px": 5,
+              "25px": 3
+            },
+            "fontSize": {
+              "14px": 57,
+              "27px": 48,
+              "11.52px": 22,
+              "11.008px": 21
+            }
+          },
+          "aInline": {
+            "fontWeight": {
+              "400": 36,
+              "700": 1
+            },
+            "lineHeight": {
+              "20px": 33,
+              "21.4286px": 2,
+              "19.488px": 1,
+              "21px": 1
+            },
+            "minHeight": {
+              "0px": 35,
+              "auto": 2
+            },
+            "minWidth": {
+              "0px": 35,
+              "auto": 2
+            },
+            "textDecorationLine": {
+              "none": 35,
+              "underline": 2
+            },
+            "fontSize": {
+              "14px": 748,
+              "15px": 44,
+              "12.992px": 22
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 63,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 63,
+              "3px": 1
+            },
+            "fontWeight": {
+              "300": 9,
+              "400": 51,
+              "500": 1,
+              "700": 3
+            },
+            "lineHeight": {
+              "20px": 46,
+              "30px": 9,
+              "21.4286px": 6,
+              "25px": 1,
+              "56px": 1,
+              "normal": 1
+            },
+            "minHeight": {
+              "0px": 59,
+              "auto": 5
+            },
+            "minWidth": {
+              "0px": 59,
+              "auto": 5
+            },
+            "textDecorationLine": {
+              "none": 63,
+              "underline": 1
+            },
+            "fontSize": {
+              "14px": 946,
+              "15px": 132,
+              "12px": 132,
+              "11px": 110,
+              "16px": 44,
+              "24px": 22,
+              "20px": 22
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 15,
+              "solid": 12
+            },
+            "borderWidth": {
+              "0px": 15,
+              "1px": 10,
+              "4px": 2
+            },
+            "fontWeight": {
+              "400": 11,
+              "600": 3,
+              "700": 13
+            },
+            "lineHeight": {
+              "14.4px": 13,
+              "0px": 5,
+              "normal": 4,
+              "12px": 2,
+              "38px": 2,
+              "21px": 1
+            },
+            "maxWidth": {
+              "none": 15,
+              "394px": 11,
+              "200px": 1
+            },
+            "minWidth": {
+              "0px": 24,
+              "125px": 3
+            },
+            "outlineOffset": {
+              "0px": 26,
+              "-1px": 1
+            },
+            "fontSize": {
+              "14.4px": 264,
+              "0px": 110,
+              "12px": 110,
+              "13.008px": 66,
+              "21px": 22,
+              "16px": 22
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 21,
+              "correct": 11,
+              "incorrect": 10
+            },
+            "specific": {
+              "tab": {
+                "total": 3,
+                "correct": 3,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 3,
+                "correct": 0,
+                "incorrect": 3
+              },
+              "right": {
+                "total": 3,
+                "correct": 0,
+                "incorrect": 3
+              },
+              "up": {
+                "total": 3,
+                "correct": 3,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 3,
+                "correct": 3,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 3,
+                "correct": 1,
+                "incorrect": 2
+              },
+              "end": {
+                "total": 3,
+                "correct": 1,
+                "incorrect": 2
+              }
+            }
+          },
+          "tabElements": {
+            "total": 3,
+            "correct": 0,
+            "incorrect": 3
+          },
+          "tabLists": {
+            "total": 1,
+            "correct": 0,
+            "incorrect": 1
+          }
+        },
+        "tabElements": {
+          "incorrect": [
+            {
+              "tagName": "BUTTON",
+              "text": "1 of 3; 1; #slick-slide-control00",
+              "navigationErrors": [
+                "ArrowLeft",
+                "ArrowRight",
+                "End"
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "2 of 3; 2; #slick-slide-control01",
+              "navigationErrors": [
+                "ArrowLeft",
+                "ArrowRight",
+                "Home",
+                "End"
+              ]
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "3 of 3; 3; #slick-slide-control02",
+              "navigationErrors": [
+                "ArrowLeft",
+                "ArrowRight",
+                "Home"
+              ]
+            }
+          ],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "totals": {
+          "total": 40,
+          "tagNames": {
+            "A": 1,
+            "HEADER": 1,
+            "SECTION": 1,
+            "UL": 11,
+            "DIV": 19,
+            "BUTTON": 7
+          }
+        },
+        "items": [
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Passar para o conteúdo principal"
+          },
+          {
+            "tagName": "HEADER",
+            "id": "navbar",
+            "text": "EDP no mundo pt ENPTES logo_renovaveis_desktoprenováveis-ex EDPR A nossa empresaQuem somosVisão, va"
+          },
+          {
+            "tagName": "SECTION",
+            "id": "block-renewables-theme-languageswitcher",
+            "text": "pt ENPTES"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "A nossa empresaQuem somosVisão, valores e compromissosEstrutura organizacionalÉtica & ComplianceO no"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Quem somosVisão, valores e compromissosEstrutura organizacionalÉtica & Compliance"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "O que nós fazemosEDPR fatos e númerosA nossa indústria"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "CarreirasJunte-se a nósPorquê trabalhar na EDPR"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "InvestidoresInformação para investidoresEstrutura acionistaAnalistas financeirosRelatório e contas o"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Estrutura acionistaAnalistas financeirosRelatório e contas online 2020 (em inglês)Relatórios e resul"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Informação de bolsaGráfico de cotaçõesPolítica de dividendosPagamento de dividendos"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Project bonds"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Dados da empresaAssembleias geraisÓrgãos de governo e estrutura de gestão"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "SustentabilidadeDimensão ambientalDimensão socialDimensão económica"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "FornecedoresCondições de contrataçãoCadeia de fornecimento sustentável"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Fulltext search Fulltext search Não foram encontrados resultados. Por favor, procure por outros term"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Previous"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "edpr EDPR reforça a sua presença na região da Ásia-PacíficoA companhia chegou a acordo para adquirir"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "edpr EDPR inaugura maior complexo solar do Estado de São PauloMais detalhes"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "edp group Changing Tomorrow Now Estamos a criar uma nova energia no planeta.conheça esta iniciativa"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Next"
+          },
+          {
+            "tagName": "DIV",
+            "id": "drupal-modal",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "onetrust-pc-sdk",
+            "text": "Centro de preferências de privacidadeQuando visita um website, este pode armazenar ou recolher infor"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "close-pc-btn-handler",
+            "text": ""
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Quando são necessários para assegurar o funcionamento do website e/ou para assegurar a disponibiliza"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Cookies analíticos"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Têm carácter acessório e recolhem informação estatística com o intuito de ajudar os proprietários de"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Cookies de publicidade"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Têm carácter acessório e visam tornar a publicidade mais atrativa para utilizadores e anunciantes, a"
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-anchor",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-fltr-cnt",
+            "text": "Clear checkbox label labelApply Cancel"
+          },
+          {
+            "tagName": "DIV",
+            "id": "ot-sel-blk",
+            "text": "Consent Leg.Interest checkbox label label checkbox label label checkbox label label"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "checkbox label label checkbox label label checkbox label label"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Namecookie name"
+          },
+          {
+            "tagName": "DIV",
+            "id": "onetrust-banner-sdk",
+            "text": "Os cookies neste site podem ser utilizados pela EDP e pelos seus parceiros para melhorar a navegação"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 49,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Input_LabelBefore",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[3]/div[1]/input[1]",
+                "aria": "/document[1]/menu[1]/region[1]/form[1]/textbox[1]"
+              },
+              "message": "Label text is located after its associated text input or <select> element",
+              "bounds": {
+                "left": 107,
+                "top": 1462,
+                "height": 21,
+                "width": 223
+              },
+              "snippet": "<input spellcheck=\"false\" autocomplete=\"off\" maxlength=\"128\" size=\"30\" value=\"\" name=\"search_api_fulltext\" id=\"edit-search-api-fulltext\" type=\"text\" class=\"form-text\" data-drupal-selector=\"edit-search-api-fulltext\" placeholder=\"Pesquisar\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/section[2]/button[1]",
+                "aria": "/document[1]/menu[1]/region[2]/button[1]"
+              },
+              "message": "Form control element <button> has no associated label",
+              "bounds": {
+                "left": 8,
+                "top": 1554,
+                "height": 6,
+                "width": 16
+              },
+              "snippet": "<button class=\"close\" type=\"button\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Input_ExplicitLabel",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/span[1]/span[1]/span[1]",
+                "aria": "/document[1]/menu[1]/region[1]/form[1]/combobox[1]"
+              },
+              "message": "Form control with \"combobox\" role has no associated label",
+              "bounds": {
+                "left": 8,
+                "top": 1425,
+                "height": 21,
+                "width": 784
+              },
+              "snippet": "<span aria-disabled=\"false\" tabindex=\"-1\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"combobox\" class=\"select2-selection select2-selection--multiple\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[1]/section[1]/div[1]/article[1]/div[1]/div[2]/div[4]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[3]/a[1]/div[2]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[3]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 3749,
+                "height": 500,
+                "width": 470
+              },
+              "snippet": "<img class=\"img-responsive\" typeof=\"foaf:Image\" loading=\"lazy\" height=\"500\" width=\"470\" src=\"/sites/edpr/files/styles/focal_point_content_highlight_dual/public/Results_event.jpg?h=790be497&itok=K2XngrFS\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Label_UniqueFor",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[4]/div[1]/label[1]",
+                "aria": "/document[1]/menu[1]/region[1]/form[1]"
+              },
+              "message": "Form control has more than one label",
+              "bounds": {
+                "left": 8,
+                "top": 1484,
+                "height": 17,
+                "width": 95
+              },
+              "snippet": "<label class=\"control-label\" for=\"edit-search-api-fulltext\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/head[1]/script[6]",
+                "aria": ""
+              },
+              "message": "The <script> element has the id \"www-widgetapi-script\" that is already in use",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<script async=\"\" src=\"https://www.youtube.com/s/player/8eb5bf0c/www-widgetapi.vflset/www-widgetapi.js\" id=\"www-widgetapi-script\" type=\"text/javascript\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[9]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 79,
+                "top": 338,
+                "height": 8,
+                "width": 2
+              },
+              "snippet": "<path id=\"Path\" d=\"M71.3935115,9.26489079 C71.4024123,9.46978139 71.3039614,9.66326134 71.1372452,9.76851636 C70.970529,9.87377138 70.7625219,9.87377138 70.5958057,9.76851636 C70.4290895,9.66326134 70.3306386,9.46978139 70.3395394,9.26489079 L70.3395394,2.69273633 C70.3306386,2.48784573 70.4290895,2.29436578 70.5958057,2.18911076 C70.7625219,2.08385574 70.970529,2.08385574 71.1372452,2.18911076 C71.3039614,2.29436578 71.4024123,2.48784573 71.3935115,2.69273633 L71.3935115,9.26489079 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[8]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 72,
+                "top": 338,
+                "height": 8,
+                "width": 6
+              },
+              "snippet": "<path id=\"Path\" d=\"M65.5417851,5.4458791 C65.2536739,5.47098697 64.9973428,5.27048043 64.9642333,4.99410823 C64.9311237,4.71773603 65.1333272,4.46642832 65.4198276,4.4278748 C65.633211,4.38530604 65.8507253,4.3648604 66.0686415,4.36688836 C67.6918957,4.36688836 68.9322034,5.41421307 68.9322034,7.02448947 C68.9322034,8.70278919 67.6614063,9.84745763 65.9369274,9.84745763 C65.1710344,9.84745763 64.6868631,9.62344977 64.4246545,9.449873 C64.3392333,9.66296678 64.1279316,9.80492867 63.8904807,9.8087547 C63.5688246,9.80495889 63.3090319,9.55512672 63.3050847,9.24580301 L63.3050847,2.64284881 C63.3193021,2.34479027 63.5747249,2.11016949 63.8849926,2.11016949 C64.1952603,2.11016949 64.4506831,2.34479027 64.4649005,2.64284881 L64.4649005,8.34625312 C64.7088155,8.55970564 65.1307884,8.80130574 65.8161895,8.80130574 C67.0357644,8.80130574 67.7931204,8.11286273 67.7931204,7.11362348 C67.7931204,6.05808906 67.0967431,5.42594123 65.9369274,5.42594123 C65.8039937,5.42242278 65.6930124,5.43649657 65.5417851,5.4458791 L65.5417851,5.4458791 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[7]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 65,
+                "top": 341,
+                "height": 6,
+                "width": 6
+              },
+              "snippet": "<path id=\"Path\" d=\"M59.6828267,8.74185275 C59.97295,8.71607448 60.2310713,8.92193476 60.2644121,9.2056864 C60.2977529,9.48943804 60.0941372,9.74745594 59.8056359,9.78703889 C59.5918663,9.82959809 59.3740917,9.8497801 59.1559751,9.84724546 C57.5201562,9.84724546 56.2711864,8.77075191 56.2711864,7.11868349 C56.2711864,5.39557132 57.5508586,4.22033898 59.287381,4.22033898 C60.0389734,4.22033898 60.5265261,4.44912397 60.7905659,4.62853956 C60.8959716,4.43894288 61.0984142,4.32077045 61.3186455,4.3202819 C61.6369237,4.32352875 61.8943186,4.57536704 61.8983051,4.88742783 L61.8983051,9.22230122 C61.8983051,9.53885239 61.6365833,9.79546781 61.3137332,9.79546781 C60.990883,9.79546781 60.7291613,9.53885239 60.7291613,9.22230122 L60.7291613,5.73031988 C60.3563986,5.43482161 59.8866885,5.28244769 59.407734,5.30164907 C58.1796418,5.30164907 57.4169965,6.00847425 57.4169965,7.03439429 C57.4169965,8.11811264 58.1182372,8.76713951 59.2861529,8.76713951 C59.4187869,8.76111885 59.5305432,8.7514858 59.6828267,8.74185275 L59.6828267,8.74185275 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[6]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 56,
+                "top": 341,
+                "height": 6,
+                "width": 9
+              },
+              "snippet": "<path id=\"Path\" d=\"M51.9243109,5.62416859 L53.0234744,8.61602149 C53.0487859,8.70483828 53.1300434,8.7635969 53.2191184,8.7574948 C53.3167406,8.76241922 53.403702,8.69397366 53.4254339,8.59510804 L54.466497,4.63754605 C54.5324385,4.38631203 54.7551061,4.21418883 55.0060001,4.22050734 C55.4079595,4.22050734 55.643918,4.57603591 55.5455032,4.97339137 L54.5649118,8.84976 C54.3787536,9.4500989 53.9281796,9.84622416 53.2214898,9.84622416 C52.6515857,9.8718451 52.1365175,9.49605435 51.9669969,8.93095337 L51.3468648,7.05858491 L50.7279184,8.93095337 C50.5583977,9.49605435 50.0433296,9.8718451 49.4734254,9.84622416 C48.7679214,9.84622416 48.3161616,9.4500989 48.1300034,8.84976 L47.1494121,4.97339137 C47.0509972,4.57603591 47.2869557,4.22050734 47.6889152,4.22050734 C47.9398091,4.21418883 48.1624767,4.38631203 48.2284183,4.63754605 L49.26711,8.59510804 C49.2888418,8.69397366 49.3758032,8.76241922 49.4734254,8.7574948 C49.5625004,8.7635969 49.643758,8.70483828 49.6690694,8.61602149 L50.7682329,5.62416859 C50.8579337,5.37344176 51.0885001,5.20707125 51.3462719,5.20707125 C51.6040437,5.20707125 51.8346102,5.37344176 51.9243109,5.62416859 L51.9243109,5.62416859 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[5]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 50,
+                "top": 341,
+                "height": 6,
+                "width": 6
+              },
+              "snippet": "<path id=\"Path\" d=\"M43.6162332,7.53504119 C43.3556894,7.53504119 43.1444769,7.32723247 43.1444769,7.07088742 C43.1444769,6.81454238 43.3556894,6.60673366 43.6162332,6.60673366 L46.0138223,6.60673366 C45.9434833,5.81683702 45.3213472,5.23574992 44.4190678,5.23574992 C43.33609,5.23574992 42.5999562,5.99462342 42.5999562,7.02554592 C42.5999562,8.16982217 43.3724722,8.7819324 44.5160871,8.7819324 C45.2679866,8.7819324 45.6293834,8.58386165 45.9095266,8.35715415 C46.5158971,7.85362488 47.1841175,8.53494056 46.6626388,9.08739092 C46.2988165,9.47279366 45.4583869,9.84745763 44.4797049,9.84745763 C42.7818673,9.84745763 41.5,8.90960452 41.5,7.08401259 C41.5,5.58416354 42.5732759,4.22033898 44.3996639,4.22033898 C46.1945207,4.22033898 47.1271186,5.4242751 47.1271186,6.8549187 C47.1271186,7.24986702 46.8663793,7.52668881 46.4855786,7.52668881 L43.6162332,7.53504119 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[4]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 44,
+                "top": 341,
+                "height": 6,
+                "width": 5
+              },
+              "snippet": "<path id=\"Path\" d=\"M35.8790833,4.8564528 C35.8700303,4.64268688 35.9701645,4.44082589 36.1397311,4.33101149 C36.3092977,4.2211971 36.5208611,4.2211971 36.6904277,4.33101149 C36.8599943,4.44082589 36.9601285,4.64268688 36.9510755,4.8564528 L36.9510755,4.91750019 C37.2396454,4.66476399 37.8528565,4.22033898 38.6419149,4.22033898 C39.9190623,4.22033898 40.7960444,5.18000398 40.7960444,6.47298773 L40.7960444,9.23965552 C40.8050973,9.45342144 40.7049632,9.65528243 40.5353966,9.76509683 C40.36583,9.87491123 40.1542665,9.87491123 39.9846999,9.76509683 C39.8151333,9.65528243 39.7149992,9.45342144 39.7240522,9.23965552 L39.7240522,6.78555038 C39.7240522,5.84664149 39.2010192,5.36192521 38.3995613,5.36192521 C37.6634825,5.36192521 37.187793,5.85030434 36.9454394,6.17996025 L36.9454394,9.23965552 C36.9544923,9.45342144 36.8543582,9.65528243 36.6847916,9.76509683 C36.515225,9.87491123 36.3036616,9.87491123 36.134095,9.76509683 C35.9645283,9.65528243 35.8643942,9.45342144 35.8734472,9.23965552 L35.8790833,4.8564528 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[3]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 37,
+                "top": 341,
+                "height": 6,
+                "width": 6
+              },
+              "snippet": "<path id=\"Path\" d=\"M30.9552162,7.53504119 C30.6946724,7.53504119 30.48346,7.32723247 30.48346,7.07088742 C30.48346,6.81454238 30.6946724,6.60673366 30.9552162,6.60673366 L33.3528054,6.60673366 C33.2824664,5.81683702 32.6603302,5.23574992 31.7580508,5.23574992 C30.6738603,5.23574992 29.9389392,5.99462342 29.9389392,7.02554592 C29.9389392,8.16982217 30.7102425,8.7819324 31.8538574,8.7819324 C32.6057569,8.7819324 32.9671537,8.58386165 33.2485096,8.35715415 C33.8548802,7.85362488 34.5218878,8.53494056 34.0004091,9.08739092 C33.6365868,9.47279366 32.79737,9.84745763 31.8174752,9.84745763 C30.1196376,9.84745763 28.8389831,8.90960452 28.8389831,7.08401259 C28.8389831,5.58416354 29.9122589,4.22033898 31.7374342,4.22033898 C33.5322911,4.22033898 34.4661017,5.4242751 34.4661017,6.8549187 C34.4661017,7.24986702 34.2041496,7.52668881 33.8233489,7.52668881 L30.9552162,7.53504119 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[2]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 34,
+                "top": 341,
+                "height": 6,
+                "width": 4
+              },
+              "snippet": "<path id=\"Path\" d=\"M26.555723,6.08579959 L26.555723,9.23745364 C26.566136,9.45199397 26.4509586,9.65458625 26.2559179,9.76479846 C26.0608772,9.87501068 25.8175305,9.87501068 25.6224898,9.76479846 C25.4274491,9.65458625 25.3122717,9.45199397 25.3226847,9.23745364 L25.3226847,4.83837197 C25.3122717,4.62383165 25.4274491,4.42123937 25.6224898,4.31102715 C25.8175305,4.20081493 26.0608772,4.20081493 26.2559179,4.31102715 C26.4509586,4.42123937 26.566136,4.62383165 26.555723,4.83837197 L26.555723,4.97071203 C26.9117613,4.48902656 27.499125,4.20756258 28.1206832,4.22078502 C28.6030073,4.22078502 28.8389831,4.48423977 28.8389831,4.79793473 C28.8389831,5.11162969 28.5718896,5.38611278 28.16347,5.38611278 C27.5438845,5.3807235 26.9541845,5.63735924 26.555723,6.08579959 L26.555723,6.08579959 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[11]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 87,
+                "top": 341,
+                "height": 6,
+                "width": 5
+              },
+              "snippet": "<path id=\"Path\" d=\"M78.9862318,8.40665741 C79.4787197,8.67621247 80.0309361,8.8154388 80.5912656,8.81132293 C81.4825565,8.81132293 81.8731621,8.51528444 81.8731621,8.15956077 C81.8731621,7.05419127 78.241714,8.23834521 78.241714,5.89868621 C78.241714,5.03921963 78.9081107,4.22033898 80.8362819,4.22033898 C81.4719037,4.22033898 82.1868302,4.3588086 82.5691502,4.59516191 C83.2142412,4.99027779 82.7348617,5.84974436 82.0495264,5.51311995 C81.7074507,5.34600145 81.14995,5.25647368 80.6895089,5.25647368 C79.7295661,5.25647368 79.3673682,5.5632555 79.3673682,5.88913658 C79.3673682,7.04344793 83,5.79960881 83,8.15001115 C83,9.14675363 82.088587,9.84745763 80.6397954,9.84745763 C79.5342633,9.84745763 78.7613377,9.60036099 78.3198351,9.23508769 C77.7327431,8.75402515 78.3068149,7.98169894 78.9862318,8.40665741 L78.9862318,8.40665741 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[10]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 81,
+                "top": 341,
+                "height": 6,
+                "width": 6
+              },
+              "snippet": "<path id=\"Path\" d=\"M74.5658419,7.53504119 C74.305242,7.53504119 74.0939839,7.32723247 74.0939839,7.07088742 C74.0939839,6.81454238 74.305242,6.60673366 74.5658419,6.60673366 L76.9627349,6.60673366 C76.8935937,5.81683702 76.2713235,5.23574992 75.3676366,5.23574992 C74.2844253,5.23574992 73.5481328,5.99462342 73.5481328,7.02554592 C73.5481328,8.16982217 74.3208154,8.7819324 75.4646768,8.7819324 C76.2167383,8.7819324 76.5782131,8.58386165 76.8596297,8.35715415 C77.4661309,7.85362488 78.1332823,8.53494056 77.6116912,9.08739092 C77.2477905,9.47279366 76.4071797,9.84745763 75.4282867,9.84745763 C73.7300832,9.84745763 72.4491525,8.90960452 72.4491525,7.08401259 C72.4491525,5.58416354 73.5226598,4.22033898 75.3482285,4.22033898 C77.1434723,4.22033898 78.0762712,5.4242751 78.0762712,6.8549187 C78.0762712,7.24986702 77.8154756,7.52668881 77.4345929,7.52668881 L74.5658419,7.53504119 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]/path[1]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Shape\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 336,
+                "height": 15,
+                "width": 20
+              },
+              "snippet": "<path id=\"Shape\" d=\"M19.6288673,8.84808508 C19.463299,8.47442148 19.0397699,8.28749369 18.6508488,8.41642914 L19.0597965,5.29610778 C19.2498707,3.8553413 18.2027343,2.74290885 16.8192239,2.74290885 C15.2606148,2.74290885 14.4081605,3.98391966 14.2088705,5.10324024 C14.093674,5.74613206 14.0187962,5.85978615 13.791859,6.08939037 L12.1549163,7.73794867 L13.0488414,0.873930495 C13.0932939,0.446774525 12.7881058,0.0621149139 12.3607855,0.00670367359 C11.9334652,-0.0487075668 11.5396659,0.245313325 11.4729528,0.669582738 L11.1792017,2.92085212 C10.8931135,2.80198102 10.5860156,2.74147438 10.2760609,2.74290885 C8.98701167,2.74290885 7.74173716,3.730207 7.56548647,5.10324024 C7.48945675,5.68643496 7.3685004,5.8896347 7.14847502,6.13645923 C6.95379288,6.36606345 5.20050166,8.36362017 5.20050166,8.36362017 C4.94130946,8.63799722 4.19713986,9.51164128 3.07051778,9.51164128 C2.48647136,9.51164128 2.40813771,8.90204207 2.40813771,8.90204207 L4.0796394,7.74139274 C4.77081859,7.26037189 6.2222949,6.2489653 6.2222949,4.86445185 C6.2222949,3.61770093 5.25118813,2.73716875 3.9897861,2.73716875 C2.45882419,2.73716875 1.44163881,3.85878536 1.26193222,5.09979618 L0.820729499,8.12942387 L0.820729499,8.1638645 L0.310408861,8.52549115 C0.0403335101,8.73243753 -0.0673767501,9.08789317 0.0426205214,9.40922195 C0.152617793,9.73055073 0.455859795,9.94629087 0.796538228,9.94559325 C0.86752423,9.94494806 0.938079228,9.93451695 1.00619592,9.91459668 C1.33796193,10.6470341 2.01877344,11.0993545 3.01176754,11.0993545 C4.83993651,11.0993545 5.87324941,9.91689273 6.28910889,9.44276001 L7.1323475,8.47842228 C6.9100182,10.1924178 8.04355207,11.0993545 9.28421873,11.0993545 C10.7310872,11.0993545 11.235648,10.6286658 12.5949671,9.38535896 L13.7308049,8.30277505 L13.0914641,13.1738286 C13.0550413,13.4545752 13.1716763,13.7333606 13.3974339,13.905169 C13.6231915,14.0769774 13.9237737,14.1157071 14.1859542,14.0067689 C14.4481346,13.8978307 14.6320818,13.6577749 14.6685046,13.3770283 L14.988751,10.9214112 C15.2766556,11.0427635 15.586208,11.1048525 15.8988036,11.1039465 C16.2691441,11.1023208 16.6351181,11.0241384 16.9735873,10.8743423 L19.2210716,9.88934022 C19.620951,9.71283367 19.8030456,9.24787787 19.6288673,8.84808508 L19.6288673,8.84808508 Z M2.73183997,5.31103206 C2.81362951,4.69569275 3.38270038,4.26059275 3.99093807,4.26059275 C4.59917576,4.26059275 4.65447009,4.67617639 4.65447009,4.84034341 C4.65447009,5.48323522 3.63037292,6.19386029 2.50720673,6.98141157 C2.50720673,6.98484683 2.64198668,5.9768843 2.73183997,5.31103206 Z M10.8773868,5.23755871 L10.4500076,8.52549115 C10.3590024,9.22004392 9.86365728,9.50590117 9.44894977,9.50590117 C8.84762387,9.50590117 8.63451029,9.1810112 8.71975572,8.52549115 L9.14828682,5.24215079 C9.23929208,4.55333813 9.73463717,4.26288576 10.1504967,4.26288576 C10.7506706,4.26174077 10.9637842,4.58663074 10.8773868,5.24100277 L10.8773868,5.23755871 Z M17.4551088,5.23755871 L17.0277296,8.52549115 C16.9367244,9.22004392 16.4413793,9.50590117 16.0255198,9.50590117 C15.4253459,9.50590117 15.2122323,9.1810112 15.2974777,8.52549115 L15.7260088,5.24215079 C15.8170141,4.55333813 16.3123592,4.26288576 16.7270667,4.26288576 C17.3283926,4.26174077 17.5403542,4.58663074 17.4539568,5.24100277 L17.4551088,5.23755871 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[2]/div[1]/div[1]/svg[1]/g[1]/g[1]/g[1]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <g> element has the id \"renováveis-ex\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 336,
+                "height": 15,
+                "width": 83
+              },
+              "snippet": "<g transform=\"translate(24.000000, 29.000000)\" id=\"renováveis-ex\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[9]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 110,
+                "top": 302,
+                "height": 11,
+                "width": 2
+              },
+              "snippet": "<path id=\"Path\" d=\"M101.499209,13.1717725 C101.511863,13.4630627 101.371897,13.7381306 101.134879,13.8877702 C100.89786,14.0374099 100.60214,14.0374099 100.365121,13.8877702 C100.128103,13.7381306 99.9881368,13.4630627 100.000791,13.1717725 L100.000791,3.82822755 C99.9881368,3.53693731 100.128103,3.26186942 100.365121,3.11222975 C100.60214,2.96259008 100.89786,2.96259008 101.134879,3.11222975 C101.371897,3.26186942 101.511863,3.53693731 101.499209,3.82822755 L101.499209,13.1717725 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[8]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 100,
+                "top": 302,
+                "height": 11,
+                "width": 8
+              },
+              "snippet": "<path id=\"Path\" d=\"M93.1798873,7.74233415 C92.7702834,7.77802966 92.4058609,7.49297218 92.3587895,7.10005749 C92.3117181,6.70714279 92.5991881,6.34986195 93.006502,6.29505092 C93.3098662,6.23453149 93.6191034,6.20546418 93.928912,6.20834731 C96.236671,6.20834731 98,7.69731497 98,9.98662358 C98,12.3726401 96.1933247,14 93.7416558,14 C92.6527958,14 91.964456,13.681531 91.5916775,13.4347592 C91.4702353,13.7377118 91.1698304,13.9395371 90.8322497,13.9449766 C90.3749554,13.9395801 90.0056116,13.584397 90,13.1446356 L90,3.75730313 C90.0202126,3.33355725 90.3833438,3 90.8244473,3 C91.2655508,3 91.628682,3.33355725 91.6488947,3.75730313 L91.6488947,11.8657574 C91.9956654,12.1692201 92.5955787,12.5126997 93.5700043,12.5126997 C95.3038578,12.5126997 96.3805808,11.5339494 96.3805808,10.1133442 C96.3805808,8.61270494 95.3905505,7.71398874 93.7416558,7.71398874 C93.5526658,7.70898661 93.3948851,7.72899513 93.1798873,7.74233415 L93.1798873,7.74233415 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[7]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 90,
+                "top": 305,
+                "height": 8,
+                "width": 8
+              },
+              "snippet": "<path id=\"Path\" d=\"M84.8502837,12.4281762 C85.2627482,12.3915276 85.6297158,12.6841964 85.677116,13.0876024 C85.7245161,13.4910083 85.4350384,13.8578289 85.02488,13.9141035 C84.7209665,13.9746093 84.4113593,14.0033018 84.1012658,13.9996984 C81.7756438,13.9996984 80,12.4692617 80,10.120538 C80,7.67081224 81.8192929,6 84.2880838,6 C85.3566128,6 86.0497599,6.32526058 86.4251419,6.58033335 C86.5749958,6.31078626 86.8628057,6.14278208 87.1759057,6.14208752 C87.6283976,6.14670353 87.9943325,6.50473869 88,6.94839138 L88,13.1112234 C88,13.56126 87.6279136,13.9260868 87.1689219,13.9260868 C86.7099301,13.9260868 86.3378437,13.56126 86.3378437,13.1112234 L86.3378437,8.14671983 C85.8078921,7.72661385 85.1401113,7.50998587 84.4591881,7.53728422 C82.7132257,7.53728422 81.628983,8.54216822 81.628983,10.0007051 C81.628983,11.5414131 82.6259275,12.4641261 84.2863378,12.4641261 C84.4749018,12.4555666 84.6337844,12.4418714 84.8502837,12.4281762 L84.8502837,12.4281762 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[6]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 77,
+                "top": 305,
+                "height": 8,
+                "width": 12
+              },
+              "snippet": "<path id=\"Path\" d=\"M73.8201047,7.99580595 L75.3827708,12.2492836 C75.4187558,12.3755532 75.5342785,12.4590896 75.6609153,12.4504143 C75.7997035,12.4574153 75.9233353,12.3601071 75.9542313,12.2195512 L77.4342969,6.59313775 C77.5280452,6.23596169 77.8446087,5.99125641 78.2013013,6.00023935 C78.7727618,6.00023935 79.1082208,6.50568961 78.9683057,7.07060461 L77.574212,12.5815865 C77.3095533,13.4350804 76.6689782,13.9982464 75.6642867,13.9982464 C74.8540615,14.0346713 74.121796,13.5004146 73.8807908,12.697018 L72.9991571,10.0350966 L72.1192092,12.697018 C71.878204,13.5004146 71.1459385,14.0346713 70.3357133,13.9982464 C69.3327075,13.9982464 68.6904467,13.4350804 68.425788,12.5815865 L67.0316943,7.07060461 C66.8917792,6.50568961 67.2272382,6.00023935 67.7986987,6.00023935 C68.1553913,5.99125641 68.4719548,6.23596169 68.5657031,6.59313775 L70.0423973,12.2195512 C70.0732932,12.3601071 70.1969251,12.4574153 70.3357133,12.4504143 C70.46235,12.4590896 70.5778727,12.3755532 70.6138577,12.2492836 L72.1765238,7.99580595 C72.3040503,7.63935094 72.6318435,7.40282419 72.9983143,7.40282419 C73.364785,7.40282419 73.6925783,7.63935094 73.8201047,7.99580595 L73.8201047,7.99580595 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[5]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 69,
+                "top": 305,
+                "height": 8,
+                "width": 8
+              },
+              "snippet": "<path id=\"Path\" d=\"M62.0086207,10.7124682 C61.638209,10.7124682 61.337931,10.4170293 61.337931,10.0525869 C61.337931,9.68814458 61.638209,9.39270568 62.0086207,9.39270568 L65.4172414,9.39270568 C65.3172414,8.2697201 64.4327586,7.44359627 63.15,7.44359627 C61.6103448,7.44359627 60.5637931,8.52247668 60.5637931,9.98812553 C60.5637931,11.6149279 61.662069,12.4851569 63.287931,12.4851569 C64.3568966,12.4851569 64.8706897,12.2035623 65.2689655,11.8812553 C66.1310345,11.1653944 67.0810345,12.1340119 66.3396552,12.9194232 C65.8224138,13.4673452 64.6275862,14 63.2362069,14 C60.8224138,14 59,12.6666667 59,10.0712468 C59,7.9389313 60.5258621,6 63.1224138,6 C65.6741379,6 67,7.71162002 67,9.74554707 C67,10.3070399 66.6293103,10.7005937 66.087931,10.7005937 L62.0086207,10.7124682 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[4]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 61,
+                "top": 305,
+                "height": 8,
+                "width": 7
+              },
+              "snippet": "<path id=\"Path\" d=\"M51.0088172,6.90435459 C50.9959467,6.60044641 51.1383061,6.31346331 51.3793767,6.15734164 C51.6204473,6.00121997 51.9212242,6.00121997 52.1622948,6.15734164 C52.4033654,6.31346331 52.5457248,6.60044641 52.5328543,6.90435459 L52.5328543,6.99114486 C52.9431104,6.63183315 53.8149045,6 54.9366983,6 C56.7524018,6 57.9991956,7.36434301 57.9991956,9.20256087 L57.9991956,13.1358958 C58.0120661,13.439804 57.8697067,13.7267871 57.6286361,13.8829087 C57.3875655,14.0390304 57.0867886,14.0390304 56.845718,13.8829087 C56.6046474,13.7267871 56.462288,13.439804 56.4751585,13.1358958 L56.4751585,9.64692704 C56.4751585,8.31209273 55.7315694,7.622978 54.5921474,7.622978 C53.5456739,7.622978 52.8693925,8.31730014 52.5248415,8.78596759 L52.5248415,13.1358958 C52.537712,13.439804 52.3953526,13.7267871 52.154282,13.8829087 C51.9132114,14.0390304 51.6124345,14.0390304 51.3713639,13.8829087 C51.1302933,13.7267871 50.9879339,13.439804 51.0008044,13.1358958 L51.0088172,6.90435459 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[3]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 51,
+                "top": 305,
+                "height": 8,
+                "width": 8
+              },
+              "snippet": "<path id=\"Path\" d=\"M44.0086207,10.7124682 C43.638209,10.7124682 43.337931,10.4170293 43.337931,10.0525869 C43.337931,9.68814458 43.638209,9.39270568 44.0086207,9.39270568 L47.4172414,9.39270568 C47.3172414,8.2697201 46.4327586,7.44359627 45.15,7.44359627 C43.6086207,7.44359627 42.5637931,8.52247668 42.5637931,9.98812553 C42.5637931,11.6149279 43.6603448,12.4851569 45.2862069,12.4851569 C46.3551724,12.4851569 46.8689655,12.2035623 47.2689655,11.8812553 C48.1310345,11.1653944 49.0793103,12.1340119 48.337931,12.9194232 C47.8206897,13.4673452 46.6275862,14 45.2344828,14 C42.8206897,14 41,12.6666667 41,10.0712468 C41,7.9389313 42.5258621,6 45.1206897,6 C47.6724138,6 49,7.71162002 49,9.74554707 C49,10.3070399 48.6275862,10.7005937 48.0862069,10.7005937 L44.0086207,10.7124682 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[11]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 121,
+                "top": 305,
+                "height": 8,
+                "width": 7
+              },
+              "snippet": "<path id=\"Path\" d=\"M112.293679,11.9516334 C112.993842,12.3348563 113.778921,12.5327925 114.575534,12.526941 C115.842671,12.526941 116.39799,12.106067 116.39799,11.6003394 C116.39799,10.0288502 111.235208,11.7123462 111.235208,8.38608401 C111.235208,7.16419177 112.182615,6 114.923871,6 C115.827526,6 116.843927,6.19686042 117.387467,6.53288078 C118.304584,7.09461179 117.623056,8.31650403 116.648724,7.83792957 C116.1624,7.60033941 115.369808,7.47305897 114.715205,7.47305897 C113.350467,7.47305897 112.835535,7.90920662 112.835535,8.37250742 C112.835535,10.0135766 118,8.24522698 118,11.5867628 C118,13.0038184 116.704256,14 114.644528,14 C113.072808,14 111.97395,13.648706 111.346272,13.1294018 C110.511611,12.4454815 111.327761,11.3474756 112.293679,11.9516334 L112.293679,11.9516334 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/section[2]/a[1]/div[1]/div[1]/div[1]/svg[1]/g[1]/g[1]/path[10]",
+                "aria": "/document[1]/banner[1]/region[3]/link[1]"
+              },
+              "message": "The <path> element has the id \"Path\" that is already in use",
+              "bounds": {
+                "left": 113,
+                "top": 305,
+                "height": 8,
+                "width": 8
+              },
+              "snippet": "<path id=\"Path\" d=\"M106.009269,10.7124682 C105.638778,10.7124682 105.338435,10.4170293 105.338435,10.0525869 C105.338435,9.68814458 105.638778,9.39270568 106.009269,9.39270568 L109.4169,9.39270568 C109.318603,8.2697201 108.43393,7.44359627 107.14917,7.44359627 C105.609183,7.44359627 104.562406,8.52247668 104.562406,9.98812553 C104.562406,11.6149279 105.660918,12.4851569 107.287131,12.4851569 C108.356327,12.4851569 108.870231,12.2035623 109.270317,11.8812553 C110.132572,11.1653944 111.081052,12.1340119 110.339513,12.9194232 C109.82216,13.4673452 108.627075,14 107.235396,14 C104.821082,14 103,12.6666667 103,10.0712468 C103,7.9389313 104.526191,6 107.121578,6 C109.673852,6 111,7.71162002 111,9.74554707 C111,10.3070399 110.62923,10.7005937 110.087734,10.7005937 L106.009269,10.7124682 Z\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[3]/nav[1]/ul[1]/li[3]/a[1]/div[1]/div[1]/div[1]/div[1]/svg[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[2]/list[1]/listitem[3]/link[1]"
+              },
+              "message": "The <svg> element has the id \"Layer_1\" that is already in use",
+              "bounds": {
+                "left": 48,
+                "top": 6400,
+                "height": 50,
+                "width": 50
+              },
+              "snippet": "<svg y=\"0px\" xml:space=\"preserve\" x=\"0px\" width=\"50px\" viewBox=\"0 0 50 50\" version=\"1.0\" id=\"Layer_1\" height=\"50px\" aria-labelledby=\"youTubeEStitle\" xmlns=\"http://www.w3.org/2000/svg\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[4]/div[1]/input[1]",
+                "aria": "/document[1]/menu[1]/region[1]/form[1]/textbox[2]"
+              },
+              "message": "The <input> element has the id \"edit-search-api-fulltext\" that is already in use",
+              "bounds": {
+                "left": 107,
+                "top": 1483,
+                "height": 21,
+                "width": 223
+              },
+              "snippet": "<input spellcheck=\"false\" autocomplete=\"off\" maxlength=\"128\" size=\"30\" value=\"\" name=\"search_api_fulltext\" id=\"edit-search-api-fulltext\" type=\"text\" class=\"form-text\" data-drupal-selector=\"edit-search-api-fulltext\" placeholder=\"Pesquisar\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[3]",
+                "aria": "/document[1]/dialog[2]"
+              },
+              "message": "Interactive component with ARIA role 'dialog' does not have a programmatically associated name",
+              "bounds": {
+                "left": 0,
+                "top": 312,
+                "height": 288,
+                "width": 800
+              },
+              "snippet": "<div style=\"bottom: 0px\" tabindex=\"0\" aria-describedby=\"onetrust-policy-text\" role=\"dialog\" class=\"otFlat bottom vertical-align-content ot-buttons-fw\" id=\"onetrust-banner-sdk\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[1]/section[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/tabpanel[3]"
+              },
+              "message": "Interactive component with ARIA role 'tabpanel' does not have a programmatically associated name",
+              "bounds": {
+                "left": -2492,
+                "top": 2768,
+                "height": 122,
+                "width": 1250
+              },
+              "snippet": "<div style=\"width: 1250px;\" aria-describedby=\"slick-slide-control02\" id=\"slick-slide02\" role=\"tabpanel\" tabindex=\"0\" aria-hidden=\"false\" data-slick-index=\"2\" class=\"top--field--item slick-slide slick-current slick-active\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[1]/section[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/tabpanel[2]"
+              },
+              "message": "Interactive component with ARIA role 'tabpanel' does not have a programmatically associated name",
+              "bounds": {
+                "left": -2492,
+                "top": 2696,
+                "height": 72,
+                "width": 1250
+              },
+              "snippet": "<div style=\"width: 1250px;\" aria-describedby=\"slick-slide-control01\" id=\"slick-slide01\" role=\"tabpanel\" tabindex=\"-1\" aria-hidden=\"true\" data-slick-index=\"1\" class=\"top--field--item slick-slide\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_WidgetLabels_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[1]/section[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/tabpanel[1]"
+              },
+              "message": "Interactive component with ARIA role 'tabpanel' does not have a programmatically associated name",
+              "bounds": {
+                "left": -2492,
+                "top": 2574,
+                "height": 122,
+                "width": 1250
+              },
+              "snippet": "<div style=\"width: 1250px;\" aria-describedby=\"slick-slide-control00\" id=\"slick-slide00\" role=\"tabpanel\" tabindex=\"-1\" aria-hidden=\"true\" data-slick-index=\"0\" class=\"top--field--item slick-slide\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/nav[1]",
+                "aria": "/document[1]/banner[1]/navigation[2]"
+              },
+              "message": "The 'id' \"block-renewables-theme-mainnavigation-2-menu\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 443,
+                "height": 846,
+                "width": 784
+              },
+              "snippet": "<nav class=\"header-site-menu menu\" id=\"block-renewables-theme-mainnavigation-2\" aria-labelledby=\"block-renewables-theme-mainnavigation-2-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[3]"
+              },
+              "message": "The 'id' \"block-renewables-theme-footer-menu\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 6504,
+                "height": 90,
+                "width": 784
+              },
+              "snippet": "<nav id=\"block-renewables-theme-footer\" aria-labelledby=\"block-renewables-theme-footer-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[3]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[2]"
+              },
+              "message": "The 'id' \"block-renewables-theme-sharefootermenu-menu\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 4870,
+                "height": 1584,
+                "width": 784
+              },
+              "snippet": "<nav class=\"share-footer-menu\" id=\"block-renewables-theme-sharefootermenu\" aria-labelledby=\"block-renewables-theme-sharefootermenu-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[1]"
+              },
+              "message": "The 'id' \"block-renewables-theme-constitutionalfootermenu-menu\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 4612,
+                "height": 36,
+                "width": 784
+              },
+              "snippet": "<nav class=\"share-footer-menu\" id=\"block-renewables-theme-constitutionalfootermenu\" aria-labelledby=\"block-renewables-theme-constitutionalfootermenu-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]",
+                "aria": "/document[1]/menu[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 8,
+                "top": 1342,
+                "height": 1211,
+                "width": 784
+              },
+              "snippet": "<div role=\"menu\" class=\"modal-area\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 208
+              },
+              "snippet": "<a href=\"#main-content\" class=\"visually-hidden focusable skip-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[2]/div[1]/nav[1]",
+                "aria": "/document[1]/banner[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 443,
+                "height": 846,
+                "width": 784
+              },
+              "snippet": "<nav class=\"header-site-menu menu\" id=\"block-renewables-theme-mainnavigation-2\" aria-labelledby=\"block-renewables-theme-mainnavigation-2-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/div[1]/section[2]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 160,
+                "height": 72,
+                "width": 784
+              },
+              "snippet": "<section role=\"navigation\" id=\"block-renewables-theme-languageswitcher\" class=\"language-switcher-language-url site-modal-item site-language-switcher block block-language block-language-blocklanguage-interface clearfix\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[3]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 6504,
+                "height": 90,
+                "width": 784
+              },
+              "snippet": "<nav id=\"block-renewables-theme-footer\" aria-labelledby=\"block-renewables-theme-footer-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[3]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[2]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 4870,
+                "height": 1584,
+                "width": 784
+              },
+              "snippet": "<nav class=\"share-footer-menu\" id=\"block-renewables-theme-sharefootermenu\" aria-labelledby=\"block-renewables-theme-sharefootermenu-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/nav[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 4612,
+                "height": 36,
+                "width": 784
+              },
+              "snippet": "<nav class=\"share-footer-menu\" id=\"block-renewables-theme-constitutionalfootermenu\" aria-labelledby=\"block-renewables-theme-constitutionalfootermenu-menu\" role=\"navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[3]/div[1]/div[1]/div[2]/div[1]/button[3]",
+                "aria": "/document[1]/dialog[2]/button[4]"
+              },
+              "message": "Text contrast of 4.25 with its background is less than the WCAG AA minimum requirements for text of size 13.008px and weight of 600",
+              "bounds": {
+                "left": 16,
+                "top": 543,
+                "height": 41,
+                "width": 768
+              },
+              "snippet": "<button id=\"onetrust-accept-btn-handler\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[3]/div[1]/div[1]/div[2]/div[1]/button[2]",
+                "aria": "/document[1]/dialog[2]/button[3]"
+              },
+              "message": "Text contrast of 4.25 with its background is less than the WCAG AA minimum requirements for text of size 13.008px and weight of 600",
+              "bounds": {
+                "left": 16,
+                "top": 486,
+                "height": 41,
+                "width": 768
+              },
+              "snippet": "<button id=\"onetrust-reject-all-handler\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[4]/div[3]/div[1]/div[1]/div[2]/div[1]/button[1]",
+                "aria": "/document[1]/dialog[2]/button[2]"
+              },
+              "message": "Text contrast of 3.39 with its background is less than the WCAG AA minimum requirements for text of size 13.008px and weight of 600",
+              "bounds": {
+                "left": 16,
+                "top": 431,
+                "height": 39,
+                "width": 768
+              },
+              "snippet": "<button class=\"cookie-setting-link\" id=\"onetrust-pc-btn-handler\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[3]/div[1]/section[1]/div[1]/article[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 48,
+                "top": 3264,
+                "height": 154,
+                "width": 704
+              },
+              "snippet": "<figure class=\"youtube-container youtube-container--responsive\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[1]",
+                "aria": "/document[1]"
+              },
+              "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-hidden=\"true\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "error": "ERROR: ibm test failed"
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.edpr.com/pt-pt",
+      "what": "EDP Renovaveis (NALFX)",
+      "result": "https://www.edpr.com/pt-pt"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.edpr.com/pt-pt",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Homepage | EDP Renováveis",
+          "pageurl": "https://www.edpr.com/pt-pt",
+          "time": 4.93,
+          "creditsremaining": 961,
+          "allitemcount": 172,
+          "totalelements": 939,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.edpr.com/pt-pt",
+          "domid": "b3a271115269c48bd871ae6ff5af777a"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 12,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-views-block-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#views-exposed-form-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child > DIV:first-child > SELECT:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-views-block-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#views-exposed-form-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child > DIV:first-child > SELECT:first-child + SPAN > SPAN:first-child > SPAN:first-child > UL:first-child > LI:first-child > INPUT:first-child"
+                ]
+              },
+              "label_multiple": {
+                "id": "label_multiple",
+                "description": "Multiple form labels",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-views-block-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#views-exposed-form-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > INPUT#edit-search-api-fulltext",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-views-block-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > FORM#views-exposed-form-corp-global-search-single-corp-global-search-single > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > INPUT#edit-search-api-fulltext"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child"
+                ]
+              },
+              "aria_reference_broken": {
+                "id": "aria_reference_broken",
+                "description": "Broken ARIA reference",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > HEADER#navbar > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-renewables-theme-mainnavigation-2",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > NAV#block-renewables-theme-constitutionalfootermenu",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > NAV#block-renewables-theme-sharefootermenu",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child + DIV > DIV:first-child > NAV#block-renewables-theme-footer"
+                ]
+              },
+              "aria_menu_broken": {
+                "id": "aria_menu_broken",
+                "description": "Broken ARIA menu",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 12,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 12,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide00 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide00 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide00 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide01 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide01 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide02 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide02 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV#slick-slide02 > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > P:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > SECTION#block-footerrighttext > DIV:first-child > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV + FOOTER > DIV:first-child > DIV:first-child + DIV > DIV:first-child > SECTION#block-copyrightedpcom > DIV:first-child > P:first-child > STRONG:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-banner-sdk > DIV:first-child > DIV:first-child > DIV#onetrust-group-container > DIV#onetrust-policy > P#onetrust-policy-text > A:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1.07,
+                    "#ffffff",
+                    "#f7f7f7",
+                    false
+                  ],
+                  [
+                    1.07,
+                    "#ffffff",
+                    "#f7f7f7",
+                    true
+                  ],
+                  [
+                    1.07,
+                    "#ffffff",
+                    "#f7f7f7",
+                    false
+                  ],
+                  [
+                    1.43,
+                    "#ffffff",
+                    "#d7d7d7",
+                    false
+                  ],
+                  [
+                    1.43,
+                    "#ffffff",
+                    "#d7d7d7",
+                    true
+                  ],
+                  [
+                    1.43,
+                    "#ffffff",
+                    "#d7d7d7",
+                    false
+                  ],
+                  [
+                    1.43,
+                    "#ffffff",
+                    "#d7d7d7",
+                    true
+                  ],
+                  [
+                    1.43,
+                    "#ffffff",
+                    "#d7d7d7",
+                    false
+                  ],
+                  [
+                    3.97,
+                    "#ffffff",
+                    "#ff0800",
+                    false
+                  ],
+                  [
+                    4.23,
+                    "#f21b24",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    3.94,
+                    "#808080",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1.8,
+                    "#f21924",
+                    "#535355",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 25,
+            "items": {
+              "text_justified": {
+                "id": "text_justified",
+                "description": "Justified text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child + P",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child > DIV:first-child + DIV > DIV:first-child > H4:first-child + DIV + DIV > UL:first-child + P + P"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child > DIV:first-child + DIV > DIV:first-child > H4:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child + P"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H3:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > H3:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child > META:first-child + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 10,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child > DIV:first-child + DIV > DIV:first-child > H4:first-child + DIV > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > A:first-child > DIV:first-child > DIV:first-child > H4:first-child + DIV > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV > A:first-child > DIV:first-child + DIV > DIV:first-child > H4:first-child + DIV > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV > SPAN:first-child + SPAN",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child + DIV"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 6,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > H3:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SPAN:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > H3:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SPAN:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > H3:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SPAN:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > H3:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SPAN:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > H3:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SPAN:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV > DIV:first-child > SECTION#block-newworldblock > BUTTON:first-child + DIV > DIV:first-child + H2 + P + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > H3:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > SPAN:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child"
+                ]
+              },
+              "youtube_video": {
+                "id": "youtube_video",
+                "description": "YouTube video",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + H1 + NOSCRIPT + DIV > DIV:first-child + HEADER + DIV + DIV > DIV:first-child > SECTION:first-child > A:first-child + DIV > DIV:first-child + ARTICLE > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > FIGURE:first-child > IFRAME#youtube-field-player"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y04",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 5",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 1372,
+          "axe": 49,
+          "bulk": 9,
+          "embAc": 0,
+          "focAll": 9,
+          "focInd": 515,
+          "focOp": 85,
+          "hover": 36,
+          "ibm": 174,
+          "labClash": 14,
+          "linkUl": 105,
+          "log": 12,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 24,
+          "styleDiff": 84,
+          "tabNav": 22,
+          "wave": 114,
+          "zIndex": 120
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      66
+    ],
+    [
+      "ibm",
+      24
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "tabNav",
+      3
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
