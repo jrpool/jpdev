@@ -1,0 +1,3381 @@
+{
+  "script": "a11y02",
+  "batch": "ihro",
+  "what": "Axe, IBM, WAVE, and 15 custom tests",
+  "strict": true,
+  "timeStamp": "wsdx",
+  "logCount": 1,
+  "logSize": 82,
+  "prohibitedCount": 6,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://freedomhouse.org/",
+      "what": "Freedom House",
+      "result": "https://freedomhouse.org/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "bytes": [
+          1177174,
+          1177174,
+          1177174,
+          1177174,
+          1177174
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 3,
+          "serious": 0,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".region-content",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: main-content",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-no-duplicate-main",
+            "description": "Ensures the document has at most one main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".region-content",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "page-no-duplicate-main",
+                    "description": "Document has more than one main landmark",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".region-content",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#accessibility-url",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://freedomhouse.org/",
+      "what": "Freedom House",
+      "result": "https://freedomhouse.org/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "visibleElements": 569
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "total": 102,
+          "types": {
+            "indicatorMissing": {
+              "total": 1,
+              "tagNames": {
+                "IFRAME": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 101,
+              "tagNames": {
+                "A": 93,
+                "BUTTON": 5,
+                "INPUT": 3
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Our Issues"
+            },
+            {
+              "tagName": "A",
+              "text": "Countries"
+            },
+            {
+              "tagName": "A",
+              "text": "Policy Recommendations"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore the Map"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Donate"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Events"
+            },
+            {
+              "tagName": "A",
+              "text": "News & Perspectives"
+            },
+            {
+              "tagName": "A",
+              "text": "Find A Country"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore The Map"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Issues"
+            },
+            {
+              "tagName": "A",
+              "text": "Authoritarian Reach"
+            },
+            {
+              "tagName": "A",
+              "text": "Technology & Democracy"
+            },
+            {
+              "tagName": "A",
+              "text": "Promoting U.S. Leadership"
+            },
+            {
+              "tagName": "A",
+              "text": "Democracies in Decline"
+            },
+            {
+              "tagName": "A",
+              "text": "Election Integrity"
+            },
+            {
+              "tagName": "A",
+              "text": "Equality & Human Rights"
+            },
+            {
+              "tagName": "A",
+              "text": "Government Accountability & Transparency"
+            },
+            {
+              "tagName": "A",
+              "text": "Strengthening Civil Society"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Freedom"
+            },
+            {
+              "tagName": "A",
+              "text": "Religious Freedom"
+            },
+            {
+              "tagName": "A",
+              "text": "Freedom of Expression"
+            },
+            {
+              "tagName": "A",
+              "text": "Freedom of Assembly"
+            },
+            {
+              "tagName": "A",
+              "text": "Democracy During Pandemic"
+            },
+            {
+              "tagName": "A",
+              "text": "Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Regional Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Emergency Assistance and Thematic Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Countries"
+            },
+            {
+              "tagName": "A",
+              "text": "Policy Recommendations"
+            },
+            {
+              "tagName": "A",
+              "text": "Reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Freedom in the World"
+            },
+            {
+              "tagName": "A",
+              "text": "Freedom on the Net"
+            },
+            {
+              "tagName": "A",
+              "text": "Nations in Transit"
+            },
+            {
+              "tagName": "A",
+              "text": "China Media Bulletin"
+            },
+            {
+              "tagName": "A",
+              "text": "Election Watch for the Digital Age"
+            },
+            {
+              "tagName": "A",
+              "text": "Transnational Repression"
+            },
+            {
+              "tagName": "A",
+              "text": "Special Reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Archives"
+            },
+            {
+              "tagName": "A",
+              "text": "News & Perspectives"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Releases & Statements"
+            },
+            {
+              "tagName": "A",
+              "text": "Manage Subscriptions"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore Newsletters"
+            },
+            {
+              "tagName": "A",
+              "text": "About Us"
+            },
+            {
+              "tagName": "A",
+              "text": "History"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Experts"
+            },
+            {
+              "tagName": "A",
+              "text": "Events"
+            },
+            {
+              "tagName": "A",
+              "text": "Board and Leadership"
+            },
+            {
+              "tagName": "A",
+              "text": "Ways to Give"
+            },
+            {
+              "tagName": "A",
+              "text": "Financials"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "annual survey and analysis of internet freedom"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "A",
+              "text": "Register now"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Previous"
+            },
+            {
+              "tagName": "A",
+              "text": "Authoritarian Reach"
+            },
+            {
+              "tagName": "A",
+              "text": "Democracy during Pandemic"
+            },
+            {
+              "tagName": "A",
+              "text": "Technology & Democracy"
+            },
+            {
+              "tagName": "A",
+              "text": "Democracies in Decline"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Next"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore the Map"
+            },
+            {
+              "tagName": "A",
+              "text": "Freedom House Welcomes Emily Waechter as COO and Anne Richard as Distinguished Fellow and Afghanista"
+            },
+            {
+              "tagName": "A",
+              "text": "Freedom House Congratulates Ressa, Muratov on Nobel Peace Prize"
+            },
+            {
+              "tagName": "A",
+              "text": "Tunisia: President’s Power Grab Tramples Democracy and Rule of Law"
+            },
+            {
+              "tagName": "A",
+              "text": "The days of U.S. tech companies fighting back against authoritarian regimes are long gone opens in n"
+            },
+            {
+              "tagName": "A",
+              "text": "Biden struggles to rein in Saudi Arabia amid human rights concerns opens in new tab"
+            },
+            {
+              "tagName": "A",
+              "text": "Has Interpol become the long arm of oppressive regimes? opens in new tab"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Top"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Issues"
+            },
+            {
+              "tagName": "A",
+              "text": "Countries"
+            },
+            {
+              "tagName": "A",
+              "text": "Policy Recommendations"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore the Map"
+            },
+            {
+              "tagName": "A",
+              "text": "Donate"
+            },
+            {
+              "tagName": "A",
+              "text": "News & Perspectives"
+            },
+            {
+              "tagName": "A",
+              "text": "Reports"
+            },
+            {
+              "tagName": "A",
+              "text": "Events"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "(202) 296-5101"
+            },
+            {
+              "tagName": "A",
+              "text": "info@freedomhouse.org"
+            },
+            {
+              "tagName": "A",
+              "text": "press@freedomhouse.org"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Manage Subscriptions"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Content Permissions"
+            },
+            {
+              "tagName": "A",
+              "text": "Site Map"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://freedomhouse.org/",
+      "what": "Freedom House",
+      "result": "https://freedomhouse.org/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "total": 119,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 13,
+              "tagNames": {
+                "A": 12,
+                "SPAN": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 106,
+              "tagNames": {
+                "A": 94,
+                "BUTTON": 5,
+                "INPUT": 6,
+                "IFRAME": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Promoting U.S. Leadership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Election Integrity",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Equality & Human Rights",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Freedom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Government Accountability & Transparency",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Strengthening Civil Society",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom of Assembly",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom of Expression",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Religious Freedom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/article/freedom-house-welcomes-emily-waechter-coo-and-anne-richard-dis",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/article/freedom-house-congratulates-ressa-muratov-nobel-peace-prize\" t",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/article/tunisia-presidents-power-grab-tramples-democracy-and-rule-law\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "Facebook",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to main content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://freedomhouse.org/\" style=\"cursor: default;\"><img src=\"/themes/c",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Issues",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Countries",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Policy Recommendations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore the Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Donate",
+              "byTag": true,
+              "byOnClick": true,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"menu-toggle\" aria-label=\"Open mobile menu\" title=\"Menu Toggle\" st",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News & Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find A Country",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore The Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Issues",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Authoritarian Reach",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Technology & Democracy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Promoting U.S. Leadership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Democracies in Decline",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Election Integrity",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Equality & Human Rights",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Government Accountability & Transparency",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Strengthening Civil Society",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Freedom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Religious Freedom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom of Expression",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom of Assembly",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Democracy During Pandemic",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Regional Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Emergency Assistance and Thematic Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Countries",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Policy Recommendations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom in the World",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom on the Net",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Nations in Transit",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "China Media Bulletin",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Election Watch for the Digital Age",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transnational Repression",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Special Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Archives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News & Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Releases & Statements",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manage Subscriptions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore Newsletters",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Experts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Board and Leadership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Ways to Give",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financials",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"addthis_button_facebook at300b\" href=\" \" aria-label=\"Share this page o",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"addthis_button_twitter at300b\" href=\" \" aria-label=\"Share this page on",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"addthis_button_email at300b\" href=\" \" aria-label=\"Share this page via ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "annual survey and analysis of internet freedom",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Register now",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Previous",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Authoritarian Reach",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Democracy during Pandemic",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Technology & Democracy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Democracies in Decline",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Next",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore the Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom House Welcomes Emily Waechter as COO and Anne Richard as Distinguished F",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Freedom House Congratulates Ressa, Muratov on Nobel Peace Prize",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tunisia: President’s Power Grab Tramples Democracy and Rule of Law",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The days of U.S. tech companies fighting back against authoritarian regimes are ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Biden struggles to rein in Saudi Arabia amid human rights concerns opens in new ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Has Interpol become the long arm of oppressive regimes? opens in new tab",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input data-drupal-selector=\"edit-lists-subscriptions\" type=\"hidden\" name=\"lists",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-email",
+              "text": "<input data-drupal-selector=\"edit-email\" type=\"email\" id=\"edit-email\" name=\"emai",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-submit",
+              "text": "<input class=\"button large-button blue subscribe-block-button button js-form-sub",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input autocomplete=\"off\" data-drupal-selector=\"form-ragfj2ydqv2bp22xk2r2wcr7mtu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input data-drupal-selector=\"edit-newsletter-signup-form\" type=\"hidden\" name=\"fo",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-",
+              "text": "<input autocomplete=\"off\" data-drupal-selector=\"edit-\" type=\"text\" id=\"edit-\" va",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Issues",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Countries",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Policy Recommendations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore the Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Donate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News & Perspectives",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reports",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "(202) 296-5101",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "info@freedomhouse.org",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "press@freedomhouse.org",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manage Subscriptions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Content Permissions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Site Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "_atssh559",
+              "text": "<iframe id=\"_atssh559\" title=\"AddThis utility frame\" style=\"height: 1px; width: ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://freedomhouse.org/",
+      "what": "Freedom House",
+      "result": "https://freedomhouse.org/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "madeVisible": 0,
+          "opacityChanged": 0,
+          "opacityAffected": 0,
+          "unhoverables": 95
+        },
+        "items": {
+          "triggers": [],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Events"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Events"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "News&Perspectives"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News&Perspectives"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "FindACountry"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FindACountry"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ExploreTheMap"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ExploreTheMap"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "OurIssuesAuthoritarianReachTechnology&DemocracyPro"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "OurIssues"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "AuthoritarianReach"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AuthoritarianReach"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Technology&Democracy"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Technology&Democracy"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PromotingU.S.Leadership"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PromotingU.S.Leadership"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "DemocraciesinDecline"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "DemocraciesinDecline"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ElectionIntegrity"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ElectionIntegrity"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Equality&HumanRights"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Equality&HumanRights"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "GovernmentAccountability&Transparency"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "GovernmentAccountability&Transparency"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "StrengtheningCivilSociety"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "StrengtheningCivilSociety"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "MediaFreedom"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "MediaFreedom"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ReligiousFreedom"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ReligiousFreedom"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "FreedomofExpression"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FreedomofExpression"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "FreedomofAssembly"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FreedomofAssembly"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "DemocracyDuringPandemic"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "DemocracyDuringPandemic"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ProgramsRegionalProgramsEmergencyAssistanceandThem"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Programs"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "RegionalPrograms"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RegionalPrograms"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "EmergencyAssistanceandThematicPrograms"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "EmergencyAssistanceandThematicPrograms"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Countries"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Countries"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PolicyRecommendations"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PolicyRecommendations"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ReportsFreedomintheWorldFreedomontheNetNationsinTr"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reports"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "FreedomintheWorld"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FreedomintheWorld"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "FreedomontheNet"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FreedomontheNet"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "NationsinTransit"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "NationsinTransit"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ChinaMediaBulletin"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ChinaMediaBulletin"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ElectionWatchfortheDigitalAge"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ElectionWatchfortheDigitalAge"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "TransnationalRepression"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "TransnationalRepression"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "SpecialReports"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SpecialReports"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Archives"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Archives"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "News&PerspectivesPressReleases&StatementsManageSub"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News&Perspectives"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "PressReleases&Statements"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "PressReleases&Statements"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ManageSubscriptions"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ManageSubscriptions"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ExploreNewsletters"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ExploreNewsletters"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "AboutUsHistoryOurExpertsEventsBoardandLeadershipWa"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AboutUs"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "History"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "History"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "OurExperts"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "OurExperts"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Events"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Events"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "BoardandLeadership"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "BoardandLeadership"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "WaystoGive"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "WaystoGive"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Financials"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financials"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ContactUs"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ContactUs"
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Previous"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://freedomhouse.org/",
+      "what": "Freedom House",
+      "result": "https://freedomhouse.org/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 8
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Donate"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Open mobile menu"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Previous",
+                "content": "Previous"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Next",
+                "content": "Next"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email"
+                ]
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Subscribe"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Leave this field blank"
+                ]
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Top"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "links": 105,
+          "inline": {
+            "total": 2,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "annual survey and analysis of internet freedom",
+            "Register now"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://freedomhouse.org/",
+      "what": "Freedom House",
+      "result": "https://freedomhouse.org/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "roleElements": 12,
+        "badRoleElements": 11,
+        "tagNames": {
+          "DIV": {
+            "navigation": 1,
+            "main": 2,
+            "region": 1
+          },
+          "NAV": {
+            "navigation": 6
+          },
+          "A": {
+            "button": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 15,
+            "subtotals": [
+              5,
+              5,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 23,
+            "subtotals": [
+              19,
+              3,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 2,
+            "subtotals": [
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 103,
+            "subtotals": [
+              34,
+              26,
+              10,
+              7,
+              5,
+              5,
+              4,
+              4,
+              3,
+              2,
+              2,
+              1
+            ]
+          },
+          "button": {
+            "total": 5,
+            "subtotals": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "400": 1,
+              "600": 1,
+              "700": 8,
+              "900": 5
+            },
+            "lineHeight": {
+              "53px": 5,
+              "44px": 5,
+              "47.9999px": 2,
+              "20px": 1,
+              "27px": 1,
+              "32.0001px": 1
+            },
+            "minHeight": {
+              "0px": 9,
+              "auto": 6
+            },
+            "minWidth": {
+              "0px": 9,
+              "auto": 6
+            },
+            "fontSize": {
+              "40px": 95,
+              "36px": 19,
+              "28px": 13,
+              "25px": 5,
+              "16px": 3
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "500": 4,
+              "600": 19
+            },
+            "lineHeight": {
+              "33px": 19,
+              "13px": 4
+            },
+            "minHeight": {
+              "0px": 22,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 22,
+              "auto": 1
+            },
+            "fontSize": {
+              "25px": 494,
+              "12px": 150
+            }
+          },
+          "aInline": {
+            "fontWeight": {
+              "500": 1,
+              "700": 1
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 99,
+              "solid none none": 4
+            },
+            "borderWidth": {
+              "0px": 99,
+              "5px 0px 0px": 4
+            },
+            "fontWeight": {
+              "400": 28,
+              "500": 53,
+              "600": 13,
+              "700": 9
+            },
+            "lineHeight": {
+              "22px": 41,
+              "normal": 35,
+              "22.0001px": 10,
+              "31px": 5,
+              "14px": 5,
+              "20px": 4,
+              "24px": 2,
+              "21.0001px": 1
+            },
+            "textDecorationLine": {
+              "none": 101,
+              "underline": 2
+            },
+            "fontSize": {
+              "17px": 1599,
+              "16px": 1482,
+              "15px": 390,
+              "18px": 234,
+              "13px": 195,
+              "14px": 117
+            }
+          },
+          "button": {
+            "minHeight": {
+              "0px": 4,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 4,
+              "auto": 1
+            },
+            "opacity": {
+              "0": 1,
+              "1": 4
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "totals": {
+          "total": 13,
+          "tagNames": {
+            "BUTTON": 4,
+            "DIV": 8,
+            "IFRAME": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Expanding Freedom and Democracy. Quicklinks Events News & Perspectives Find A Country Explore The Ma"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Expanding freedom and democracy"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "NEW REPORT Freedom on the Net 2021 Learn More"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Previous"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Next"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Explore democracy and net freedom around the world Explore the Map"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Top"
+          },
+          {
+            "tagName": "DIV",
+            "id": "_atssh",
+            "text": ""
+          },
+          {
+            "tagName": "IFRAME",
+            "id": "_atssh483",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "at-image-sharing-tool",
+            "text": "AddThis SharingFacebook"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 9,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[2]",
+                "aria": "/document[1]/main[2]"
+              },
+              "message": "The <div> element has the id \"main-content\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 8721,
+                "height": 911,
+                "width": 784
+              },
+              "snippet": "<div role=\"main\" id=\"main-content\" class=\"region region-content-bottom\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 8,
+                "top": 9631,
+                "height": 21,
+                "width": 38
+              },
+              "snippet": "<button aria-hidden=\"true\" class=\"back-to-top\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[2]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 8,
+                "top": 26,
+                "height": 17,
+                "width": 84
+              },
+              "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"/accessibility\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 133
+              },
+              "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/header[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 44,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<div data-block-plugin-id=\"language_block:language_interface\" role=\"navigation\" id=\"block-languageswitcher\" class=\"language-switcher-language-url block block-language block-language-blocklanguage-interface\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[2]",
+                "aria": "/document[1]/main[2]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 8721,
+                "height": 911,
+                "width": 784
+              },
+              "snippet": "<div role=\"main\" id=\"main-content\" class=\"region region-content-bottom\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 1252,
+                "height": 7449,
+                "width": 784
+              },
+              "snippet": "<div role=\"main\" id=\"main-content\" class=\"region region-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[1]",
+                "aria": "/document[1]"
+              },
+              "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_hidden_focus_misuse",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Element \"button\" should not be focusable within the subtree of an element with an 'aria-hidden' attribute with value 'true'",
+              "bounds": {
+                "left": 8,
+                "top": 9631,
+                "height": 21,
+                "width": 38
+              },
+              "snippet": "<button aria-hidden=\"true\" class=\"back-to-top\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsVisibleLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique visible labels",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 10510,
+                "width": 784
+              },
+              "snippet": "<body data-aos-delay=\"0\" data-aos-duration=\"400\" data-aos-easing=\"ease\" class=\"path-frontpage page-node-type-page\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 8,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[2]",
+                "aria": "/document[1]/main[2]"
+              },
+              "message": "The <div> element has the id \"main-content\" that is already in use",
+              "bounds": {
+                "left": 0,
+                "top": 4141,
+                "height": 211,
+                "width": 800
+              },
+              "snippet": "<div role=\"main\" id=\"main-content\" class=\"region region-content-bottom\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/a[1]",
+                "aria": "/document[1]/link[2]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"/accessibility\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<a class=\"visually-hidden focusable skip-link\" href=\"#main-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/header[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 800
+              },
+              "snippet": "<div data-block-plugin-id=\"language_block:language_interface\" role=\"navigation\" id=\"block-languageswitcher\" class=\"language-switcher-language-url block block-language block-language-blocklanguage-interface\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[2]",
+                "aria": "/document[1]/main[2]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 4141,
+                "height": 211,
+                "width": 800
+              },
+              "snippet": "<div role=\"main\" id=\"main-content\" class=\"region region-content-bottom\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsRequireLabel_Implicit_2",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 103,
+                "height": 4038,
+                "width": 800
+              },
+              "snippet": "<div role=\"main\" id=\"main-content\" class=\"region region-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/div[2]/div[1]/div[2]/div[1]/div[4]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]/a[1]/div[2]/h3[1]",
+                "aria": "/document[1]/main[1]/link[14]/heading[1]"
+              },
+              "message": "Text contrast of 1.72 with its background is less than the WCAG AA minimum requirements for text of size 20px and weight of 600",
+              "bounds": {
+                "left": 682,
+                "top": 2521,
+                "height": 52,
+                "width": 133
+              },
+              "snippet": "<h3 class=\"field--name-field-header\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/noscript[1]",
+                "aria": "/document[1]"
+              },
+              "message": "The ARIA attribute 'aria-hidden' is not valid for the element <noscript> with ARIA role 'none'",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<noscript aria-hidden=\"true\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleMainsVisibleLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]",
+                "aria": "/document[1]"
+              },
+              "message": "Multiple elements with \"main\" role do not have unique visible labels",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 4620,
+                "width": 800
+              },
+              "snippet": "<body data-aos-delay=\"0\" data-aos-duration=\"400\" data-aos-easing=\"ease\" class=\"path-frontpage page-node-type-page\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://freedomhouse.org/",
+      "what": "Freedom House",
+      "result": "https://freedomhouse.org/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Freedom House | Expanding freedom and democracy",
+          "pageurl": "https://freedomhouse.org/",
+          "time": 2.82,
+          "creditsremaining": 399,
+          "allitemcount": 172,
+          "totalelements": 720,
+          "waveurl": "http://wave.webaim.org/report?url=https://freedomhouse.org/",
+          "domid": "3c20fdab4b42fe146225130f280d2f4e"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 1,
+            "items": {
+              "aria_reference_broken": {
+                "id": "aria_reference_broken",
+                "description": "Broken ARIA reference",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#at-image-sharing-tool"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 2,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + H1",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV + DIV > DIV:first-child + DIV > DIV:first-child > H2:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 23,
+            "items": {
+              "alt_duplicate": {
+                "id": "alt_duplicate",
+                "description": "A nearby image has the same alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG"
+                ]
+              },
+              "alt_long": {
+                "id": "alt_long",
+                "description": "Long alternative text",
+                "count": 15,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV > DIV:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > PICTURE:first-child > SOURCE:first-child + SOURCE + SOURCE + SOURCE + SOURCE + IMG",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV > DIV:first-child > DIV:first-child > DIV:first-child > H2:first-child + DIV > DIV:first-child > DIV:first-child > BUTTON:first-child + DIV > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > DIV:first-child > ARTICLE:first-child > DIV:first-child > IMG:first-child"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 4,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > HEADER#page-header > DIV:first-child + DIV + DIV > SPAN:first-child + DIV > NAV#block-megamenu > H2:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV + DIV + SPAN + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV + DIV + SPAN + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT + DIV > DIV#main-content > DIV#block-ts-freedomhouse-content > DIV:first-child > DIV:first-child + DIV + DIV + DIV > SPAN:first-child + SPAN + DIV + SPAN + SPAN + DIV + SPAN + SPAN + DIV + SPAN + DIV + DIV + SPAN + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > A:first-child + A"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + DIV + NOSCRIPT"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#at-image-sharing-tool > DIV:first-child + DIV > A:first-child",
+                  false
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "tabFocusables": 97,
+        "tabFocused": 98,
+        "discrepancy": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://freedomhouse.org/",
+      "result": {
+        "tabFocusables": 97,
+        "tabFocused": 98,
+        "discrepancy": 1
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y02",
+      "what": "3 packages and 15 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 4",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 592,
+          "axe": 10,
+          "bulk": 26,
+          "embAc": 0,
+          "focInd": 5,
+          "focOp": 52,
+          "hover": 190,
+          "ibm": 32,
+          "labClash": 0,
+          "linkUl": 6,
+          "log": 91,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 22,
+          "styleDiff": 61,
+          "tabNav": 0,
+          "wave": 52,
+          "zIndex": 39,
+          "focAll": 3
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      141
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      6
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
