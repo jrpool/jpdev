@@ -1,0 +1,3619 @@
+{
+  "script": "a11y03",
+  "batch": "a11yHeros",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "y0ek",
+  "logCount": 8,
+  "logSize": 856,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "bytes": [
+          1287260,
+          1287260,
+          1287260,
+          1287260,
+          1287260
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 3,
+          "moderate": 2,
+          "serious": 14,
+          "critical": 1
+        },
+        "items": [
+          {
+            "rule": "aria-allowed-role",
+            "description": "Ensures role attribute has an appropriate value for the element",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "img[alt=\"Georgia\\ Tech\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "aria-allowed-role",
+                    "description": "ARIA role presentation is not allowed for given element",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "aria-required-children",
+            "description": "Ensures elements with an ARIA role that require child roles contain them",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".nav",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "aria-required-children",
+                    "description": "Required ARIA children role not present: group, menuitemradio, menuitem, menuitemcheckbox",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-active",
+            "description": "Ensures every id attribute value of active elements is unique",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".sr-only[href$=\"\\#main-navigation\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-active",
+                    "description": "Document has active elements with the same id attribute: page-navigation",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "empty-heading",
+            "description": "Ensures headings have discernible text",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": ".h6",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#gt-help",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".social-media-link-icon--facebook",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".social-media-link-icon--instagram",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".social-media-link-icon--twitter",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".social-media-link-icon--youtube",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".social-media-link-icon--linkedin",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "listitem",
+            "description": "Ensures <li> elements are used semantically",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".dropdown.display-links.nav-item:nth-child(1)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".dropdown.display-links.nav-item:nth-child(2)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".dropdown.display-links.nav-item:nth-child(3)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".dropdown.display-links.nav-item:nth-child(4)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".dropdown.display-links.nav-item:nth-child(5)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".nav > .nav-link:nth-child(6)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".nav > .nav-link:nth-child(7)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".dropdown.display-links.nav-item:nth-child(8)",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element without a role, or a role=\"list\"",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "presentation-role-conflict",
+            "description": "Flags elements whose role is none or presentation and which cause the role conflict resolution to trigger.",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "img[alt=\"Georgia\\ Tech\"]",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "has-global-aria-attribute",
+                    "description": "Element does not have global ARIA attribute",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "visibleElements": 377
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "tabFocusables": 50,
+        "tabFocused": 50,
+        "discrepancy": 0
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "total": 81,
+          "types": {
+            "indicatorMissing": {
+              "total": 5,
+              "tagNames": {
+                "BUTTON": 1,
+                "INPUT": 1,
+                "A": 3
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 75,
+              "tagNames": {
+                "A": 75
+              }
+            },
+            "outlinePresent": {
+              "total": 1,
+              "tagNames": {
+                "INPUT": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "BUTTON",
+              "text": "Open Search"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "+1 404.894.2000"
+            },
+            {
+              "tagName": "A",
+              "text": "Campus Map"
+            },
+            {
+              "tagName": "A",
+              "text": "GT LOGIN"
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Skip to main navigation"
+            },
+            {
+              "tagName": "A",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "A",
+              "text": "Skip To Keyboard Navigation"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Center for Inclusive Design and Innovation"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "Support Our Center"
+            },
+            {
+              "tagName": "A",
+              "text": "People"
+            },
+            {
+              "tagName": "A",
+              "text": "GT Squared"
+            },
+            {
+              "tagName": "A",
+              "text": "Research"
+            },
+            {
+              "tagName": "A",
+              "text": "Research"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessible Education"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessible Workplace"
+            },
+            {
+              "tagName": "A",
+              "text": "Assistive Technology"
+            },
+            {
+              "tagName": "A",
+              "text": "Tech & Aging"
+            },
+            {
+              "tagName": "A",
+              "text": "ITEP"
+            },
+            {
+              "tagName": "A",
+              "text": "Student Research"
+            },
+            {
+              "tagName": "A",
+              "text": "Research Opportunities"
+            },
+            {
+              "tagName": "A",
+              "text": "Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Braille"
+            },
+            {
+              "tagName": "A",
+              "text": "Captioning & Described Media"
+            },
+            {
+              "tagName": "A",
+              "text": "Digital Accessibility & Usability Experience"
+            },
+            {
+              "tagName": "A",
+              "text": "E-Text"
+            },
+            {
+              "tagName": "A",
+              "text": "Tools For Life"
+            },
+            {
+              "tagName": "A",
+              "text": "Student Accommodation Manager"
+            },
+            {
+              "tagName": "A",
+              "text": "Education"
+            },
+            {
+              "tagName": "A",
+              "text": "Education"
+            },
+            {
+              "tagName": "A",
+              "text": "Courses"
+            },
+            {
+              "tagName": "A",
+              "text": "Training"
+            },
+            {
+              "tagName": "A",
+              "text": "Portfolio"
+            },
+            {
+              "tagName": "A",
+              "text": "Portfolio"
+            },
+            {
+              "tagName": "A",
+              "text": "Publications"
+            },
+            {
+              "tagName": "A",
+              "text": "Presentations"
+            },
+            {
+              "tagName": "A",
+              "text": "Project Archive"
+            },
+            {
+              "tagName": "A",
+              "text": "News & Events"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": "Membership"
+            },
+            {
+              "tagName": "A",
+              "text": "Membership"
+            },
+            {
+              "tagName": "A",
+              "text": "Member Log In"
+            },
+            {
+              "tagName": "A",
+              "text": "Membership Form"
+            },
+            {
+              "tagName": "A",
+              "text": "Services We Offer"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Mission"
+            },
+            {
+              "tagName": "A",
+              "text": "View All Available Resources"
+            },
+            {
+              "tagName": "A",
+              "text": "Projects"
+            },
+            {
+              "tagName": "A",
+              "text": "Opportunities"
+            },
+            {
+              "tagName": "A",
+              "text": "Become a Member"
+            },
+            {
+              "tagName": "A",
+              "text": "Learn More About Our Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Schedule A Tour"
+            },
+            {
+              "tagName": "A",
+              "text": ".st0{fill:#AA985D;}"
+            },
+            {
+              "tagName": "A",
+              "text": ".st0{fill:#AA985D;}"
+            },
+            {
+              "tagName": "A",
+              "text": ".st0{fill:#AA985D;}"
+            },
+            {
+              "tagName": "A",
+              "text": ".st0{fill:#AA985D;}"
+            },
+            {
+              "tagName": "A",
+              "text": "See All News"
+            },
+            {
+              "tagName": "A",
+              "text": "See All Events"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "Directory"
+            },
+            {
+              "tagName": "A",
+              "text": "Employment"
+            },
+            {
+              "tagName": "A",
+              "text": "Emergency Information"
+            },
+            {
+              "tagName": "A",
+              "text": "Legal & Privacy Information"
+            },
+            {
+              "tagName": "A",
+              "text": "Human Trafficking Notice"
+            },
+            {
+              "tagName": "A",
+              "text": "Title IX/Sexual Misconduct"
+            },
+            {
+              "tagName": "A",
+              "text": "Hazing Public Disclosures"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Accountability"
+            },
+            {
+              "tagName": "A",
+              "text": "Accreditation"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Log in"
+            },
+            {
+              "tagName": "A",
+              "text": "HQ"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "total": 88,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 1,
+              "tagNames": {
+                "SPAN": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 87,
+              "tagNames": {
+                "A": 80,
+                "BUTTON": 5,
+                "INPUT": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "Open Search",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to main navigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to main content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "page-navigation",
+              "text": "Skip To Keyboard Navigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Toggle navigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"d-flex align-items-center\" href=\"https://gatech.edu\" title=\"Georgia Te",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Center for Inclusive Design and Innovation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "main-navigation",
+              "text": "<a id=\"main-navigation\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Support Our Center",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "People",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "GT Squared",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessible Education",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessible Workplace",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Assistive Technology",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tech & Aging",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ITEP",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Student Research",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Research Opportunities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Braille",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Captioning & Described Media",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Digital Accessibility & Usability Experience",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "E-Text",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tools For Life",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Student Accommodation Manager",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Education",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Education",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Courses",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Training",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Portfolio",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Portfolio",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Publications",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Presentations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Project Archive",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News & Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Membership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Membership",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Member Log In",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Membership Form",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Open Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-keys",
+              "text": "<input title=\"Enter the terms you wish to search for.\" placeholder=\"Search here.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "edit-submit",
+              "text": "<input alt=\"Search submit\" class=\"btn btn-default button js-form-submit form-sub",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "main-content",
+              "text": "<a id=\"main-content\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services We Offer",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Mission",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View All Available Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Projects",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Opportunities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Become a Member",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Learn More About Our Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Schedule A Tour",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": ".st0{fill:#AA985D;}",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": ".st0{fill:#AA985D;}",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": ".st0{fill:#AA985D;}",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": ".st0{fill:#AA985D;}",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "See All News",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "See All Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "+1 404.894.2000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Campus Map",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "General",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Directory",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Employment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Emergency Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Legal",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Legal & Privacy Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Human Trafficking Notice",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Title IX/Sexual Misconduct",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hazing Public Disclosures",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accountability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accreditation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.gatech.edu/\" title=\"Georgia Tech\" style=\"cursor: default;\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "GT LOGIN",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Resources",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"social-media-link-icon--facebook\" href=\"https://www.facebook.com/cidia",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"social-media-link-icon--instagram\" href=\"https://www.instagram.com/cid",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"social-media-link-icon--twitter\" href=\"https://www.twitter.com/cidiacc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"social-media-link-icon--youtube\" href=\"https://www.youtube.com/user/Ac",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"social-media-link-icon--linkedin\" href=\"https://www.linkedin.com/compa",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Log in",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HQ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "triggers": 0,
+          "madeVisible": 0,
+          "opacityChanged": 0,
+          "opacityAffected": 0,
+          "unhoverables": 3
+        },
+        "items": {
+          "triggers": [],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomainnavigation"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SkipToKeyboardNavigation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 7
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Toggle navigation",
+                "content": "Toggle navigation"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Open Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search"
+                ]
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "GO"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "General"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Legal"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Resources"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "links": 80,
+          "inline": {
+            "total": 6,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "Center for Inclusive Design and Innovation",
+            "Services We Offer",
+            "Our Mission",
+            "Projects",
+            "Opportunities",
+            "Contact Us"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "roleElements": 36,
+        "badRoleElements": 13,
+        "tagNames": {
+          "DIV": {
+            "navigation": 2,
+            "main": 1,
+            "complementary": 3
+          },
+          "NAV": {
+            "navigation": 5
+          },
+          "BUTTON": {
+            "button": 1
+          },
+          "ARTICLE": {
+            "article": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 11,
+            "subtotals": [
+              4,
+              2,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 12,
+            "subtotals": [
+              8,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 6
+          },
+          "aBlock": {
+            "total": 74,
+            "subtotals": [
+              29,
+              13,
+              8,
+              7,
+              6,
+              4,
+              4,
+              1,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 5,
+            "subtotals": [
+              2,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {
+            "fontWeight": {
+              "400": 7,
+              "600": 4
+            },
+            "lineHeight": {
+              "33.92px": 7,
+              "24px": 2,
+              "38.38px": 1,
+              "40.704px": 1
+            },
+            "minHeight": {
+              "0px": 9,
+              "auto": 2
+            },
+            "minWidth": {
+              "0px": 9,
+              "auto": 2
+            },
+            "fontSize": {
+              "33.92px": 44,
+              "24px": 21,
+              "38px": 1
+            }
+          },
+          "h3": {
+            "fontWeight": {
+              "400": 10,
+              "600": 2
+            },
+            "lineHeight": {
+              "20px": 8,
+              "26.4px": 1,
+              "16px": 1,
+              "28px": 1,
+              "14.4px": 1
+            },
+            "minHeight": {
+              "auto": 8,
+              "0px": 4
+            },
+            "minWidth": {
+              "auto": 8,
+              "0px": 4
+            },
+            "fontSize": {
+              "20px": 140,
+              "14.4px": 23,
+              "28px": 22,
+              "16px": 13,
+              "24px": 12
+            }
+          },
+          "aInline": {},
+          "aBlock": {
+            "borderStyle": {
+              "none": 60,
+              "none none dotted": 14
+            },
+            "borderWidth": {
+              "0px": 60,
+              "0px 0px 1px": 14
+            },
+            "fontWeight": {
+              "400": 9,
+              "500": 20,
+              "600": 29,
+              "700": 16
+            },
+            "lineHeight": {
+              "14.4px": 37,
+              "16.64px": 20,
+              "25.6px": 8,
+              "19.2px": 8,
+              "17.68px": 1
+            },
+            "minHeight": {
+              "0px": 73,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 73,
+              "auto": 1
+            },
+            "textDecorationLine": {
+              "none": 69,
+              "underline": 5
+            },
+            "textDecorationThickness": {
+              "auto": 69,
+              "2.08px": 5
+            },
+            "fontSize": {
+              "14.4px": 851,
+              "12.8px": 460,
+              "16px": 368,
+              "13.6px": 23
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "solid": 2,
+              "solid none none": 2,
+              "none": 1
+            },
+            "borderWidth": {
+              "1px": 2,
+              "1px 0px 0px": 2,
+              "0px": 1
+            },
+            "lineHeight": {
+              "25.6px": 3,
+              "14.08px": 1,
+              "21.12px": 1
+            },
+            "fontSize": {
+              "16px": 69,
+              "12.8px": 23,
+              "17.6px": 23
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "totals": {
+          "total": 14,
+          "tagNames": {
+            "DIV": 7,
+            "BUTTON": 1,
+            "UL": 6
+          }
+        },
+        "items": [
+          {
+            "tagName": "DIV",
+            "id": "brandhead",
+            "text": "Toggle navigation"
+          },
+          {
+            "tagName": "DIV",
+            "id": "mobile-menu-wrapper",
+            "text": "Toggle navigation"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Toggle navigation"
+          },
+          {
+            "tagName": "DIV",
+            "id": "bottom-header",
+            "text": "Main navigation About About Support Our Center People GT Squared Research Research Accessible Educat"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "About Support Our Center People GT Squared"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Research Accessible Education Accessible Workplace Assistive Technology Tech & Aging ITEP Student Re"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Services Braille Captioning & Described Media Digital Accessibility & Usability Experience E-Text To"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Education Courses Training"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Portfolio Publications Presentations Project Archive"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Membership Member Log In Membership Form"
+          },
+          {
+            "tagName": "DIV",
+            "id": "search-container",
+            "text": "Open Search Search"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "We Are Contributing to an Inclusive World"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Georgia Institute of Technology North Avenue Atlanta, GA 30332 +1 404.894.2000 Campus Map General Di"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 39,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[4]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 8,
+                "top": 3800,
+                "height": 17,
+                "width": 75
+              },
+              "snippet": "<a aria-label=\"admin login\" href=\"https://cidi.gatech.edu/cas\" class=\"gt-login\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[1]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 134,
+                "top": 3412,
+                "height": 17,
+                "width": 110
+              },
+              "snippet": "<a aria-label=\"telephone\" href=\"tel: +14048942000\" class=\"gt-phone\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[4]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[12]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 8,
+                "top": 3061,
+                "height": 17,
+                "width": 24
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://id.gatech.edu/industrial-design-rapid-prototyping-tech-and-co-creation-assistive-tech\" class=\"stretched-link\" aria-label=\"Read this article\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[11]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 8,
+                "top": 2938,
+                "height": 17,
+                "width": 24
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://s2.techsage.gatech.edu/news/tai-chi-leader-meets-techsage-researchers-talk-preventative-and-inclusive-health\" class=\"stretched-link\" aria-label=\"Read Dr. Lam article\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[10]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 8,
+                "top": 2815,
+                "height": 17,
+                "width": 24
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.gtalumni.org/s/1481/alumni/17/magazine-pages.aspx?sid=1481&gid=21&pgid=20076&cid=44378&ecid=44378&crid=0&calpgid=5677&calcid=12432\" class=\"stretched-link\" aria-label=\"Read this article\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[9]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 8,
+                "top": 2691,
+                "height": 17,
+                "width": 24
+              },
+              "snippet": "<a href=\"/itep\" class=\"stretched-link\" aria-label=\"learn more about ITEP\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_PresentationImgHasNonNullAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/contentinfo[1]/link[3]"
+              },
+              "message": "Image designated as decorative has non-null 'alt' attribute",
+              "bounds": {
+                "left": 8,
+                "top": 3732,
+                "height": 18,
+                "width": 102
+              },
+              "snippet": "<img class=\"mb-2\" aria-label=\"logo link to main campus site\" role=\"presentation\" alt=\"Georgia Tech\" src=\"/themes/contrib/gt_theme/images/gt-logo.svg\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[5]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/list[1]/listitem[5]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3943,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://www.linkedin.com/company/cidiaccess\" class=\"social-media-link-icon--linkedin\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[4]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/list[1]/listitem[4]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3925,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://www.youtube.com/user/AccessibleMediaTube/featured\" class=\"social-media-link-icon--youtube\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[3]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/list[1]/listitem[3]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3907,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://www.twitter.com/cidiaccess\" class=\"social-media-link-icon--twitter\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[2]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/list[1]/listitem[2]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3889,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://www.instagram.com/cidiaccess\" class=\"social-media-link-icon--instagram\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/list[1]/listitem[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 48,
+                "top": 3871,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"https://www.facebook.com/cidiaccess\" class=\"social-media-link-icon--facebook\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Header_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/h3[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/heading[4]"
+              },
+              "message": "Heading element has no descriptive content",
+              "bounds": {
+                "left": 8,
+                "top": 1323,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<h3 class=\"h6 pb-3\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]"
+              },
+              "message": "The <div> element has the id \"page-navigation\" that is already in use",
+              "bounds": {
+                "left": 8,
+                "top": 192,
+                "height": 713,
+                "width": 784
+              },
+              "snippet": "<div aria-labelledby=\"main-navigation\" aria-label=\"Primary\" role=\"navigation\" class=\"main-nav ml-auto flex-shrink-1\" id=\"page-navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[2]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[2]/button[1]"
+              },
+              "message": "The 'id' \"expandable\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 921,
+                "height": 21,
+                "width": 95
+              },
+              "snippet": "<button aria-controls=\"expandable\" aria-expanded=\"false\" data-target=\"#gt-search\" data-toggle=\"collapse\" role=\"button\" title=\"open search\" class=\"btn btn-primary fa fa-search\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/li[8]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]/listitem[8]/menu[1]"
+              },
+              "message": "The 'id' \"dLabel\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 851,
+                "height": 54,
+                "width": 744
+              },
+              "snippet": "<ul aria-label=\"submenu\" aria-labelledby=\"dLabel\" role=\"menu\" class=\"dropdown-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/li[5]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]/listitem[5]/menu[1]"
+              },
+              "message": "The 'id' \"dLabel\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 725,
+                "height": 72,
+                "width": 744
+              },
+              "snippet": "<ul aria-label=\"submenu\" aria-labelledby=\"dLabel\" role=\"menu\" class=\"dropdown-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/li[4]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]/listitem[4]/menu[1]"
+              },
+              "message": "The 'id' \"dLabel\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 653,
+                "height": 54,
+                "width": 744
+              },
+              "snippet": "<ul aria-label=\"submenu\" aria-labelledby=\"dLabel\" role=\"menu\" class=\"dropdown-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/li[3]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]/listitem[3]/menu[1]"
+              },
+              "message": "The 'id' \"dLabel\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 509,
+                "height": 126,
+                "width": 744
+              },
+              "snippet": "<ul aria-label=\"submenu\" aria-labelledby=\"dLabel\" role=\"menu\" class=\"dropdown-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/li[2]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]/listitem[2]/menu[1]"
+              },
+              "message": "The 'id' \"dLabel\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 347,
+                "height": 144,
+                "width": 744
+              },
+              "snippet": "<ul aria-label=\"submenu\" aria-labelledby=\"dLabel\" role=\"menu\" class=\"dropdown-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/li[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]/listitem[1]/menu[1]"
+              },
+              "message": "The 'id' \"dLabel\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 48,
+                "top": 257,
+                "height": 72,
+                "width": 744
+              },
+              "snippet": "<ul aria-label=\"submenu\" aria-labelledby=\"dLabel\" role=\"menu\" class=\"dropdown-menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]"
+              },
+              "message": "The 'id' \"dropdownMenu\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 239,
+                "height": 666,
+                "width": 784
+              },
+              "snippet": "<ul aria-labelledby=\"dropdownMenu\" role=\"menu\" class=\"nav navbar-nav\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/button[1]"
+              },
+              "message": "The 'id' \"navbarResponsive\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 44,
+                "height": 21,
+                "width": 120
+              },
+              "snippet": "<button aria-label=\"Toggle navigation\" aria-expanded=\"false\" aria-controls=\"navbarResponsive\" data-target=\"#Navbar\" data-toggle=\"collapse\" type=\"button\" class=\"d-block ml-auto navbar-toggler collapsed\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[2]/div[1]/button[1]",
+                "aria": "/document[1]/contentinfo[1]/button[3]"
+              },
+              "message": "The 'id' \"footercollapse\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 3834,
+                "height": 21,
+                "width": 80
+              },
+              "snippet": "<button aria-controls=\"footercollapse\" aria-expanded=\"false\" data-target=\"#collapseFooter\" data-toggle=\"collapse\" type=\"button\" class=\"btn-footer w-100\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/button[1]",
+                "aria": "/document[1]/contentinfo[1]/button[2]"
+              },
+              "message": "The 'id' \"legalcollapse\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 3553,
+                "height": 21,
+                "width": 49
+              },
+              "snippet": "<button aria-controls=\"legalcollapse\" aria-expanded=\"false\" data-target=\"#collapseLegal\" data-toggle=\"collapse\" type=\"button\" class=\" w-100 btn-footer-2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/button[1]",
+                "aria": "/document[1]/contentinfo[1]/button[1]"
+              },
+              "message": "The 'id' \"generalcollapse\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 8,
+                "top": 3446,
+                "height": 21,
+                "width": 64
+              },
+              "snippet": "<button aria-controls=\"generalcollapse\" aria-expanded=\"false\" data-target=\"#collapseGeneral\" data-toggle=\"collapse\" type=\"button\" class=\" w-100 btn-footer-2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 8,
+                "top": 8,
+                "height": 17,
+                "width": 158
+              },
+              "snippet": "<a class=\"visually-hidden focusable\" href=\"#main-navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 192,
+                "height": 713,
+                "width": 784
+              },
+              "snippet": "<div aria-labelledby=\"main-navigation\" aria-label=\"Primary\" role=\"navigation\" class=\"main-nav ml-auto flex-shrink-1\" id=\"page-navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 192,
+                "height": 792,
+                "width": 784
+              },
+              "snippet": "<nav class=\"collapse navbar navbar-collapse\" id=\"Navbar\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/complementary[3]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 1000,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<div role=\"complementary\" class=\"before-content\" id=\"gt-before-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/complementary[2]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 1000,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<div role=\"complementary\" class=\"breadcrumb-links\" id=\"gt-breadcrumbs-title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/complementary[1]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 8,
+                "top": 1000,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<div role=\"complementary\" id=\"gt-help\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/complementary[3]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 8,
+                "top": 1000,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<div role=\"complementary\" class=\"before-content\" id=\"gt-before-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/complementary[2]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 8,
+                "top": 1000,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<div role=\"complementary\" class=\"breadcrumb-links\" id=\"gt-breadcrumbs-title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 8,
+                "top": 1000,
+                "height": 0,
+                "width": 784
+              },
+              "snippet": "<div role=\"complementary\" id=\"gt-help\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 48,
+                "top": 1000,
+                "height": 18,
+                "width": 704
+              },
+              "snippet": "<figure class=\"mb-0 mb-sm-4 mb-md-3 mb-lg-0\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/contentinfo[1]/link[3]"
+              },
+              "message": "The ARIA role 'presentation' is not valid for the element <img> and may be ignored by the browser since the element is focusable",
+              "bounds": {
+                "left": 8,
+                "top": 3732,
+                "height": 18,
+                "width": 102
+              },
+              "snippet": "<img class=\"mb-2\" aria-label=\"logo link to main campus site\" role=\"presentation\" alt=\"Georgia Tech\" src=\"/themes/contrib/gt_theme/images/gt-logo.svg\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[2]/menu[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'menu'",
+              "bounds": {
+                "left": 8,
+                "top": 3590,
+                "height": 126,
+                "width": 784
+              },
+              "snippet": "<ul aria-expanded=\"false\" role=\"menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[1]/menu[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'menu'",
+              "bounds": {
+                "left": 8,
+                "top": 3483,
+                "height": 54,
+                "width": 784
+              },
+              "snippet": "<ul aria-expanded=\"false\" role=\"menu\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 24,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[4]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 595,
+                "top": 6455,
+                "height": 18,
+                "width": 150
+              },
+              "snippet": "<a aria-label=\"admin login\" href=\"https://cidi.gatech.edu/cas\" class=\"gt-login\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/p[1]/span[1]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[1]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 72,
+                "top": 6449,
+                "height": 17,
+                "width": 133
+              },
+              "snippet": "<a aria-label=\"telephone\" href=\"tel: +14048942000\" class=\"gt-phone\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[4]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[12]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 523,
+                "top": 5211,
+                "height": 19,
+                "width": 24
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://id.gatech.edu/industrial-design-rapid-prototyping-tech-and-co-creation-assistive-tech\" class=\"stretched-link\" aria-label=\"Read this article\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[11]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 253,
+                "top": 5208,
+                "height": 19,
+                "width": 24
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://s2.techsage.gatech.edu/news/tai-chi-leader-meets-techsage-researchers-talk-preventative-and-inclusive-health\" class=\"stretched-link\" aria-label=\"Read Dr. Lam article\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[10]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 523,
+                "top": 4830,
+                "height": 19,
+                "width": 24
+              },
+              "snippet": "<a target=\"_blank\" href=\"https://www.gtalumni.org/s/1481/alumni/17/magazine-pages.aspx?sid=1481&gid=21&pgid=20076&cid=44378&ecid=44378&crid=0&calpgid=5677&calcid=12432\" class=\"stretched-link\" aria-label=\"Read this article\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG21_Label_Accessible",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/link[9]"
+              },
+              "message": "Accessible name does not match or contain the visible label text",
+              "bounds": {
+                "left": 253,
+                "top": 4826,
+                "height": 19,
+                "width": 24
+              },
+              "snippet": "<a href=\"/itep\" class=\"stretched-link\" aria-label=\"learn more about ITEP\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_Img_PresentationImgHasNonNullAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/contentinfo[1]/link[3]"
+              },
+              "message": "Image designated as decorative has non-null 'alt' attribute",
+              "bounds": {
+                "left": 595,
+                "top": 6371,
+                "height": 34,
+                "width": 150
+              },
+              "snippet": "<img class=\"mb-2\" aria-label=\"logo link to main campus site\" role=\"presentation\" alt=\"Georgia Tech\" src=\"/themes/contrib/gt_theme/images/gt-logo.svg\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Header_HasContent",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/h3[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]/heading[4]"
+              },
+              "message": "Heading element has no descriptive content",
+              "bounds": {
+                "left": 49,
+                "top": 1648,
+                "height": 16,
+                "width": 702
+              },
+              "snippet": "<h3 class=\"h6 pb-3\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]"
+              },
+              "message": "The <div> element has the id \"page-navigation\" that is already in use",
+              "bounds": {
+                "left": 55,
+                "top": 174,
+                "height": 54,
+                "width": 690
+              },
+              "snippet": "<div aria-labelledby=\"main-navigation\" aria-label=\"Primary\" role=\"navigation\" class=\"main-nav ml-auto flex-shrink-1\" id=\"page-navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[2]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[2]/button[1]"
+              },
+              "message": "The 'id' \"expandable\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 711,
+                "top": 230,
+                "height": 23,
+                "width": 27
+              },
+              "snippet": "<button aria-controls=\"expandable\" aria-expanded=\"false\" data-target=\"#gt-search\" data-toggle=\"collapse\" role=\"button\" title=\"open search\" class=\"btn btn-primary fa fa-search\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]/navigation[1]/menu[1]"
+              },
+              "message": "The 'id' \"dropdownMenu\" specified for the ARIA property 'aria-labelledby' value is not valid",
+              "bounds": {
+                "left": 55,
+                "top": 174,
+                "height": 54,
+                "width": 690
+              },
+              "snippet": "<ul aria-labelledby=\"dropdownMenu\" role=\"menu\" class=\"nav navbar-nav\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<a class=\"visually-hidden focusable\" href=\"#main-navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 55,
+                "top": 174,
+                "height": 54,
+                "width": 690
+              },
+              "snippet": "<div aria-labelledby=\"main-navigation\" aria-label=\"Primary\" role=\"navigation\" class=\"main-nav ml-auto flex-shrink-1\" id=\"page-navigation\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleNavigationLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/header[1]/div[1]/div[3]/div[1]/nav[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+              },
+              "message": "Multiple elements with \"navigation\" role do not have unique labels",
+              "bounds": {
+                "left": 0,
+                "top": 174,
+                "height": 79,
+                "width": 800
+              },
+              "snippet": "<nav class=\"collapse navbar navbar-collapse\" id=\"Navbar\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/complementary[3]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 55,
+                "top": 257,
+                "height": 0,
+                "width": 690
+              },
+              "snippet": "<div role=\"complementary\" class=\"before-content\" id=\"gt-before-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/complementary[2]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 55,
+                "top": 257,
+                "height": 0,
+                "width": 690
+              },
+              "snippet": "<div role=\"complementary\" class=\"breadcrumb-links\" id=\"gt-breadcrumbs-title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_MultipleComplementaryLandmarks_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/complementary[1]"
+              },
+              "message": "Multiple elements with \"complementary\" role do not have unique labels",
+              "bounds": {
+                "left": 55,
+                "top": 257,
+                "height": 0,
+                "width": 690
+              },
+              "snippet": "<div role=\"complementary\" id=\"gt-help\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]/main[1]/complementary[3]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 55,
+                "top": 257,
+                "height": 0,
+                "width": 690
+              },
+              "snippet": "<div role=\"complementary\" class=\"before-content\" id=\"gt-before-content\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/complementary[2]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 55,
+                "top": 257,
+                "height": 0,
+                "width": 690
+              },
+              "snippet": "<div role=\"complementary\" class=\"breadcrumb-links\" id=\"gt-breadcrumbs-title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 55,
+                "top": 257,
+                "height": 0,
+                "width": 690
+              },
+              "snippet": "<div role=\"complementary\" id=\"gt-help\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Figure_label",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[2]/div[1]/div[1]/article[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/figure[1]",
+                "aria": "/document[1]/main[1]/region[1]/article[1]"
+              },
+              "message": "The <figure> element does not have an associated label",
+              "bounds": {
+                "left": 0,
+                "top": 273,
+                "height": 390,
+                "width": 800
+              },
+              "snippet": "<figure class=\"mb-0 mb-sm-4 mb-md-3 mb-lg-0\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/a[1]/img[1]",
+                "aria": "/document[1]/contentinfo[1]/link[3]"
+              },
+              "message": "The ARIA role 'presentation' is not valid for the element <img> and may be ignored by the browser since the element is focusable",
+              "bounds": {
+                "left": 595,
+                "top": 6371,
+                "height": 34,
+                "width": 150
+              },
+              "snippet": "<img class=\"mb-2\" aria-label=\"logo link to main campus site\" role=\"presentation\" alt=\"Georgia Tech\" src=\"/themes/contrib/gt_theme/images/gt-logo.svg\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[2]/menu[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'menu'",
+              "bounds": {
+                "left": 415,
+                "top": 6371,
+                "height": 222,
+                "width": 150
+              },
+              "snippet": "<ul aria-expanded=\"false\" role=\"menu\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_attribute",
+              "path": {
+                "dom": "/html[1]/body[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/nav[1]/ul[1]",
+                "aria": "/document[1]/contentinfo[1]/navigation[1]/menu[1]"
+              },
+              "message": "The ARIA attribute 'aria-expanded' is not valid for the element <ul> with ARIA role 'menu'",
+              "bounds": {
+                "left": 235,
+                "top": 6371,
+                "height": 80,
+                "width": 150
+              },
+              "snippet": "<ul aria-expanded=\"false\" role=\"menu\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://cidi.gatech.edu/",
+      "what": "Georgia Tech CIDI",
+      "result": "https://cidi.gatech.edu/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://cidi.gatech.edu/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "HOME | Center for Inclusive Design and Innovation",
+          "pageurl": "https://cidi.gatech.edu/",
+          "time": 2.93,
+          "creditsremaining": 249,
+          "allitemcount": 128,
+          "totalelements": 533,
+          "waveurl": "http://wave.webaim.org/report?url=https://cidi.gatech.edu/",
+          "domid": "a2dfcfce1111514698db5175de75dabd"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 20,
+            "items": {
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER:first-child + DIV > DIV:first-child + DIV > DIV:first-child > SECTION:first-child > DIV:first-child + A + DIV > DIV:first-child > DIV#block-design-curie-content > ARTICLE:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV#cidi-cdcf-partner-to-develop-accessible-resources-for-all > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H2:first-child + H3"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 5,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > FOOTER#footer > DIV:first-child > DIV:first-child + DIV > DIV#collapseFooter > DIV:first-child > DIV#gt-superfooter > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#block-design-curie-socialmedialinks > UL:first-child > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > FOOTER#footer > DIV:first-child > DIV:first-child + DIV > DIV#collapseFooter > DIV:first-child > DIV#gt-superfooter > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#block-design-curie-socialmedialinks > UL:first-child > LI:first-child + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > FOOTER#footer > DIV:first-child > DIV:first-child + DIV > DIV#collapseFooter > DIV:first-child > DIV#gt-superfooter > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#block-design-curie-socialmedialinks > UL:first-child > LI:first-child + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > FOOTER#footer > DIV:first-child > DIV:first-child + DIV > DIV#collapseFooter > DIV:first-child > DIV#gt-superfooter > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#block-design-curie-socialmedialinks > UL:first-child > LI:first-child + LI + LI + LI > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > FOOTER#footer > DIV:first-child > DIV:first-child + DIV > DIV#collapseFooter > DIV:first-child > DIV#gt-superfooter > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#block-design-curie-socialmedialinks > UL:first-child > LI:first-child + LI + LI + LI + LI > A:first-child"
+                ]
+              },
+              "aria_reference_broken": {
+                "id": "aria_reference_broken",
+                "description": "Broken ARIA reference",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child + UL"
+                ]
+              },
+              "aria_menu_broken": {
+                "id": "aria_menu_broken",
+                "description": "Broken ARIA menu",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child + UL"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 10,
+            "items": {
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 7,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI + LI > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER:first-child + DIV > DIV:first-child + DIV > DIV:first-child > SECTION:first-child > DIV:first-child + A + DIV > DIV:first-child > DIV#block-design-curie-content > ARTICLE:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV#latest-news-amp-events > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > A:first-child"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > FOOTER#footer > DIV:first-child > DIV:first-child > DIV#gt-footer > DIV:first-child > DIV:first-child > DIV#gt-logo-footer > DIV#copyright > A:first-child + P"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > A:first-child + A + DIV > HEADER#gt-header > A:first-child + DIV > DIV:first-child + DIV + DIV > DIV#bottom-header > NAV#Navbar > DIV:first-child > DIV#page-navigation > DIV:first-child > NAV#block-design-curie-main-menu > H2:first-child + UL > LI:first-child + LI + LI > A:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI > A:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y03",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 4",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 678,
+          "axe": 62,
+          "bulk": 11,
+          "embAc": 0,
+          "focAll": 0,
+          "focInd": 250,
+          "focOp": 4,
+          "hover": 6,
+          "ibm": 118,
+          "labClash": 0,
+          "linkUl": 18,
+          "log": 12,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 26,
+          "styleDiff": 53,
+          "tabNav": 0,
+          "wave": 76,
+          "zIndex": 42
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      80
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      4
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}

@@ -1,0 +1,4116 @@
+{
+  "script": "a11y03",
+  "batch": "a11yHerosMore",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "timeStamp": "y1mu",
+  "logCount": 50,
+  "logSize": 7131,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "bytes": [
+          140329,
+          140609,
+          140329,
+          140329,
+          140329
+        ],
+        "localRatios": [
+          1.002,
+          1.002,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1.001,
+        "maxLocalRatio": 1.002,
+        "globalRatio": 1.002,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 0,
+          "moderate": 1,
+          "serious": 5,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "frame-title",
+            "description": "Ensures <iframe> and <frame> elements have an accessible name",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "iframe",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".green.image-align-left.cols > .inner > .col-2.col > .interactive > .internal-link[href=\"\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".blue > .inner > .col-2.col > .interactive > .internal-link[href=\"\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "list",
+            "description": "Ensures that lists are structured correctly",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".review-slider",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "only-listitems",
+                    "description": "List element has direct children that are not allowed inside <li> elements",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "listitem",
+            "description": "Ensures <li> elements are used semantically",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".slick-current",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "listitem",
+                    "description": "List item does not have a <ul>, <ol> parent element",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#catapult-cookie-bar",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "visibleElements": 499
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "tabFocusables": 57,
+        "tabFocused": 72,
+        "discrepancy": 15
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "total": 96,
+          "types": {
+            "indicatorMissing": {
+              "total": 89,
+              "tagNames": {
+                "A": 73,
+                "INPUT": 1,
+                "BUTTON": 13,
+                "IFRAME": 1,
+                "LI": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 7,
+              "tagNames": {
+                "A": 5,
+                "BUTTON": 2
+              }
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Search"
+            },
+            {
+              "tagName": "A",
+              "text": "Log In"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Audits"
+            },
+            {
+              "tagName": "A",
+              "text": "ISO 30071-1 services"
+            },
+            {
+              "tagName": "A",
+              "text": "Expand Awareness"
+            },
+            {
+              "tagName": "A",
+              "text": "Embed Strategy"
+            },
+            {
+              "tagName": "A",
+              "text": "Enable Process"
+            },
+            {
+              "tagName": "A",
+              "text": "Measure Effects"
+            },
+            {
+              "tagName": "A",
+              "text": "Continually Evolve"
+            },
+            {
+              "tagName": "A",
+              "text": "Training"
+            },
+            {
+              "tagName": "A",
+              "text": "Why Inclusion"
+            },
+            {
+              "tagName": "A",
+              "text": "ISO 30071-1 Standard"
+            },
+            {
+              "tagName": "A",
+              "text": "Our books"
+            },
+            {
+              "tagName": "A",
+              "text": "Digital Accessibility Maturity Scorecard"
+            },
+            {
+              "tagName": "A",
+              "text": "10 steps to a digitally inclusive workplace for staff with disabilities"
+            },
+            {
+              "tagName": "A",
+              "text": "Innovation Programmes - “think different” by working with people with disabilities"
+            },
+            {
+              "tagName": "A",
+              "text": "Why we do what we do – Charitable giving"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Clients"
+            },
+            {
+              "tagName": "A",
+              "text": "Blog"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact Us"
+            },
+            {
+              "tagName": "A",
+              "text": "HiHub"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Menu"
+            },
+            {
+              "tagName": "A",
+              "text": "Log In"
+            },
+            {
+              "tagName": "A",
+              "text": "Home"
+            },
+            {
+              "tagName": "A",
+              "text": "Approach & Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Training"
+            },
+            {
+              "tagName": "A",
+              "text": "Why Inclusion?"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Audits"
+            },
+            {
+              "tagName": "A",
+              "text": "ISO 30071-1 services"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Books"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Clients"
+            },
+            {
+              "tagName": "A",
+              "text": "Blog"
+            },
+            {
+              "tagName": "A",
+              "text": "HiHub Overview"
+            },
+            {
+              "tagName": "A",
+              "text": "HiHub Webinars"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact us"
+            },
+            {
+              "tagName": "A",
+              "text": "5 Tips for building buy-in to Digital Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Innovation via user research with people with disabilities – Digital…"
+            },
+            {
+              "tagName": "A",
+              "text": "5 key accessibility questions to ask when buying digital tools,…"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Register for access now"
+            },
+            {
+              "tagName": "A",
+              "text": "Innovation workshop demo video"
+            },
+            {
+              "tagName": "A",
+              "text": "Go to Scorecard"
+            },
+            {
+              "tagName": "A",
+              "text": "Register your place"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore the 10 steps"
+            },
+            {
+              "tagName": "A",
+              "text": "Explore Our Five Keys"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Enable Process"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Enable Process"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Expand Awareness"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Expand Awareness"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Embed Strategy"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Embed Strategy"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Enable Process"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Enable Process"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Measure Effects"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Measure Effects"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Continually Evolve"
+            },
+            {
+              "tagName": "A",
+              "text": "Key: Continually Evolve"
+            },
+            {
+              "tagName": "A",
+              "text": "Find Out More about Hassell Inclusion Academy"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Bequeathed"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Tearfund"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Galaxkey"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Global brand"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Payfont"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Scope"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "BBC"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Reflex Arc"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Previous Review"
+            },
+            {
+              "tagName": "LI",
+              "text": "Bequeathed: We already had an audit with lots of things we ought to do. It didn't say what to do in "
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Next Review"
+            },
+            {
+              "tagName": "A",
+              "text": "View our Case Studies"
+            },
+            {
+              "tagName": "A",
+              "text": "Share on Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Tweet this link"
+            },
+            {
+              "tagName": "A",
+              "text": "Share on LinkedIn"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility statement"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Cookie Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "Public Training Terms"
+            },
+            {
+              "tagName": "A",
+              "text": "Snapshot Audit Terms & Conditions"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "A",
+              "text": "0208 106 1186"
+            },
+            {
+              "tagName": "A",
+              "text": "Find out more about our cookie policy"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "I'm OK with using cookies"
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Skip to main content"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "View Transcript"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility Audits"
+            },
+            {
+              "tagName": "A",
+              "text": "Product Team Training"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "View All Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Benefits of Digital Accessibility Workshop"
+            },
+            {
+              "tagName": "A",
+              "text": "Innovation Programme"
+            }
+          ],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "total": 100,
+          "types": {
+            "onlyFocusable": {
+              "total": 1,
+              "tagNames": {
+                "LI": 1
+              }
+            },
+            "onlyOperable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "focusableAndOperable": {
+              "total": 99,
+              "tagNames": {
+                "A": 81,
+                "INPUT": 2,
+                "BUTTON": 15,
+                "IFRAME": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Bequeathed: We already had an audit with lots of things we ought to do. It didn'"
+            }
+          ],
+          "onlyOperable": [],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "skip",
+              "text": "Skip to main content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"url\" href=\"/\" style=\"cursor: default;\"> <img alt=\"Hassell Inclusion Ho",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "s",
+              "text": "<input type=\"text\" value=\"\" placeholder=\"Search\" name=\"s\" id=\"s\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "search",
+              "text": "<input type=\"hidden\" value=\"true\" name=\"search\" id=\"search\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Log In",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Audits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ISO 30071-1 services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Expand Awareness",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Embed Strategy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Enable Process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Measure Effects",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Continually Evolve",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Training",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why Inclusion",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ISO 30071-1 Standard",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our books",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Digital Accessibility Maturity Scorecard",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "10 steps to a digitally inclusive workplace for staff with disabilities",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Innovation Programmes - “think different” by working with people with disabiliti",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why we do what we do – Charitable giving",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Clients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact Us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HiHub",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "burger",
+              "text": "Menu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Log In",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Approach & Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Training",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why Inclusion?",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Audits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ISO 30071-1 services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Books",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Clients",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HiHub Overview",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "HiHub Webinars",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact us",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "main-anchor",
+              "text": "<a name=\"main-anchor\" id=\"main-anchor\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "5 Tips for building buy-in to Digital Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Innovation via user research with people with disabilities – Digital…",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "5 key accessibility questions to ask when buying digital tools,…",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyrosc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "View Transcript",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Register for access now",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"internal-link\" href=\"\" style=\"cursor: default;\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Innovation workshop demo video",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Go to Scorecard",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Register your place",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"internal-link\" href=\"\" style=\"cursor: default;\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore the 10 steps",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Explore Our Five Keys",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility Audits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Enable Process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Product Team Training",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Enable Process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Expand Awareness",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "view-all-services",
+              "text": "View All Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Benefits of Digital Accessibility Workshop",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Expand Awareness",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Embed Strategy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Embed Strategy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Enable Process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Enable Process",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Measure Effects",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Measure Effects",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Continually Evolve",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Innovation Programme",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Key: Continually Evolve",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find Out More about Hassell Inclusion Academy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Bequeathed",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Tearfund",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Galaxkey",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Global brand",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Payfont",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Scope",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "BBC",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Reflex Arc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Previous Review",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Next Review",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View our Case Studies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Share on Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tweet this link",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Share on LinkedIn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Cookie Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Public Training Terms",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Snapshot Audit Terms & Conditions",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LinkedIn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "0208 106 1186",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Find out more about our cookie policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "catapultCookie",
+              "text": "I'm OK with using cookies",
+              "byTag": true,
+              "byOnClick": true,
+              "byPointer": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "triggers": 6,
+          "madeVisible": 54,
+          "opacityChanged": 0,
+          "opacityAffected": 0,
+          "unhoverables": 2
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Our Services Our Audits ISO 30071-1 services Expan",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Our Audits"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Our Audits"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ISO 30071-1 services"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "ISO 30071-1 services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Expand Awareness"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Expand Awareness"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Embed Strategy"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Embed Strategy"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Enable Process"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Enable Process"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Measure Effects"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Measure Effects"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Continually Evolve"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Continually Evolve"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Services",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Our Audits"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Our Audits"
+                },
+                {
+                  "tagName": "A",
+                  "text": "ISO 30071-1 services"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "ISO 30071-1 services"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Expand Awareness"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Expand Awareness"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Embed Strategy"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Embed Strategy"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Enable Process"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Enable Process"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Measure Effects"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Measure Effects"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Continually Evolve"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Continually Evolve"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Why Inclusion ISO 30071-1 Standard Our books Digit",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "ISO 30071-1 Standard"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "ISO 30071-1 Standard"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our books"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Our books"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Digital Accessibility Maturity Scorecard"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Digital Accessibility Maturity Scorecard"
+                },
+                {
+                  "tagName": "A",
+                  "text": "10 steps to a digitally inclusive workplace for st"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "10 steps to a digitally inclusive workplace for st"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Innovation Programmes - “think different” by worki"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Innovation Programmes - “think different” by worki"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Why we do what we do – Charitable giving"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Why we do what we do – Charitable giving"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Why Inclusion",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "ISO 30071-1 Standard"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "ISO 30071-1 Standard"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Our books"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Our books"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Digital Accessibility Maturity Scorecard"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Digital Accessibility Maturity Scorecard"
+                },
+                {
+                  "tagName": "A",
+                  "text": "10 steps to a digitally inclusive workplace for st"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "10 steps to a digitally inclusive workplace for st"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Innovation Programmes - “think different” by worki"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Innovation Programmes - “think different” by worki"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Why we do what we do – Charitable giving"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Why we do what we do – Charitable giving"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Previous Review",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "Previous Review"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Next Review",
+              "madeVisible": [
+                {
+                  "tagName": "SPAN",
+                  "text": "Next Review"
+                }
+              ],
+              "opacityChanged": []
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skiptomaincontent"
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "ReflexArc:WhenwestartedworkingwithHassellInclusion"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 16
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Search terms"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Menu"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "View Transcript"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "View All Services"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Bequeathed"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Tearfund"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Galaxkey"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Global brand"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Payfont"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Scope"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "BBC"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Reflex Arc"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Previous Review"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "texts": {
+                "content": "Next Review"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "I'm OK with using cookies"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "links": 81,
+          "inline": {
+            "total": 2,
+            "underlined": 2,
+            "underlinedPercent": 100
+          }
+        },
+        "items": {
+          "underlined": [
+            "0208 106 1186",
+            "Find out more about our cookie policy"
+          ],
+          "notUnderlined": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "roleElements": 22,
+        "badRoleElements": 9,
+        "tagNames": {
+          "SPAN": {
+            "text": 8
+          },
+          "DIV": {
+            "navigation": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 13,
+            "subtotals": [
+              9,
+              2,
+              1,
+              1
+            ]
+          },
+          "h3": {
+            "total": 12,
+            "subtotals": [
+              9,
+              3
+            ]
+          },
+          "aInline": {
+            "total": 2
+          },
+          "aBlock": {
+            "total": 79,
+            "subtotals": [
+              45,
+              18,
+              7,
+              4,
+              3,
+              1,
+              1
+            ]
+          },
+          "button": {
+            "total": 15,
+            "subtotals": [
+              7,
+              5,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {
+            "fontWeight": {
+              "400": 3,
+              "700": 10
+            },
+            "lineHeight": {
+              "42px": 10,
+              "28px": 2,
+              "25.6px": 1
+            },
+            "minHeight": {
+              "0px": 11,
+              "auto": 2
+            },
+            "minWidth": {
+              "0px": 11,
+              "auto": 2
+            },
+            "fontSize": {
+              "30px": 85,
+              "16px": 14,
+              "20px": 5
+            }
+          },
+          "h3": {
+            "minHeight": {
+              "0px": 9,
+              "auto": 3
+            },
+            "minWidth": {
+              "0px": 9,
+              "auto": 3
+            }
+          },
+          "aInline": {},
+          "aBlock": {
+            "borderStyle": {
+              "none": 78,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px": 78,
+              "3px": 1
+            },
+            "lineHeight": {
+              "25.6px": 75,
+              "28px": 4
+            },
+            "maxWidth": {
+              "none": 71,
+              "100%": 8
+            },
+            "minHeight": {
+              "0px": 75,
+              "auto": 4
+            },
+            "minWidth": {
+              "0px": 75,
+              "auto": 4
+            },
+            "textDecorationLine": {
+              "none": 54,
+              "underline": 25
+            },
+            "fontSize": {
+              "16px": 1950,
+              "20px": 104
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none none solid": 8,
+              "none": 6,
+              "solid": 1
+            },
+            "borderWidth": {
+              "0px 0px 1px": 8,
+              "0px": 6,
+              "3px": 1
+            },
+            "fontWeight": {
+              "400": 14,
+              "600": 1
+            },
+            "lineHeight": {
+              "23px": 8,
+              "18.4px": 7
+            },
+            "minHeight": {
+              "0px": 13,
+              "auto": 2
+            },
+            "minWidth": {
+              "0px": 13,
+              "auto": 2
+            },
+            "fontSize": {
+              "20px": 208,
+              "16px": 182
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "totals": {
+          "total": 27,
+          "tagNames": {
+            "DIV": 4,
+            "svg": 9,
+            "A": 12,
+            "BUTTON": 2
+          }
+        },
+        "items": [
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Menu Log In Home Approach & Services Training Why Inclusion? Our Audits ISO 30071-1 services Our Boo"
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "burger-menu",
+            "text": "Log In Home Approach & Services Training Why Inclusion? Our Audits ISO 30071-1 services Our Books Ou"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Enable Process"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Enable Process"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Expand Awareness"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Expand Awareness"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Embed Strategy"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Embed Strategy"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Enable Process"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Enable Process"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Measure Effects"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Measure Effects"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Continually Evolve"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Key: Continually Evolve"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Previous Review"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "text": "Next Review"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Share on Facebook Tweet this link Share on LinkedIn"
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "svg",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "catapult-cookie-bar",
+            "text": "This site uses cookies: Find out more about our cookie policyI'm OK with using cookies"
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 36,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Frame_HasTitle",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[2]/div[1]/div[1]/span[1]/span[1]/iframe[1]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Inline frame does not have a 'title' attribute",
+              "bounds": {
+                "left": 25,
+                "top": 619,
+                "height": 422,
+                "width": 750
+              },
+              "snippet": "<iframe id=\"578112979\" data-gtm-yt-inspected-1_25=\"true\" loading=\"lazy\" src=\"https://www.youtube.com/embed/pHUk54NU5gc?feature=oembed&iv_load_policy=3&modestbranding=1&rel=0&autohide=1&playsinline=1&VQ=HD1080&loop=0&autoplay=0&enablejsapi=1\" scrolling=\"no\" sandbox=\"allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox\" frameborder=\"0\" data-src-no-ap=\"https://www.youtube.com/embed/pHUk54NU5gc?feature=oembed&iv_load_policy=3&modestbranding=1&rel=0&autohide=1&playsinline=1&VQ=HD1080&loop=0&autoplay=0\" data-arve=\"arve-youtube-phuk54nu5gc617f01cc4e649207009611\" class=\"arve-iframe fitvidsignore\" allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[7]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/link[6]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 25,
+                "top": 5729,
+                "height": 0,
+                "width": 500
+              },
+              "snippet": "<a href=\"\" class=\"internal-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/link[2]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 25,
+                "top": 2557,
+                "height": 0,
+                "width": 500
+              },
+              "snippet": "<a href=\"\" class=\"internal-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/head[1]/script[9]",
+                "aria": ""
+              },
+              "message": "The <script> element has the id \"www-widgetapi-script\" that is already in use",
+              "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<script async=\"\" src=\"https://www.youtube.com/s/player/9216d1f7/www-widgetapi.vflset/www-widgetapi.js\" id=\"www-widgetapi-script\" type=\"text/javascript\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[17]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[17]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 13115,
+                "top": 10930,
+                "height": 193,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"15\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[16]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[16]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 12249,
+                "top": 10930,
+                "height": 129,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"14\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[15]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[15]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 11383,
+                "top": 10930,
+                "height": 193,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"13\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[14]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[14]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 10517,
+                "top": 10930,
+                "height": 225,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"12\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[13]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[13]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 9651,
+                "top": 10930,
+                "height": 193,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"11\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[12]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[12]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 8785,
+                "top": 10930,
+                "height": 193,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"10\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[11]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[11]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 7919,
+                "top": 10930,
+                "height": 161,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"9\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[10]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[10]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 7053,
+                "top": 10930,
+                "height": 257,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"8\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[1]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[1]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": -741,
+                "top": 10930,
+                "height": 193,
+                "width": 866
+              },
+              "snippet": "<li style=\"width: 866px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"-1\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[9]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[8]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 7688,
+                "height": 16,
+                "width": 171
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[7]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 7125,
+                "height": 16,
+                "width": 156
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[7]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[5]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 5689,
+                "height": 16,
+                "width": 149
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[4]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 5045,
+                "height": 16,
+                "width": 125
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[3]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 3178,
+                "height": 16,
+                "width": 255
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[1]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 2517,
+                "height": 16,
+                "width": 185
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[10]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 254,
+                "top": 11301,
+                "height": 16,
+                "width": 172
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[11]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[9]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 10121,
+                "height": 16,
+                "width": 109
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[2]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/main[1]/button[1]"
+              },
+              "message": "The 'id' \"video-transcript\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 25,
+                "top": 1065,
+                "height": 47,
+                "width": 173
+              },
+              "snippet": "<button aria-expanded=\"false\" aria-controls=\"video-transcript\" class=\"view-transcript-link button-hybrid\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": -1,
+                "top": -1,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<a href=\"#main-anchor\" class=\"sr-only\" id=\"skip\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[3]/div[1]/aside[1]",
+                "aria": "/document[1]/main[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 25,
+                "top": 1212,
+                "height": 266,
+                "width": 750
+              },
+              "snippet": "<aside class=\"typography aside-latest-posts \" id=\"aside\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[9]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[9]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 12004,
+                "height": 103,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Argos\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/argos5-01.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[8]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[8]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 11907,
+                "height": 57,
+                "width": 200
+              },
+              "snippet": "<img alt=\"BBC\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/bbc.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[7]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[7]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 11917,
+                "height": 36,
+                "width": 200
+              },
+              "snippet": "<img alt=\"HSBC\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/hsbc.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[6]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[6]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 11804,
+                "height": 63,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Google\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/google.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[5]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[5]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 11814,
+                "height": 42,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Canon\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/canon.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[4]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[4]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 11685,
+                "height": 79,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Science Museum\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/science-museum.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[3]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[3]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 11716,
+                "height": 17,
+                "width": 200
+              },
+              "snippet": "<img alt=\"New Look\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/new-look.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[2]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[2]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 11575,
+                "height": 70,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Mirum\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/mizum.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[12]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[12]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 12151,
+                "height": 33,
+                "width": 200
+              },
+              "snippet": "<img alt=\"The Telegraph\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/The_Telegraph_logo2-1.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[11]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[11]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 12146,
+                "height": 43,
+                "width": 200
+              },
+              "snippet": "<img alt=\"AnalogFolk\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/af_logo2.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[10]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[10]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 12025,
+                "height": 60,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Pearson\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/pearson-vector-logo_01-01.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[1]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[1]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 11586,
+                "height": 48,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Scope\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/scope.svg\" role=\"img\">",
+              "level": "violation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 40,
+            "recommendation": 0,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Frame_HasTitle",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[2]/div[1]/div[1]/span[1]/span[1]/iframe[1]",
+                "aria": "/document[1]/main[1]"
+              },
+              "message": "Inline frame does not have a 'title' attribute",
+              "bounds": {
+                "left": 25,
+                "top": 619,
+                "height": 422,
+                "width": 750
+              },
+              "snippet": "<iframe loading=\"lazy\" src=\"https://www.youtube.com/embed/pHUk54NU5gc?feature=oembed&iv_load_policy=3&modestbranding=1&rel=0&autohide=1&playsinline=1&VQ=HD1080&loop=0&autoplay=0&enablejsapi=1\" scrolling=\"no\" sandbox=\"allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox\" frameborder=\"0\" data-src-no-ap=\"https://www.youtube.com/embed/pHUk54NU5gc?feature=oembed&iv_load_policy=3&modestbranding=1&rel=0&autohide=1&playsinline=1&VQ=HD1080&loop=0&autoplay=0\" data-arve=\"arve-youtube-phuk54nu5gc617f01d3b4502221818122\" class=\"arve-iframe fitvidsignore\" allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[7]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/link[6]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 25,
+                "top": 5726,
+                "height": 0,
+                "width": 500
+              },
+              "snippet": "<a href=\"\" class=\"internal-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/link[2]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 25,
+                "top": 2556,
+                "height": 0,
+                "width": 500
+              },
+              "snippet": "<a href=\"\" class=\"internal-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[17]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[17]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 8375,
+                "top": 10921,
+                "height": 257,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"15\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[16]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[16]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 7825,
+                "top": 10921,
+                "height": 193,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"14\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[15]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[15]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 7275,
+                "top": 10921,
+                "height": 257,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"13\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[14]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[14]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 6725,
+                "top": 10921,
+                "height": 321,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"12\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[13]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[13]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 6175,
+                "top": 10921,
+                "height": 289,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"11\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[12]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[12]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 5625,
+                "top": 10921,
+                "height": 289,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"10\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[11]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[11]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 5075,
+                "top": 10921,
+                "height": 193,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"9\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[10]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[10]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": 4525,
+                "top": 10921,
+                "height": 385,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"8\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "RPT_Elem_UniqueId",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/ul[2]/div[1]/div[1]/li[1]",
+                "aria": "/document[1]/main[1]/list[8]/listitem[1]"
+              },
+              "message": "The <li> element has the id \"\" that is empty",
+              "bounds": {
+                "left": -425,
+                "top": 10921,
+                "height": 257,
+                "width": 550
+              },
+              "snippet": "<li style=\"width: 550px;\" tabindex=\"-1\" aria-hidden=\"true\" id=\"\" data-slick-index=\"-1\" class=\"slick-slide slick-cloned\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[9]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[8]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 7683,
+                "height": 16,
+                "width": 159
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[7]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 7120,
+                "height": 16,
+                "width": 152
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[7]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[5]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 5686,
+                "height": 16,
+                "width": 143
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[6]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[4]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 5042,
+                "height": 16,
+                "width": 118
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[3]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 3177,
+                "height": 16,
+                "width": 249
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[1]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 2516,
+                "height": 16,
+                "width": 176
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[12]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[10]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 254,
+                "top": 11420,
+                "height": 16,
+                "width": 164
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidRole",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[11]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/main[1]/link[9]"
+              },
+              "message": "The 'role' defined on the element is not valid per ARIA specification",
+              "bounds": {
+                "left": 49,
+                "top": 10113,
+                "height": 16,
+                "width": 105
+              },
+              "snippet": "<span class=\"text\" role=\"text\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ValidIdRef",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[2]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/main[1]/button[1]"
+              },
+              "message": "The 'id' \"video-transcript\" specified for the ARIA property 'aria-controls' value is not valid",
+              "bounds": {
+                "left": 25,
+                "top": 1065,
+                "height": 47,
+                "width": 170
+              },
+              "snippet": "<button aria-expanded=\"false\" aria-controls=\"video-transcript\" class=\"view-transcript-link button-hybrid\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/span[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 534,
+                "top": 555,
+                "height": 30,
+                "width": 201
+              },
+              "snippet": "<button onclick=\"catapultAcceptCookies();\" tabindex=\"0\" id=\"catapultCookie\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/div[5]/div[1]/span[1]/a[1]",
+                "aria": "/document[1]/link[2]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": 227,
+                "top": 561,
+                "height": 19,
+                "width": 272
+              },
+              "snippet": "<a href=\"https://www.hassellinclusion.com/privacy-policy/#cookies\" target=\"_self\" tabindex=\"0\" class=\"ctcc-more-info-link\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_OrphanedContent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+              },
+              "message": "Content is not within a landmark element",
+              "bounds": {
+                "left": -1,
+                "top": -1,
+                "height": 1,
+                "width": 1
+              },
+              "snippet": "<a href=\"#main-anchor\" class=\"sr-only\" id=\"skip\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ComplementaryRequiredLabel_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[3]/div[1]/aside[1]",
+                "aria": "/document[1]/main[1]/complementary[1]"
+              },
+              "message": "The element with \"complementary\" role does not have a label",
+              "bounds": {
+                "left": 25,
+                "top": 1212,
+                "height": 266,
+                "width": 750
+              },
+              "snippet": "<aside class=\"typography aside-latest-posts \" id=\"aside\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[3]/div[1]/aside[1]/div[2]/ul[1]/li[3]/a[1]/span[2]",
+                "aria": "/document[1]/main[1]/complementary[1]/list[1]/listitem[3]/link[1]"
+              },
+              "message": "Text contrast of 2.16 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 56,
+                "top": 1387,
+                "height": 25,
+                "width": 450
+              },
+              "snippet": "<span class=\"title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[3]/div[1]/aside[1]/div[2]/ul[1]/li[2]/a[1]/span[2]",
+                "aria": "/document[1]/main[1]/complementary[1]/list[1]/listitem[2]/link[1]"
+              },
+              "message": "Text contrast of 2.16 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 56,
+                "top": 1346,
+                "height": 25,
+                "width": 482
+              },
+              "snippet": "<span class=\"title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[3]/div[1]/aside[1]/div[2]/ul[1]/li[1]/a[1]/span[2]",
+                "aria": "/document[1]/main[1]/complementary[1]/list[1]/listitem[1]/link[1]"
+              },
+              "message": "Text contrast of 2.16 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+              "bounds": {
+                "left": 56,
+                "top": 1305,
+                "height": 25,
+                "width": 338
+              },
+              "snippet": "<span class=\"title\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[9]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[9]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 12123,
+                "height": 103,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Argos\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/argos5-01.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[8]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[8]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 12026,
+                "height": 57,
+                "width": 200
+              },
+              "snippet": "<img alt=\"BBC\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/bbc.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[7]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[7]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 12036,
+                "height": 36,
+                "width": 200
+              },
+              "snippet": "<img alt=\"HSBC\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/hsbc.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[6]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[6]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 11923,
+                "height": 63,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Google\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/google.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[5]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[5]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 11933,
+                "height": 42,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Canon\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/canon.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[4]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[4]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 11804,
+                "height": 79,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Science Museum\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/science-museum.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[3]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[3]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 11835,
+                "height": 17,
+                "width": 200
+              },
+              "snippet": "<img alt=\"New Look\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/new-look.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[2]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[2]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 11694,
+                "height": 70,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Mirum\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/mizum.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[12]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[12]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 12270,
+                "height": 33,
+                "width": 200
+              },
+              "snippet": "<img alt=\"The Telegraph\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/The_Telegraph_logo2-1.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[11]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[11]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 12265,
+                "height": 43,
+                "width": 200
+              },
+              "snippet": "<img alt=\"AnalogFolk\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/af_logo2.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[10]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[10]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 488,
+                "top": 12144,
+                "height": 60,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Pearson\" src=\"https://www.hassellinclusion.com/content/uploads/2019/10/pearson-vector-logo_01-01.svg\" role=\"img\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "HAAC_Aria_ImgAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[13]/div[1]/ul[1]/li[1]/img[1]",
+                "aria": "/document[1]/main[1]/list[9]/listitem[1]/img[1]"
+              },
+              "message": "Element with \"img\" role has no label or an empty label",
+              "bounds": {
+                "left": 113,
+                "top": 11705,
+                "height": 48,
+                "width": 200
+              },
+              "snippet": "<img alt=\"Scope\" src=\"https://www.hassellinclusion.com/content/uploads/2019/09/scope.svg\" role=\"img\">",
+              "level": "violation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.hassellinclusion.com/",
+      "what": "Hassell Inclusion",
+      "result": "https://www.hassellinclusion.com/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.hassellinclusion.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "Empowering organisations globally to embed digital accessibility - Hassell Inclusion",
+          "pageurl": "https://www.hassellinclusion.com/",
+          "time": 4.63,
+          "creditsremaining": 180,
+          "allitemcount": 217,
+          "totalelements": 1019,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.hassellinclusion.com/",
+          "domid": "2a4d0551ec194e6c08bad9f498c0d7bd"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 2,
+            "items": {
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 2,
+                "selectors": [
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H2:first-child + P + UL + DIV > DIV:first-child + A",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > H2:first-child + P + P + UL + DIV > DIV:first-child + A"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 8,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 8,
+                "selectors": [
+                  "HTML#html > HEAD:first-child + BODY > A#skip",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > DIV#responsive-latest-posts > DIV:first-child > ASIDE#aside > DIV:first-child + DIV > H2:first-child + UL > LI:first-child > A:first-child > SPAN:first-child + SPAN",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > DIV#responsive-latest-posts > DIV:first-child > ASIDE#aside > DIV:first-child + DIV > H2:first-child + UL > LI:first-child + LI > A:first-child > SPAN:first-child + SPAN",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > DIV#responsive-latest-posts > DIV:first-child > ASIDE#aside > DIV:first-child + DIV > H2:first-child + UL > LI:first-child + LI + LI > A:first-child > SPAN:first-child + SPAN",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > UL#visible-services > LI:first-child > IMG:first-child + DIV > H3:first-child + A > svg:first-child + SPAN",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > UL#visible-services > LI:first-child + LI > IMG:first-child + DIV > H3:first-child + A > svg:first-child + SPAN",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > UL#visible-services > LI:first-child + LI + LI > IMG:first-child + DIV > H3:first-child + A > svg:first-child + SPAN",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN + DIV > UL:first-child > LI:first-child + LI > A:first-child > svg:first-child + SPAN"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    2.16,
+                    "#ffffff",
+                    "#0cbfef",
+                    false
+                  ],
+                  [
+                    2.16,
+                    "#ffffff",
+                    "#0cbfef",
+                    false
+                  ],
+                  [
+                    2.16,
+                    "#ffffff",
+                    "#0cbfef",
+                    false
+                  ],
+                  [
+                    2.16,
+                    "#ffffff",
+                    "#0cbfef",
+                    false
+                  ],
+                  [
+                    2.16,
+                    "#ffffff",
+                    "#0cbfef",
+                    false
+                  ],
+                  [
+                    1.73,
+                    "#ffffff",
+                    "#0eddba",
+                    false
+                  ],
+                  [
+                    2.58,
+                    "#ffffff",
+                    "#00aced",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 5,
+            "items": {
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 3,
+                "selectors": [
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > UL#hidden-services > LI:first-child + LI + LI > IMG:first-child + DIV > H3:first-child + A",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > UL#hidden-services > LI:first-child + LI + LI + LI + LI > IMG:first-child + DIV > H3:first-child + A",
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV + DIV > DIV:first-child > UL#hidden-services > LI:first-child + LI + LI + LI + LI + LI + LI > IMG:first-child + DIV > H3:first-child + A"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN + DIV + svg + svg + svg + svg + svg + svg + svg + svg + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV + SCRIPT + SCRIPT + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "youtube_video": {
+                "id": "youtube_video",
+                "description": "YouTube video",
+                "count": 1,
+                "selectors": [
+                  "HTML#html > HEAD:first-child + BODY > DIV:first-child + A + DIV + MAIN > A:first-child + DIV + DIV > DIV:first-child > DIV#arve-youtube-phuk54nu5gc617f01e44f355388554417 > SPAN:first-child > SPAN:first-child > META:first-child + META + META + META + IFRAME"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y03",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 150 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 4",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss; multiply mean adjacent sssd, maximum adjacent sssd, maximum over-all ssd by 15; divide mean pd, maximum pd by 25,000; multiply count of non-0 pd by 10; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 1075,
+          "axe": 18,
+          "bulk": 21,
+          "embAc": 0,
+          "focAll": 45,
+          "focInd": 466,
+          "focOp": 1,
+          "hover": 136,
+          "ibm": 126,
+          "labClash": 0,
+          "linkUl": 0,
+          "log": 96,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 18,
+          "styleDiff": 37,
+          "tabNav": 0,
+          "wave": 30,
+          "zIndex": 81
+        },
+        "scoreProc": "ally",
+        "version": "7"
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      122
+    ],
+    [
+      "motion",
+      13
+    ],
+    [
+      "ibm",
+      10
+    ],
+    [
+      "wave",
+      5
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "focAll",
+      2
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
