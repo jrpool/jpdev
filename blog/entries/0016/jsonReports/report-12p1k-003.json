@@ -1,0 +1,4010 @@
+{
+  "script": "a11y07",
+  "batch": "esgFix",
+  "what": "Axe, IBM, WAVE, and 16 custom tests",
+  "strict": true,
+  "testDate": "2021-11-25",
+  "timeStamp": "12p1k",
+  "logCount": 162,
+  "logSize": 7386,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "bytes": [
+          544014,
+          544078,
+          112427,
+          131082,
+          131278
+        ],
+        "localRatios": [
+          1,
+          4.839,
+          1.166,
+          1.001
+        ],
+        "meanLocalRatio": 2.002,
+        "maxLocalRatio": 4.839,
+        "globalRatio": 4.839,
+        "pixelChanges": [
+          56,
+          381848,
+          87301,
+          1748
+        ],
+        "meanPixelChange": 117738,
+        "maxPixelChange": 381848,
+        "changeFrequency": 1
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 9,
+          "serious": 8,
+          "critical": 28
+        },
+        "items": [
+          {
+            "rule": "aria-required-parent",
+            "description": "Ensures elements with an ARIA role that require parent roles are contained by them",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".breadcrumb",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "aria-required-parent",
+                    "description": "Required ARIA parents role not present: menu, menubar, group",
+                    "impact": "critical"
+                  }
+                ]
+              },
+              {
+                "selector": ".child-3.haschild[aria-haspopup=\"true\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "aria-required-parent",
+                    "description": "Required ARIA parents role not present: menu, menubar, group",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "color-contrast",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".footer_left",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.61 (foreground color: #ffffff, background color: #a0a0a0, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#dnn_dnnCOPYRIGHT_lblCopyright",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.61 (foreground color: #ffffff, background color: #a0a0a0, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#dnn_dnnPRIVACY_hypPrivacy",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.61 (foreground color: #ffffff, background color: #a0a0a0, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#dnn_dnnTERMS_hypTerms",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "color-contrast",
+                    "description": "Element has insufficient color contrast of 2.61 (foreground color: #ffffff, background color: #a0a0a0, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": ".ls-curtiles > img",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(1) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(2) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(3) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(4) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(5) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(6) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(7) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(8) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(9) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(10) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(11) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(12) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(13) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(14) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(15) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(16) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(17) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(18) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(19) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(20) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(21) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(22) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(23) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-lt-tile:nth-child(24) > .ls-nexttile > img[src$=\"banner-4\\.jpg\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-preloaded.ls-l[roboto=\"\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#ls-global",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "a[href$=\"disclaimer\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href$=\"jamesriverins\\.com\\/\"][target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href$=\"fallslakeins\\.com\\/\"][target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "a[href$=\"jrgre\\.bm\\/\"][target=\"_blank\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport-large",
+            "description": "Ensures <meta name=\"viewport\"> can scale a significant amount",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport-large",
+                    "description": "<meta> tag limits zooming on mobile devices",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "page-has-heading-one",
+            "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#ls-global",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".ls-lt-container",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-preloaded.ls-l[roboto=\"\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-active > .ls-l:nth-child(4)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h3[roboto=\"\"]",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".ls-l:nth-child(5)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".DnnModule-1412",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".footer_top",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "visibleElements": 197
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "tabFocusables": 35,
+        "tabFocused": 36,
+        "discrepancy": 1
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "total": 62,
+          "types": {
+            "indicatorMissing": {
+              "total": 62,
+              "tagNames": {
+                "A": 61,
+                "INPUT": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": "James River Group Holdings"
+            },
+            {
+              "tagName": "A",
+              "text": "JRG Reinsurance Company Ltd."
+            },
+            {
+              "tagName": "A",
+              "text": "James River Insurance Company"
+            },
+            {
+              "tagName": "A",
+              "text": "Falls Lake Insurance"
+            },
+            {
+              "tagName": "A",
+              "text": "James River TPA Services"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Search"
+            },
+            {
+              "tagName": "A",
+              "text": "Our Segments"
+            },
+            {
+              "tagName": "A",
+              "text": "Excess and Surplus Lines"
+            },
+            {
+              "tagName": "A",
+              "text": "Specialty Admitted Insurance"
+            },
+            {
+              "tagName": "A",
+              "text": "Casualty Reinsurance"
+            },
+            {
+              "tagName": "A",
+              "text": "Directors & Officers"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Relations"
+            },
+            {
+              "tagName": "A",
+              "text": "News & Events"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Releases"
+            },
+            {
+              "tagName": "A",
+              "text": "Event Calendar"
+            },
+            {
+              "tagName": "A",
+              "text": "Stock Information"
+            },
+            {
+              "tagName": "A",
+              "text": "Stock Quote & Chart"
+            },
+            {
+              "tagName": "A",
+              "text": "Historic Stock Lookup"
+            },
+            {
+              "tagName": "A",
+              "text": "Investment Calculator"
+            },
+            {
+              "tagName": "A",
+              "text": "Dividends"
+            },
+            {
+              "tagName": "A",
+              "text": "Analyst Coverage"
+            },
+            {
+              "tagName": "A",
+              "text": "SEC Fillings"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Presentations"
+            },
+            {
+              "tagName": "A",
+              "text": "Corporate Governance"
+            },
+            {
+              "tagName": "A",
+              "text": "Committee Composition"
+            },
+            {
+              "tagName": "A",
+              "text": "Tax Information"
+            },
+            {
+              "tagName": "A",
+              "text": "Investor Contacts"
+            },
+            {
+              "tagName": "A",
+              "text": "Contact"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "RSS Feeds"
+            },
+            {
+              "tagName": "A",
+              "text": "E-mail Alerts"
+            },
+            {
+              "tagName": "A",
+              "text": "Financial Snapshot"
+            },
+            {
+              "tagName": "A",
+              "text": "Allied Health"
+            },
+            {
+              "tagName": "A",
+              "text": "Commercial Auto"
+            },
+            {
+              "tagName": "A",
+              "text": "Energy"
+            },
+            {
+              "tagName": "A",
+              "text": "Environment"
+            },
+            {
+              "tagName": "A",
+              "text": "Excess Casualty"
+            },
+            {
+              "tagName": "A",
+              "text": "Excess Property"
+            },
+            {
+              "tagName": "A",
+              "text": "Fronting Arrangements"
+            },
+            {
+              "tagName": "A",
+              "text": "General Casualty"
+            },
+            {
+              "tagName": "A",
+              "text": "Life Sciences"
+            },
+            {
+              "tagName": "A",
+              "text": "Manufacturing & Contractors"
+            },
+            {
+              "tagName": "A",
+              "text": "Medical Professionals"
+            },
+            {
+              "tagName": "A",
+              "text": "Professional Liability"
+            },
+            {
+              "tagName": "A",
+              "text": "Reinsurance"
+            },
+            {
+              "tagName": "A",
+              "text": "Small Accounts"
+            },
+            {
+              "tagName": "A",
+              "text": "Specialty Programs"
+            },
+            {
+              "tagName": "A",
+              "text": "Sports & Entertainment"
+            },
+            {
+              "tagName": "A",
+              "text": "Workers' Compensation"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Statement"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms Of Use"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "total": 85,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 5,
+              "tagNames": {
+                "SPAN": 5
+              }
+            },
+            "focusableAndOperable": {
+              "total": 80,
+              "tagNames": {
+                "INPUT": 10,
+                "A": 70
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"fa fa-group\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"fa fa-briefcase\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SPAN",
+              "id": "",
+              "text": "<span class=\"fa fa-globe\" style=\"cursor: default;\"></span>",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTTARGET",
+              "text": "<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTARGUMENT",
+              "text": "<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"__EVENTARGUMENT\" value=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATE",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"+H9agDRRA04AlRtX",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATEGENERATOR",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__VIEWSTATEENCRYPTED",
+              "text": "<input type=\"hidden\" name=\"__VIEWSTATEENCRYPTED\" id=\"__VIEWSTATEENCRYPTED\" value",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__EVENTVALIDATION",
+              "text": "<input type=\"hidden\" name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"iea5",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "James River Group Holdings",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "JRG Reinsurance Company Ltd.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "James River Insurance Company",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Falls Lake Insurance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "James River TPA Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "dnn_Header3_dnnLOGO_hypLogo",
+              "text": "<a id=\"dnn_Header3_dnnLOGO_hypLogo\" title=\"James River Group Holdings\" href=\"htt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"#\" class=\"menuclick\" style=\"cursor: default;\"><img alt=\"Menu\" class=\"cl",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"search_button\" title=\"Open Search\"><span></span></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"search_button_close\" title=\"Close Search\" style=\"display: none;\"><span",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "dnn_Header3_dnnSEARCH_txtSearch",
+              "text": "<input name=\"dnn$Header3$dnnSEARCH$txtSearch\" type=\"text\" maxlength=\"255\" size=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"dnnSearchBoxClearText\" title=\"Clear search text\" style=\"cursor: defaul",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "dnn_Header3_dnnSEARCH_cmdSearch",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Segments",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Excess and Surplus Lines",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Specialty Admitted Insurance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Casualty Reinsurance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Directors & Officers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Relations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News & Events",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Releases",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Event Calendar",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Stock Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Stock Quote & Chart",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Historic Stock Lookup",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investment Calculator",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Dividends",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Analyst Coverage",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SEC Fillings",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Presentations",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Corporate Governance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Committee Composition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Tax Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Investor Contacts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Contact",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"1404\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"/disclaimer\" style=\"cursor: default;\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"ls-nav-prev\" href=\"#\" style=\"display: none; visibility: visible; curso",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"ls-nav-next\" href=\"#\" style=\"display: none; visibility: visible; curso",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"1999\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"2000\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"1412\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a style=\"text-decoration: none; cursor: default;\" href=\"http://www.jamesriverin",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a style=\"text-decoration: none; cursor: default;\" href=\"http://www.fallslakeins",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a style=\"text-decoration: none; cursor: default;\" href=\"http://www.jrgre.bm/\" t",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"1415\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RSS Feeds",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "E-mail Alerts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Financial Snapshot",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"2045\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"1913\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Allied Health",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Commercial Auto",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Energy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Environment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Excess Casualty",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Excess Property",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Fronting Arrangements",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "General Casualty",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Life Sciences",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Manufacturing & Contractors",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Medical Professionals",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Professional Liability",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Reinsurance",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Small Accounts",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Specialty Programs",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sports & Entertainment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Workers' Compensation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a name=\"2575\"></a>",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "dnn_dnnPRIVACY_hypPrivacy",
+              "text": "Privacy Statement",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "dnn_dnnTERMS_hypTerms",
+              "text": "Terms Of Use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "top-link",
+              "text": "<a href=\"#top\" id=\"top-link\" title=\"Top\" style=\"position: absolute; top: 1638px;",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "ScrollTop",
+              "text": "<input name=\"ScrollTop\" type=\"hidden\" id=\"ScrollTop\" value=\"968\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "__dnnVariable",
+              "text": "<input name=\"__dnnVariable\" type=\"hidden\" id=\"__dnnVariable\" autocomplete=\"off\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input name=\"__RequestVerificationToken\" type=\"hidden\" value=\"H7j3ZpgBXH_J46XQBb",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "triggers": 3,
+          "madeVisible": 23,
+          "opacityChanged": 1,
+          "opacityAffected": 12,
+          "unhoverables": 1
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Our Segments Excess and Surplus Lines Specialty Ad",
+              "madeVisible": [
+                {
+                  "tagName": "A",
+                  "text": "Excess and Surplus Lines"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Excess and Surplus Lines"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Specialty Admitted Insurance"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Specialty Admitted Insurance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Casualty Reinsurance"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Casualty Reinsurance"
+                }
+              ],
+              "opacityChanged": []
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Our Segments",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "DIV",
+                  "text": "Excess and Surplus Lines Specialty Admitted Insura"
+                }
+              ]
+            },
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "Investor Relations News & Events Press Releases Ev",
+              "madeVisible": [
+                {
+                  "tagName": "LI",
+                  "text": "News & Events Press Releases Event Calendar"
+                },
+                {
+                  "tagName": "A",
+                  "text": "News & Events"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "News & Events"
+                },
+                {
+                  "tagName": "LI",
+                  "text": "Stock Information Stock Quote & Chart Historic Sto"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Stock Information"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Stock Information"
+                },
+                {
+                  "tagName": "A",
+                  "text": "SEC Fillings"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "SEC Fillings"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Investor Presentations"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Investor Presentations"
+                },
+                {
+                  "tagName": "LI",
+                  "text": "Corporate Governance Committee Composition"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Corporate Governance"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Corporate Governance"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Tax Information"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Tax Information"
+                },
+                {
+                  "tagName": "A",
+                  "text": "Investor Contacts"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Investor Contacts"
+                }
+              ],
+              "opacityChanged": []
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "LI",
+              "id": "",
+              "text": "<divclass=\"lampleft\"><divclass=\"lampcenter\"></div>"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 0,
+          "wellLabeled": 1
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "links": 70,
+          "inline": {
+            "total": 7,
+            "underlined": 0,
+            "underlinedPercent": 0
+          }
+        },
+        "items": {
+          "underlined": [],
+          "notUnderlined": [
+            "James River Group Holdings",
+            "JRG Reinsurance Company Ltd.",
+            "James River Insurance Company",
+            "Falls Lake Insurance",
+            "James River TPA Services",
+            "Privacy Statement",
+            "Terms Of Use"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "roleElements": 20,
+        "badRoleElements": 0,
+        "tagNames": {}
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "h2": {
+            "total": 4,
+            "subtotals": [
+              3,
+              1
+            ]
+          },
+          "h3": {
+            "total": 8,
+            "subtotals": [
+              7,
+              1
+            ]
+          },
+          "aInline": {
+            "total": 7,
+            "subtotals": [
+              5,
+              2
+            ]
+          },
+          "aBlock": {
+            "total": 63,
+            "subtotals": [
+              40,
+              18,
+              2,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h2": {
+            "lineHeight": {
+              "22px": 3,
+              "33px": 1
+            }
+          },
+          "h3": {
+            "lineHeight": {
+              "27px": 7,
+              "normal": 1
+            }
+          },
+          "aInline": {
+            "lineHeight": {
+              "36px": 5,
+              "55px": 2
+            },
+            "fontSize": {
+              "12px": 60,
+              "13px": 24
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 45,
+              "none none solid": 18
+            },
+            "borderWidth": {
+              "0px": 45,
+              "0px 0px 1px": 18
+            },
+            "lineHeight": {
+              "19.5px": 58,
+              "normal": 3,
+              "50px": 1,
+              "18px": 1
+            },
+            "fontSize": {
+              "13px": 732,
+              "12px": 12,
+              "16px": 12
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "totals": {
+          "total": 49,
+          "tagNames": {
+            "DIV": 11,
+            "INPUT": 1,
+            "A": 27,
+            "NAV": 1,
+            "UL": 5,
+            "LI": 1,
+            "SPAN": 3
+          }
+        },
+        "items": [
+          {
+            "tagName": "DIV",
+            "id": "skin_wrapper",
+            "text": "James River Group HoldingsJRG Reinsurance Company Ltd.James River Insurance CompanyFalls Lake Insura"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Search $(function() { if (typeof dnn != \"undefined\" && typeof dnn.searchSkinObject != \"undefined\") {"
+          },
+          {
+            "tagName": "DIV",
+            "id": "Search",
+            "text": "Search $(function() { if (typeof dnn != \"undefined\" && typeof dnn.searchSkinObject != \"undefined\") {"
+          },
+          {
+            "tagName": "INPUT",
+            "id": "dnn_Header3_dnnSEARCH_txtSearch",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "dnn_Header3_dnnSEARCH_cmdSearch",
+            "text": "Search"
+          },
+          {
+            "tagName": "NAV",
+            "id": "",
+            "text": "Our Segments Excess and Surplus Lines Specialty Admitted Insurance Casualty Reinsurance Directors & "
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Our Segments"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "Excess and Surplus Lines Specialty Admitted Insurance Casualty Reinsurance"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Excess and Surplus Lines Specialty Admitted Insurance Casualty Reinsurance"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Excess and Surplus Lines"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Specialty Admitted Insurance"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Casualty Reinsurance"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Directors & Officers"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Investor Relations"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "News & Events Press Releases Event Calendar Stock Information Stock Quote & Chart Historic Stock Loo"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "News & Events Press Releases Event Calendar Stock Information Stock Quote & Chart Historic Stock Loo"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "News & Events"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Press Releases Event Calendar"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Press Releases"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Event Calendar"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Stock Information"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Stock Quote & Chart Historic Stock Lookup Investment Calculator Dividends Analyst Coverage"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Stock Quote & Chart"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Historic Stock Lookup"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Investment Calculator"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Dividends"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Analyst Coverage"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "SEC Fillings"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Investor Presentations"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Corporate Governance"
+          },
+          {
+            "tagName": "UL",
+            "id": "",
+            "text": "Committee Composition"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Committee Composition"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Tax Information"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Investor Contacts"
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": "Contact"
+          },
+          {
+            "tagName": "LI",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "James River Group Holdings, Ltd. (\"James River Holdings\", or \"the Company\") is a Bermuda-based insur"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": "U.S. Locations James River Insurance Company Richmond, Virginia Scottsdale, Arizona Alpharetta, Geor"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "A",
+            "id": "top-link",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "content": {
+          "totals": {
+            "violation": 25,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "WCAG20_Img_HasAlt",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/img[2]",
+                "aria": "/document[1]/form[1]/region[1]/img[1]"
+              },
+              "message": "Image does not have an 'alt' attribute short text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 178,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<img style=\"left: 100px; top: 100px; text-align: center; color: rgb(255, 255, 255); font-family:;\" src=\"/portals/1/Images/us-map-transparent.png\" roboto=\"\" data-ls=\"offsetxin : top;offsetxout : top;durationin : 1500;durationout : 1500;easingin : easeInOutQuint;easingout : easeInOutQuint;delayin : 600;showuntil : 0;\" class=\"ls-l ls-preloaded\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[3]/a[1]",
+                "aria": "/document[1]/form[1]/region[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 492,
+                "top": 1242,
+                "height": 17,
+                "width": 0
+              },
+              "snippet": "<a href=\"/disclaimer\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[3]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 1520,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a target=\"_blank\" href=\"http://www.jrgre.bm/\" style=\"text-decoration: none;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[2]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 1370,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a target=\"_blank\" href=\"http://www.fallslakeins.com/\" style=\"text-decoration: none;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "WCAG20_A_HasText",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/link[1]"
+              },
+              "message": "Hyperlink has no link text, label or image with a text alternative",
+              "bounds": {
+                "left": 8,
+                "top": 1275,
+                "height": 0,
+                "width": 0
+              },
+              "snippet": "<a target=\"_blank\" href=\"http://www.jamesriverins.com/\" style=\"text-decoration: none;\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[5]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[3]"
+              },
+              "message": "The element with role \"menuitem\" is not contained in or owned by an element with one of the following roles: \"group, menu, menubar\"",
+              "bounds": {
+                "left": 80,
+                "top": 379,
+                "height": 36,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menuitem\" aria-haspopup=\"true\" class=\"item haschild child-5\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[2]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[2]"
+              },
+              "message": "The element with role \"menuitem\" is not contained in or owned by an element with one of the following roles: \"group, menu, menubar\"",
+              "bounds": {
+                "left": 80,
+                "top": 235,
+                "height": 108,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menuitem\" aria-haspopup=\"true\" class=\"item haschild child-2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[1]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[1]"
+              },
+              "message": "The element with role \"menuitem\" is not contained in or owned by an element with one of the following roles: \"group, menu, menubar\"",
+              "bounds": {
+                "left": 80,
+                "top": 181,
+                "height": 54,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menuitem\" aria-haspopup=\"true\" class=\"item first haschild child-1\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]"
+              },
+              "message": "The element with role \"menuitem\" is not contained in or owned by an element with one of the following roles: \"group, menu, menubar\"",
+              "bounds": {
+                "left": 40,
+                "top": 163,
+                "height": 288,
+                "width": 1240
+              },
+              "snippet": "<li role=\"menuitem\" aria-haspopup=\"true\" class=\"item haschild child-3\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_RequiredParent_Native_Host_Sematics",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[1]"
+              },
+              "message": "The element with role \"menuitem\" is not contained in or owned by an element with one of the following roles: \"group, menu, menubar\"",
+              "bounds": {
+                "left": 40,
+                "top": 73,
+                "height": 72,
+                "width": 1240
+              },
+              "snippet": "<li role=\"menuitem\" aria-haspopup=\"true\" class=\"item first haschild child-1 breadcrumb\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[7]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menu[4]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 80,
+                "top": 433,
+                "height": 18,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item last child-7\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[6]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menu[3]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 80,
+                "top": 415,
+                "height": 18,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item child-6\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[5]/ul[1]/li[1]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[3]/list[1]/menu[1]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 397,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item first last child-1\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[4]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menu[2]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 80,
+                "top": 361,
+                "height": 18,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item child-4\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[3]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menu[1]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 80,
+                "top": 343,
+                "height": 18,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item child-3\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[2]/ul[1]/li[5]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[2]/list[1]/menu[5]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 325,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item last child-5\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[2]/ul[1]/li[4]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[2]/list[1]/menu[4]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 307,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item child-4\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[2]/ul[1]/li[3]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[2]/list[1]/menu[3]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 289,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item child-3\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[2]/ul[1]/li[2]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[2]/list[1]/menu[2]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 271,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item child-2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[2]/ul[1]/li[1]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[2]/list[1]/menu[1]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 253,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item first child-1\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[1]/ul[1]/li[2]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[1]/list[1]/menu[2]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 217,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item last child-2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/div[1]/ul[1]/li[1]/ul[1]/li[1]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[2]/list[1]/menuitem[1]/list[1]/menu[1]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 120,
+                "top": 199,
+                "height": 18,
+                "width": 1160
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item first child-1\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/div[1]/ul[1]/li[3]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[1]/list[1]/menu[3]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 80,
+                "top": 127,
+                "height": 18,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item last child-3\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/div[1]/ul[1]/li[2]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[1]/list[1]/menu[2]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 80,
+                "top": 109,
+                "height": 18,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item child-2\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "aria_semantics_role",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/header[1]/section[2]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/div[1]/ul[1]/li[1]",
+                "aria": "/document[1]/form[1]/banner[1]/region[2]/navigation[1]/list[1]/menuitem[1]/list[1]/menu[1]"
+              },
+              "message": "The ARIA role 'menu' is not valid for the element <li>",
+              "bounds": {
+                "left": 80,
+                "top": 91,
+                "height": 18,
+                "width": 1200
+              },
+              "snippet": "<li role=\"menu\" aria-haspopup=\"false\" class=\"item first child-1\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[2]/footer[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 8,
+                "top": 2358,
+                "height": 18,
+                "width": 784
+              },
+              "snippet": "<footer class=\"footer_bottom\">",
+              "level": "recommendation"
+            }
+          ]
+        },
+        "url": {
+          "totals": {
+            "violation": 10,
+            "recommendation": 1,
+            "ignored": 0
+          },
+          "items": [
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[2]/footer[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "Text contrast of 2.61 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+              "bounds": {
+                "left": 31,
+                "top": 2269,
+                "height": 18,
+                "width": 294
+              },
+              "snippet": "<span class=\"Footer\" id=\"dnn_dnnCOPYRIGHT_lblCopyright\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[2]/footer[1]/div[1]/div[1]/a[2]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/link[2]"
+              },
+              "message": "Text contrast of 2.61 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+              "bounds": {
+                "left": 473,
+                "top": 2269,
+                "height": 18,
+                "width": 93
+              },
+              "snippet": "<a href=\"https://www.jrgh.net/Terms\" rel=\"nofollow\" class=\"Footer\" id=\"dnn_dnnTERMS_hypTerms\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[2]/footer[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]/link[1]"
+              },
+              "message": "Text contrast of 2.61 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+              "bounds": {
+                "left": 339,
+                "top": 2269,
+                "height": 18,
+                "width": 121
+              },
+              "snippet": "<a href=\"https://www.jrgh.net/Privacy\" rel=\"nofollow\" class=\"Footer\" id=\"dnn_dnnPRIVACY_hypPrivacy\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[2]/footer[1]/div[1]/div[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "Text contrast of 2.61 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+              "bounds": {
+                "left": 16,
+                "top": 2251,
+                "height": 55,
+                "width": 549
+              },
+              "snippet": "<div class=\"footer_left\">",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/p[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "Text contrast of 1.69 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+              "bounds": {
+                "left": 542,
+                "top": 1010,
+                "height": 133,
+                "width": 223
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/h3[1]",
+                "aria": "/document[1]/form[1]/heading[6]"
+              },
+              "message": "Text contrast of 1.69 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 700",
+              "bounds": {
+                "left": 542,
+                "top": 963,
+                "height": 37,
+                "width": 223
+              },
+              "snippet": "<h3>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/p[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "Text contrast of 1.69 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+              "bounds": {
+                "left": 289,
+                "top": 1037,
+                "height": 361,
+                "width": 223
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/h3[1]",
+                "aria": "/document[1]/form[1]/heading[5]"
+              },
+              "message": "Text contrast of 1.69 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 700",
+              "bounds": {
+                "left": 289,
+                "top": 963,
+                "height": 64,
+                "width": 223
+              },
+              "snippet": "<h3>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]/form[1]"
+              },
+              "message": "Text contrast of 1.69 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+              "bounds": {
+                "left": 36,
+                "top": 1010,
+                "height": 152,
+                "width": 223
+              },
+              "snippet": "<p>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/h3[1]",
+                "aria": "/document[1]/form[1]/heading[4]"
+              },
+              "message": "Text contrast of 1.69 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 700",
+              "bounds": {
+                "left": 36,
+                "top": 963,
+                "height": 37,
+                "width": 223
+              },
+              "snippet": "<h3>",
+              "level": "violation"
+            },
+            {
+              "ruleId": "Rpt_Aria_ContentinfoWithNoMain_Implicit",
+              "path": {
+                "dom": "/html[1]/body[1]/form[1]/div[4]/div[2]/footer[1]",
+                "aria": "/document[1]/form[1]/contentinfo[1]"
+              },
+              "message": "The element with \"contentinfo\" role is present without an element with \"main\" role",
+              "bounds": {
+                "left": 16,
+                "top": 2251,
+                "height": 55,
+                "width": 768
+              },
+              "snippet": "<footer class=\"footer_bottom\">",
+              "level": "recommendation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.jrgh.net/",
+      "what": "James River Group Holdings (CCVAX)",
+      "result": "https://www.jrgh.net/"
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.jrgh.net/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "James River Group Holdings > Home",
+          "pageurl": "https://www.jrgh.net/",
+          "time": 2.52,
+          "creditsremaining": 1052,
+          "allitemcount": 91,
+          "totalelements": 495,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.jrgh.net/",
+          "domid": "45e6fee22c6acd5f189444abf65324f3"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 22,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV > SECTION:first-child > DIV#dnn_BannerPane > DIV:first-child > A:first-child + SCRIPT + SCRIPT + SCRIPT + LINK + DIV > DIV#dnn_ctr1404_ContentPane > DIV#dnn_ctr1404_ModuleContent > DIV#dnn_ctr1404_HtmlModule_lblContent > DIV#layerslider > DIV:first-child > DIV:first-child + DIV > IMG:first-child + DIV + IMG"
+                ]
+              },
+              "link_empty": {
+                "id": "link_empty",
+                "description": "Empty link",
+                "count": 6,
+                "selectors": [
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV > SECTION:first-child > DIV#dnn_BannerPane > DIV:first-child > A:first-child + SCRIPT + SCRIPT + SCRIPT + LINK + DIV > DIV#dnn_ctr1404_ContentPane > DIV#dnn_ctr1404_ModuleContent > DIV#dnn_ctr1404_HtmlModule_lblContent > DIV#layerslider > DIV:first-child > DIV:first-child + DIV + DIV > IMG:first-child + DIV + DIV + H3 + DIV > BR:first-child + IMG + A",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV > SECTION:first-child > DIV#dnn_BannerPane > DIV:first-child > A:first-child + SCRIPT + SCRIPT + SCRIPT + LINK + DIV > DIV#dnn_ctr1404_ContentPane > DIV#dnn_ctr1404_ModuleContent > DIV#dnn_ctr1404_HtmlModule_lblContent > DIV#layerslider > DIV:first-child + DIV + A",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV > SECTION:first-child > DIV#dnn_BannerPane > DIV:first-child > A:first-child + SCRIPT + SCRIPT + SCRIPT + LINK + DIV > DIV#dnn_ctr1404_ContentPane > DIV#dnn_ctr1404_ModuleContent > DIV#dnn_ctr1404_HtmlModule_lblContent > DIV#layerslider > DIV:first-child + DIV + A + A",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV > SECTION:first-child + DIV > DIV:first-child > DIV:first-child > DIV#dnn_ContentPane > DIV:first-child + DIV + DIV > A:first-child + DIV > DIV#dnn_ctr1412_ContentPane > DIV#dnn_ctr1412_ModuleContent > DIV#dnn_ctr1412_HtmlModule_lblContent > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV > SECTION:first-child + DIV > DIV:first-child > DIV:first-child > DIV#dnn_ContentPane > DIV:first-child + DIV + DIV > A:first-child + DIV > DIV#dnn_ctr1412_ContentPane > DIV#dnn_ctr1412_ModuleContent > DIV#dnn_ctr1412_HtmlModule_lblContent > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > A:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV > SECTION:first-child + DIV > DIV:first-child > DIV:first-child > DIV#dnn_ContentPane > DIV:first-child + DIV + DIV > A:first-child + DIV > DIV#dnn_ctr1412_ContentPane > DIV#dnn_ctr1412_ModuleContent > DIV#dnn_ctr1412_HtmlModule_lblContent > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > A:first-child"
+                ]
+              },
+              "aria_menu_broken": {
+                "id": "aria_menu_broken",
+                "description": "Broken ARIA menu",
+                "count": 15,
+                "selectors": [
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + UL > LI:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child > A:first-child + UL > LI:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child > A:first-child + UL > LI:first-child + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child + LI + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child + LI + LI + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child + LI + LI + LI + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI > A:first-child + UL > LI:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI + LI + LI + LI + LI + LI"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 4,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 4,
+                "selectors": [
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV + DIV > SECTION:first-child + FOOTER > DIV:first-child > DIV:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV + DIV > SECTION:first-child + FOOTER > DIV:first-child > DIV:first-child > SPAN#dnn_dnnCOPYRIGHT_lblCopyright",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV + DIV > SECTION:first-child + FOOTER > DIV:first-child > DIV:first-child > A#dnn_dnnPRIVACY_hypPrivacy",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV + DIV > SECTION:first-child + FOOTER > DIV:first-child > DIV:first-child > A#dnn_dnnTERMS_hypTerms"
+                ],
+                "contrastdata": [
+                  [
+                    2.61,
+                    "#ffffff",
+                    "#a0a0a0",
+                    false
+                  ],
+                  [
+                    2.61,
+                    "#ffffff",
+                    "#a0a0a0",
+                    false
+                  ],
+                  [
+                    2.61,
+                    "#ffffff",
+                    "#a0a0a0",
+                    false
+                  ],
+                  [
+                    2.61,
+                    "#ffffff",
+                    "#a0a0a0",
+                    false
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 5,
+            "items": {
+              "h1_missing": {
+                "id": "h1_missing",
+                "description": "Missing first level heading",
+                "count": 1,
+                "selectors": [
+                  false
+                ]
+              },
+              "link_internal_broken": {
+                "id": "link_internal_broken",
+                "description": "Broken same-page link",
+                "count": 1,
+                "selectors": [
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > A#top-link"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 2,
+                "selectors": [
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child > A:first-child + UL > LI:first-child > A:first-child",
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > HEADER#HeaderThree > SECTION#HeaderThreeMain > DIV:first-child > DIV:first-child > DIV:first-child + DIV + NAV > DIV#standardMenu > UL:first-child > LI:first-child + LI + LI > A:first-child + DIV > DIV:first-child + UL > LI:first-child + LI > A:first-child + UL > LI:first-child > A:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 1,
+                "selectors": [
+                  "HTML#ls-global > BODY#Body > FORM#Form > DIV#skin_wrapper > LINK:first-child + HEADER + SCRIPT + DIV + DIV > SECTION:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV#dnn_FooterGrid4B > DIV:first-child > A:first-child + DIV > DIV:first-child + DIV > DIV#dnn_ctr2045_ContentPane > DIV#dnn_ctr2045_ModuleContent > DIV#dnn_ctr2045_HtmlModule_lblContent > P:first-child + P > IMG:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "a11y07",
+      "what": "3 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "scoreProc": "a11y",
+        "version": "7",
+        "ruleDiscounts": {
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "nested-interactive": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 250 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 3 (discounted)",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "multiply violations by 4, recommendatons by 2; sum; subtract discounts",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss - 1; multiply mean adjacent sssd by 5, maximum adjacent sssd by 2, maximum over-all ssd by 1; divide mean pd by 10,000, maximum pd by 25,000; multiply count of non-0 pd by 30; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {},
+        "deficit": {
+          "total": 1147,
+          "axe": 178,
+          "bulk": 0,
+          "embAc": 0,
+          "focAll": 3,
+          "focInd": 310,
+          "focOp": 20,
+          "hover": 62,
+          "ibm": 64,
+          "labClash": 0,
+          "linkUl": 21,
+          "log": 154,
+          "menuNav": 0,
+          "motion": 73,
+          "radioSet": 0,
+          "role": 0,
+          "styleDiff": 21,
+          "tabNav": 0,
+          "wave": 94,
+          "zIndex": 147
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      71
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "ibm",
+      4
+    ],
+    [
+      "wave",
+      3
+    ],
+    [
+      "axe",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focInd",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
