@@ -12,4 +12,8 @@ const setPlayerCounts = async () => {
   spec.min = playerCount[0];
   spec.max = playerCount[1];
 };
-setPlayerCounts();
+const showAll = async () => {
+  await setPlayerCounts();
+  document.getElementById('form').classList.remove('invisible');
+};
+showAll();
