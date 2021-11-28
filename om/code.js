@@ -5,7 +5,9 @@ const getV00 = async () => {
 };
 const getPlayerCount = gameData => {
   const limits = gameData.playerCount;
-  const count = document.URL.searchParams.playerCount;
+  const url = new URL(document.URL);
+  const params = new URLSearchParams(url.search);
+  const count = params.playerCount;
   return count && count >= limits[0] && count <= limits[1] ? count : null;
 };
 const createCode = () => {
