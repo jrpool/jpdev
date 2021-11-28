@@ -8,6 +8,7 @@ const getPlayerCount = gameData => {
   const url = new URL(document.URL);
   const params = new URLSearchParams(url.search);
   const count = params.playerCount;
+  console.log(`Player count is ${count}`);
   return count && count >= limits[0] && count <= limits[1] ? count : null;
 };
 const createCode = () => {
