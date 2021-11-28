@@ -12,7 +12,7 @@ const getPlayerCount = gameData => {
 };
 const createCode = () => {
   const now = Date.now();
-  return now.toString().slice(6, 11);
+  return now.toString().slice(5, 10);
 }
 const showAll = async () => {
   const gameData = await getV00();
