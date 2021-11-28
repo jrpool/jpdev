@@ -21,7 +21,7 @@ const createGame = async (code, playerCount, timeLimit) => {
     expungeTime: Date.now() + 1000 * timeLimit
   }
   const response = await fetch(`on/${code}.json`, {
-    method: 'POST',
+    method: 'PUT',
     body: JSON.stringify(gameObj, null, 2)
   });
 };
