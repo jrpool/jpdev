@@ -5,6 +5,7 @@ const getV00 = async () => {
 };
 const getPlayerCount = gameData => {
   const limits = gameData.playerCount;
+  console.log(`URL is ${document.URL}`);
   const url = new URL(document.URL);
   const params = new URLSearchParams(url.search);
   console.log(`Parameters are ${JSON.stringify(params, null, 2)}`);
