@@ -14,11 +14,23 @@ const createCode = () => {
   const now = Date.now();
   return now.toString().slice(5, 10);
 }
+const createGame = async (code, playerCount, timeLimit) => {
+  const gameObj = {
+    code,
+    playerCount,
+    expungeTime: Date.now() + 1000 * timeLimit
+  }
+  const response = await fetch(`on/${code}.json`, {
+    method: 'POST',
+    body: JSON.stringify(gameObj, null, 2)
+  });
+};
 const showAll = async () => {
   const gameData = await getV00();
   const playerCount = getPlayerCount(gameData);
   const {timeLimit} = gameData;
   const code = createCode();
+  await createGame(code, playerCount, timeLimit);
   const shortLink = `join.html?code=${code}`;
   const longLink = `https://jpdev.pro/jpdev/om/${shortLink}`;
   document.getElementById('playerCount').textContent = playerCount;
