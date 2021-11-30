@@ -1,5 +1,6 @@
-// code.js
-const getV00 = async () => {
+#!/usr/bin/env node
+
+const gameData = 
   const response = await fetch('vs/v00.json');
   return await response.json();
 };
