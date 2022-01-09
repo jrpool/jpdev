@@ -1,0 +1,4390 @@
+{
+  "script": "asp08",
+  "batch": "a11yAttysRest",
+  "what": "Axe, IBM, AATT, WAVE, and 16 custom tests",
+  "strict": true,
+  "testDate": "2022-01-09",
+  "timeStamp": "1ayan",
+  "logCount": 24,
+  "logSize": 1392,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "presses": 0,
+  "amountRead": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "bytes": [
+          630132,
+          630132,
+          630132,
+          630132,
+          630132
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 4,
+          "moderate": 5,
+          "serious": 3,
+          "critical": 0
+        },
+        "items": [
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "h6",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-complementary-is-top-level",
+            "description": "Ensures the complementary landmark or aside is at top level",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".rc-tabs-tabpane-active > .grid__withGutters--894ed87e > .margin__xxxl-bottom.row__spaceBetween--3323b4fb.row__row--07cf1d98 > .grid__lg-3 > aside",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-top-level",
+                    "description": "The complementary landmark is contained in another landmark.",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-unique",
+            "description": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".rc-tabs-tabpane-active > .grid__withGutters--894ed87e > .margin__xxxl-bottom.row__spaceBetween--3323b4fb.row__row--07cf1d98 > .grid__lg-3",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".rc-tabs-tabpane-active > .grid__withGutters--894ed87e > .margin__xxxl-bottom.row__spaceBetween--3323b4fb.row__row--07cf1d98 > .grid__lg-3 > aside > nav:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "landmark-is-unique",
+                    "description": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "link-name",
+            "description": "Ensures links have discernible text",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": ".rc-tabs-tabpane-active > .grid__withGutters--894ed87e > .margin__xxxl-bottom.row__spaceBetween--3323b4fb.row__row--07cf1d98 > .grid__lg-3 > aside > div > .styles__container--5bf5cebf > ul > .styles__container--42b7dd06:nth-child(1) > .styles__imageContainer--4951476a.bg-very-light-gray",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".rc-tabs-tabpane-active > .grid__withGutters--894ed87e > .margin__xxxl-bottom.row__spaceBetween--3323b4fb.row__row--07cf1d98 > .grid__lg-3 > aside > div > .styles__container--5bf5cebf > ul > .styles__container--42b7dd06:nth-child(2) > .styles__imageContainer--4951476a.bg-very-light-gray",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": ".rc-tabs-tabpane-active > .grid__withGutters--894ed87e > .margin__xxxl-bottom.row__spaceBetween--3323b4fb.row__row--07cf1d98 > .grid__lg-3 > aside > div > .styles__container--5bf5cebf > ul > .styles__container--42b7dd06:nth-child(3) > .styles__imageContainer--4951476a.bg-very-light-gray",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "has-visible-text",
+                    "description": "Element does not have text that is visible to screen readers",
+                    "impact": "minor"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  }
+                ],
+                "must pass all of": [
+                  {
+                    "check": "focusable-no-name",
+                    "description": "Element is in tab order and does not have accessible text",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "presentation-role-conflict",
+            "description": "Flags elements whose role is none or presentation and which cause the role conflict resolution to trigger.",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "div[role=\"presentation\"]:nth-child(2)",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "is-element-focusable",
+                    "description": "Element is not focusable.",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "div[role=\"presentation\"]:nth-child(1)",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "is-element-focusable",
+                    "description": "Element is not focusable.",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "div[role=\"presentation\"]:nth-child(3)",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "is-element-focusable",
+                    "description": "Element is not focusable.",
+                    "impact": "minor"
+                  }
+                ]
+              },
+              {
+                "selector": "div[role=\"presentation\"]:nth-child(4)",
+                "impact": "minor",
+                "must pass all of": [
+                  {
+                    "check": "is-element-focusable",
+                    "description": "Element is not focusable.",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": ".styles__usabilityBanner--cfae0843",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "visibleElements": 318
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "tabFocusables": 65,
+        "tabFocused": 67,
+        "discrepancy": 2
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "total": 128,
+          "types": {
+            "indicatorMissing": {
+              "total": 127,
+              "tagNames": {
+                "A": 101,
+                "BUTTON": 19,
+                "INPUT": 1,
+                "MAIN": 1,
+                "DIV": 3,
+                "FOOTER": 1,
+                "IFRAME": 1
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 1,
+              "tagNames": {
+                "A": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 0,
+              "tagNames": {}
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": "Skip to Main Content"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "About"
+            },
+            {
+              "tagName": "A",
+              "text": "News & Insights"
+            },
+            {
+              "tagName": "A",
+              "text": "Careers"
+            },
+            {
+              "tagName": "A",
+              "text": "Global Reach"
+            },
+            {
+              "tagName": "A",
+              "text": "中文网站"
+            },
+            {
+              "tagName": "A",
+              "text": "People"
+            },
+            {
+              "tagName": "A",
+              "text": "Services"
+            },
+            {
+              "tagName": "A",
+              "text": "Delivery"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to search Seyfarth.com"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to exit Seyfarth.com search"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Search"
+            },
+            {
+              "tagName": "MAIN",
+              "text": "RETURN TO PRACTICESADA Title III & Public AccessADA Title III & Public AccessOVERVIEWEXPERIENCENEWS "
+            },
+            {
+              "tagName": "A",
+              "text": "RETURN TO PRACTICES"
+            },
+            {
+              "tagName": "DIV",
+              "text": "OVERVIEWEXPERIENCENEWS & INSIGHTSACCOMPLISHMENTS"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Title III News & Insights Blog"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Minh N.Vu"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Kristina M.Launey"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "John W.Egan"
+            },
+            {
+              "tagName": "A",
+              "text": "Meet the Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Employment"
+            },
+            {
+              "tagName": "A",
+              "text": "Employment Litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "Real Estate"
+            },
+            {
+              "tagName": "A",
+              "text": "Real Estate Litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "Hospitality & Leisure"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Title III News & Insights Blog"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "DIV",
+              "text": "EXPERIENCEClick to collapse content sectionEXPERIENCE"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "A",
+              "text": "Remote Work"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions12/13/2021Kristina Launey quoted in CityWatchLA"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions11/16/2021John Egan quoted in Crain's New York Business"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions11/15/2021John Egan quoted in Habitat"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions11/14/2021Seyfarth’s ADA statistics referenced in Law360"
+            },
+            {
+              "tagName": "A",
+              "text": "View All"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition01/04/2021Seyfarth’s Minh Vu Named to Washingtonian’s “Best Lawyers” List"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition08/15/2019Seyfarth Shaw Attorneys Named in The Best Lawyers in America 2020"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition04/21/2017Kristina Launey Recognized in Lawline ’s “Top 20 Women Faculty of 2016”"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition07/20/2016Launey Named to Daily Journal’s 2016 List of “Top Labor & Employment Attorneys”"
+            },
+            {
+              "tagName": "A",
+              "text": "View All"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Title III News & Insights Blog"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Minh N.Vu"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Kristina M.Launey"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "John W.Egan"
+            },
+            {
+              "tagName": "A",
+              "text": "Meet the Team"
+            },
+            {
+              "tagName": "A",
+              "text": "Employment"
+            },
+            {
+              "tagName": "A",
+              "text": "Employment Litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "Real Estate"
+            },
+            {
+              "tagName": "A",
+              "text": "Real Estate Litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "Hospitality & Leisure"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Title III News & Insights Blog"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "DIV",
+              "text": "EXPERIENCEClick to collapse content sectionEXPERIENCE"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "A",
+              "text": "Remote Work"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions12/13/2021Kristina Launey quoted in CityWatchLA"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions11/16/2021John Egan quoted in Crain's New York Business"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions11/15/2021John Egan quoted in Habitat"
+            },
+            {
+              "tagName": "A",
+              "text": "Media Mentions11/14/2021Seyfarth’s ADA statistics referenced in Law360"
+            },
+            {
+              "tagName": "A",
+              "text": "View All"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to share this page"
+            },
+            {
+              "tagName": "A",
+              "text": "Click for PDF"
+            },
+            {
+              "tagName": "BUTTON",
+              "text": "Click to print page"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition01/04/2021Seyfarth’s Minh Vu Named to Washingtonian’s “Best Lawyers” List"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition08/15/2019Seyfarth Shaw Attorneys Named in The Best Lawyers in America 2020"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition04/21/2017Kristina Launey Recognized in Lawline ’s “Top 20 Women Faculty of 2016”"
+            },
+            {
+              "tagName": "A",
+              "text": "Recognition07/20/2016Launey Named to Daily Journal’s 2016 List of “Top Labor & Employment Attorneys”"
+            },
+            {
+              "tagName": "A",
+              "text": "View All"
+            },
+            {
+              "tagName": "FOOTER",
+              "text": "Follow us on: FacebookInstagramLinkedInTwitterYoutubeAccessibilityAttorney AdvertisingAward Informat"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Instagram"
+            },
+            {
+              "tagName": "A",
+              "text": "LinkedIn"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Youtube"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Attorney Advertising"
+            },
+            {
+              "tagName": "A",
+              "text": "Award Information"
+            },
+            {
+              "tagName": "A",
+              "text": "COVID-19 Update"
+            },
+            {
+              "tagName": "A",
+              "text": "Press Page"
+            },
+            {
+              "tagName": "A",
+              "text": "Privacy Policy"
+            },
+            {
+              "tagName": "A",
+              "text": "RSS Feeds"
+            },
+            {
+              "tagName": "A",
+              "text": "Seyfarth Link"
+            },
+            {
+              "tagName": "A",
+              "text": "Subscribe"
+            },
+            {
+              "tagName": "A",
+              "text": "Terms of Use"
+            },
+            {
+              "tagName": "A",
+              "text": "Atlanta"
+            },
+            {
+              "tagName": "A",
+              "text": "Boston"
+            },
+            {
+              "tagName": "A",
+              "text": "Charlotte"
+            },
+            {
+              "tagName": "A",
+              "text": "Chicago"
+            },
+            {
+              "tagName": "A",
+              "text": "Hong Kong"
+            },
+            {
+              "tagName": "A",
+              "text": "Houston"
+            },
+            {
+              "tagName": "A",
+              "text": "London"
+            },
+            {
+              "tagName": "A",
+              "text": "Los Angeles - Century City"
+            },
+            {
+              "tagName": "A",
+              "text": "Los Angeles - Downtown"
+            },
+            {
+              "tagName": "A",
+              "text": "Melbourne"
+            },
+            {
+              "tagName": "A",
+              "text": "New York"
+            },
+            {
+              "tagName": "A",
+              "text": "Sacramento"
+            },
+            {
+              "tagName": "A",
+              "text": "San Francisco"
+            },
+            {
+              "tagName": "A",
+              "text": "Seattle"
+            },
+            {
+              "tagName": "A",
+              "text": "Shanghai"
+            },
+            {
+              "tagName": "A",
+              "text": "Sydney"
+            },
+            {
+              "tagName": "A",
+              "text": "Washington, DC"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "Enable Accessibility"
+            }
+          ],
+          "outlinePresent": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "total": 161,
+          "types": {
+            "onlyFocusable": {
+              "total": 7,
+              "tagNames": {
+                "MAIN": 1,
+                "DIV": 5,
+                "FOOTER": 1
+              }
+            },
+            "onlyOperable": {
+              "total": 4,
+              "tagNames": {
+                "DIV": 3,
+                "SECTION": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 150,
+              "tagNames": {
+                "A": 104,
+                "BUTTON": 36,
+                "INPUT": 6,
+                "DIV": 2,
+                "IFRAME": 2
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [
+            {
+              "tagName": "MAIN",
+              "id": "",
+              "text": "RETURN TO PRACTICESADA Title III & Public AccessADA Title III & Public AccessOVE"
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "OVERVIEWEXPERIENCENEWS & INSIGHTSACCOMPLISHMENTS"
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div tabindex=\"0\" style=\"width:0;height:0;overflow:hidden;position:absolute\" rol"
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div tabindex=\"0\" style=\"width:0;height:0;overflow:hidden;position:absolute\" rol"
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div tabindex=\"0\" style=\"width:0;height:0;overflow:hidden;position:absolute\" rol"
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "<div tabindex=\"0\" style=\"width:0;height:0;overflow:hidden;position:absolute\" rol"
+            },
+            {
+              "tagName": "FOOTER",
+              "id": "",
+              "text": "Follow us on: FacebookInstagramLinkedInTwitterYoutubeAccessibilityAttorney Adver"
+            }
+          ],
+          "onlyOperable": [
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "EXPERIENCE",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "NEWS & INSIGHTS",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "ACCOMPLISHMENTS",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "SECTION",
+              "id": "",
+              "text": "View Cookies",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Skip to Main Content",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Enable Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__logoLink--3c0c41fe\" href=\"/\" aria-label=\"Click to visit Seyfar",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "News & Insights",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Careers",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Global Reach",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "中文网站",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "People",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Services",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Delivery",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to search Seyfarth.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to exit Seyfarth.com search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "header_search_autocomplete",
+              "text": "<input type=\"search\" aria-label=\"Search Seyfarth.com\" class=\"styles__input--1758",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Search",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RETURN TO PRACTICES",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Title III News & Insights Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__imageContainer--4951476a bg-very-light-gray\" href=\"https://www",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Minh N.Vu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__imageContainer--4951476a bg-very-light-gray\" href=\"https://www",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kristina M.Launey",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__imageContainer--4951476a bg-very-light-gray\" href=\"https://www",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "John W.Egan",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Meet the Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Employment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Employment Litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Real Estate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Real Estate Litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospitality & Leisure",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Title III News & Insights Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "EXPERIENCEClick to collapse content sectionEXPERIENCE",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Remote Work",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions12/13/2021Kristina Launey quoted in CityWatchLA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions11/16/2021John Egan quoted in Crain's New York Business",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions11/15/2021John Egan quoted in Habitat",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions11/14/2021Seyfarth’s ADA statistics referenced in Law360",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View All",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition01/04/2021Seyfarth’s Minh Vu Named to Washingtonian’s “Best Lawyers” ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition08/15/2019Seyfarth Shaw Attorneys Named in The Best Lawyers in Americ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition04/21/2017Kristina Launey Recognized in Lawline ’s “Top 20 Women Facu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition07/20/2016Launey Named to Daily Journal’s 2016 List of “Top Labor & E",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View All",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Title III News & Insights Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__imageContainer--4951476a bg-very-light-gray\" href=\"https://www",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Minh N.Vu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__imageContainer--4951476a bg-very-light-gray\" href=\"https://www",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Kristina M.Launey",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__imageContainer--4951476a bg-very-light-gray\" href=\"https://www",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "John W.Egan",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Meet the Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Employment",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Employment Litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Real Estate",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Real Estate Litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hospitality & Leisure",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Title III News & Insights Blog",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "DIV",
+              "id": "",
+              "text": "EXPERIENCEClick to collapse content sectionEXPERIENCE",
+              "byTag": false,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Remote Work",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions12/13/2021Kristina Launey quoted in CityWatchLA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions11/16/2021John Egan quoted in Crain's New York Business",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions11/15/2021John Egan quoted in Habitat",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Media Mentions11/14/2021Seyfarth’s ADA statistics referenced in Law360",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View All",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to share this page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Click for PDF",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Click to print page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition01/04/2021Seyfarth’s Minh Vu Named to Washingtonian’s “Best Lawyers” ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition08/15/2019Seyfarth Shaw Attorneys Named in The Best Lawyers in Americ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition04/21/2017Kristina Launey Recognized in Lawline ’s “Top 20 Women Facu",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Recognition07/20/2016Launey Named to Daily Journal’s 2016 List of “Top Labor & E",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "View All",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Instagram",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "LinkedIn",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Youtube",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Attorney Advertising",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Award Information",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "COVID-19 Update",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Press Page",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RSS Feeds",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Seyfarth Link",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Subscribe",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Terms of Use",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Atlanta",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Boston",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Charlotte",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Chicago",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Hong Kong",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Houston",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "London",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Los Angeles - Century City",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Los Angeles - Downtown",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Melbourne",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "New York",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sacramento",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "San Francisco",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Seattle",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Shanghai",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Sydney",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Washington, DC",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe style=\"display:none;\" src=\"https://a40.usablenet.com/pt/c/seyfarth/switc",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "close-pc-btn-handler",
+              "text": "<button id=\"close-pc-btn-handler\" class=\"ot-close-icon\" aria-label=\"Close\" style",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Privacy Policy",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "accept-recommended-btn-handler",
+              "text": "Allow All",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button aria-expanded=\"false\" ot-accordion=\"true\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Cookies Details‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button aria-expanded=\"false\" ot-accordion=\"true\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Cookies Details‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button aria-expanded=\"false\" ot-accordion=\"true\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Cookies Details‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button aria-expanded=\"false\" ot-accordion=\"true\" aria-controls=\"ot-desc-id-C000",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Cookies Details‎",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Back Button",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "vendor-search-handler",
+              "text": "<input id=\"vendor-search-handler\" type=\"text\" placeholder=\"Search...\" name=\"vend",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-btn-handler",
+              "text": "Filter Icon",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "clear-filters-handler",
+              "text": "Clear",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "chkbox-id",
+              "text": "<input id=\"chkbox-id\" type=\"checkbox\" aria-checked=\"false\" class=\"category-filte",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-apply-handler",
+              "text": "Apply",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "filter-cancel-handler",
+              "text": "Cancel",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-hosts-groups-handler",
+              "text": "<input id=\"select-all-hosts-groups-handler\" type=\"checkbox\" aria-checked=\"false\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-vendor-groups-handler",
+              "text": "<input id=\"select-all-vendor-groups-handler\" type=\"checkbox\" aria-checked=\"false",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "select-all-vendor-leg-handler",
+              "text": "<input id=\"select-all-vendor-leg-handler\" type=\"checkbox\" aria-checked=\"false\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "<button class=\"ot-host-box\" aria-expanded=\"false\" style=\"cursor: default;\"></but",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "BUTTON",
+              "id": "",
+              "text": "Confirm My Choices",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a href=\"https://www.onetrust.com/products/cookie-consent/\" target=\"_blank\" rel=",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe class=\"ot-text-resize\" title=\"onetrust-text-resize\" style=\"position:abso",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "triggers": 1,
+          "madeVisible": 0,
+          "opacityChanged": 1,
+          "opacityAffected": 1,
+          "unhoverables": 1
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"styles__logoLink--3c0c41fe\" href=\"/\" ari",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img alt=\"Seyfarth Shaw\" height=\"0\" src=\"https://w"
+                }
+              ]
+            }
+          ],
+          "unhoverables": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "SkiptoMainContent"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 1,
+          "wellLabeled": 41
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 40,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "content": "{<button class=\"ot-host-box\" aria-expanded=\"false\"></button>}"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 0,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to search Seyfarth.com",
+                "content": "Click to search Seyfarth.com"
+              }
+            },
+            {
+              "index": 1,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to exit Seyfarth.com search",
+                "content": "Click to exit Seyfarth.com search"
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "search",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search Seyfarth.com"
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Search",
+                "content": "Search"
+              }
+            },
+            {
+              "index": 4,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 5,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 7,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 8,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 9,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 10,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 11,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 12,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 13,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 14,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 15,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 16,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 17,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 18,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to share this page",
+                "content": "Click to share this page"
+              }
+            },
+            {
+              "index": 19,
+              "tagName": "BUTTON",
+              "type": "button",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Click to print page",
+                "content": "Click to print page"
+              }
+            },
+            {
+              "index": 20,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Close"
+              }
+            },
+            {
+              "index": 21,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Allow All"
+              }
+            },
+            {
+              "index": 22,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Functional Cookies"
+                ]
+              }
+            },
+            {
+              "index": 23,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 24,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Performance Cookies"
+                ]
+              }
+            },
+            {
+              "index": 25,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 26,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Strictly Necessary Cookies"
+                ]
+              }
+            },
+            {
+              "index": 27,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 28,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-labelledby",
+              "texts": {
+                "referred": [
+                  "Targeting Cookies"
+                ]
+              }
+            },
+            {
+              "index": 29,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Cookies Details button opens Cookies Details window",
+                "content": "Cookies Details‎"
+              }
+            },
+            {
+              "index": 30,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Back",
+                "content": "Back Button"
+              }
+            },
+            {
+              "index": 31,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Vendor Search"
+                ]
+              }
+            },
+            {
+              "index": 32,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "labelType": "aria-label",
+              "texts": {
+                "attribute": "Filter",
+                "content": "Filter Icon"
+              }
+            },
+            {
+              "index": 33,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Clear"
+              }
+            },
+            {
+              "index": 34,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 35,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Apply"
+              }
+            },
+            {
+              "index": 36,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Cancel"
+              }
+            },
+            {
+              "index": 37,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 38,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 39,
+              "tagName": "INPUT",
+              "type": "checkbox",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "checkbox label"
+                ]
+              }
+            },
+            {
+              "index": 41,
+              "tagName": "BUTTON",
+              "type": "submit",
+              "texts": {
+                "content": "Confirm My Choices"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "links": 104,
+          "inline": {
+            "total": 5,
+            "underlined": 3,
+            "underlinedPercent": 60
+          }
+        },
+        "items": {
+          "underlined": [
+            "ADA Title III News & Insights Blog",
+            "ADA Title III News & Insights Blog",
+            "Privacy Policy"
+          ],
+          "notUnderlined": [
+            "Meet the Team",
+            "Meet the Team"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "roleElements": 26,
+        "badRoleElements": 7,
+        "tagNames": {
+          "DIV": {
+            "dialog": 2,
+            "combobox": 1,
+            "button": 2
+          },
+          "MAIN": {
+            "main": 1
+          },
+          "P": {
+            "status": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 1
+          },
+          "h2": {
+            "total": 12
+          },
+          "h3": {
+            "total": 12,
+            "subtotals": [
+              8,
+              2,
+              1,
+              1
+            ]
+          },
+          "h4": {
+            "total": 6,
+            "subtotals": [
+              4,
+              1,
+              1
+            ]
+          },
+          "h6": {
+            "total": 1
+          },
+          "aInline": {
+            "total": 5,
+            "subtotals": [
+              2,
+              2,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 99,
+            "subtotals": [
+              17,
+              16,
+              14,
+              12,
+              10,
+              8,
+              6,
+              5,
+              5,
+              3,
+              2,
+              1
+            ]
+          },
+          "button": {
+            "total": 36,
+            "subtotals": [
+              16,
+              5,
+              4,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h2": {},
+          "h3": {
+            "fontWeight": {
+              "400": 8,
+              "700": 4
+            },
+            "lineHeight": {
+              "30px": 8,
+              "20.8px": 2,
+              "24px": 1,
+              "17.056px": 1
+            },
+            "fontSize": {
+              "24px": 140,
+              "16px": 69,
+              "13.12px": 25
+            }
+          },
+          "h4": {
+            "fontWeight": {
+              "400": 2,
+              "700": 4
+            },
+            "lineHeight": {
+              "21px": 4,
+              "15.4112px": 1,
+              "15.552px": 1
+            },
+            "maxWidth": {
+              "90%": 4,
+              "none": 2
+            },
+            "minHeight": {
+              "25px": 4,
+              "0px": 2
+            },
+            "fontSize": {
+              "14px": 110,
+              "11.52px": 31,
+              "11.008px": 30
+            }
+          },
+          "h6": {},
+          "aInline": {
+            "lineHeight": {
+              "27px": 2,
+              "18px": 2,
+              "19.488px": 1
+            },
+            "textDecorationLine": {
+              "underline": 3,
+              "none": 2
+            },
+            "fontSize": {
+              "18px": 64,
+              "15px": 64,
+              "12.992px": 32
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 81,
+              "solid none none": 16,
+              "none none solid": 2
+            },
+            "borderWidth": {
+              "0px": 81,
+              "3px 0px 0px": 16,
+              "0px 0px 10px": 2
+            },
+            "lineHeight": {
+              "27px": 32,
+              "20px": 22,
+              "18px": 12,
+              "16.8px": 10,
+              "22px": 8,
+              "23.6px": 6,
+              "15px": 5,
+              "24px": 3,
+              "normal": 1
+            },
+            "minHeight": {
+              "0px": 83,
+              "240px": 16
+            },
+            "textDecorationLine": {
+              "none": 98,
+              "underline": 1
+            },
+            "fontSize": {
+              "18px": 1024,
+              "12px": 704,
+              "20px": 448,
+              "15px": 384,
+              "14px": 320,
+              "22px": 256,
+              "16px": 32
+            }
+          },
+          "button": {
+            "borderStyle": {
+              "none": 30,
+              "solid": 6
+            },
+            "borderWidth": {
+              "0px": 30,
+              "1px": 6
+            },
+            "fontWeight": {
+              "400": 22,
+              "600": 2,
+              "700": 12
+            },
+            "lineHeight": {
+              "22px": 16,
+              "14.4px": 11,
+              "normal": 5,
+              "18px": 1,
+              "25px": 1,
+              "40px": 1,
+              "12px": 1
+            },
+            "maxWidth": {
+              "none": 24,
+              "394px": 11,
+              "200px": 1
+            },
+            "minHeight": {
+              "0px": 35,
+              "auto": 1
+            },
+            "minWidth": {
+              "0px": 35,
+              "auto": 1
+            },
+            "outlineOffset": {
+              "0px": 35,
+              "-1px": 1
+            },
+            "fontSize": {
+              "22px": 512,
+              "14.4px": 352,
+              "13.008px": 128,
+              "18px": 32,
+              "25px": 32,
+              "40px": 32,
+              "16px": 32,
+              "12px": 32
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 28,
+              "correct": 4,
+              "incorrect": 24
+            },
+            "specific": {
+              "tab": {
+                "total": 4,
+                "correct": 4,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 4,
+                "correct": 0,
+                "incorrect": 4
+              },
+              "right": {
+                "total": 4,
+                "correct": 0,
+                "incorrect": 4
+              },
+              "up": {
+                "total": 4,
+                "correct": 0,
+                "incorrect": 4
+              },
+              "down": {
+                "total": 4,
+                "correct": 0,
+                "incorrect": 4
+              },
+              "home": {
+                "total": 4,
+                "correct": 0,
+                "incorrect": 4
+              },
+              "end": {
+                "total": 4,
+                "correct": 0,
+                "incorrect": 4
+              }
+            }
+          },
+          "tabElements": {
+            "total": 4,
+            "correct": 0,
+            "incorrect": 4
+          },
+          "tabLists": {
+            "total": 1,
+            "correct": 0,
+            "incorrect": 1
+          }
+        },
+        "tabElements": {
+          "incorrect": [
+            {
+              "tagName": "DIV",
+              "text": "OVERVIEW",
+              "navigationErrors": [
+                "ArrowLeft",
+                "ArrowRight",
+                "ArrowUp",
+                "ArrowDown",
+                "Home",
+                "End"
+              ]
+            },
+            {
+              "tagName": "DIV",
+              "text": "EXPERIENCE",
+              "navigationErrors": [
+                "ArrowLeft",
+                "ArrowRight",
+                "ArrowUp",
+                "ArrowDown",
+                "Home",
+                "End"
+              ]
+            },
+            {
+              "tagName": "DIV",
+              "text": "NEWS & INSIGHTS",
+              "navigationErrors": [
+                "ArrowLeft",
+                "ArrowRight",
+                "ArrowUp",
+                "ArrowDown",
+                "Home",
+                "End"
+              ]
+            },
+            {
+              "tagName": "DIV",
+              "text": "ACCOMPLISHMENTS",
+              "navigationErrors": [
+                "ArrowLeft",
+                "ArrowRight",
+                "ArrowUp",
+                "ArrowDown",
+                "Home",
+                "End"
+              ]
+            }
+          ],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "elements with non-auto z indexes",
+      "withItems": true,
+      "result": "ERROR: Page URL wrong (https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html?tab=accomplishments)"
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "result": "ERROR: Page URL wrong (https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html?tab=accomplishments)"
+    },
+    {
+      "type": "url",
+      "which": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "what": "Seyfarth Shaw accessibility",
+      "result": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html"
+    },
+    {
+      "type": "test",
+      "which": "aatt",
+      "what": "AATT with HTML CodeSniffer WCAG 2.1 AA ruleset",
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": [
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited background colour or image to complement the corresponding inline foreground colour.",
+          "code": "&lt;link rel=\"mask-icon\"\nhref=\"https://www.seyfarth.com\ncached/40049/images/favicons/s\nfari-pinned-tab.svg\"\ncolor=\"#5bbad5\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element has \"position: fixed\". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.",
+          "code": "&lt;a\nhref=\"#main-content-anchor\"\nclass=\"styles__skipToMainConte\ntLink--b44d3098\nu-hide-in-print\" tabindex=\"0\"\naria-label=\"Skip to Main\nContent\"&gt;Skip to Main\nContent&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C32\" target=\"_blank\">C32</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C31\" target=\"_blank\">C31</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C33\" target=\"_blank\">C33</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C38\" target=\"_blank\">C38</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/SCR34\" target=\"_blank\">SCR34</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G206\" target=\"_blank\">G206</a>"
+          ],
+          "id": "C31+C32+C33+C38+G206+SCR34"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\"\nhref=\"/about-us/index.html\"&gt\nAbout&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\"\nhref=\"/news-insights/index.htm\n\"&gt;News &amp;amp;\nInsights&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\"\nhref=\"/careers/index.html\"&gt;\nareers&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\"\nhref=\"/locations/index.html\"&g\n;Global Reach&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\"\nhref=\"/zh/\"\nlang=\"zh\"&gt;中文网站&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\"\nhref=\"/people/index.html\"&gt;P\nople&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\nstyles__linkActive--2b129cf8\"\nhref=\"/services/index.html\"&gt\nServices&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nclass=\"styles__link--55657727\nstyles__linkHover--df3a9275\"\nhref=\"/delivery/index.html\"&gt\nDelivery&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;C\nick to search\nSeyfarth.com&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img alt=\"\" height=\"1700\"\nsrc=\"https://www.seyfarth.com/\nmages/content/6/0/v1/60956/Adv\nsory_Image_4288x2848.jpg\"\nwidth=\"2560\"\nclass=\"styles__image--c923980e\n data-object-fit=\"true\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;RETU\nN TO PRACTICES&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 3:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;ADA\nTitle III &amp;amp; Public\nAccess&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G145\" target=\"_blank\">G145</a>"
+          ],
+          "id": "G145"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;div\nclass=\"styles__tabTitle--084e3\ne9\"&gt;OVERVIEW&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;div\nclass=\"styles__tabTitle--084e3\ne9\"&gt;EXPERIENCE&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;div\nclass=\"styles__tabTitle--084e3\ne9\"&gt;NEWS &amp;amp;\nINSIGHTS&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;div\nclass=\"styles__tabTitle--084e3\ne9\"&gt;ACCOMPLISHMENTS&lt;/div\ngt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;C\nick to share this\npage&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;C\nick for PDF&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;C\nick to print page&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img alt=\"\" height=\"375\"\nsrc=\"https://www.seyfarth.com/\nmages/content/9/1/v1/9131/0042\n7_Vu_Minh_BIO.jpg\"\nwidth=\"375\"\nclass=\"styles__image--773541a9\n data-object-fit=\"true\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img alt=\"\" height=\"375\"\nsrc=\"https://www.seyfarth.com/\nmages/content/4/0/v2/40675/003\n42_Launey_Kristina_BIO.jpg\"\nwidth=\"375\"\nclass=\"styles__image--773541a9\n data-object-fit=\"true\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img alt=\"\" height=\"375\"\nsrc=\"https://www.seyfarth.com/\nmages/content/1/0/v1/10475/005\n83_Egan_John_BIO.jpg\"\nwidth=\"375\"\nclass=\"styles__image--773541a9\n data-object-fit=\"true\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a class=\"color-gray\ntype__link_primary\nstyles__viewAllLink--508c9c00\"\nhref=\"https://www.seyfarth.com\npeople/index.html?p=20957#atto\nney-search\"&gt;Meet the\nTeam&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Empl\nyment&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Empl\nyment Litigation&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Real\nEstate&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Real\nEstate Litigation&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Hosp\ntality &amp;amp;\nLeisure&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;ADA\nTitle III News &amp;amp;\nInsights Blog&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "The heading structure is not logically nested. This h6 element should be an h4 to be properly nested.",
+          "code": "&lt;h6 class=\"color-white\nfooter-icons__typeTitle--5d63f\neb\"&gt;&lt;!-- --&gt;Follow\nus on:&lt;!-- --&gt;\n&lt;/h6&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G141\" target=\"_blank\">G141</a>"
+          ],
+          "id": "G141"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;F\ncebook&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;I\nstagram&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;L\nnkedIn&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;T\nitter&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"u-visually-hidden\"&gt;Y\nutube&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"/policies/accessibility.\ntml\" class=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Accessibility&lt;/a&g\n;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"/policies/attorney-adver\nising.html\"\nclass=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Attorney\nAdvertising&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"/award-information.html\"\nclass=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Award\nInformation&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"/covid-19-update.html\"\nclass=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;COVID-19\nUpdate&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a href=\"/press-page.html\"\nclass=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Press Page&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"/policies/privacy-policy\nhtml\" class=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Privacy\nPolicy&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a href=\"/rss.html\"\nclass=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;RSS Feeds&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"https://seyfarthlink.com\n class=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Seyfarth\nLink&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"https://connect.seyfarth\ncom/9/7/landing-pages/subscrip\nion.asp\" class=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Subscribe&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"/policies/terms-of-use.h\nml\" class=\"color-white\nfooter-top-links__typeTopLink-\nfc90d94d\nfooter-top-links__topLink--787\n8291\"&gt;Terms of\nUse&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Atla\nta&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Bost\nn&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Char\notte&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Chic\ngo&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Hong\nKong&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Hous\non&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Lond\nn&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Los\nAngeles - Century\nCity&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Los\nAngeles -\nDowntown&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Melb\nurne&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;New\nYork&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Sacr\nmento&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;San\nFrancisco&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Seat\nle&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Shan\nhai&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Sydn\ny&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"rte-title-mode\"&gt;Wash\nngton, DC&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "error",
+          "msg": "Iframe element requires a non-empty title attribute that identifies the frame.",
+          "code": "&lt;iframe\nstyle=\"display:none;\"\nsrc=\"https://a40.usablenet.com\npt/c/seyfarth/switch\"&gt;&lt;/\nframe&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#operable\" target=\"_blank\">Operable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H64\" target=\"_blank\">H64</a>"
+          ],
+          "id": "H64"
+        },
+        {
+          "type": "warning",
+          "msg": "This element has \"position: fixed\". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.",
+          "code": "&lt;div\nclass=\"onetrust-pc-dark-filter\not-hide\not-fade-in\"&gt;&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C32\" target=\"_blank\">C32</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C31\" target=\"_blank\">C31</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C33\" target=\"_blank\">C33</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C38\" target=\"_blank\">C38</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/SCR34\" target=\"_blank\">SCR34</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G206\" target=\"_blank\">G206</a>"
+          ],
+          "id": "C31+C32+C33+C38+G206+SCR34"
+        },
+        {
+          "type": "warning",
+          "msg": "This element has \"position: fixed\". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.",
+          "code": "&lt;div id=\"onetrust-pc-sdk\"\nclass=\"otPcCenter ot-hide\not-fade-in\" aria-modal=\"true\"\nrole=\"dialog\"\naria-labelledby=\"ot-pc-title\"\nlang=\"en\"&gt;&lt;!-- Close\nButton --&gt;&lt;div\nclass=\"ot-pc-header\"&gt;&lt;!-\n..&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C32\" target=\"_blank\">C32</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C31\" target=\"_blank\">C31</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C33\" target=\"_blank\">C33</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C38\" target=\"_blank\">C38</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/SCR34\" target=\"_blank\">SCR34</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G206\" target=\"_blank\">G206</a>"
+          ],
+          "id": "C31+C32+C33+C38+G206+SCR34"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;div class=\"ot-pc-logo\"\nrole=\"img\"\naria-label=\"Seyfarth\"\nstyle=\"background-image:\nurl(&amp;quot;https://cdn.cook\nelaw.org/logos/6f4d4ac0-c62e-4\n2f-b50a-28112ce73109/1c753ba4-\n00e-4e73-969a-99527feeff1d/152\nf292-5ec5-4777-a316-c5dd88e5fd\n1/Seyfarth_logo_no_clearspace_\n00x93.png&amp;quot;);\n                   \nbackground-position:\nleft\"&gt;&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "Accessible name for this element does not contain the visible label text. Check that for user interface components with labels that include text or images of text, the name contains the text that is presented visually.",
+          "code": "&lt;a\nhref=\"http://www.seyfarth.com/\nrivacy-Policy\"\nclass=\"privacy-notice-link\"\nrel=\"noopener\"\ntarget=\"_blank\"\naria-label=\"More information\nabout your privacy, opens in\na new tab\"&gt;Privacy\nPolicy&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#operable\" target=\"_blank\">Operable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F96\" target=\"_blank\">F96</a>"
+          ],
+          "id": "F96"
+        },
+        {
+          "type": "warning",
+          "msg": "Accessible name for this element does not contain the visible label text. Check that for user interface components with labels that include text or images of text, the name contains the text that is presented visually.",
+          "code": "&lt;button class=\"ot-link-btn\nback-btn-handler\"\naria-label=\"Back\"&gt;&lt;svg\nid=\"ot-back-arw\"\nxmlns=\"http://www.w3.org/200..\n&lt;/button&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#operable\" target=\"_blank\">Operable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F96\" target=\"_blank\">F96</a>"
+          ],
+          "id": "F96"
+        },
+        {
+          "type": "warning",
+          "msg": "Accessible name for this element does not contain the visible label text. Check that for user interface components with labels that include text or images of text, the name contains the text that is presented visually.",
+          "code": "&lt;button\nid=\"filter-btn-handler\"\naria-label=\"Filter\"\naria-haspopup=\"true\"&gt;&lt;sv\n role=\"presentation\"\naria-hidden=\"true\"\nxmlns=...&lt;/button&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#operable\" target=\"_blank\">Operable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F96\" target=\"_blank\">F96</a>"
+          ],
+          "id": "F96"
+        },
+        {
+          "type": "error",
+          "msg": "This button element does not have a name available to an accessibility API. Valid names are: title , element content, aria-label , aria-labelledby .",
+          "code": "&lt;button\nclass=\"ot-host-box\"\naria-expanded=\"false\"&gt;&lt;/\nutton&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#robust\" target=\"_blank\">Robust</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H91\" target=\"_blank\">H91</a>"
+          ],
+          "id": "H91"
+        },
+        {
+          "type": "error",
+          "msg": "Heading tag found with no content. Text that is not intended as a heading should not be marked up with heading tags.",
+          "code": "&lt;h3\nclass=\"ot-host-name\"&gt;&lt;/h\n&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H42\" target=\"_blank\">H42</a>"
+          ],
+          "id": "H42"
+        },
+        {
+          "type": "error",
+          "msg": "Heading tag found with no content. Text that is not intended as a heading should not be marked up with heading tags.",
+          "code": "&lt;h4\nclass=\"ot-host-desc\"&gt;&lt;/h\n&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H42\" target=\"_blank\">H42</a>"
+          ],
+          "id": "H42"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;a\nhref=\"https://www.onetrust.com\nproducts/cookie-consent/\"\ntarget=\"_blank\" rel=\"noopener\nnoreferrer\"\nstyle=\"background-image:\nurl(&amp;quot;https://cdn.cook\nelaw.org/logos/static/poweredB\n_ot_logo.svg&amp;quot;)\"\naria-label=\"Powered by\nOneTrust Opens in a new\nTab\"&gt;&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "errorcount": 4
+        }
+      ]
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "ADA Title III & Public Access | Seyfarth Shaw LLP",
+          "pageurl": "https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+          "time": 3.62,
+          "creditsremaining": 878,
+          "allitemcount": 268,
+          "totalelements": 1090,
+          "waveurl": "http://wave.webaim.org/report?url=https://www.seyfarth.com/services/practices/advisory/ada-title-iii-and-public-access.html",
+          "domid": "8fa88dbd72f0d211a458693d113415a3"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 3,
+            "items": {
+              "heading_empty": {
+                "id": "heading_empty",
+                "description": "Empty heading",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION > DIV:first-child > H3:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION > DIV:first-child > H3:first-child + H4"
+                ]
+              },
+              "button_empty": {
+                "id": "button_empty",
+                "description": "Empty button",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 2,
+            "items": {
+              "contrast": {
+                "id": "contrast",
+                "description": "Very low contrast",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > A:first-child > SPAN:first-child + SPAN > SPAN:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > H1:first-child > SPAN:first-child"
+                ],
+                "contrastdata": [
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    false
+                  ],
+                  [
+                    1,
+                    "#ffffff",
+                    "#ffffff",
+                    true
+                  ]
+                ]
+              }
+            }
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 36,
+            "items": {
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child + FOOTER > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > H6:first-child"
+                ]
+              },
+              "heading_possible": {
+                "id": "heading_possible",
+                "description": "Possible heading",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI + LI + LI > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI + LI > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child + DIV + UL > LI:first-child + LI + LI + LI > A:first-child > DIV:first-child + DIV > DIV:first-child > P:first-child"
+                ]
+              },
+              "link_suspicious": {
+                "id": "link_suspicious",
+                "description": "Suspicious link text",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A"
+                ]
+              },
+              "link_redundant": {
+                "id": "link_redundant",
+                "description": "Redundant link",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + ASIDE > ASIDE:first-child > DIV:first-child > DIV:first-child > DIV:first-child + UL > LI:first-child > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + ASIDE > ASIDE:first-child > DIV:first-child > DIV:first-child > DIV:first-child + UL > LI:first-child + LI > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child + ASIDE > ASIDE:first-child > DIV:first-child > DIV:first-child > DIV:first-child + UL > LI:first-child + LI + LI > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + ASIDE > ASIDE:first-child > DIV:first-child > DIV:first-child > DIV:first-child + UL > LI:first-child > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + ASIDE > ASIDE:first-child > DIV:first-child > DIV:first-child > DIV:first-child + UL > LI:first-child + LI > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV > DIV:first-child + ASIDE > ASIDE:first-child > DIV:first-child > DIV:first-child > DIV:first-child + UL > LI:first-child + LI + LI > A:first-child + DIV > P:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A"
+                ]
+              },
+              "link_pdf": {
+                "id": "link_pdf",
+                "description": "Link to PDF document",
+                "count": 8,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child > DIV:first-child > DIV:first-child + DIV + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#app > DIV:first-child > A:first-child + DIV + DIV + MAIN > DIV:first-child + SECTION + DIV > DIV:first-child + DIV > DIV:first-child + DIV + DIV + DIV > DIV:first-child > DIV:first-child > DIV:first-child > DIV:first-child > BUTTON:first-child + A"
+                ]
+              },
+              "noscript": {
+                "id": "noscript",
+                "description": "Noscript element",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + SCRIPT + NOSCRIPT"
+                ]
+              },
+              "text_small": {
+                "id": "text_small",
+                "description": "Very small text",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#onetrust-consent-sdk > DIV#onetrust-pc-sdk > SECTION#ot-pc-lst > SECTION#ot-lst-cnt > DIV:first-child + DIV > DIV:first-child > UL#ot-host-lst > LI:first-child > BUTTON:first-child + SECTION + DIV > DIV:first-child > UL:first-child > LI:first-child > DIV:first-child > DIV:first-child + DIV"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "asp08",
+      "what": "4 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "scoreProc": "asp",
+        "version": "8",
+        "ruleDiscounts": {
+          "aatt": {
+            "e:F77": 2,
+            "e:G18": 2,
+            "e:H91": 2,
+            "w:F24": 1,
+            "w:G18": 1,
+            "w:H67": 2
+          },
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "duplicate-id": 1,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "nested-interactive": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "aatt": "multiply warning by 2, error by 4; sum; subtract discounts",
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 250 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 3 (discounted)",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss - 1; multiply mean adjacent sssd by 5, maximum adjacent sssd by 2, maximum over-all ssd by 1; divide mean pd by 10,000, maximum pd by 25,000; multiply count of non-0 pd by 30; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": ""
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {
+          "zIndex": 100,
+          "ibm": 168
+        },
+        "deficit": {
+          "total": 1335,
+          "aatt": 89,
+          "axe": 28,
+          "bulk": 6,
+          "embAc": 0,
+          "focAll": 6,
+          "focInd": 638,
+          "focOp": 23,
+          "hover": 6,
+          "ibm": null,
+          "labClash": 2,
+          "linkUl": 6,
+          "log": 25,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 14,
+          "styleDiff": 80,
+          "tabNav": 56,
+          "wave": 88,
+          "zIndex": null
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      141
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "aatt",
+      5
+    ],
+    [
+      "wave",
+      4
+    ],
+    [
+      "tabNav",
+      3
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "bulk",
+      0
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ]
+  ]
+}

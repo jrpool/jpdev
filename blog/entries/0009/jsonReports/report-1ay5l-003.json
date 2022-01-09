@@ -1,0 +1,4903 @@
+{
+  "script": "asp08",
+  "batch": "a11yAttys",
+  "what": "Axe, IBM, AATT, WAVE, and 16 custom tests",
+  "strict": true,
+  "testDate": "2022-01-09",
+  "timeStamp": "1ay5l",
+  "logCount": 73,
+  "logSize": 14731,
+  "prohibitedCount": 0,
+  "visitTimeoutCount": 0,
+  "visitRejectionCount": 0,
+  "presses": 0,
+  "amountRead": 0,
+  "acts": [
+    {
+      "type": "launch",
+      "which": "webkit",
+      "what": "used for tests on which chromium fails on some URLs"
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "motion",
+      "what": "motion",
+      "delay": 2400,
+      "interval": 2600,
+      "count": 5,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "bytes": [
+          510252,
+          510252,
+          510252,
+          510252,
+          510252
+        ],
+        "localRatios": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "meanLocalRatio": 1,
+        "maxLocalRatio": 1,
+        "globalRatio": 1,
+        "pixelChanges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "meanPixelChange": 0,
+        "maxPixelChange": 0,
+        "changeFrequency": 0
+      }
+    },
+    {
+      "type": "test",
+      "which": "axe",
+      "withItems": true,
+      "rules": [],
+      "what": "Axe",
+      "url": "https://accessdefense.com/",
+      "result": {
+        "warnings": 0,
+        "violations": {
+          "minor": 1,
+          "moderate": 85,
+          "serious": 4,
+          "critical": 3
+        },
+        "items": [
+          {
+            "rule": "autocomplete-valid",
+            "description": "Ensure the autocomplete attribute is correct and suitable for the form field",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "input[name=\"esfpx_es_hp_email\"]",
+                "impact": "serious"
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id-active",
+            "description": "Ensures every id attribute value of active elements is unique",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#searchform-wrap > form[method=\"get\"][action=\"https\\:\\/\\/accessdefense\\.com\\/\"] > input[name=\"s\"][placeholder=\"Search\"][type=\"text\"]",
+                "impact": "serious",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id-active",
+                    "description": "Document has active elements with the same id attribute: s",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "duplicate-id",
+            "description": "Ensures every id attribute value is unique",
+            "impact": "minor",
+            "elements": [
+              {
+                "selector": "#searchform-wrap > form[method=\"get\"][action=\"https\\:\\/\\/accessdefense\\.com\\/\"]",
+                "impact": "minor",
+                "must pass any of": [
+                  {
+                    "check": "duplicate-id",
+                    "description": "Document has multiple static elements with the same id attribute: searchform",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "frame-title-unique",
+            "description": "Ensures <iframe> and <frame> elements contain a unique title attribute",
+            "impact": "serious",
+            "elements": [
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > .post-video > iframe[width=\"\\35 00\"][height=\"\\32 81\"][allowfullscreen=\"\"]",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "unique-frame-title",
+                    "description": "Element's title attribute is not unique",
+                    "impact": "serious"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > .post-content > .entry-content[itemprop=\"articleBody\"] > .post-video > iframe[width=\"\\35 00\"][height=\"\\32 81\"][allowfullscreen=\"\"]",
+                "impact": "serious",
+                "must pass all of": [
+                  {
+                    "check": "unique-frame-title",
+                    "description": "Element's title attribute is not unique",
+                    "impact": "serious"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "heading-order",
+            "description": "Ensures the order of headings is semantically correct",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "h4:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#text-3 > .widgettitle",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "heading-order",
+                    "description": "Heading order invalid",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "image-alt",
+            "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "img[width=\"\\31 75\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "has-alt",
+                    "description": "Element does not have an alt attribute",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "label",
+            "description": "Ensures every form element has a label",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "input[name=\"esfpx_es_hp_email\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "implicit-label",
+                    "description": "Form element does not have an implicit (wrapped) <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "explicit-label",
+                    "description": "Form element does not have an explicit <label>",
+                    "impact": "critical"
+                  },
+                  {
+                    "check": "aria-label",
+                    "description": "aria-label attribute does not exist or is empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "aria-labelledby",
+                    "description": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-title",
+                    "description": "Element has no title attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "non-empty-placeholder",
+                    "description": "Element has no placeholder attribute",
+                    "impact": "serious"
+                  },
+                  {
+                    "check": "presentational-role",
+                    "description": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+                    "impact": "minor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "landmark-one-main",
+            "description": "Ensures the document has a main landmark",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "html",
+                "impact": "moderate"
+              }
+            ]
+          },
+          {
+            "rule": "meta-viewport",
+            "description": "Ensures <meta name=\"viewport\"> does not disable text scaling and zooming",
+            "impact": "critical",
+            "elements": [
+              {
+                "selector": "meta[name=\"viewport\"]",
+                "impact": "critical",
+                "must pass any of": [
+                  {
+                    "check": "meta-viewport",
+                    "description": "user-scalable=no on <meta> tag disables zooming on mobile devices",
+                    "impact": "critical"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "rule": "region",
+            "description": "Ensures all page content is contained by landmarks",
+            "impact": "moderate",
+            "elements": [
+              {
+                "selector": "#post-6080 > h1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6080 > .post-meta.entry-meta",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6080 > .post-content > .entry-content[itemprop=\"articleBody\"] > p",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6080 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_facebook[href$=\"\\/\\#facebook\"][title=\"Facebook\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6080 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_twitter[href$=\"\\/\\#twitter\"][title=\"Twitter\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6080 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_email[href$=\"\\/\\#email\"][title=\"Email\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6080 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_dd.addtoany_share_save.addtoany_share",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > h1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-meta.entry-meta",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(4)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_facebook[href$=\"\\/\\#facebook\"][title=\"Facebook\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_twitter[href$=\"\\/\\#twitter\"][title=\"Twitter\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_email[href$=\"\\/\\#email\"][title=\"Email\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6076 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_dd.addtoany_share_save.addtoany_share",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > h1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-meta.entry-meta",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(3)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(4)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(5)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(6)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(7)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(8)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(9)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(10)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(11)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(12)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "div:nth-child(13)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(14)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(15)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(16)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(17)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(18)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(19)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(20)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(21)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(22)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(23)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(24)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(25)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(26)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(27)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "h4:nth-child(28)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(29)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(30)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(31)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(32)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(33)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(34)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(35)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(36)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(37)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_facebook[href$=\"\\/\\#facebook\"][title=\"Facebook\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_twitter[href$=\"\\/\\#twitter\"][title=\"Twitter\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_email[href$=\"\\/\\#email\"][title=\"Email\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6057 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_dd.addtoany_share_save.addtoany_share",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > h1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-meta.entry-meta",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(2)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(3)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(4)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(5)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(6)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(7)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "p:nth-child(8)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(9)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_facebook[href$=\"\\/\\#facebook\"][title=\"Facebook\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_twitter[href$=\"\\/\\#twitter\"][title=\"Twitter\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_email[href$=\"\\/\\#email\"][title=\"Email\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6050 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_dd.addtoany_share_save.addtoany_share",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > h1",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > .post-meta.entry-meta",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > .post-content > .entry-content[itemprop=\"articleBody\"] > p:nth-child(1)",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_facebook[href$=\"\\/\\#facebook\"][title=\"Facebook\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_twitter[href$=\"\\/\\#twitter\"][title=\"Twitter\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_button_email[href$=\"\\/\\#email\"][title=\"Email\"] > .a2a_label",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": "#post-6045 > .post-content > .entry-content[itemprop=\"articleBody\"] > .addtoany_share_save_container.addtoany_content.addtoany_content_bottom > .a2a_kit.a2a_kit_size_16.addtoany_list > .a2a_dd.addtoany_share_save.addtoany_share",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              },
+              {
+                "selector": ".pagenav",
+                "impact": "moderate",
+                "must pass any of": [
+                  {
+                    "check": "region",
+                    "description": "Some page content is not contained by landmarks",
+                    "impact": "moderate"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "launch",
+      "which": "chromium",
+      "what": "used for most tests"
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "bulk",
+      "what": "count of visible elements",
+      "url": "https://accessdefense.com/",
+      "result": {
+        "visibleElements": 436
+      }
+    },
+    {
+      "type": "test",
+      "which": "embAc",
+      "what": "active elements embedded in links or buttons",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "links": 0,
+          "buttons": 0,
+          "inputs": 0,
+          "selects": 0
+        },
+        "items": []
+      }
+    },
+    {
+      "type": "test",
+      "which": "focAll",
+      "what": "focusable and Tab-focused elements",
+      "url": "https://accessdefense.com/",
+      "result": {
+        "tabFocusables": 121,
+        "tabFocused": 121,
+        "discrepancy": 0
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "focInd",
+      "what": "focus indicators",
+      "withItems": true,
+      "revealAll": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "total": 126,
+          "types": {
+            "indicatorMissing": {
+              "total": 123,
+              "tagNames": {
+                "A": 114,
+                "INPUT": 6,
+                "IFRAME": 3
+              }
+            },
+            "nonOutlinePresent": {
+              "total": 1,
+              "tagNames": {
+                "A": 1
+              }
+            },
+            "outlinePresent": {
+              "total": 2,
+              "tagNames": {
+                "INPUT": 1,
+                "SELECT": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "indicatorMissing": [
+            {
+              "tagName": "A",
+              "text": "ADA and FHA Defense"
+            },
+            {
+              "tagName": "A",
+              "text": "RSS"
+            },
+            {
+              "tagName": "A",
+              "text": "Home"
+            },
+            {
+              "tagName": "A",
+              "text": "About Richard"
+            },
+            {
+              "tagName": "A",
+              "text": "Education for Business"
+            },
+            {
+              "tagName": "A",
+              "text": "First Fix, Then Fight"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Another opportunity to learn about ADA website lawsuits"
+            },
+            {
+              "tagName": "A",
+              "text": "Richard Hunt"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA - serial litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet Web"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Website Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility.com"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA defense"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA website defense"
+            },
+            {
+              "tagName": "A",
+              "text": "Accesibility.com"
+            },
+            {
+              "tagName": "A",
+              "text": "https://lnkd.in/eEBzk9fe"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Email"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Same old wine update – Aluko Collins and his United Legal Team continue to send demand letters."
+            },
+            {
+              "tagName": "A",
+              "text": "Richard Hunt"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility Litigation Trends"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA - drive-by litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA - serial litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet Web"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA defense"
+            },
+            {
+              "tagName": "A",
+              "text": "Aluko Collins"
+            },
+            {
+              "tagName": "A",
+              "text": "Denaryle Williams"
+            },
+            {
+              "tagName": "A",
+              "text": "United Legal Team"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Same Old Wine"
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Email"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Quick Hits – Who needs the Grinch when you’ve got Bowser?"
+            },
+            {
+              "tagName": "A",
+              "text": "Richard Hunt"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility Litigation Trends"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA - drive-by litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA - Hotels"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA - serial litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet Web"
+            },
+            {
+              "tagName": "A",
+              "text": "FHA"
+            },
+            {
+              "tagName": "A",
+              "text": "Internet Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA defense"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA personal jurisdiction"
+            },
+            {
+              "tagName": "A",
+              "text": "FHA Defense"
+            },
+            {
+              "tagName": "A",
+              "text": "Legal Ethics Today"
+            },
+            {
+              "tagName": "A",
+              "text": "recovery homes"
+            },
+            {
+              "tagName": "A",
+              "text": "sober living"
+            },
+            {
+              "tagName": "A",
+              "text": "Uber Technologies"
+            },
+            {
+              "tagName": "A",
+              "text": "William Goren"
+            },
+            {
+              "tagName": "A",
+              "text": "Legal Ethics Today"
+            },
+            {
+              "tagName": "A",
+              "text": "Transunion v Ramirez"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA and FHA Quick Hits – Wild Turkey edition."
+            },
+            {
+              "tagName": "A",
+              "text": "Understanding the ADA"
+            },
+            {
+              "tagName": "A",
+              "text": "Businesses Score a Few Recent Wins in Website Accessibility Lawsuits"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA and FHA Quick Hits – Wild Turkey edition."
+            },
+            {
+              "tagName": "A",
+              "text": "Quick Hits – April Fools Edition"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA and FHA Quick Hits – Hearts & Flowers Edition"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA and FHA Quick Hits – Wild Turkey edition."
+            },
+            {
+              "tagName": "A",
+              "text": "Quick Hits – April Fools Edition."
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Email"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Understanding ADA Website Accessibility Litigation"
+            },
+            {
+              "tagName": "A",
+              "text": "Richard Hunt"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility Litigation Trends"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet Web"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Website Accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA defense"
+            },
+            {
+              "tagName": "A",
+              "text": "WCAG 2.1 AA"
+            },
+            {
+              "tagName": "A",
+              "text": "website accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "Understanding Website Accessibility Litigation."
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Email"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "The Great Accessibility Overlays Battle – now available on YouTube"
+            },
+            {
+              "tagName": "A",
+              "text": "Richard Hunt"
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility Litigation Trends"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Internet Web"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA Web Access"
+            },
+            {
+              "tagName": "A",
+              "text": "ADA defense"
+            },
+            {
+              "tagName": "A",
+              "text": "Digital Accessibility Legal Summit 2021"
+            },
+            {
+              "tagName": "A",
+              "text": "overlay"
+            },
+            {
+              "tagName": "A",
+              "text": "plug-in."
+            },
+            {
+              "tagName": "A",
+              "text": "website accessibility"
+            },
+            {
+              "tagName": "A",
+              "text": "widget"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Facebook"
+            },
+            {
+              "tagName": "A",
+              "text": "Twitter"
+            },
+            {
+              "tagName": "A",
+              "text": "Email"
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "2"
+            },
+            {
+              "tagName": "A",
+              "text": "3"
+            },
+            {
+              "tagName": "A",
+              "text": "4"
+            },
+            {
+              "tagName": "A",
+              "text": "5"
+            },
+            {
+              "tagName": "A",
+              "text": ">"
+            },
+            {
+              "tagName": "A",
+              "text": "»"
+            },
+            {
+              "tagName": "A",
+              "text": "hunthuey.com"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "Accessibility Defense"
+            },
+            {
+              "tagName": "A",
+              "text": "Another opportunity to learn about ADA website lawsuits"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "ADA and FHA Defense"
+            },
+            {
+              "tagName": "A",
+              "text": "WordPress"
+            },
+            {
+              "tagName": "A",
+              "text": "Themify WordPress Themes"
+            },
+            {
+              "tagName": "A",
+              "text": "↑ Back to top"
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "A",
+              "text": "AddToAny"
+            },
+            {
+              "tagName": "IFRAME",
+              "text": ""
+            }
+          ],
+          "nonOutlinePresent": [
+            {
+              "tagName": "A",
+              "text": "More…"
+            }
+          ],
+          "outlinePresent": [
+            {
+              "tagName": "INPUT",
+              "text": ""
+            },
+            {
+              "tagName": "SELECT",
+              "text": "Select Month December 2021 November 2021 October 2021 September 2021 August 2021 July 2021 June 2021"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "focOp",
+      "what": "focusability and operability",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "total": 135,
+          "types": {
+            "onlyFocusable": {
+              "total": 0,
+              "tagNames": {}
+            },
+            "onlyOperable": {
+              "total": 1,
+              "tagNames": {
+                "INPUT": 1
+              }
+            },
+            "focusableAndOperable": {
+              "total": 134,
+              "tagNames": {
+                "A": 115,
+                "INPUT": 15,
+                "IFRAME": 3,
+                "SELECT": 1
+              }
+            }
+          }
+        },
+        "items": {
+          "onlyFocusable": [],
+          "onlyOperable": [
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"email\" name=\"esfpx_es_hp_email\" class=\"es_required_field\" tabindex=",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ],
+          "focusableAndOperable": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA and FHA Defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "RSS",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Home",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "About Richard",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Education for Business",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "First Fix, Then Fight",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "s",
+              "text": "<input type=\"text\" name=\"s\" id=\"s\" placeholder=\"Search\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Another opportunity to learn about ADA website lawsuits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Richard Hunt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA - serial litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet Web",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Website Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA website defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accesibility.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "https://lnkd.in/eEBzk9fe",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_share\" href=\"https://www.addtoany.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Same old wine update – Aluko Collins and his United Legal Team continue to send ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Richard Hunt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility Litigation Trends",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA - drive-by litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA - serial litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet Web",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Aluko Collins",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Denaryle Williams",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "United Legal Team",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe loading=\"lazy\" title=\"The Great Accessibility Overlays Battle - Part 1\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Same Old Wine",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_share\" href=\"https://www.addtoany.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quick Hits – Who needs the Grinch when you’ve got Bowser?",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Richard Hunt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility Litigation Trends",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA - drive-by litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA - Hotels",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA - serial litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet Web",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FHA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Internet Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA personal jurisdiction",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "FHA Defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Legal Ethics Today",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "recovery homes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "sober living",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Uber Technologies",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "William Goren",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Legal Ethics Today",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Transunion v Ramirez",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA and FHA Quick Hits – Wild Turkey edition.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Understanding the ADA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Businesses Score a Few Recent Wins in Website Accessibility Lawsuits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA and FHA Quick Hits – Wild Turkey edition.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quick Hits – April Fools Edition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA and FHA Quick Hits – Hearts & Flowers Edition",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA and FHA Quick Hits – Wild Turkey edition.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Quick Hits – April Fools Edition.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_share\" href=\"https://www.addtoany.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Understanding ADA Website Accessibility Litigation",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Richard Hunt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility Litigation Trends",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet Web",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Website Accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "WCAG 2.1 AA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "website accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Understanding Website Accessibility Litigation.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_share\" href=\"https://www.addtoany.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "The Great Accessibility Overlays Battle – now available on YouTube",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Richard Hunt",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility Litigation Trends",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Internet Web",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA Web Access",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Digital Accessibility Legal Summit 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "overlay",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "plug-in.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "website accessibility",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "widget",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "",
+              "text": "<iframe loading=\"lazy\" title=\"The Great Accessibility Overlays Battle - Part 1\" ",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_share\" href=\"https://www.addtoany.",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "2",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "3",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "4",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "5",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": ">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "»",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "hunthuey.com",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"text\" name=\"esfpx_name\" class=\"ig_es_form_field_name\" placeholder=\"",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input class=\"es_required_field es_txt_email ig_es_form_field_email\" type=\"email",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"esfpx_lists[]\" value=\"dc4bd59081a3\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"esfpx_form_id\" value=\"1\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"es\" value=\"subscribe\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"esfpx_es_form_identifier\" value=\"f1-n1\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"esfpx_es_email_page\" value=\"6045\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"esfpx_es_email_page_url\" value=\"https://accessdefense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "",
+              "text": "<input type=\"hidden\" name=\"esfpx_status\" value=\"Unconfirmed\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "es-subscribe-61dad859351b5",
+              "text": "<input type=\"hidden\" name=\"esfpx_es-subscribe\" id=\"es-subscribe-61dad859351b5\" v",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "es_subscription_form_submit_61dad859351b5",
+              "text": "<input type=\"submit\" name=\"submit\" class=\"es_subscription_form_submit es_submit_",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"rsswidget\" href=\"http://accessdefense.com\" style=\"cursor: default;\"><i",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Accessibility Defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Another opportunity to learn about ADA website lawsuits",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "s",
+              "text": "<input type=\"text\" name=\"s\" id=\"s\" placeholder=\"Search\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "SELECT",
+              "id": "archives-dropdown-2",
+              "text": "Select Month December 2021 November 2021 October 2021 September 2021 August 2021",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "ADA and FHA Defense",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "WordPress",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Themify WordPress Themes",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "↑ Back to top",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "INPUT",
+              "id": "a2a_copy_link_text",
+              "text": "<input id=\"a2a_copy_link_text\" type=\"text\" title=\"Copy link\" readonly=\"\">",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "INPUT",
+              "id": "a2apage_find",
+              "text": "<input id=\"a2apage_find\" class=\"a2a_menu_find a2a_localize\" type=\"text\" autocomp",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "AddToAny",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "A",
+              "id": "a2apage_show_more_less",
+              "text": "More…",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": true
+            },
+            {
+              "tagName": "IFRAME",
+              "id": "a2a_sm_ifr",
+              "text": "<iframe id=\"a2a_sm_ifr\" title=\"AddToAny Utility Frame\" transparency=\"true\" allow",
+              "byTag": true,
+              "byOnClick": false,
+              "byPointer": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "hover",
+      "what": "hover-caused content additions",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "triggers": 20,
+          "madeVisible": 0,
+          "opacityChanged": 35,
+          "opacityAffected": 65,
+          "unhoverables": 0
+        },
+        "items": {
+          "triggers": [
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_facebook"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Facebook"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_twitter\""
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Twitter"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_email\" s"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Email"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_shar",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"https://static.addtoany.com/buttons/shar"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_facebook"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Facebook"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_twitter\""
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Twitter"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_email\" s"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Email"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_shar",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"https://static.addtoany.com/buttons/shar"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_facebook"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Facebook"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_twitter\""
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Twitter"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_email\" s"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Email"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_shar",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"https://static.addtoany.com/buttons/shar"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_facebook"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Facebook"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_twitter\""
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Twitter"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_email\" s"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Email"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_shar",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"https://static.addtoany.com/buttons/shar"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Facebook",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_facebook"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Facebook"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Twitter",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_twitter\""
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Twitter"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "Email",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "SPAN",
+                  "text": "<span class=\"a2a_svg a2a_s__default a2a_s_email\" s"
+                },
+                {
+                  "tagName": "SPAN",
+                  "text": "Email"
+                }
+              ]
+            },
+            {
+              "tagName": "A",
+              "id": "",
+              "text": "<a class=\"a2a_dd addtoany_share_save addtoany_shar",
+              "madeVisible": [],
+              "opacityChanged": [
+                {
+                  "tagName": "IMG",
+                  "text": "<img src=\"https://static.addtoany.com/buttons/shar"
+                }
+              ]
+            }
+          ],
+          "unhoverables": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "labClash",
+      "what": "labeling inconsistencies",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "mislabeled": 0,
+          "unlabeled": 4,
+          "wellLabeled": 5
+        },
+        "items": {
+          "mislabeled": [],
+          "unlabeled": [
+            {
+              "index": 0,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 5,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 7,
+              "tagName": "INPUT",
+              "type": "text"
+            },
+            {
+              "index": 8,
+              "tagName": "INPUT",
+              "type": "text"
+            }
+          ],
+          "wellLabeled": [
+            {
+              "index": 1,
+              "tagName": "INPUT",
+              "type": "text",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Name"
+                ]
+              }
+            },
+            {
+              "index": 2,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Email*"
+                ]
+              }
+            },
+            {
+              "index": 3,
+              "tagName": "INPUT",
+              "type": "email",
+              "labelType": "label",
+              "texts": {}
+            },
+            {
+              "index": 4,
+              "tagName": "INPUT",
+              "type": "submit",
+              "texts": {
+                "content": "Subscribe"
+              }
+            },
+            {
+              "index": 6,
+              "tagName": "SELECT",
+              "type": "select-one",
+              "labelType": "label",
+              "texts": {
+                "label": [
+                  "Older Posts by Date"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "linkUl",
+      "what": "inline-link underlining",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "links": 115,
+          "inline": {
+            "total": 76,
+            "underlined": 14,
+            "underlinedPercent": 18
+          }
+        },
+        "items": {
+          "underlined": [
+            "https://lnkd.in/eEBzk9fe",
+            "Same Old Wine",
+            "Legal Ethics Today",
+            "Transunion v Ramirez",
+            "ADA and FHA Quick Hits – Wild Turkey edition.",
+            "Understanding the ADA",
+            "Businesses Score a Few Recent Wins in Website Accessibility Lawsuits",
+            "ADA and FHA Quick Hits – Wild Turkey edition.",
+            "Quick Hits – April Fools Edition",
+            "ADA and FHA Quick Hits – Hearts & Flowers Edition",
+            "ADA and FHA Quick Hits – Wild Turkey edition.",
+            "Quick Hits – April Fools Edition.",
+            "Understanding Website Accessibility Litigation.",
+            "hunthuey.com"
+          ],
+          "notUnderlined": [
+            "Home",
+            "About Richard",
+            "Education for Business",
+            "First Fix, Then Fight",
+            "ADA - serial litigation",
+            "ADA Internet Web",
+            "ADA Website Accessibility",
+            "Accessibility.com",
+            "ADA defense",
+            "ADA website defense",
+            "Accessibility Litigation Trends",
+            "ADA",
+            "ADA - drive-by litigation",
+            "ADA - serial litigation",
+            "ADA Internet Web",
+            "ADA defense",
+            "Aluko Collins",
+            "Denaryle Williams",
+            "United Legal Team",
+            "Accessibility Litigation Trends",
+            "ADA - drive-by litigation",
+            "ADA - Hotels",
+            "ADA - serial litigation",
+            "ADA Internet",
+            "ADA Internet Web",
+            "FHA",
+            "Internet Accessibility",
+            "ADA defense",
+            "ADA personal jurisdiction",
+            "FHA Defense",
+            "Legal Ethics Today",
+            "recovery homes",
+            "sober living",
+            "Uber Technologies",
+            "William Goren",
+            "Accessibility Litigation Trends",
+            "ADA Internet",
+            "ADA Internet Web",
+            "ADA Website Accessibility",
+            "ADA defense",
+            "WCAG 2.1 AA",
+            "website accessibility",
+            "Accessibility Litigation Trends",
+            "ADA",
+            "ADA Internet",
+            "ADA Internet Web",
+            "ADA Web Access",
+            "ADA defense",
+            "Digital Accessibility Legal Summit 2021",
+            "overlay",
+            "plug-in.",
+            "website accessibility",
+            "widget",
+            "2",
+            "3",
+            "4",
+            "5",
+            ">",
+            "»",
+            "Another opportunity to learn about ADA website lawsuits",
+            "WordPress",
+            "Themify WordPress Themes"
+          ]
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "menuNav",
+      "what": "keyboard navigation between focusable menu items",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "menuItems": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "menus": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "menuItems": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "radioSet",
+      "what": "fieldset grouping of radio buttons",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "total": 0,
+          "inSet": 0,
+          "percent": "N.A."
+        },
+        "items": {
+          "inSet": [],
+          "notInSet": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "role",
+      "what": "roles",
+      "url": "https://accessdefense.com/",
+      "result": {
+        "roleElements": 3,
+        "badRoleElements": 2,
+        "tagNames": {
+          "DIV": {
+            "dialog": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "styleDiff",
+      "what": "style inconsistencies",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "h1": {
+            "total": 5
+          },
+          "h4": {
+            "total": 19,
+            "subtotals": [
+              14,
+              5
+            ]
+          },
+          "aInline": {
+            "total": 76,
+            "subtotals": [
+              49,
+              13,
+              6,
+              4,
+              2,
+              1,
+              1
+            ]
+          },
+          "aBlock": {
+            "total": 39,
+            "subtotals": [
+              20,
+              5,
+              5,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "items": {
+          "h1": {},
+          "h4": {
+            "lineHeight": {
+              "23.52px": 14,
+              "15.12px": 5
+            },
+            "fontSize": {
+              "16.8px": 175,
+              "12.6px": 110
+            }
+          },
+          "aInline": {
+            "fontStyle": {
+              "normal": 74,
+              "italic": 2
+            },
+            "lineHeight": {
+              "15.75px": 49,
+              "21px": 14,
+              "14px": 6,
+              "19.6px": 4,
+              "17.01px": 2,
+              "17.64px": 1
+            },
+            "minHeight": {
+              "0px": 70,
+              "20px": 6
+            },
+            "minWidth": {
+              "0px": 70,
+              "24px": 6
+            },
+            "textDecorationLine": {
+              "none": 62,
+              "underline": 14
+            },
+            "fontSize": {
+              "12.6px": 1224,
+              "14px": 456,
+              "12px": 96,
+              "11.34px": 48
+            }
+          },
+          "aBlock": {
+            "borderStyle": {
+              "none": 38,
+              "solid none": 1
+            },
+            "borderWidth": {
+              "0px": 38,
+              "1px 0px": 1
+            },
+            "fontStyle": {
+              "normal": 34,
+              "italic": 5
+            },
+            "lineHeight": {
+              "16px": 21,
+              "38.304px": 5,
+              "15.75px": 5,
+              "21px": 2,
+              "15.12px": 2,
+              "56px": 1,
+              "30px": 1,
+              "14px": 1,
+              "24px": 1
+            },
+            "textDecorationLine": {
+              "underline": 23,
+              "none": 16
+            },
+            "fontSize": {
+              "16px": 528,
+              "12.6px": 168,
+              "31.92px": 120,
+              "14px": 48,
+              "56px": 24,
+              "30px": 24,
+              "12px": 24
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "tabNav",
+      "what": "keyboard navigation between tab elements",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "navigations": {
+            "all": {
+              "total": 0,
+              "correct": 0,
+              "incorrect": 0
+            },
+            "specific": {
+              "tab": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "left": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "right": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "up": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "down": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "home": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              },
+              "end": {
+                "total": 0,
+                "correct": 0,
+                "incorrect": 0
+              }
+            }
+          },
+          "tabElements": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          },
+          "tabLists": {
+            "total": 0,
+            "correct": 0,
+            "incorrect": 0
+          }
+        },
+        "tabElements": {
+          "incorrect": [],
+          "correct": []
+        }
+      }
+    },
+    {
+      "type": "test",
+      "which": "zIndex",
+      "what": "z indexes",
+      "withItems": true,
+      "url": "https://accessdefense.com/",
+      "result": {
+        "totals": {
+          "total": 9,
+          "tagNames": {
+            "HEADER": 1,
+            "UL": 1,
+            "LABEL": 1,
+            "DIV": 5,
+            "IFRAME": 1
+          }
+        },
+        "items": [
+          {
+            "tagName": "HEADER",
+            "id": "header",
+            "text": "ADA and FHA Defense Accessibility Defense, Helping Business Avoid and Defend ADA and FHA Lawsuits RS"
+          },
+          {
+            "tagName": "UL",
+            "id": "main-nav",
+            "text": "Home\nAbout Richard\nEducation for Business\nFirst Fix, Then Fight"
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2a_overlay",
+            "text": ""
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2a_modal",
+            "text": "✓Thanks for sharing!"
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2apage_full",
+            "text": "AddToAny"
+          },
+          {
+            "tagName": "DIV",
+            "id": "a2apage_dropdown",
+            "text": "More…"
+          },
+          {
+            "tagName": "DIV",
+            "id": "",
+            "text": ""
+          },
+          {
+            "tagName": "IFRAME",
+            "id": "a2a_sm_ifr",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "test",
+      "which": "ibm",
+      "withItems": true,
+      "what": "IBM Accessibility Checker",
+      "url": "https://accessdefense.com/",
+      "result": {
+        "content": {
+          "error": "ERROR: ibm test failed"
+        },
+        "url": {
+          "error": "ERROR: ibm test failed"
+        }
+      }
+    },
+    {
+      "type": "url",
+      "which": "https://accessdefense.com/",
+      "what": "Hunt Huey accessibility",
+      "result": "https://accessdefense.com/"
+    },
+    {
+      "type": "test",
+      "which": "aatt",
+      "what": "AATT with HTML CodeSniffer WCAG 2.1 AA ruleset",
+      "url": "https://accessdefense.com/",
+      "result": [
+        {
+          "type": "warning",
+          "msg": "Interfering with a user agent's ability to zoom may be a failure of this Success Criterion.",
+          "code": "&lt;meta name=\"viewport\"\ncontent=\"width=device-width,\ninitial-scale=1,\nmaximum-scale=1,\nminimum-scale=1,\nuser-scalable=no\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C32\" target=\"_blank\">C32</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C31\" target=\"_blank\">C31</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C33\" target=\"_blank\">C33</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C38\" target=\"_blank\">C38</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/SCR34\" target=\"_blank\">SCR34</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G206\" target=\"_blank\">G206</a>"
+          ],
+          "id": "C31+C32+C33+C38+G206+SCR34"
+        },
+        {
+          "type": "warning",
+          "msg": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+          "code": "&lt;a\nhref=\"https://accessdefense.co\n/?feed=rss2\"&gt;RSS&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "error",
+          "msg": "This form does not contain a submit button, which creates issues for those who cannot submit the form using the keyboard. Submit buttons are INPUT elements with type attribute \"submit\" or \"image\", or BUTTON elements with type \"submit\" or omitted/invalid.",
+          "code": "&lt;form method=\"get\"\nid=\"searchform\"\naction=\"https://accessdefense.\nom/\"&gt;\n\t&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"...&lt;/form&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#understandable\" target=\"_blank\">Understandable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H32\" target=\"_blank\">H32</a>"
+          ],
+          "id": "H32"
+        },
+        {
+          "type": "error",
+          "msg": "This textinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby .",
+          "code": "&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"Search\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#robust\" target=\"_blank\">Robust</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H91\" target=\"_blank\">H91</a>"
+          ],
+          "id": "H91"
+        },
+        {
+          "type": "error",
+          "msg": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+          "code": "&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"Search\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F68\" target=\"_blank\">F68</a>"
+          ],
+          "id": "F68"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;p&gt;&lt;img\nloading=\"lazy\"\nclass=\"alignleft size-medium\nw...&lt;/p&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img loading=\"lazy\"\nclass=\"alignleft size-medium\nwp-image-5272\"\nsrc=\"http://accessdefense.com/\np-content/uploads/2019/12/trum\nets-pair_edited-1-300x208.jpg\"\nalt=\"\" width=\"300\"\nheight=\"208\"\nsrcset=\"https://accessdefense.\nom/wp-content/uploads/2019/12/\nrumpets-pair_edited-1-300x208.\npg 300w,\nhttps://accessdefense.com/wp-c\nntent/uploads/2019/12/trumpets\npair_edited-1-768x534.jpg\n768w,\nhttps://accessdefense.com/wp-c\nntent/uploads/2019/12/trumpets\npair_edited-1.jpg 816w\"\nsizes=\"(max-width: 300px)\n100vw, 300px\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;div class=\"a2a_kit\na2a_kit_size_16\naddtoany_list\"\ndata-a2a-url=\"https://accessde\nense.com/?p=6080\"\ndata-a2a-title=\"Another\nopportunity to learn about\nADA website lawsuits\"\nstyle=\"line-height:\n16px;\"&gt;&lt;a\nclass=\"a2a_button_facebook\"\nhref=\"/#facebook\"\nt...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default\na2a_s_facebook\"\nstyle=\"background-color:\nrgb(24, 119, 242); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Facebook&\nt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_twitter\"\nstyle=\"background-color:\nrgb(29, 155, 240); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Twitter&l\n;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_email\"\nstyle=\"background-color:\nrgb(1, 102, 255); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Email&lt;\nspan&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img loading=\"lazy\"\nclass=\"alignleft size-medium\nwp-image-5988\"\nsrc=\"http://accessdefense.com/\np-content/uploads/2021/10/Logg\nns-Messina-Album-Cover-211x300\njpeg\" alt=\"\" width=\"211\"\nheight=\"300\"\nsrcset=\"https://accessdefense.\nom/wp-content/uploads/2021/10/\noggins-Messina-Album-Cover-211\n300.jpeg 211w,\nhttps://accessdefense.com/wp-c\nntent/uploads/2021/10/Loggins-\nessina-Album-Cover.jpeg 451w\"\nsizes=\"(max-width: 211px)\n100vw, 211px\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;div class=\"a2a_kit\na2a_kit_size_16\naddtoany_list\"\ndata-a2a-url=\"https://accessde\nense.com/?p=6076\"\ndata-a2a-title=\"Same old wine\nupdate – Aluko Collins and\nhis United Legal Team\ncontinue to send demand\nletters.\" style=\"line-height:\n16px;\"&gt;&lt;a\nclass=\"a2a_button_facebook\"\nhref=\"/#facebook\"\nt...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default\na2a_s_facebook\"\nstyle=\"background-color:\nrgb(24, 119, 242); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Facebook&\nt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_twitter\"\nstyle=\"background-color:\nrgb(29, 155, 240); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Twitter&l\n;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_email\"\nstyle=\"background-color:\nrgb(1, 102, 255); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Email&lt;\nspan&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img loading=\"lazy\"\nclass=\"alignleft\nwp-image-6065\"\nsrc=\"http://accessdefense.com/\np-content/uploads/2021/12/Bows\nr-santa-298x300.jpg\" alt=\"\"\nwidth=\"200\" height=\"201\"\nsrcset=\"https://accessdefense.\nom/wp-content/uploads/2021/12/\nowser-santa-298x300.jpg 298w,\nhttps://accessdefense.com/wp-c\nntent/uploads/2021/12/Bowser-s\nnta-150x150.jpg 150w,\nhttps://accessdefense.com/wp-c\nntent/uploads/2021/12/Bowser-s\nnta.jpg 437w\"\nsizes=\"(max-width: 200px)\n100vw, 200px\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "The heading structure is not logically nested. This h4 element should be an h2 to be properly nested.",
+          "code": "&lt;h4&gt;&lt;strong&gt;A\nshiny new article about the\nethics of co...&lt;/h4&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G141\" target=\"_blank\">G141</a>"
+          ],
+          "id": "G141"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;p&gt;¹ See, my earlier\nblog, “&lt;a\nhref=\"https://accessde...&lt;/\n&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;p&gt;5. If the plaintiff\ndoes not interact with the\nweb...&lt;/p&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;div class=\"a2a_kit\na2a_kit_size_16\naddtoany_list\"\ndata-a2a-url=\"https://accessde\nense.com/?p=6057\"\ndata-a2a-title=\"Quick Hits –\nWho needs the Grinch when\nyou’ve got Bowser?\"\nstyle=\"line-height:\n16px;\"&gt;&lt;a\nclass=\"a2a_button_facebook\"\nhref=\"/#facebook\"\nt...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default\na2a_s_facebook\"\nstyle=\"background-color:\nrgb(24, 119, 242); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Facebook&\nt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_twitter\"\nstyle=\"background-color:\nrgb(29, 155, 240); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Twitter&l\n;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_email\"\nstyle=\"background-color:\nrgb(1, 102, 255); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Email&lt;\nspan&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Img element is marked so that it is ignored by Assistive Technology.",
+          "code": "&lt;img loading=\"lazy\"\nclass=\"alignleft\nwp-image-3613\"\nsrc=\"http://accessdefense.com/\np-content/uploads/2017/07/Get-\neal-300x284.jpg\" alt=\"\"\nwidth=\"200\" height=\"190\"\nsrcset=\"https://accessdefense.\nom/wp-content/uploads/2017/07/\net-Real-300x284.jpg 300w,\nhttps://accessdefense.com/wp-c\nntent/uploads/2017/07/Get-Real\njpg 637w\" sizes=\"(max-width:\n200px) 100vw, 200px\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H67\" target=\"_blank\">H67</a>"
+          ],
+          "id": "H67"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;div class=\"a2a_kit\na2a_kit_size_16\naddtoany_list\"\ndata-a2a-url=\"https://accessde\nense.com/?p=6050\"\ndata-a2a-title=\"Understanding\nADA Website Accessibility\nLitigation\"\nstyle=\"line-height:\n16px;\"&gt;&lt;a\nclass=\"a2a_button_facebook\"\nhref=\"/#facebook\"\nt...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default\na2a_s_facebook\"\nstyle=\"background-color:\nrgb(24, 119, 242); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Facebook&\nt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_twitter\"\nstyle=\"background-color:\nrgb(29, 155, 240); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Twitter&l\n;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_email\"\nstyle=\"background-color:\nrgb(1, 102, 255); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Email&lt;\nspan&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;div class=\"a2a_kit\na2a_kit_size_16\naddtoany_list\"\ndata-a2a-url=\"https://accessde\nense.com/?p=6045\"\ndata-a2a-title=\"The Great\nAccessibility Overlays Battle\n– now available on YouTube\"\nstyle=\"line-height:\n16px;\"&gt;&lt;a\nclass=\"a2a_button_facebook\"\nhref=\"/#facebook\"\nt...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default\na2a_s_facebook\"\nstyle=\"background-color:\nrgb(24, 119, 242); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Facebook&\nt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_twitter\"\nstyle=\"background-color:\nrgb(29, 155, 240); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Twitter&l\n;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "Check that this element has an inherited foreground colour to complement the corresponding inline background colour or image.",
+          "code": "&lt;span class=\"a2a_svg\na2a_s__default a2a_s_email\"\nstyle=\"background-color:\nrgb(1, 102, 255); width:\n16px; line-height: 16px;\nheight: 16px;\nbackground-size: 16px;\nborder-radius:\n2px;\"&gt;&lt;svg\nfocusable=\"false\"\naria-hidden=\"true\"\nxmlns=\"h...&lt;/span&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F24\" target=\"_blank\">F24</a>"
+          ],
+          "id": "F24"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;span\nclass=\"a2a_label\"&gt;Email&lt;\nspan&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;div class=\"pagenav\nclearfix\"&gt; &lt;span\nclass=\"number\ncurrent\"&gt;1&lt;/span&gt; \n&lt;a href=\"h...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "The heading structure is not logically nested. This h4 element should be an h2 to be properly nested.",
+          "code": "&lt;h4\nclass=\"widgettitle\"&gt;Richard\nM. Hunt&lt;/h4&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G141\" target=\"_blank\">G141</a>"
+          ],
+          "id": "G141"
+        },
+        {
+          "type": "error",
+          "msg": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
+          "code": "&lt;img\nsrc=\"http://accessdefense.com/\np-content/uploads/2018/07/Jean\ne-83-of-1.jpg\" width=\"175\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H37\" target=\"_blank\">H37</a>"
+          ],
+          "id": "H37"
+        },
+        {
+          "type": "warning",
+          "msg": "This element contains a potentially faulty value in its autocomplete attribute: -1.",
+          "code": "&lt;input type=\"email\"\nname=\"esfpx_es_hp_email\"\nclass=\"es_required_field\"\ntabindex=\"-1\"\nautocomplete=\"-1\" value=\"\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H98\" target=\"_blank\">H98</a>"
+          ],
+          "id": "H98"
+        },
+        {
+          "type": "error",
+          "msg": "Duplicate id attribute value \"searchform\" found on the web page.",
+          "code": "&lt;form method=\"get\"\nid=\"searchform\"\naction=\"https://accessdefense.\nom/\"&gt;\n\t&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"...&lt;/form&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#robust\" target=\"_blank\">Robust</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F77\" target=\"_blank\">F77</a>"
+          ],
+          "id": "F77"
+        },
+        {
+          "type": "error",
+          "msg": "This form does not contain a submit button, which creates issues for those who cannot submit the form using the keyboard. Submit buttons are INPUT elements with type attribute \"submit\" or \"image\", or BUTTON elements with type \"submit\" or omitted/invalid.",
+          "code": "&lt;form method=\"get\"\nid=\"searchform\"\naction=\"https://accessdefense.\nom/\"&gt;\n\t&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"...&lt;/form&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#understandable\" target=\"_blank\">Understandable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H32\" target=\"_blank\">H32</a>"
+          ],
+          "id": "H32"
+        },
+        {
+          "type": "error",
+          "msg": "Duplicate id attribute value \"s\" found on the web page.",
+          "code": "&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"Search\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#robust\" target=\"_blank\">Robust</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F77\" target=\"_blank\">F77</a>"
+          ],
+          "id": "F77"
+        },
+        {
+          "type": "error",
+          "msg": "This textinput element does not have a name available to an accessibility API. Valid names are: label element, title , aria-label , aria-labelledby .",
+          "code": "&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"Search\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#robust\" target=\"_blank\">Robust</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H91\" target=\"_blank\">H91</a>"
+          ],
+          "id": "H91"
+        },
+        {
+          "type": "error",
+          "msg": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+          "code": "&lt;input type=\"text\"\nname=\"s\" id=\"s\"\nplaceholder=\"Search\"&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/F68\" target=\"_blank\">F68</a>"
+          ],
+          "id": "F68"
+        },
+        {
+          "type": "warning",
+          "msg": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+          "code": "&lt;label\nclass=\"screen-reader-text\"\nfor=\"archives-dropdown-2\"&gt;O\nder Posts by\nDate&lt;/label&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G18\" target=\"_blank\">G18</a>"
+          ],
+          "id": "G18"
+        },
+        {
+          "type": "warning",
+          "msg": "This select element does not have a value available to an accessibility API.",
+          "code": "&lt;select\nid=\"archives-dropdown-2\"\nname=\"archive-dropdown\"&gt;\n\t\t\t\n\t\t\t&lt;option\nvalue=\"\"&gt;Select\nMonth&lt;/option&gt;\n\t\t\t...&lt;/select&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#robust\" target=\"_blank\">Robust</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H91\" target=\"_blank\">H91</a>"
+          ],
+          "id": "H91"
+        },
+        {
+          "type": "warning",
+          "msg": "If this selection list contains groups of related options, they should be grouped with optgroup.",
+          "code": "&lt;select\nid=\"archives-dropdown-2\"\nname=\"archive-dropdown\"&gt;\n\t\t\t\n\t\t\t&lt;option\nvalue=\"\"&gt;Select\nMonth&lt;/option&gt;\n\t\t\t...&lt;/select&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H85\" target=\"_blank\">H85</a>"
+          ],
+          "id": "H85"
+        },
+        {
+          "type": "warning",
+          "msg": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+          "code": "&lt;div\nclass=\"two\"&gt;Powered by\n&lt;a\nhref=\"http://wordpress.org\"&gt\nWordPres...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/H48\" target=\"_blank\">H48</a>"
+          ],
+          "id": "H48"
+        },
+        {
+          "type": "warning",
+          "msg": "This element has \"position: fixed\". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.",
+          "code": "&lt;div class=\"a2a_overlay\"\nid=\"a2a_overlay\"&gt;&lt;/div&g\n;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C32\" target=\"_blank\">C32</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C31\" target=\"_blank\">C31</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C33\" target=\"_blank\">C33</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C38\" target=\"_blank\">C38</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/SCR34\" target=\"_blank\">SCR34</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G206\" target=\"_blank\">G206</a>"
+          ],
+          "id": "C31+C32+C33+C38+G206+SCR34"
+        },
+        {
+          "type": "warning",
+          "msg": "This element has \"position: fixed\". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.",
+          "code": "&lt;div id=\"a2a_modal\"\nclass=\"a2a_modal a2a_hide\"\nrole=\"dialog\" tabindex=\"-1\"\naria-label=\"\"&gt;&lt;div\nclass=\"a2a_modal_body\na2a_menu a2a_hide\"\nid=\"...&lt;/div&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C32\" target=\"_blank\">C32</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C31\" target=\"_blank\">C31</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C33\" target=\"_blank\">C33</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C38\" target=\"_blank\">C38</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/SCR34\" target=\"_blank\">SCR34</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G206\" target=\"_blank\">G206</a>"
+          ],
+          "id": "C31+C32+C33+C38+G206+SCR34"
+        },
+        {
+          "type": "warning",
+          "msg": "This element has \"position: fixed\". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.",
+          "code": "&lt;div class=\"a2a_menu\na2a_full a2a_localize\"\nid=\"a2apage_full\"\nrole=\"dialog\" tabindex=\"-1\"\naria-label=\"Share\"\ndata-a2a-localize=\"title,Share\n&gt;&lt;div\nclass=\"a2a_full_header\"&gt;&lt\ndiv\nid=\"a2apage_find...&lt;/div&gt\n",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#perceivable\" target=\"_blank\">Perceivable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C32\" target=\"_blank\">C32</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C31\" target=\"_blank\">C31</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C33\" target=\"_blank\">C33</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/C38\" target=\"_blank\">C38</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/SCR34\" target=\"_blank\">SCR34</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G206\" target=\"_blank\">G206</a>"
+          ],
+          "id": "C31+C32+C33+C38+G206+SCR34"
+        },
+        {
+          "type": "error",
+          "msg": "This link points to a named anchor \"addtoany\" within the document, but no anchor exists with that name.",
+          "code": "&lt;a href=\"#addtoany\"\nid=\"a2apage_show_more_less\"\nclass=\"a2a_more a2a_localize\"\ntitle=\"Show all\"\ndata-a2a-localize=\"title,ShowA\nl\"&gt;&lt;span class=\"a2a_svg\na2a_s__default a2a_s_a2a\na2a_...&lt;/a&gt;",
+          "principle": "<a href=\"http://www.w3.org/TR/WCAG20/#operable\" target=\"_blank\">Operable</a>",
+          "techniques": [
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G1\" target=\"_blank\">G1</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G123\" target=\"_blank\">G123</a>",
+            "<a href=\"http://www.w3.org/TR/WCAG20-TECHS/G124\" target=\"_blank\">G124</a>"
+          ],
+          "id": "G1+G123+G124"
+        },
+        {
+          "errorcount": 10
+        }
+      ]
+    },
+    {
+      "type": "test",
+      "which": "wave",
+      "reportType": 4,
+      "what": "WAVE",
+      "url": "https://accessdefense.com/",
+      "result": {
+        "status": {
+          "success": true,
+          "httpstatuscode": 200
+        },
+        "statistics": {
+          "pagetitle": "ADA and FHA Defense",
+          "pageurl": "https://accessdefense.com/",
+          "time": 6.43,
+          "creditsremaining": 929,
+          "allitemcount": 118,
+          "totalelements": 713,
+          "waveurl": "http://wave.webaim.org/report?url=https://accessdefense.com/",
+          "domid": "319856bd8c697b8875412f73008ce18b"
+        },
+        "categories": {
+          "error": {
+            "description": "Errors",
+            "count": 4,
+            "items": {
+              "alt_missing": {
+                "id": "alt_missing",
+                "description": "Missing alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > ASIDE#sidebar > SECTION#text-3 > H4:first-child + DIV > P:first-child > IMG:first-child"
+                ]
+              },
+              "label_missing": {
+                "id": "label_missing",
+                "description": "Missing form label",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#headerwrap > HEADER#header > DIV#searchform-wrap > FORM#searchform > INPUT#s",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > ASIDE#sidebar > SECTION#search-3 > FORM#searchform > INPUT#s"
+                ]
+              },
+              "label_empty": {
+                "id": "label_empty",
+                "description": "Empty form label",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > ASIDE#sidebar > SECTION#email-subscribers-form-2 > DIV#es_form_f1-n1 > FORM#es_subscription_form_61dad8d004627 > DIV:first-child + DIV + INPUT + INPUT + INPUT + INPUT + INPUT + INPUT + INPUT + INPUT + LABEL"
+                ]
+              }
+            }
+          },
+          "contrast": {
+            "description": "Contrast Errors",
+            "count": 0,
+            "items": []
+          },
+          "alert": {
+            "description": "Alerts",
+            "count": 39,
+            "items": {
+              "alt_redundant": {
+                "id": "alt_redundant",
+                "description": "Redundant alternative text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#headerwrap > HEADER#header > DIV:first-child > DIV#site-logo > A:first-child > IMG:first-child"
+                ]
+              },
+              "label_title": {
+                "id": "label_title",
+                "description": "Unlabeled form control with title",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV > DIV#a2a_modal > DIV#a2a_copy_link > INPUT#a2a_copy_link_text",
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV > DIV#a2apage_full > DIV:first-child > DIV#a2apage_find_container > INPUT#a2apage_find"
+                ]
+              },
+              "heading_skipped": {
+                "id": "heading_skipped",
+                "description": "Skipped heading level",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > ASIDE#sidebar > SECTION#text-3 > H4:first-child"
+                ]
+              },
+              "link_internal_broken": {
+                "id": "link_internal_broken",
+                "description": "Broken same-page link",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > SCRIPT:first-child + DIV + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + SCRIPT + DIV > DIV#a2apage_dropdown > DIV:first-child + DIV + DIV > A#a2apage_show_more_less"
+                ]
+              },
+              "link_pdf": {
+                "id": "link_pdf",
+                "description": "Link to PDF document",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6050 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + P + P + P + P + P + P + P > A:first-child"
+                ]
+              },
+              "underline": {
+                "id": "underline",
+                "description": "Underlined text",
+                "count": 1,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P > EM:first-child > U:first-child"
+                ]
+              },
+              "title_redundant": {
+                "id": "title_redundant",
+                "description": "Redundant title text",
+                "count": 29,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#headerwrap > HEADER#header > DIV:first-child > DIV#site-logo > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6080 > SPAN:first-child + H1 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6080 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6080 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6080 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6076 > SPAN:first-child + H1 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6076 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + DIV + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6076 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + DIV + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6076 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + DIV + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P + P + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P + P + P + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P + P + P + P + P > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P + P + P + P + P + P > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P + P + P + P + P + P + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P + P + P + P + P + P + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6057 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + DIV + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + H4 + P + P + P + P + P + P + P + P + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6050 > SPAN:first-child + H1 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6050 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + P + P + P + P + P + P + P + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6050 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + P + P + P + P + P + P + P + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6050 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + P + P + P + P + P + P + P + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6045 > SPAN:first-child + H1 > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6045 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + DIV + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6045 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + DIV + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6045 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + DIV + P + SCRIPT + SCRIPT + BR + DIV + DIV > DIV:first-child > A:first-child + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV:first-child + DIV > SPAN:first-child + A + A + A + A + A + A",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#footerwrap > FOOTER#footer > DIV#footer-logo > A:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#headerwrap > HEADER#header > DIV:first-child > DIV#site-logo > A:first-child > IMG:first-child"
+                ]
+              },
+              "youtube_video": {
+                "id": "youtube_video",
+                "description": "YouTube video",
+                "count": 2,
+                "selectors": [
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6076 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + P + DIV > IFRAME:first-child",
+                  "HTML > HEAD:first-child + BODY > DIV#pagewrap > DIV#body > DIV#layout > DIV#content > DIV#loops-wrapper > ARTICLE#post-6045 > SPAN:first-child + H1 + P + DIV > DIV:first-child > P:first-child + DIV > IFRAME:first-child"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "score",
+      "which": "asp08",
+      "what": "4 packages and 16 custom tests, with duplication discounts",
+      "result": {
+        "scoreProc": "asp",
+        "version": "8",
+        "ruleDiscounts": {
+          "aatt": {
+            "e:F77": 2,
+            "e:G18": 2,
+            "e:H91": 2,
+            "w:F24": 1,
+            "w:G18": 1,
+            "w:H67": 2
+          },
+          "axe": {
+            "aria-allowed-role": 1,
+            "aria-roles": 2,
+            "color-contrast": 2,
+            "duplicate-id": 1,
+            "image-redundant-alt": 1,
+            "label": 3,
+            "link-name": 2,
+            "nested-interactive": 2,
+            "region": 1
+          },
+          "ibm": {
+            "aria_semantics_role": 2,
+            "IBMA_Color_Contrast_WCAG2AA": 2,
+            "Rpt_Aria_OrphanedContent_Native_Host_Sematics": 2,
+            "Rpt_Aria_ValidIdRef": 2,
+            "Rpt_Aria_ValidRole": 2,
+            "WCAG20_A_HasText": 2,
+            "WCAG20_Fieldset_HasLegend": 3,
+            "WCAG20_Input_ExplicitLabel": 2,
+            "WCAG20_Input_RadioChkInFieldSet": 3
+          },
+          "wave": {
+            "alt_redundant": 1,
+            "aria_reference_broken": 2,
+            "contrast": 1,
+            "fieldset_missing": 1,
+            "label_orphaned": 1,
+            "legend_missing": 1,
+            "link_empty": 2,
+            "select_missing_label": 1
+          }
+        },
+        "rules": {
+          "aatt": "multiply warning by 2, error by 4; sum; subtract discounts",
+          "axe": "multiply minor by 2, moderate by 3, serious by 4, critical by 5; sum; subtract discounts",
+          "bulk": "subtract 250 from visible elements; make 0 if negative; raise to 0.9th power; multiply by 0.15",
+          "embAc": "multiply link- or button-contained links, buttons, inputs, and selects by 3 (discounted)",
+          "focAll": "multiply discrepancy between focusable and focused element counts by 3",
+          "focInd": "multiply indicatorless-when-focused elements by 5",
+          "focOp": "multiply nonfocusable operable elements by 4, nonoperable focusable by 1; sum",
+          "hover": "multiply elements changing page on hover by 4, made visible by 2, with directly changed opacity by 0.1, with indirectly changed opacity by 0.2, unhoverable by 2; sum",
+          "ibm": "",
+          "labClash": "multiply conflictually labeled elements by 2, unlabeled elements by 2; sum",
+          "linkUl": "multiply nonunderlined inline links by 3",
+          "log": "multiply log items by respective logWeights; sum",
+          "menuNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "motion": "get PNG screenshot sizes (sss); get differing-pixel counts between adjacent PNG screenshots (pd); “sssd” = sss difference ÷ smaller sss - 1; multiply mean adjacent sssd by 5, maximum adjacent sssd by 2, maximum over-all ssd by 1; divide mean pd by 10,000, maximum pd by 25,000; multiply count of non-0 pd by 30; sum",
+          "radioSet": "multiply radio buttons not in fieldsets with legends and no other-name radio buttons by 2",
+          "role": "multiple role attributes with invalid or native-HTML-equivalent values by 2",
+          "styleDiff": "for each of element classes block a, inline a, button, h1, h2, h3, h4, h5, and h6, get diffStyles-distinct styles; multiply their count minus 1 by 2; multiply count of elements with non-plurality styles by 0.2; sum",
+          "tabNav": "multiply Home and End errors by 1 and other key-navigation errors by 3; sum",
+          "wave": "multiply alerts by 2, contrast errors by 3, errors by 4; sum; subtract discounts",
+          "zIndex": "multiply non-auto z indexes by 3"
+        },
+        "diffStyles": [
+          "borderStyle",
+          "borderWidth",
+          "fontStyle",
+          "fontWeight",
+          "lineHeight",
+          "maxHeight",
+          "maxWidth",
+          "minHeight",
+          "minWidth",
+          "opacity",
+          "outlineOffset",
+          "outlineStyle",
+          "outlineWidth",
+          "textDecorationLine",
+          "textDecorationStyle",
+          "textDecorationThickness"
+        ],
+        "logWeights": {
+          "count": 0.5,
+          "size": 0.01,
+          "prohibited": 15,
+          "visitTimeout": 10,
+          "visitRejection": 10
+        },
+        "inferences": {
+          "ibm": 248
+        },
+        "deficit": {
+          "total": 1831,
+          "aatt": 102,
+          "axe": 202,
+          "bulk": 16,
+          "embAc": 0,
+          "focAll": 0,
+          "focInd": 618,
+          "focOp": 4,
+          "hover": 96,
+          "ibm": null,
+          "labClash": 8,
+          "linkUl": 186,
+          "log": 183,
+          "menuNav": 0,
+          "motion": 0,
+          "radioSet": 0,
+          "role": 4,
+          "styleDiff": 44,
+          "tabNav": 0,
+          "wave": 93,
+          "zIndex": 27
+        }
+      }
+    }
+  ],
+  "testTimes": [
+    [
+      "hover",
+      58
+    ],
+    [
+      "ibm",
+      40
+    ],
+    [
+      "motion",
+      14
+    ],
+    [
+      "wave",
+      7
+    ],
+    [
+      "aatt",
+      6
+    ],
+    [
+      "axe",
+      2
+    ],
+    [
+      "bulk",
+      1
+    ],
+    [
+      "focAll",
+      1
+    ],
+    [
+      "focInd",
+      1
+    ],
+    [
+      "embAc",
+      0
+    ],
+    [
+      "focOp",
+      0
+    ],
+    [
+      "labClash",
+      0
+    ],
+    [
+      "linkUl",
+      0
+    ],
+    [
+      "menuNav",
+      0
+    ],
+    [
+      "radioSet",
+      0
+    ],
+    [
+      "role",
+      0
+    ],
+    [
+      "styleDiff",
+      0
+    ],
+    [
+      "tabNav",
+      0
+    ],
+    [
+      "zIndex",
+      0
+    ]
+  ]
+}
