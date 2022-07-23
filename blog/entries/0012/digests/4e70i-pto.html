@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Patent and Trademark Office</p>
           <p><strong>URL</strong>: https://www.uspto.gov/</p>
-          <p><strong>Score</strong>: 1211</p>
+          <p><strong>Score</strong>: 1195</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp12</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp12b</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp12b</code></p>
@@ -39,16 +39,15 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 1211 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 1195 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp12b</code> to produce this digest, briefly explaining how <code>sp12a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>1211</td></tr>
+        <tr><th>total</th><td>1195</td></tr>
         <tr><th>log</th><td>13</td></tr>
         <tr><th>preventions</th><td>150</td></tr>
-        <tr><th>solos</th><td>26</td></tr>
         <tr><th>linkIndication</th><td>210</td></tr>
         <tr><th>tabFocusability</th><td>152</td></tr>
         <tr><th>linkTextsSame</th><td>80</td></tr>
@@ -76,13 +75,15 @@
         <tr><th>ariaBadAttribute</th><td>6</td></tr>
         <tr><th>allCaps</th><td>5</td></tr>
         <tr><th>noLeading</th><td>5</td></tr>
+        <tr><th>controlLabelInvisible</th><td>5</td></tr>
         <tr><th>landmarkConfusion</th><td>5</td></tr>
+        <tr><th>eventKeyboardRisk</th><td>5</td></tr>
         <tr><th>horizontalScrolling</th><td>5</td></tr>
         <tr><th>h1Missing</th><td>4</td></tr>
         <tr><th>visibleBulk</th><td>3</td></tr>
         <tr><th>hiddenContentRisk</th><td>3</td></tr>
-        <tr><th>mainTopLandmark</th><td>3</td></tr>
-        <tr><th>mainLandmark</th><td>3</td></tr>
+        <tr><th>mainNotTop</th><td>3</td></tr>
+        <tr><th>mainNot1</th><td>3</td></tr>
         <tr><th>pseudoHeadingRisk</th><td>3</td></tr>
         <tr><th>scrollRisk</th><td>3</td></tr>
         <tr><th>linkBrokenRisk</th><td>3</td></tr>
@@ -92,7 +93,6 @@
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 13. This is based on the amount of browser error logging and miscellaneous logging during the tests.
       <p><span class="componentID">preventions</span>: Score 150. This is based on tests that the page did not allow to be run. That impedes accessibility progress and risks interfering with tools that users with disabilities need.
-      <p><span class="componentID">solos</span>: Score 26. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">linkIndication</span>: Score 210. Issues reported by tests in this category:</p>
       <ul>
@@ -220,9 +220,17 @@
       <ul>
       <li>Package <code>alfa</code>, test <code>r73</code>, score 3 (Paragraph of text has insufficient line height)</li>
       </ul>
+      <p><span class="componentID">controlLabelInvisible</span>: Score 5. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>axe</code>, test <code>label-title-only</code>, score 3 (Form element has no visible label)</li>
+      </ul>
       <p><span class="componentID">landmarkConfusion</span>: Score 5. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>axe</code>, test <code>landmark-unique</code>, score 3 (Landmark has a role and an accessible name that are identical to another)</li>
+      </ul>
+      <p><span class="componentID">eventKeyboardRisk</span>: Score 5. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>htmlcs</code>, test <code>w:AA.2_1_1.SCR20.MouseDown</code>, score 3 (Mousing-down functionality may not be available by keyboard)</li>
       </ul>
       <p><span class="componentID">horizontalScrolling</span>: Score 5. Issues reported by tests in this category:</p>
       <ul>
@@ -241,11 +249,11 @@
       <ul>
       <li>Package <code>axe</code>, test <code>hidden-content</code>, score 1 (Some content is hidden and therefore may not be testable for accessibility)</li>
       </ul>
-      <p><span class="componentID">mainTopLandmark</span>: Score 3. Issues reported by tests in this category:</p>
+      <p><span class="componentID">mainNotTop</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>axe</code>, test <code>landmark-main-is-top-level</code>, score 1 (main landmark is contained in another landmark)</li>
       </ul>
-      <p><span class="componentID">mainLandmark</span>: Score 3. Issues reported by tests in this category:</p>
+      <p><span class="componentID">mainNot1</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>axe</code>, test <code>landmark-no-duplicate-main</code>, score 1 (page has more than 1 main landmark)</li>
       </ul>
@@ -20180,7 +20188,15 @@
             }
           }
         },
-        "mainTopLandmark": {
+        "controlLabelInvisible": {
+          "axe": {
+            "label-title-only": {
+              "score": 3,
+              "what": "Form element has no visible label"
+            }
+          }
+        },
+        "mainNotTop": {
           "axe": {
             "landmark-main-is-top-level": {
               "score": 1,
@@ -20188,7 +20204,7 @@
             }
           }
         },
-        "mainLandmark": {
+        "mainNot1": {
           "axe": {
             "landmark-no-duplicate-main": {
               "score": 1,
@@ -20253,6 +20269,14 @@
             "w:AA.1_4_3_F24.F24.FGColour": {
               "score": 1,
               "what": "Inline foreground color may lack a complementary background color"
+            }
+          }
+        },
+        "eventKeyboardRisk": {
+          "htmlcs": {
+            "w:AA.2_1_1.SCR20.MouseDown": {
+              "score": 3,
+              "what": "Mousing-down functionality may not be available by keyboard"
             }
           }
         },
@@ -20329,24 +20353,17 @@
           }
         }
       },
-      "solos": {
-        "axe": {
-          "label-title-only": 3
-        },
-        "htmlcs": {
-          "w:AA.2_1_1.SCR20.MouseDown": 10
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {
       "testaro-menuNav": 50,
       "ibm": 100
     },
     "summary": {
-      "total": 1211,
+      "total": 1195,
       "log": 13,
       "preventions": 150,
-      "solos": 26,
+      "solos": 0,
       "groups": [
         {
           "groupName": "linkIndication",
@@ -20457,7 +20474,15 @@
           "score": 5
         },
         {
+          "groupName": "controlLabelInvisible",
+          "score": 5
+        },
+        {
           "groupName": "landmarkConfusion",
+          "score": 5
+        },
+        {
+          "groupName": "eventKeyboardRisk",
           "score": 5
         },
         {
@@ -20477,11 +20502,11 @@
           "score": 3
         },
         {
-          "groupName": "mainTopLandmark",
+          "groupName": "mainNotTop",
           "score": 3
         },
         {
-          "groupName": "mainLandmark",
+          "groupName": "mainNot1",
           "score": 3
         },
         {

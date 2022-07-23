@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Equal Employment Opportunity Commission (EEOC)</p>
           <p><strong>URL</strong>: https://www.eeoc.gov/</p>
-          <p><strong>Score</strong>: 932</p>
+          <p><strong>Score</strong>: 931</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp12</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp12b</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp12b</code></p>
@@ -39,15 +39,14 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 932 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 931 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp12b</code> to produce this digest, briefly explaining how <code>sp12a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>932</td></tr>
+        <tr><th>total</th><td>931</td></tr>
         <tr><th>log</th><td>45</td></tr>
-        <tr><th>solos</th><td>6</td></tr>
         <tr><th>focusIndication</th><td>227</td></tr>
         <tr><th>linkIndication</th><td>123</td></tr>
         <tr><th>tabFocusability</th><td>115</td></tr>
@@ -72,9 +71,10 @@
         <tr><th>ariaReferenceBad</th><td>6</td></tr>
         <tr><th>zIndexNotZero</th><td>5</td></tr>
         <tr><th>dialogNoText</th><td>5</td></tr>
+        <tr><th>controlLabelInvisible</th><td>5</td></tr>
         <tr><th>horizontalScrolling</th><td>5</td></tr>
         <tr><th>linkForcesNewWindow</th><td>5</td></tr>
-        <tr><th>invisibleLabel</th><td>4</td></tr>
+        <tr><th>visibleLabelNotName</th><td>4</td></tr>
         <tr><th>labelBadID</th><td>4</td></tr>
         <tr><th>pseudoLinkRisk</th><td>4</td></tr>
         <tr><th>visibleBulk</th><td>3</td></tr>
@@ -98,7 +98,6 @@
       <h2>Issue summary</h2>
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 45. This is based on the amount of browser error logging and miscellaneous logging during the tests.
-      <p><span class="componentID">solos</span>: Score 6. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">focusIndication</span>: Score 227. Issues reported by tests in this category:</p>
       <ul>
@@ -214,6 +213,10 @@
       <ul>
       <li>Package <code>axe</code>, test <code>aria-dialog-name</code>, score 3 (ARIA dialog or alertdialog node has no accessible name)</li>
       </ul>
+      <p><span class="componentID">controlLabelInvisible</span>: Score 5. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>axe</code>, test <code>label-title-only</code>, score 3 (Form element has no visible label)</li>
+      </ul>
       <p><span class="componentID">horizontalScrolling</span>: Score 5. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>tenon</code>, test <code>28</code>, score 3 (Layout or sizing of the page causes horizontal scrolling)</li>
@@ -222,7 +225,7 @@
       <ul>
       <li>Package <code>tenon</code>, test <code>218</code>, score 3 (Link opens in a new window without user control)</li>
       </ul>
-      <p><span class="componentID">invisibleLabel</span>: Score 4. Issues reported by tests in this category:</p>
+      <p><span class="componentID">visibleLabelNotName</span>: Score 4. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>axe</code>, test <code>label-content-name-mismatch</code>, score 2 (Element visible text is not part of its accessible name)</li>
   <li>Package <code>htmlcs</code>, test <code>w:AA.2_5_3.F96</code>, score 1 (Visible label is not in the accessible name)</li>
@@ -12289,7 +12292,7 @@
             }
           }
         },
-        "invisibleLabel": {
+        "visibleLabelNotName": {
           "axe": {
             "label-content-name-mismatch": {
               "score": 2,
@@ -12300,6 +12303,14 @@
             "w:AA.2_5_3.F96": {
               "score": 1,
               "what": "Visible label is not in the accessible name"
+            }
+          }
+        },
+        "controlLabelInvisible": {
+          "axe": {
+            "label-title-only": {
+              "score": 3,
+              "what": "Form element has no visible label"
             }
           }
         },
@@ -12522,18 +12533,14 @@
           }
         }
       },
-      "solos": {
-        "axe": {
-          "label-title-only": 3
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {},
     "summary": {
-      "total": 932,
+      "total": 931,
       "log": 45,
       "preventions": 0,
-      "solos": 6,
+      "solos": 0,
       "groups": [
         {
           "groupName": "focusIndication",
@@ -12632,6 +12639,10 @@
           "score": 5
         },
         {
+          "groupName": "controlLabelInvisible",
+          "score": 5
+        },
+        {
           "groupName": "horizontalScrolling",
           "score": 5
         },
@@ -12640,7 +12651,7 @@
           "score": 5
         },
         {
-          "groupName": "invisibleLabel",
+          "groupName": "visibleLabelNotName",
           "score": 4
         },
         {

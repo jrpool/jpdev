@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: National Railroad Passenger Corporation (AMTRAK)</p>
           <p><strong>URL</strong>: https://www.amtrak.com/home.html</p>
-          <p><strong>Score</strong>: 5385</p>
+          <p><strong>Score</strong>: 5379</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp12</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp12b</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp12b</code></p>
@@ -39,21 +39,20 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 5385 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 5379 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp12b</code> to produce this digest, briefly explaining how <code>sp12a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>5385</td></tr>
+        <tr><th>total</th><td>5379</td></tr>
         <tr><th>log</th><td>4442</td></tr>
         <tr><th>preventions</th><td>300</td></tr>
-        <tr><th>solos</th><td>10</td></tr>
-        <tr><th>roleBad</th><td>72</td></tr>
+        <tr><th>roleBad</th><td>73</td></tr>
         <tr><th>imageNoText</th><td>70</td></tr>
         <tr><th>tabFocusability</th><td>53</td></tr>
         <tr><th>iframeTitleBad</th><td>50</td></tr>
-        <tr><th>invisibleLabel</th><td>44</td></tr>
+        <tr><th>visibleLabelNotName</th><td>44</td></tr>
         <tr><th>duplicateID</th><td>37</td></tr>
         <tr><th>ariaBadAttribute</th><td>31</td></tr>
         <tr><th>linkNoText</th><td>28</td></tr>
@@ -81,6 +80,7 @@
         <tr><th>headingStructure</th><td>4</td></tr>
         <tr><th>visibleBulk</th><td>3</td></tr>
         <tr><th>hoverSurprise</th><td>3</td></tr>
+        <tr><th>audioCaptionMissing</th><td>3</td></tr>
         <tr><th>frameContentRisk</th><td>3</td></tr>
         <tr><th>hiddenContentRisk</th><td>3</td></tr>
         <tr><th>linkConfusionRisk</th><td>3</td></tr>
@@ -97,12 +97,12 @@
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 4442. This is based on the amount of browser error logging and miscellaneous logging during the tests.
       <p><span class="componentID">preventions</span>: Score 300. This is based on tests that the page did not allow to be run. That impedes accessibility progress and risks interfering with tools that users with disabilities need.
-      <p><span class="componentID">solos</span>: Score 10. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
-      <p><span class="componentID">roleBad</span>: Score 72. Issues reported by tests in this category:</p>
+      <p><span class="componentID">roleBad</span>: Score 73. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>testaro</code>, test <code>role</code>, score 69 (Nonexistent or implicit-overriding role)</li>
   <li>Package <code>axe</code>, test <code>aria-allowed-role</code>, score 3 (ARIA role is not appropriate for the element)</li>
+  <li>Package <code>axe</code>, test <code>aria-roles</code>, score 3 (ARIA role has an invalid value)</li>
       </ul>
       <p><span class="componentID">imageNoText</span>: Score 70. Issues reported by tests in this category:</p>
       <ul>
@@ -117,7 +117,7 @@
       <ul>
       <li>Package <code>htmlcs</code>, test <code>e:AA.2_4_1.H64.1</code>, score 48 (iframe element has no non-empty title attribute)</li>
       </ul>
-      <p><span class="componentID">invisibleLabel</span>: Score 44. Issues reported by tests in this category:</p>
+      <p><span class="componentID">visibleLabelNotName</span>: Score 44. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>axe</code>, test <code>label-content-name-mismatch</code>, score 38 (Element visible text is not part of its accessible name)</li>
   <li>Package <code>htmlcs</code>, test <code>w:AA.2_5_3.F96</code>, score 11 (Visible label is not in the accessible name)</li>
@@ -242,6 +242,10 @@
       <p><span class="componentID">hoverSurprise</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>testaro</code>, test <code>hover</code>, score 1 (Content changes caused by hovering)</li>
+      </ul>
+      <p><span class="componentID">audioCaptionMissing</span>: Score 3. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>axe</code>, test <code>audio-caption</code>, score 1 (audio element has no captions track)</li>
       </ul>
       <p><span class="componentID">frameContentRisk</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
@@ -9467,6 +9471,10 @@
             "aria-allowed-role": {
               "score": 3,
               "what": "ARIA role is not appropriate for the element"
+            },
+            "aria-roles": {
+              "score": 3,
+              "what": "ARIA role has an invalid value"
             }
           }
         },
@@ -9503,6 +9511,14 @@
             "aria-required-children": {
               "score": 6,
               "what": "ARIA role does not contain a required child"
+            }
+          }
+        },
+        "audioCaptionMissing": {
+          "axe": {
+            "audio-caption": {
+              "score": 1,
+              "what": "audio element has no captions track"
             }
           }
         },
@@ -9624,7 +9640,7 @@
             }
           }
         },
-        "invisibleLabel": {
+        "visibleLabelNotName": {
           "axe": {
             "label-content-name-mismatch": {
               "score": 38,
@@ -9805,12 +9821,7 @@
           }
         }
       },
-      "solos": {
-        "axe": {
-          "audio-caption": 1,
-          "aria-roles": 4
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {
       "ibm": 100,
@@ -9818,14 +9829,14 @@
       "tenon": 100
     },
     "summary": {
-      "total": 5385,
+      "total": 5379,
       "log": 4442,
       "preventions": 300,
-      "solos": 10,
+      "solos": 0,
       "groups": [
         {
           "groupName": "roleBad",
-          "score": 72
+          "score": 73
         },
         {
           "groupName": "imageNoText",
@@ -9840,7 +9851,7 @@
           "score": 50
         },
         {
-          "groupName": "invisibleLabel",
+          "groupName": "visibleLabelNotName",
           "score": 44
         },
         {
@@ -9949,6 +9960,10 @@
         },
         {
           "groupName": "hoverSurprise",
+          "score": 3
+        },
+        {
+          "groupName": "audioCaptionMissing",
           "score": 3
         },
         {

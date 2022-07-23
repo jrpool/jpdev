@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Los Alamos National Laboratory</p>
           <p><strong>URL</strong>: https://www.lanl.gov/</p>
-          <p><strong>Score</strong>: 832</p>
+          <p><strong>Score</strong>: 831</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp12</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp12b</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp12b</code></p>
@@ -39,15 +39,14 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 832 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 831 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp12b</code> to produce this digest, briefly explaining how <code>sp12a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>832</td></tr>
+        <tr><th>total</th><td>831</td></tr>
         <tr><th>log</th><td>6</td></tr>
-        <tr><th>solos</th><td>4</td></tr>
         <tr><th>linkIndication</th><td>131</td></tr>
         <tr><th>targetSize</th><td>122</td></tr>
         <tr><th>linkNoText</th><td>80</td></tr>
@@ -84,7 +83,8 @@
         <tr><th>skipRepeatedContent</th><td>3</td></tr>
         <tr><th>hiddenContentRisk</th><td>3</td></tr>
         <tr><th>linkConfusionRisk</th><td>3</td></tr>
-        <tr><th>bannerLandmark</th><td>3</td></tr>
+        <tr><th>bannerNotTop</th><td>3</td></tr>
+        <tr><th>banners</th><td>3</td></tr>
         <tr><th>pseudoNavListRisk</th><td>3</td></tr>
         <tr><th>scrollRisk</th><td>3</td></tr>
         <tr><th>linkBrokenRisk</th><td>3</td></tr>
@@ -94,7 +94,6 @@
       <h2>Issue summary</h2>
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 6. This is based on the amount of browser error logging and miscellaneous logging during the tests.
-      <p><span class="componentID">solos</span>: Score 4. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">linkIndication</span>: Score 131. Issues reported by tests in this category:</p>
       <ul>
@@ -257,7 +256,11 @@
       <ul>
       <li>Package <code>axe</code>, test <code>identical-links-same-purpose</code>, score 1 (Links with the same accessible name may serve dissimilar purposes)</li>
       </ul>
-      <p><span class="componentID">bannerLandmark</span>: Score 3. Issues reported by tests in this category:</p>
+      <p><span class="componentID">bannerNotTop</span>: Score 3. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>axe</code>, test <code>landmark-banner-is-top-level</code>, score 1 (banner landmark is contained in another landmark)</li>
+      </ul>
+      <p><span class="componentID">banners</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>axe</code>, test <code>landmark-no-duplicate-banner</code>, score 1 (page has more than 1 banner landmark)</li>
       </ul>
@@ -20586,7 +20589,15 @@
             }
           }
         },
-        "bannerLandmark": {
+        "bannerNotTop": {
+          "axe": {
+            "landmark-banner-is-top-level": {
+              "score": 1,
+              "what": "banner landmark is contained in another landmark"
+            }
+          }
+        },
+        "banners": {
           "axe": {
             "landmark-no-duplicate-banner": {
               "score": 1,
@@ -20751,18 +20762,14 @@
           }
         }
       },
-      "solos": {
-        "axe": {
-          "landmark-banner-is-top-level": 2
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {},
     "summary": {
-      "total": 832,
+      "total": 831,
       "log": 6,
       "preventions": 0,
-      "solos": 4,
+      "solos": 0,
       "groups": [
         {
           "groupName": "linkIndication",
@@ -20909,7 +20916,11 @@
           "score": 3
         },
         {
-          "groupName": "bannerLandmark",
+          "groupName": "bannerNotTop",
+          "score": 3
+        },
+        {
+          "groupName": "banners",
           "score": 3
         },
         {

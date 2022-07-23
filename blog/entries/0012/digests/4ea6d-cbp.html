@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Customs and Border Protection</p>
           <p><strong>URL</strong>: https://cbp.gov/</p>
-          <p><strong>Score</strong>: 13381</p>
+          <p><strong>Score</strong>: 13380</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp12</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp12b</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp12b</code></p>
@@ -39,21 +39,20 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 13381 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 13380 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp12b</code> to produce this digest, briefly explaining how <code>sp12a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>13381</td></tr>
+        <tr><th>total</th><td>13380</td></tr>
         <tr><th>log</th><td>11765</td></tr>
-        <tr><th>solos</th><td>6</td></tr>
         <tr><th>contentBeyondLandmarks</th><td>474</td></tr>
         <tr><th>leadingClipsText</th><td>134</td></tr>
         <tr><th>linkIndication</th><td>99</td></tr>
         <tr><th>overflowHidden</th><td>90</td></tr>
         <tr><th>duplicateID</th><td>77</td></tr>
-        <tr><th>invisibleLabel</th><td>62</td></tr>
+        <tr><th>visibleLabelNotName</th><td>62</td></tr>
         <tr><th>tabFocusability</th><td>47</td></tr>
         <tr><th>imageNoText</th><td>47</td></tr>
         <tr><th>focusableOperable</th><td>46</td></tr>
@@ -80,8 +79,9 @@
         <tr><th>linkPair</th><td>7</td></tr>
         <tr><th>ariaBadAttribute</th><td>6</td></tr>
         <tr><th>linkTextsSame</th><td>6</td></tr>
-        <tr><th>linkDestinationsSame</th><td>6</td></tr>
+        <tr><th>nextLinkDestinationSame</th><td>6</td></tr>
         <tr><th>tabIndexMissing</th><td>6</td></tr>
+        <tr><th>controlLabelInvisible</th><td>5</td></tr>
         <tr><th>contrastRisk</th><td>5</td></tr>
         <tr><th>layoutTable</th><td>5</td></tr>
         <tr><th>horizontalScrolling</th><td>5</td></tr>
@@ -107,7 +107,6 @@
       <h2>Issue summary</h2>
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 11765. This is based on the amount of browser error logging and miscellaneous logging during the tests.
-      <p><span class="componentID">solos</span>: Score 6. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">contentBeyondLandmarks</span>: Score 474. Issues reported by tests in this category:</p>
       <ul>
@@ -132,7 +131,7 @@
   <li>Package <code>axe</code>, test <code>duplicate-id</code>, score 3 (id attribute value is not unique)</li>
   <li>Package <code>htmlcs</code>, test <code>e:AA.4_1_1.F77</code>, score 12 (Duplicate id attribute value)</li>
       </ul>
-      <p><span class="componentID">invisibleLabel</span>: Score 62. Issues reported by tests in this category:</p>
+      <p><span class="componentID">visibleLabelNotName</span>: Score 62. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>alfa</code>, test <code>r14</code>, score 60 (Visible label is not in the accessible name)</li>
       </ul>
@@ -254,13 +253,17 @@
       <ul>
       <li>Package <code>tenon</code>, test <code>98</code>, score 4 (Links have the same text but different destinations)</li>
       </ul>
-      <p><span class="componentID">linkDestinationsSame</span>: Score 6. Issues reported by tests in this category:</p>
+      <p><span class="componentID">nextLinkDestinationSame</span>: Score 6. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>tenon</code>, test <code>184</code>, score 4 (Adjacent links point to the same destination)</li>
       </ul>
       <p><span class="componentID">tabIndexMissing</span>: Score 6. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>tenon</code>, test <code>190</code>, score 4 (Interactive item is not natively actionable, but has no tabindex=0 attribute)</li>
+      </ul>
+      <p><span class="componentID">controlLabelInvisible</span>: Score 5. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>axe</code>, test <code>label-title-only</code>, score 3 (Form element has no visible label)</li>
       </ul>
       <p><span class="componentID">contrastRisk</span>: Score 5. Issues reported by tests in this category:</p>
       <ul>
@@ -27643,7 +27646,7 @@
             }
           }
         },
-        "invisibleLabel": {
+        "visibleLabelNotName": {
           "alfa": {
             "r14": {
               "score": 60,
@@ -27816,6 +27819,14 @@
             "css-orientation-lock": {
               "score": 1,
               "what": "CSS media query locks display orientation"
+            }
+          }
+        },
+        "controlLabelInvisible": {
+          "axe": {
+            "label-title-only": {
+              "score": 3,
+              "what": "Form element has no visible label"
             }
           }
         },
@@ -28031,7 +28042,7 @@
             }
           }
         },
-        "linkDestinationsSame": {
+        "nextLinkDestinationSame": {
           "tenon": {
             "184": {
               "score": 4,
@@ -28056,18 +28067,14 @@
           }
         }
       },
-      "solos": {
-        "axe": {
-          "label-title-only": 3
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {},
     "summary": {
-      "total": 13381,
+      "total": 13380,
       "log": 11765,
       "preventions": 0,
-      "solos": 6,
+      "solos": 0,
       "groups": [
         {
           "groupName": "contentBeyondLandmarks",
@@ -28090,7 +28097,7 @@
           "score": 77
         },
         {
-          "groupName": "invisibleLabel",
+          "groupName": "visibleLabelNotName",
           "score": 62
         },
         {
@@ -28198,12 +28205,16 @@
           "score": 6
         },
         {
-          "groupName": "linkDestinationsSame",
+          "groupName": "nextLinkDestinationSame",
           "score": 6
         },
         {
           "groupName": "tabIndexMissing",
           "score": 6
+        },
+        {
+          "groupName": "controlLabelInvisible",
+          "score": 5
         },
         {
           "groupName": "contrastRisk",

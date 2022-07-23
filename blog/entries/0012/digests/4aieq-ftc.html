@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Federal Trade Commission (FTC)</p>
           <p><strong>URL</strong>: https://www.ftc.gov/</p>
-          <p><strong>Score</strong>: 690</p>
+          <p><strong>Score</strong>: 680</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp12</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp12b</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp12b</code></p>
@@ -39,16 +39,15 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 690 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp12b</code> scoring procedure to compute partial and total scores for the page. The total score is 680 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp12b</code> to produce this digest, briefly explaining how <code>sp12a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>690</td></tr>
+        <tr><th>total</th><td>680</td></tr>
         <tr><th>log</th><td>92</td></tr>
         <tr><th>preventions</th><td>100</td></tr>
-        <tr><th>solos</th><td>16</td></tr>
         <tr><th>linkIndication</th><td>85</td></tr>
         <tr><th>duplicateID</th><td>78</td></tr>
         <tr><th>leadingClipsText</th><td>66</td></tr>
@@ -64,8 +63,9 @@
         <tr><th>contrastAA</th><td>7</td></tr>
         <tr><th>contentBeyondLandmarks</th><td>7</td></tr>
         <tr><th>contrastRisk</th><td>6</td></tr>
+        <tr><th>labelClash</th><td>6</td></tr>
         <tr><th>imageTextRedundant</th><td>6</td></tr>
-        <tr><th>invisibleLabel</th><td>5</td></tr>
+        <tr><th>visibleLabelNotName</th><td>5</td></tr>
         <tr><th>horizontalScrolling</th><td>5</td></tr>
         <tr><th>linkVague</th><td>5</td></tr>
         <tr><th>focusableOperable</th><td>4</td></tr>
@@ -88,7 +88,6 @@
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 92. This is based on the amount of browser error logging and miscellaneous logging during the tests.
       <p><span class="componentID">preventions</span>: Score 100. This is based on tests that the page did not allow to be run. That impedes accessibility progress and risks interfering with tools that users with disabilities need.
-      <p><span class="componentID">solos</span>: Score 16. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">linkIndication</span>: Score 85. Issues reported by tests in this category:</p>
       <ul>
@@ -162,11 +161,15 @@
   <li>Package <code>htmlcs</code>, test <code>w:AA.1_4_3_F24.F24.BGColour</code>, score 1 (Inline background color may lack a complementary foreground color)</li>
   <li>Package <code>htmlcs</code>, test <code>w:AA.1_4_3_F24.F24.FGColour</code>, score 1 (Inline foreground color may lack a complementary background color)</li>
       </ul>
+      <p><span class="componentID">labelClash</span>: Score 6. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>wave</code>, test <code>e:label_multiple</code>, score 4 (Form control has more than one label associated with it)</li>
+      </ul>
       <p><span class="componentID">imageTextRedundant</span>: Score 6. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>tenon</code>, test <code>138</code>, score 4 (Image link alternative text repeats text in the link)</li>
       </ul>
-      <p><span class="componentID">invisibleLabel</span>: Score 5. Issues reported by tests in this category:</p>
+      <p><span class="componentID">visibleLabelNotName</span>: Score 5. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>htmlcs</code>, test <code>w:AA.2_5_3.F96</code>, score 3 (Visible label is not in the accessible name)</li>
       </ul>
@@ -13334,7 +13337,7 @@
             }
           }
         },
-        "invisibleLabel": {
+        "visibleLabelNotName": {
           "htmlcs": {
             "w:AA.2_5_3.F96": {
               "score": 3,
@@ -13347,6 +13350,14 @@
             "w:AA.4_1_2.H91.A.Empty": {
               "score": 1,
               "what": "Link element has an id attribute but no href attribute or text"
+            }
+          }
+        },
+        "labelClash": {
+          "wave": {
+            "e:label_multiple": {
+              "score": 4,
+              "what": "Form control has more than one label associated with it"
             }
           }
         },
@@ -13459,20 +13470,16 @@
           }
         }
       },
-      "solos": {
-        "wave": {
-          "e:label_multiple": 8
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {
       "ibm": 100
     },
     "summary": {
-      "total": 690,
+      "total": 680,
       "log": 92,
       "preventions": 100,
-      "solos": 16,
+      "solos": 0,
       "groups": [
         {
           "groupName": "linkIndication",
@@ -13535,11 +13542,15 @@
           "score": 6
         },
         {
+          "groupName": "labelClash",
+          "score": 6
+        },
+        {
           "groupName": "imageTextRedundant",
           "score": 6
         },
         {
-          "groupName": "invisibleLabel",
+          "groupName": "visibleLabelNotName",
           "score": 5
         },
         {
