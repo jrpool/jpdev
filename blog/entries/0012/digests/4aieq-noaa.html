@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: National Oceanic & Atmospheric Administration (NOAA)</p>
           <p><strong>URL</strong>: https://www.noaa.gov/</p>
-          <p><strong>Score</strong>: 614</p>
+          <p><strong>Score</strong>: 601</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp14</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp14a</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp14a</code></p>
@@ -40,15 +40,14 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 614 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 601 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp14a</code> to produce this digest, briefly explaining how <code>sp14a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>614</td></tr>
+        <tr><th>total</th><td>601</td></tr>
         <tr><th>log</th><td>273</td></tr>
-        <tr><th>solos</th><td>16</td></tr>
         <tr><th>linkIndication</th><td>45</td></tr>
         <tr><th>contrastAA</th><td>44</td></tr>
         <tr><th>roleBad</th><td>24</td></tr>
@@ -65,6 +64,7 @@
         <tr><th>labelBadID</th><td>7</td></tr>
         <tr><th>inconsistentStyles</th><td>6</td></tr>
         <tr><th>banners</th><td>6</td></tr>
+        <tr><th>footerMultiple</th><td>6</td></tr>
         <tr><th>nextLinkDestinationSame</th><td>6</td></tr>
         <tr><th>linkPair</th><td>5</td></tr>
         <tr><th>horizontalScrolling</th><td>5</td></tr>
@@ -76,7 +76,6 @@
         <tr><th>ariaBadAttribute</th><td>3</td></tr>
         <tr><th>hiddenContentRisk</th><td>3</td></tr>
         <tr><th>bannerNotTop</th><td>3</td></tr>
-        <tr><th>footerMultiple</th><td>3</td></tr>
         <tr><th>labelForWrongRisk</th><td>3</td></tr>
         <tr><th>pseudoNavListRisk</th><td>3</td></tr>
         <tr><th>scrollRisk</th><td>3</td></tr>
@@ -87,7 +86,6 @@
       <h2>Issue summary</h2>
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 273. This is based on the amount of browser error logging and miscellaneous logging during the tests.
-      <p><span class="componentID">solos</span>: Score 16. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">linkIndication</span>: Score 45. Issues reported by tests in this category:</p>
       <ul>
@@ -170,6 +168,11 @@
       <li>Package <code>axe</code>, test <code>landmark-no-duplicate-banner</code>, score 1 (Page has more than 1 banner landmark)</li>
   <li>Package <code>ibm</code>, test <code>Rpt_Aria_OneBannerInSiblingSet_Implicit</code>, score 4 (Multiple elements with a banner role are on the page)</li>
       </ul>
+      <p><span class="componentID">footerMultiple</span>: Score 6. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>axe</code>, test <code>landmark-no-duplicate-contentinfo</code>, score 1 (Page has more than 1 contentinfo landmark (footer))</li>
+  <li>Package <code>ibm</code>, test <code>Rpt_Aria_MultipleContentinfoInSiblingSet_Implicit</code>, score 4 (Page, document, or application has more than one element with a contentinfo role)</li>
+      </ul>
       <p><span class="componentID">nextLinkDestinationSame</span>: Score 6. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>tenon</code>, test <code>184</code>, score 4 (Adjacent links point to the same destination)</li>
@@ -213,10 +216,6 @@
       <p><span class="componentID">bannerNotTop</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>axe</code>, test <code>landmark-banner-is-top-level</code>, score 1 (banner landmark is contained in another landmark)</li>
-      </ul>
-      <p><span class="componentID">footerMultiple</span>: Score 3. Issues reported by tests in this category:</p>
-      <ul>
-      <li>Package <code>axe</code>, test <code>landmark-no-duplicate-contentinfo</code>, score 1 (page has more than 1 contentinfo landmark (footer))</li>
       </ul>
       <p><span class="componentID">labelForWrongRisk</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
@@ -7845,7 +7844,13 @@
           "axe": {
             "landmark-no-duplicate-contentinfo": {
               "score": 1,
-              "what": "page has more than 1 contentinfo landmark (footer)"
+              "what": "Page has more than 1 contentinfo landmark (footer)"
+            }
+          },
+          "ibm": {
+            "Rpt_Aria_MultipleContentinfoInSiblingSet_Implicit": {
+              "score": 4,
+              "what": "Page, document, or application has more than one element with a contentinfo role"
             }
           }
         },
@@ -8022,18 +8027,14 @@
           }
         }
       },
-      "solos": {
-        "ibm": {
-          "Rpt_Aria_MultipleContentinfoInSiblingSet_Implicit": 8
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {},
     "summary": {
-      "total": 614,
+      "total": 601,
       "log": 273,
       "preventions": 0,
-      "solos": 16,
+      "solos": 0,
       "groups": [
         {
           "groupName": "linkIndication",
@@ -8100,6 +8101,10 @@
           "score": 6
         },
         {
+          "groupName": "footerMultiple",
+          "score": 6
+        },
+        {
           "groupName": "nextLinkDestinationSame",
           "score": 6
         },
@@ -8141,10 +8146,6 @@
         },
         {
           "groupName": "bannerNotTop",
-          "score": 3
-        },
-        {
-          "groupName": "footerMultiple",
           "score": 3
         },
         {

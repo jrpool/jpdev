@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Marines</p>
           <p><strong>URL</strong>: https://www.marines.mil/</p>
-          <p><strong>Score</strong>: 2540</p>
+          <p><strong>Score</strong>: 2466</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp14</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp14a</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp14a</code></p>
@@ -40,16 +40,15 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 2540 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 2466 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp14a</code> to produce this digest, briefly explaining how <code>sp14a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>2540</td></tr>
+        <tr><th>total</th><td>2466</td></tr>
         <tr><th>log</th><td>100</td></tr>
         <tr><th>preventions</th><td>100</td></tr>
-        <tr><th>solos</th><td>112</td></tr>
         <tr><th>linkNoText</th><td>424</td></tr>
         <tr><th>linkIndication</th><td>237</td></tr>
         <tr><th>imageNoText</th><td>135</td></tr>
@@ -63,6 +62,7 @@
         <tr><th>buttonNoText</th><td>55</td></tr>
         <tr><th>targetSize</th><td>52</td></tr>
         <tr><th>landmarkConfusion</th><td>51</td></tr>
+        <tr><th>asideConfusion</th><td>46</td></tr>
         <tr><th>zIndexNotZero</th><td>40</td></tr>
         <tr><th>fontSmall</th><td>40</td></tr>
         <tr><th>roleBad</th><td>37</td></tr>
@@ -89,7 +89,6 @@
         <tr><th>ariaReferenceBad</th><td>8</td></tr>
         <tr><th>bannerConfusion</th><td>8</td></tr>
         <tr><th>imageTextLong</th><td>8</td></tr>
-        <tr><th>asideConfusion</th><td>8</td></tr>
         <tr><th>asideNoText</th><td>8</td></tr>
         <tr><th>imageTextBad</th><td>7</td></tr>
         <tr><th>contrastAAA</th><td>7</td></tr>
@@ -120,7 +119,6 @@
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 100. This is based on the amount of browser error logging and miscellaneous logging during the tests.
       <p><span class="componentID">preventions</span>: Score 100. This is based on tests that the page did not allow to be run. That impedes accessibility progress and risks interfering with tools that users with disabilities need.
-      <p><span class="componentID">solos</span>: Score 112. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">linkNoText</span>: Score 424. Issues reported by tests in this category:</p>
       <ul>
@@ -201,6 +199,11 @@
       <ul>
       <li>Package <code>axe</code>, test <code>landmark-unique</code>, score 2 (Landmark has a role and an accessible name that are identical to another)</li>
   <li>Package <code>ibm</code>, test <code>landmark_name_unique</code>, score 48 (Landmark has no unique aria-labelledby or aria-label among landmarks in the same parent region)</li>
+      </ul>
+      <p><span class="componentID">asideConfusion</span>: Score 46. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>ibm</code>, test <code>Rpt_Aria_MultipleComplementaryLandmarks_Implicit</code>, score 42 (Element with a complementary role has no unique purpose label among the complementary-role elements)</li>
+  <li>Package <code>continuum</code>, test <code>527</code>, score 6 (aside element has an accessible name that is non-unique among the aside elements)</li>
       </ul>
       <p><span class="componentID">zIndexNotZero</span>: Score 40. Issues reported by tests in this category:</p>
       <ul>
@@ -334,10 +337,6 @@
       <p><span class="componentID">imageTextLong</span>: Score 8. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>wave</code>, test <code>a:alt_long</code>, score 6 (Long text alternative)</li>
-      </ul>
-      <p><span class="componentID">asideConfusion</span>: Score 8. Issues reported by tests in this category:</p>
-      <ul>
-      <li>Package <code>continuum</code>, test <code>527</code>, score 6 (aside element has an accessible name that is non-unique among the aside elements)</li>
       </ul>
       <p><span class="componentID">asideNoText</span>: Score 8. Issues reported by tests in this category:</p>
       <ul>
@@ -33480,6 +33479,20 @@
             }
           }
         },
+        "asideConfusion": {
+          "ibm": {
+            "Rpt_Aria_MultipleComplementaryLandmarks_Implicit": {
+              "score": 42,
+              "what": "Element with a complementary role has no unique purpose label among the complementary-role elements"
+            }
+          },
+          "continuum": {
+            "527": {
+              "score": 6,
+              "what": "aside element has an accessible name that is non-unique among the aside elements"
+            }
+          }
+        },
         "bannerConfusion": {
           "ibm": {
             "Rpt_Aria_MultipleBannerLandmarks_Implicit": {
@@ -33686,14 +33699,6 @@
             }
           }
         },
-        "asideConfusion": {
-          "continuum": {
-            "527": {
-              "score": 6,
-              "what": "aside element has an accessible name that is non-unique among the aside elements"
-            }
-          }
-        },
         "asideNoText": {
           "continuum": {
             "532": {
@@ -33703,20 +33708,16 @@
           }
         }
       },
-      "solos": {
-        "ibm": {
-          "Rpt_Aria_MultipleComplementaryLandmarks_Implicit": 56
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {
       "ibm": 100
     },
     "summary": {
-      "total": 2540,
+      "total": 2466,
       "log": 100,
       "preventions": 100,
-      "solos": 112,
+      "solos": 0,
       "groups": [
         {
           "groupName": "linkNoText",
@@ -33769,6 +33770,10 @@
         {
           "groupName": "landmarkConfusion",
           "score": 51
+        },
+        {
+          "groupName": "asideConfusion",
+          "score": 46
         },
         {
           "groupName": "zIndexNotZero",
@@ -33872,10 +33877,6 @@
         },
         {
           "groupName": "imageTextLong",
-          "score": 8
-        },
-        {
-          "groupName": "asideConfusion",
           "score": 8
         },
         {

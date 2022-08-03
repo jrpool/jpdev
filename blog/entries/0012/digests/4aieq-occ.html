@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Office of the Comptroller of the Currency (OCC)</p>
           <p><strong>URL</strong>: https://www.occ.treas.gov/</p>
-          <p><strong>Score</strong>: 2765</p>
+          <p><strong>Score</strong>: 2691</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp14</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp14a</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp14a</code></p>
@@ -40,15 +40,14 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 2765 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 2691 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp14a</code> to produce this digest, briefly explaining how <code>sp14a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>2765</td></tr>
+        <tr><th>total</th><td>2691</td></tr>
         <tr><th>log</th><td>108</td></tr>
-        <tr><th>solos</th><td>144</td></tr>
         <tr><th>linkNoText</th><td>596</td></tr>
         <tr><th>parentMissing</th><td>478</td></tr>
         <tr><th>linkIndication</th><td>290</td></tr>
@@ -56,6 +55,7 @@
         <tr><th>targetSize</th><td>200</td></tr>
         <tr><th>tabIndexMissing</th><td>78</td></tr>
         <tr><th>linkForcesNewWindow</th><td>77</td></tr>
+        <tr><th>decorativeImageAltBad</th><td>70</td></tr>
         <tr><th>roleBad</th><td>65</td></tr>
         <tr><th>noLeading</th><td>47</td></tr>
         <tr><th>fontSizeAbsolute</th><td>46</td></tr>
@@ -98,15 +98,14 @@
         <tr><th>tabIndexPositive</th><td>3</td></tr>
         <tr><th>pseudoHeadingRisk</th><td>3</td></tr>
         <tr><th>scrollRisk</th><td>3</td></tr>
-        <tr><th>imageTextRisk</th><td>3</td></tr>
         <tr><th>decorativeTitle</th><td>3</td></tr>
+        <tr><th>imageTextRisk</th><td>3</td></tr>
         <tr><th>pdfLink</th><td>3</td></tr>
         </tbody>
       </table>
       <h2>Issue summary</h2>
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 108. This is based on the amount of browser error logging and miscellaneous logging during the tests.
-      <p><span class="componentID">solos</span>: Score 144. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">linkNoText</span>: Score 596. Issues reported by tests in this category:</p>
       <ul>
@@ -142,6 +141,10 @@
       <p><span class="componentID">linkForcesNewWindow</span>: Score 77. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>tenon</code>, test <code>218</code>, score 75 (Link opens in a new window without user control)</li>
+      </ul>
+      <p><span class="componentID">decorativeImageAltBad</span>: Score 70. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>ibm</code>, test <code>WCAG20_Img_PresentationImgHasNonNullAlt</code>, score 68 (Image designated as decorative has no alt="")</li>
       </ul>
       <p><span class="componentID">roleBad</span>: Score 65. Issues reported by tests in this category:</p>
       <ul>
@@ -330,13 +333,14 @@
       <ul>
       <li>Package <code>htmlcs</code>, test <code>w:AA.1_4_10.C32,C31,C33,C38,SCR34,G206</code>, score 1 (Fixed-position element may force bidirectional scrolling)</li>
       </ul>
+      <p><span class="componentID">decorativeTitle</span>: Score 3. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>ibm</code>, test <code>WCAG20_Img_TitleEmptyWhenAltNull</code>, score 1 (Image alt attribute is empty, but its title attribute is not)</li>
+  <li>Package <code>wave</code>, test <code>a:image_title</code>, score 1 (Image has a title attribute value but no alt value)</li>
+      </ul>
       <p><span class="componentID">imageTextRisk</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>wave</code>, test <code>a:alt_suspicious</code>, score 1 (Image text alternative is suspicious)</li>
-      </ul>
-      <p><span class="componentID">decorativeTitle</span>: Score 3. Issues reported by tests in this category:</p>
-      <ul>
-      <li>Package <code>wave</code>, test <code>a:image_title</code>, score 1 (Image has a title attribute value but no alt value)</li>
       </ul>
       <p><span class="componentID">pdfLink</span>: Score 3. Issues reported by tests in this category:</p>
       <ul>
@@ -29744,6 +29748,28 @@
             }
           }
         },
+        "decorativeTitle": {
+          "ibm": {
+            "WCAG20_Img_TitleEmptyWhenAltNull": {
+              "score": 1,
+              "what": "Image alt attribute is empty, but its title attribute is not"
+            }
+          },
+          "wave": {
+            "a:image_title": {
+              "score": 1,
+              "what": "Image has a title attribute value but no alt value"
+            }
+          }
+        },
+        "decorativeImageAltBad": {
+          "ibm": {
+            "WCAG20_Img_PresentationImgHasNonNullAlt": {
+              "score": 68,
+              "what": "Image designated as decorative has no alt=\"\""
+            }
+          }
+        },
         "tableHeaderless": {
           "ibm": {
             "RPT_Table_DataHeadingsAria": {
@@ -29781,14 +29807,6 @@
             "a:alt_suspicious": {
               "score": 1,
               "what": "Image text alternative is suspicious"
-            }
-          }
-        },
-        "decorativeTitle": {
-          "wave": {
-            "a:image_title": {
-              "score": 1,
-              "what": "Image has a title attribute value but no alt value"
             }
           }
         },
@@ -29927,19 +29945,14 @@
           }
         }
       },
-      "solos": {
-        "ibm": {
-          "WCAG20_Img_TitleEmptyWhenAltNull": 4,
-          "WCAG20_Img_PresentationImgHasNonNullAlt": 68
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {},
     "summary": {
-      "total": 2765,
+      "total": 2691,
       "log": 108,
       "preventions": 0,
-      "solos": 144,
+      "solos": 0,
       "groups": [
         {
           "groupName": "linkNoText",
@@ -29968,6 +29981,10 @@
         {
           "groupName": "linkForcesNewWindow",
           "score": 77
+        },
+        {
+          "groupName": "decorativeImageAltBad",
+          "score": 70
         },
         {
           "groupName": "roleBad",
@@ -30138,11 +30155,11 @@
           "score": 3
         },
         {
-          "groupName": "imageTextRisk",
+          "groupName": "decorativeTitle",
           "score": 3
         },
         {
-          "groupName": "decorativeTitle",
+          "groupName": "imageTextRisk",
           "score": 3
         },
         {

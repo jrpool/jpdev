@@ -20,7 +20,7 @@
         <div id="synopsis">
           <p><strong>Page</strong>: Government National Mortgage Association (Ginnie Mae)</p>
           <p><strong>URL</strong>: https://www.ginniemae.gov/pages/default.aspx</p>
-          <p><strong>Score</strong>: 3379</p>
+          <p><strong>Score</strong>: 3320</p>
           <p><strong>Tested by</strong>: Testaro, procedure <code>tp14</code></p>
           <p><strong>Scored by</strong>: Testilo, procedure <code>sp14a</code></p>
           <p><strong>Digested by</strong>: Testilo, procedure <code>dp14a</code></p>
@@ -40,15 +40,14 @@
         <li><a href="https://wave.webaim.org/api/">WAVE</a> by WebAIM</li>
       </ul>
       <p>Testaro produced a report enumerating the test results.</p>
-      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 3379 (where 0 is the best possible score). The scored report is appended below.</p>
+      <p><a href="https://www.npmjs.com/package/testilo">Testilo</a> processed the report and used the <code>sp14a</code> scoring procedure to compute partial and total scores for the page. The total score is 3320 (where 0 is the best possible score). The scored report is appended below.</p>
       <p>Finally, Testilo used procedure <code>dp14a</code> to produce this digest, briefly explaining how <code>sp14a</code> computed the scores.</p>
       <h2>Score summary</h2>
       <table class="allBorder secondCellRight">
         <caption>Score components</caption>
         <tbody class="headersLeft">
-        <tr><th>total</th><td>3379</td></tr>
+        <tr><th>total</th><td>3320</td></tr>
         <tr><th>log</th><td>21</td></tr>
-        <tr><th>solos</th><td>112</td></tr>
         <tr><th>focusableHidden</th><td>1186</td></tr>
         <tr><th>roleBad</th><td>346</td></tr>
         <tr><th>focusIndication</th><td>277</td></tr>
@@ -63,7 +62,9 @@
         <tr><th>contrastAAA</th><td>42</td></tr>
         <tr><th>titleRedundant</th><td>37</td></tr>
         <tr><th>contentBeyondLandmarks</th><td>32</td></tr>
+        <tr><th>figureNoText</th><td>30</td></tr>
         <tr><th>ariaBadAttribute</th><td>26</td></tr>
+        <tr><th>articleConfusion</th><td>23</td></tr>
         <tr><th>focusableOperable</th><td>21</td></tr>
         <tr><th>linkVague</th><td>20</td></tr>
         <tr><th>imageNoText</th><td>19</td></tr>
@@ -108,7 +109,6 @@
       <h2>Issue summary</h2>
       <h3>Special issues</h3>
       <p><span class="componentID">log</span>: Score 21. This is based on the amount of browser error logging and miscellaneous logging during the tests.
-      <p><span class="componentID">solos</span>: Score 112. This is based on issues reported by unclassified tests. Details are in the report.
       <h3>Classified issues</h3>
       <p><span class="componentID">focusableHidden</span>: Score 1186. Issues reported by tests in this category:</p>
       <ul>
@@ -185,9 +185,17 @@
       <li>Package <code>axe</code>, test <code>region</code>, score 9 (Some page content is not contained by landmarks)</li>
   <li>Package <code>ibm</code>, test <code>Rpt_Aria_OrphanedContent_Native_Host_Sematics</code>, score 26 (Content does not reside within an element with a landmark role)</li>
       </ul>
+      <p><span class="componentID">figureNoText</span>: Score 30. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>ibm</code>, test <code>HAAC_Figure_label</code>, score 28 (figure element has no associated label)</li>
+      </ul>
       <p><span class="componentID">ariaBadAttribute</span>: Score 26. Issues reported by tests in this category:</p>
       <ul>
       <li>Package <code>ibm</code>, test <code>aria_semantics_attribute</code>, score 24 (ARIA attributes is invalid for the element or ARIA role to which it is assigned)</li>
+      </ul>
+      <p><span class="componentID">articleConfusion</span>: Score 23. Issues reported by tests in this category:</p>
+      <ul>
+      <li>Package <code>ibm</code>, test <code>Rpt_Aria_MultipleArticleRoles_Implicit</code>, score 21 (Element with an article role has no unique purpose label among the article-role elements)</li>
       </ul>
       <p><span class="componentID">focusableOperable</span>: Score 21. Issues reported by tests in this category:</p>
       <ul>
@@ -39758,11 +39766,27 @@
             }
           }
         },
+        "articleConfusion": {
+          "ibm": {
+            "Rpt_Aria_MultipleArticleRoles_Implicit": {
+              "score": 21,
+              "what": "Element with an article role has no unique purpose label among the article-role elements"
+            }
+          }
+        },
         "landmarkConfusion": {
           "ibm": {
             "landmark_name_unique": {
               "score": 6,
               "what": "Landmark has no unique aria-labelledby or aria-label among landmarks in the same parent region"
+            }
+          }
+        },
+        "figureNoText": {
+          "ibm": {
+            "HAAC_Figure_label": {
+              "score": 28,
+              "what": "figure element has no associated label"
             }
           }
         },
@@ -39963,19 +39987,14 @@
           }
         }
       },
-      "solos": {
-        "ibm": {
-          "Rpt_Aria_MultipleArticleRoles_Implicit": 28,
-          "HAAC_Figure_label": 28
-        }
-      }
+      "solos": {}
     },
     "preventionScores": {},
     "summary": {
-      "total": 3379,
+      "total": 3320,
       "log": 21,
       "preventions": 0,
-      "solos": 112,
+      "solos": 0,
       "groups": [
         {
           "groupName": "focusableHidden",
@@ -40034,8 +40053,16 @@
           "score": 32
         },
         {
+          "groupName": "figureNoText",
+          "score": 30
+        },
+        {
           "groupName": "ariaBadAttribute",
           "score": 26
+        },
+        {
+          "groupName": "articleConfusion",
+          "score": 23
         },
         {
           "groupName": "focusableOperable",
