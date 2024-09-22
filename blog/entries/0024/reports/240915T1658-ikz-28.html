@@ -1,0 +1,2226 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Testilo">
+    <meta name="creator" content="Testilo">
+    <meta name="publisher" name="Testilo">
+    <meta name="description" content="report of accessibility testing of a web page">
+    <meta name="keywords" content="accessibility a11y web testing">
+    <title>Accessibility digest</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script id="script" type="module">
+      const sortByA = document.getElementById('sortByA');
+      const sortByB = document.getElementById('sortByB');
+      const sortBasisSpan = document.getElementById('sortBasis');
+      const sortBasisASpan = document.getElementById('sortBasisA');
+      const sortBasisBSpan = document.getElementById('sortBasisB');
+      const sumBody = document.getElementById('sumBody');
+      const rows = Array.from(sumBody.children);
+      const sortBases = {
+        WCAG: {
+          col: 1,
+          A: 'weight',
+          B: 'score'
+        },
+        weight: {
+          col: 2,
+          A: 'WCAG',
+          B: 'score'
+        },
+        score: {
+          col: 3,
+          A: 'WCAG',
+          B: 'weight'
+        }
+      };
+      // FUNCTION DEFINITION START
+      const sortRowsBy = basis => {
+        if (basis === 'WCAG') {
+          rows.sort((a, b) => {
+            const sorters = [a, b].map(row => {
+              const wcagParts = row.children[sortBases[basis].col].textContent.split('.');
+              const wcagNums = wcagParts.map(part => Number.parseInt(part, 10));
+              return 100 * (wcagNums[0] || 0) + 20 * (wcagNums[1] || 0) + (wcagNums[2] || 0);
+            });
+            return sorters[0] - sorters[1];
+          });
+        }
+        else if (basis === 'weight') {
+          rows.sort((a, b) => {
+            const sorters = [a, b].map(row => row.children[sortBases[basis].col].textContent);
+            return sorters[1] - sorters[0];
+          });
+        }
+        else if (basis === 'score') {
+          rows.sort((a, b) => {
+            const sorters = [a, b]
+            .map(row => Number.parseInt(row.children[sortBases[basis].col].textContent));
+            return sorters[1] - sorters[0];
+          });
+        }
+        sumBody.textContent = '';
+        rows.forEach(row => {
+          sumBody.appendChild(row);
+        });
+      };
+      // FUNCTION DEFINITION END
+      // When a sort button is activated:
+      document.getElementById('sortButtons').addEventListener('click', event => {
+        const whichButton = event.target.id.slice(-1);
+        const oldBasis = sortBasisSpan.textContent;
+        const newBasis = sortBases[oldBasis][whichButton];
+        // Re-sort the table.
+        sortRowsBy(newBasis);
+        // Revise the variable texts.
+        sortBasisSpan.textContent = newBasis;
+        sortBasisASpan.textContent = sortBases[newBasis].A;
+        sortBasisBSpan.textContent = sortBases[newBasis].B;
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Accessibility digest</h1>
+        <h2>Contents</h2>
+        <ul>
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#summary">Issue summary</a></li>
+          <li><a href="#itemization">Itemized issues</a></li>
+          <li><a href="#elements">Elements with issues</a></li>
+        </ul>
+        <table class="allBorder">
+          <caption>Synopsis</caption>
+          <tr><th>Page</th><td>Matthew Hill;Libertarian;Vermont</td></tr>
+          <tr><th>URL</th><td>https://www.matthillforsenate.org/</td></tr>
+          <tr><th>Test date</th><td>2024/09/22</td></tr>
+          <tr><th>Score</th><td>5942</td></tr>
+        </table>
+        <table class="allBorder">
+          <caption>Configuration</caption>
+          <tr><th>Redirections</th><td>permitted</td></tr>
+          <tr><th>Tool isolation</th><td>no</td></tr>
+          <tr><th>Report format(s)</th><td>standard</td></tr>
+          <tr><th>Requester</th><td></td></tr>
+          <tr><th>Device</th><td>default</td></tr>
+          <tr><th>Browser type</th><td>webkit</td></tr>
+          <tr><th>Reduced motion</th><td>not requested</td></tr>
+          <tr><th>Tested by</th><td>Testaro, procedure <code>senate2024</code></td></tr>
+          <tr><th>Scored by</th><td>Testilo, procedure <code>tsp50</code></td></tr>
+          <tr><th>Digested by</th><td>Testilo, procedure <code>tdp50</code></td></tr>
+          <tr>
+            <th>Full report</th>
+            <td><a href="240915T1658-ikz-28.json"><code>240915T1658-ikz-28.json</code></a></td>
+          </tr>
+        </table>
+      </header>
+      <h2 id="intro">Introduction</h2>
+      <p>How <a href="https://www.w3.org/WAI/">accessible</a> is the Matthew Hill;Libertarian;Vermont web page at <a href="https://www.matthillforsenate.org/"><code>https://www.matthillforsenate.org/</code></a>?</p>
+      <p>This digest gives one answer to that question. Eleven different tools (Alfa, ASLint, Axe, Editoria11y, Equal Access, HTML CodeSniffer, Nu Html Checker, QualWeb, Testaro, WAVE, and WallyAX) tested the page to check its compliance with their accessibility rules. In all, the tools define about a thousand rules, which are classified here into about three hundred accessibility issues.</p>
+      <p>The results were interpreted to yield a score, with 0 being ideal. The score for this page was 5942, the sum of 730 for the count of issues, 4024 for specific issues, 0 for unclassified rule violations, 690 for tool-by-tool ratings, 416 for the count of violating elements, 0 for the page preventing tools from running, 82 for browser warnings, and 0 for delayed page responses.</p>
+      <details>
+        <summary>How the page was scored</summary>
+        <h3>Introduction</h3>
+        <p>This is an explanation of the scoring of the page.</p>
+        <h3>Motivations for scoring</h3>
+        <p>Why score? Specifically, why aggregate many facts about a page into a single number?</p>
+        <p>One motivation is to simplify comparison and tracking. If you want to compare a page with other pages, or if you want to track changes in a page over time, aggregating many test results for each page into one page score simplifies the task. It becomes possible to say things like <q>Page A is more accessible than page B</q> or <q>Page A is becoming more accessible over time</q>.</p>
+        <p>Another motivation is to influence behavior. A score arises from decisions about importance, urgency, and other attributes. People may use scores to award benefits, impose costs, or prioritize work. So, scoring can influence who gets and does what.</p>
+        <h3>How to score?</h3>
+        <p>Scoring is subjective. Accessibility testing tools use various scoring procedures, based on various ideas.</p>
+        <p>The built-in scoring procedures of Testilo are based on the idea that multiple attributes should affect a web-page accessibility score, including:</p>
+        <ul>
+          <li>conformity to standards</li>
+          <li>adherence to best practices</li>
+          <li>how many different issues exist</li>
+          <li>how many instances of each issue exist</li>
+          <li>how many tools report violations of their rules</li>
+          <li>how trustworthy each test of each tool is</li>
+          <li>how serious each violation of a rule is</li>
+          <li>simplicity</li>
+          <li>speed of page responses</li>
+          <li>testability</li>
+          <li>conformity to expectations of browsers</li>
+        </ul>
+        <p>Some ideas found elsewhere in accessibility scoring are <strong>rejected</strong> by the Testilo procedures:</p>
+        <ul>
+          <li>density: that an accessibility score should be based on the count of accessibility faults as a fraction of the count of potential accessibility faults (so, the score of a large page with particular faults should be better than the score of a smaller page with exactly those faults)</li>
+          <li>applicability: that the score of a page should depend on the types of its content (so, the score of a page with accessible video content should be better than the score of an otherwise identical page without video content)</li>
+        </ul>
+        <h3>Scoring method summary</h3>
+        <p>The scoring method is found in the code of the procedure. The file for any procedure <code>tspnn</code> is in the file <code>procs/score/tspnn.js</code> within the <a href="https://www.npmjs.com/package/testilo?activeTab=code">Testilo package</a>.</p>
+        <p>The score computed by this procedure for any page is a non-negative number. The numbers represent accessibility faults, so a higher-scoring page is considered <strong>less</strong> accessible than a lower-scoring page. The best possible score is 0.</p>
+        <p>The procedure makes the score of a page the sum of 7 components:</p>
+        <ul>
+          <li>issue score: how many instances of issues were reported</li>
+          <li>solo score: how many violations of rules not yet classified into issues were reported</li>
+          <li>tool score: how many violations of their rules did tools report</li>
+          <li>element score: how many HTML elements did any tool identify as violating at least one tool rule</li>
+          <li>prevention score: how many tools were unable to perform their tests on the page</li>
+          <li>log score: how much logging of page errors and other events did the browser do</li>
+          <li>latency score: how long did the page take to load and become stable</li>
+        </ul>
+        <h3>Scoring method details</h3>
+        <p>The above component descriptions omit various details.</p>
+        <p>About a thousand tool rules are classified into <dfn>issues</dfn> in the <code>tic50.js</code> file used by this procedure. Each of those rules has a <dfn>quality</dfn>, ranging from 0 to 1. When the <strong>issue score</strong> is computed, the count of violations of each rule is multiplied by the quality of that rule. Whichever tool has the largest quality-weighted violation count for an issue, that count is treated as the instance count for the issue. Thus, if 8 tools each report 15 violations within the issue, and their rule qualities are all 1, the instance count is 15, not 120. Moreover, the issue itself has a <dfn>weight</dfn>, ranging from 1 to 4, representing its importance. This instance count is multiplied by that weight. That product is further multiplied by the <code>issueCountWeight</code> value, namely 10. That final product is further adjusted if the issue is inherently limited in instance count. For example, if the issue is that the page <code>html</code> element has no <code>lang</code> attribute, the instance count is limited to 1. If there is such a limit, the <code>maxWeight</code> value, namely 30, is divided by the actual instance count and the quotient is added to 1. That product (or 1 if there is no limit) is multiplied by the instance count, and then the result is treated as the contribution of the issue to the issue score.</p>
+        <p>Each <dfn>solo</dfn> (not yet issue-classified) rule violation is multiplied by the sum of 1 and the ordinal severity of the rule, to produce the <strong>solo score</strong>.</p>
+        <p>Each rule violation reported by each tool is severity-weighted in the same way as solo rule violations are. Then the sum of those violations is multiplied by the <code>toolWeight</code> value, namely 0.1, to produce the <strong>tool score</strong>.</p>
+        <p>The count of elements reported as violators of any rule is multiplied by the <code>elementWeight</code> value, namely 2, to produce the <strong>element score</strong>.</p>
+        <p>The count of prevented Testaro rules is multiplied by the <code>testaroRulePreventionWeight</code> quantity, namely 30, and the count of other prevented tools is multiplied by the <code>preventionWeight</code> value, namely 300, to produce the <strong>prevention score</strong>.</p>
+        <p>The <strong>log score</strong> is the sum of several components:</p>
+        <ul>
+          <li>log count: how many times the browser logged a message</li>
+          <li>log size: how many characters large the collection of browser log messages was</li>
+          <li>error log count: how many browser log messages reported page errors</li>
+          <li>error log size: how many characters large the collection of browser log messages reporting page errors was</li>
+          <li>prohibition count: how many times the browser logged a prohibited response status (403)</li>
+          <li>visit rejection count: how many times the browser logged an abnormal response status</li>
+        </ul>
+        <p>Each of these components is multiplied by a weight found in the <code>logWeights</code> object.</p>
+        <p>Finally, the <strong>latency score</strong> is based on how much longer it took for the page to become loaded and stable than expected. The expected total duration in seconds is the <code>normalLatency</code> value, namely 22 seconds (that is 2 seconds per visit, multiplied by the 11 visits of the 11 tools). This is subtracted from the actual total latency, and that difference is multiplied by the <code>latencyWeight</code> amount, namely 2.</p>
+      </details>
+      <h2 id="summary">Issue summary</h2>
+      <h3>Details about this summary</h3>
+      <ul>
+        <li>This table shows the numbers of rule violations (<q>instances</q>) reported by one or more tools, classified by issue.</li>
+        <li>Tools often disagree on instance counts, because of non-equivalent rules or invalid tests. You can inspect the <a href="240915T1658-ikz-28.json">full report</a> to diagnose differences.</li>
+        <li>The <q>WCAG</q> value is the principle, guideline, or success criterion of the <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines</a> most relevant to the issue.</li>
+        <li>The <q>Weight</q> value estimates the importance of an instance of the issue, from 1 (minor or advisory) to 4 (serious).</li>
+        <li>The <q>Score</q> value is the contribution of the instances of the issue to the page score.</li>
+        <li>An instance count of 0 means the tool has a rule belonging to the issue but reported no violations of that rule, although at least one tool reported at least one violation.</li>
+        <li>You can sort this table by WCAG, weight, or score.</li>
+      </ul>
+      <h3>The summary</h3>
+      <p role="status">Sorting is by <span id="sortBasis">score</span>.</p>
+      <p id="sortButtons">
+        <button id="sortButtonA" type="button">Sort by <span id="sortBasisA">WCAG</span></button>
+        <button id="sortButtonB" type="button">Sort by <span id="sortBasisB">weight</span></button>
+      </p>
+      <table class="allBorder thirdCellRight">
+        <caption>How many violations each tool reported, by issue</caption>
+        <thead>
+          <tr><th>Issue</th><th>WCAG</th><th>Weight</th><th>Score</th><th>Instance counts</th></tr>
+        </thead>
+        <tbody id="sumBody" class="headersLeft">
+          <tr><th>attribute invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">4</td><td class="right num">1008</td><td><code>ibm</code>:2, <code>nuVal</code>:252, <code>aslint</code>:0, <code>axe</code>:0, <code>wax</code>:0</td></tr>
+        <tr><th>target empty</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">4</td><td class="right num">456</td><td><code>nuVal</code>:114</td></tr>
+        <tr><th>font size absolute</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a><td class="right num">2</td><td class="right num">333</td><td><code>qualWeb</code>:208, <code>alfa</code>:0</td></tr>
+        <tr><th>invalid landmark child of navigation role</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a><td class="right num">4</td><td class="right num">252</td><td><code>aslint</code>:63</td></tr>
+        <tr><th>container size unit not percentage</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">1.4.10</a><td class="right num">1</td><td class="right num">143</td><td><code>qualWeb</code>:143</td></tr>
+        <tr><th>meta bans zoom</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a><td class="right num">4</td><td class="right num">124</td><td><code>aslint</code>:1, <code>alfa</code>:0, <code>axe</code>:0, <code>nuVal</code>:0, <code>qualWeb</code>:0, <code>wax</code>:0</td></tr>
+        <tr><th>overflow hidden?</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a><td class="right num">1</td><td class="right num">112</td><td><code>qualWeb</code>:112</td></tr>
+        <tr><th>focusable element hidden</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">4</td><td class="right num">92</td><td><code>alfa</code>:1, <code>axe</code>:1, <code>ibm</code>:23, <code>aslint</code>:0</td></tr>
+        <tr><th>CSS invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a><td class="right num">3</td><td class="right num">90</td><td><code>nuVal</code>:30</td></tr>
+        <tr><th>operable element not focusable</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a><td class="right num">4</td><td class="right num">88</td><td><code>testaro</code>:22</td></tr>
+        <tr><th>link indication poor</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html">1.3.3</a><td class="right num">2</td><td class="right num">82</td><td><code>testaro</code>:41, <code>alfa</code>:0, <code>axe</code>:0</td></tr>
+        <tr><th>attribute value invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">4</td><td class="right num">80</td><td><code>nuVal</code>:20, <code>ibm</code>:0, <code>wax</code>:0</td></tr>
+        <tr><th>parent invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">4</td><td class="right num">80</td><td><code>nuVal</code>:20, <code>ibm</code>:0</td></tr>
+        <tr><th>content beyond landmarks</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a><td class="right num">1</td><td class="right num">78</td><td><code>alfa</code>:78, <code>axe</code>:18, <code>ibm</code>:58, <code>wax</code>:51</td></tr>
+        <tr><th>contrast poor</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">1.4.3</a><td class="right num">4</td><td class="right num">68</td><td><code>alfa</code>:1, <code>axe</code>:17, <code>htmlcs</code>:4, <code>qualWeb</code>:4, <code>wave</code>:4, <code>wax</code>:2, <code>aslint</code>:0, <code>ibm</code>:0</td></tr>
+        <tr><th>links named identically</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">2.4.4</a><td class="right num">2</td><td class="right num">60</td><td><code>aslint</code>:19, <code>qualWeb</code>:20, <code>testaro</code>:30</td></tr>
+        <tr><th>all-capital text</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html">3.1.5</a><td class="right num">1</td><td class="right num">52</td><td><code>aslint</code>:52, <code>ed11y</code>:1, <code>testaro</code>:14, <code>alfa</code>:0</td></tr>
+        <tr><th>text contrast improvable</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html">1.4.6</a><td class="right num">1</td><td class="right num">51</td><td><code>alfa</code>:6, <code>aslint</code>:49, <code>axe</code>:5, <code>htmlcs</code>:16, <code>qualWeb</code>:51, <code>wax</code>:5</td></tr>
+        <tr><th>text contrast not testable</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">1.4.3</a><td class="right num">1</td><td class="right num">50</td><td><code>alfa</code>:4, <code>htmlcs</code>:50, <code>aslint</code>:0</td></tr>
+        <tr><th>skip method missing or invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html">2.4.1</a><td class="right num">3</td><td class="right num">48</td><td><code>wax</code>:1, <code>axe</code>:0, <code>ibm</code>:0, <code>wave</code>:0</td></tr>
+        <tr><th>tab-opening link action unstated</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/change-on-request.html">3.2.5</a><td class="right num">3</td><td class="right num">45</td><td><code>ed11y</code>:30</td></tr>
+        <tr><th>target small</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html">2.5.5</a><td class="right num">1</td><td class="right num">37</td><td><code>alfa</code>:4, <code>testaro</code>:37</td></tr>
+        <tr><th>item makes testing inconclusive</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a><td class="right num">1</td><td class="right num">37</td><td><code>alfa</code>:37</td></tr>
+        <tr><th>type redundant</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">1</td><td class="right num">36</td><td><code>nuVal</code>:36</td></tr>
+        <tr><th>void element has trailing slash</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a><td class="right num">1</td><td class="right num">31</td><td><code>nuVal</code>:31</td></tr>
+        <tr><th>large visible-element count</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/navigable.html">2.4</a><td class="right num">1</td><td class="right num">31</td><td><code>testaro</code>:1</td></tr>
+        <tr><th>element obsolete</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a><td class="right num">3</td><td class="right num">30</td><td><code>alfa</code>:1, <code>aslint</code>:5, <code>htmlcs</code>:3, <code>nuVal</code>:10, <code>qualWeb</code>:5</td></tr>
+        <tr><th>tab-opening link action unstated?</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/change-on-request.html">3.2.5</a><td class="right num">1</td><td class="right num">30</td><td><code>aslint</code>:30, <code>htmlcs</code>:11, <code>testaro</code>:30</td></tr>
+        <tr><th>code invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a><td class="right num">3</td><td class="right num">30</td><td><code>nuVal</code>:10, <code>qualWeb</code>:0, <code>wave</code>:0</td></tr>
+        <tr><th>button not named</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">4</td><td class="right num">28</td><td><code>aslint</code>:7, <code>alfa</code>:0, <code>axe</code>:0, <code>htmlcs</code>:0, <code>nuVal</code>:0, <code>qualWeb</code>:0, <code>wave</code>:0, <code>wax</code>:0</td></tr>
+        <tr><th>focus indication poor</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html">2.4.7</a><td class="right num">4</td><td class="right num">28</td><td><code>testaro</code>:7, <code>alfa</code>:0, <code>aslint</code>:0</td></tr>
+        <tr><th>link element invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">4</td><td class="right num">20</td><td><code>htmlcs</code>:5, <code>wax</code>:5, <code>nuVal</code>:0</td></tr>
+        <tr><th>link element invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">4</td><td class="right num">20</td><td><code>nuVal</code>:5, <code>htmlcs</code>:0</td></tr>
+        <tr><th>font small</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/distinguishable.html">1.4</a><td class="right num">3</td><td class="right num">18</td><td><code>aslint</code>:6, <code>alfa</code>:0, <code>testaro</code>:0, <code>wave</code>:0</td></tr>
+        <tr><th>code obsolete</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a><td class="right num">3</td><td class="right num">18</td><td><code>ibm</code>:6, <code>nuVal</code>:0</td></tr>
+        <tr><th>tabindex redundant</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">1</td><td class="right num">15</td><td><code>aslint</code>:15</td></tr>
+        <tr><th>link name vague</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">2.4.4</a><td class="right num">1</td><td class="right num">13</td><td><code>aslint</code>:10, <code>ed11y</code>:13, <code>wave</code>:0</td></tr>
+        <tr><th>aria attribute invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">4</td><td class="right num">12</td><td><code>alfa</code>:3, <code>axe</code>:0, <code>ibm</code>:0, <code>nuVal</code>:0, <code>qualWeb</code>:0, <code>wax</code>:0</td></tr>
+        <tr><th>svg image not named</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">1.1.1</a><td class="right num">4</td><td class="right num">12</td><td><code>aslint</code>:3, <code>alfa</code>:0, <code>axe</code>:0, <code>ibm</code>:0, <code>qualWeb</code>:0, <code>wax</code>:0</td></tr>
+        <tr><th>meta invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">3</td><td class="right num">12</td><td><code>nuVal</code>:4</td></tr>
+        <tr><th>color missing</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">1.4.3</a><td class="right num">4</td><td class="right num">12</td><td><code>qualWeb</code>:3</td></tr>
+        <tr><th>title attribute invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">4</td><td class="right num">12</td><td><code>testaro</code>:3</td></tr>
+        <tr><th>heading level skipped</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">2</td><td class="right num">10</td><td><code>alfa</code>:1, <code>axe</code>:5, <code>wave</code>:1, <code>wax</code>:1, <code>ed11y</code>:0</td></tr>
+        <tr><th>image dubiously named</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">1.1.1</a><td class="right num">1</td><td class="right num">10</td><td><code>aslint</code>:4, <code>qualWeb</code>:10, <code>wave</code>:0</td></tr>
+        <tr><th>semantic properties represented with styles</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">2</td><td class="right num">10</td><td><code>wax</code>:5, <code>htmlcs</code>:0</td></tr>
+        <tr><th>landmarks not distinctly named</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a><td class="right num">3</td><td class="right num">9</td><td><code>axe</code>:1, <code>ibm</code>:3, <code>wax</code>:1</td></tr>
+        <tr><th>navigations not distinctly named</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a><td class="right num">3</td><td class="right num">9</td><td><code>ibm</code>:3</td></tr>
+        <tr><th>skip method missing or invalid?</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html">2.4.1</a><td class="right num">1</td><td class="right num">8</td><td><code>alfa</code>:1, <code>qualWeb</code>:0</td></tr>
+        <tr><th>position sticky</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">1.4.10</a><td class="right num">1</td><td class="right num">8</td><td><code>htmlcs</code>:8, <code>aslint</code>:0</td></tr>
+        <tr><th>inconsistent heading, link, or button styles</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html">3.2.4</a><td class="right num">1</td><td class="right num">7</td><td><code>testaro</code>:7</td></tr>
+        <tr><th>heading heads nothing</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">2</td><td class="right num">6</td><td><code>alfa</code>:3, <code>wax</code>:0</td></tr>
+        <tr><th>role redundant</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">1</td><td class="right num">6</td><td><code>ibm</code>:2, <code>nuVal</code>:6</td></tr>
+        <tr><th>invalid at-rule</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a><td class="right num">3</td><td class="right num">6</td><td><code>nuVal</code>:2</td></tr>
+        <tr><th>z-index not zero</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/distinguishable.html">1.4</a><td class="right num">1</td><td class="right num">6</td><td><code>testaro</code>:6</td></tr>
+        <tr><th>text and image link not combined</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">2.4.4</a><td class="right num">2</td><td class="right num">6</td><td><code>wave</code>:3, <code>aslint</code>:0, <code>qualWeb</code>:0</td></tr>
+        <tr><th>line height low</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html">1.4.8</a><td class="right num">2</td><td class="right num">4</td><td><code>alfa</code>:2, <code>testaro</code>:0</td></tr>
+        <tr><th>dialog not named</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">4</td><td class="right num">4</td><td><code>aslint</code>:1, <code>axe</code>:0, <code>wax</code>:0</td></tr>
+        <tr><th>heading structure illogical</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">2</td><td class="right num">4</td><td><code>aslint</code>:2, <code>htmlcs</code>:1</td></tr>
+        <tr><th>element not scrollable</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a><td class="right num">4</td><td class="right num">4</td><td><code>qualWeb</code>:1, <code>alfa</code>:0, <code>axe</code>:0</td></tr>
+        <tr><th>role assigned instead of implicit</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">1</td><td class="right num">4</td><td><code>testaro</code>:4</td></tr>
+        <tr><th>ID not unique</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/parsing.html">4.1.1</a><td class="right num">4</td><td class="right num">4</td><td><code>wax</code>:1, <code>alfa</code>:0, <code>aslint</code>:0, <code>axe</code>:0, <code>htmlcs</code>:0, <code>ibm</code>:0, <code>nuVal</code>:0, <code>qualWeb</code>:0</td></tr>
+        <tr><th>target very small</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">2.5.8</a><td class="right num">3</td><td class="right num">3</td><td><code>alfa</code>:1</td></tr>
+        <tr><th>role invalid</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">3</td><td class="right num">3</td><td><code>ibm</code>:1, <code>alfa</code>:0, <code>aslint</code>:0, <code>axe</code>:0, <code>nuVal</code>:0, <code>qualWeb</code>:0</td></tr>
+        <tr><th>focusable element not active</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a><td class="right num">3</td><td class="right num">3</td><td><code>qualWeb</code>:1, <code>axe</code>:0</td></tr>
+        <tr><th>box size absolute</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a><td class="right num">3</td><td class="right num">3</td><td><code>qualWeb</code>:1</td></tr>
+        <tr><th>link href missing</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">2</td><td class="right num">2</td><td><code>aslint</code>:1, <code>htmlcs</code>:1, <code>testaro</code>:1, <code>nuVal</code>:0</td></tr>
+        <tr><th>nav links not list</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">2</td><td class="right num">2</td><td><code>htmlcs</code>:1</td></tr>
+        <tr><th>no option focusable</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a><td class="right num">1</td><td class="right num">2</td><td><code>ibm</code>:2</td></tr>
+        <tr><th>element not focusable</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a><td class="right num">4</td><td class="right num">2</td><td><code>testaro</code>:1, <code>alfa</code>:0, <code>qualWeb</code>:0</td></tr>
+        <tr><th>heading names repeated</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">2</td><td class="right num">2</td><td><code>testaro</code>:1, <code>wax</code>:1, <code>aslint</code>:0</td></tr>
+        <tr><th>hr misused</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">1</td><td class="right num">1</td><td><code>aslint</code>:1, <code>testaro</code>:1</td></tr>
+        <tr><th>heading abnormally long</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a><td class="right num">1</td><td class="right num">1</td><td><code>ed11y</code>:1</td></tr>
+        <tr><th>event not keyboard-triggerable?</th><td class="center"><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a><td class="right num">1</td><td class="right num">1</td><td><code>htmlcs</code>:1, <code>qualWeb</code>:1, <code>wave</code>:1</td></tr>
+        </tbody>
+      </table>
+      <h2 id="itemization">Itemized issues</h2>
+      <p>The reported rule violations are itemized below, issue by issue. Additional details can be inspected in the <a href="240915T1658-ikz-28.json">full report</a>.</p>
+      <h3 class="bars">Issue: attribute invalid</h3>
+      <p>Impact: Item behaves improperly</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 1008</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_attribute_valid</code></h5>
+      <p>Description: ARIA attribute is invalid for the role of its element</p>
+      <p>Count of instances: 2</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>^Attribute .+ not allowed on element .+ at this point.*$</code></h5>
+      <p>Description: Attribute not allowed on this element</p>
+      <p>Count of instances: 244</p>
+      <h5>Rule <code>^Attribute .+ is not serializable as XML 1[.]0.*$</code></h5>
+      <p>Description: Attribute is invalidly nonserializable</p>
+      <p>Count of instances: 8</p>
+      <h3 class="bars">Issue: target empty</h3>
+      <p>Impact: Item is displayed improperly</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 456</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>Bad value  for attribute target on element a: Browsing context name must be at least one character long.</code></h5>
+      <p>Description: target attribute on an a element is empty</p>
+      <p>Count of instances: 114</p>
+      <h3 class="bars">Issue: font size absolute</h3>
+      <p>Impact: User cannot adjust the text size for readability</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a></p>
+      <p>Score: 333</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-WCAG-T28</code></h5>
+      <p>Description: Font size set to an absolute unit value</p>
+      <p>Count of instances: 208</p>
+      <h3 class="bars">Issue: invalid landmark child of navigation role</h3>
+      <p>Impact: User cannot get help on how some of the document is organized</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a></p>
+      <p>Score: 252</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>navigation_landmark_restrictions</code></h5>
+      <p>Description: Element with a navigation role contains a landmark other than region and search</p>
+      <p>Count of instances: 63</p>
+      <h3 class="bars">Issue: container size unit not percentage</h3>
+      <p>Impact: User may be unable to see all of an item without scrolling in both dimensions</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">1.4.10</a></p>
+      <p>Score: 143</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-BP18</code></h5>
+      <p>Description: Percentage is not used in CSS for a container size</p>
+      <p>Count of instances: 143</p>
+      <h3 class="bars">Issue: meta bans zoom</h3>
+      <p>Impact: User cannot adjust the document size for readability</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a></p>
+      <p>Score: 124</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>zoom_disabled</code></h5>
+      <p>Description: Element specifies a minimum or maximum scale or prohibits zooming</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: overflow hidden?</h3>
+      <p>Impact: User may be unable to enlarge the text for readability</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a></p>
+      <p>Score: 112</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-ACT-R40</code></h5>
+      <p>Description: Zoomed text node may be clipped by a CSS overflow declaration</p>
+      <p>Count of instances: 112</p>
+      <h3 class="bars">Issue: focusable element hidden</h3>
+      <p>Impact: Keyboard-only user cannot navigate properly to the operable items</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 92</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r17</code></h5>
+      <p>Description: Tab-focusable element is or has an ancestor that is aria-hidden</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>axe</code> rules</h4>
+      <h5>Rule <code>aria-hidden-focus</code></h5>
+      <p>Description: ARIA hidden element is focusable or contains a focusable element</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_hidden_nontabbable</code></h5>
+      <p>Description: Element has an ancestor with a true aria-hidden attribute but is focusable</p>
+      <p>Count of instances: 23</p>
+      <h3 class="bars">Issue: CSS invalid</h3>
+      <p>Impact: Document cannot be properly displayed</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a></p>
+      <p>Score: 90</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>^CSS: .+: .+ is not a .+ value.*$</code></h5>
+      <p>Description: Invalid value in CSS</p>
+      <p>Count of instances: 6</p>
+      <h5>Rule <code>^CSS: .+: Property .+ doesn't exist.*$</code></h5>
+      <p>Description: Invalid property in CSS</p>
+      <p>Count of instances: 24</p>
+      <h3 class="bars">Issue: operable element not focusable</h3>
+      <p>Impact: Keyboard-only user cannot navigate properly to an operable item</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a></p>
+      <p>Score: 88</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[6]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[7]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[8]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[9]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[14]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[7]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[9]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[10]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[14]</li>
+      </ul>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>opFoc</code></h5>
+      <p>Description: Operable element is not Tab-focusable</p>
+      <p>Count of instances: 22</p>
+      <h3 class="bars">Issue: link indication poor</h3>
+      <p>Impact: User cannot differentiate a link from plain text</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html">1.3.3</a></p>
+      <p>Score: 82</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[3]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[4]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[3]/div/div[1]/div/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[17]/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[2]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[3]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[4]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[4]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[6]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[4]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[6]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[3]</li>
+      </ul>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>linkUl</code></h5>
+      <p>Description: Inline links are not underlined</p>
+      <p>Count of instances: 41</p>
+      <h3 class="bars">Issue: attribute value invalid</h3>
+      <p>Impact: Item behaves improperly</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 80</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>^Bad value .* for attribute .+ on element .+$</code></h5>
+      <p>Description: Attribute on this element has an invalid value</p>
+      <p>Count of instances: 20</p>
+      <h3 class="bars">Issue: parent invalid</h3>
+      <p>Impact: User cannot properly operate an item</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 80</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>^Element .+ not allowed as child of element .+ in this context.*$</code></h5>
+      <p>Description: Element has an invalid parent</p>
+      <p>Count of instances: 20</p>
+      <h3 class="bars">Issue: content beyond landmarks</h3>
+      <p>Impact: User cannot get help on how some of the document is organized</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a></p>
+      <p>Score: 78</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r57</code></h5>
+      <p>Description: Perceivable text content is not included in any landmark</p>
+      <p>Count of instances: 78</p>
+      <h4>Violations of <code>axe</code> rules</h4>
+      <h5>Rule <code>region</code></h5>
+      <p>Description: Some page content is not contained by landmarks</p>
+      <p>Count of instances: 18</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_content_in_landmark</code></h5>
+      <p>Description: Content is not within a landmark element</p>
+      <p>Count of instances: 58</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>Use landmarks to contain page content.</code></h5>
+      <p>Description: Content is not within a landmark element</p>
+      <p>Count of instances: 51</p>
+      <h3 class="bars">Issue: contrast poor</h3>
+      <p>Impact: Content is difficult to understand</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">1.4.3</a></p>
+      <p>Score: 68</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r69</code></h5>
+      <p>Description: Text outside widget has subminimum contrast</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>axe</code> rules</h4>
+      <h5>Rule <code>color-contrast</code></h5>
+      <p>Description: Element has insufficient color contrast</p>
+      <p>Count of instances: 17</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.1_4_6.G18.Fail</code></h5>
+      <p>Description: Contrast between the text and its background is less than 4.5:1</p>
+      <p>Count of instances: 4</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-ACT-R37</code></h5>
+      <p>Description: Text has less than the minimum contrast</p>
+      <p>Count of instances: 4</p>
+      <h4>Violations of <code>wave</code> rules</h4>
+      <h5>Rule <code>contrast</code></h5>
+      <p>Description: Very low contrast</p>
+      <p>Count of instances: 4</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>^This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 3:1, but text in this element has a contrast ratio of .+. Recommendation:  change .+ to #.+$</code></h5>
+      <p>Description: Contrast between the element text and its background is less than 3:1</p>
+      <p>Count of instances: 1</p>
+      <h5>Rule <code>^This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of .+. Recommendation:  change .+ to #.+$</code></h5>
+      <p>Description: Contrast between the element text and its background is less than 4.5:1</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: links named identically</h3>
+      <p>Impact: User cannot get help differentiating links</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">2.4.4</a></p>
+      <p>Score: 60</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[6]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[7]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[8]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[9]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[10]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[11]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[12]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[13]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[14]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[18]/div/div[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[18]/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[6]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[7]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[8]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[9]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[10]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[11]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[12]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[14]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</li>
+      </ul>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>links_same_content_different_url</code></h5>
+      <p>Description: Links with the same text content have different destination URLs</p>
+      <p>Count of instances: 19</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-ACT-R9</code></h5>
+      <p>Description: Links with identical accessible names have different purposes</p>
+      <p>Count of instances: 10</p>
+      <h5>Rule <code>QW-ACT-R44</code></h5>
+      <p>Description: Links with identical accessible names and context serve different purposes</p>
+      <p>Count of instances: 10</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>linkAmb</code></h5>
+      <p>Description: Links with the same text content have different destinations</p>
+      <p>Count of instances: 30</p>
+      <h3 class="bars">Issue: all-capital text</h3>
+      <p>Impact: Text is difficult to read</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html">3.1.5</a></p>
+      <p>Score: 52</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[2]/p</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[2]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[6]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[8]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[9]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[11]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[12]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[2]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[5]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[9]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]/a/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[1]/div/div/div/h1[2]/span</li>
+        <li>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[2]/div/div[2]/div[1]/h2/span</li>
+      </ul>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>capital_letters_words</code></h5>
+      <p>Description: Element or its title has entirely upper-case words</p>
+      <p>Count of instances: 52</p>
+      <h4>Violations of <code>ed11y</code> rules</h4>
+      <h5>Rule <code>textUppercase</code></h5>
+      <p>Description: Element contains more than 4 consecutive upper-case words</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>allCaps</code></h5>
+      <p>Description: Element has a text substring of at least 8 upper-case characters</p>
+      <p>Count of instances: 14</p>
+      <h3 class="bars">Issue: text contrast improvable</h3>
+      <p>Impact: Content is not easy to understand</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html">1.4.6</a></p>
+      <p>Score: 51</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r66</code></h5>
+      <p>Description: Text contrast less than AAA requires</p>
+      <p>Count of instances: 6</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>color_contrast_aaa7</code></h5>
+      <p>Description: Text has contrast less than 7:1</p>
+      <p>Count of instances: 48</p>
+      <h5>Rule <code>color_contrast_aaa4</code></h5>
+      <p>Description: Text has contrast less than 4.5:1</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>axe</code> rules</h4>
+      <h5>Rule <code>color-contrast-enhanced</code></h5>
+      <p>Description: Element has insufficient color contrast (Level AAA)</p>
+      <p>Count of instances: 5</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.1_4_6.G17.Fail</code></h5>
+      <p>Description: Text has insufficient contrast</p>
+      <p>Count of instances: 16</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-ACT-R76</code></h5>
+      <p>Description: Text has less than the enhanced minimum contrast</p>
+      <p>Count of instances: 51</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>^This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of .+. Recommendation:  change .+ to #.+$</code></h5>
+      <p>Description: Contrast between the element text and its background is less than 7:1</p>
+      <p>Count of instances: 5</p>
+      <h3 class="bars">Issue: text contrast not testable</h3>
+      <p>Impact: Text may be difficult to read</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">1.4.3</a></p>
+      <p>Score: 50</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>cantTellTextContrast</code></h5>
+      <p>Description: Test of text contrast could not give a conclusive result</p>
+      <p>Count of instances: 4</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.1_4_3_F24.F24.FGColour</code></h5>
+      <p>Description: Inline foreground color may lack a complementary background color</p>
+      <p>Count of instances: 36</p>
+      <h5>Rule <code>AAA.1_4_6.G17.Abs</code></h5>
+      <p>Description: Contrast between the absolutely positioned text and its background may be less than 7:1</p>
+      <p>Count of instances: 14</p>
+      <h3 class="bars">Issue: skip method missing or invalid</h3>
+      <p>Impact: Keyboard-only user cannot easily reach the specific content of the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html">2.4.1</a></p>
+      <p>Score: 48</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>Ensure that any common navigation elements can be bypassed; for instance, by use of skip links, header elements, or ARIA landmark roles.</code></h5>
+      <p>Description: Page provides no way to quickly navigate to the main content</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: tab-opening link action unstated</h3>
+      <p>Impact: Following a link opens a new window, surprising a user</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/change-on-request.html">3.2.5</a></p>
+      <p>Score: 45</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[3]/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[4]/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[1]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[2]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[17]/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[2]/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[3]/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[4]/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[1]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[2]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[3]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[4]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[5]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[6]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[1]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[2]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[3]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[4]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[5]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[6]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[1]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[2]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[3]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[4]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[5]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[6]</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[3]/a</li>
+      </ul>
+      <h4>Violations of <code>ed11y</code> rules</h4>
+      <h5>Rule <code>linkNewWindow</code></h5>
+      <p>Description: Link opens a new window or tab without prior notice</p>
+      <p>Count of instances: 30</p>
+      <h3 class="bars">Issue: target small</h3>
+      <p>Impact: User cannot reliably choose an item to click or tap</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html">2.5.5</a></p>
+      <p>Score: 37</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[3]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[4]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[1]/div/div[2]/div/div[2]/div/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/button</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[1]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[3]/div/div[1]/div/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[17]/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[1]/div/div/div/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[2]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[3]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[4]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[4]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[6]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[4]</li>
+      </ul>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r111</code></h5>
+      <p>Description: Target size is suboptimal</p>
+      <p>Count of instances: 4</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>targetSize</code></h5>
+      <p>Description: Button, input, or non-inline link is smaller than 44 px wide and high</p>
+      <p>Count of instances: 37</p>
+      <h3 class="bars">Issue: item makes testing inconclusive</h3>
+      <p>Impact: Item prevents a conclusive accessibility test</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a></p>
+      <p>Score: 37</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>cantTell</code></h5>
+      <p>Description: Test could not give a conclusive result</p>
+      <p>Count of instances: 37</p>
+      <h3 class="bars">Issue: type redundant</h3>
+      <p>Impact: Document includes unnecessary code</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 36</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>The type attribute is unnecessary for JavaScript resources.</code></h5>
+      <p>Description: type attribute is unnecessary for a JavaScript resource</p>
+      <p>Count of instances: 18</p>
+      <h5>Rule <code>The type attribute for the style element is not needed and should be omitted.</code></h5>
+      <p>Description: type attribute is unnecessary for a style element</p>
+      <p>Count of instances: 18</p>
+      <h3 class="bars">Issue: void element has trailing slash</h3>
+      <p>Impact: Document contains invalid code</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a></p>
+      <p>Score: 31</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.</code></h5>
+      <p>Description: Void element has a useless trailing slash.</p>
+      <p>Count of instances: 31</p>
+      <h3 class="bars">Issue: large visible-element count</h3>
+      <p>Impact: User cannot easily find items in the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/navigable.html">2.4</a></p>
+      <p>Score: 31</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>bulk</code></h5>
+      <p>Description: Page contains many visible elements</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: element obsolete</h3>
+      <p>Impact: Document includes obsolete code that the browser may fail to process</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a></p>
+      <p>Score: 30</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r70</code></h5>
+      <p>Description: Element is obsolete or deprecated</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>obsolete_html_elements</code></h5>
+      <p>Description: Element is obsolete</p>
+      <p>Count of instances: 5</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.1_3_1.H49.Font</code></h5>
+      <p>Description: font element is obsolete</p>
+      <p>Count of instances: 3</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>The font element is obsolete. Use CSS instead.</code></h5>
+      <p>Description: font element is obsolete</p>
+      <p>Count of instances: 10</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-BP10</code></h5>
+      <p>Description: HTML element is used to control the visual presentation of content</p>
+      <p>Count of instances: 5</p>
+      <h3 class="bars">Issue: tab-opening link action unstated?</h3>
+      <p>Impact: Following a link opens a new window, possibly surprising a user</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/change-on-request.html">3.2.5</a></p>
+      <p>Score: 30</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[3]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[4]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[17]/div/div[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[2]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[3]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[4]/p/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[4]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[6]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[4]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[6]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[4]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[5]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[6]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[3]/a</li>
+      </ul>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>links_new_window_mark</code></h5>
+      <p>Description: Indicator that the link opens a new window or tab may be missing</p>
+      <p>Count of instances: 30</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.3_2_5.H83.3</code></h5>
+      <p>Description: Link text may fail to indicate that the link will open in a new window</p>
+      <p>Count of instances: 11</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>linkExt</code></h5>
+      <p>Description: Link opens a new window or tab</p>
+      <p>Count of instances: 30</p>
+      <h3 class="bars">Issue: code invalid</h3>
+      <p>Impact: Invalid code in the document may prevent a helper from working</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a></p>
+      <p>Score: 30</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>^Quote . in attribute name[.] Probable cause: Matching quote missing somewhere earlier.*$</code></h5>
+      <p>Description: Attribute name includes an apostrophe or double quotation mark</p>
+      <p>Count of instances: 8</p>
+      <h5>Rule <code>The document is not mappable to XML 1.0 due to two consecutive hyphens in a comment.</code></h5>
+      <p>Description: Comment contains --</p>
+      <p>Count of instances: 2</p>
+      <h3 class="bars">Issue: button not named</h3>
+      <p>Impact: User cannot get help explaing a button</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 28</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>empty_button_description</code></h5>
+      <p>Description: button element has no visible accessible name</p>
+      <p>Count of instances: 7</p>
+      <h3 class="bars">Issue: focus indication poor</h3>
+      <p>Impact: Keyboard-only user cannot choose an item to operate</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html">2.4.7</a></p>
+      <p>Score: 28</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[1]/div/p/span</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[3]/div/div[1]/div/a</li>
+      </ul>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>focInd</code></h5>
+      <p>Description: Focused element displays a nonstandard or no focus indicator</p>
+      <p>Count of instances: 7</p>
+      <h3 class="bars">Issue: link element invalid</h3>
+      <p>Impact: Document fails to get a needed external resource</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 20</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.2_4_8.H59.1</code></h5>
+      <p>Description: Element is not in the document head</p>
+      <p>Count of instances: 5</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>Link elements can only be located in the head section of the document.</code></h5>
+      <p>Description: link element is not located in the head element</p>
+      <p>Count of instances: 5</p>
+      <h3 class="bars">Issue: link element invalid</h3>
+      <p>Impact: Document fails to get a needed external resource</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 20</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>A link element with an as attribute must have a rel attribute that contains the value preload or the value modulepreload.</code></h5>
+      <p>Description: Element has an as attribute but no rel attribute with preload or modulepreload as its value</p>
+      <p>Count of instances: 5</p>
+      <h3 class="bars">Issue: font small</h3>
+      <p>Impact: Text is difficult to read</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/distinguishable.html">1.4</a></p>
+      <p>Score: 18</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>minimum_font_size</code></h5>
+      <p>Description: Font size is smaller than 10 pixels</p>
+      <p>Count of instances: 6</p>
+      <h3 class="bars">Issue: code obsolete</h3>
+      <p>Impact: Document contains code that is no longer standard</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a></p>
+      <p>Score: 18</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>element_attribute_deprecated</code></h5>
+      <p>Description: Element or attribute is obsolete</p>
+      <p>Count of instances: 6</p>
+      <h3 class="bars">Issue: tabindex redundant</h3>
+      <p>Impact: Revision risks interfering with navigation by a keyboard-only user</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 15</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>misused_tabindex_attribute</code></h5>
+      <p>Description: Element has an implicit tabIndex value 0, but also has a tabindex attribute</p>
+      <p>Count of instances: 15</p>
+      <h3 class="bars">Issue: link name vague</h3>
+      <p>Impact: User may misunderstand what a link points to</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">2.4.4</a></p>
+      <p>Score: 13</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[5]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[6]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[7]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[8]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[9]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[10]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[11]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[12]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[13]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[14]/div/div/div/div/div[2]/a</li>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[17]/div/div[2]/a</li>
+      </ul>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>link_with_unclear_purpose</code></h5>
+      <p>Description: Element is a link but has vague or generic content</p>
+      <p>Count of instances: 10</p>
+      <h4>Violations of <code>ed11y</code> rules</h4>
+      <h5>Rule <code>linkTextIsGeneric</code></h5>
+      <p>Description: Element is a link but has generic content</p>
+      <p>Count of instances: 13</p>
+      <h3 class="bars">Issue: aria attribute invalid</h3>
+      <p>Impact: Item behavior violates user expectations</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 12</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r18</code></h5>
+      <p>Description: ARIA state or property is not allowed for the element on which it is specified</p>
+      <p>Count of instances: 3</p>
+      <h3 class="bars">Issue: svg image not named</h3>
+      <p>Impact: User cannot get help understanding an image</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">1.1.1</a></p>
+      <p>Score: 12</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>accessible_svg</code></h5>
+      <p>Description: Element has no title, description, text, attribute label, or role description</p>
+      <p>Count of instances: 3</p>
+      <h3 class="bars">Issue: meta invalid</h3>
+      <p>Impact: Document fails to include needed data</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 12</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>A charset attribute on a meta element found after the first 1024 bytes.</code></h5>
+      <p>Description: charset attribute on a meta element appears after 1024 bytes</p>
+      <p>Count of instances: 2</p>
+      <h5>Rule <code>A document must not include both a meta element with an http-equiv attribute whose value is content-type, and a meta element with a charset attribute.</code></h5>
+      <p>Description: Element with http-equiv="content-type" is incompatible with the meta element with a charset attribute</p>
+      <p>Count of instances: 2</p>
+      <h3 class="bars">Issue: color missing</h3>
+      <p>Impact: Content is impossible to perceive under some conditions</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">1.4.3</a></p>
+      <p>Score: 12</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-WCAG-T31</code></h5>
+      <p>Description: Foreground or background color is specified but not both</p>
+      <p>Count of instances: 3</p>
+      <h3 class="bars">Issue: title attribute invalid</h3>
+      <p>Impact: User cannot hover to get help explaining an item</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 12</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[1]</li>
+        <li>/html/body/div[1]/div/div[1]</li>
+        <li>/html/body/div[1]/div/div[2]</li>
+      </ul>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>titledEl</code></h5>
+      <p>Description: title attribute belongs to an inappropriate element</p>
+      <p>Count of instances: 3</p>
+      <h3 class="bars">Issue: heading level skipped</h3>
+      <p>Impact: Helper misdescribes the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 10</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r53</code></h5>
+      <p>Description: Heading skips one or more levels</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>axe</code> rules</h4>
+      <h5>Rule <code>heading-order</code></h5>
+      <p>Description: Heading levels do not increase by only one or their order is ambiguous</p>
+      <p>Count of instances: 5</p>
+      <h4>Violations of <code>wave</code> rules</h4>
+      <h5>Rule <code>heading_skipped</code></h5>
+      <p>Description: Skipped heading level</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>Maintain a logical order by only increasing heading levels by one.</code></h5>
+      <p>Description: Heading levels do not increase by only one</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: image dubiously named</h3>
+      <p>Impact: Helper may describe an image inadequately</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">1.1.1</a></p>
+      <p>Score: 10</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>alt_color_convey_information</code></h5>
+      <p>Description: Text alternative may fail to give information provided by colors</p>
+      <p>Count of instances: 4</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-WCAG-T8</code></h5>
+      <p>Description: Text alternative is suspect</p>
+      <p>Count of instances: 10</p>
+      <h3 class="bars">Issue: semantic properties represented with styles</h3>
+      <p>Impact: User cannot get help to fully understand the text</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 10</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>Semantic markup should be used to mark emphasised or special text so that it can be programmatically determined.</code></h5>
+      <p>Description: Special text is designated with styles instead of semantically</p>
+      <p>Count of instances: 5</p>
+      <h3 class="bars">Issue: landmarks not distinctly named</h3>
+      <p>Impact: User cannot get help on how some of the document is organized</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a></p>
+      <p>Score: 9</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>axe</code> rules</h4>
+      <h5>Rule <code>landmark-unique</code></h5>
+      <p>Description: Landmark has a role and an accessible name that are identical to another</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_landmark_name_unique</code></h5>
+      <p>Description: Multiple landmarks with the same parent region are not distinguished from one another</p>
+      <p>Count of instances: 3</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>Provide unique role or role/label/title combinations for landmarks.</code></h5>
+      <p>Description: Landmark is indistinguishable from another by role, label, or title</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: navigations not distinctly named</h3>
+      <p>Impact: User cannot get help on how some of the document is organized</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">1.3.6</a></p>
+      <p>Score: 9</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_navigation_label_unique</code></h5>
+      <p>Description: Multiple elements with the navigation role do not have unique labels</p>
+      <p>Count of instances: 3</p>
+      <h3 class="bars">Issue: skip method missing or invalid?</h3>
+      <p>Impact: Keyboard-only user may be unable easily to reach the specific content of the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html">2.4.1</a></p>
+      <p>Score: 8</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r87</code></h5>
+      <p>Description: First focusable element is not a link to the main content</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: position sticky</h3>
+      <p>Impact: User may be unable to see needed content or may be forced to scroll in both dimensions</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">1.4.10</a></p>
+      <p>Score: 8</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.1_4_10.C32,C31,C33,C38,SCR34,G206</code></h5>
+      <p>Description: Fixed-position element may force bidirectional scrolling</p>
+      <p>Count of instances: 8</p>
+      <h3 class="bars">Issue: inconsistent heading, link, or button styles</h3>
+      <p>Impact: User cannot easily distinguish items of different types</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html">3.2.4</a></p>
+      <p>Score: 7</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>styleDiff</code></h5>
+      <p>Description: Heading, link, and button style inconsistencies</p>
+      <p>Count of instances: 7</p>
+      <h3 class="bars">Issue: heading heads nothing</h3>
+      <p>Impact: Helper misdescribes the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 6</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r78</code></h5>
+      <p>Description: No content between two headings of the same level</p>
+      <p>Count of instances: 3</p>
+      <h3 class="bars">Issue: role redundant</h3>
+      <p>Impact: Document includes unnecessary code</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 6</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_role_redundant</code></h5>
+      <p>Description: Explicitly assigned ARIA role is redundant with the implicit role of the element</p>
+      <p>Count of instances: 2</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>^The .+ role is unnecessary for element .+$</code></h5>
+      <p>Description: explicit role is redundant for its element</p>
+      <p>Count of instances: 6</p>
+      <h3 class="bars">Issue: invalid at-rule</h3>
+      <p>Impact: Document cannot be properly displayed in particular contexts</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/compatible.html">4.1</a></p>
+      <p>Score: 6</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>nuVal</code> rules</h4>
+      <h5>Rule <code>CSS: The @charset rule may only occur at the start of the style sheet. Please check that there are no spaces before it.</code></h5>
+      <p>Description: CSS @charset at-rule is not at the start of its style sheet</p>
+      <p>Count of instances: 2</p>
+      <h3 class="bars">Issue: z-index not zero</h3>
+      <p>Impact: User cannot predict the effect of clicking</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/distinguishable.html">1.4</a></p>
+      <p>Score: 6</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[2]</li>
+        <li>/html/body/div[3]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul</li>
+      </ul>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>zIndex</code></h5>
+      <p>Description: Element has a nondefault z-index value</p>
+      <p>Count of instances: 6</p>
+      <h3 class="bars">Issue: text and image link not combined</h3>
+      <p>Impact: Keyboard-only user expends extra effort to skip a link</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">2.4.4</a></p>
+      <p>Score: 6</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>wave</code> rules</h4>
+      <h5>Rule <code>link_redundant</code></h5>
+      <p>Description: Adjacent links go to the same URL</p>
+      <p>Count of instances: 3</p>
+      <h3 class="bars">Issue: line height low</h3>
+      <p>Impact: Text is difficult to read</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html">1.4.8</a></p>
+      <p>Score: 4</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r73</code></h5>
+      <p>Description: Text line height is not at least 1.5</p>
+      <p>Count of instances: 2</p>
+      <h3 class="bars">Issue: dialog not named</h3>
+      <p>Impact: User cannot get help explaining a pop-up window</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 4</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>aria_role_dialog</code></h5>
+      <p>Description: Element has a dialog role but has no accessible name</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: heading structure illogical</h3>
+      <p>Impact: Helper misdescribes the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 4</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>headings_hierarchy</code></h5>
+      <p>Description: Heading level is illogical in its context</p>
+      <p>Count of instances: 2</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.1_3_1_AAA.G141</code></h5>
+      <p>Description: Heading level is incorrect</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: element not scrollable</h3>
+      <p>Impact: Keyboard-only user cannot scroll an item</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a></p>
+      <p>Score: 4</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-ACT-R43</code></h5>
+      <p>Description: Scrollable element is not keyboard accessible</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: role assigned instead of implicit</h3>
+      <p>Impact: User may misunderstand the purpose of an item</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 4</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[1]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav</li>
+        <li>/html/body/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav</li>
+        <li>/html/body/div[1]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav</li>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[14]</li>
+      </ul>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>role</code></h5>
+      <p>Description: Explicitly assigned ARIA role is also an implicit element role</p>
+      <p>Count of instances: 4</p>
+      <h3 class="bars">Issue: ID not unique</h3>
+      <p>Impact: User may be pointed to the wrong item</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/parsing.html">4.1.1</a></p>
+      <p>Score: 4</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>^Duplicate id attribute value .+ found on the web page.+$</code></h5>
+      <p>Description: id attribute value is not unique</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: target very small</h3>
+      <p>Impact: User cannot reliably choose an item to click or tap</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">2.5.8</a></p>
+      <p>Score: 3</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>alfa</code> rules</h4>
+      <h5>Rule <code>r113</code></h5>
+      <p>Description: Target size is substandard</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: role invalid</h3>
+      <p>Impact: User cannot get help on the nature of an item</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 3</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_eventhandler_role_valid</code></h5>
+      <p>Description: Element with an onclick, onmouseout, or onmouseover attribute has no valid ARIA role</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: focusable element not active</h3>
+      <p>Impact: Keyboard-only user cannot navigate properly to the operable items</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">4.1.2</a></p>
+      <p>Score: 3</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-WCAG-T26</code></h5>
+      <p>Description: Script makes a div or span a user interface control without providing a role for the control</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: box size absolute</h3>
+      <p>Impact: User cannot enlarge the content of an item for readability</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">1.4.4</a></p>
+      <p>Score: 3</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-BP15</code></h5>
+      <p>Description: Element width is specified in an absolute value</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: link href missing</h3>
+      <p>Impact: Helper cannot properly explain a link to a user</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 2</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[3]/div/div[1]/div/a</li>
+      </ul>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>missing_href_on_a</code></h5>
+      <p>Description: Link has no href attribute</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.4_1_2.H91.A.NoHref</code></h5>
+      <p>Description: Link is misused as a link destination</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>linkTo</code></h5>
+      <p>Description: Link has no href attribute</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: nav links not list</h3>
+      <p>Impact: User cannot get help recognizing a list of navigation links</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 2</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.1_3_1.H48</code></h5>
+      <p>Description: Navigation links are not coded as a list</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: no option focusable</h3>
+      <p>Impact: Keyboard-only user cannot choose an option</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a></p>
+      <p>Score: 2</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>ibm</code> rules</h4>
+      <h5>Rule <code>aria_child_tabbable</code></h5>
+      <p>Description: No descendent element with an option role is tabbable</p>
+      <p>Count of instances: 2</p>
+      <h3 class="bars">Issue: element not focusable</h3>
+      <p>Impact: Keyboard-only user cannot choose an item to operate</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a></p>
+      <p>Score: 2</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>focAll</code></h5>
+      <p>Description: Discrepancy between elements that should be and that are Tab-focusable</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: heading names repeated</h3>
+      <p>Impact: User cannot differentiate parts of the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 2</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>headingAmb</code></h5>
+      <p>Description: Heading has the same text as a previous sibling heading at the same level</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>wax</code> rules</h4>
+      <h5>Rule <code>^The heading structure is not logically nested. This h. element should be an h. to be properly nested.+$</code></h5>
+      <p>Description: Heading level is illogical</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: hr misused</h3>
+      <p>Impact: User cannot get help on the nature of segments of the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 1</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[2]/hr</li>
+      </ul>
+      <h4>Violations of <code>aslint</code> rules</h4>
+      <h5>Rule <code>horizontal_rule</code></h5>
+      <p>Description: hr element has neither a true aria-hidden attribute nor a presentation role</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>testaro</code> rules</h4>
+      <h5>Rule <code>hr</code></h5>
+      <p>Description: hr instead of styles is used for vertical segmentation</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: heading abnormally long</h3>
+      <p>Impact: User has difficulty understanding the topic of a part of the document</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">1.3.1</a></p>
+      <p>Score: 1</p>
+      <h4>Elements</h4>
+      <ul>
+        <li>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[15]/div/div[2]/div/h4</li>
+      </ul>
+      <h4>Violations of <code>ed11y</code> rules</h4>
+      <h5>Rule <code>headingIsLong</code></h5>
+      <p>Description: Heading is longer than 160 characters</p>
+      <p>Count of instances: 1</p>
+      <h3 class="bars">Issue: event not keyboard-triggerable?</h3>
+      <p>Impact: Keyboard-only user may be unable to perform an action</p>
+      <p>WCAG: <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1</a></p>
+      <p>Score: 1</p>
+      <h4>Elements</h4>
+      <p>None identified</p>
+      <h4>Violations of <code>htmlcs</code> rules</h4>
+      <h5>Rule <code>AAA.2_1_1.G90</code></h5>
+      <p>Description: Event handler functionality may not be available by keyboard</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>qualWeb</code> rules</h4>
+      <h5>Rule <code>QW-WCAG-T6</code></h5>
+      <p>Description: Both keyboard and other device-specific functions are not used</p>
+      <p>Count of instances: 1</p>
+      <h4>Violations of <code>wave</code> rules</h4>
+      <h5>Rule <code>event_handler</code></h5>
+      <p>Description: Device-dependent event handler</p>
+      <p>Count of instances: 1</p>
+      <h2 id="elements">Elements with issues</h2>
+      <p>Elements exhibiting issues:</p>
+      <h5>Element <code>/html/body/div[1]</code></h5>
+      <ul>
+        <li>title attribute invalid</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav</code></h5>
+      <ul>
+        <li>role assigned instead of implicit</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav</code></h5>
+      <ul>
+        <li>role assigned instead of implicit</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav</code></h5>
+      <ul>
+        <li>role assigned instead of implicit</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[3]/p/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[4]/p/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[1]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[2]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[10]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[11]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[12]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[13]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[14]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[15]/div/div[2]/div/h4</code></h5>
+      <ul>
+        <li>heading abnormally long</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[17]/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[5]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[6]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[7]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[8]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[9]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>link name vague</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[2]/p/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[3]/p/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[4]/p/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[1]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[2]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[3]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[4]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[5]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[6]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[1]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[2]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[3]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[4]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[5]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[6]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[1]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[2]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[3]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[4]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[5]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[6]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[2]/p</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[2]/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[3]/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div[1]</code></h5>
+      <ul>
+        <li>title attribute invalid</li>
+      </ul>
+      <h5>Element <code>/html/body/div[1]/div/div[2]</code></h5>
+      <ul>
+        <li>title attribute invalid</li>
+      </ul>
+      <h5>Element <code>/html/body/div[2]</code></h5>
+      <ul>
+        <li>z-index not zero</li>
+      </ul>
+      <h5>Element <code>/html/body/div[3]</code></h5>
+      <ul>
+        <li>z-index not zero</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]</code></h5>
+      <ul>
+        <li>z-index not zero</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[1]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[2]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[14]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[2]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[3]</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[3]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[4]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[6]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[7]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[8]</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[9]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[4]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[5]</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[5]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[2]/hr</code></h5>
+      <ul>
+        <li>hr misused</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[3]/p/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[4]/p/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[1]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/div[5]/div/div/a[2]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[1]/div[2]</code></h5>
+      <ul>
+        <li>z-index not zero</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/button</code></h5>
+      <ul>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[1]/div/div[2]/div/div[2]/div/a</code></h5>
+      <ul>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]</code></h5>
+      <ul>
+        <li>z-index not zero</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[1]/div/p/span</code></h5>
+      <ul>
+        <li>focus indication poor</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/a</code></h5>
+      <ul>
+        <li>focus indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[1]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</code></h5>
+      <ul>
+        <li>focus indication poor</li>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</code></h5>
+      <ul>
+        <li>focus indication poor</li>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul</code></h5>
+      <ul>
+        <li>z-index not zero</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[10]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[14]</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[1]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[3]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[4]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[5]</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[7]/a</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[9]</code></h5>
+      <ul>
+        <li>operable element not focusable</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</code></h5>
+      <ul>
+        <li>focus indication poor</li>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</code></h5>
+      <ul>
+        <li>focus indication poor</li>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[10]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[11]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[12]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[13]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[14]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[17]/div/div[2]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[18]/div/div[1]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[18]/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[3]/div/div[1]/div/a</code></h5>
+      <ul>
+        <li>focus indication poor</li>
+        <li>link href missing</li>
+        <li>link indication poor</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[6]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[7]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[8]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[4]/div/div/div/div[9]/div/div/div/div/div[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[1]/div/div/div/a</code></h5>
+      <ul>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[2]/p/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[3]/p/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[4]/p/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[1]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[2]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>links named identically</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>links named identically</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[10]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[11]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[12]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[14]</code></h5>
+      <ul>
+        <li>role assigned instead of implicit</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[14]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[1]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[2]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[3]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[4]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[5]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[6]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[7]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[8]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[9]/a</code></h5>
+      <ul>
+        <li>links named identically</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[4]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>links named identically</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[2]/div/div[2]/nav/ul/li[5]/a</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>links named identically</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[1]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[2]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[3]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[4]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[5]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[3]/div/div/a[6]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[1]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[2]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[3]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[4]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[5]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[4]/div/div/a[6]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[1]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[2]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[3]</code></h5>
+      <ul>
+        <li>link indication poor</li>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[4]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated?</li>
+        <li>target small</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[5]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[1]/div/div/div[5]/div/div/div[1]/div/div/a[6]</code></h5>
+      <ul>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[2]/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div/div/div/div/div[2]/div[5]/div/div[1]/div[2]/div/div/div/font[3]/a</code></h5>
+      <ul>
+        <li>tab-opening link action unstated?</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[11]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[12]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[2]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[6]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[8]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div/nav/ul/li[3]/ul/li[9]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[1]/div/div[1]/div/div[2]/div/p/a</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[1]/div/div[2]/div/p/a</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[13]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[2]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[5]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div[2]/nav/ul/li[3]/ul/li[9]/a/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[1]/div/div/div/h1[2]/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <h5>Element <code>/html/body/div[7]/div/div/div/div[1]/div/div/div/div[2]/div[4]/div/div/div/div[2]/div/div[2]/div[1]/h2/span</code></h5>
+      <ul>
+        <li>all-capital text</li>
+      </ul>
+      <footer>
+        <p class="date">Produced <time itemprop="datePublished" datetime="2024-09-22">2024/09/22</time></p>
+      </footer>
+    </main>
+  </body>
+</html>
